@@ -1,0 +1,29 @@
+{
+  "name": "wp-nodejs-theme",
+  "version": "1.0.0",
+  "description": "A nodejs theme for WordPress",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "pug": "^2.0.0-beta6",
+    "stylus": "^0.54.5",
+    "wpapi": "^0.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gianlucadelgobbo/wp-nodejs-theme.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gianlucadelgobbo/wp-nodejs-theme/issues"
+  },
+  "homepage": "https://github.com/gianlucadelgobbo/wp-nodejs-theme#readme"
+}
