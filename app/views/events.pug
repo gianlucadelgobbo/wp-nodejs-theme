@@ -1,5 +1,4 @@
 extends layout
 block content
-	each page in data
-		pre!=page.title.rendered
-		pre=JSON.stringify(page, null, ' ')
+	pre!=data.title.rendered
+	pre=JSON.stringify(data, null, ' ')
