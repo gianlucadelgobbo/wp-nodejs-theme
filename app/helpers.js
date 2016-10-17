@@ -31,19 +31,29 @@ exports.getEvent = function getEvent(req,callback) {
     }
   });
 };
-exports.getEditionMenu = function getEvent(req,callback) {
+exports.getEditionMenu = function getEditionMenu(req,callback) {
   var edition = req.params.edition ? req.params.edition : "2016-amsterdam";
   console.log(edition);
   var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_parent/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(edition).get(function( err, data ) {
-    console.log(data);
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)' );
-    wp.myCustomResource().edition(edition).get(function( err, data2 ) {
-      console.log(data2);
-      data[data2.ID] = data2;
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)' );
+  wp.myCustomResource().edition(edition).get(function( err, data2 ) {
+    console.log(data2.ID);
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_parent/(?P<id>)' );
+    wp.myCustomResource().id(data2.ID).get(function( err, data ) {
+      //console.log(err || data);
+      //data[data2.ID] = data2;
+      //console.log(data);
       callback(data);
     });
+  });
+};
+exports.getEditionChilds = function getEditionChilds(edition, wp, callback) {
+  console.log("getEditionChilds");
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_parent/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(edition).get(function( err, data ) {
+    //console.log(data);
+    data[data2.ID] = data2;
+    callback(data);
   });
 };
 

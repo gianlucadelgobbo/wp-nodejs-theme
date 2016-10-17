@@ -159,9 +159,19 @@ html(lang='en')
 										#site-description Live video performers, visual artists and vj meeting
 				nav.hidden-xs(role='navigation')
 					ul.pulsa
+						- console.log(submenu)
 						each subitem in submenu
 							li.btn-group
-								a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href='/edition/2016-amsterdam/'+subitem.post_name)=subitem.post_title
+								a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href=subitem.permalink)=subitem.post_title
+								- if (subitem.childs.length)
+									button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown')
+										span.caret
+										span.sr-only Toggle Dropdown
+									ul.dropdown-menu
+										each child in subitem.childs
+											li
+												a(href=child.permalink)=child.post_title
+
 					ul.pulsa
 						li.btn-group
 							a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href='/edition/2016-amsterdam/') 2016 Amsterdam
