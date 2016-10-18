@@ -1,4 +1,5 @@
 extends layout
 block content
-	pre!=data.title.rendered
+	pre!=data.post_title
+	pre=JSON.stringify(edition_data, null, ' ')
 	pre=JSON.stringify(data, null, ' ')

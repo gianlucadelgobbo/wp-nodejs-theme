@@ -1,9 +1,10 @@
 var helpers = require('./../helpers');
 
 exports.get = function get(req, res) {
-	helpers.getEditionMenu(req, function( submenu ) {
+	helpers.getEditionData(req, function( edition_data ) {
 		helpers.getEvent(req, function( result ) {
-			res.render('events', {data: result, submenu:submenu});
+			edition_data.meta.title = (result.title ? result.title+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
+			res.render('events', {data: result, edition_data:edition_data});
 		});
 	});
 };

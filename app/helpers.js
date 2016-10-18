@@ -1,53 +1,33 @@
 var WPAPI = require( 'wpapi' );
+var moment = require( 'moment' );
 
 exports.getEvent = function getEvent(req,callback) {
   console.log(req.params.event);
   var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<slug>)' );
-  wp.myCustomResource().slug(req.params.event).get(function( err, data ) {
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.event).get(function( err, data ) {
     console.log("//// Event");
-    console.log(data[0].capauthor[0]);
-    wp.myCustomResource = wp.registerRoute('wp/v2', '/capauthor/(?P<id>)');
-    var capauthors = [];
-    for (var a = 0; a < data[0].capauthor.length; a++) {
-      wp.myCustomResource().id(data[0].capauthor[a]).get(function( err2, data2 ) {
-        console.log("//// capauthor");
-        //console.log(err2 || data2);
-        console.log(data2.name);
-        wp.myCustomResource = wp.registerRoute( 'wp/v2', '/author/(?P<author>)' );
-        wp.myCustomResource().author(data2.name).get(function( err3, data3 ) {
-          console.log("//// author");
-          //console.log(err2 || data2);
-          console.log(data3.data.display_name);
-          capauthors.push(data3.data);
-          console.log(data[0].capauthor.length);
-          console.log(capauthors.length);
-          if (data[0].capauthor.length==capauthors.length){
-            data[0].authors = capauthors;
-            callback(data[0]);
-          }
-        });
-      });
-    }
+    callback(data);
   });
 };
-exports.getEditionMenu = function getEditionMenu(req,callback) {
+exports.getEditionData = function getEditionData(req,callback) {
   var edition = req.params.edition ? req.params.edition : "2016-amsterdam";
-  console.log(edition);
   var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)' );
-  wp.myCustomResource().edition(edition).get(function( err, data2 ) {
-    console.log(data2.ID);
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_parent/(?P<id>)' );
-    wp.myCustomResource().id(data2.ID).get(function( err, data ) {
-      //console.log(err || data);
-      //data[data2.ID] = data2;
-      //console.log(data);
-      callback(data);
-    });
+  console.log(edition);
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_data/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(edition).get(function( err, data ) {
+    //console.log(err || data);
+    //data[data2.ID] = data2;
+    data.edition.startdateISO = moment(data.edition['wpcf-startdate']*1000).utc().format();
+    data.edition.startdateHR = moment(data.edition['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+    data.edition.enddateISO = moment(data.edition['wpcf-enddate']*1000).utc().format();
+    data.edition.enddateHR = moment(data.edition['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+    callback(data);
   });
 };
-exports.getEditionChilds = function getEditionChilds(edition, wp, callback) {
+
+/*
+ exports.getEditionChilds = function getEditionChilds(edition, wp, callback) {
   console.log("getEditionChilds");
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_parent/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(edition).get(function( err, data ) {
@@ -56,9 +36,7 @@ exports.getEditionChilds = function getEditionChilds(edition, wp, callback) {
     callback(data);
   });
 };
-
-/*
-    wp.myCustomResource().id(data[0].capauthor[0]).get(function( err2, data2 ) {
+   wp.myCustomResource().id(data[0].capauthor[0]).get(function( err2, data2 ) {
       console.log("//// capauthor");
       console.log(err2 || data2);
       console.log(data2.name);
