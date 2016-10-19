@@ -24,8 +24,8 @@ module.exports = function(app) {
 	app.get('/', indexRoutes.get);
 	app.get('/users', usersRoutes.get);
 	app.get('/users/(:user)', usersRoutes.get);
-	app.get('/events/', eventsRoutes.get);
-	app.get('/events/(:event)', eventsRoutes.get);
+	app.get('/events/', eventsRoutes.getAll);
+	app.get('/event/(:event)', eventsRoutes.get);
 	//app.get('/users/(:user)', usersRoutes.getUser);
 	/*
 	 app.use('/controlpanel', controlpanelRoutes);

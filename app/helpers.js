@@ -7,7 +7,20 @@ exports.getEvent = function getEvent(req,callback) {
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.event).get(function( err, data ) {
     console.log("//// Event");
+    data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
+    data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+    data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
+    data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
     callback(data);
+  });
+};
+exports.getAllEvents = function getEvent(req,callback) {
+  console.log("getAllEvents");
+  var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg().get(function( err, data ) {
+    console.log("//// Events");
+    console.log(err || data);
   });
 };
 exports.getEditionData = function getEditionData(req,callback) {
@@ -16,7 +29,7 @@ exports.getEditionData = function getEditionData(req,callback) {
   console.log(edition);
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_data/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(edition).get(function( err, data ) {
-    //console.log(err || data);
+    console.log(err || data);
     //data[data2.ID] = data2;
     data.edition.startdateISO = moment(data.edition['wpcf-startdate']*1000).utc().format();
     data.edition.startdateHR = moment(data.edition['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");

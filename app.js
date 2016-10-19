@@ -6,8 +6,8 @@ var app = express();
 	require('./app/setup')(app, express);
 	require('./app/router')(app);
 	global.config = {
-		port:3000,
-		googleAnalytics: "bella"
+		port:	3000,
+		host:	"localhost"
 	}
 	var server = null;
 	server = app.listen(config.port, function(){
