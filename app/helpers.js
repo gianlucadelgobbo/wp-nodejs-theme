@@ -7,6 +7,21 @@ exports.getEvent = function getEvent(req,callback) {
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.event).get(function( err, data ) {
     console.log("//// Event");
+    callback(data);
+    data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
+    data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+    data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
+    data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+    callback(data);
+  });
+};
+exports.getEdition = function getEdition(req,callback) {
+  console.log(req.params.edition);
+  var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.edition).get(function( err, data ) {
+    console.log("//// Edition");
+    callback(data);
     data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
     data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
     data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
@@ -17,10 +32,13 @@ exports.getEvent = function getEvent(req,callback) {
 exports.getAllEvents = function getEvent(req,callback) {
   console.log("getAllEvents");
   var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg().get(function( err, data ) {
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.event());
+  wp.myCustomResource().param( 'parent', 0 ).perPage( 20 ).page(5).get(function( err, data ) {
     console.log("//// Events");
     console.log(err || data);
+    callback(data);
   });
 };
 exports.getEditionData = function getEditionData(req,callback) {

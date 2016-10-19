@@ -1,31 +1,24 @@
 var indexRoutes = require('./routes/index');
 var usersRoutes = require('./routes/users');
 var eventsRoutes = require('./routes/events');
+var newsRoutes = require('./routes/news');
+var editionsRoutes = require('./routes/editions');
+var pagesRoutes = require('./routes/pages');
 /*
- var performersRoutes = require('./routes/performers');
- var performancesRoutes = require('./routes/performances');
- //var footageRoutes = require('./routes/footage');
- var eventsRoutes = require('./routes/events');
- var playlistsRoutes = require('./routes/playlists');
- var galleriesRoutes = require('./routes/galleries');
- //var forumRoutes = require('./routes/forum');
- var tvshowsRoutes = require('./routes/tvshows');
- var footagesRoutes     = require('./routes/footages');
- var apiRoutes = require('./routes/api');
-
- var swfdataRoutes     = require('./routes/swfdata');
  var searchRoutes = require('./routes/search');
-
- var imageRoutes     = require('./routes/image');
-
- var controlpanelRoutes   = require('./routes/controlpanel/routes');
  */
 module.exports = function(app) {
 	app.get('/', indexRoutes.get);
-	app.get('/users', usersRoutes.get);
-	app.get('/users/(:user)', usersRoutes.get);
+	//app.get('/users', usersRoutes.getAll);
+	app.get('/user/(:user)', usersRoutes.get);
 	app.get('/events/', eventsRoutes.getAll);
 	app.get('/event/(:event)', eventsRoutes.get);
+	app.get('/news/', newsRoutes.getAll);
+	app.get('/news/(:news)', newsRoutes.get);
+	app.get('/editions/', editionsRoutes.getAll);
+	app.get('/edition/(:edition)', editionsRoutes.get);
+	app.get('/edition/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
+	app.get('/(:page)', pagesRoutes.get);
 	//app.get('/users/(:user)', usersRoutes.getUser);
 	/*
 	 app.use('/controlpanel', controlpanelRoutes);

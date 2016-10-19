@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 //var session = require('exp-session');
 var methodOverride = require('method-override');
-var lessMiddleware = require('less-middleware');
+//var lessMiddleware = require('less-middleware');
 
 module.exports = function(app, exp) {
 	//var env = process.env.NODE_ENV || 'development';
@@ -16,7 +16,7 @@ module.exports = function(app, exp) {
 	//app.use(session({ secret: 'wp-nodejs-theme', resave: false, saveUninitialized: true, cookie: { maxAge: 3600000 } }));
 	app.use(methodOverride());
 	app.use(require('stylus').middleware({ src: app.root + '/public' }));
-	app.use(lessMiddleware(__dirname + "/bower_components/bootstrap/less", {
+	/*app.use(lessMiddleware(__dirname + "/bower_components/bootstrap/less", {
 		dest: __dirname + "/public/css",
 		render: {
 			paths: [__dirname + "/bower_components/bootstrap/less"],
@@ -29,7 +29,7 @@ module.exports = function(app, exp) {
 		// best for production, but fine in debug while working
 		// through changes
 		force: true
-	}));
+	}));*/
 	app.use(exp.static(app.root + '/public'));
 	//app.use(DB.i18n.init);
 	//}

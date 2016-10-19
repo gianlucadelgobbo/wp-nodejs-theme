@@ -2,9 +2,9 @@ var helpers = require('./../helpers');
 
 exports.get = function get(req, res) {
 	helpers.getEditionData(req, function( edition_data ) {
-		helpers.getEvent(req, function( result ) {
+		helpers.getEdition(req, function( result ) {
 			edition_data.meta.title = (result.title ? result.title+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
-			res.render('event', {data: result, edition_data:edition_data});
+			res.render('edition', {data: result, edition_data:edition_data});
 		});
 	});
 };
@@ -12,8 +12,8 @@ exports.get = function get(req, res) {
 exports.getAll = function getAll(req, res) {
 	helpers.getEditionData(req, function( edition_data ) {
 		helpers.getAllEvents(req, function( result ) {
-			edition_data.meta.title = "Events | " + edition_data.meta.name+ " "+ edition_data.edition.post_title;
-			res.render('events', {data: result, edition_data:edition_data});
+			edition_data.meta.title = "Editions | " + edition_data.meta.name+ " "+ edition_data.edition.post_title;
+			res.render('editions', {data: result, edition_data:edition_data});
 		});
 	});
 };
