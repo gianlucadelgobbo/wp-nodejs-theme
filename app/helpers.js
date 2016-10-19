@@ -1,25 +1,21 @@
 var WPAPI = require( 'wpapi' );
 var moment = require( 'moment' );
 
+exports.getPage = function getPage(req,callback) {
+  console.log(req.params.page);
+  var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
+  //wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<sluggg>)' );
+  wp.pages().slug(req.params.page).get(function( err, data ) {
+    console.log("//// Event");
+    callback(data);
+  });
+};
 exports.getEvent = function getEvent(req,callback) {
   console.log(req.params.event);
   var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.event).get(function( err, data ) {
     console.log("//// Event");
-    data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
-    data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-    data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
-    data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-    callback(data);
-  });
-};
-exports.getEdition = function getEdition(req,callback) {
-  console.log(req.params.edition);
-  var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.edition).get(function( err, data ) {
-    console.log("//// Edition");
     data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
     data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
     data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
@@ -36,6 +32,46 @@ exports.getAllEvents = function getEvent(req,callback) {
   wp.myCustomResource().param( 'parent', 0 ).perPage( 20 ).page(5).get(function( err, data ) {
     console.log("//// Events");
     console.log(err || data);
+    callback(data);
+  });
+};
+
+exports.getNew = function getNew(req,callback) {
+  console.log(req.params.new);
+  var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/new/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+    console.log("//// New");
+    data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
+    data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+    data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
+    data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+    callback(data);
+  });
+};
+exports.getAllNews = function getNew(req,callback) {
+  console.log("getAllNews");
+  var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/new' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage( 20 ).page(5).get(function( err, data ) {
+    console.log("//// News");
+    console.log(err || data);
+    callback(data);
+  });
+};
+
+exports.getEdition = function getEdition(req,callback) {
+  console.log(req.params.edition);
+  var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.edition).get(function( err, data ) {
+    console.log("//// Edition");
+    data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
+    data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+    data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
+    data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
     callback(data);
   });
 };
