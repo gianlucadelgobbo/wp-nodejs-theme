@@ -6,26 +6,63 @@ block content
 				header
 					h1.entry-title(itemprop='name')=data.post_title
 				.rientro
-					.dates
-						span.sr-only
-							span(itemprop='startDate', content=data.startdateISO)=data.startdateHR
-							!=" | "
-							span(itemprop='endDate', content=data.enddateISO)=data.enddateHR
-						.date.updated(content='2016-10-7')=data.data_evento
-					.places
-						each location in data['wpcf-location']
-							- locationA = location.split(";")
-							.place(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
-								span.placeName(itemprop='name')=locationA[0]
-								!=", "
-								span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
-									span.addressLocality(itemprop='addressLocality')=locationA[1]
+					if data.startdateHR || data.enddateHR || data.data_evento
+						.dates
+							span.sr-only
+								if data.startdateHR
+									span(itemprop='startDate', content=data.startdateISO)=data.startdateHR
 									!=" | "
-									span.addressCountry(itemprop='addressCountry')=locationA[2]
-								span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
-									meta(itemprop='latitude', content=locationA[3])
-									meta(itemprop='longitude', content=locationA[4])
+								if data.enddateHR
+									span(itemprop='endDate', content=data.enddateISO)=data.enddateHR
+							if data.data_evento
+								.date=data.data_evento
+					if data['wpcf-location'][0]
+						.places
+							each location in data['wpcf-location']
+								- locationA = location.split(";")
+								.place(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+									span.placeName(itemprop='name')=locationA[0]
+									!=", "
+									span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+										span.addressLocality(itemprop='addressLocality')=locationA[1]
+										!=" | "
+										span.addressCountry(itemprop='addressCountry')=locationA[2]
+									span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+										meta(itemprop='latitude', content=locationA[3])
+										meta(itemprop='longitude', content=locationA[4])
 					div(itemprop='description')!=data.post_content
+				if data['wpcf-add-grid-boxes']
+					if data['wpcf-rows'] && data['wpcf-columns']
+						- var row=1;
+						- var col=1;
+						- var rowsN = data['wpcf-rows']+1;
+						- var columnsN = data['wpcf-columns']+1;
+						if rowsN>0 && columnsN>0
+							if data['wpcf-same-rows-height']==1
+								each row in data.grid
+									if row
+										.row
+											- var conta = 0
+											each col in row
+												- if (col.tit) conta++
+											- var span = 12/conta
+											each col in row
+												if col.tit
+													div(class="col-sm-"+span)
+														h3!=col.tit+(col.stit ? "<br /><small>"+col.stit+"</small>" : "")
+														.rientro!=col.box
+							else
+								if data.grid
+									.row
+										- span = 12/data.grid.length
+										each col in data.grid
+											if col
+												div(class="col-sm-"+span)
+													each row in col
+														if row.tit
+															h3!=row.tit + (row.stit ? "<br /><small>"+row.stit+"</small>" : "")
+															.rientro!=row.box
+
 
 					br
 					.a2a_kit.a2a_kit_size_32.addtoany_list(data-a2a-url='http://liveperformersmeeting.net/event/approaches-to-multichannel-sound-using-reaktor/', data-a2a-title='Approaches to Multichannel Sound Using Reaktor Workshop', style='line-height: 32px;')

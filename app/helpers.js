@@ -64,42 +64,133 @@ exports.getAllNews = function getNew(req,callback) {
   });
 };
 
+exports.getGrid = function getGrid(data) {
+  var row=0;
+  var col=0;
+  var grid = [];
+  var rowsN = parseInt(data['wpcf-rows']);
+  var columnsN = parseInt(data['wpcf-columns']);
+  //if (rowsN>0 && columnsN>0) {
+  //}
+  if (data['wpcf-same-rows-height']==1) {
+    while (row<rowsN) {
+      grid[row] = [];
+      while (col<columnsN) {
+        grid[row][col] = {};
+        grid[row][col].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
+        grid[row][col].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
+        grid[row][col].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
+        col++;
+      }
+      col=0;
+      row++;
+    }
+  } else {
+    while (col<columnsN) {
+      grid[col] = [];
+      while (row<rowsN) {
+        grid[col][row] = {};
+        grid[col][row].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
+        grid[col][row].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
+        grid[col][row].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
+        row++;
+      }
+      row=0;
+      col++;
+    }
+  }
+  return grid;
+};
+
 exports.getEdition = function getEdition(req,callback) {
   console.log(req.params.edition);
+  console.log(req.params.subedition);
+  console.log(req.params.subsubedition);
   var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
   if (req.params.subsubedition) {
+    console.log("req.params.subsubedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
-      console.log("//// Edition");
+      console.log("//// SubSubEdition");
       data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
       data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
       data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
       data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = getGrid(data);
       callback(data);
     });
   } else if (req.params.subedition) {
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>/(?P<subedition>)' );
+    console.log("req.params.subedition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)' );
     wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
-      console.log("//// Edition");
+      console.log("//// SubEdition");
+      console.log(data.post_content);
       data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
       data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
       data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
       data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+      console.log("stocazzo");
+      console.log(typeof getGrid);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = getGrid(data);
+      console.log(data.grid);
       callback(data);
     });
   } else {
+    console.log("req.params.edition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)' );
+    console.log(wp.myCustomResource);
     wp.myCustomResource().edition(req.params.edition,req.params.subsubedition,req.params.subsubedition).get(function( err, data ) {
       console.log("//// Edition");
       data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
       data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
       data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
       data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = getGrid(data);
       callback(data);
     });
   }
+  function getGrid(data){
+    console.log(typeof this.getGrid);
+    //return this.getGrid(data);
+    var row=0;
+    var col=0;
+    var grid = [];
+    var rowsN = parseInt(data['wpcf-rows']);
+    var columnsN = parseInt(data['wpcf-columns']);
+    //if (rowsN>0 && columnsN>0) {
+    //}
+    if (data['wpcf-same-rows-height']==1) {
+      while (row<rowsN) {
+        grid[row] = [];
+        while (col<columnsN) {
+          grid[row][col] = {};
+          grid[row][col].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
+          grid[row][col].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
+          grid[row][col].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
+          col++;
+        }
+        col=0;
+        row++;
+      }
+    } else {
+      while (col<columnsN) {
+        grid[col] = [];
+        while (row<rowsN) {
+          grid[col][row] = {};
+          grid[col][row].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
+          grid[col][row].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
+          grid[col][row].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
+          row++;
+        }
+        row=0;
+        col++;
+      }
+    }
+    return grid;
+  }
 
 };
+
 exports.getEditionData = function getEditionData(req,callback) {
   var edition = req.params.edition ? req.params.edition : "2016-amsterdam";
   var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
