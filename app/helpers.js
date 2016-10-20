@@ -6,8 +6,10 @@ exports.getPage = function getPage(req,callback) {
   var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
   //wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<sluggg>)' );
   wp.pages().slug(req.params.page).get(function( err, data ) {
-    console.log("//// Event");
-    callback(data);
+    console.log("//// Page");
+    data[0].date = moment(data[0].date).utc().format();
+    data[0].dateHR = moment(data[0].date).utc().format("MMMM, Do YYYY, h:mm a");
+    callback(data[0]);
   });
 };
 exports.getEvent = function getEvent(req,callback) {
@@ -65,15 +67,38 @@ exports.getAllNews = function getNew(req,callback) {
 exports.getEdition = function getEdition(req,callback) {
   console.log(req.params.edition);
   var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.edition).get(function( err, data ) {
-    console.log("//// Edition");
-    data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
-    data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-    data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
-    data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-    callback(data);
-  });
+  if (req.params.subsubedition) {
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
+      console.log("//// Edition");
+      data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
+      data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+      data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
+      data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+      callback(data);
+    });
+  } else if (req.params.subedition) {
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>/(?P<subedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
+      console.log("//// Edition");
+      data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
+      data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+      data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
+      data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+      callback(data);
+    });
+  } else {
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)' );
+    wp.myCustomResource().edition(req.params.edition,req.params.subsubedition,req.params.subsubedition).get(function( err, data ) {
+      console.log("//// Edition");
+      data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
+      data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+      data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
+      data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+      callback(data);
+    });
+  }
+
 };
 exports.getEditionData = function getEditionData(req,callback) {
   var edition = req.params.edition ? req.params.edition : "2016-amsterdam";

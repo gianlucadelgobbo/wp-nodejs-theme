@@ -3,8 +3,23 @@ var helpers = require('./../helpers');
 exports.get = function get(req, res) {
 	helpers.getEditionData(req, function( edition_data ) {
 		helpers.getPage(req, function( result ) {
-			edition_data.meta.title = (result.title ? result.title+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
-			res.render('page', {data: result, edition_data:edition_data});
+			var conf = {
+				'idea':{'itemtype':'AboutPage','pugpage':'page'},
+				'timeline':{'itemtype':'CollectionPage','pugpage':'page'},
+				'map':{'itemtype':'Map','pugpage':'page'},
+				'gallery':{'itemtype':'ImageGallery','pugpage':'page'},
+				'the-app':{'itemtype':'ItemPage','pugpage':'page'},
+				'press':{'itemtype':'CollectionPage','pugpage':'page'},
+				'contacts':{'itemtype':'ContactPage','pugpage':'page'},
+				'avnode-lpm-2015-2018':{'itemtype':'ItemPage','pugpage':'page_title_only'},
+				'search':{'itemtype':'SearchResultsPage','pugpage':'page'},
+				'cart':{'itemtype':'QAPage','pugpage':'page'},
+				'checkout':{'itemtype':'CheckoutPage','pugpage':'page'},
+				'default':{'itemtype':'ItemPage','pugpage':'page'}
+			};
+			edition_data.meta.title = (result.title.rendered ? result.title.rendered+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
+			console.log(result);
+			res.render(conf[req.params.page].pugpage ? conf[req.params.page].pugpage : conf.default.pugpage, {data: result, edition_data:edition_data, itemtype:conf[req.params.page].itemtype ? conf[req.params.page].itemtype : conf.default.itemtype});
 		});
 	});
 };

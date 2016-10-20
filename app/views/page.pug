@@ -1,14 +1,13 @@
 extends layout
 block content
-	article#container(itemscope='', itemtype='http://schema.org/Event')
+	article(itemscope, itemtype='http://schema.org/'+itemtype)
 		.row
 			.col-sm-9
 				header
-					h1.entry-title(itemprop='name')=data.post_title
+					h1.entry-title(itemprop='name')!=data.title.rendered
 				.rientro
-					.date.updated(content='2016-10-7')=data.data_evento
-					div(itemprop='description')!=data.post_content
-
+					div(itemprop='description')!=data.content.rendered
+					.dateModified(itemprop='dateModified', content=data.date)=data.dateHR
 					br
 					.a2a_kit.a2a_kit_size_32.addtoany_list(data-a2a-url='http://liveperformersmeeting.net/event/approaches-to-multichannel-sound-using-reaktor/', data-a2a-title='Approaches to Multichannel Sound Using Reaktor Workshop', style='line-height: 32px;')
 						a.a2a_button_twitter(href='/#twitter', title='Twitter', rel='nofollow', target='_blank')
@@ -33,5 +32,5 @@ block content
 							span.a2a_svg.a2a_s__default.a2a_s_a2a
 							span.a2a_label Share
 			.col-sm-3
-				img.img-responsive.wp-post-image(src=data.featured.thumbnail, alt=data.post_title, itemprop='image')
+				img.img-responsive.wp-post-image(src=data.featured.thumbnail, alt!=data.title.rendered, itemprop='image')
 
