@@ -9,6 +9,15 @@ exports.get = function get(req, res) {
 	});
 };
 
+exports.getArtist = function getArtist(req, res) {
+	helpers.getEditionData(req, function( edition_data ) {
+		helpers.getEditionArtist(req, function( result ) {
+			edition_data.meta.title = (result.title ? result.title+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
+			res.render('edition_artists', {data: result, edition_data:edition_data});
+		});
+	});
+};
+
 exports.getAll = function getAll(req, res) {
 	helpers.getEditionData(req, function( edition_data ) {
 		helpers.getAllEvents(req, function( result ) {

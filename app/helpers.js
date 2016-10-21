@@ -1,9 +1,10 @@
 var WPAPI = require( 'wpapi' );
 var moment = require( 'moment' );
 
+//////// PAGES
 exports.getPage = function getPage(req,callback) {
   console.log(req.params.page);
-  var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
+  var wp = new WPAPI({ endpoint: config.domains.pages+'/wp-json' });
   //wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<sluggg>)' );
   wp.pages().slug(req.params.page).get(function( err, data ) {
     console.log("//// Page");
@@ -14,7 +15,7 @@ exports.getPage = function getPage(req,callback) {
 };
 exports.getEvent = function getEvent(req,callback) {
   console.log(req.params.event);
-  var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
+  var wp = new WPAPI({ endpoint: config.domains.events+'/wp-json' });
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.event).get(function( err, data ) {
     console.log("//// Event");
@@ -27,7 +28,7 @@ exports.getEvent = function getEvent(req,callback) {
 };
 exports.getAllEvents = function getEvent(req,callback) {
   console.log("getAllEvents");
-  var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
+  var wp = new WPAPI({ endpoint: config.domains.events+'/wp-json' });
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event' );
   //console.log(wp.myCustomResource);
   //console.log(wp.event());
@@ -40,7 +41,7 @@ exports.getAllEvents = function getEvent(req,callback) {
 
 exports.getNew = function getNew(req,callback) {
   console.log(req.params.new);
-  var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
+  var wp = new WPAPI({ endpoint: config.domains.news+'/wp-json' });
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/new/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
     console.log("//// New");
@@ -53,7 +54,7 @@ exports.getNew = function getNew(req,callback) {
 };
 exports.getAllNews = function getNew(req,callback) {
   console.log("getAllNews");
-  var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
+  var wp = new WPAPI({ endpoint: config.domains.news+'/wp-json' });
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/new' );
   //console.log(wp.myCustomResource);
   //console.log(wp.new());
@@ -106,16 +107,12 @@ exports.getEdition = function getEdition(req,callback) {
   console.log(req.params.edition);
   console.log(req.params.subedition);
   console.log(req.params.subsubedition);
-  var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
+  var wp = new WPAPI({ endpoint: config.domains.editions+'/wp-json' });
   if (req.params.subsubedition) {
     console.log("req.params.subsubedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
       console.log("//// SubSubEdition");
-      data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
-      data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-      data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
-      data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = getGrid(data);
       callback(data);
     });
@@ -124,13 +121,6 @@ exports.getEdition = function getEdition(req,callback) {
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)' );
     wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
       console.log("//// SubEdition");
-      console.log(data.post_content);
-      data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
-      data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-      data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
-      data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-      console.log("stocazzo");
-      console.log(typeof getGrid);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = getGrid(data);
       console.log(data.grid);
       callback(data);
@@ -190,10 +180,40 @@ exports.getEdition = function getEdition(req,callback) {
   }
 
 };
+exports.getEditionArtist = function getEditionArtist(req,callback) {
+  console.log(req.params.edition);
+  console.log(req.params.subedition);
+  console.log(req.params.subsubedition);
+  var wp = new WPAPI({ endpoint: config.domains.editions+'/wp-json' });
+  if (req.params.artist && req.params.performance) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).performances("performances").performance(req.params.performance).get(function( err, data ) {
+      console.log("//// Artist");
+      console.log(data);
+      callback(data);
+    });
+  } else if (req.params.artist) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).get(function( err, data ) {
+      console.log("//// Artist");
+      console.log(data);
+      callback(data);
+    });
+  } else {
+    console.log("req.params.subedition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("artists").get(function( err, data ) {
+      console.log("//// SubEdition");
+      callback(data);
+    });
+  }
+};
 
 exports.getEditionData = function getEditionData(req,callback) {
   var edition = req.params.edition ? req.params.edition : "2016-amsterdam";
-  var wp = new WPAPI({ endpoint: 'http://liveperformersmeeting.net/wp-json' });
+  var wp = new WPAPI({ endpoint: config.domains.editions+'/wp-json' });
   console.log(edition);
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_data/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(edition).get(function( err, data ) {

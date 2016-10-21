@@ -28,22 +28,26 @@ html(lang='en')
 		link(rel='apple-touch-icon', sizes='152x152', href=edition_data.meta['icon152'])
 		// END FLYER COMMUNICATION EASY SEO www.flyer.it
 
-		//link#flick-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/mailchimp//css/flick/flick.css?ver=413e06c8441f4afc2f95303f250ebe35', type='text/css', media='all')
-		//link#woocommerce_prettyPhoto_css-css(rel='stylesheet', href='/assets/prettyPhoto/prettyPhoto.css?ver=413e06c8441f4afc2f95303f250ebe35', type='text/css', media='all')
-		//link#bootstrap-css-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/themes/flyer-bs-lpm/bootstrap/css/bootstrap.min.css?ver=413e06c8441f4afc2f95303f250ebe35', type='text/css', media='all')
+		//link#flick-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/mailchimp//css/flick/flick.css', type='text/css', media='all')
+		//link#woocommerce_prettyPhoto_css-css(rel='stylesheet', href='/assets/prettyPhoto/prettyPhoto.css', type='text/css', media='all')
+		//link#bootstrap-css-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/themes/flyer-bs-lpm/bootstrap/css/bootstrap.min.css', type='text/css', media='all')
 		//link#font-awesome-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/types/library/toolset/toolset-common/res/lib/font-awesome/css/font-awesome.min.css?ver=4.4.0', type='text/css', media='all')
-		//link#bootstrap-social-css-css(rel='stylesheet', href='/assets/bootstrap/css/bootstrap-social.css?ver=413e06c8441f4afc2f95303f250ebe35', type='text/css', media='all')
+		//link#bootstrap-social-css-css(rel='stylesheet', href='/assets/bootstrap/css/bootstrap-social.css', type='text/css', media='all')
 		//link#cff-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/custom-facebook-feed/css/cff-style.css?ver=2.4.5', type='text/css', media='all')
-		//link#youtube-simplegallery-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/youtube-simplegallery/youtube_simplegallery.css?ver=413e06c8441f4afc2f95303f250ebe35', type='text/css', media='all')
-		link#main-css-css(rel='stylesheet', href='/css/style.css', type='text/css', media='all')
-		link#main-css-css(rel='stylesheet', href='/css/style_lpm.css', type='text/css', media='all')
-		link#cookielawinfo-style-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/cookie-law-info/css/cli-style.css?ver=1.5.3', type='text/css', media='all')
-		link#cff-font-awesome-css(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
-		link#A2A_SHARE_SAVE-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.12', type='text/css', media='all')
-		link#socialGalleryPluginLiteCSS-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/css/socialGalleryPluginLite.css?ver=413e06c8441f4afc2f95303f250ebe35', type='text/css', media='all')
+		//link#youtube-simplegallery-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/youtube-simplegallery/youtube_simplegallery.css', type='text/css', media='all')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
+		link(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.12', type='text/css', media='all')
+		link(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/css/socialGalleryPluginLite.css', type='text/css', media='all')
 
-		link(rel='stylesheet', href=edition_data.edition['wpcf-custom-css'][0], type='text/css')
-		link(rel='stylesheet', href=edition_data.edition['wpcf-custom-css'][1], type='text/css')
+		//link(rel='stylesheet', href=edition_data.edition['wpcf-custom-css'][0], type='text/css')
+		//link(rel='stylesheet', href=edition_data.edition['wpcf-custom-css'][1], type='text/css')
+
+		link(rel='stylesheet', href='/'+config.prefix+'/css/cookielawinfo.css', type='text/css', media='all')
+		link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.'+config.prefix+'.'+edition_data.edition['post_name']+'.css', type='text/css')
+		link(rel='stylesheet', href='/'+config.prefix+'/css/style.css', type='text/css', media='all')
+		link(rel='stylesheet', href='/'+config.prefix+'/css/style.' + config.prefix +'.css', type='text/css', media='all')
+		link(rel='stylesheet', href='/'+config.prefix+'/css/style.'+config.prefix+'.'+edition_data.edition['post_name']+'.css', type='text/css', media='all')
+
 		style(type='text/css').
 			body {background-image:url(#{edition_data.edition['wpcf-background-image']});}
 	body
@@ -324,28 +328,28 @@ html(lang='en')
 							.col-sm-5.pull-right
 								.footer-title.pull-right
 									a.tooltips(data-toggle='tooltip', href='http://flyer.it/', target='_blank', title='This website is made by Flyer Communication')
-										img(src='/images/logo_flyer.png', alt='Logo Flyer Communication')
+										img(src='/'+config.prefix+'/images/logo_flyer.png', alt='Logo Flyer Communication')
 			#twCnt
 				div
 					#sc
 						a(href='http://flxer.net', title='FLxER network', target='_blank')
-							img(alt='FLxER network icon', src='/images/glyphicons_social/png/glyphicons_social_50_flxer.png')
+							img(alt='FLxER network icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_50_flxer.png')
 						a(href='http://twitter.com/liveperformers', title='Twitter Profile', target='_blank')
-							img(alt='Twitter Profile icon', src='/images/glyphicons_social/png/glyphicons_social_31_twitter.png')
+							img(alt='Twitter Profile icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_31_twitter.png')
 						a(href='http://www.facebook.com/LPM.LivePerformersMeeting', title='Facebook Page', target='_blank')
-							img(alt='Facebook Page icon', src='/images/glyphicons_social/png/glyphicons_social_30_facebook.png')
+							img(alt='Facebook Page icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_30_facebook.png')
 						a(href='http://www.facebook.com/group.php?gid=10387985422', title='Facebook Group', target='_blank')
-							img(alt='Facebook Group icon', src='/images/glyphicons_social/png/glyphicons_social_51_facebook_group.png')
+							img(alt='Facebook Group icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_51_facebook_group.png')
 						a(href='http://vimeo.com/lpm', title='Vimeo', target='_blank')
-							img(alt='Vimeo icon', src='/images/glyphicons_social/png/glyphicons_social_34_vimeo.png')
+							img(alt='Vimeo icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_34_vimeo.png')
 						a(href='https://plus.google.com/+Liveperformersmeeting', title='Google Plus', target='_blank', rel='publisher')
-							img(alt='Google Plus icon', src='/images/glyphicons_social/png/glyphicons_social_02_google_plus.png')
+							img(alt='Google Plus icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_02_google_plus.png')
 						a(href='http://www.youtube.com/LPMvideoreport', title='YouTube', target='_blank')
-							img(alt='YouTube icon', src='/images/glyphicons_social/png/glyphicons_social_22_youtube.png')
+							img(alt='YouTube icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_22_youtube.png')
 						a(href='http://apps.facebook.com/lpmgallery', title='Facebook App', target='_blank')
-							img(alt='Facebook App icon', src='/images/glyphicons_social/png/glyphicons_social_52_facebook_app.png')
+							img(alt='Facebook App icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_52_facebook_app.png')
 						a(href='/feed', title='RSS Feed', target='_blank')
-							img(alt='RSS Feed icon', src='/images/glyphicons_social/png/glyphicons_social_37_rss.png')
+							img(alt='RSS Feed icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_37_rss.png')
 					#tw
 			script(type='text/javascript').
 				(function(){var ticker=document.createElement('script');ticker.type='text/javascript';ticker.async=true;ticker.src='//twitcker.com/ticker/liveperformers.js?background=000000&tweet=000000&open=true&appearance=typewriter&container=own-container&own-container=tw';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(ticker);})();
@@ -361,22 +365,21 @@ html(lang='en')
 					if (d.getElementById(id)) return;
 					js = d.createElement(s);
 					js.id = id;
-					js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=687959921226620";
+					js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=#{edition_data.meta.fb_appId}";
 					fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 			script(type="text/javascript").
-				var sgp_config = {"sgp_selT": "2","sgp_sel": ".thumbnail","sgp_bT": "{#edition_data.meta.name}","sgp_bL": "Live video performers, visual artists and vj meeting","sgp_bU": "http://liveperformersmeeting.net","sgp_bg": "000000","sgp_bgo": "0.8","sgp_bb": "1","sgp_hb": "1","sgp_hbt": "1","sgp_ch": "","sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png","sgp_desc": "1","sgp_fb": "1","sgp_fbf": "1","sgp_fbc": "1","sgp_nav": "1","sgp_hon": "","sgp_usf":"1.2","sgp_mb":"10","sgp_theme":"classic","sgp_theme_root":"http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/themes/","sgp_iLoadR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/loading.gif","sgp_iR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/r.png","sgp_iL": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/l.png",};
-			script(type="text/javascript").
+				var sgp_config = {"sgp_selT": "2","sgp_sel": ".thumbnail","sgp_bT": "{#edition_data.meta.name}","sgp_bL": "#{edition_data.meta.description}","sgp_bU": "#{global.config.domain}","sgp_bg": "000000","sgp_bgo": "0.8","sgp_bb": "1","sgp_hb": "1","sgp_hbt": "1","sgp_ch": "","sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png","sgp_desc": "1","sgp_fb": "1","sgp_fbf": "1","sgp_fbc": "1","sgp_nav": "1","sgp_hon": "","sgp_usf":"1.2","sgp_mb":"10","sgp_theme":"classic","sgp_theme_root":"http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/themes/","sgp_iLoadR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/loading.gif","sgp_iR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/r.png","sgp_iL": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/l.png",};
 				var sgp_ie = false;var sgp_ie7 = false;
-			script(type='text/javascript', src='/assets/js/jquery.js')
-			script(type='text/javascript', src='/assets/js/jquery-migrate.min.js')
-			script(type='text/javascript', src='/assets/bootstrap/js/bootstrap.min.js?ver=413e06c8441f4afc2f95303f250ebe35')
-			script(type='text/javascript', src='/assets/js/jquery.isotope.min.js?ver=413e06c8441f4afc2f95303f250ebe35')
-			script(type='text/javascript', src='/assets/js/imagesloaded.pkgd.min.js?ver=413e06c8441f4afc2f95303f250ebe35')
-			script(type='text/javascript', src='/assets/js/jquery.infinitescroll.js?ver=413e06c8441f4afc2f95303f250ebe35')
-			script(type='text/javascript', src='/assets/script.js?ver=413e06c8441f4afc2f95303f250ebe35')
-			script(type='text/javascript', src='/assets/js/cookielawinfo.js?ver=1.5.3')
+			script(type='text/javascript', src='/'+config.prefix+'/js/jquery.min.js')
+			script(type='text/javascript', src='/'+config.prefix+'/js/jquery-migrate.min.js')
+			script(type='text/javascript', src='/'+config.prefix+'/js/bootstrap.min.js')
+			script(type='text/javascript', src='/'+config.prefix+'/js/jquery.isotope.min.js')
+			script(type='text/javascript', src='/'+config.prefix+'/js/imagesloaded.pkgd.min.js')
+			script(type='text/javascript', src='/'+config.prefix+'/js/jquery.infinitescroll.js')
+			script(type='text/javascript', src='/'+config.prefix+'/js/cookielawinfo.js')
 			script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.0')
+			script(type='text/javascript', src='/'+config.prefix+'/js/script.js')
 			//script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/mailchimp/js/scrollTo.js?ver=1.5.2')
 				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20')
 				script(type='text/javascript').
@@ -385,15 +388,15 @@ html(lang='en')
 					/* ]]> */
 				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/mailchimp/js/mailchimp.js?ver=1.5.2')
 				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4')
-				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/mailchimp//js/datepicker.js?ver=413e06c8441f4afc2f95303f250ebe35')
+				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/mailchimp//js/datepicker.js')
 			//script(type='text/javascript').
 				/* <![CDATA[ */
 				var _wpcf7 = {"loaderUrl":"http:\\/\/liveperformersmeeting.net\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}},"sending":"Sending ..."};
 				/* ]]> */
 				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.5')
 				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/custom-facebook-feed/js/cff-scripts.js?ver=2.4.5')
-				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-includes/js/wp-embed.min.js?ver=413e06c8441f4afc2f95303f250ebe35')
-			script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/js/socialGalleryPluginLite.js?ver=413e06c8441f4afc2f95303f250ebe35')
+				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-includes/js/wp-embed.min.js')
+			script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/js/socialGalleryPluginLite.js')
 			#cookie-law-info-bar
 				span
 					| This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.
