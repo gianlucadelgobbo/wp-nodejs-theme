@@ -17,6 +17,8 @@ exports.get = function get(req, res) {
 				'checkout':{'itemtype':'CheckoutPage','pugpage':'page'},
 				'default':{'itemtype':'ItemPage','pugpage':'page'}
 			};
+			console.log("result._post_template");
+			console.log(result._post_template);
 			edition_data.meta.title = (result.title.rendered ? result.title.rendered+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
 			console.log(result);
 			res.render(conf[req.params.page].pugpage ? conf[req.params.page].pugpage : conf.default.pugpage, {data: result, edition_data:edition_data, itemtype:conf[req.params.page].itemtype ? conf[req.params.page].itemtype : conf.default.itemtype});
