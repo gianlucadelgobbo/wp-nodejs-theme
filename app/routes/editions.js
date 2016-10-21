@@ -3,6 +3,8 @@ var helpers = require('./../helpers');
 exports.get = function get(req, res) {
 	helpers.getEditionData(req, function( edition_data ) {
 		helpers.getEdition(req, function( result ) {
+			console.log("result._post_template");
+			console.log(result._post_template);
 			edition_data.meta.title = (result.title ? result.title+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
 			res.render('edition', {data: result, edition_data:edition_data});
 		});
@@ -12,6 +14,7 @@ exports.get = function get(req, res) {
 exports.getArtist = function getArtist(req, res) {
 	helpers.getEditionData(req, function( edition_data ) {
 		helpers.getEditionArtist(req, function( result ) {
+			console.log(result._post_template);
 			edition_data.meta.title = (result.title ? result.title+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
 			res.render('edition_artists', {data: result, edition_data:edition_data});
 		});

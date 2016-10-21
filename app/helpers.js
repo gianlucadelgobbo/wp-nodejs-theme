@@ -122,7 +122,6 @@ exports.getEdition = function getEdition(req,callback) {
     wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
       console.log("//// SubEdition");
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = getGrid(data);
-      console.log(data.grid);
       callback(data);
     });
   } else {
