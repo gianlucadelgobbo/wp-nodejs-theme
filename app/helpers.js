@@ -187,6 +187,45 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
   }
 };
 
+exports.getEditionArtistGallery = function getEditionArtistGallery(req,callback) {
+  console.log(req.params.edition);
+  console.log(req.params.subedition);
+  console.log(req.params.subsubedition);
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
+  if (req.params.artist && req.params.gallery && req.params.galleryitem) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)/(?P<galleryitem>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).galleryitem(req.params.galleryitem).get(function( err, data ) {
+      console.log("//// Artist gallery item");
+      console.log(data);
+      callback(data);
+    });
+  } else if (req.params.artist && req.params.gallery) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).get(function( err, data ) {
+      console.log("//// Artist gallery");
+      console.log(data);
+      callback(data);
+    });
+  /*} else if (req.params.artist) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).get(function( err, data ) {
+      console.log("//// Artist");
+      console.log(data);
+      callback(data);
+    });*/
+  } else {
+    console.log("req.params.subedition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").get(function( err, data ) {
+      console.log("//// SubEdition gallery");
+      callback(data);
+    });
+  }
+};
+
 exports.getEditionData = function getEditionData(req,callback) {
   var edition = req.params.edition ? req.params.edition : config.last_edition;
   var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });

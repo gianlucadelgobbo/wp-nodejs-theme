@@ -8,7 +8,7 @@
 	"sez":{
 	  "home" : {
 		"events" : {
-		  "limit"		: 26
+		  "limit"		: 30
 		},
 		"news" : {
 		  "limit"		: 16

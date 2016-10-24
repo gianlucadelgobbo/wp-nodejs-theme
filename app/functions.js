@@ -57,6 +57,7 @@ exports.getGrid = function getGrid(data) {
 			col++;
 		}
 	}
+	//console.log(grid);
 	return grid;
 };
 

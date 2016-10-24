@@ -68,7 +68,9 @@ h3{clear: right !important;  margin:0 0 10px 0; padding:10px; position: relative
 .rientro{padding:10px;position: relative;}
 .timelineDate{color:#FFFFFF;text-align: right;}
 .timelineTitle{font-size: 24px;}
-.rowTimeline{background: rgba(33, 33, 33, 0.75);margin-bottom:1px;padding:10px 0;}
+.rowTimeline-event{background: rgba(33, 33, 33, 0.75);}
+.rowTimeline-edition{background: rgba(255, 255, 255, 0.75);}
+.rowTimeline{margin-bottom:5px;padding:10px 0;}
 .rowTimeline.page{background: rgba(0, 0, 0, 0.85);}
 .rowTimeline h2{margin-top:0;}
 .eu {  float: right;font-size: 7px;line-height: 8px;font-family: Arial;text-align: right;width: 125px;z-index: 5;position: relative;margin-bottom: 20px}

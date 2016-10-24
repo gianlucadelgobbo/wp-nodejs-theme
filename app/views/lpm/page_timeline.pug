@@ -15,7 +15,7 @@ block content
 		.timeline
 			each box in data_timeline
 				include boxes/box_timeline
-		.text-center
+		.text-center.boxItem
 			- var y = year-1
 			a.btn.btn-primary#loadmore(href="/timeline/"+(year-1)+"/") LOAD MORE
 			script.

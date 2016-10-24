@@ -19,6 +19,8 @@ module.exports = function(app) {
 	app.get('/edition/(:edition)', editionsRoutes.get);
 	app.get('/edition/(:edition)/artists', editionsRoutes.getArtist);
 	app.get('/edition/(:edition)/artists/(:artist)/performances/(:performance)', editionsRoutes.getArtist);
+	app.get('/edition/(:edition)/gallery/(:artist)/gallery/(:gallery)', editionsRoutes.getGallery);
+	app.get('/edition/(:edition)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', editionsRoutes.getGallery);
 	app.get('/edition/(:edition)/artists/(:artist)', editionsRoutes.getArtist);
 	app.get('/edition/(:edition)/(:subedition)', editionsRoutes.get);
 	app.get('/edition/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
