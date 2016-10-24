@@ -168,24 +168,27 @@ html(lang='en')
 
 					span.sr-only
 						span(itemprop='name')=edition_data.meta.name+ " "+ edition_data.edition.post_title
-						.dates.sr-only
-							span.sr-only
-								span(itemprop='startDate', content=edition_data.edition.startdateISO)=edition_data.edition.startdateHR
-								!="|"
-								span(itemprop='startDate', content=edition_data.edition.enddateISO)=edition_data.edition.enddateHR
-							.date.updated(content='')=edition_data.edition.data_evento
-						each location in edition_data.edition['wpcf-location']
-							- locationA = location.split(";")
-							span(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
-								span(itemprop='name')=locationA[0]
-								!="| ,"
-								span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
-									span(itemprop='addressLocality')=locationA[1]
-									!="|  -"
-									span(itemprop='addressCountry')=locationA[2]
-								span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
-									meta(itemprop='latitude', content=locationA[3])
-									meta(itemprop='longitude', content=locationA[4])
+						- var dateplace = edition_data
+						include inc_dateplace
+						//
+							.dates.sr-only
+								span.sr-only
+									span(itemprop='startDate', content=edition_data.edition.startdateISO)=edition_data.edition.startdateHR
+									!="|"
+									span(itemprop='startDate', content=edition_data.edition.enddateISO)=edition_data.edition.enddateHR
+								.date.updated(content='')=edition_data.edition.data_evento
+							each location in edition_data.edition['wpcf-location']
+								- locationA = location.split(";")
+								span(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+									span(itemprop='name')=locationA[0]
+									!="| ,"
+									span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+										span(itemprop='addressLocality')=locationA[1]
+										!="|  -"
+										span(itemprop='addressCountry')=locationA[2]
+									span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+										meta(itemprop='latitude', content=locationA[3])
+										meta(itemprop='longitude', content=locationA[4])
 				.visible-xs
 					nav.navbar.navbar-default(role='navigation')
 						// Brand and toggle get grouped for better mobile display
@@ -250,73 +253,13 @@ html(lang='en')
 							.col-sm-2.hidden-print
 								.margin-top-xs
 									p Projects
-									ul.nav.nav-pills.nav-stacked
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://flyer.it/', title='Flyer communication: new media agency')
-												span.glyphicon.glyphicon-star
-												|  FLYER
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://wp.flyer.it/', title='The Flyer style with the simplicity of WordPress')
-												span.glyphicon.glyphicon-star
-												|  FLYER WP
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://avnode.org/', title='International Network for Audio Visual art')
-												span.glyphicon.glyphicon-star
-												|  AVNODE
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='https://flxer.net/', title='FLxER: Live visuals community and software')
-												span.glyphicon.glyphicon-star
-												|  FLxER
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://vjtelevision.com/', title='Vj television: the first 24-hour live video broadcast channel')
-												span.glyphicon.glyphicon-star
-												|  VJ TELEVISION
-										li.active.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://liveperformersmeeting.net/', title='Live video performers, visual artists and vj meeting')
-												span.glyphicon.glyphicon-star
-												|  LPM
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://livecinemafestival.com/', title='Festival of Audio-Video performances of live cinema')
-												span.glyphicon.glyphicon-star
-												|  Live Cinema
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://chromosphere.eu/', title='Festival of Audio-Video performances on full domes')
-												span.glyphicon.glyphicon-star
-												|  Chromosphere
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://learning.flyer.it/', title='High level courses and workshops')
-												span.glyphicon.glyphicon-star
-												|  LEARNING
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://shockart.net/', title='Shockart: web art project')
-												span.glyphicon.glyphicon-star
-												|  SHOCKART
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://wam.flyer.it/', title='WAM: Web Art Museum')
-												span.glyphicon.glyphicon-star
-												|  WAM
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://linux-club.org/', title='Linux Club Italia')
-												span.glyphicon.glyphicon-star
-												|  LINUX CLUB
-										li.menu-item
-											a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://fhf.it/', title='Free Hardware Foundation')
-												span.glyphicon.glyphicon-star
-												|  FHF
+									include inc_projects
 							.col-sm-3.hidden-print
 							.col-sm-3.hidden-print
 								.pull-right
 									.margin-top-xs
 										p Search
-										form#cse-search-box-footer.navbar-search.form-search.pull-right(action='/search/')
-											input(type='hidden', name='cx', value="#{edition_data.meta['google_search']}")
-											input(type='hidden', name='cof', value='FORID:10')
-											input(type='hidden', name='ie', value='UTF-8')
-											.input-group
-												input.form-control(type='text', name='q', size='31')
-												span.input-group-btn
-													button.btn(type='submit', name='sa') Search
-										script(type='text/javascript', src='http://www.google.com/coop/cse/brand?form=cse-search-box-footer&lang=en')
+										include inc_search
 								br.clearfix
 								br
 						br

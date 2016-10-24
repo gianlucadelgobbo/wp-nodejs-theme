@@ -1,0 +1,29 @@
+- var row=1;
+- var col=1;
+- var rowsN = data['wpcf-rows']+1;
+- var columnsN = data['wpcf-columns']+1;
+if rowsN>0 && columnsN>0
+    if data['wpcf-same-rows-height']==1
+        each row in data.grid
+            if row
+                .row
+                    - var conta = 0
+                    each col in row
+                        - if (col.tit) conta++
+                    - var span = 12/conta
+                    each col in row
+                        if col.tit
+                            div(class="col-sm-"+span)
+                                h3!=col.tit+(col.stit ? "<br /><small>"+col.stit+"</small>" : "")
+                                .rientro!=col.box
+    else
+        if data.grid
+            .row
+                - span = 12/data.grid.length
+                each col in data.grid
+                    if col
+                        div(class="col-sm-"+span)
+                            each row in col
+                                if row.tit
+                                    h3!=row.tit + (row.stit ? "<br /><small>"+row.stit+"</small>" : "")
+                                    .rientro!=row.box

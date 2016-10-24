@@ -22,7 +22,10 @@ module.exports = function(app) {
 	app.get('/edition/(:edition)/artists/(:artist)', editionsRoutes.getArtist);
 	app.get('/edition/(:edition)/(:subedition)', editionsRoutes.get);
 	app.get('/edition/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
-	app.get('/(:page)', pagesRoutes.get);
+	app.get('/timeline', pagesRoutes.getTimeline);
+	app.get('/timeline/(:year)/', pagesRoutes.getTimeline);
+	app.post('/timeline/(:year)/', pagesRoutes.postTimeline);
+	app.get('/(:page)/', pagesRoutes.get);
 	//app.get('/users/(:user)', usersRoutes.getUser);
 	/*
 	 app.use('/controlpanel', controlpanelRoutes);

@@ -1,0 +1,37 @@
+.boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
+  .Event(itemscope='', itemtype='http://schema.org/Event')
+    .thumb-cnt
+      .catlabel=box.type
+      a(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/event/'+box.slug, rel='bookmark', title!=box.title.rendered)
+        img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.title.rendered, itemprop='url')
+    .box-list
+      .box-list-cnt
+        .text-muted
+          .dates
+            - dateplace = box
+            include ../inc_date
+        h3.event_list_title(itemprop='name')
+          a(itemprop='url', href='/event/'+box.slug, rel='bookmark', title=box.title.rendered)!=box.title.rendered
+        .places
+          if box['wpcf-location']
+            - dateplace = box
+            include ../inc_place
+
+          //if box['wpcf-location'] && box['wpcf-location'].length
+            each location in box['wpcf-location']
+              - locationA = location.split(";")
+              .place(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                span.placeName(itemprop='name')=locationA[0]
+                !=", "
+                span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                  span.addressLocality(itemprop='addressLocality')=locationA[1]
+                  !=" | "
+                  span.addressCountry(itemprop='addressCountry')=locationA[2]
+                span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                  meta(itemprop='latitude', content=locationA[3])
+                  meta(itemprop='longitude', content=locationA[4])
+        .text-muted.small.excerpt
+          if box.excerpt && box.excerpt.rendered
+            div(itemprop='description')
+              p!=box.excerpt.rendered
+          span.sr-only(itemprop='organizer')

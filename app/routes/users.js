@@ -11,7 +11,7 @@ exports.get = function get(req, res) {
 			// handle err
 		}
 		// do something with the returned posts
-		res.render('users', {
+		res.render(config.prefix+'/'+'users', {
 			data: data
 		});
 	});

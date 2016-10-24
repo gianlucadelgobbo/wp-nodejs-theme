@@ -1,0 +1,23 @@
+.rowTimeline.post.isotopeitem(itemscope='', itemtype='http://schema.org/itemListElement')
+  .row(itemscope='', itemtype='http://schema.org/Event')
+    .col-sm-3.col-md-offset-1
+      .timelineDate
+        .dates
+          - dateplace = box
+          include ../inc_date
+        .places
+          if box['wpcf-location']
+            - dateplace = box
+            include ../inc_place
+    .col-sm-7
+      .row
+        a.col-sm-3(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/event/' + box.slug, rel='bookmark', title!=box.title.rendered)
+          img.img-responsive(src=box.featured.thumbnail, alt!='Image for: ' + box.title.rendered, itemprop='url')
+        .col-sm-7
+          h2.timelineTitle(itemprop='name')
+            a(itemprop='url', href='/event/' + box.slug, rel='bookmark', title=box.title.rendered)!=box.title.rendered
+          .text-muted.small
+            .catlabel=box.type
+            p!=box.excerpt.rendered
+        .col-sm-2
+          //include ../inc_staticmap

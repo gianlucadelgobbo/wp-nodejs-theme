@@ -2,27 +2,31 @@ var helpers = require('./../helpers');
 
 exports.get = function get(req, res) {
 	helpers.getEditionData(req, function( edition_data ) {
-		helpers.getPage(req, function( result ) {
-			var conf = {
-				'idea':{'itemtype':'AboutPage','pugpage':'page'},
-				'timeline':{'itemtype':'CollectionPage','pugpage':'page'},
-				'map':{'itemtype':'Map','pugpage':'page'},
-				'gallery':{'itemtype':'ImageGallery','pugpage':'page'},
-				'the-app':{'itemtype':'ItemPage','pugpage':'page'},
-				'press':{'itemtype':'CollectionPage','pugpage':'page'},
-				'contacts':{'itemtype':'ContactPage','pugpage':'page'},
-				'avnode-lpm-2015-2018':{'itemtype':'ItemPage','pugpage':'page_title_only'},
-				'search':{'itemtype':'SearchResultsPage','pugpage':'page'},
-				'cart':{'itemtype':'QAPage','pugpage':'page'},
-				'checkout':{'itemtype':'CheckoutPage','pugpage':'page'},
-				'default':{'itemtype':'ItemPage','pugpage':'page'}
-			};
-			console.log("result._post_template");
-			console.log(result._post_template);
-			edition_data.meta.title = (result.title.rendered ? result.title.rendered+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
-			console.log(result);
-			res.render(conf[req.params.page].pugpage ? conf[req.params.page].pugpage : conf.default.pugpage, {data: result, edition_data:edition_data, itemtype:conf[req.params.page].itemtype ? conf[req.params.page].itemtype : conf.default.itemtype});
+		helpers.getPage(req, function( data ) {
+			console.log("data._wp_page_template");
+			console.log(data._wp_page_template);
+			edition_data.meta.title = (data.title.rendered ? data.title.rendered+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
+			res.render(config.prefix+'/'+(config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage), {data: data, edition_data:edition_data, itemtype:config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype});
 		});
+	});
+};
+exports.getTimeline = function getTimeline(req, res) {
+	helpers.getEditionData(req, function( edition_data ) {
+		req.params.page = "timeline";
+		helpers.getPage(req, function( data ) {
+			edition_data.meta.title = (data.title.rendered ? data.title.rendered+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
+			var year = parseInt(req.params.year ? req.params.year : new Date().getFullYear());
+			helpers.getAllEditionsEvents(req, year, function( data_timeline ) {
+				res.render(config.prefix+'/'+(config.sez.pages.conf.timeline.pugpage ? config.sez.pages.conf.timeline.pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : ""), {year: year, data: data, data_timeline:data_timeline, edition_data:edition_data, itemtype:config.sez.pages.conf.timeline.itemtype ? config.sez.pages.conf.timeline.itemtype : config.sez.pages.conf.default.itemtype});
+			});
+		});
+	});
+};
+
+exports.postTimeline = function postTimeline(req, res) {
+	var year = parseInt(req.params.year ? req.params.year : new Date().getFullYear());
+	helpers.getAllEditionsEvents(req, year, function( data_timeline ) {
+		res.render(config.prefix+'/'+(config.sez.pages.conf.timeline.pugpage ? config.sez.pages.conf.timeline.pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : ""), {year: year, data_timeline:data_timeline, itemtype:config.sez.pages.conf.timeline.itemtype ? config.sez.pages.conf.timeline.itemtype : config.sez.pages.conf.default.itemtype});
 	});
 };
 

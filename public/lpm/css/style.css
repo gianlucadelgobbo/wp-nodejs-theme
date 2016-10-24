@@ -53,7 +53,7 @@ p.tags a{margin-bottom: 5px;}
 .row.gallery .col-md-5{margin-right:-15px;}
 
 .lists,#listItems {padding: 0;list-style: none;}
-.isotopeitem{margin-bottom:30px;}
+.boxItem{margin-bottom:30px;}
 .thumb-cnt{background-color: #000;position: relative;}
 .thumb-cnt img{background-color: #FFF;}
 

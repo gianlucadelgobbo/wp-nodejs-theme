@@ -1,119 +1,137 @@
 var WPAPI = require( 'wpapi' );
 var moment = require( 'moment' );
+var fnz = require('./functions');
 
 //////// PAGES
+
 exports.getPage = function getPage(req,callback) {
   console.log(req.params.page);
-  var wp = new WPAPI({ endpoint: config.domains.pages+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez.pages.domain+'/wp-json' });
   //wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<sluggg>)' );
   wp.pages().slug(req.params.page).get(function( err, data ) {
     console.log("//// Page");
-    data[0].date = moment(data[0].date).utc().format();
-    data[0].dateHR = moment(data[0].date).utc().format("MMMM, Do YYYY, h:mm a");
+    data = fnz.fixResults(data);
     callback(data[0]);
   });
 };
+
+
+//////// EVENTS
+
 exports.getEvent = function getEvent(req,callback) {
   console.log(req.params.event);
-  var wp = new WPAPI({ endpoint: config.domains.events+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez.events.domain+'/wp-json' });
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.event).get(function( err, data ) {
     console.log("//// Event");
-    data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
-    data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-    data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
-    data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+    data = fnz.fixResult(data);
     callback(data);
   });
 };
-exports.getAllEvents = function getEvent(req,callback) {
+exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
   console.log("getAllEvents");
-  var wp = new WPAPI({ endpoint: config.domains.events+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez.events.domain+'/wp-json' });
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event' );
   //console.log(wp.myCustomResource);
   //console.log(wp.event());
-  wp.myCustomResource().param( 'parent', 0 ).perPage( 20 ).page(5).get(function( err, data ) {
+  wp.myCustomResource().param( 'before', new Date( '2016-09-22' ) ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
     console.log("//// Events");
-    console.log(err || data);
+    console.log(data.length);
+
+    //console.log(err || data);
+    data = fnz.fixResults(data);
     callback(data);
   });
 };
+
+exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page, callback) {
+  console.log("getAllEventsByYear");
+  var wp = new WPAPI({ endpoint: config.sez.events.domain+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/event' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.event());
+  wp.myCustomResource().param('after', new Date((year-1)+'-12-31')).param('before', new Date((year+1)+'-01-01') ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// EventsByYear");
+    console.log(new Date( (year-1)+'-12-31' ));
+    console.log(new Date( (year+1)+'-01-01' ));
+    //console.log(data.length);
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+
+
+//////// NEWS
 
 exports.getNew = function getNew(req,callback) {
   console.log(req.params.new);
-  var wp = new WPAPI({ endpoint: config.domains.news+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/new/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
     console.log("//// New");
-    data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
-    data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-    data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
-    data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-    callback(data);
-  });
-};
-exports.getAllNews = function getNew(req,callback) {
-  console.log("getAllNews");
-  var wp = new WPAPI({ endpoint: config.domains.news+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/new' );
-  //console.log(wp.myCustomResource);
-  //console.log(wp.new());
-  wp.myCustomResource().param( 'parent', 0 ).perPage( 20 ).page(5).get(function( err, data ) {
-    console.log("//// News");
-    console.log(err || data);
+    data = fnz.fixResult(data);
     callback(data);
   });
 };
 
-exports.getGrid = function getGrid(data) {
-  var row=0;
-  var col=0;
-  var grid = [];
-  var rowsN = parseInt(data['wpcf-rows']);
-  var columnsN = parseInt(data['wpcf-columns']);
-  //if (rowsN>0 && columnsN>0) {
-  //}
-  if (data['wpcf-same-rows-height']==1) {
-    while (row<rowsN) {
-      grid[row] = [];
-      while (col<columnsN) {
-        grid[row][col] = {};
-        grid[row][col].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
-        grid[row][col].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
-        grid[row][col].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
-        col++;
-      }
-      col=0;
-      row++;
-    }
-  } else {
-    while (col<columnsN) {
-      grid[col] = [];
-      while (row<rowsN) {
-        grid[col][row] = {};
-        grid[col][row].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
-        grid[col][row].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
-        grid[col][row].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
-        row++;
-      }
-      row=0;
-      col++;
-    }
-  }
-  return grid;
+exports.getAllNews = function getAllNews(req, limit, page, callback) {
+  console.log("getAllNews");
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/news' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// News");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
 };
+
+
+//////// EDITIONS
+
+exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
+  console.log("getAllEditions");
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Editions");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+exports.getAllEditionsByYear = function getAllEditionsByYear(req, year, limit, page, callback) {
+  console.log("getAllEditions");
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'after', new Date( (year-1)+'-12-31' ) ).param( 'before', new Date( (year+1)+'-01-01' ) ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Editions");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+
 
 exports.getEdition = function getEdition(req,callback) {
   console.log(req.params.edition);
   console.log(req.params.subedition);
   console.log(req.params.subsubedition);
-  var wp = new WPAPI({ endpoint: config.domains.editions+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
   if (req.params.subsubedition) {
     console.log("req.params.subsubedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
       console.log("//// SubSubEdition");
-      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = getGrid(data);
+      //data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       callback(data);
     });
   } else if (req.params.subedition) {
@@ -121,7 +139,8 @@ exports.getEdition = function getEdition(req,callback) {
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)' );
     wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
       console.log("//// SubEdition");
-      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = getGrid(data);
+      //data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       callback(data);
     });
   } else {
@@ -130,60 +149,18 @@ exports.getEdition = function getEdition(req,callback) {
     console.log(wp.myCustomResource);
     wp.myCustomResource().edition(req.params.edition,req.params.subsubedition,req.params.subsubedition).get(function( err, data ) {
       console.log("//// Edition");
-      data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
-      data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-      data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
-      data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = getGrid(data);
+      data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       callback(data);
     });
   }
-  function getGrid(data){
-    console.log(typeof this.getGrid);
-    //return this.getGrid(data);
-    var row=0;
-    var col=0;
-    var grid = [];
-    var rowsN = parseInt(data['wpcf-rows']);
-    var columnsN = parseInt(data['wpcf-columns']);
-    //if (rowsN>0 && columnsN>0) {
-    //}
-    if (data['wpcf-same-rows-height']==1) {
-      while (row<rowsN) {
-        grid[row] = [];
-        while (col<columnsN) {
-          grid[row][col] = {};
-          grid[row][col].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
-          grid[row][col].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
-          grid[row][col].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
-          col++;
-        }
-        col=0;
-        row++;
-      }
-    } else {
-      while (col<columnsN) {
-        grid[col] = [];
-        while (row<rowsN) {
-          grid[col][row] = {};
-          grid[col][row].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
-          grid[col][row].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
-          grid[col][row].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
-          row++;
-        }
-        row=0;
-        col++;
-      }
-    }
-    return grid;
-  }
-
 };
+
 exports.getEditionArtist = function getEditionArtist(req,callback) {
   console.log(req.params.edition);
   console.log(req.params.subedition);
   console.log(req.params.subsubedition);
-  var wp = new WPAPI({ endpoint: config.domains.editions+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
   if (req.params.artist && req.params.performance) {
     console.log("req.params.artist");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
@@ -211,18 +188,50 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
 };
 
 exports.getEditionData = function getEditionData(req,callback) {
-  var edition = req.params.edition ? req.params.edition : "2016-amsterdam";
-  var wp = new WPAPI({ endpoint: config.domains.editions+'/wp-json' });
+  var edition = req.params.edition ? req.params.edition : config.last_edition;
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
   console.log(edition);
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_data/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(edition).get(function( err, data ) {
-    console.log(err || data);
-    //data[data2.ID] = data2;
-    data.edition.startdateISO = moment(data.edition['wpcf-startdate']*1000).utc().format();
-    data.edition.startdateHR = moment(data.edition['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
-    data.edition.enddateISO = moment(data.edition['wpcf-enddate']*1000).utc().format();
-    data.edition.enddateHR = moment(data.edition['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
+    data.edition = fnz.fixResult(data.edition);
     callback(data);
+  });
+};
+
+
+//////// GLOBAL
+
+exports.getAll = function getAll(req, limit, page, callback) {
+  var trgt = this;
+  trgt.getAllNews(req, limit, page, function (data_news) {
+    var data = [];
+    for (var item in data_news) if (data_news[item].title) data.push(data_news[item]);
+    console.log(data.length);
+    trgt.getAllEvents(req, limit, page, function (data_events) {
+      for (var item in data_events) if (data_events[item].title) data.push(data_events[item]);
+      console.log(data.length);
+      trgt.getAllEditions(req, limit, page, function (data_editions) {
+        for (var item in data_editions) if (data_editions[item].title) data.push(data_editions[item]);
+        data = fnz.fixResults(data);
+        data.sort(fnz.sortByStartDate);
+        callback(data);
+      });
+    });
+  });
+};
+exports.getAllEditionsEvents = function getAllEditionsEvents(req, year, callback) {
+  var trgt = this;
+  var data = [];
+  trgt.getAllEventsByYear(req, year, 100, 1, function (data_events) {
+    //console.log(data_events);
+    for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
+    console.log(data.length);
+    trgt.getAllEditionsByYear(req, year, 100, 1, function (data_editions) {
+      for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
+      data.sort(fnz.sortByStartDate);
+      for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
+      callback(data);
+    });
   });
 };
 
@@ -252,15 +261,15 @@ exports.getEditionData = function getEditionData(req,callback) {
     // do something with the returned posts
 
   });
-    DB.accounts.findOne(q ,function(err, result) {
-      if (result) {
+    DB.accounts.findOne(q ,function(err, data) {
+      if (data) {
         e.push({name:"vat_number",m:__("VAT number already in use")});
         callback(e, o);
       } else {
         if (global._config.company.country == "Italy" && o.address.country == "Italy"){
           //var q = (o.id ? {_id:{$ne: new ObjectID(o.id)},fiscal_code:o.fiscal_code} : {fiscal_code:o.fiscal_code});
-          DB.accounts.findOne({user:o.user}, function(err, result) {
-            if (result){
+          DB.accounts.findOne({user:o.user}, function(err, data) {
+            if (data){
               e.push({name:"fiscal_code",m:__("Fiscal code already in use")});
             }
             callback(e, o);

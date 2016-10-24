@@ -45,8 +45,9 @@ h3{clear: right !important;  margin:0 0 10px 0; padding:10px; position: relative
   }
 }
 .popup h4{margin: 0;}
+.box-list-cnt a:hover{text-decoration:none;}
+/*
 .box-list-cnt {height:155px;overflow: hidden;}
-/*.box-list{margin-bottom: 10px;}
 .event_list_title{margin:5px 0;font-size: 15px;}
 .rowTimeline h2{margin:5px 0;font-size: 15px;}
 .box-list .excerpt{margin-top:10px;}

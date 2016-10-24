@@ -1,11 +1,14 @@
 var express = require('express');
 var app = express();
 
-global.config = require('config');
+var sites = ["lpm"];
 
-console.log(config);
+global.config = require('config')[sites[0]];
+
+//console.log(config);
 
 app.root = __dirname;
+
 require('./app/setup')(app, express);
 require('./app/router')(app);
 
