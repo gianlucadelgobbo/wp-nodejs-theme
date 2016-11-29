@@ -1,98 +1,98 @@
 {
   "flyer" : {
-	"port"		: 3000,
-	"host"		: "localhost",
-	"domain"		: "https://flyer.it",
-	//"last_edition": "2016-amsterdam",
-	//"prefix"		: "lpm",
-	"sez":{
-	  "home" : {
-		"events" : {
-		  "limit"		: 30
-		},
-		"news" : {
-		  "limit"		: 16
-		},
-		"web-and-mobile" : {
-		  "limit"		: 20
-		}
-	  },
-	  "events" : {
-		"domain"	: "http://flyer.it",
-		"limit"		: 20
-	  },
-	  "news" : {
-		"domain"	: "http://flyer.it",
-		"limit"		: 20
-	  },
-	  "pages" : {
-		"domain"	: "https://flyer.it",
-		"limit"		: 20,
-		"conf"		: {
-		  "idea":{"itemtype":"AboutPage","pugpage":"page"},
-		  "timeline":{"itemtype":"CollectionPage","pugpage":"page_timeline"},
-		  "map":{"itemtype":"Map","pugpage":"page"},
-		  "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
-		  "the-app":{"itemtype":"ItemPage","pugpage":"page"},
-		  "press":{"itemtype":"CollectionPage","pugpage":"page"},
-		  "contacts":{"itemtype":"ContactPage","pugpage":"page"},
-		  "avnode-lpm-2015-2018":{"itemtype":"ItemPage","pugpage":"page_title_only"},
-		  "search":{"itemtype":"SearchResultsPage","pugpage":"page"},
-		  "cart":{"itemtype":"QAPage","pugpage":"page"},
-		  "checkout":{"itemtype":"CheckoutPage","pugpage":"page"},
-		  "default":{"itemtype":"ItemPage","pugpage":"page"}
-		}
-	  }
-	}
+    "port"		: 3000,
+    "host"		: "localhost",
+    "domain"		: "https://flyer.it",
+    //"last_edition": "2016-amsterdam",
+    //"prefix"		: "lpm",
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 30
+        },
+        "news" : {
+          "limit"		: 16
+        },
+        "web-and-mobile" : {
+          "limit"		: 20
+        }
+      },
+      "events" : {
+        "domain"	: "http://flyer.it",
+        "limit"		: 20
+      },
+      "news" : {
+        "domain"	: "http://flyer.it",
+        "limit"		: 20
+      },
+      "pages" : {
+        "domain"	: "https://flyer.it",
+        "limit"		: 20,
+        "conf"		: {
+          "idea":{"itemtype":"AboutPage","pugpage":"page"},
+          "timeline":{"itemtype":"CollectionPage","pugpage":"page_timeline"},
+          "map":{"itemtype":"Map","pugpage":"page"},
+          "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
+          "the-app":{"itemtype":"ItemPage","pugpage":"page"},
+          "press":{"itemtype":"CollectionPage","pugpage":"page"},
+          "contacts":{"itemtype":"ContactPage","pugpage":"page"},
+          "avnode-lpm-2015-2018":{"itemtype":"ItemPage","pugpage":"page_title_only"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page"},
+          "cart":{"itemtype":"QAPage","pugpage":"page"},
+          "checkout":{"itemtype":"CheckoutPage","pugpage":"page"},
+          "default":{"itemtype":"ItemPage","pugpage":"page"}
+        }
+      }
+    }
   },
-  "lpm" : {
-	"port"		: 3000,
-	"host"		: "localhost",
-	"domain"		: "http://liveperformersmeeting.net",
-	"last_edition": "2016-amsterdam",
-	"prefix"		: "lpm",
-	"sez":{
-	  "home" : {
-		"events" : {
-		  "limit"		: 30
-		},
-		"news" : {
-		  "limit"		: 16
-		},
-		"editions" : {
-		  "limit"		: 20
-		}
-	  },
-	  "events" : {
-		"domain"	: "http://flyer.it",
-		"limit"		: 20
-	  },
-	  "news" : {
-		"domain"	: "http://flyer.it",
-		"limit"		: 20
-	  },
-	  "pages" : {
-		"domain"	: "http://liveperformersmeeting.net",
-		"limit"		: 20,
-		"conf"		: {
-		  "idea":{"itemtype":"AboutPage","pugpage":"page"},
-		  "timeline":{"itemtype":"CollectionPage","pugpage":"page_timeline"},
-		  "map":{"itemtype":"Map","pugpage":"page"},
-		  "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
-		  "the-app":{"itemtype":"ItemPage","pugpage":"page"},
-		  "press":{"itemtype":"CollectionPage","pugpage":"page"},
-		  "contacts":{"itemtype":"ContactPage","pugpage":"page"},
-		  "avnode-lpm-2015-2018":{"itemtype":"ItemPage","pugpage":"page_title_only"},
-		  "search":{"itemtype":"SearchResultsPage","pugpage":"page"},
-		  "cart":{"itemtype":"QAPage","pugpage":"page"},
-		  "checkout":{"itemtype":"CheckoutPage","pugpage":"page"},
-		  "default":{"itemtype":"ItemPage","pugpage":"page"}
-		}
-	  },
-	  "editions" : {
-		"domain"	: "http://liveperformersmeeting.net",
-		"limit"		: 20
-	  }
-	}
+  "linuxclub" : {
+    "port"		: 3000,
+    "host"		: "localhost",
+    "domain"		: "http://liveperformersmeeting.net",
+    "last_edition": "2016-amsterdam",
+    "prefix"		: "lpm",
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 30
+        },
+        "news" : {
+          "limit"		: 16
+        },
+        "editions" : {
+          "limit"		: 20
+        }
+      },
+      "events" : {
+        "domain"	: "http://flyer.it",
+        "limit"		: 20
+      },
+      "news" : {
+        "domain"	: "http://flyer.it",
+        "limit"		: 20
+      },
+      "pages" : {
+        "domain"	: "http://liveperformersmeeting.net",
+        "limit"		: 20,
+        "conf"		: {
+          "idea":{"itemtype":"AboutPage","pugpage":"page"},
+          "timeline":{"itemtype":"CollectionPage","pugpage":"page_timeline"},
+          "map":{"itemtype":"Map","pugpage":"page"},
+          "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
+          "the-app":{"itemtype":"ItemPage","pugpage":"page"},
+          "press":{"itemtype":"CollectionPage","pugpage":"page"},
+          "contacts":{"itemtype":"ContactPage","pugpage":"page"},
+          "avnode-lpm-2015-2018":{"itemtype":"ItemPage","pugpage":"page_title_only"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page"},
+          "cart":{"itemtype":"QAPage","pugpage":"page"},
+          "checkout":{"itemtype":"CheckoutPage","pugpage":"page"},
+          "default":{"itemtype":"ItemPage","pugpage":"page"}
+        }
+      },
+      "editions" : {
+        "domain"	: "http://liveperformersmeeting.net",
+        "limit"		: 20
+      }
+    }
   }
 }

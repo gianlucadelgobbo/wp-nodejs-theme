@@ -1,0 +1,24 @@
+extends layout
+block content
+	article(itemscope, itemtype='http://schema.org/' + itemtype)
+		.row
+			.col-sm-9
+				header
+					h1.entry-title(itemprop='name')!=data.title.rendered
+				.rientro
+					div(itemprop='description')!=data.content.rendered
+					.dateModified(itemprop='dateModified', content=data.date)=data.dateHR
+					br
+					include inc_share
+			.col-sm-3
+				img.img-responsive.wp-post-image(src=data.featured.thumbnail, alt!=data.title.rendered, itemprop='image')
+		.timeline
+			each box in data_timeline
+				include boxes/box_timeline
+		.text-center.boxItem
+			- var y = year-1
+			a.btn.btn-primary#loadmore(href="/timeline/"+(year-1)+"/") LOAD MORE
+			script.
+				var year = #{y}
+
+

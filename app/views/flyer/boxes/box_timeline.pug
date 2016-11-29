@@ -10,11 +10,11 @@ div(class="rowTimeline rowTimeline-"+box.type, itemscope, itemtype='http://schem
             - dateplace = box
             include ../inc_place
     div(class="col-sm-"+(box.type=="edition" ? 4 :2))
-      a(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/event/' + box.slug, rel='bookmark', title!=box.title.rendered)
+      a(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/events/' + box.slug, rel='bookmark', title!=box.title.rendered)
         img.img-responsive(src=box.featured.thumbnail, alt!='Image for: ' + box.title.rendered, itemprop='url')
     div(class="col-sm-"+(box.type=="edition" ? 3 :4))
       h2.timelineTitle(itemprop='name')
-        a(itemprop='url', href='/event/' + box.slug, rel='bookmark', title=box.title.rendered)!=box.title.rendered
+        a(itemprop='url', href='/events/' + box.slug, rel='bookmark', title=box.title.rendered)!=box.title.rendered
       .text-muted.small
         .catlabel=box.type
         p!=box.excerpt.rendered

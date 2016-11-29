@@ -2,7 +2,7 @@
   .Event(itemscope='', itemtype='http://schema.org/Event')
     .thumb-cnt
       .catlabel=box.type
-      a(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/event/'+box.slug, rel='bookmark', title!=box.title.rendered)
+      a(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/events/'+box.slug, rel='bookmark', title!=box.title.rendered)
         img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.title.rendered, itemprop='url')
     .box-list
       .box-list-cnt
@@ -11,7 +11,7 @@
             - dateplace = box
             include ../inc_date
         h3.event_list_title(itemprop='name')
-          a(itemprop='url', href='/event/'+box.slug, rel='bookmark', title=box.title.rendered)!=box.title.rendered
+          a(itemprop='url', href='/events/'+box.slug, rel='bookmark', title=box.title.rendered)!=box.title.rendered
         .places
           if box['wpcf-location']
             - dateplace = box
