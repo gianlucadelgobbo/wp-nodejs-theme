@@ -1,23 +1,23 @@
 var helpers = require('./../helpers');
 
 exports.get = function get(req, res) {
-	helpers.getEditionData(req, function( edition_data ) {
+	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getPage(req, function( data ) {
 			console.log("data._wp_page_template");
 			console.log(data._wp_page_template);
-			edition_data.meta.title = (data.title.rendered ? data.title.rendered+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
-			res.render(config.prefix+'/'+(config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage), {data: data, edition_data:edition_data, itemtype:config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype});
+			meta_data.meta.title = (data.title.rendered ? data.title.rendered+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
+			res.render(config.prefix+'/'+(config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage), {data: data, meta_data:meta_data, itemtype:config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype});
 		});
 	});
 };
 exports.getTimeline = function getTimeline(req, res) {
-	helpers.getEditionData(req, function( edition_data ) {
+	helpers.getEditionData(req, function( meta_data ) {
 		req.params.page = "timeline";
 		helpers.getPage(req, function( data ) {
-			edition_data.meta.title = (data.title.rendered ? data.title.rendered+ " | " : "") + edition_data.meta.name+ " "+ edition_data.edition.post_title;
+			meta_data.meta.title = (data.title.rendered ? data.title.rendered+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
 			var year = parseInt(req.params.year ? req.params.year : new Date().getFullYear());
 			helpers.getAllEditionsEvents(req, year, function( data_timeline ) {
-				res.render(config.prefix+'/'+(config.sez.pages.conf.timeline.pugpage ? config.sez.pages.conf.timeline.pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : ""), {year: year, data: data, data_timeline:data_timeline, edition_data:edition_data, itemtype:config.sez.pages.conf.timeline.itemtype ? config.sez.pages.conf.timeline.itemtype : config.sez.pages.conf.default.itemtype});
+				res.render(config.prefix+'/'+(config.sez.pages.conf.timeline.pugpage ? config.sez.pages.conf.timeline.pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : ""), {year: year, data: data, data_timeline:data_timeline, meta_data:meta_data, itemtype:config.sez.pages.conf.timeline.itemtype ? config.sez.pages.conf.timeline.itemtype : config.sez.pages.conf.default.itemtype});
 			});
 		});
 	});

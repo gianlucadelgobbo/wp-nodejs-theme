@@ -1,4 +1,5 @@
 var WPAPI = require( 'wpapi' );
+var request = require( 'request' );
 var moment = require( 'moment' );
 var fnz = require('./functions');
 
@@ -67,29 +68,169 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page,
 //////// NEWS
 
 exports.getNew = function getNew(req,callback) {
-  console.log(req.params.new);
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/new/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
-    console.log("//// New");
-    data = fnz.fixResult(data);
-    callback(data);
-  });
+	console.log(req.params.new);
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/new/(?P<sluggg>)' );
+	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+		console.log("//// New");
+		data = fnz.fixResult(data);
+		callback(data);
+	});
 };
 
 exports.getAllNews = function getAllNews(req, limit, page, callback) {
-  console.log("getAllNews");
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/news' );
-  //console.log(wp.myCustomResource);
-  //console.log(wp.new());
-  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// News");
-    //console.log(err || data);
-    data = fnz.fixResults(data);
-    callback(data);
-  });
+	console.log("getAllNews");
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/news' );
+	//console.log(wp.myCustomResource);
+	//console.log(wp.new());
+	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+		console.log("//// News");
+		//console.log(err || data);
+		data = fnz.fixResults(data);
+		callback(data);
+	});
 };
+
+
+//////// WEB & MOBILE
+
+exports.getWeb = function getWeb(req,callback) {
+	console.log(req.params.new);
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/web-and-mobile/(?P<sluggg>)' );
+	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+		console.log("//// Web");
+		data = fnz.fixResult(data);
+		callback(data);
+	});
+};
+
+exports.getAllWeb = function getAllWeb(req, limit, page, callback) {
+	console.log("getAllWeb");
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/web-and-mobile' );
+	//console.log(wp.myCustomResource);
+	//console.log(wp.new());
+	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+		console.log("//// All Web");
+		//console.log(err || data);
+		data = fnz.fixResults(data);
+		callback(data);
+	});
+};
+
+
+//////// LEARNING
+
+exports.getLearning = function getLearning(req,callback) {
+	console.log(req.params.new);
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/learning/(?P<sluggg>)' );
+	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+		console.log("//// learning");
+		data = fnz.fixResult(data);
+		callback(data);
+	});
+};
+
+exports.getAllLearning = function getAllLearning(req, limit, page, callback) {
+	console.log("getAllWeb");
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/learning' );
+	//console.log(wp.myCustomResource);
+	//console.log(wp.new());
+	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+		console.log("//// All learning");
+		//console.log(err || data);
+		data = fnz.fixResults(data);
+		callback(data);
+	});
+};
+
+
+//////// VIDEOS
+
+exports.getVideo = function getVideo(req,callback) {
+	console.log(req.params.new);
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/videos/(?P<sluggg>)' );
+	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+		console.log("//// Video");
+		data = fnz.fixResult(data);
+		callback(data);
+	});
+};
+
+exports.getAllVideo = function getAllVideo(req, limit, page, callback) {
+	console.log("getAllVideo");
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/videos' );
+	//console.log(wp.myCustomResource);
+	//console.log(wp.new());
+	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+		console.log("//// All Video");
+		//console.log(err || data);
+		data = fnz.fixResults(data);
+		callback(data);
+	});
+};
+
+
+//////// AWARDS
+
+exports.getAward = function getAward(req,callback) {
+	console.log(req.params.new);
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/awards-and-grants/(?P<sluggg>)' );
+	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+		console.log("//// Award");
+		data = fnz.fixResult(data);
+		callback(data);
+	});
+};
+
+exports.getAllAward = function getAllAward(req, limit, page, callback) {
+	console.log("getAllAward");
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/awards-and-grants' );
+	//console.log(wp.myCustomResource);
+	//console.log(wp.new());
+	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+		console.log("//// All Award");
+		//console.log(err || data);
+		data = fnz.fixResults(data);
+		callback(data);
+	});
+};
+
+//////// LAB
+
+exports.getLab = function getLab(req,callback) {
+	console.log(req.params.new);
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/lab/(?P<sluggg>)' );
+	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+		console.log("//// lab");
+		data = fnz.fixResult(data);
+		callback(data);
+	});
+};
+
+exports.getAllLab = function getAllLab(req, limit, page, callback) {
+	console.log("getAllLab");
+	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
+	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/lab' );
+	//console.log(wp.myCustomResource);
+	//console.log(wp.new());
+	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+		console.log("//// All lab");
+		//console.log(err || data);
+		data = fnz.fixResults(data);
+		callback(data);
+	});
+};
+
 
 
 //////// EDITIONS
@@ -228,14 +369,14 @@ exports.getEditionArtistGallery = function getEditionArtistGallery(req,callback)
   }
 };
 
-exports.getEditionData = function getEditionData(req,callback) {
-  var edition = req.params.edition ? req.params.edition : config.last_edition;
-  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
-  console.log(edition);
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_data/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(edition).get(function( err, data ) {
-    data.edition = fnz.fixResult(data.edition);
-    callback(data);
+exports.getMetaData = function getMetaData(req,callback) {
+  request(config.domain+'/wp-json/wp/v2/meta_data/', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var data = JSON.parse(body);
+      console.log(req);
+      console.log(data);
+      callback(data);
+    }
   });
 };
 

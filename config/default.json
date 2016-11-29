@@ -2,19 +2,30 @@
   "flyer" : {
     "port"		: 3000,
     "host"		: "localhost",
-    "domain"		: "https://flyer.it",
-    //"last_edition": "2016-amsterdam",
-    //"prefix"		: "lpm",
+    "domain"	: "http://flyer.it",
+    "prefix"	: "flyer",
     "sez":{
       "home" : {
         "events" : {
-          "limit"		: 30
+          "limit"		: 4
         },
         "news" : {
-          "limit"		: 16
+          "limit"		: 4
         },
-        "web-and-mobile" : {
-          "limit"		: 20
+        "web" : {
+          "limit"		: 4
+        },
+        "lab" : {
+          "limit"		: 4
+        },
+        "award" : {
+          "limit"		: 4
+        },
+        "videos" : {
+          "limit"		: 4
+        },
+        "learning" : {
+          "limit"		: 4
         }
       },
       "events" : {
@@ -25,8 +36,12 @@
         "domain"	: "http://flyer.it",
         "limit"		: 20
       },
+      "web" : {
+        "domain"	: "http://flyer.it",
+        "limit"		: 20
+      },
       "pages" : {
-        "domain"	: "https://flyer.it",
+        "domain"	: "http://flyer.it",
         "limit"		: 20,
         "conf"		: {
           "idea":{"itemtype":"AboutPage","pugpage":"page"},
