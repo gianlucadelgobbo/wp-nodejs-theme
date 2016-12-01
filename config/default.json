@@ -44,17 +44,12 @@
         "domain"	: "http://flyer.it",
         "limit"		: 20,
         "conf"		: {
-          "idea":{"itemtype":"AboutPage","pugpage":"page"},
-          "timeline":{"itemtype":"CollectionPage","pugpage":"page_timeline"},
+          "profile":{"itemtype":"AboutPage","pugpage":"page"},
           "map":{"itemtype":"Map","pugpage":"page"},
           "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
-          "the-app":{"itemtype":"ItemPage","pugpage":"page"},
           "press":{"itemtype":"CollectionPage","pugpage":"page"},
           "contacts":{"itemtype":"ContactPage","pugpage":"page"},
-          "avnode-lpm-2015-2018":{"itemtype":"ItemPage","pugpage":"page_title_only"},
           "search":{"itemtype":"SearchResultsPage","pugpage":"page"},
-          "cart":{"itemtype":"QAPage","pugpage":"page"},
-          "checkout":{"itemtype":"CheckoutPage","pugpage":"page"},
           "default":{"itemtype":"ItemPage","pugpage":"page"}
         }
       }

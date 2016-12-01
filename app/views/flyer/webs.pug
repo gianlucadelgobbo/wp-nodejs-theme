@@ -1,0 +1,11 @@
+extends layout
+block content
+	article#container(itemscope, itemtype='http://schema.org/CreativeWork')
+		h1=posttype.labels.name
+		!=posttype.description
+		br
+		include inc_share
+		.row.isotope
+			each box in data
+				.col-lg-3.col-md-4.col-sm-6.col.isotopeitem
+					include boxes/box_web

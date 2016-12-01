@@ -4,7 +4,7 @@ html(lang='en')
 		title=meta_data.meta['title']
 		meta(charset='UTF-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
-
+		- console.log(meta_data)
 		// FLYER COMMUNICATION EASY SEO www.flyer.it
 		meta(property='fb:admins', content=meta_data.meta['fb_admin'])
 		meta(property='fb:app_id', content=meta_data.meta['fb_appId'])
@@ -12,20 +12,20 @@ html(lang='en')
 		meta(property='og:title', content=meta_data.meta['title'])
 		meta(property='og:description', content=meta_data.meta['og_description'])
 		meta(property='og:site_name', content=meta_data.meta['name'])
-		meta(property='og:url', content='http://flyer.it/')
-		link(rel='canonical', href='http://flyer.it/')
+		meta(property='og:url', content=config.domain+meta_data['url'])
+		link(rel='canonical', href=config.domain+meta_data['url'])
 		meta(property='og:type', content='website')
 		// HIDDEN FACEBOOK OPENG GRAPH (only facebook can see)
 		meta(name='description', content=meta_data.meta['og_description'])
 		meta(name='keywords', content=meta_data.meta['og_keywords'])
 		meta(name='google-site-verification', content=meta_data.meta['google_webmasterstools'])
-		link(rel='shortcut icon', href=meta_data.meta['favicon'])
-		link(rel='apple-touch-icon', sizes='57x57', href=meta_data.meta['icon57'])
-		link(rel='apple-touch-icon', sizes='72x72', href=meta_data.meta['icon72'])
-		link(rel='apple-touch-icon', sizes='114x114', href=meta_data.meta['icon114'])
-		link(rel='apple-touch-icon', sizes='120x120', href=meta_data.meta['icon120'])
-		link(rel='apple-touch-icon', sizes='144x144', href=meta_data.meta['icon144'])
-		link(rel='apple-touch-icon', sizes='152x152', href=meta_data.meta['icon152'])
+		link(rel='shortcut icon', href=config.domain+meta_data.meta['favicon'])
+		link(rel='apple-touch-icon', sizes='57x57', href=config.domain+meta_data.meta['icon57'])
+		link(rel='apple-touch-icon', sizes='72x72', href=config.domain+meta_data.meta['icon72'])
+		link(rel='apple-touch-icon', sizes='114x114', href=config.domain+meta_data.meta['icon114'])
+		link(rel='apple-touch-icon', sizes='120x120', href=config.domain+meta_data.meta['icon120'])
+		link(rel='apple-touch-icon', sizes='144x144', href=config.domain+meta_data.meta['icon144'])
+		link(rel='apple-touch-icon', sizes='152x152', href=config.domain+meta_data.meta['icon152'])
 		// END FLYER COMMUNICATION EASY SEO www.flyer.it
 
 		//link#flick-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/mailchimp//css/flick/flick.css', type='text/css', media='all')
@@ -45,52 +45,50 @@ html(lang='en')
 		link(rel='stylesheet', href='/'+config.prefix+'/css/cookielawinfo.css', type='text/css', media='all')
 		link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.css', type='text/css')
 		link(rel='stylesheet', href='/'+config.prefix+'/css/style.css', type='text/css', media='all')
-		link(rel='stylesheet', href='/'+config.prefix+'/css/style.' + config.prefix +'.css', type='text/css', media='all')
-	body
+		link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
+		link(rel='stylesheet', href='/' + config.prefix + '/css/modules.min.css', type='text/css', media='all')
+
+	body.home.page.page-id-11.page-template.page-template-full-width.page-template-full-width-php.edgtf-smooth-page-transitions.edgtf-mimic-ajax.edgtf-header-expanding.edgtf-sticky-header-on-scroll-down-up.edgtf-menu-icon-with-bckg.edgtf-menu-icon-bckg-spread.edgtf-default-mobile-header.edgtf-sticky-up-mobile-header.edgtf-dropdown-default.edgtf-light-header.edgtf-header-style-on-scroll.edgtf-search-covers-header.edgtf-side-menu-slide-with-content.edgtf-width-400.wpb-js-composer.vc_responsive.edgtf-chrome.edgtf-dark-slider
+		include inc_menu
 		.cnt
-			nav#top-menu.navbar.navbar-inverse(role='navigation')
+			nav.navbar.navbar-inverse(role='navigation')
 				// Brand and toggle get grouped for better mobile display
 				.navbar-header
-					button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-MainMenu')
-						span.sr-only Toggle navigation
-						span.icon-bar
-						span.icon-bar
-						span.icon-bar
 					a.navbar-brand(href='/', title=meta_data.meta['name'])
 						img.img-responsive(src=config.domain+meta_data.meta.logo_bar, alt=meta_data.meta['name'])
 				// Collect the nav links, forms, and other content for toggling
 				#menu-MainMenu.collapse.navbar-collapse
-					ul#menu-main-menu.nav.navbar-nav
-						li#menu-item-48414.menu-item.menu-item-type-custom.menu-item-object-custom.current-menu-item.current_page_item.menu-item-.active
+					ul.nav.navbar-nav
+						li(class=(meta_data.url=="/" ? ".active" : undefined))
 							a(title='Home', href='/') Home
-						li#menu-item-48419.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+						li(class=(meta_data.url=="/profile/" ? ".active" : undefined))
 							a(title='Profile', href='/profile/') Profile
-						li#menu-item-48981.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-.dropdown
+						li.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-.dropdown
 							a.dropdown-toggle(title='Portfolio', href='#', data-toggle='dropdown', aria-haspopup='true')
 								| Portfolio
 								span.caret
 							ul.dropdown-menu(role='menu')
-								li#menu-item-76527.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
+								li.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
 									a(title='Web & Mobile', href='/web-and-mobile/') Web & Mobile
-								li#menu-item-77300.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
+								li.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
 									a(title='Videos', href='/videos/') Videos
-								li#menu-item-76528.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
+								li.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
 									a(title='Events', href='/events/') Events
-								li#menu-item-76529.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
+								li.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
 									a(title='Learning', href='/learning/') Learning
-								li#menu-item-49041.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+								li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
 									a(title='Tags', href='/tags/') Tags
-						li#menu-item-76545.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+						li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
 							a(title='Customers', href='/customers/') Customers
-						li#menu-item-76531.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
+						li.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
 							a(title='Lab', href='/lab/') Lab
-						li#menu-item-76530.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
+						li.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
 							a(title='Extra', href='/news/') Extra
-						li#menu-item-48418.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+						li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
 							a(title='People', href='/people/') People
-						li#menu-item-76540.awards-and-grants.menu-item.menu-item-type-awards-and-grants.menu-item-object-cpt_archive.menu-item-
+						li.awards-and-grants.menu-item.menu-item-type-awards-and-grants.menu-item-object-cpt_archive.menu-item-
 							a(title='Awards and Grants', href='/awards-and-grants/') Awards and Grants
-						li#menu-item-48415.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+						li.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
 							a(title='Contacts', href='/contacts/') Contacts
 					ul.nav.navbar-nav.navbar-right
 						li.lang-en.active
@@ -110,7 +108,14 @@ html(lang='en')
 							input(type='hidden', name='lang', value='EN')
 							input(type='hidden', name='topic', value='livevisuals')
 						#nl_res.hide
-			.container-fluid(itemscope='', itemtype='http://schema.org/Event')
+				.navbar-header
+					button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-MainMenu')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+
+			.container-fluid
 				header
 					.row
 						.col-md-6
@@ -118,10 +123,7 @@ html(lang='en')
 								a(href='/', title=meta_data.meta['name'])
 									img.img-responsive(itemprop='image', src=config.domain+meta_data.meta.logo_main, alt=meta_data.meta['name'])
 						.col-md-6
-							.row
-								.col-md-12
-									#site-description-cnt
-										#site-description=meta_data.meta['description']
+							#site-description.text-right=meta_data.meta['description']
 					br
 				block content
 				.sr-only
@@ -135,31 +137,19 @@ html(lang='en')
 						.row.links-horizontal
 							.col-sm-2
 								a(href='/', title=meta_data.meta['name'])
-									img.media-object(src=meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
+									img.media-object(src=config.domain+meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
 							.col-sm-2.hidden-print
 								.margin-top-xs
 									p Corporate
 									ul#menu-navbar-menu.nav.nav-pills.nav-stacked
-										li#menu-item-12125.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12125
-											a(href='/idea/') Idea
-										li#menu-item-12128.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12128
-											a(href='/timeline/') Timeline
-										li#menu-item-13599.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-13599
-											a(href='/map/') Map
-										li#menu-item-12126.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12126
-											a(href='/gallery/') Gallery
-										li#menu-item-12140.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-12140
-											a(href='#') Reports
-										li#menu-item-14988.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-14988
-											a(href='/the-app/') The App
-										li#menu-item-12124.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12124
-											a(href='/press/') Press
-										li#menu-item-12127.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12127
-											a(href='/contacts/') Contacts
-										li#menu-item-12137.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12137
-											a(href='/shop/') Shop
-										li#menu-item-14810.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-14810
-											a(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+										li
+											a(title='Home', href='/') Home
+										li
+											a(title='Profile', href='/profile/') Profile
+										li
+											a(title='Awards and Grants', href='/awards-and-grants/') Awards and Grants
+										li
+											a(title='Contacts', href='/contacts/') Contacts
 							.col-sm-2.hidden-print
 								.margin-top-xs
 									p Projects

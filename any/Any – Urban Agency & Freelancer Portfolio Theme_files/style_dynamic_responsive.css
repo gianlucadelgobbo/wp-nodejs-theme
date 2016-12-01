@@ -1,0 +1,14 @@
+@media only screen and (max-width: 1024px){
+	/* generated in /www/sites/any.edge-themes.com/files/html/wp-content/themes/any/assets/custom-styles/general-custom-styles-responsive.php any_edge_design_responsive_styles function */
+.edgtf-section.edgtf-parallax-section-holder:not(.edgtf-full-screen-height-touch),.touch .edgtf-parallax-section-holder.edgtf-parallax-section-holder-touch-disabled:not(.edgtf-full-screen-height-touch) { height: auto !important;min-height: 100px;}
+
+/* generated in /www/sites/any.edge-themes.com/files/html/wp-content/themes/any/framework/modules/header/custom-styles/header.inc any_edge_header_top_bar_responsive_styles function */
+.edgtf-top-bar { height: 0;display: none;}
+
+}
+
+@media only screen and (min-width: 480px) and (max-width: 768px){
+	}
+
+@media only screen and (max-width: 480px){
+	}

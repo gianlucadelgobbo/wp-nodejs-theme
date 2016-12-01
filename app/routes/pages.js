@@ -4,8 +4,7 @@ exports.get = function get(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getPage(req, function( data ) {
 			console.log("data._wp_page_template");
-			console.log(data._wp_page_template);
-			meta_data.meta.title = (data.title.rendered ? data.title.rendered+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
+			//meta_data.meta.title = (data.title.rendered ? data.title.rendered+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
 			res.render(config.prefix+'/'+(config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage), {data: data, meta_data:meta_data, itemtype:config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype});
 		});
 	});

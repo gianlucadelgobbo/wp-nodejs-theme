@@ -4,12 +4,16 @@ block content
 		.row
 			.col-sm-9
 				header
-					h1.entry-title(itemprop='name')!=data.title.rendered
+					h1.entry-title(itemprop='name')!=data.post_title
 				.rientro
-					div(itemprop='description')!=data.content.rendered
-					.dateModified(itemprop='dateModified', content=data.date)=data.dateHR
+					div(itemprop='description')!=data.post_content
+					.text-muted
+						.dates
+							.date=data.data_evento
+							meta(itemprop="dateModified", content=data.datePublished)
 					br
 					include inc_share
 			.col-sm-3
-				img.img-responsive.wp-post-image(src=data.featured.thumbnail, alt!=data.title.rendered, itemprop='image')
-
+				img.img-responsive.wp-post-image(src=data.featured.thumbnail, alt!=data.post_title, itemprop='image')
+		if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
+			include inc_grid

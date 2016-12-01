@@ -8,11 +8,13 @@ var fnz = require('./functions');
 exports.getPage = function getPage(req,callback) {
   console.log(req.params.page);
   var wp = new WPAPI({ endpoint: config.sez.pages.domain+'/wp-json' });
-  //wp.myCustomResource = wp.registerRoute( 'wp/v2', '/events/(?P<sluggg>)' );
-  wp.pages().slug(req.params.page).get(function( err, data ) {
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/mypages/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.page).get(function( err, data ) {
     console.log("//// Page");
-    data = fnz.fixResults(data);
-    callback(data[0]);
+    console.log(data);
+    data = fnz.fixResult(data);
+    if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+    callback(data);
   });
 };
 
@@ -97,14 +99,25 @@ exports.getAllNews = function getAllNews(req, limit, page, callback) {
 //////// WEB & MOBILE
 
 exports.getWeb = function getWeb(req,callback) {
-	console.log(req.params.web);
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/web-and-mobile/(?P<sluggg>)' );
-	wp.myCustomResource().sluggg(req.params.web).get(function( err, data ) {
-		console.log("//// Web");
-		data = fnz.fixResult(data);
-		callback(data);
-	});
+  console.log(req.params.web);
+  var wp = new WPAPI({ endpoint: config.sez.web.domain+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/web-and-mobile/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.web).get(function( err, data ) {
+    console.log("//// Web");
+    data = fnz.fixResult(data);
+    callback(data);
+  });
+};
+
+exports.getPostType = function getWeb(req,posttype,callback) {
+  console.log(req.params.web);
+  var wp = new WPAPI({ endpoint: config.sez.web.domain+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/post_type/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(posttype).get(function( err, data ) {
+    console.log("//// posttype"+posttype);
+    //data = fnz.fixResult(data);
+    callback(data);
+  });
 };
 
 exports.getAllWeb = function getAllWeb(req, limit, page, callback) {

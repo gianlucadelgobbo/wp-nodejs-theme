@@ -11,6 +11,8 @@ module.exports = function(app, exp) {
 	app.use(cookieParser());
 	app.use(methodOverride());
 	app.use(exp.static(app.root + '/public'));
+	app.use(exp.static(app.root + '/files'));
+	app.use(exp.static(app.root + '/any'));
 	//app.use(require('stylus').middleware({ src: app.root + '/public' }));
 	//app.use(session({ secret: 'wp-nodejs-theme', resave: false, saveUninitialized: true, cookie: { maxAge: 3600000 } }));
 	//app.use(DB.i18n.init);

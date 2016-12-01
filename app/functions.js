@@ -91,5 +91,6 @@ exports.fixResult = function fixResult(data) {
 		data['data_evento'] = moment(data['date']).utc().format("MMMM D, YYYY");
 	}
 	data['data_month'] = moment(data['date']).utc().format("MMMM YYYY");
+	data['datePublished'] = moment(data['date']).utc().format("DD-MM-YYYY");
 	return data;
 };
