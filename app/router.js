@@ -1,32 +1,36 @@
 var indexRoutes = require('./routes/index');
-var usersRoutes = require('./routes/users');
+var webRoutes = require('./routes/web');
+var videosRoutes = require('./routes/videos');
 var eventsRoutes = require('./routes/events');
+var learningRoutes = require('./routes/learning');
+var labRoutes = require('./routes/lab');
 var newsRoutes = require('./routes/news');
-var editionsRoutes = require('./routes/editions');
+var awardsRoutes = require('./routes/awards');
+var usersRoutes = require('./routes/users');
 var pagesRoutes = require('./routes/pages');
 /*
  var searchRoutes = require('./routes/search');
  */
 module.exports = function(app) {
 	app.get('/', indexRoutes.get);
-	//app.get('/users', usersRoutes.getAll);
-	app.get('/user/(:user)', usersRoutes.get);
+	app.get('/web-and-mobile/', webRoutes.getAll);
+	app.get('/web-and-mobile/(:web)', webRoutes.get);
+	app.get('/videos/', videosRoutes.getAll);
+	app.get('/videos/(:video)', videosRoutes.get);
 	app.get('/events/', eventsRoutes.getAll);
 	app.get('/events/(:event)', eventsRoutes.get);
-	app.get('/news/', newsRoutes.getAll);
-	app.get('/news/(:news)', newsRoutes.get);
-	app.get('/editions/', editionsRoutes.getAll);
-	app.get('/editions/(:edition)', editionsRoutes.get);
-	app.get('/editions/(:edition)/artists', editionsRoutes.getArtist);
-	app.get('/editions/(:edition)/artists/(:artist)/performances/(:performance)', editionsRoutes.getArtist);
-	app.get('/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)', editionsRoutes.getGallery);
-	app.get('/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', editionsRoutes.getGallery);
-	app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.getArtist);
-	app.get('/editions/(:edition)/(:subedition)', editionsRoutes.get);
-	app.get('/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
-	app.get('/timeline', pagesRoutes.getTimeline);
-	app.get('/timeline/(:year)/', pagesRoutes.getTimeline);
-	app.post('/timeline/(:year)/', pagesRoutes.postTimeline);
+	app.get('/learning/', learningRoutes.getAll);
+	app.get('/learning/(:learning)', learningRoutes.get);
+	app.get('/lab/', labRoutes.getAll);
+	app.get('/lab/(:lab)', labRoutes.get);
+	app.get('/extra/', newsRoutes.getAll);
+	app.get('/extra/(:news)', newsRoutes.get);
+	app.get('/people', usersRoutes.getAll);
+	app.get('/people/(:user)', usersRoutes.get);
+	app.get('/customers', usersRoutes.getAll);
+	app.get('/customers/(:user)', awardsRoutes.get);
+	app.get('/awards-and-grants/', awardsRoutes.getAll);
+	app.get('/awards-and-grants/(:award)', newsRoutes.get);
 	app.get('/(:page)/', pagesRoutes.get);
 	//app.get('/users/(:user)', usersRoutes.getUser);
 	/*

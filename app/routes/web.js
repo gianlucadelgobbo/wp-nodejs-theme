@@ -2,18 +2,19 @@ var helpers = require('./../helpers');
 
 exports.get = function get(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
-		helpers.getEvent(req, function( result ) {
+		helpers.getWeb(req, function( result ) {
 			meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
-			res.render(config.prefix+'/'+'event', {data: result, meta_data:meta_data});
+			console.log(result);
+			res.render(config.prefix+'/'+'web', {data: result, meta_data:meta_data});
 		});
 	});
 };
 
 exports.getAll = function getAll(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
-		helpers.getAllEvents(req, config.sez.events.limit, 1, function( result ) {
-			meta_data.meta.title = "Events | " + meta_data.meta.name+ " "+ meta_data.edition.post_title;
-			res.render(config.prefix+'/'+'events', {data: result, meta_data:meta_data});
+		helpers.getAllWeb(req, config.sez.web.limit, 1, function( result ) {
+			meta_data.meta.title = "Web & Mobile | " + meta_data.meta.name;
+			res.render(config.prefix+'/'+'web', {data: result, meta_data:meta_data});
 		});
 	});
 };

@@ -25,8 +25,9 @@ exports.getEvent = function getEvent(req,callback) {
   wp.myCustomResource = wp.registerRoute( 'wp/v2', '/events/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.event).get(function( err, data ) {
     console.log("//// Event");
-    console.log(err);
+    console.log(data);
     data = fnz.fixResult(data);
+    console.log(data);
     callback(data);
   });
 };
@@ -96,10 +97,10 @@ exports.getAllNews = function getAllNews(req, limit, page, callback) {
 //////// WEB & MOBILE
 
 exports.getWeb = function getWeb(req,callback) {
-	console.log(req.params.new);
+	console.log(req.params.web);
 	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
 	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/web-and-mobile/(?P<sluggg>)' );
-	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+	wp.myCustomResource().sluggg(req.params.web).get(function( err, data ) {
 		console.log("//// Web");
 		data = fnz.fixResult(data);
 		callback(data);
@@ -373,8 +374,9 @@ exports.getMetaData = function getMetaData(req,callback) {
   request(config.domain+'/wp-json/wp/v2/meta_data/', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var data = JSON.parse(body);
-      console.log(req);
-      console.log(data);
+      data.url = req.url;
+      console.log(req.url);
+      //console.log(data);
       callback(data);
     }
   });

@@ -86,7 +86,10 @@ exports.fixResult = function fixResult(data) {
 		data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
 	}
 	if (data['wpcf-location']) data['wpcf-location'] = this.formatLocation(data['wpcf-location']);
-	if (data['data_evento'] && data['data_evento'][0]) data['data_evento'] = data['data_evento'][0];
-	if (!data['data_evento']) data['data_evento'] = [moment(data['date']).utc().format("MMMM D, YYYY")];
+	if (data['data_evento'] && data['data_evento'].length && typeof data['data_evento'] == 'Array') data['data_evento'] = data['data_evento'][0];
+	if (!data['data_evento']) {
+		data['data_evento'] = moment(data['date']).utc().format("MMMM D, YYYY");
+	}
+	data['data_month'] = moment(data['date']).utc().format("MMMM YYYY");
 	return data;
 };
