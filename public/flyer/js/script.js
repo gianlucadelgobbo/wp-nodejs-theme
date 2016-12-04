@@ -1,6 +1,40 @@
 var $container;
 var mySvgPanZoom;
+var lastScrollTop = 0;
 jQuery(window).load(function(){
+	$( window ).scroll(function() {
+		var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+		if (st > lastScrollTop){
+			console.log("+1 "+st);
+		} else {
+			console.log("-1 "+st);
+		}
+		if (st>500 && !jQuery('#top-menu').hasClass("navbar-fixed-top") && jQuery('body').hasClass("expanding")) {
+			jQuery('#top-menu').addClass("navbar-fixed-top");
+			jQuery('body').removeClass("edgtf-header-expanding");
+		}
+		if (st<500 && jQuery('#top-menu').hasClass("navbar-fixed-top") && jQuery('body').hasClass("expanding")) {
+			jQuery('#top-menu').removeClass("navbar-fixed-top");
+			jQuery('body').addClass("edgtf-header-expanding");
+		}
+		lastScrollTop = st;
+	});
+	jQuery(".edgtf-menu-appear").click(function() {
+		if (jQuery('#top-menu').hasClass("edgtf-opened")){
+			jQuery('#top-menu').removeClass("edgtf-opened");
+		} else {
+			jQuery('#top-menu').addClass("edgtf-opened");
+		}
+		return false;
+	});
+	jQuery(".edgtf-search-opener").click(function() {
+		jQuery('.edgtf-search-cover').addClass("edgtf-search-cover-opened");
+		return false;
+	});
+	jQuery(".edgtf-search-close").click(function() {
+		jQuery('.edgtf-search-cover').removeClass("edgtf-search-cover-opened");
+		return false;
+	});
 	jQuery("#loadmore").click(function() {
 		jQuery.ajax({
 			method: "POST",

@@ -1,56 +1,82 @@
 extends layout
 block content
-	article#container(itemscope, itemtype='http://schema.org/Event')
-		h1.entry-title.boxItem News
-		.row.isotope
-			each box in data.events
-				.col-lg-3.col-md-12.col-sm-12.isotopeitem
-					include boxes/box_event
-		.text-right.boxItem
-			a.btn.btn-primary(href="/news/") See all News
+	#carousel-example-generic.carousel.slide(data-ride='carousel')
+		// Indicators
+		ol.carousel-indicators
+			li.active(data-target='#carousel-example-generic', data-slide-to='0')
+			li(data-target='#carousel-example-generic', data-slide-to='1')
+			li(data-target='#carousel-example-generic', data-slide-to='2')
+		// Wrapper for slides
+		.carousel-inner(role='listbox')
+			.item.active
+				img(src='/flyer/images/1mappingSA2.jpg', alt='AAAA')
+				.carousel-caption
+					h3 AAAA
+					p Bla Bla Bla Bla Bla
+			.item
+				img(src='/flyer/images/1mappingSA2.jpg', alt='AAAA')
+				.carousel-caption
+					h3 AAAA
+					p Bla Bla Bla Bla Bla
+		// Controls
+		a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+			span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+			span.sr-only Previous
+		a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
+			span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+			span.sr-only Next
+	.container-fluid
+		article#container(itemscope, itemtype='http://schema.org/Event')
+			h1.entry-title.boxItem News
+			.row.isotope
+				each box in data.events
+					.col-lg-3.col-md-12.col-sm-12.isotopeitem
+						include boxes/box_event
+			.text-right.boxItem
+				a.btn.btn-primary(href="/news/") See all News
 
-		h1.entry-title.boxItem Web & Mobile
-		.row.isotope
-			each box in data.web
-				.col-lg-3.col-md-12.col-sm-12.isotopeitem
-					include boxes/box_web
-		.text-right.boxItem
-			a.btn.btn-primary(href="/web-and-mobile/") Web & Mobile
+			h1.entry-title.boxItem Web & Mobile
+			.row.isotope
+				each box in data.web
+					.col-lg-3.col-md-12.col-sm-12.isotopeitem
+						include boxes/box_web
+			.text-right.boxItem
+				a.btn.btn-primary(href="/web-and-mobile/") Web & Mobile
 
-		h1.entry-title.boxItem Events
-		.row.isotope
-			each box in data.events
-				.col-lg-3.col-md-12.col-sm-12.isotopeitem
-					include boxes/box_event
-		.text-right.boxItem
-			a.btn.btn-primary(href="/events/") See all Events
+			h1.entry-title.boxItem Events
+			.row.isotope
+				each box in data.events
+					.col-lg-3.col-md-12.col-sm-12.isotopeitem
+						include boxes/box_event
+			.text-right.boxItem
+				a.btn.btn-primary(href="/events/") See all Events
 
-		h1.entry-title.boxItem Learning
-		.row.isotope
-			each box in data.learning
-				.col-lg-3.col-md-12.col-sm-12.isotopeitem
-					include boxes/box_event
-		.text-right.boxItem
-			a.btn.btn-primary(href="/learning/") See all Learnings
+			h1.entry-title.boxItem Learning
+			.row.isotope
+				each box in data.learning
+					.col-lg-3.col-md-12.col-sm-12.isotopeitem
+						include boxes/box_event
+			.text-right.boxItem
+				a.btn.btn-primary(href="/learning/") See all Learnings
 
-		h1.entry-title.boxItem Videos
-		.row.isotope
-			each box in data.videos
-				.col-lg-3.col-md-12.col-sm-12.isotopeitem
-					include boxes/box_event
-		.text-right.boxItem
-			a.btn.btn-primary(href="/learning/") See all Videos
-		h1.entry-title.boxItem Lab
-		.row.isotope
-			each box in data.lab
-				.col-lg-3.col-md-12.col-sm-12.isotopeitem
-					include boxes/box_event
-		.text-right.boxItem
-			a.btn.btn-primary(href="/lab/") See all Lab
-		h1.entry-title.boxItem Awards
-		.row.isotope
-			each box in data.awards
-				.col-lg-3.col-md-12.col-sm-12.isotopeitem
-					include boxes/box_event
-		.text-right.boxItem
-			a.btn.btn-primary(href="/lab/") See all Awards
+			h1.entry-title.boxItem Videos
+			.row.isotope
+				each box in data.videos
+					.col-lg-3.col-md-12.col-sm-12.isotopeitem
+						include boxes/box_event
+			.text-right.boxItem
+				a.btn.btn-primary(href="/learning/") See all Videos
+			h1.entry-title.boxItem Lab
+			.row.isotope
+				each box in data.lab
+					.col-lg-3.col-md-12.col-sm-12.isotopeitem
+						include boxes/box_event
+			.text-right.boxItem
+				a.btn.btn-primary(href="/lab/") See all Lab
+			h1.entry-title.boxItem Awards
+			.row.isotope
+				each box in data.awards
+					.col-lg-3.col-md-12.col-sm-12.isotopeitem
+						include boxes/box_event
+			.text-right.boxItem
+				a.btn.btn-primary(href="/lab/") See all Awards
