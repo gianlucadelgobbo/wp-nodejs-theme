@@ -2,18 +2,20 @@ var helpers = require('./../helpers');
 
 exports.get = function get(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
-		helpers.getEvent(req, function( result ) {
+		helpers.getLearning(req, function( result ) {
 			meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
-			res.render(config.prefix+'/'+'event', {data: result, meta_data:meta_data});
+			res.render(config.prefix+'/'+'learning', {data: result, meta_data:meta_data});
 		});
 	});
 };
 
 exports.getAll = function getAll(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
-		helpers.getAllEvents(req, config.sez.events.limit, 1, function( result ) {
-			meta_data.meta.title = "Events | " + meta_data.meta.name+ " "+ meta_data.edition.post_title;
-			res.render(config.prefix+'/'+'events', {data: result, meta_data:meta_data});
+		helpers.getPostType(req, "learning", function( posttype ) {
+			helpers.getAllLearning(req, config.sez.learning.limit, 1, function( result ) {
+				meta_data.meta.title = __("Learnings") + " | " + meta_data.meta.name;
+				res.render(config.prefix+'/'+'learnings', {data: result, meta_data:meta_data, posttype:posttype});
+			});
 		});
 	});
 };

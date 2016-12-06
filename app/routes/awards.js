@@ -1,6 +1,7 @@
 var helpers = require('./../helpers');
 
 exports.get = function get(req, res) {
+	if (req.url.indexOf('/it/')===0) req.params.lang = "it";
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getEvent(req, function( result ) {
 			meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
@@ -10,9 +11,10 @@ exports.get = function get(req, res) {
 };
 
 exports.getAll = function getAll(req, res) {
+	if (req.url.indexOf('/it/')===0) req.params.lang = "it";
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getAllEvents(req, config.sez.events.limit, 1, function( result ) {
-			meta_data.meta.title = "Events | " + meta_data.meta.name+ " "+ meta_data.edition.post_title;
+			meta_data.meta.title = "Events | " + meta_data.meta.name;
 			res.render(config.prefix+'/'+'events', {data: result, meta_data:meta_data});
 		});
 	});

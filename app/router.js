@@ -12,6 +12,27 @@ var pagesRoutes = require('./routes/pages');
  var searchRoutes = require('./routes/search');
  */
 module.exports = function(app) {
+	app.get('/it/', indexRoutes.get);
+	app.get('/it/web-and-mobile/', webRoutes.getAll);
+	app.get('/it/web-and-mobile/(:web)', webRoutes.get);
+	app.get('/it/videos/', videosRoutes.getAll);
+	app.get('/it/videos/(:video)', videosRoutes.get);
+	app.get('/it/events/', eventsRoutes.getAll);
+	app.get('/it/events/(:event)', eventsRoutes.get);
+	app.get('/it/learning/', learningRoutes.getAll);
+	app.get('/it/learning/(:learning)', learningRoutes.get);
+	app.get('/it/lab/', labRoutes.getAll);
+	app.get('/it/lab/(:lab)', labRoutes.get);
+	app.get('/it/extra/', newsRoutes.getAll);
+	app.get('/it/extra/(:news)', newsRoutes.get);
+	app.get('/it/people', usersRoutes.getAll);
+	app.get('/it/people/(:user)', usersRoutes.get);
+	app.get('/it/customers', usersRoutes.getAll);
+	app.get('/it/customers/(:user)', awardsRoutes.get);
+	app.get('/it/awards-and-grants/', awardsRoutes.getAll);
+	app.get('/it/awards-and-grants/(:award)', newsRoutes.get);
+	app.get('/it/(:page)/', pagesRoutes.get);
+
 	app.get('/', indexRoutes.get);
 	app.get('/web-and-mobile/', webRoutes.getAll);
 	app.get('/web-and-mobile/(:web)', webRoutes.get);
@@ -32,6 +53,7 @@ module.exports = function(app) {
 	app.get('/awards-and-grants/', awardsRoutes.getAll);
 	app.get('/awards-and-grants/(:award)', newsRoutes.get);
 	app.get('/(:page)/', pagesRoutes.get);
+
 	//app.get('/users/(:user)', usersRoutes.getUser);
 	/*
 	 app.use('/controlpanel', controlpanelRoutes);

@@ -4,6 +4,9 @@
     "host"		: "localhost",
     "domain"	: "http://flyer.it",
     "prefix"	: "flyer",
+    "locales"   : ["en", "it"],
+    "default_lang" : "en",
+    "current_lang" : "en",
     "sez":{
       "home" : {
         "events" : {

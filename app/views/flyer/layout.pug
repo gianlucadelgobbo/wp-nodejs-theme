@@ -1,252 +1,324 @@
 doctype html
-html(lang='en')
-	head
-		title=meta_data.meta['title']
-		meta(charset='UTF-8')
-		meta(name='viewport', content='width=device-width, initial-scale=1.0')
-		- console.log(meta_data)
-		// FLYER COMMUNICATION EASY SEO www.flyer.it
-		meta(property='fb:admins', content=meta_data.meta['fb_admin'])
-		meta(property='fb:app_id', content=meta_data.meta['fb_appId'])
-		meta(property='og:image', content=meta_data.meta['image_src'])
-		meta(property='og:title', content=meta_data.meta['title'])
-		meta(property='og:description', content=meta_data.meta['og_description'])
-		meta(property='og:site_name', content=meta_data.meta['name'])
-		meta(property='og:url', content=config.domain+meta_data['url'])
-		link(rel='canonical', href=config.domain+meta_data['url'])
-		meta(property='og:type', content='website')
-		// HIDDEN FACEBOOK OPENG GRAPH (only facebook can see)
-		meta(name='description', content=meta_data.meta['og_description'])
-		meta(name='keywords', content=meta_data.meta['og_keywords'])
-		meta(name='google-site-verification', content=meta_data.meta['google_webmasterstools'])
-		link(rel='shortcut icon', href=config.domain+meta_data.meta['favicon'])
-		link(rel='apple-touch-icon', sizes='57x57', href=config.domain+meta_data.meta['icon57'])
-		link(rel='apple-touch-icon', sizes='72x72', href=config.domain+meta_data.meta['icon72'])
-		link(rel='apple-touch-icon', sizes='114x114', href=config.domain+meta_data.meta['icon114'])
-		link(rel='apple-touch-icon', sizes='120x120', href=config.domain+meta_data.meta['icon120'])
-		link(rel='apple-touch-icon', sizes='144x144', href=config.domain+meta_data.meta['icon144'])
-		link(rel='apple-touch-icon', sizes='152x152', href=config.domain+meta_data.meta['icon152'])
-		// END FLYER COMMUNICATION EASY SEO www.flyer.it
+html(lang=config.current_lang)
+  head
+    title=meta_data.meta['title']
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    //- console.log(meta_data)
+    // FLYER COMMUNICATION EASY SEO www.flyer.it
+    meta(property='fb:admins', content=meta_data.meta['fb_admin'])
+    meta(property='fb:app_id', content=meta_data.meta['fb_appId'])
+    meta(property='og:image', content=meta_data.meta['image_src'])
+    meta(property='og:title', content=meta_data.meta['title'])
+    meta(property='og:description', content=meta_data.meta['og_description'])
+    meta(property='og:site_name', content=meta_data.meta['name'])
+    meta(property='og:url', content=config.domain+meta_data['url'])
+    link(rel='canonical', href=config.domain+meta_data['url'])
+    meta(property='og:type', content='website')
+    // HIDDEN FACEBOOK OPENG GRAPH (only facebook can see)
+    meta(name='description', content=meta_data.meta['og_description'])
+    meta(name='keywords', content=meta_data.meta['og_keywords'])
+    meta(name='google-site-verification', content=meta_data.meta['google_webmasterstools'])
+    link(rel='shortcut icon', href=config.domain+meta_data.meta['favicon'])
+    link(rel='apple-touch-icon', sizes='57x57', href=config.domain+meta_data.meta['icon57'])
+    link(rel='apple-touch-icon', sizes='72x72', href=config.domain+meta_data.meta['icon72'])
+    link(rel='apple-touch-icon', sizes='114x114', href=config.domain+meta_data.meta['icon114'])
+    link(rel='apple-touch-icon', sizes='120x120', href=config.domain+meta_data.meta['icon120'])
+    link(rel='apple-touch-icon', sizes='144x144', href=config.domain+meta_data.meta['icon144'])
+    link(rel='apple-touch-icon', sizes='152x152', href=config.domain+meta_data.meta['icon152'])
+    // END FLYER COMMUNICATION EASY SEO www.flyer.it
 
-		//link#flick-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/mailchimp//css/flick/flick.css', type='text/css', media='all')
-		//link#woocommerce_prettyPhoto_css-css(rel='stylesheet', href='/assets/prettyPhoto/prettyPhoto.css', type='text/css', media='all')
-		//link#bootstrap-css-css(rel='stylesheet', href='http://flyer.it/wp-content/themes/flyer-bs-lpm/bootstrap/css/bootstrap.min.css', type='text/css', media='all')
-		//link#font-awesome-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/types/library/toolset/toolset-common/res/lib/font-awesome/css/font-awesome.min.css?ver=4.4.0', type='text/css', media='all')
-		//link#bootstrap-social-css-css(rel='stylesheet', href='/assets/bootstrap/css/bootstrap-social.css', type='text/css', media='all')
-		//link#cff-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/custom-facebook-feed/css/cff-style.css?ver=2.4.5', type='text/css', media='all')
-		//link#youtube-simplegallery-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/youtube-simplegallery/youtube_simplegallery.css', type='text/css', media='all')
-		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
-		link(rel='stylesheet', href='http://flyer.it/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.12', type='text/css', media='all')
-		link(rel='stylesheet', href='http://flyer.it/wp-content/plugins/flyer-social-gallery/css/socialGalleryPluginLite.css', type='text/css', media='all')
+    //link#flick-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/mailchimp//css/flick/flick.css', type='text/css', media='all')
+    //link#woocommerce_prettyPhoto_css-css(rel='stylesheet', href='/assets/prettyPhoto/prettyPhoto.css', type='text/css', media='all')
+    //link#bootstrap-css-css(rel='stylesheet', href='http://flyer.it/wp-content/themes/flyer-bs-lpm/bootstrap/css/bootstrap.min.css', type='text/css', media='all')
+    //link#font-awesome-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/types/library/toolset/toolset-common/res/lib/font-awesome/css/font-awesome.min.css?ver=4.4.0', type='text/css', media='all')
+    //link#bootstrap-social-css-css(rel='stylesheet', href='/assets/bootstrap/css/bootstrap-social.css', type='text/css', media='all')
+    //link#cff-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/custom-facebook-feed/css/cff-style.css?ver=2.4.5', type='text/css', media='all')
+    //link#youtube-simplegallery-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/youtube-simplegallery/youtube_simplegallery.css', type='text/css', media='all')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
+    link(rel='stylesheet', href='http://flyer.it/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.12', type='text/css', media='all')
+    link(rel='stylesheet', href='http://flyer.it/wp-content/plugins/flyer-social-gallery/css/socialGalleryPluginLite.css', type='text/css', media='all')
 
-		//link(rel='stylesheet', href=meta_data.edition['wpcf-custom-css'][0], type='text/css')
-		//link(rel='stylesheet', href=meta_data.edition['wpcf-custom-css'][1], type='text/css')
+    //link(rel='stylesheet', href=meta_data.edition['wpcf-custom-css'][0], type='text/css')
+    //link(rel='stylesheet', href=meta_data.edition['wpcf-custom-css'][1], type='text/css')
 
-		link(rel='stylesheet', href='/'+config.prefix+'/css/cookielawinfo.css', type='text/css', media='all')
-		link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.css', type='text/css')
-		link(rel='stylesheet', href='/'+config.prefix+'/css/style.css', type='text/css', media='all')
-		link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/'+config.prefix+'/css/cookielawinfo.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.css', type='text/css')
+    //link(rel='stylesheet', href='/'+config.prefix+'/css/style.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
 
 body(class=meta_data['url'] == '/' ? "edgtf-header-expanding expanding" : undefined)
-	nav#top-menu.navbar.navbar-inverse(role='navigation')
-		.container-fluid
-			// Brand and toggle get grouped for better mobile display
-			.navbar-header
-				button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#mainmenu',aria-expanded="false")
-					span.sr-only Toggle navigation
-					span.icon-bar
-					span.icon-bar
-					span.icon-bar
-				a.navbar-brand(href='/', title=meta_data.meta['name'])
-					img(src='/'+config.prefix+'/images/LogoFlyerWebSite2017_2_solo.svg', alt=meta_data.meta['name'])
-			// Collect the nav links, forms, and other content for toggling
-			#mainmenu.collapse.navbar-collapse
-				div.nav.navbar-nav.navbar-right.edgtf-expanding-icon-holder
-					div.edgtf-expanding-icon-holder-inner
-						a.edgtf-menu-appear(href="javascript:void(0)")
-							span.edgtf-expanding-icon
-								span.edgtf-line
-								span.edgtf-line
-								span.edgtf-line
-				ul.nav.navbar-nav.navbar-right.menu-hide.border-right
-					li(class=meta_data['url'] == '/' ? "active" : undefined)
-						a(href='/') Home
-					li(class=meta_data['url'].indexOf('/profile') === 0 ? "active" : undefined)
-						a(href='/profile/') Profile
-					li.dropdown(class=meta_data['url'].indexOf('/web-and-mobile/') === 0 || meta_data['url'].indexOf('/videos/') === 0 || meta_data['url'].indexOf('/learning/') === 0 || meta_data['url'].indexOf('/tags/') === 0 ? "active" : undefined)
-						a.dropdown-toggle(role='button', href='#', data-toggle='dropdown', aria-haspopup='true')
-							| Portfolio
-							span.caret
-						ul.dropdown-menu(role='menu')
-							li(class=meta_data['url'].indexOf('/web-and-mobile') === 0 ? "active" : undefined)
-								a(href='/web-and-mobile/') Web & Mobile
-							li(class=meta_data['url'].indexOf('/videos/') === 0 ? "active" : undefined)
-								a(href='/videos/') Videos
-							li(class=meta_data['url'].indexOf('/events') === 0 ? "active" : undefined)
-								a(href='/events/') Events
-							li(class=meta_data['url'].indexOf('/learning') === 0 ? "active" : undefined)
-								a(href='/learning/') Learning
-							li(class=meta_data['url'].indexOf('/tags') === 0 ? "active" : undefined)
-								a(href='/tags/') Tags
-					li(class=meta_data['url'].indexOf('/customers') === 0 ? "active" : undefined)
-						a(href='/customers/') Customers
-					li(class=meta_data['url'].indexOf('/lab') === 0 ? "active" : undefined)
-						a( href='/lab/') Lab
-					li(class=meta_data['url'].indexOf('/extra') === 0 ? "active" : undefined)
-						a(href='/extra/') Extra
-					li(class=meta_data['url'].indexOf('/people') === 0 ? "active" : undefined)
-						a(href='/people/') People
-					li(class=meta_data['url'].indexOf('/awards-and-grants') === 0 ? "active" : undefined)
-						a(href='/awards-and-grants/') Awards and Grants
-					li.menu-spacer-after(class=meta_data['url'].indexOf('/contacts') === 0 ? "active" : undefined)
-						a(href='/contacts/') Contacts
-					li.lang-en.active
-						a(href='/en/', hreflang='en', title='English')
-							span EN
-					li.menu-spacer-after.lang-it
-						a(href='/it/', hreflang='it', title='Italiano')
-							span IT
-					li.menu-spacer-after
-						a(href='#', title='Search').edgtf-search-opener
-							i.glyphicon.glyphicon-search
-							.sr-only Search
+  nav#top-menu.navbar.navbar-inverse(role='navigation')
+    .container-fluid
+      // Brand and toggle get grouped for better mobile display
+      .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#mainmenu',aria-expanded="false")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href=(config.current_lang == 'it' ? '/it' : '')+'/', title=meta_data.meta['name'])
+          img(src='/'+config.prefix+'/images/LogoFlyerWebSite2017_2_solo.svg', alt=meta_data.meta['name'])
+      // Collect the nav links, forms, and other content for toggling
+      #mainmenu.collapse.navbar-collapse
+        div.nav.navbar-nav.navbar-right.edgtf-expanding-icon-holder
+          div.edgtf-expanding-icon-holder-inner
+            a.edgtf-menu-appear(href="#")
+              span.edgtf-expanding-icon
+                span.edgtf-line
+                span.edgtf-line
+                span.edgtf-line
+        ul.nav.navbar-nav.navbar-right.menu-hide.border-right
+          li(class=meta_data['url'] == '/' ? "active" : undefined)
+            a(href=(config.current_lang == 'it' ? '/it' : '')+'/')
+              span.edgtf-item-inner
+                i.fa.fa-long-arrow-right
+                | Home
+          li(class=meta_data['url'].indexOf('/profile') >= 0 ? "active" : undefined)
+            a(href=(config.current_lang == 'it' ? '/it' : '')+'/profile/')
+              span.edgtf-item-inner
+                i.fa.fa-long-arrow-right
+                !=global.__("Profile")
+          li.dropdown(class=meta_data['url'].indexOf('/web-and-mobile/') >= 0 || meta_data['url'].indexOf('/videos/') >= 0 || meta_data['url'].indexOf('/learning/') >= 0 || meta_data['url'].indexOf('/tags/') >= 0 ? "active" : undefined)
+            a.dropdown-toggle(role='button', href='#', data-toggle='dropdown', aria-haspopup='true')
+              span.edgtf-item-inner
+                i.fa.fa-long-arrow-right
+                !=global.__("Portfolio")
+                span.caret
+            ul.dropdown-menu(role='menu')
+              li(class=meta_data['url'].indexOf('/web-and-mobile') >= 0 ? "active" : undefined)
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/web-and-mobile/')
+                  span.edgtf-item-inner
+                    i.fa.fa-long-arrow-right
+                    !=global.__("Web & Mobile")
+              li(class=meta_data['url'].indexOf('/events') >= 0 ? "active" : undefined)
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/events/')
+                  span.edgtf-item-inner
+                    i.fa.fa-long-arrow-right
+                    !=global.__("Events")
+              li(class=meta_data['url'].indexOf('/videos/') >= 0 ? "active" : undefined)
+                a(href=(config.current_lang == 'it' ? '/it' : '') + '/videos/')
+                  span.edgtf-item-inner
+                    i.fa.fa-long-arrow-right
+                    !=global.__("Videos")
+              li(class=meta_data['url'].indexOf('/learning') >= 0 ? "active" : undefined)
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/learning/')
+                  span.edgtf-item-inner
+                    i.fa.fa-long-arrow-right
+                    !=global.__("Learning")
+              li(class=meta_data['url'].indexOf('/tags') >= 0 ? "active" : undefined)
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/tags/')
+                  span.edgtf-item-inner
+                    i.fa.fa-long-arrow-right
+                    !=global.__("Tags")
+          li(class=meta_data['url'].indexOf('/customers') >= 0 ? "active" : undefined)
+            a(href=(config.current_lang == 'it' ? '/it' : '')+'/customers/')
+              span.edgtf-item-inner
+                i.fa.fa-long-arrow-right
+                !=global.__("Customers")
+          li(class=meta_data['url'].indexOf('/lab') >= 0 ? "active" : undefined)
+            a( href=(config.current_lang == 'it' ? '/it' : '')+'/lab/')
+              span.edgtf-item-inner
+                i.fa.fa-long-arrow-right
+                !=global.__("Lab")
+          li(class=meta_data['url'].indexOf('/extra') >= 0 ? "active" : undefined)
+            a(href=(config.current_lang == 'it' ? '/it' : '')+'/extra/')
+              span.edgtf-item-inner
+                i.fa.fa-long-arrow-right
+                !=global.__("Extra")
+          li(class=meta_data['url'].indexOf('/people') >= 0 ? "active" : undefined)
+            a(href=(config.current_lang == 'it' ? '/it' : '')+'/people/')
+              span.edgtf-item-inner
+                i.fa.fa-long-arrow-right
+                !=global.__("People")
+          li(class=meta_data['url'].indexOf('/awards-and-grants') >= 0 ? "active" : undefined)
+            a(href=(config.current_lang == 'it' ? '/it' : '')+'/awards-and-grants/')
+              span.edgtf-item-inner
+                i.fa.fa-long-arrow-right
+                !=global.__("Awards and Grants")
+          li.menu-spacer-after(class=meta_data['url'].indexOf('/contacts') >= 0 ? "active" : undefined)
+            a(href=(config.current_lang == 'it' ? '/it' : '')+'/contacts/')
+              span.edgtf-item-inner
+                i.fa.fa-long-arrow-right
+                !=global.__("Contacts")
+          li.lang-en(class=meta_data["langSwitcher"]["en"] == meta_data['url'] ? 'active' : '')
+            a(href=meta_data["langSwitcher"]["en"], hreflang='en', title='English') EN
+          li.menu-spacer-after.lang-it(class=meta_data["langSwitcher"]["it"] == meta_data['url'] ? 'active' : '')
+            a(href=meta_data["langSwitcher"]["it"], hreflang='it', title='Italiano') IT
+          li.menu-spacer-after
+            a(href='#', title=global.__("Search")).edgtf-search-opener
+              i.glyphicon.glyphicon-search
+              .sr-only=global.__("Search")
 
-				form.navbar-form.edgtf-search-cover(action='/search/', method='get')
-					.edgtf-form-holder-outer
-						.edgtf-search-submit-holder
-							button(type='submit')
-								i.glyphicon.glyphicon-search
-									.sr-only Search
-						.edgtf-form-holder
-							.edgtf-form-holder-inner
-								input.edgt_search_field(type='text', placeholder='Search', name='s', autocomplete='off')
-								a.edgtf-search-close(href='#') &times;
+        form.navbar-form.edgtf-search-cover(action='/search/', method='get')
+          .edgtf-form-holder-outer
+            .edgtf-search-submit-holder
+              button(type='submit')
+                i.glyphicon.glyphicon-search
+                  .sr-only=global.__("Search")
+            .edgtf-form-holder
+              .edgtf-form-holder-inner
+                input.edgt_search_field(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
+                a.edgtf-search-close(href='#') &times;
 
-				//form#nl_form.navbar-form.navbar-right(method='post', action='#', onsubmit="createSend(this,'/wp-content/themes/lpm/subscribe.php'); return false;")
-						#nl_cnt
-							.input-group.input-group-sm
-								input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
-								label.sr-only(for='email') Email
-								span.input-group-btn
-									button#invia.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
-							input(type='hidden', name='lang', value='EN')
-							input(type='hidden', name='topic', value='livevisuals')
-						#nl_res.hide
-			.menu-expand-bkg
+        //form#nl_form.navbar-form.navbar-right(method='post', action='#', onsubmit="createSend(this,'/wp-content/themes/lpm/subscribe.php'); return false;")
+            #nl_cnt
+              .input-group.input-group-sm
+                input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
+                label.sr-only(for='email') Email
+                span.input-group-btn
+                  button#invia.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
+              input(type='hidden', name='lang', value='EN')
+              input(type='hidden', name='topic', value='livevisuals')
+            #nl_res.hide
+      .menu-expand-bkg
 
-	.cnt
-		//header
-			.row
-				.col-md-6
-					#logo
-						a(href='/', title=meta_data.meta['name'])
-							img.img-responsive(itemprop='image', src=config.domain+meta_data.meta.logo_main, alt=meta_data.meta['name'])
-				.col-md-6
-					#site-description.text-right=meta_data.meta['description']
-			br
-		block content
-		.sr-only
-			| Author:
-			a(href='https://plus.google.com/+Liveperformersmeeting?rel=author') LPM Live Performers Meeting
-		.sr-only
-			| Author:
-			a(href='https://plus.google.com/+GianlucaDelGobbo?rel=author', rel='author') Gianluca Del Gobbo
-		footer.navbar.navbar-inverse.footer
-			.navbar-inner
-				.row.links-horizontal
-					.col-sm-2
-						a(href='/', title=meta_data.meta['name'])
-							img.media-object(src=config.domain+meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
-					.col-sm-2.hidden-print
-						.margin-top-xs
-							p Corporate
-							ul#menu-navbar-menu.nav.nav-pills.nav-stacked
-								li
-									a(title='Home', href='/') Home
-								li
-									a(title='Profile', href='/profile/') Profile
-								li
-									a(title='Awards and Grants', href='/awards-and-grants/') Awards and Grants
-								li
-									a(title='Contacts', href='/contacts/') Contacts
-					.col-sm-2.hidden-print
-						.margin-top-xs
-							p Projects
-							include inc_projects
-					.col-sm-3.hidden-print
-					.col-sm-3.hidden-print
-						.pull-right
-							.margin-top-xs
-								p Search
-								include inc_search
-						br.clearfix
-						br
-				br
-				.row
-					.col-sm-6
-						.footer-title
-							!="NO © "+new Date().getFullYear() + " " + meta_data.meta.name + " "
-							a(href='mailto:info@flyer.it', title='Write a message') info@flyer.it
-					.col-sm-5.pull-right
-						.footer-title.pull-right
-							a.tooltips(data-toggle='tooltip', href='/', target='_blank', title='This website is made by Flyer Communication')
-								img(src='/'+config.prefix+'/images/logo_flyer.png', alt='Logo Flyer Communication')
-	#fb-root
-	script.
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s);
-			js.id = id;
-			js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=#{meta_data.meta.fb_appId}";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	script(type="text/javascript").
-		var sgp_config = {"sgp_selT": "2","sgp_sel": ".thumbnail","sgp_bT": "{#meta_data.meta.name}","sgp_bL": "#{meta_data.meta.description}","sgp_bU": "#{global.config.domain}","sgp_bg": "000000","sgp_bgo": "0.8","sgp_bb": "1","sgp_hb": "1","sgp_hbt": "1","sgp_ch": "","sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png","sgp_desc": "1","sgp_fb": "1","sgp_fbf": "1","sgp_fbc": "1","sgp_nav": "1","sgp_hon": "","sgp_usf":"1.2","sgp_mb":"10","sgp_theme":"classic","sgp_theme_root":"http://flyer.it/wp-content/plugins/flyer-social-gallery/themes/","sgp_iLoadR": "http://flyer.it/wp-content/plugins/flyer-social-gallery/i/loading.gif","sgp_iR": "http://flyer.it/wp-content/plugins/flyer-social-gallery/i/r.png","sgp_iL": "http://flyer.it/wp-content/plugins/flyer-social-gallery/i/l.png",};
-		var sgp_ie = false;var sgp_ie7 = false;
-	script(type='text/javascript', src='/'+config.prefix+'/js/jquery.min.js')
-	script(type='text/javascript', src='/'+config.prefix+'/js/jquery-migrate.min.js')
-	script(type='text/javascript', src='/'+config.prefix+'/js/bootstrap.min.js')
-	script(type='text/javascript', src='/'+config.prefix+'/js/jquery.isotope.min.js')
-	script(type='text/javascript', src='/'+config.prefix+'/js/imagesloaded.pkgd.min.js')
-	script(type='text/javascript', src='/'+config.prefix+'/js/jquery.infinitescroll.js')
-	script(type='text/javascript', src='/'+config.prefix+'/js/cookielawinfo.js')
-	script(type='text/javascript', src='http://flyer.it/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.0')
-	script(type='text/javascript', src='/'+config.prefix+'/js/script.js')
-	//script(type='text/javascript', src='http://flyer.it/wp-content/plugins/mailchimp/js/scrollTo.js?ver=1.5.2')
-		script(type='text/javascript', src='http://flyer.it/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20')
-		script(type='text/javascript').
-			/* <![CDATA[ */
-			var mailchimpSF = {"ajax_url":"http:\\/\/flyer.it\/"};
-			/* ]]> */
-		script(type='text/javascript', src='http://flyer.it/wp-content/plugins/mailchimp/js/mailchimp.js?ver=1.5.2')
-		script(type='text/javascript', src='http://flyer.it/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4')
-		script(type='text/javascript', src='http://flyer.it/wp-content/plugins/mailchimp//js/datepicker.js')
-	//script(type='text/javascript').
-		/* <![CDATA[ */
-		var _wpcf7 = {"loaderUrl":"http:\\/\/flyer.it\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}},"sending":"Sending ..."};
-		/* ]]> */
-		script(type='text/javascript', src='http://flyer.it/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.5')
-		script(type='text/javascript', src='http://flyer.it/wp-content/plugins/custom-facebook-feed/js/cff-scripts.js?ver=2.4.5')
-		script(type='text/javascript', src='http://flyer.it/wp-includes/js/wp-embed.min.js')
-	script(type='text/javascript', src='http://flyer.it/wp-content/plugins/flyer-social-gallery/js/socialGalleryPluginLite.js')
-	#cookie-law-info-bar
-		span
-			| This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.
-			a#cookie_action_close_header.medium.cli-plugin-button.cli-plugin-main-button(href='#') Accept
-			a#CONSTANT_OPEN_URL.cli-plugin-main-link(href="/cookies-in-use-on-this-site/", target="_blank") Read More
-	script(type='text/javascript').
-		//<![CDATA[
-		jQuery(document).ready(function() {
-			cli_show_cookiebar({
-				settings: '{"animate_speed_hide":"500","animate_speed_show":"500","background":"#000000","border":"#444","border_on":true,"button_1_button_colour":"#ffffff","button_1_button_hover":"#cccccc","button_1_link_colour":"#000000","button_1_as_button":true,"button_2_button_colour":"#ffffff","button_2_button_hover":"#cccccc","button_2_link_colour":"#ffffff","button_2_as_button":false,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"top","scroll_close":false,"scroll_close_reload":false,"showagain_tab":false,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#ffffff","show_once_yn":false,"show_once":"10000"}'
-			});
-		});
-		//]]>
-	script.
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		ga('create', '#{meta_data.meta['google_analytics']}', 'auto');
-		ga('send', 'pageview');
+  .cnt
+    //header
+      .row
+        .col-md-6
+          #logo
+            a(href=(config.current_lang == 'it' ? '/it' : '')+'/', title=meta_data.meta['name'])
+              img.img-responsive(itemprop='image', src=config.domain+meta_data.meta.logo_main, alt=meta_data.meta['name'])
+        .col-md-6
+          #site-description.text-right=meta_data.meta['description']
+      br
+    block content
+    .sr-only
+      | Author:
+      a(href='https://plus.google.com/+Liveperformersmeeting?rel=author') LPM Live Performers Meeting
+    .sr-only
+      | Author:
+      a(href='https://plus.google.com/+GianlucaDelGobbo?rel=author', rel='author') Gianluca Del Gobbo
+    footer.navbar-inverse
+      .container-fluid
+        .row.links-horizontal
+          .col-sm-2
+            a(href=(config.current_lang == 'it' ? '/it' : '')+'/', title=meta_data.meta['name'])
+              img.media-object(src=config.domain+meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
+            br
+            div
+              strong(itemprop='name') Flyer communication
+              br
+              span(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                  span(itemprop='streetAddress') Via del Verano 39
+                  br
+                  span(itemprop='postalCode') 00185
+                  !=" "
+                  span(itemprop='addressLocality')=global.__('Rome')
+                  !=" "
+                  span(itemprop='addressCountry')=global.__('Italy')
+                br
+                span.hide(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                  span(itemprop='latitude') 41.899316
+                  | ,
+                  span(itemprop='longitude') 12.520403
+                a(itemprop='url', href='https://www.google.com/maps/place/Flyer+Communication+Srl/@41.899316,12.520403,963m/data=!3m2!1e3!4b1!4m2!3m1!1s0x132f618364bd1e11:0x4bbf08536c8fc4c9?hl=en', target='_blank')=global.__('map')
+                br
+              |    Tel.
+              !=" "
+              a(href='tel:+390678147301', itemprop='telephone') +39 06 78147301
+              br
+              |    Fax
+              !=" "
+              span(itemprop='faxNumber') +39 06 78390805
+              br
+              !=global.__('VAT N°')
+              !=" "
+              span(itemprop='vatID') IT06589171005
+              br
+              a(itemprop='email', title=global.__('Write to Flyer'), href='mailto:info@flyer.it') info@flyer.it
+          .col-sm-2.hidden-print
+            .margin-top-xs
+              p Corporate
+              ul#menu-navbar-menu.nav.nav-pills.nav-stacked
+                li
+                  a(title='Home', href=(config.current_lang == 'it' ? '/it' : '')+'/')=global.__("Home")
+                li
+                  a(title='Profile', href=(config.current_lang == 'it' ? '/it' : '')+'/profile/')=global.__("Profile")
+                li
+                  a(title='Awards and Grants', href=(config.current_lang == 'it' ? '/it' : '')+'/awards-and-grants/')=global.__("Awards and Grants")
+                li
+                  a(title='Contacts', href=(config.current_lang == 'it' ? '/it' : '')+'/contacts/')=global.__("Contacts")
+          .col-sm-2.hidden-print
+            .margin-top-xs
+              p=global.__("Projects")
+              include inc_projects
+          .col-sm-3.hidden-print
+          .col-sm-3.hidden-print
+            .pull-right
+              .margin-top-xs
+                p=global.__("Search")
+                include inc_search
+            br.clearfix
+            br
+        br
+        .row
+          .col-sm-6
+            .footer-title
+              !="NO © "+new Date().getFullYear() + " " + meta_data.meta.name + " "
+              a(href='mailto:info@flyer.it', title=global.__('Write to Flyer')) info@flyer.it
+          .col-sm-5.pull-right
+            .footer-title.pull-right
+              a.tooltips(data-toggle='tooltip', href='/', target='_blank', title=global.__('This website is made by Flyer Communication'))
+                img(src='/'+config.prefix+'/images/logo_flyer.png', alt='Logo Flyer Communication')
+  #fb-root
+  script.
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=#{meta_data.meta.fb_appId}";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  script(type="text/javascript").
+    var sgp_config = {"sgp_selT": "2","sgp_sel": ".thumbnail","sgp_bT": "{#meta_data.meta.name}","sgp_bL": "#{meta_data.meta.description}","sgp_bU": "#{global.config.domain}","sgp_bg": "000000","sgp_bgo": "0.8","sgp_bb": "1","sgp_hb": "1","sgp_hbt": "1","sgp_ch": "","sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png","sgp_desc": "1","sgp_fb": "1","sgp_fbf": "1","sgp_fbc": "1","sgp_nav": "1","sgp_hon": "","sgp_usf":"1.2","sgp_mb":"10","sgp_theme":"classic","sgp_theme_root":"http://flyer.it/wp-content/plugins/flyer-social-gallery/themes/","sgp_iLoadR": "http://flyer.it/wp-content/plugins/flyer-social-gallery/i/loading.gif","sgp_iR": "http://flyer.it/wp-content/plugins/flyer-social-gallery/i/r.png","sgp_iL": "http://flyer.it/wp-content/plugins/flyer-social-gallery/i/l.png",};
+    var sgp_ie = false;var sgp_ie7 = false;
+  script(type='text/javascript', src='/'+config.prefix+'/js/jquery.min.js')
+  script(type='text/javascript', src='/'+config.prefix+'/js/jquery-migrate.min.js')
+  script(type='text/javascript', src='/'+config.prefix+'/js/bootstrap.min.js')
+  script(type='text/javascript', src='/'+config.prefix+'/js/jquery.isotope.min.js')
+  script(type='text/javascript', src='/'+config.prefix+'/js/imagesloaded.pkgd.min.js')
+  script(type='text/javascript', src='/'+config.prefix+'/js/jquery.infinitescroll.js')
+  script(type='text/javascript', src='/'+config.prefix+'/js/cookielawinfo.js')
+  script(type='text/javascript', src='http://flyer.it/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.0')
+  script(type='text/javascript', src='/'+config.prefix+'/js/script.js')
+  //script(type='text/javascript', src='http://flyer.it/wp-content/plugins/mailchimp/js/scrollTo.js?ver=1.5.2')
+    script(type='text/javascript', src='http://flyer.it/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20')
+    script(type='text/javascript').
+      /* <![CDATA[ */
+      var mailchimpSF = {"ajax_url":"http:\\/\/flyer.it\/"};
+      /* ]]> */
+    script(type='text/javascript', src='http://flyer.it/wp-content/plugins/mailchimp/js/mailchimp.js?ver=1.5.2')
+    script(type='text/javascript', src='http://flyer.it/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4')
+    script(type='text/javascript', src='http://flyer.it/wp-content/plugins/mailchimp//js/datepicker.js')
+  //script(type='text/javascript').
+    /* <![CDATA[ */
+    var _wpcf7 = {"loaderUrl":"http:\\/\/flyer.it\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}},"sending":"Sending ..."};
+    /* ]]> */
+    script(type='text/javascript', src='http://flyer.it/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.5')
+    script(type='text/javascript', src='http://flyer.it/wp-content/plugins/custom-facebook-feed/js/cff-scripts.js?ver=2.4.5')
+    script(type='text/javascript', src='http://flyer.it/wp-includes/js/wp-embed.min.js')
+  script(type='text/javascript', src='http://flyer.it/wp-content/plugins/flyer-social-gallery/js/socialGalleryPluginLite.js')
+  #cookie-law-info-bar
+    span
+      | This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.
+      a#cookie_action_close_header.medium.cli-plugin-button.cli-plugin-main-button(href='#') Accept
+      a#CONSTANT_OPEN_URL.cli-plugin-main-link(href="/cookies-in-use-on-this-site/", target="_blank") Read More
+  script(type='text/javascript').
+    //<![CDATA[
+    jQuery(document).ready(function() {
+      cli_show_cookiebar({
+        settings: '{"animate_speed_hide":"500","animate_speed_show":"500","background":"#000000","border":"#444","border_on":true,"button_1_button_colour":"#ffffff","button_1_button_hover":"#cccccc","button_1_link_colour":"#000000","button_1_as_button":true,"button_2_button_colour":"#ffffff","button_2_button_hover":"#cccccc","button_2_link_colour":"#ffffff","button_2_as_button":false,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"top","scroll_close":false,"scroll_close_reload":false,"showagain_tab":false,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#ffffff","show_once_yn":false,"show_once":"10000"}'
+      });
+    });
+    //]]>
+  script.
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '#{meta_data.meta['google_analytics']}', 'auto');
+    ga('send', 'pageview');

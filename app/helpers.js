@@ -7,11 +7,12 @@ var fnz = require('./functions');
 
 exports.getPage = function getPage(req,callback) {
   console.log(req.params.page);
-  var wp = new WPAPI({ endpoint: config.sez.pages.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/mypages/(?P<sluggg>)' );
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.pages.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/mypages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.page).get(function( err, data ) {
     console.log("//// Page");
-    console.log(data);
+    //console.log(err);
     data = fnz.fixResult(data);
     if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     callback(data);
@@ -23,11 +24,12 @@ exports.getPage = function getPage(req,callback) {
 
 exports.getEvent = function getEvent(req,callback) {
   console.log(req.params.event);
-  var wp = new WPAPI({ endpoint: config.sez.events.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/events/(?P<sluggg>)' );
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/events/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.event).get(function( err, data ) {
     console.log("//// Event");
-    console.log(data);
+    //console.log(data);
     data = fnz.fixResult(data);
     console.log(data);
     callback(data);
@@ -35,8 +37,9 @@ exports.getEvent = function getEvent(req,callback) {
 };
 exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
   console.log("getAllEvents");
-  var wp = new WPAPI({ endpoint: config.sez.events.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/events' );
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/events' );
   //console.log(wp.myCustomResource);
   //console.log(wp.event());
   wp.myCustomResource().param( 'before', new Date( '2016-09-22' ) ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
@@ -44,7 +47,7 @@ exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
     console.log(err);
     console.log(data.length);
 
-    //console.log(err || data);
+    console.log(err || data);
     data = fnz.fixResults(data);
     callback(data);
   });
@@ -52,8 +55,9 @@ exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
 
 exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page, callback) {
   console.log("getAllEventsByYear");
-  var wp = new WPAPI({ endpoint: config.sez.events.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/events' );
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/events' );
   //console.log(wp.myCustomResource);
   //console.log(wp.event());
   wp.myCustomResource().param('after', new Date((year-1)+'-12-31')).param('before', new Date((year+1)+'-01-01') ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
@@ -71,28 +75,30 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page,
 //////// NEWS
 
 exports.getNew = function getNew(req,callback) {
-	console.log(req.params.new);
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/new/(?P<sluggg>)' );
-	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
-		console.log("//// New");
-		data = fnz.fixResult(data);
-		callback(data);
-	});
+  console.log(req.params.new);
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/new/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+    console.log("//// New");
+    data = fnz.fixResult(data);
+    callback(data);
+  });
 };
 
 exports.getAllNews = function getAllNews(req, limit, page, callback) {
-	console.log("getAllNews");
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/news' );
-	//console.log(wp.myCustomResource);
-	//console.log(wp.new());
-	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-		console.log("//// News");
-		//console.log(err || data);
-		data = fnz.fixResults(data);
-		callback(data);
-	});
+  console.log("getAllNews");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/news' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// News");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
 };
 
 
@@ -100,8 +106,9 @@ exports.getAllNews = function getAllNews(req, limit, page, callback) {
 
 exports.getWeb = function getWeb(req,callback) {
   console.log(req.params.web);
-  var wp = new WPAPI({ endpoint: config.sez.web.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/web-and-mobile/(?P<sluggg>)' );
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.web.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/web-and-mobile/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.web).get(function( err, data ) {
     console.log("//// Web");
     data = fnz.fixResult(data);
@@ -111,8 +118,9 @@ exports.getWeb = function getWeb(req,callback) {
 
 exports.getPostType = function getWeb(req,posttype,callback) {
   console.log(req.params.web);
-  var wp = new WPAPI({ endpoint: config.sez.web.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/post_type/(?P<sluggg>)' );
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.web.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/post_type/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(posttype).get(function( err, data ) {
     console.log("//// posttype"+posttype);
     //data = fnz.fixResult(data);
@@ -121,155 +129,133 @@ exports.getPostType = function getWeb(req,posttype,callback) {
 };
 
 exports.getAllWeb = function getAllWeb(req, limit, page, callback) {
-	console.log("getAllWeb");
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/web-and-mobile' );
-	//console.log(wp.myCustomResource);
-	//console.log(wp.new());
-	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-		console.log("//// All Web");
-		//console.log(err || data);
-		data = fnz.fixResults(data);
-		callback(data);
-	});
+  console.log("getAllWeb");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/web-and-mobile' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Web");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
 };
 
 
 //////// LEARNING
 
 exports.getLearning = function getLearning(req,callback) {
-	console.log(req.params.new);
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/learning/(?P<sluggg>)' );
-	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
-		console.log("//// learning");
-		data = fnz.fixResult(data);
-		callback(data);
-	});
+  console.log(req.params.new);
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/learning/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+    console.log("//// learning");
+    data = fnz.fixResult(data);
+    callback(data);
+  });
 };
 
 exports.getAllLearning = function getAllLearning(req, limit, page, callback) {
-	console.log("getAllWeb");
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/learning' );
-	//console.log(wp.myCustomResource);
-	//console.log(wp.new());
-	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-		console.log("//// All learning");
-		//console.log(err || data);
-		data = fnz.fixResults(data);
-		callback(data);
-	});
+  console.log("getAllWeb");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/learning' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All learning");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
 };
 
 
 //////// VIDEOS
 
 exports.getVideo = function getVideo(req,callback) {
-	console.log(req.params.new);
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/videos/(?P<sluggg>)' );
-	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
-		console.log("//// Video");
-		data = fnz.fixResult(data);
-		callback(data);
-	});
+  console.log(req.params.new);
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/videos/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+    console.log("//// Video");
+    data = fnz.fixResult(data);
+    callback(data);
+  });
 };
 
 exports.getAllVideo = function getAllVideo(req, limit, page, callback) {
-	console.log("getAllVideo");
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/videos' );
-	//console.log(wp.myCustomResource);
-	//console.log(wp.new());
-	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-		console.log("//// All Video");
-		//console.log(err || data);
-		data = fnz.fixResults(data);
-		callback(data);
-	});
+  console.log("getAllVideo");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/videos' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Video");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
 };
 
 
 //////// AWARDS
 
 exports.getAward = function getAward(req,callback) {
-	console.log(req.params.new);
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/awards-and-grants/(?P<sluggg>)' );
-	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
-		console.log("//// Award");
-		data = fnz.fixResult(data);
-		callback(data);
-	});
+  console.log(req.params.new);
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/awards-and-grants/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+    console.log("//// Award");
+    data = fnz.fixResult(data);
+    callback(data);
+  });
 };
 
 exports.getAllAward = function getAllAward(req, limit, page, callback) {
-	console.log("getAllAward");
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/awards-and-grants' );
-	//console.log(wp.myCustomResource);
-	//console.log(wp.new());
-	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-		console.log("//// All Award");
-		//console.log(err || data);
-		data = fnz.fixResults(data);
-		callback(data);
-	});
+  console.log("getAllAward");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/awards-and-grants' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Award");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
 };
 
 //////// LAB
 
 exports.getLab = function getLab(req,callback) {
-	console.log(req.params.new);
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/lab/(?P<sluggg>)' );
-	wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
-		console.log("//// lab");
-		data = fnz.fixResult(data);
-		callback(data);
-	});
+  console.log(req.params.new);
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/lab/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
+    console.log("//// lab");
+    data = fnz.fixResult(data);
+    callback(data);
+  });
 };
 
 exports.getAllLab = function getAllLab(req, limit, page, callback) {
-	console.log("getAllLab");
-	var wp = new WPAPI({ endpoint: config.sez.news.domain+'/wp-json' });
-	wp.myCustomResource = wp.registerRoute( 'wp/v2', '/lab' );
-	//console.log(wp.myCustomResource);
-	//console.log(wp.new());
-	wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-		console.log("//// All lab");
-		//console.log(err || data);
-		data = fnz.fixResults(data);
-		callback(data);
-	});
-};
-
-
-
-//////// EDITIONS
-
-exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
-  console.log("getAllEditions");
-  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition' );
+  console.log("getAllLab");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/lab' );
   //console.log(wp.myCustomResource);
   //console.log(wp.new());
   wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// All Editions");
-    //console.log(err || data);
-    data = fnz.fixResults(data);
-    callback(data);
-  });
-};
-exports.getAllEditionsByYear = function getAllEditionsByYear(req, year, limit, page, callback) {
-  console.log("getAllEditions");
-  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition' );
-  //console.log(wp.myCustomResource);
-  //console.log(wp.new());
-  wp.myCustomResource().param( 'after', new Date( (year-1)+'-12-31' ) ).param( 'before', new Date( (year+1)+'-01-01' ) ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// All Editions");
+    console.log("//// All lab");
     //console.log(err || data);
     data = fnz.fixResults(data);
     callback(data);
@@ -277,126 +263,28 @@ exports.getAllEditionsByYear = function getAllEditionsByYear(req, year, limit, p
 };
 
 
-exports.getEdition = function getEdition(req,callback) {
-  console.log(req.params.edition);
-  console.log(req.params.subedition);
-  console.log(req.params.subsubedition);
-  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
-  if (req.params.subsubedition) {
-    console.log("req.params.subsubedition");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
-    wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
-      console.log("//// SubSubEdition");
-      //data = fnz.fixResult(data);
-      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-      callback(data);
-    });
-  } else if (req.params.subedition) {
-    console.log("req.params.subedition");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
-    wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
-      console.log("//// SubEdition");
-      //data = fnz.fixResult(data);
-      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-      callback(data);
-    });
-  } else {
-    console.log("req.params.edition");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)' );
-    console.log(wp.myCustomResource);
-    wp.myCustomResource().edition(req.params.edition,req.params.subsubedition,req.params.subsubedition).get(function( err, data ) {
-      console.log("//// Edition");
-      data = fnz.fixResult(data);
-      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-      callback(data);
-    });
-  }
-};
 
-exports.getEditionArtist = function getEditionArtist(req,callback) {
-  console.log(req.params.edition);
-  console.log(req.params.subedition);
-  console.log(req.params.subsubedition);
-  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
-  if (req.params.artist && req.params.performance) {
-    console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
-    wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).performances("performances").performance(req.params.performance).get(function( err, data ) {
-      console.log("//// Artist");
-      console.log(data);
-      callback(data);
-    });
-  } else if (req.params.artist) {
-    console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
-    wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).get(function( err, data ) {
-      console.log("//// Artist");
-      console.log(data);
-      callback(data);
-    });
-  } else {
-    console.log("req.params.subedition");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
-    wp.myCustomResource().edition(req.params.edition).subedition("artists").get(function( err, data ) {
-      console.log("//// SubEdition");
-      callback(data);
-    });
-  }
-};
-
-exports.getEditionArtistGallery = function getEditionArtistGallery(req,callback) {
-  console.log(req.params.edition);
-  console.log(req.params.subedition);
-  console.log(req.params.subsubedition);
-  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
-  if (req.params.artist && req.params.gallery && req.params.galleryitem) {
-    console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)/(?P<galleryitem>)' );
-    wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).galleryitem(req.params.galleryitem).get(function( err, data ) {
-      console.log("//// Artist gallery item");
-      console.log(data);
-      callback(data);
-    });
-  } else if (req.params.artist && req.params.gallery) {
-    console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)' );
-    wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).get(function( err, data ) {
-      console.log("//// Artist gallery");
-      console.log(data);
-      callback(data);
-    });
-  /*} else if (req.params.artist) {
-    console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
-    wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).get(function( err, data ) {
-      console.log("//// Artist");
-      console.log(data);
-      callback(data);
-    });*/
-  } else {
-    console.log("req.params.subedition");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
-    wp.myCustomResource().edition(req.params.edition).subedition("gallery").get(function( err, data ) {
-      console.log("//// SubEdition gallery");
-      callback(data);
-    });
-  }
-};
+//////// GLOBAL
 
 exports.getMetaData = function getMetaData(req,callback) {
-  request(config.domain+'/wp-json/wp/v2/meta_data/', function (error, response, body) {
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  console.log(global.getLocale());
+  global.setLocale(config.current_lang);
+  console.log(global.getLocale());
+  request(config.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/meta_data/', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var data = JSON.parse(body);
       data.url = req.url;
       console.log(req.url);
+      data.langSwitcher = {
+        "it" : (req.url.indexOf('/it/')===0 ? req.url : '/it'+req.url),
+        "en" : (req.url.indexOf('/it/')===0 ? req.url.substring(3) : req.url)
+      }
       //console.log(data);
       callback(data);
     }
   });
 };
-
-
-//////// GLOBAL
 
 exports.getAll = function getAll(req, limit, page, callback) {
   var trgt = this;
@@ -416,6 +304,141 @@ exports.getAll = function getAll(req, limit, page, callback) {
     });
   });
 };
+/*
+
+//////// EDITIONS
+
+exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
+  console.log("getAllEditions");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/edition' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Editions");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+exports.getAllEditionsByYear = function getAllEditionsByYear(req, year, limit, page, callback) {
+  console.log("getAllEditions");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/edition' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'after', new Date( (year-1)+'-12-31' ) ).param( 'before', new Date( (year+1)+'-01-01' ) ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Editions");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+
+
+exports.getEdition = function getEdition(req,callback) {
+  console.log(req.params.edition);
+  console.log(req.params.subedition);
+  console.log(req.params.subsubedition);
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  if (req.params.subsubedition) {
+    console.log("req.params.subsubedition");
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
+      console.log("//// SubSubEdition");
+      //data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      callback(data);
+    });
+  } else if (req.params.subedition) {
+    console.log("req.params.subedition");
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
+      console.log("//// SubEdition");
+      //data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      callback(data);
+    });
+  } else {
+    console.log("req.params.edition");
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/editions/(?P<edition>)' );
+    console.log(wp.myCustomResource);
+    wp.myCustomResource().edition(req.params.edition,req.params.subsubedition,req.params.subsubedition).get(function( err, data ) {
+      console.log("//// Edition");
+      data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      callback(data);
+    });
+  }
+};
+
+exports.getEditionArtist = function getEditionArtist(req,callback) {
+  console.log(req.params.edition);
+  console.log(req.params.subedition);
+  console.log(req.params.subsubedition);
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  if (req.params.artist && req.params.performance) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).performances("performances").performance(req.params.performance).get(function( err, data ) {
+      console.log("//// Artist");
+      console.log(data);
+      callback(data);
+    });
+  } else if (req.params.artist) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).get(function( err, data ) {
+      console.log("//// Artist");
+      console.log(data);
+      callback(data);
+    });
+  } else {
+    console.log("req.params.subedition");
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("artists").get(function( err, data ) {
+      console.log("//// SubEdition");
+      callback(data);
+    });
+  }
+};
+
+exports.getEditionArtistGallery = function getEditionArtistGallery(req,callback) {
+  console.log(req.params.edition);
+  console.log(req.params.subedition);
+  console.log(req.params.subsubedition);
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  if (req.params.artist && req.params.gallery && req.params.galleryitem) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)/(?P<galleryitem>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).galleryitem(req.params.galleryitem).get(function( err, data ) {
+      console.log("//// Artist gallery item");
+      console.log(data);
+      callback(data);
+    });
+  } else if (req.params.artist && req.params.gallery) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).get(function( err, data ) {
+      console.log("//// Artist gallery");
+      console.log(data);
+      callback(data);
+    });
+  } else {
+    console.log("req.params.subedition");
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").get(function( err, data ) {
+      console.log("//// SubEdition gallery");
+      callback(data);
+    });
+  }
+};
+
 exports.getAllEditionsEvents = function getAllEditionsEvents(req, year, callback) {
   var trgt = this;
   var data = [];
@@ -432,10 +455,9 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, year, callback
   });
 };
 
-/*
  exports.getEditionChilds = function getEditionChilds(edition, wp, callback) {
   console.log("getEditionChilds");
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition_parent/(?P<sluggg>)' );
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/edition_parent/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(edition).get(function( err, data ) {
     //console.log(data);
     data[data2.ID] = data2;
@@ -446,7 +468,7 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, year, callback
       console.log("//// capauthor");
       console.log(err2 || data2);
       console.log(data2.name);
-      wp.myCustomResource = wp.registerRoute( 'wp/v2', '/author/(?P<author>)' );
+      wp.myCustomResource = wp.registerRoute('wp/v2', '/author/(?P<author>)' );
       wp.myCustomResource().author(data2.name).get(function( err3, data3 ) {
         console.log("//// author");
         console.log(err3 || data3);

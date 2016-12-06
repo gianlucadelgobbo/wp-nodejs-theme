@@ -5,6 +5,7 @@ exports.get = function get(req, res) {
 		helpers.getEvent(req, function( result ) {
 			meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
 			if (result.featured) meta_data.meta['image_src'] = result.featured.full;
+			if (result.meta_description) meta_data.meta['og_description'] = result.meta_description;
 			res.render(config.prefix+'/'+'event', {data: result, meta_data:meta_data});
 		});
 	});
@@ -12,9 +13,11 @@ exports.get = function get(req, res) {
 
 exports.getAll = function getAll(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
-		helpers.getAllEvents(req, config.sez.events.limit, 1, function( result ) {
-			meta_data.meta.title = "Events | " + meta_data.meta.name+ " "+ meta_data.edition.post_title;
-			res.render(config.prefix+'/'+'events', {data: result, meta_data:meta_data});
+		helpers.getPostType(req, "events", function( posttype ) {
+			helpers.getAllEvents(req, config.sez.events.limit, 1, function( result ) {
+				meta_data.meta.title = __("Events") + " | " + meta_data.meta.name;
+				res.render(config.prefix+'/'+'events', {data: result, meta_data:meta_data, posttype:posttype});
+			});
 		});
 	});
 };

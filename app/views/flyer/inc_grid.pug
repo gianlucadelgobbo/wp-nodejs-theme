@@ -4,7 +4,7 @@
 //- console.log(data.grid)
 
 if data['wpcf-same-rows-height']==1
-    - console.log(data.grid)
+    //- console.log(data.grid)
     each row in data.grid
         if row
             .row
@@ -13,7 +13,7 @@ if data['wpcf-same-rows-height']==1
                     - if (col.tit) conta++
                 - var span = 12/conta
                 each col in row
-                    if col.tit
+                    if col.tit && col.tit!="."
                         div(class="col-sm-"+span)
                             h3!=col.tit+(col.stit ? "<br /><small>"+col.stit+"</small>" : "")
                             .rientro!=col.box
@@ -25,6 +25,6 @@ else
                 if col
                     div(class="col-sm-"+span)
                         each row in col
-                            if row.tit
+                            if row.tit && col.tit != "."
                                 h3!=row.tit + (row.stit ? "<br /><small>"+row.stit+"</small>" : "")
                                 .rientro!=row.box

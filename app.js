@@ -7,7 +7,7 @@ global.config = require('config')[sites[0]];
 
 //console.log(config);
 
-app.root = __dirname;
+config.root = app.root = __dirname;
 
 require('./app/setup')(app, express);
 require('./app/router')(app);

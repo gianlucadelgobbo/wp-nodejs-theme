@@ -9,6 +9,7 @@
     "config": "^1.21.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "i18n": "^0.8.3",
     "less-middleware": "^2.2.0",
     "method-override": "^2.3.6",
     "moment": "^2.15.1",

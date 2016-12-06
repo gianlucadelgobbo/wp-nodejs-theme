@@ -6,8 +6,6 @@ exports.get = function get(req, res) {
 			meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
 			if (result.featured) meta_data.meta['image_src'] = result.featured.full;
 			if (result.meta_description) meta_data.meta['og_description'] = result.meta_description;
-			meta_data.meta['canonical'] = result.meta_description;
-			console.log(result.post_title);
 			res.render(config.prefix+'/'+'web', {data: result, meta_data:meta_data});
 		});
 	});
@@ -18,7 +16,7 @@ exports.getAll = function getAll(req, res) {
 		helpers.getPostType(req, "web-and-mobile", function( posttype ) {
 			helpers.getAllWeb(req, config.sez.web.limit, 1, function( result ) {
 				meta_data.meta.title = "Web & Mobile | " + meta_data.meta.name;
-				res.render(config.prefix+'/'+'webs', {data: result, meta_data:meta_data,posttype:posttype});
+				res.render(config.prefix+'/'+'webs', {data: result, meta_data:meta_data, posttype:posttype});
 			});
 		});
 	});

@@ -9,11 +9,11 @@ jQuery(window).load(function(){
 		} else {
 			console.log("-1 "+st);
 		}
-		if (st>500 && !jQuery('#top-menu').hasClass("navbar-fixed-top") && jQuery('body').hasClass("expanding")) {
+		if (st>jQuery(window).height() && !jQuery('#top-menu').hasClass("navbar-fixed-top") && jQuery('body').hasClass("expanding")) {
 			jQuery('#top-menu').addClass("navbar-fixed-top");
 			jQuery('body').removeClass("edgtf-header-expanding");
 		}
-		if (st<500 && jQuery('#top-menu').hasClass("navbar-fixed-top") && jQuery('body').hasClass("expanding")) {
+		if (st<jQuery(window).height() && jQuery('#top-menu').hasClass("navbar-fixed-top") && jQuery('body').hasClass("expanding")) {
 			jQuery('#top-menu').removeClass("navbar-fixed-top");
 			jQuery('body').addClass("edgtf-header-expanding");
 		}
