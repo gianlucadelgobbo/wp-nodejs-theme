@@ -3,6 +3,22 @@ var request = require( 'request' );
 var moment = require( 'moment' );
 var fnz = require('./functions');
 
+exports.getAllUsers = function getAllEvents(req, type, callback) {
+  console.log("getAllUsers");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/authors/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(type).get(function( err, data ) {
+
+    console.log("//// Users"+type);
+    console.log(err);
+    console.log(data.length);
+
+    //console.log(err || data);
+    //data = fnz.fixResults(data);
+    callback(data);
+  });
+};
 //////// PAGES
 
 exports.getPage = function getPage(req,callback) {

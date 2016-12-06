@@ -1,0 +1,51 @@
+.boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
+  .Web(itemscope='', itemtype='http://schema.org/CreativeWork')
+    .thumb-cnt
+      .catlabel=box.type
+      a(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/web-and-mobile/'+box.slug, rel='bookmark', title!=box.title.rendered)
+        img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.title.rendered, itemprop='url')
+    .box-list
+      .box-list-cnt
+        if box.data_month
+          .text-muted
+            .dates
+                .date=box.data_month
+                - console.log(box);
+                meta(itemprop="datePublished", content="1991-05-01")
+        h3.event_list_title(itemprop='name')
+          a(itemprop='url', href='/web-and-mobile/'+box.slug, rel='bookmark', title=box.title.rendered)!=box.title.rendered
+        .text-muted.small.excerpt
+          if box.excerpt && box.excerpt.rendered
+            div(itemprop='headline')
+              p!=box.excerpt.rendered
+          if box.tags
+            p.tags
+              each tag in box.tags
+                span.label.label-primary=tag.name
+                !=" "
+          //span.sr-only(itemprop='organizer')
+          if box.capauthors
+            p
+              each capauthor in box.capauthors
+                if capauthor.user_role == 'customer'
+                  span(itemprop='sourceOrganization', itemscope='', itemtype='http://schema.org/Person')
+                    a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+                      i.glyphicon.glyphicon-user
+                      !=" "
+                      span(itemprop='name')=capauthor.display_name
+                      !=" - "
+                      span(itemprop='jobTitle')=capauthor.user_role
+            p
+              each capauthor in box.capauthors
+                if capauthor.user_role != 'customer'
+                  span(itemprop='publisher')
+                    a(href='/people/'+capauthor.user_login, rel='author', itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+                      i.glyphicon.glyphicon-user
+                      !=" "
+                      span(itemprop='name')=capauthor.display_name
+                      !=" - "
+                      span(itemprop='jobTitle')=capauthor.user_role
+                      span.hide
+                        !=" - "
+                        span.org(itemprop='affiliation') Flyer communication
+                !=" "

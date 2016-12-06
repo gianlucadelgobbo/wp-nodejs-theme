@@ -25,9 +25,9 @@ module.exports = function(app) {
 	app.get('/it/lab/(:lab)', labRoutes.get);
 	app.get('/it/extra/', newsRoutes.getAll);
 	app.get('/it/extra/(:news)', newsRoutes.get);
-	app.get('/it/people', usersRoutes.getAll);
+	app.get('/it/people', usersRoutes.getAllPeople);
 	app.get('/it/people/(:user)', usersRoutes.get);
-	app.get('/it/customers', usersRoutes.getAll);
+	app.get('/it/customers', usersRoutes.getAllCustomers);
 	app.get('/it/customers/(:user)', awardsRoutes.get);
 	app.get('/it/awards-and-grants/', awardsRoutes.getAll);
 	app.get('/it/awards-and-grants/(:award)', newsRoutes.get);
@@ -46,9 +46,9 @@ module.exports = function(app) {
 	app.get('/lab/(:lab)', labRoutes.get);
 	app.get('/extra/', newsRoutes.getAll);
 	app.get('/extra/(:news)', newsRoutes.get);
-	app.get('/people', usersRoutes.getAll);
+	app.get('/people', usersRoutes.getAllPeople);
 	app.get('/people/(:user)', usersRoutes.get);
-	app.get('/customers', usersRoutes.getAll);
+	app.get('/customers', usersRoutes.getAllCustomers);
 	app.get('/customers/(:user)', awardsRoutes.get);
 	app.get('/awards-and-grants/', awardsRoutes.getAll);
 	app.get('/awards-and-grants/(:award)', newsRoutes.get);

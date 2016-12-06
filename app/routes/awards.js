@@ -3,19 +3,20 @@ var helpers = require('./../helpers');
 exports.get = function get(req, res) {
 	if (req.url.indexOf('/it/')===0) req.params.lang = "it";
 	helpers.getMetaData(req, function( meta_data ) {
-		helpers.getEvent(req, function( result ) {
+		helpers.getAward(req, function( result ) {
 			meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
-			res.render(config.prefix+'/'+'event', {data: result, meta_data:meta_data});
+			res.render(config.prefix+'/'+'award', {data: result, meta_data:meta_data});
 		});
 	});
 };
 
 exports.getAll = function getAll(req, res) {
-	if (req.url.indexOf('/it/')===0) req.params.lang = "it";
 	helpers.getMetaData(req, function( meta_data ) {
-		helpers.getAllEvents(req, config.sez.events.limit, 1, function( result ) {
-			meta_data.meta.title = "Events | " + meta_data.meta.name;
-			res.render(config.prefix+'/'+'events', {data: result, meta_data:meta_data});
+		helpers.getPostType(req, "awards-and-grants", function( posttype ) {
+			helpers.getAllAward(req, config.sez.awards.limit, 1, function( result ) {
+				meta_data.meta.title = __("Awards & Grants") + " | " + meta_data.meta.name;
+				res.render(config.prefix+'/'+'awards', {data: result, meta_data:meta_data, posttype:posttype});
+			});
 		});
 	});
 };

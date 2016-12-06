@@ -31,15 +31,31 @@
           "limit"		: 4
         }
       },
+      "web" : {
+        "domain"	: "http://flyer.it",
+        "limit"		: 20
+      },
       "events" : {
         "domain"	: "http://flyer.it",
         "limit"		: 20
       },
-      "news" : {
+      "videos" : {
         "domain"	: "http://flyer.it",
         "limit"		: 20
       },
-      "web" : {
+      "learning" : {
+        "domain"	: "http://flyer.it",
+        "limit"		: 20
+      },
+      "labs" : {
+        "domain"	: "http://flyer.it",
+        "limit"		: 20
+      },
+      "awards" : {
+        "domain"	: "http://flyer.it",
+        "limit"		: 20
+      },
+      "news" : {
         "domain"	: "http://flyer.it",
         "limit"		: 20
       },
