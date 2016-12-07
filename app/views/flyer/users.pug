@@ -1,4 +1,11 @@
 extends layout
 block content
-	each page in data
-		//pre!=page
+	.container-fluid
+		article#container(itemscope, itemtype='http://schema.org/ListItem')
+			h1=title
+			br
+			include inc_share
+			.row.isotope
+				each box in data
+					.col-lg-3.col-md-4.col-sm-6.col.isotopeitem(itemscope='', itemtype='http://schema.org/itemListElement')
+						include boxes/box_user

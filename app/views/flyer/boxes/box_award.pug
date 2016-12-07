@@ -2,8 +2,8 @@
   .Web(itemscope='', itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
       .catlabel=box.type
-      a(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/web-and-mobile/'+box.slug, rel='bookmark', title!=box.title.rendered)
-        img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.title.rendered, itemprop='url')
+      a(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/web-and-mobile/'+box.slug, rel='bookmark', title!=box.post_title)
+        img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
     .box-list
       .box-list-cnt
         if box.data_month
@@ -13,7 +13,7 @@
                 - console.log(box);
                 meta(itemprop="datePublished", content="1991-05-01")
         h3.event_list_title(itemprop='name')
-          a(itemprop='url', href='/web-and-mobile/'+box.slug, rel='bookmark', title=box.title.rendered)!=box.title.rendered
+          a(itemprop='url', href='/web-and-mobile/'+box.slug, rel='bookmark', title=box.post_title)!=box.post_title
         .text-muted.small.excerpt
           if box.excerpt && box.excerpt.rendered
             div(itemprop='headline')

@@ -3,6 +3,26 @@ var request = require( 'request' );
 var moment = require( 'moment' );
 var fnz = require('./functions');
 
+exports.getUser = function getUser(req, callback) {
+  console.log("getUser");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  /*wp.users().slug(req.param("user")).get(function( err, data ) {
+    console.log(err || data);
+  });*/
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/author/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.user).get(function( err, data ) {
+    console.log("//// User");
+    for(auth_content in data.data.auth_contents) {
+      //console.log(data.data.auth_contents[auth_content].posts);
+      data.data.auth_contents[auth_content].posts = fnz.fixResults(data.data.auth_contents[auth_content].posts);
+    }
+    //console.log(err || data);
+    //data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+
 exports.getAllUsers = function getAllEvents(req, type, callback) {
   console.log("getAllUsers");
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
@@ -11,8 +31,6 @@ exports.getAllUsers = function getAllEvents(req, type, callback) {
   wp.myCustomResource().sluggg(type).get(function( err, data ) {
 
     console.log("//// Users"+type);
-    console.log(err);
-    console.log(data.length);
 
     //console.log(err || data);
     //data = fnz.fixResults(data);

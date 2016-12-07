@@ -63,7 +63,7 @@ exports.getGrid = function getGrid(data) {
 
 exports.fixResults = function fixResults(data) {
 	for (var item in data){
-		if (data[item].title) data[item] = this.fixResult(data[item]);
+		if (data[item].title || data[item].post_title) data[item] = this.fixResult(data[item]);
 	}
 	//data.sort("this.sortByStartDate");
 
