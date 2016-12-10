@@ -1,179 +1,237 @@
 var $container;
 var mySvgPanZoom;
 var lastScrollTop = 0;
-jQuery(window).load(function(){
-	$( window ).scroll(function() {
-		var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-		if (st > lastScrollTop){
-			console.log("+1 "+st);
-		} else {
-			console.log("-1 "+st);
-		}
-		if (st>jQuery(window).height() && !jQuery('#top-menu').hasClass("navbar-fixed-top") && jQuery('body').hasClass("expanding")) {
-			jQuery('#top-menu').addClass("navbar-fixed-top");
-			jQuery('body').removeClass("edgtf-header-expanding");
-		}
-		if (st<jQuery(window).height() && jQuery('#top-menu').hasClass("navbar-fixed-top") && jQuery('body').hasClass("expanding")) {
-			jQuery('#top-menu').removeClass("navbar-fixed-top");
-			jQuery('body').addClass("edgtf-header-expanding");
-		}
-		lastScrollTop = st;
-	});
-	jQuery(".edgtf-menu-appear").click(function() {
-		if (jQuery('#top-menu').hasClass("edgtf-opened")){
-			jQuery('#top-menu').removeClass("edgtf-opened");
-		} else {
-			jQuery('#top-menu').addClass("edgtf-opened");
-		}
-		return false;
-	});
-	jQuery(".edgtf-search-opener").click(function() {
-		jQuery('.edgtf-search-cover').addClass("edgtf-search-cover-opened");
-		return false;
-	});
-	jQuery(".edgtf-search-close").click(function() {
-		jQuery('.edgtf-search-cover').removeClass("edgtf-search-cover-opened");
-		return false;
-	});
-	jQuery("#loadmore").click(function() {
-		jQuery.ajax({
-			method: "POST",
-			url: "/timeline/" + year + "/",
-			data: {ajax: 1}
-		}).done(function (msg) {
-			$(".timeline").append(msg);
-			year--;
-			alert("Data Saved: " + msg);
-		});
-		return false;
-	});
-	jQuery(".tooltips").tooltip();
-	$container = jQuery('.isotope');
-	$container.imagesLoaded( function(){
-		$container.isotope({
-			itemSelector: 'div.isotopeitem',
-			masonry: {}
-		});
-	});
-	resetAffix();
-	if (jQuery('.svg')) loadMap ();
-	if (jQuery('#myAffix .navbar-brand.donttouch').length==0) {
-		jQuery('#myAffix').on('affix.bs.affix', function () {
-			console.log('Fired!');
-			jQuery(".navbar-brand").removeClass( 'visible-xs' );
-		} );
-		jQuery('#myAffix').on( 'affixed-top.bs.affix', function () {
-			console.log('unaff');
-			jQuery(".navbar-brand").addClass( 'visible-xs' );
-		} );
 
-	}
-	/*jQuery('a[href*=#]:not([href=#])').click(function() {
-		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-			var target = $(this.hash);
-			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-			if (target.length) {
-				$('html,body').animate({
-					scrollTop: target.offset().top
-				}, 1000);
-				return false;
-			}
-		}
-	});*/
+var onclose_url;
+var onclose_title;
+function change(state) {
+  console.log(state);
+  if(state === null) { // initial page
+    $('#cntModal').modal('hide');
+  } else { // page added with pushState
+    $("div").text(state.url);
+  }
+}
+
+$(window).on("popstate", function(e) {
+  change(e.originalEvent.state);
+});
+
+(function(original) { // overwrite history.pushState so that it also calls
+  // the change function when called
+  history.pushState = function(state) {
+    change(state);
+    return original.apply(this, arguments);
+  };
+})(history.pushState);
+jQuery(window).load(function(){
+  jQuery(".ajaxloader").click(function() {
+    var options = {};
+    onclose_url = window.location.href;
+    onclose_title = document.title;
+    var url = this.href;
+    var title = this.title;
+    $('#cntModal').modal();
+    history.pushState({}, title, url);
+    $(document).prop('title',title);
+    $( "#cntModal .modal-body" ).load( url+" #result" , function() {
+    });
+
+    return false;
+  });
+  $('#cntModal').on('hidden.bs.modal', function (e) {
+    $( "#cntModal .modal-body" ).html("<div class='loading'>Loading...</div>");
+    history.pushState({}, onclose_title, onclose_url);
+    $(document).prop('title',onclose_title);
+  })
+
+  $( window ).scroll(function() {
+    var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+    if (st > lastScrollTop) {
+      if (jQuery('#top-menu').hasClass("navbar-fixed-top")) {
+        console.log("rimuovi");
+        jQuery('body').removeClass("fixed-top");
+        jQuery('#top-menu').removeClass("navbar-fixed-top");
+        if (st > 200 && !jQuery('#top-menu').hasClass("navbar-hidden-top")) {
+          jQuery('#top-menu').addClass("navbar-hidden-top");
+        }
+      }
+    } else {
+      if (!jQuery('#top-menu').hasClass("navbar-fixed-top")) {
+        console.log("metti");
+        jQuery('body').addClass("fixed-top");
+        jQuery('#top-menu').addClass("navbar-fixed-top");
+        jQuery('#top-menu').removeClass("navbar-hidden-top");
+      }
+    }
+    if (st>jQuery(window).height() && !jQuery('#top-menu').hasClass("navbar-fixed-top") && jQuery('body').hasClass("expanding")) {
+      console.log("metti 2");
+      jQuery('#top-menu').addClass("navbar-fixed-top");
+      jQuery('body').removeClass("flyer-header-expanding");
+    }
+    if (st<jQuery(window).height() && jQuery('#top-menu').hasClass("navbar-fixed-top") && jQuery('body').hasClass("expanding")) {
+      console.log("rimuovi 2");
+      jQuery('#top-menu').removeClass("navbar-fixed-top");
+      jQuery('body').addClass("flyer-header-expanding");
+    }
+    lastScrollTop = st;
+  });
+  jQuery(".flyer-menu-appear").click(function() {
+    if (jQuery('#top-menu').hasClass("flyer-opened")){
+      jQuery('#top-menu').removeClass("flyer-opened");
+    } else {
+      jQuery('#top-menu').addClass("flyer-opened");
+    }
+    return false;
+  });
+  jQuery(".flyer-search-opener").click(function() {
+    jQuery('.flyer-search-cover').addClass("flyer-search-cover-opened");
+    return false;
+  });
+  jQuery(".flyer-search-close").click(function() {
+    jQuery('.flyer-search-cover').removeClass("flyer-search-cover-opened");
+    return false;
+  });
+  /*
+  jQuery("#loadmore").click(function() {
+    jQuery.ajax({
+      method: "POST",
+      url: "/timeline/" + year + "/",
+      data: {ajax: 1}
+    }).done(function (msg) {
+      $(".timeline").append(msg);
+      year--;
+      alert("Data Saved: " + msg);
+    });
+    return false;
+  });
+  jQuery(".tooltips").tooltip();
+  $container = jQuery('.isotope');
+  $container.imagesLoaded( function(){
+    $container.isotope({
+      itemSelector: 'div.isotopeitem',
+      masonry: {}
+    });
+  });
+  resetAffix();
+  if (jQuery('.svg')) loadMap ();
+  if (jQuery('#myAffix .navbar-brand.donttouch').length==0) {
+    jQuery('#myAffix').on('affix.bs.affix', function () {
+      console.log('Fired!');
+      jQuery(".navbar-brand").removeClass( 'visible-xs' );
+    } );
+    jQuery('#myAffix').on( 'affixed-top.bs.affix', function () {
+      console.log('unaff');
+      jQuery(".navbar-brand").addClass( 'visible-xs' );
+    } );
+
+  }
+  jQuery('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });*/
 });
 jQuery( window ).resize(function() {
-	resetAffix();
+  resetAffix();
 });
 function resetAffix(){
-	jQuery('#myAffix').affix({
-		offset: {
-			top: jQuery('#myHeader').height()
-		}
-	}); 
+  jQuery('#myAffix').affix({
+    offset: {
+      top: jQuery('#myHeader').height()
+    }
+  }); 
 }
 
 function loadMap () {
-	jQuery(".svg").html("<div class=\"content-padded\">Loading data...</div>");
-	var embed = document.createElement('embed');
-	embed.setAttribute('style', 'width: 100%; height: 100%;');
-	embed.setAttribute('type', 'image/svg+xml');
-	jQuery(".svg")
-	embed.setAttribute('src', jQuery(".svg").attr('data-img'));
-	jQuery(".svg").html("");
-	jQuery(".svg").append(embed);
+  jQuery(".svg").html("<div class=\"content-padded\">Loading data...</div>");
+  var embed = document.createElement('embed');
+  embed.setAttribute('style', 'width: 100%; height: 100%;');
+  embed.setAttribute('type', 'image/svg+xml');
+  jQuery(".svg")
+  embed.setAttribute('src', jQuery(".svg").attr('data-img'));
+  jQuery(".svg").html("");
+  jQuery(".svg").append(embed);
 
-	var eventsHandler;
-	
-	eventsHandler = {
-		haltEventListeners: ['touchstart', 'touchend', 'touchmove', 'touchleave', 'touchcancel'],
-		init: function(options) {
-			var instance = options.instance
-				, initialScale = 1
-				, pannedX = 0
-				, pannedY = 0
-	
-			// Init Hammer
-			// Listen only for pointer and touch events
-			this.hammer = Hammer(options.svgElement, {
-				inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchInput
-			})
-	
-			// Enable pinch
-			this.hammer.get('pinch').set({enable: true})
-	
-			// Handle double tap
-			this.hammer.on('doubletap', function(ev){
-				instance.zoomIn()
-			})
-	
-			// Handle pan
-			this.hammer.on('panstart panmove', function(ev){
-				// On pan start reset panned variables
-				if (ev.type === 'panstart') {
-					pannedX = 0
-					pannedY = 0
-				}
-	
-				// Pan only the difference
-				instance.panBy({x: ev.deltaX - pannedX, y: ev.deltaY - pannedY})
-				pannedX = ev.deltaX
-				pannedY = ev.deltaY
-			})
-	
-			// Handle pinch
-			this.hammer.on('pinchstart pinchmove', function(ev){
-				// On pinch start remember initial zoom
-				if (ev.type === 'pinchstart') {
-					initialScale = instance.getZoom()
-					instance.zoom(initialScale * ev.scale)
-				}
-	
-				instance.zoom(initialScale * ev.scale)
-	
-			})
-	
-			// Prevent moving the page on some devices when panning over SVG
-			options.svgElement.addEventListener('touchmove', function(e){ e.preventDefault(); });
-		},
-		destroy: function(){
-			this.hammer.destroy()
-		}
-	}
-	
-	lastEventListener = function(){
-		var panZoom = window.panZoom = svgPanZoom(embed, {
-			zoomEnabled: true,
-			controlIconsEnabled: true,
-			fit: 1,
-			center: 1,
-			customEventsHandler: eventsHandler
-		});
+  var eventsHandler;
+  
+  eventsHandler = {
+    haltEventListeners: ['touchstart', 'touchend', 'touchmove', 'touchleave', 'touchcancel'],
+    init: function(options) {
+      var instance = options.instance
+        , initialScale = 1
+        , pannedX = 0
+        , pannedY = 0
+  
+      // Init Hammer
+      // Listen only for pointer and touch events
+      this.hammer = Hammer(options.svgElement, {
+        inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchInput
+      })
+  
+      // Enable pinch
+      this.hammer.get('pinch').set({enable: true})
+  
+      // Handle double tap
+      this.hammer.on('doubletap', function(ev){
+        instance.zoomIn()
+      })
+  
+      // Handle pan
+      this.hammer.on('panstart panmove', function(ev){
+        // On pan start reset panned variables
+        if (ev.type === 'panstart') {
+          pannedX = 0
+          pannedY = 0
+        }
+  
+        // Pan only the difference
+        instance.panBy({x: ev.deltaX - pannedX, y: ev.deltaY - pannedY})
+        pannedX = ev.deltaX
+        pannedY = ev.deltaY
+      })
+  
+      // Handle pinch
+      this.hammer.on('pinchstart pinchmove', function(ev){
+        // On pinch start remember initial zoom
+        if (ev.type === 'pinchstart') {
+          initialScale = instance.getZoom()
+          instance.zoom(initialScale * ev.scale)
+        }
+  
+        instance.zoom(initialScale * ev.scale)
+  
+      })
+  
+      // Prevent moving the page on some devices when panning over SVG
+      options.svgElement.addEventListener('touchmove', function(e){ e.preventDefault(); });
+    },
+    destroy: function(){
+      this.hammer.destroy()
+    }
+  }
+  
+  lastEventListener = function(){
+    var panZoom = window.panZoom = svgPanZoom(embed, {
+      zoomEnabled: true,
+      controlIconsEnabled: true,
+      fit: 1,
+      center: 1,
+      customEventsHandler: eventsHandler
+    });
 
-		jQuery(window).resize(function(){
-			panZoom.resize();
-			panZoom.fit();
-			panZoom.center();
-		})
-	};
-	embed.addEventListener('load', lastEventListener);
+    jQuery(window).resize(function(){
+      panZoom.resize();
+      panZoom.fit();
+      panZoom.center();
+    })
+  };
+  embed.addEventListener('load', lastEventListener);
 }

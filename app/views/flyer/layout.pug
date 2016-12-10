@@ -47,98 +47,99 @@ html(lang=config.current_lang)
     //link(rel='stylesheet', href='/'+config.prefix+'/css/style.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
 
-body(class=meta_data['url'] == '/' ? "edgtf-header-expanding expanding" : undefined)
+body(class=meta_data['url'] == '/' ? "flyer-header-expanding expanding" : undefined)
   nav#top-menu.navbar.navbar-inverse(role='navigation')
     .container-fluid
       // Brand and toggle get grouped for better mobile display
       .navbar-header
         button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#mainmenu',aria-expanded="false")
           span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
+          span.flyer-expanding-icon
+            span.flyer-line
+            span.flyer-line
+            span.flyer-line
         a.navbar-brand(href=(config.current_lang == 'it' ? '/it' : '')+'/', title=meta_data.meta['name'])
           img(src='/'+config.prefix+'/images/LogoFlyerWebSite2017_2_solo.svg', alt=meta_data.meta['name'])
       // Collect the nav links, forms, and other content for toggling
       #mainmenu.collapse.navbar-collapse
-        div.nav.navbar-nav.navbar-right.edgtf-expanding-icon-holder
-          div.edgtf-expanding-icon-holder-inner
-            a.edgtf-menu-appear(href="#")
-              span.edgtf-expanding-icon
-                span.edgtf-line
-                span.edgtf-line
-                span.edgtf-line
+        .nav.navbar-nav.navbar-right.flyer-expanding-icon-holder
+          .flyer-expanding-icon-holder-inner
+            a.flyer-menu-appear(href="#")
+              span.flyer-expanding-icon
+                span.flyer-line
+                span.flyer-line
+                span.flyer-line
         ul.nav.navbar-nav.navbar-right.menu-hide.border-right
           li(class=meta_data['url'] == '/' ? "active" : undefined)
             a(href=(config.current_lang == 'it' ? '/it' : '')+'/')
-              span.edgtf-item-inner
+              span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 | Home
           li(class=meta_data['url'].indexOf('/profile') >= 0 ? "active" : undefined)
             a(href=(config.current_lang == 'it' ? '/it' : '')+'/profile/')
-              span.edgtf-item-inner
+              span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("Profile")
           li.dropdown(class=meta_data['url'].indexOf('/web-and-mobile/') >= 0 || meta_data['url'].indexOf('/videos/') >= 0 || meta_data['url'].indexOf('/learning/') >= 0 || meta_data['url'].indexOf('/tags/') >= 0 ? "active" : undefined)
             a.dropdown-toggle(role='button', href='#', data-toggle='dropdown', aria-haspopup='true')
-              span.edgtf-item-inner
+              span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("Portfolio")
                 span.caret
             ul.dropdown-menu(role='menu')
               li(class=meta_data['url'].indexOf('/web-and-mobile') >= 0 ? "active" : undefined)
                 a(href=(config.current_lang == 'it' ? '/it' : '')+'/web-and-mobile/')
-                  span.edgtf-item-inner
+                  span.flyer-item-inner
                     i.fa.fa-long-arrow-right
                     !=global.__("Web & Mobile")
               li(class=meta_data['url'].indexOf('/events') >= 0 ? "active" : undefined)
                 a(href=(config.current_lang == 'it' ? '/it' : '')+'/events/')
-                  span.edgtf-item-inner
+                  span.flyer-item-inner
                     i.fa.fa-long-arrow-right
                     !=global.__("Events")
               li(class=meta_data['url'].indexOf('/videos/') >= 0 ? "active" : undefined)
                 a(href=(config.current_lang == 'it' ? '/it' : '') + '/videos/')
-                  span.edgtf-item-inner
+                  span.flyer-item-inner
                     i.fa.fa-long-arrow-right
                     !=global.__("Videos")
               li(class=meta_data['url'].indexOf('/learning') >= 0 ? "active" : undefined)
                 a(href=(config.current_lang == 'it' ? '/it' : '')+'/learning/')
-                  span.edgtf-item-inner
+                  span.flyer-item-inner
                     i.fa.fa-long-arrow-right
                     !=global.__("Learning")
               li(class=meta_data['url'].indexOf('/tags') >= 0 ? "active" : undefined)
                 a(href=(config.current_lang == 'it' ? '/it' : '')+'/tags/')
-                  span.edgtf-item-inner
+                  span.flyer-item-inner
                     i.fa.fa-long-arrow-right
                     !=global.__("Tags")
           li(class=meta_data['url'].indexOf('/customers') >= 0 ? "active" : undefined)
             a(href=(config.current_lang == 'it' ? '/it' : '')+'/customers/')
-              span.edgtf-item-inner
+              span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("Customers")
           li(class=meta_data['url'].indexOf('/lab') >= 0 ? "active" : undefined)
             a( href=(config.current_lang == 'it' ? '/it' : '')+'/lab/')
-              span.edgtf-item-inner
+              span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("Lab")
           li(class=meta_data['url'].indexOf('/extra') >= 0 ? "active" : undefined)
             a(href=(config.current_lang == 'it' ? '/it' : '')+'/extra/')
-              span.edgtf-item-inner
+              span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("Extra")
           li(class=meta_data['url'].indexOf('/people') >= 0 ? "active" : undefined)
             a(href=(config.current_lang == 'it' ? '/it' : '')+'/people/')
-              span.edgtf-item-inner
+              span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("People")
           li(class=meta_data['url'].indexOf('/awards-and-grants') >= 0 ? "active" : undefined)
             a(href=(config.current_lang == 'it' ? '/it' : '')+'/awards-and-grants/')
-              span.edgtf-item-inner
+              span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("Awards and Grants")
           li.menu-spacer-after(class=meta_data['url'].indexOf('/contacts') >= 0 ? "active" : undefined)
             a(href=(config.current_lang == 'it' ? '/it' : '')+'/contacts/')
-              span.edgtf-item-inner
+              span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("Contacts")
           li.lang-en(class=meta_data["langSwitcher"]["en"] == meta_data['url'] ? 'active' : '')
@@ -146,20 +147,20 @@ body(class=meta_data['url'] == '/' ? "edgtf-header-expanding expanding" : undefi
           li.menu-spacer-after.lang-it(class=meta_data["langSwitcher"]["it"] == meta_data['url'] ? 'active' : '')
             a(href=meta_data["langSwitcher"]["it"], hreflang='it', title='Italiano') IT
           li.menu-spacer-after
-            a(href='#', title=global.__("Search")).edgtf-search-opener
+            a(href='#', title=global.__("Search")).flyer-search-opener
               i.glyphicon.glyphicon-search
               .sr-only=global.__("Search")
 
-        form.navbar-form.edgtf-search-cover(action='/search/', method='get')
-          .edgtf-form-holder-outer
-            .edgtf-search-submit-holder
+        form.navbar-form.flyer-search-cover(action='/search/', method='get')
+          .flyer-form-holder-outer
+            .flyer-search-submit-holder
               button(type='submit')
                 i.glyphicon.glyphicon-search
                   .sr-only=global.__("Search")
-            .edgtf-form-holder
-              .edgtf-form-holder-inner
+            .flyer-form-holder
+              .flyer-form-holder-inner
                 input.edgt_search_field(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
-                a.edgtf-search-close(href='#') &times;
+                a.flyer-search-close(href='#') &times;
 
         //form#nl_form.navbar-form.navbar-right(method='post', action='#', onsubmit="createSend(this,'/wp-content/themes/lpm/subscribe.php'); return false;")
             #nl_cnt
@@ -183,7 +184,8 @@ body(class=meta_data['url'] == '/' ? "edgtf-header-expanding expanding" : undefi
         .col-md-6
           #site-description.text-right=meta_data.meta['description']
       br
-    block content
+    #result
+      block content
     .sr-only
       | Author:
       a(href='https://plus.google.com/+Liveperformersmeeting?rel=author') LPM Live Performers Meeting
@@ -263,6 +265,15 @@ body(class=meta_data['url'] == '/' ? "edgtf-header-expanding expanding" : undefi
             .footer-title.pull-right
               a.tooltips(data-toggle='tooltip', href='/', target='_blank', title=global.__('This website is made by Flyer Communication'))
                 img(src='/'+config.prefix+'/images/logo_flyer.png', alt='Logo Flyer Communication')
+  .modal.modal-fullscreen.fade#cntModal(tabindex='-1', role='dialog', aria-labelledby='gridSystemModalLabel')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4#gridSystemModalLabel.modal-title Modal title
+        .modal-body
+          .loading Loading...
   #fb-root
   script.
     (function(d, s, id) {

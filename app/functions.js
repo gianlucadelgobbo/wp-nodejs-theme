@@ -60,6 +60,14 @@ exports.getGrid = function getGrid(data) {
 	//console.log(grid);
 	return grid;
 };
+exports.get_video = function get_video( video ) {
+	if (video.indexOf("//vimeo.com/")) {
+		video = "//player.vimeo.com/video/"+video.substring(video.indexOf("vimeo.com/")+10);
+	} else if (strpos($video, "watch?v=")) {
+		video = "//www.youtube.com/embed/"+video.substring(video.indexOf("watch?v=")+8);
+	}
+	return video;
+}
 
 exports.fixResults = function fixResults(data) {
 	for (var item in data){

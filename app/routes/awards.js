@@ -4,8 +4,14 @@ exports.get = function get(req, res) {
 	if (req.url.indexOf('/it/')===0) req.params.lang = "it";
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getAward(req, function( result ) {
-			meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
-			res.render(config.prefix+'/'+'award', {data: result, meta_data:meta_data});
+			if(result['ID']) {
+				meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
+				if (result.featured) meta_data.meta['image_src'] = result.featured.full;
+				if (result.meta_description) meta_data.meta['og_description'] = result.meta_description;
+				res.render(config.prefix+'/'+'award', {data: result, meta_data:meta_data});
+			} else {
+				res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+			}
 		});
 	});
 };
@@ -13,7 +19,7 @@ exports.get = function get(req, res) {
 exports.getAll = function getAll(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getPostType(req, "awards-and-grants", function( posttype ) {
-			helpers.getAllAward(req, config.sez.awards.limit, 1, function( result ) {
+			helpers.getAllAward(req, config.sez.awards.limit, req.params.page ? req.params.page : 1, function( result ) {
 				meta_data.meta.title = __("Awards & Grants") + " | " + meta_data.meta.name;
 				res.render(config.prefix+'/'+'awards', {data: result, meta_data:meta_data, posttype:posttype});
 			});

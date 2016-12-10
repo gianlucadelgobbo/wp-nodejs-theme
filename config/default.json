@@ -7,6 +7,7 @@
     "locales"   : ["en", "it"],
     "default_lang" : "en",
     "current_lang" : "en",
+    "site_tax":   "flyer-it",
     "sez":{
       "home" : {
         "events" : {
@@ -47,7 +48,7 @@
         "domain"	: "http://flyer.it",
         "limit"		: 20
       },
-      "labs" : {
+      "lab" : {
         "domain"	: "http://flyer.it",
         "limit"		: 20
       },

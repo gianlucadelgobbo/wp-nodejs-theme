@@ -2,11 +2,22 @@ var helpers = require('./../helpers');
 
 exports.get = function get(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
-		helpers.getPage(req, function( data ) {
-			console.log(global.getLocale());
-			meta_data.meta.title = (data.post_title ? data.post_title+ " | " : "") + meta_data.meta.name+__('Rome');
-			res.render(config.prefix+'/'+(config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage), {data: data, meta_data:meta_data, itemtype:config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype});
+		helpers.getPage(req, function( result ) {
+			if(result['ID']) {
+				console.log(global.getLocale());
+				meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
+				if (result.featured) meta_data.meta['image_src'] = result.featured.full;
+				if (result.meta_description) meta_data.meta['og_description'] = result.meta_description;
+				res.render(config.prefix+'/'+(config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage), {data: result, meta_data:meta_data, itemtype:config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype});
+			} else {
+				res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+			}
 		});
+	});
+};
+exports.get404 = function get(req, res) {
+	helpers.getMetaData(req, function( meta_data ) {
+		res.render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
 	});
 };
 /*

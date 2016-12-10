@@ -1,0 +1,17 @@
+extends layout
+block content
+	.container-fluid
+		article#container(itemscope='', itemtype='http://schema.org/'+itemtype)
+			.row
+				.col-sm-9
+					header
+						h1.entry-title(itemprop='name')=global.__("Content NOT found")
+					.rientro
+						div(itemprop='description')!=global.__("The content you requested was not found on our server, please try to search for it")
+						form.form-inline(action='/search/', method='get')
+							input.form-control(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
+							button.btn.btn-primary(type='submit')
+								i.glyphicon.glyphicon-search
+									.sr-only=global.__("Search")
+				.col-sm-3
+					img.img-responsive.wp-post-image(src='', alt=global.__("Content NOT found"), itemprop='image')
