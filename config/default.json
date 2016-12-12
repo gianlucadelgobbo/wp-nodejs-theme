@@ -11,7 +11,7 @@
     "sez":{
       "home" : {
         "events" : {
-          "limit"		: 4
+          "limit"		: 6
         },
         "news" : {
           "limit"		: 4
@@ -20,7 +20,7 @@
           "limit"		: 4
         },
         "lab" : {
-          "limit"		: 4
+          "limit"		: 8
         },
         "award" : {
           "limit"		: 4

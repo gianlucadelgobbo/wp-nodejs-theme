@@ -1,12 +1,22 @@
 extends layout
 block content
-	.container-fluid
-		article#container(itemscope, itemtype='http://schema.org/Event')
-			h1=posttype.labels.name
-			!=posttype.description
-			br
-			include inc_share
-			.row.isotope
-				each box in data
-					.col-lg-3.col-md-4.col-sm-6.col.isotopeitem
-						include boxes/box_event
+  .container-fluid
+    article#container(itemscope, itemtype='http://schema.org/Event')
+      h1=posttype.labels.name
+      !=posttype.description
+      br
+      include inc_share
+      .row.isotope
+        each box in data
+          .col-lg-4.col-md-6.col-sm-12.col.isotopeitem
+            include boxes/box_event
+      .text-center.read-more
+        - console.log(page)
+        if (page+1 <= data._paging.totalPages)
+          a(href=(config.current_lang == 'it' ? '/it' : '') + '/events/page/'+(parseInt(page)+1))
+            !=global.__("Load more")
+            !=" "
+            span.fa.fa-long-arrow-right
+          span.loading Loading...
+        else
+          .end You reached the end

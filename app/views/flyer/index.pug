@@ -1,82 +1,190 @@
 extends layout
 block content
-	#carousel-example-generic.carousel.slide(data-ride='carousel')
-		// Indicators
-		ol.carousel-indicators
-			li.active(data-target='#carousel-example-generic', data-slide-to='0')
-			li(data-target='#carousel-example-generic', data-slide-to='1')
-			li(data-target='#carousel-example-generic', data-slide-to='2')
-		// Wrapper for slides
-		.carousel-inner(role='listbox')
-			.item.active
-				img(src='/flyer/images/1mappingSA2.jpg', alt='AAAA')
-				.carousel-caption
-					h3 AAAA
-					p Bla Bla Bla Bla Bla
-			.item
-				img(src='/flyer/images/1mappingSA2.jpg', alt='AAAA')
-				.carousel-caption
-					h3 AAAA
-					p Bla Bla Bla Bla Bla
-		// Controls
-		a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
-			span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-			span.sr-only Previous
-		a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
-			span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-			span.sr-only Next
-	.container-fluid
-		article#container(itemscope, itemtype='http://schema.org/Event')
-			h1.entry-title.boxItem News
-			.row.isotope
-				each box in data.events
-					.col-lg-3.col-md-12.col-sm-12.isotopeitem
-						include boxes/box_event
-			.text-right.boxItem
-				a.btn.btn-primary(href="/news/") See all News
+  #carousel-example-generic.carousel.slide(data-ride='carousel')
+    // Indicators
+    ol.carousel-indicators
+      li.active(data-target='#carousel-example-generic', data-slide-to='0')
+      li(data-target='#carousel-example-generic', data-slide-to='1')
+      li(data-target='#carousel-example-generic', data-slide-to='2')
+    // Wrapper for slides
+    .carousel-inner(role='listbox')
+      .item.active
+        img(src='/flyer/images/1mappingSA2.jpg', alt='AAAA')
+        .carousel-caption
+          h3 AAAA
+          p Bla Bla Bla Bla Bla
+      .item
+        img(src='/flyer/images/1mappingSA2.jpg', alt='AAAA')
+        .carousel-caption
+          h3 AAAA
+          p Bla Bla Bla Bla Bla
+    // Controls
+    a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+      span.sr-only Previous
+    a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+      span.sr-only Next
+  article#container.home(itemscope, itemtype='http://schema.org/Event')
+    section.home-services
+      .container-fluid
+        - console.log(profile)
+        .row
+          .col-lg-2.col-lg-offset-2
+            .text-center
+              img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-1-title'])
+              h3=profile['wpcf-row-1-col-1-title']
+              !=profile['wpcf-row-1-col-1-html-box']
+          .col-lg-2
+            .text-center
+              img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-2-title'])
+              h3=profile['wpcf-row-1-col-2-title']
+              !=profile['wpcf-row-1-col-2-html-box']
+          .col-lg-2
+            .text-center
+              img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-3-title'])
+              h3=profile['wpcf-row-1-col-3-title']
+              !=profile['wpcf-row-1-col-3-html-box']
+          .col-lg-2
+            .text-center
+              img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-4-title'])
+              h3=profile['wpcf-row-1-col-4-title']
+              !=profile['wpcf-row-1-col-4-html-box']
+        .text-center.read-more
+          a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/')
+            !=global.__("See all Services")
+            !=" "
+            span.fa.fa-long-arrow-right
+            
+            
+            
+    section.home-events
+      .container-fluid
+        .text-center
+          h1=posttype_events.labels.name
+          p!=posttype_events.excerpt + "..."
+        .row.isotope
+          each box in data.events
+            .col-lg-4.col-md-12.col-sm-12.isotopeitem
+              include boxes/box_event
+        .text-center.read-more
+          a(href=(config.current_lang == 'it' ? '/it' : '') + '/events/')
+            !=global.__("See all Events")
+            !=" "
+            span.fa.fa-long-arrow-right
+            
+            
+            
+    section.home-lab
+      .container-fluid
+        .text-center
+          h1=posttype_lab.labels.name
+          p!=posttype_lab.excerpt + "..."
+        .row.isotope
+          each box in data.lab
+            .col-lg-3.col-md-12.col-sm-12.isotopeitem
+              include boxes/box_lab_home
+        .text-center.read-more
+          a(href=(config.current_lang == 'it' ? '/it' : '') + '/lab/')
+            !=global.__("See all Lab")
+            !=" "
+            span.fa.fa-long-arrow-right
 
-			h1.entry-title.boxItem Web & Mobile
-			.row.isotope
-				each box in data.web
-					.col-lg-3.col-md-12.col-sm-12.isotopeitem
-						include boxes/box_web
-			.text-right.boxItem
-				a.btn.btn-primary(href="/web-and-mobile/") Web & Mobile
 
-			h1.entry-title.boxItem Events
-			.row.isotope
-				each box in data.events
-					.col-lg-3.col-md-12.col-sm-12.isotopeitem
-						include boxes/box_event
-			.text-right.boxItem
-				a.btn.btn-primary(href="/events/") See all Events
 
-			h1.entry-title.boxItem Learning
-			.row.isotope
-				each box in data.learning
-					.col-lg-3.col-md-12.col-sm-12.isotopeitem
-						include boxes/box_event
-			.text-right.boxItem
-				a.btn.btn-primary(href="/learning/") See all Learnings
+    section.home-web
+      .container-fluid
+        .text-center
+          h1=posttype_web.labels.name
+          p!=posttype_web.excerpt + "..."
+        .row.isotope
+          each box in data.web
+            .col-lg-3.col-md-12.col-sm-12.isotopeitem
+              include boxes/box_web
+        .text-center.read-more
+          a(href=(config.current_lang == 'it' ? '/it' : '') + '/web-and-mobile/')
+            !=global.__("Web & Mobile")
+            !=" "
+            span.fa.fa-long-arrow-right
 
-			h1.entry-title.boxItem Videos
-			.row.isotope
-				each box in data.videos
-					.col-lg-3.col-md-12.col-sm-12.isotopeitem
-						include boxes/box_event
-			.text-right.boxItem
-				a.btn.btn-primary(href="/learning/") See all Videos
-			h1.entry-title.boxItem Lab
-			.row.isotope
-				each box in data.lab
-					.col-lg-3.col-md-12.col-sm-12.isotopeitem
-						include boxes/box_event
-			.text-right.boxItem
-				a.btn.btn-primary(href="/lab/") See all Lab
-			h1.entry-title.boxItem Awards
-			.row.isotope
-				each box in data.awards
-					.col-lg-3.col-md-12.col-sm-12.isotopeitem
-						include boxes/box_event
-			.text-right.boxItem
-				a.btn.btn-primary(href="/lab/") See all Awards
+
+
+    section.home-learning
+      .container-fluid
+        .row
+          .col-lg-10.col-lg-offset-2.col-md-12.col-sm-12
+            h1.entry-title.boxItem=global.__("Learning")
+            each box in data.learning
+                include boxes/box_learning_home
+            .read-more
+              a(href=(config.current_lang == 'it' ? '/it' : '') + '/learning/')
+                !=global.__("See all Learnings")
+                !=" "
+                span.fa.fa-long-arrow-right
+
+
+
+    section.home-videos
+      .container-fluid
+        .text-center
+          h1=posttype_video.labels.name
+          p!=posttype_video.excerpt + "..."
+        .row.isotope
+          each box in data.videos
+            if box.video_thumbnail
+              .col-lg-3.col-md-12.col-sm-12.isotopeitem
+                include boxes/box_video_home
+        .text-center.read-more
+          a(href=(config.current_lang == 'it' ? '/it' : '') + '/learning/')
+            !=global.__("See all Videos")
+            !=" "
+            span.fa.fa-long-arrow-right
+
+
+
+    section.home-awards
+      .container-fluid
+        .text-center
+          h1.entry-title.boxItem=global.__("Awards")
+        .row
+          .col-lg-2.col-lg-offset-2
+            .text-center
+              img.img-circle(src=data.awards[0].featured.thumbnail alt=data.awards[0].post_title)
+              h3=data.awards[0].post_title
+              !=data.awards[0].excerpt.rendered
+          .col-lg-2
+            .text-center
+              img.img-circle(src=data.awards[1].featured.thumbnail alt=data.awards[1].post_title)
+              h3=data.awards[1].post_title
+              !=data.awards[1].excerpt.rendered
+          .col-lg-2
+            .text-center
+              img.img-circle(src=data.awards[2].featured.thumbnail alt=data.awards[2].post_title)
+              h3=data.awards[2].post_title
+              !=data.awards[2].excerpt.rendered
+          .col-lg-2
+            .text-center
+              img.img-circle(src=data.awards[3].featured.thumbnail alt=data.awards[3].post_title)
+              h3=data.awards[3].post_title
+              !=data.awards[3].excerpt.rendered
+        .text-center.read-more
+          a(href=(config.current_lang == 'it' ? '/it' : '') + '/lab/')
+            !=global.__("See all Awards")
+            !=" "
+            span.fa.fa-long-arrow-right
+
+    section.home-news
+      .container-fluid
+        h1.entry-title.boxItem=global.__("News")
+        .row.isotope
+          each box in data.news
+            .col-lg-3.col-md-12.col-sm-12.isotopeitem
+              include boxes/box_news
+        .text-center.read-more
+          a(href=(config.current_lang == 'it' ? '/it' : '') + '/news/')
+            !=global.__("See all News")
+            !=" "
+            span.fa.fa-long-arrow-right
+
+
+

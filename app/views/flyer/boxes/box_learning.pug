@@ -2,17 +2,17 @@
   .Web(itemscope='', itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
       //.catlabel=box.type
-      a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/learning/'+box.slug, rel='bookmark', title!=box.post_title)
+      a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/learning/'+box.slug+"/", rel='bookmark', title!=box.post_title)
         img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
     .box-list
       .box-list-cnt
-        if box.data_month
+        if box["wpcf-schedule"]
           .text-muted
             .dates
                 .date=global.__("Programming")+": "
                   b=box["wpcf-schedule"]
         h3.event_list_title(itemprop='name')
-          a.ajaxloader(itemprop='url', href='/learning/'+box.slug, rel='bookmark', title=box.post_title)!=box.post_title
+          a.ajaxloader(itemprop='url', href='/learning/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
         .text-muted.small.excerpt
           if box.excerpt && box.excerpt.rendered
             div(itemprop='headline')

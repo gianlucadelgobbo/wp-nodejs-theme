@@ -1,8 +1,8 @@
 .boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
-  .Event(itemscope='', itemtype='http://schema.org/Event')
+  .News(itemscope='', itemtype='http://schema.org/Event')
     .thumb-cnt
-      .catlabel=box.type
-      a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/extra/'+box.slug, rel='bookmark', title!=box.post_title)
+      //.catlabel=box.type
+      a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/extra/'+box.slug+"/", rel='bookmark', title!=box.post_title)
         img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
     .box-list
       .box-list-cnt
@@ -11,7 +11,7 @@
             - dateplace = box
             include ../inc_date
         h3.event_list_title(itemprop='name')
-          a.ajaxloader(itemprop='url', href='/extra/'+box.slug, rel='bookmark', title=box.post_title)!=box.post_title
+          a.ajaxloader(itemprop='url', href='/extra/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
         .places
           if box['wpcf-location']
             - dateplace = box

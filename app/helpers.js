@@ -81,7 +81,7 @@ exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
     //console.log(err);
     //console.log(data.length);
 
-    console.log(err || data);
+    //console.log(err || data._paging);
     data = fnz.fixResults(data);
     callback(data);
   });

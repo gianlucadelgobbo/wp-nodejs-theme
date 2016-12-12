@@ -1,0 +1,21 @@
+.boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
+  .Web(itemscope='', itemtype='http://schema.org/CreativeWork')
+    .row
+      .col-lg-3
+        .thumb-cnt
+          //.catlabel=box.type
+          a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/lab/'+box.slug+"/", rel='bookmark', title!=box.post_title)
+            img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
+      .col-lg-9
+        .box-list
+          .box-list-cnt
+            if box.data_month
+              .text-muted
+                .dates
+                    .date=box.data_month
+            h3(itemprop='name')
+              a.ajaxloader(itemprop='url', href='/lab/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
+            .text-muted.small.excerpt
+              if box.excerpt && box.excerpt.rendered
+                div(itemprop='headline')
+                  p!=box.excerpt.rendered
