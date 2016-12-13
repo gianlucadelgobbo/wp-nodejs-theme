@@ -1,10 +1,19 @@
+@media (max-width: 767px) {
+  .navbar-form {
+    padding: 0 15px 10px 15px;
+    border-top: none;
+    -webkit-box-shadow: inset 0 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
 @media (min-width: 768px){
+  /* CAROUSEL HACK FIT DESKTOP*/
   .carousel {
     height: 100vh;
     width: 100%;
     overflow:hidden;
   }
-  .carousel .carousel-inner {
+  .carousel .carousel-inner,.carousel .carousel-inner .item {
     height:100%;
   }
 
@@ -12,6 +21,11 @@
     display:block;
     object-fit: cover;
   }
+  .carousel-caption {
+    bottom: 40px;
+  }
+
+  /* TOP MENU HACK DESKTOP*/
   #top-menu ul > li > a {
     overflow: hidden;
   }
@@ -36,10 +50,6 @@
     padding: 5px;
     margin: 10px 20px;
   }
-
-
-
-
   .navbar {
     border-radius: 0;
     border: none;
@@ -211,16 +221,16 @@
 
 
 
-.container-fluid > .navbar-header {
-  margin-left: 15px;
-}
-#top-menu .container-fluid{
-  padding: 0;
-}
-.flyer-header-expanding .cnt{
-  position: absolute;
-  top:0;
-}
+  .container-fluid > .navbar-header {
+    margin-left: 15px;
+  }
+  #top-menu .container-fluid{
+    padding: 0;
+  }
+  .flyer-header-expanding .cnt{
+    position: absolute;
+    top:0;
+  }
   .flyer-search-cover{
     position: absolute;
     width: 100%;
@@ -547,6 +557,10 @@ a:hover img {
 }
 
 /* HOME */
+.flyer-header-expanding .navbar {
+  margin-bottom: 0;
+}
+
 .home section{
   padding: 50px 0;
 }

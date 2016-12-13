@@ -25,6 +25,7 @@ $(window).on("popstate", function(e) {
   };
 })(history.pushState);
 $(window).load(function(){
+  jQuery(".rientro.searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
   $(".tooltips").tooltip();
   $container = $('.isotope');
   $container.imagesLoaded( function(){

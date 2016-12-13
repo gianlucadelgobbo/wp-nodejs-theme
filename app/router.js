@@ -83,6 +83,7 @@ module.exports = function(app) {
   app.get('/customers', usersRoutes.getAllCustomers);
   app.get('/customers/(:user)', usersRoutes.get);
 
+  //app.get('/search/', pagesRoutes.getSearch);
   app.get('/(:page)/', pagesRoutes.get);
 
   app.get('*', pagesRoutes.get404);

@@ -70,7 +70,13 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
                 span.flyer-line
                 span.flyer-line
                 span.flyer-line
-        form.navbar-form.flyer-search-cover(action='/search/', method='get')
+        form.navbar-form.visible-xs(action='/search/', method='get')
+          .input-group
+            input.edgt_search_field.form-control(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
+            span.input-group-btn
+              button.btn.btn-default(type='submit')=global.__("Search")
+
+        form.flyer-search-cover.hidden-xs(action='/search/', method='get')
           .flyer-form-holder-outer
             .flyer-search-submit-holder
               button(type='submit')
@@ -296,7 +302,7 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
   script(type='text/javascript', src='/'+config.prefix+'/js/imagesloaded.pkgd.min.js')
   script(type='text/javascript', src='/'+config.prefix+'/js/jquery.infinitescroll.js')
   script(type='text/javascript', src='/'+config.prefix+'/js/cookielawinfo.js')
-  #cookie-law-info-bar
+  #cookie-law-info-bar.hide
     span
       | This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.
       a#cookie_action_close_header.medium.cli-plugin-button.cli-plugin-main-button(href='#') Accept
@@ -307,6 +313,7 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
       cli_show_cookiebar({
         settings: '{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":true,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"showagain_tab":false,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000"}'
       });
+      $("#cookie-law-info-bar").removeClass("hide");
     });
     //]]>
   script(type='text/javascript', src='http://flyer.it/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.0')

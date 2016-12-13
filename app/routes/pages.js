@@ -8,6 +8,8 @@ exports.get = function get(req, res) {
 				meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
 				if (result.featured) meta_data.meta['image_src'] = result.featured.full;
 				if (result.meta_description) meta_data.meta['og_description'] = result.meta_description;
+
+				console.log(config.sez.pages.conf);
 				res.render(config.prefix+'/'+(config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage), {data: result, meta_data:meta_data, itemtype:config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype});
 			} else {
 				res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
@@ -15,11 +17,17 @@ exports.get = function get(req, res) {
 		});
 	});
 };
-exports.get404 = function get(req, res) {
+exports.get404 = function get404(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
 		res.render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
 	});
 };
+exports.getSearch = function getSearch(req, res) {
+	helpers.getMetaData(req, function( meta_data ) {
+		res.render(config.prefix+'/search', {meta_data:meta_data, itemtype:"WebPage"});
+	});
+};
+
 /*
 exports.getTimeline = function getTimeline(req, res) {
 	helpers.getEditionData(req, function( meta_data ) {

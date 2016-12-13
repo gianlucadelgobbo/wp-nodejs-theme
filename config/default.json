@@ -69,7 +69,7 @@
           "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
           "press":{"itemtype":"CollectionPage","pugpage":"page"},
           "contacts":{"itemtype":"ContactPage","pugpage":"page"},
-          "search":{"itemtype":"SearchResultsPage","pugpage":"page"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"search"},
           "default":{"itemtype":"ItemPage","pugpage":"page"}
         }
       }
