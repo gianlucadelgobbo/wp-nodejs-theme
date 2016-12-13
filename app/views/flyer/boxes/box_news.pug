@@ -10,7 +10,7 @@
           .dates
             - dateplace = box
             include ../inc_date
-        h3.event_list_title(itemprop='name')
+        h3.list_title(itemprop='name')
           a.ajaxloader(itemprop='url', href='/extra/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
         .places
           if box['wpcf-location']

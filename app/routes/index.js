@@ -7,19 +7,19 @@ exports.get = function get(req, res) {
     helpers.getMetaData(req, function( meta_data ) {
       if (req.query.createcache==1){
         helpers.getPage({"params":{"page":"profile"},"url":""}, function( profile ) {
-          profile['wpcf-row-1-col-1-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-1-html-box']);
-          profile['wpcf-row-1-col-2-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-2-html-box']);
-          profile['wpcf-row-1-col-3-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-3-html-box']);
-          //profile['wpcf-row-1-col-4-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-4-html-box']);
+          profile['wpcf-row-1-col-1-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-1-html-box'],280);
+          profile['wpcf-row-1-col-2-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-2-html-box'],280);
+          profile['wpcf-row-1-col-3-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-3-html-box'],280);
+          //profile['wpcf-row-1-col-4-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-4-html-box'],280);
           helpers.getAllNews(req, config.sez.home.news.limit, 1, function (result_news) {
             helpers.getPostType(req, "events", function( posttype_events ) {
-              posttype_events.excerpt = fnz.makeExcerpt(posttype_events.description);
+              posttype_events.excerpt = fnz.makeExcerpt(posttype_events.description,280);
               helpers.getPostType(req, "lab", function( posttype_lab ) {
-                posttype_lab.excerpt = fnz.makeExcerpt(posttype_lab.description);
+                posttype_lab.excerpt = fnz.makeExcerpt(posttype_lab.description,280);
                 helpers.getPostType(req, "web-and-mobile", function( posttype_web ) {
-                  posttype_web.excerpt = fnz.makeExcerpt(posttype_web.description);
+                  posttype_web.excerpt = fnz.makeExcerpt(posttype_web.description,280);
                   helpers.getPostType(req, "videos", function( posttype_video ) {
-                    posttype_video.excerpt = fnz.makeExcerpt(posttype_video.description);
+                    posttype_video.excerpt = fnz.makeExcerpt(posttype_video.description,280);
                     helpers.getAllEvents(req, config.sez.home.events.limit, 1, function (result_events) {
                       helpers.getAllWeb(req, config.sez.home.web.limit, 1, function (result_web) {
                         helpers.getAllLearning(req, config.sez.home.learning.limit, 1, function (result_learning) {

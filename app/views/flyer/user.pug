@@ -19,7 +19,7 @@ block content
 						br
 						include inc_share
 				.col-sm-3
-					img.img-responsive.wp-post-image(src=data.data.img, alt=data.data.display_name, itemprop='image')
+					img.img-responsive.main-image(src=data.data.img, alt=data.data.display_name, itemprop='image')
 		each auth_content in data.data.auth_contents
 			if auth_content.posts.length
 				section(itemscope='', itemtype="http://schema.org/itemList")

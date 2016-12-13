@@ -78,7 +78,7 @@ exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
   //console.log(wp.event());
   wp.myCustomResource()/*.param( 'before', new Date( '2016-09-22' ) )*/.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
     console.log("//// Events");
-    //console.log(err);
+    console.log(err);
     //console.log(data.length);
 
     //console.log(err || data._paging);

@@ -15,6 +15,6 @@ block content
 						br
 						include inc_share
 				.col-sm-3
-					img.img-responsive.wp-post-image(src=data.featured.thumbnail, alt!=data.post_title, itemprop='image')
+					img.img-responsive.main-image(src=data.featured.thumbnail, alt!=data.post_title, itemprop='image')
 			if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
 				include inc_grid

@@ -7,30 +7,28 @@
           img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
     .box-list
       .text-center
-        .box-list-cnt
-          .text-muted.supText
-            .dates
+        .text-muted.supText
+          .dates
+            - dateplace = box
+            include ../inc_date
+          .places
+            if box['wpcf-location']
               - dateplace = box
-              include ../inc_date
-            .places
-              if box['wpcf-location']
-                - dateplace = box
-                include ../inc_place
-          h3.event_list_title(itemprop='name')
-            a.ajaxloader(itemprop='url', href='/events/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
-          .text-muted.small.tags
-            if box.tags
-              p.tags
-                each tag in box.tags
-                  span.label.label-primary=tag.name
-                  !=" "
-          .text-muted.small.excerpt
+              include ../inc_place
+        h3.list_title(itemprop='name')!=box.post_title.replace(" | ","<br />")
+          //a.ajaxloader(itemprop='url', href='/events/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title.replace(" | ","<br />")
+        .text-muted.small.tags
+          if box.tags
+            p.tags
+              each tag in box.tags
+                !="#"+tag.name
+                !=" "
+          //.text-muted.small.excerpt
             if box.excerpt && box.excerpt.rendered
               div(itemprop='description')
                 p!=box.excerpt.rendered
             span.sr-only(itemprop='organizer')
-      .read-more
-        a.ajaxloader(itemprop='url', href='/events/'+box.slug+"/", rel='bookmark', title=box.post_title)
-          !=__("Read more")
-          !=" "
-          span.fa.fa-long-arrow-right
+      .read-more-box
+        //a.ajaxloader(itemprop='url', href='/events/'+box.slug+"/", rel='bookmark', title=box.post_title)
+        .sr-only=__("Read more")
+        span.fa.fa-long-arrow-right

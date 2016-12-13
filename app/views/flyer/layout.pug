@@ -44,6 +44,7 @@ html(lang=config.current_lang)
 
     link(rel='stylesheet', href='/'+config.prefix+'/css/cookielawinfo.css', type='text/css', media='all')
     link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.css', type='text/css')
+    link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrapXL.css', type='text/css', media='all')
     //link(rel='stylesheet', href='/'+config.prefix+'/css/style.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
 
@@ -69,6 +70,16 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
                 span.flyer-line
                 span.flyer-line
                 span.flyer-line
+        form.navbar-form.flyer-search-cover(action='/search/', method='get')
+          .flyer-form-holder-outer
+            .flyer-search-submit-holder
+              button(type='submit')
+                i.glyphicon.glyphicon-search
+                  .sr-only=global.__("Search")
+            .flyer-form-holder
+              .flyer-form-holder-inner
+                input.edgt_search_field(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
+                a.flyer-search-close(href='#') &times;
         ul.nav.navbar-nav.navbar-right.menu-hide.border-right
           li(class=meta_data['url'] == '/' ? "active" : undefined)
             a(href=(config.current_lang == 'it' ? '/it' : '')+'/')
@@ -151,16 +162,7 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
               i.glyphicon.glyphicon-search
               .sr-only=global.__("Search")
 
-        form.navbar-form.flyer-search-cover(action='/search/', method='get')
-          .flyer-form-holder-outer
-            .flyer-search-submit-holder
-              button(type='submit')
-                i.glyphicon.glyphicon-search
-                  .sr-only=global.__("Search")
-            .flyer-form-holder
-              .flyer-form-holder-inner
-                input.edgt_search_field(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
-                a.flyer-search-close(href='#') &times;
+
 
         //form#nl_form.navbar-form.navbar-right(method='post', action='#', onsubmit="createSend(this,'/wp-content/themes/lpm/subscribe.php'); return false;")
             #nl_cnt
@@ -271,7 +273,7 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
         .modal-header
           button.close(type='button', data-dismiss='modal', aria-label='Close')
             span(aria-hidden='true') ×
-          h4#gridSystemModalLabel.modal-title Modal title
+          h4#gridSystemModalLabel.modal-title Portfolio
         .modal-body
           .loading Loading...
   #fb-root

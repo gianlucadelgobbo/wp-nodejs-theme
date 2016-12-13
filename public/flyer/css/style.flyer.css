@@ -42,10 +42,10 @@
 
   .navbar {
     border-radius: 0;
+    border: none;
   }
   #top-menu.navbar-inverse {
     background: none;
-    border: none;
     z-index: 2;
     transition: margin-top .3s ease-out;
   }
@@ -256,6 +256,7 @@
     -webkit-transition: -webkit-opacity .3s ease-out;
     transition: opacity .3s ease-out;
     visibility: hidden;
+    z-index: 1;
   }
   .flyer-search-cover-opened{
     opacity: 1;
@@ -320,13 +321,7 @@
     color: #fff;
   }
 
-  footer.navbar-inverse{
-    margin:20px 0 0 0;
-    padding: 15px 0;
-    color: #FFF;
-  }
 }
-
 
 
 
@@ -335,6 +330,7 @@
   padding: 6px 10px;
   margin-top: 9px;
   margin-bottom: 10px;
+  background: none;
 }
 #top-menu .navbar-brand > img {
   display: block;
@@ -400,15 +396,24 @@
   background-color: #fff !important;
 }
 
-
+/* MODAL PORTFOLIO*/
 .modal-header{
   position: fixed;
   width: 100%;
+  color: #FFF;
 }
-
+.close {
+  color: #FFF;
+  opacity: 1;
+}
+.close:hover, .close:focus {
+  color: #FFF;
+  opacity: .6;
+}
 .modal-body{
   overflow-x: scroll;
   height: 100%;
+  width: 100%;
   position: absolute;
   padding: 15px 15px 61px 15px;
   margin-top: 56px;
@@ -419,6 +424,7 @@
 }
 .modal-fullscreen {
   background: transparent;
+  padding-right: 0 !important;
 }
 .modal-fullscreen .modal-content {
   background: transparent;
@@ -435,7 +441,10 @@
   filter: alpha(opacity=97);
 }
 
-/* .modal-fullscreen size: we use Bootstrap media query breakpoints */
+.modal-body #container{
+  background-color: #fff;
+  padding: 30px;
+}
 
 .modal-fullscreen .modal-dialog {
   margin: 0;
@@ -450,41 +459,40 @@
 }
 
 
+/* BOXES */
 
-.addtoany_share_save_container,.addtoany_list{display: none}
-.entry-title{
-  margin-top: 0;
+.boxItem {
+  position: relative;
+  margin-bottom: 30px;
 }
-.event_list_title a:hover{
+a:hover img {
+  opacity: .6;
+}
+.boxItem a:hover{
   text-decoration: none;
 }
 
-/* BOX VIDEO */
-.boxItem {
-  position: relative;
-}
+/* BOX EVENT */
 .Event .supText{
   font-size: 11px;
 }
-.event_list_title{
+.Event .list_title{
   margin-top: 10px;
-}
-.Event {
-  margin-bottom: 30px;
+  font-size: 20px;
+  color: #FFF;
 }
 .Event:hover .box-list{
   opacity: 1;
 }
-.Event .tags{
-  line-height: 1.6;
-}
 .Event .box-list{
+  pointer-events: none;
   position: absolute;
   top:0;
-  background-color: #F5F5F5;
+  background-color: #333;
   height: 100%;
   opacity: 0;
   width: 100%;
+  overflow: hidden;
   -webkit-transition: opacity .3s ease-out;
   transition: opacity .3s ease-out;
 }
@@ -492,23 +500,60 @@
   padding: 30px;
 }
 
-.Event .read-more a:hover{
-  text-decoration: none;
-}
-.Event .read-more{
+.Event .read-more-box{
   bottom: 0;
   position: absolute;
   width: 100%;
   text-align: center;
-  font-weight: bold;
-  background-color: #F5F5F5;
-  padding-bottom: 32px;
+  background-color: #333;
+  padding-bottom: 16px;
+  font-size: 20px;
+  color: #FFF;
+}
+
+
+/* BOX WEB */
+.Web .box-list > div:last-child {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.Web .supText{
+  font-size: 11px;
+}
+.Web .list_title {
+  margin-top: 0;
+  font-size: 20px;
+}
+.Web a{
+  color: #FFF;
+}
+.Web a:hover{
+  opacity: .7;
+}
+.Web .box-list{
+  background-color: #333;
+  padding: 30px;
+}
+
+.Web .read-more-box{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  background-color: #333;
+  padding-bottom: 16px;
+  font-size: 20px;
+  color: #FFF;
 }
 
 /* HOME */
 .home section{
   padding: 50px 0;
 }
+.home section header{
+  padding-bottom: 30px;
+}
+
 .home-services{
 }
 .home-events{
@@ -537,11 +582,46 @@
 .home .read-more a:hover,#container > .read-more a:hover{
   text-decoration: none;
 }
-.read-more a{
+.read-more a {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 8px 15px;
   border: 2px solid #DDD;
 }
 #container > .read-more .loading{
   display: none;
+}
+
+
+
+
+
+
+.addtoany_share_save_container,.addtoany_list{display: none}
+.entry-title{
+  margin-top: 0;
+}
+.list_title a:hover{
+  text-decoration: none;
+}
+
+.flyer-item-inner i{
+  padding-right: 5px;
+}
+.navbar {
+  border: none;
+}
+.rientro{
+  overflow: hidden;
+}
+.rientro img{
+  max-width: 100%;
+  height: auto;
+}
+.main-image{
+  margin-bottom: 30px;
+}
+footer.navbar-inverse{
+  margin:20px 0 0 0;
+  padding: 15px 0;
+  color: #FFF;
 }

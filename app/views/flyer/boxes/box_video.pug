@@ -15,7 +15,7 @@
           .text-muted
             .dates
                 .date=box.data_month
-        h3.event_list_title(itemprop='name')
+        h3.list_title(itemprop='name')
           a.ajaxloader(itemprop='url', href='/videos/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
         .text-muted.small.excerpt
           if box.excerpt && box.excerpt.rendered

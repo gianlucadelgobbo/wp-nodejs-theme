@@ -1,38 +1,40 @@
 extends layout
 block content
-	.container-fluid
-		article#container(itemscope='', itemtype='http://schema.org/CreativeWork')
-			.row
-				.col-sm-9
-					header
-						h1.entry-title(itemprop='name')=data.post_title
-					.rientro
-						if data.tags
-							p.tags
-								each tag in data.tags
-									a(href="/web-and-mobile/tags/"+tag.slug)
-										span.label.label-primary=tag.name
-									!=" "
-						if data.data_month
-							.text-muted
-								.dates
-									.date=data.data_month
-									meta(itemprop="datePublished", content=data.datePublished)
-						div(itemprop='description')!=data.post_content
-						.row
-							.col-md-6
-								if data.capauthors
-									- capauthors = data.capauthors
-									include inc_capauthors
-							.col-md-6
-								if data.web_site.length
-									- websites = data.web_site
-									include inc_websites
+	.container
+		.row
+			.col-xl-8.col-xl-offset-2.col-lg-12
+				article#container(itemscope='', itemtype='http://schema.org/CreativeWork')
+					.row
+						.col-sm-9
+							header
+								h1.entry-title(itemprop='name')=data.post_title
+							.rientro
+								if data.tags
+									p.tags
+										each tag in data.tags
+											a(href="/web-and-mobile/tags/"+tag.slug)
+												span.label.label-primary=tag.name
+											!=" "
+								if data.data_month
+									.text-muted
+										.dates
+											.date=data.data_month
+											meta(itemprop="datePublished", content=data.datePublished)
+								div(itemprop='description')!=data.post_content
+								.row
+									.col-md-6
+										if data.capauthors
+											- capauthors = data.capauthors
+											include inc_capauthors
+									.col-md-6
+										if data.web_site.length
+											- websites = data.web_site
+											include inc_websites
 
-						br
-						include inc_share
-				.col-sm-3
-					img.img-responsive.wp-post-image(src=data.featured.thumbnail, alt=data.post_title, itemprop='image')
+								br
+								include inc_share
+						.col-sm-3
+							img.img-responsive.main-image(src=data.featured.thumbnail, alt=data.post_title, itemprop='image')
 
-			if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
-				include inc_grid
+					if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
+						include inc_grid

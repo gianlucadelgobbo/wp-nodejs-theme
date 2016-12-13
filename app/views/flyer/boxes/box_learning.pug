@@ -11,7 +11,7 @@
             .dates
                 .date=global.__("Programming")+": "
                   b=box["wpcf-schedule"]
-        h3.event_list_title(itemprop='name')
+        h3.list_title(itemprop='name')
           a.ajaxloader(itemprop='url', href='/learning/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
         .text-muted.small.excerpt
           if box.excerpt && box.excerpt.rendered

@@ -42,7 +42,8 @@ $(window).load(function(){
     $('#cntModal').modal();
     history.pushState({}, title, url);
     $(document).prop('title',title);
-    $( "#cntModal .modal-body" ).load( url+" #result" , function() {
+    $( "#cntModal .modal-body" ).load( url+" #result" , function(response) {
+      /*console.log($(response).find(".entry-title").html());*/
     });
 
     return false;
@@ -56,7 +57,7 @@ $(window).load(function(){
   $( window ).scroll(function() {
     var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
     if (st > lastScrollTop) {
-      if ($('#top-menu').hasClass("navbar-fixed-top")) {
+      if ($('#top-menu').hasClass("navbar-fixed-top") && !$('#mainmenu').hasClass("in")) {
         console.log("rimuovi");
         $('body').removeClass("fixed-top");
         $('#top-menu').removeClass("navbar-fixed-top");

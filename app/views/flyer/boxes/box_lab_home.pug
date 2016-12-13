@@ -1,5 +1,5 @@
 .boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
-  .Web(itemscope='', itemtype='http://schema.org/CreativeWork')
+  .LabHome(itemscope='', itemtype='http://schema.org/CreativeWork')
     .row
       .col-lg-3
         .thumb-cnt
@@ -9,12 +9,12 @@
       .col-lg-9
         .box-list
           .box-list-cnt
+            h3(itemprop='name')
+              a.ajaxloader(itemprop='url', href='/lab/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
             if box.data_month
               .text-muted
                 .dates
-                    .date=box.data_month
-            h3(itemprop='name')
-              a.ajaxloader(itemprop='url', href='/lab/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
+                  .date=box.data_month
             .text-muted.small.excerpt
               if box.excerpt && box.excerpt.rendered
                 div(itemprop='headline')

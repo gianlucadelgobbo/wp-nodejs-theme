@@ -78,12 +78,12 @@ exports.fixResults = function fixResults(data) {
   return data;
 };
 
-exports.makeExcerpt = function makeExcerpt(descr) {
+exports.makeExcerpt = function makeExcerpt(descr,length) {
   descr = descr.replace(/<[^>]+>/ig,"");
   descrA = descr.split(" ");
   var d = "";
   for (var item in descrA) {
-    if (d.length<140){
+    if (d.length<length){
       d+=descrA[item]+" "
     }
   }
