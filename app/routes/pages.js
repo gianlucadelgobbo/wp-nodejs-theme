@@ -9,8 +9,8 @@ exports.get = function get(req, res) {
 				if (result.featured) meta_data.meta['image_src'] = result.featured.full;
 				if (result.meta_description) meta_data.meta['og_description'] = result.meta_description;
 
-				console.log(config.sez.pages.conf);
-				res.render(config.prefix+'/'+(config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage), {data: result, meta_data:meta_data, itemtype:config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype});
+				console.log(req.query.q);
+				res.render(config.prefix+'/'+(config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage), {data: result, meta_data:meta_data, itemtype:config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q});
 			} else {
 				res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
 			}

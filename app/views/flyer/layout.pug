@@ -72,19 +72,26 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
                 span.flyer-line
         form.navbar-form.visible-xs(action='/search/', method='get')
           .input-group
-            input.edgt_search_field.form-control(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
+            input(type='hidden', name='cx', value=meta_data.meta.google_search)
+            input(type='hidden', name='cof', value='FORID:10')
+            input(type='hidden', name='ie', value='UTF-8')
+
+            input.edgt_search_field.form-control(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
             span.input-group-btn
-              button.btn.btn-default(type='submit')=global.__("Search")
+              button.btn.btn-default(type='submit', name='sa')=global.__("Search")
 
         form.flyer-search-cover.hidden-xs(action='/search/', method='get')
           .flyer-form-holder-outer
             .flyer-search-submit-holder
-              button(type='submit')
+              button(type='submit', name='sa')
                 i.glyphicon.glyphicon-search
                   .sr-only=global.__("Search")
             .flyer-form-holder
               .flyer-form-holder-inner
-                input.edgt_search_field(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
+                input(type='hidden', name='cx', value=meta_data.meta.google_search)
+                input(type='hidden', name='cof', value='FORID:10')
+                input(type='hidden', name='ie', value='UTF-8')
+                input.edgt_search_field(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
                 a.flyer-search-close(href='#') &times;
         ul.nav.navbar-nav.navbar-right.menu-hide.border-right
           li(class=meta_data['url'] == '/' ? "active" : undefined)

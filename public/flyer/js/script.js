@@ -25,7 +25,15 @@ $(window).on("popstate", function(e) {
   };
 })(history.pushState);
 $(window).load(function(){
-  jQuery(".rientro.searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
+  if (typeof(cx) !== "undefined") {
+    jQuery(".rientro.searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  }
   $(".tooltips").tooltip();
   $container = $('.isotope');
   $container.imagesLoaded( function(){
