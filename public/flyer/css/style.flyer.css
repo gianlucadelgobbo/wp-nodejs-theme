@@ -1,3 +1,10 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 700;
+}
 @media (max-width: 767px) {
   .navbar-form {
     padding: 0 15px 10px 15px;
@@ -59,6 +66,7 @@
   .navbar {
     border-radius: 0;
     border: none;
+    margin-bottom:0;
   }
   #top-menu.navbar-inverse {
     background: none;
@@ -69,7 +77,7 @@
     margin-top: -60px;
   }
   body.fixed-top{
-    padding-top: 75px;
+    padding-top: 54px;
   }
   body.fixed-top.expanding{
     padding-top: 0;
@@ -722,4 +730,17 @@ footer.navbar-inverse{
   margin:20px 0 0 0;
   padding: 15px 0;
   color: #FFF;
+}
+
+
+/* PAGE DETAIL */
+
+.Subpage .container-fluid {
+  background-repeat:  no-repeat;
+  background-position:  center center;
+  background-size: cover;
+  background-color: #000;
+  color: #FFF;
+  padding: 50px 0;
+  margin-bottom: 50px;
 }

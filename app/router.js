@@ -47,7 +47,7 @@ module.exports = function(app) {
   app.get('/it/customers/(:user)', usersRoutes.get);
 
   app.get('/it/(:page)/', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)', pagesRoutes.getSubpage);
 
   app.get('/', indexRoutes.get);
 

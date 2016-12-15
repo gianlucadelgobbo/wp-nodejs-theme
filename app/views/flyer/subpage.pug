@@ -1,21 +1,21 @@
 extends layout
 block content
-  .container-fluid
-    article(itemscope, itemtype='http://schema.org/'+itemtype)
+  article.Subpage(itemscope, itemtype='http://schema.org/'+itemtype)
+    .container-fluid(style="background-image:url('"+data.featured.thumbnail+"')")
       .row
-        .col-sm-9
-          header
-            h1.entry-title(itemprop='name')!=data.post_title
-          .rientro
-            div(itemprop='description')!=data.post_content
-            .text-muted
-              .dates
-                .date=data.data_evento
-                meta(itemprop="dateModified", content=data.datePublished)
-            br
-            include inc_share
-        .col-sm-3
-          img.img-responsive.main-image(src=data.featured.thumbnail, alt!=data.post_title, itemprop='image')
+        .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2.col-xs-12
+          .text-center
+            header
+              h1.entry-title(itemprop='name')!=data.post_title
+            .rientro
+              div(itemprop='description')!=data.post_content
+              .text-muted
+                .dates
+                  .date=data.data_evento
+                  meta(itemprop="dateModified", content=data.datePublished)
+              br
+              include inc_share
+    .container
       if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
 
         each row in data.grid
@@ -26,19 +26,21 @@ block content
                 - if (col.tit) conta++
               - var lastspan = 12/4
               - var span = (12-lastspan)/(conta-1)
-              each col, index in row
-                if col.tit && col.tit != "."
-                  div(class="col-sm-" + (index<row.length-1 ? span : lastspan))
-                    h3!=col.tit + (col.stit ? "<br /><small>" + col.stit + "</small>" : "")
-                    if index<row.length-1
-                      .rientro!=col.box
-                    else
-                      each box in data.posts
-                        if box.post_type == "events"
-                          include boxes/box_event
-                        if box.post_type == "web-and-mobile"
-                          include boxes/box_web
-                        if box.post_type == "lab"
-                          include boxes/box_lab
-                        if box.post_type == "learning"
-                          include boxes/box_learning
+              .col-sm-8
+                each col, index in row
+                  if col.tit && col.tit != "."
+                      //div(class="col-sm-" + (index<row.length-1 ? span : lastspan))
+                      h3!=col.tit + (col.stit ? "<br /><small>" + col.stit + "</small>" : "")
+                      if index<row.length-1
+                        .rientro!=col.box
+              .col-sm-4
+                h3=global.__("Portfolio")
+                each box in data.posts
+                  if box.post_type == "events"
+                    include boxes/box_event
+                  if box.post_type == "web-and-mobile"
+                    include boxes/box_web
+                  if box.post_type == "lab"
+                    include boxes/box_lab
+                  if box.post_type == "learning"
+                    include boxes/box_learning

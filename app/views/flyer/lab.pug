@@ -35,27 +35,27 @@ block content
 					img.img-responsive.main-image(src=data.featured.thumbnail, alt=data.post_title, itemprop='image')
 
 
-		each auth_content in data.auth_contents
-			if auth_content.posts.length
-				section(itemscope='', itemtype="http://schema.org/itemList")
-					h3.entry-title(itemprop="name")=auth_content.labels.name
-					.row.isotope
-						each box in auth_content.posts
-							if box.post_type == 'events'
-								.col-lg-3.col-md-12.col-sm-12.isotopeitem
-									include boxes/box_event
-							if box.post_type == 'videos'
-								.col-lg-3.col-md-12.col-sm-12.isotopeitem
-									include boxes/box_video
-							if box.post_type == 'web-and-mobile'
-								.col-lg-3.col-md-12.col-sm-12.isotopeitem
-									include boxes/box_web
-							if box.post_type == 'lab'
-								.col-lg-3.col-md-12.col-sm-12.isotopeitem
-									include boxes/box_lab
-							if box.post_type == 'learning'
-								.col-lg-3.col-md-12.col-sm-12.isotopeitem
-									include boxes/box_learning
-							if box.post_type == 'awards-and-grants'
-								.col-lg-3.col-md-12.col-sm-12.isotopeitem
-									include boxes/box_award
+			each auth_content in data.auth_contents
+				if auth_content.posts.length
+					section(itemscope='', itemtype="http://schema.org/itemList")
+						h3.entry-title(itemprop="name")=auth_content.labels.name
+						.row.isotope
+							each box in auth_content.posts
+								if box.post_type == 'events'
+									.col-lg-3.col-md-12.col-sm-12.isotopeitem
+										include boxes/box_event
+								if box.post_type == 'videos'
+									.col-lg-3.col-md-12.col-sm-12.isotopeitem
+										include boxes/box_video
+								if box.post_type == 'web-and-mobile'
+									.col-lg-3.col-md-12.col-sm-12.isotopeitem
+										include boxes/box_web
+								if box.post_type == 'lab'
+									.col-lg-3.col-md-12.col-sm-12.isotopeitem
+										include boxes/box_lab
+								if box.post_type == 'learning'
+									.col-lg-3.col-md-12.col-sm-12.isotopeitem
+										include boxes/box_learning
+								if box.post_type == 'awards-and-grants'
+									.col-lg-3.col-md-12.col-sm-12.isotopeitem
+										include boxes/box_award
