@@ -7,9 +7,15 @@
   }
 }
 @media (min-width: 768px){
+  .sameheightcnt{
+    display: flex;
+  }
+  .sameheight{
+    flex-grow: 0;
+  }
   /* CAROUSEL HACK FIT DESKTOP*/
   .carousel {
-    height: 100vh;
+    /*height: 100vh;*/
     width: 100%;
     overflow:hidden;
   }
@@ -716,10 +722,4 @@ footer.navbar-inverse{
   margin:20px 0 0 0;
   padding: 15px 0;
   color: #FFF;
-}
-.sameheightcnt{
-  display: flex;
-}
-.sameheight{
-  flex-grow: 0;
 }

@@ -30,7 +30,7 @@ block content
     section.home-services
       .container-fluid
         .row.sameheightcnt
-          .col-xl-2.col-xl-offset-2.col-lg-3.sameheight
+          .col-xl-2.col-xl-offset-2.col-lg-3.col-md-3.sameheight.boxItem
             .text-center
               .sameheightinner
                 img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-1-title'])
@@ -41,7 +41,7 @@ block content
                   !=global.__("Read more")
                   !=" "
                   span.fa.fa-long-arrow-right
-          .col-xl-2.col-lg-3.sameheight
+          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem
             .text-center
               .sameheightinner
                 img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-2-title'])
@@ -52,7 +52,7 @@ block content
                   !=global.__("Read more")
                   !=" "
                   span.fa.fa-long-arrow-right
-          .col-xl-2.col-lg-3.sameheight
+          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem
             .text-center
               .sameheightinner
                 img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-3-title'])
@@ -63,7 +63,7 @@ block content
                   !=global.__("Read more")
                   !=" "
                   span.fa.fa-long-arrow-right
-          .col-xl-2.col-lg-3.sameheight
+          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem
             .text-center
               .sameheightinner
                 img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-4-title'])
@@ -106,7 +106,7 @@ block content
               .col-xs-12!=posttype_lab.excerpt + "..."
         .row.isotope
           each box in data.lab
-            .col-lg-3.col-md-12.col-sm-12.isotopeitem
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
               include boxes/box_lab
         .text-center.read-more
           a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/lab/')
@@ -125,7 +125,7 @@ block content
               .col-xs-12!=posttype_web.excerpt + "..."
         .row.isotope
           each box in data.web
-            .col-lg-3.col-md-12.col-sm-12.isotopeitem
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
               include boxes/box_web
         .text-center.read-more
           a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/web-and-mobile/')
@@ -160,7 +160,7 @@ block content
         .row
           each box in data.videos
             if box.video_thumbnail
-              .col-lg-3.col-md-12.col-sm-12
+              .col-md-3.col-sm-12
                 include boxes/box_video_home
         .text-center.read-more
           a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/videos/')
@@ -175,23 +175,23 @@ block content
         header.text-center
           h1.entry-title.boxItem=global.__("Awards and Grants")
         .row
-          .col-xl-2.col-xl-offset-2.col-lg-3
-            .text-center
+          .col-xl-2.col-xl-offset-2.col-lg-3.col-md-3
+            .text-center.boxItem
               img.img-circle(src=data.awards[0].featured.thumbnail alt=data.awards[0].post_title)
               h3=data.awards[0].post_title
               !=data.awards[0].excerpt.rendered
-          .col-xl-2.col-lg-3
-            .text-center
+          .col-xl-2.col-lg-3.col-md-3
+            .text-center.boxItem
               img.img-circle(src=data.awards[1].featured.thumbnail alt=data.awards[1].post_title)
               h3=data.awards[1].post_title
               !=data.awards[1].excerpt.rendered
-          .col-xl-2.col-lg-3
-            .text-center
+          .col-xl-2.col-lg-3.col-md-3
+            .text-center.boxItem
               img.img-circle(src=data.awards[2].featured.thumbnail alt=data.awards[2].post_title)
               h3=data.awards[2].post_title
               !=data.awards[2].excerpt.rendered
-          .col-xl-2.col-lg-3
-            .text-center
+          .col-xl-2.col-lg-3.col-md-3
+            .text-center.boxItem
               img.img-circle(src=data.awards[3].featured.thumbnail alt=data.awards[3].post_title)
               h3=data.awards[3].post_title
               !=data.awards[3].excerpt.rendered
