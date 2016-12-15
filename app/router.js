@@ -13,33 +13,33 @@ var pagesRoutes = require('./routes/pages');
  */
 module.exports = function(app) {
   app.get('/it/', indexRoutes.get);
-  app.get('/it/web-and-mobile/', webRoutes.getAll);
-  app.get('/it/web-and-mobile/(:web)', webRoutes.get);
-  app.get('/it/web-and-mobile/page/(:page)', webRoutes.get);
+  app.get('/it/portfolio/web-and-mobile/', webRoutes.getAll);
+  app.get('/it/portfolio/web-and-mobile/(:web)', webRoutes.get);
+  app.get('/it/portfolio/web-and-mobile/page/(:page)', webRoutes.get);
 
-  app.get('/it/videos/', videosRoutes.getAll);
-  app.get('/it/videos/(:video)', videosRoutes.get);
-  app.get('/it/videos/page/(:page)', videosRoutes.get);
+  app.get('/it/portfolio/videos/', videosRoutes.getAll);
+  app.get('/it/portfolio/videos/(:video)', videosRoutes.get);
+  app.get('/it/portfolio/videos/page/(:page)', videosRoutes.get);
 
-  app.get('/it/events/', eventsRoutes.getAll);
-  app.get('/it/events/(:event)', eventsRoutes.get);
-  app.get('/it/events/page/(:page)', eventsRoutes.get);
+  app.get('/it/portfolio/events/', eventsRoutes.getAll);
+  app.get('/it/portfolio/events/(:event)', eventsRoutes.get);
+  app.get('/it/portfolio/events/page/(:page)', eventsRoutes.get);
 
-  app.get('/it/learning/', learningRoutes.getAll);
-  app.get('/it/learning/(:learning)', learningRoutes.get);
-  app.get('/it/learning/page/(:page)', learningRoutes.get);
+  app.get('/it/portfolio/learning/', learningRoutes.getAll);
+  app.get('/it/portfolio/learning/(:learning)', learningRoutes.get);
+  app.get('/it/portfolio/learning/page/(:page)', learningRoutes.get);
 
-  app.get('/it/lab/', labRoutes.getAll);
-  app.get('/it/lab/(:lab)', labRoutes.get);
-  app.get('/it/lab/page/(:page)', labRoutes.get);
+  app.get('/it/portfolio/lab/', labRoutes.getAll);
+  app.get('/it/portfolio/lab/(:lab)', labRoutes.get);
+  app.get('/it/portfolio/lab/page/(:page)', labRoutes.get);
 
   app.get('/it/extra/', newsRoutes.getAll);
   app.get('/it/extra/(:new)', newsRoutes.get);
   app.get('/it/extra/page/(:page)', newsRoutes.get);
 
-  app.get('/it/awards-and-grants/', awardsRoutes.getAll);
-  app.get('/it/awards-and-grants/(:award)', awardsRoutes.get);
-  app.get('/it/awards-and-grants/page/(:page)', awardsRoutes.get);
+  app.get('/it/portfolio/awards-and-grants/', awardsRoutes.getAll);
+  app.get('/it/portfolio/awards-and-grants/(:award)', awardsRoutes.get);
+  app.get('/it/portfolio/awards-and-grants/page/(:page)', awardsRoutes.get);
 
   app.get('/it/people', usersRoutes.getAllPeople);
   app.get('/it/people/(:user)', usersRoutes.get);
@@ -47,44 +47,45 @@ module.exports = function(app) {
   app.get('/it/customers/(:user)', usersRoutes.get);
 
   app.get('/it/(:page)/', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
 
   app.get('/', indexRoutes.get);
 
-  app.get('/web-and-mobile/', webRoutes.getAll);
-  app.get('/web-and-mobile/(:web)', webRoutes.get);
-  app.get('/web-and-mobile/page/(:page)', webRoutes.getAll);
+  app.get('/portfolio/web-and-mobile/', webRoutes.getAll);
+  app.get('/portfolio/web-and-mobile/(:web)', webRoutes.get);
+  app.get('/portfolio/web-and-mobile/page/(:page)', webRoutes.getAll);
 
-  app.get('/videos/', videosRoutes.getAll);
-  app.get('/videos/(:video)', videosRoutes.get);
-  app.get('/videos/page/(:page)', videosRoutes.getAll);
+  app.get('/portfolio/videos/', videosRoutes.getAll);
+  app.get('/portfolio/videos/(:video)', videosRoutes.get);
+  app.get('/portfolio/videos/page/(:page)', videosRoutes.getAll);
 
-  app.get('/events/', eventsRoutes.getAll);
-  app.get('/events/(:event)', eventsRoutes.get);
-  app.get('/events/page/(:page)', eventsRoutes.getAll);
+  app.get('/portfolio/events/', eventsRoutes.getAll);
+  app.get('/portfolio/events/(:event)', eventsRoutes.get);
+  app.get('/portfolio/events/page/(:page)', eventsRoutes.getAll);
 
-  app.get('/learning/', learningRoutes.getAll);
-  app.get('/learning/(:learning)', learningRoutes.get);
-  app.get('/learning/page/(:page)', learningRoutes.getAll);
+  app.get('/portfolio/learning/', learningRoutes.getAll);
+  app.get('/portfolio/learning/(:learning)', learningRoutes.get);
+  app.get('/portfolio/learning/page/(:page)', learningRoutes.getAll);
 
-  app.get('/lab/', labRoutes.getAll);
-  app.get('/lab/(:lab)', labRoutes.get);
-  app.get('/lab/page/(:page)', labRoutes.getAll);
+  app.get('/portfolio/lab/', labRoutes.getAll);
+  app.get('/portfolio/lab/(:lab)', labRoutes.get);
+  app.get('/portfolio/lab/page/(:page)', labRoutes.getAll);
 
   app.get('/extra/', newsRoutes.getAll);
   app.get('/extra/(:new)', newsRoutes.get);
   app.get('/extra/page/(:page)', newsRoutes.getAll);
 
-  app.get('/awards-and-grants/', awardsRoutes.getAll);
-  app.get('/awards-and-grants/(:award)', awardsRoutes.get);
-  app.get('/awards-and-grants/page/(:page)', awardsRoutes.getAll);
+  app.get('/portfolio/awards-and-grants/', awardsRoutes.getAll);
+  app.get('/portfolio/awards-and-grants/(:award)', awardsRoutes.get);
+  app.get('/portfolio/awards-and-grants/page/(:page)', awardsRoutes.getAll);
 
   app.get('/people', usersRoutes.getAllPeople);
   app.get('/people/(:user)', usersRoutes.get);
   app.get('/customers', usersRoutes.getAllCustomers);
   app.get('/customers/(:user)', usersRoutes.get);
 
-  //app.get('/search/', pagesRoutes.getSearch);
   app.get('/(:page)/', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)', pagesRoutes.getSubpage);
 
   app.get('*', pagesRoutes.get404);
 

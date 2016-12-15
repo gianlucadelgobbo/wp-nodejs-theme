@@ -8,10 +8,10 @@ exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     if (req.query.createcache==1 || !fs.existsSync(file)){
       helpers.getPage({"params":{"page":"profile"},"url":""}, function( profile ) {
-        profile['wpcf-row-1-col-1-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-1-html-box'],280);
-        profile['wpcf-row-1-col-2-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-2-html-box'],280);
-        profile['wpcf-row-1-col-3-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-3-html-box'],280);
-        //profile['wpcf-row-1-col-4-html-box'] = fnz.makeExcerpt(profile['wpcf-row-1-col-4-html-box'],280);
+        profile['wpcf-row-1-col-1-html-box'] = profile['wpcf-row-1-col-1-html-box'].split(".")[0]+".";
+        profile['wpcf-row-1-col-2-html-box'] = profile['wpcf-row-1-col-2-html-box'].split(".")[0]+".";
+        profile['wpcf-row-1-col-3-html-box'] = profile['wpcf-row-1-col-3-html-box'].split(".")[0]+".";
+        profile['wpcf-row-1-col-4-html-box'] = profile['wpcf-row-1-col-4-html-box'].split(".")[0]+".";
         helpers.getAllNews(req, config.sez.home.news.limit, 1, function (result_news) {
           helpers.getPostType(req, "events", function( posttype_events ) {
             posttype_events.excerpt = fnz.makeExcerpt(posttype_events.description,280);

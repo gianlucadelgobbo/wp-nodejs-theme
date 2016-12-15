@@ -1,43 +1,42 @@
 .boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
-  .Web(itemscope='', itemtype='http://schema.org/CreativeWork')
+  .Learning(itemscope='', itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
       //.catlabel=box.type
       a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/learning/'+box.slug+"/", rel='bookmark', title!=box.post_title)
         img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
     .box-list
-      .box-list-cnt
-        if box["wpcf-schedule"]
-          .text-muted
-            .dates
-                .date=global.__("Programming")+": "
-                  b=box["wpcf-schedule"]
-        h3.list_title(itemprop='name')
-          a.ajaxloader(itemprop='url', href='/learning/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
-        .text-muted.small.excerpt
-          if box.excerpt && box.excerpt.rendered
-            div(itemprop='headline')
-              p!=box.excerpt.rendered
-          if box.tags
-            p.tags
-              each tag in box.tags
-                span.label.label-primary=tag.name
-                !=" "
-        p
-          !=global.__("Duration")+": "
-          span(itemprop='duration')
-            b=box["wpcf-duration"]
-          br
-          - var auth = []
-          each capauthor in box.capauthors
-            - auth.push(capauthor.display_name)
-          if auth.length
-            if auth.length == 1
-              !=global.__("Teacher") + ": "
-            else
-              !=global.__("Teachers") + ": "
-            span(itemprop='performer')
-            b=auth.join(", ")
-          br
-          !=global.__("Price")+": "
-          span(itemprop='offers')
-            b=box["wpcf-price"] + " €"
+      if box["wpcf-schedule"]
+        .text-muted
+          .dates
+              .date=global.__("Programming")+": "
+                b=box["wpcf-schedule"]
+      h3.list_title(itemprop='name')
+        a.ajaxloader(itemprop='url', href='/learning/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
+      .text-muted.small.excerpt
+        if box.excerpt && box.excerpt.rendered
+          div(itemprop='headline')
+            p!=box.excerpt.rendered
+        if box.tags
+          p.tags
+            each tag in box.tags
+              span.label.label-primary=tag.name
+              !=" "
+      .text-muted
+        !=global.__("Duration")+": "
+        span(itemprop='duration')
+          b=box["wpcf-duration"]
+        br
+        - var auth = []
+        each capauthor in box.capauthors
+          - auth.push(capauthor.display_name)
+        if auth.length
+          if auth.length == 1
+            !=global.__("Teacher") + ": "
+          else
+            !=global.__("Teachers") + ": "
+          span(itemprop='performer')
+          b=auth.join(", ")
+        br
+        !=global.__("Price")+": "
+        span(itemprop='offers')
+          b=box["wpcf-price"] + " €"

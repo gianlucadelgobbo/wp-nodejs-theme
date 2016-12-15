@@ -111,7 +111,7 @@ $(window).load(function(){
     return false;
   });
 
-  $("#container .read-more a").click(function() {
+  $("#container > .read-more a").click(function() {
     infiniteScroll(this);
     return false;
   });

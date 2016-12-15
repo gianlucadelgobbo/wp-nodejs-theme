@@ -104,35 +104,46 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
               span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("Profile")
-          li.dropdown(class=meta_data['url'].indexOf('/web-and-mobile/') >= 0 || meta_data['url'].indexOf('/videos/') >= 0 || meta_data['url'].indexOf('/learning/') >= 0 || meta_data['url'].indexOf('/tags/') >= 0 ? "active" : undefined)
+          li.dropdown(class=meta_data['url'].indexOf('/web-and-mobile/') >= 0 || meta_data['url'].indexOf('/videos/') >= 0 || meta_data['url'].indexOf('/learning/') >= 0 || meta_data['url'].indexOf('/lab/') >= 0 || meta_data['url'].indexOf('/awards-and-grants/') >= 0 ? "active" : undefined)
             a.dropdown-toggle(role='button', href='#', data-toggle='dropdown', aria-haspopup='true')
               span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("Portfolio")
+                !=" "
                 span.caret
             ul.dropdown-menu(role='menu')
               li(class=meta_data['url'].indexOf('/web-and-mobile') >= 0 ? "active" : undefined)
-                a(href=(config.current_lang == 'it' ? '/it' : '')+'/web-and-mobile/')
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/web-and-mobile/')
                   span.flyer-item-inner
                     i.fa.fa-long-arrow-right
                     !=global.__("Web & Mobile")
               li(class=meta_data['url'].indexOf('/events') >= 0 ? "active" : undefined)
-                a(href=(config.current_lang == 'it' ? '/it' : '')+'/events/')
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/events/')
                   span.flyer-item-inner
                     i.fa.fa-long-arrow-right
                     !=global.__("Events")
               li(class=meta_data['url'].indexOf('/videos/') >= 0 ? "active" : undefined)
-                a(href=(config.current_lang == 'it' ? '/it' : '') + '/videos/')
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/videos/')
                   span.flyer-item-inner
                     i.fa.fa-long-arrow-right
                     !=global.__("Videos")
               li(class=meta_data['url'].indexOf('/learning') >= 0 ? "active" : undefined)
-                a(href=(config.current_lang == 'it' ? '/it' : '')+'/learning/')
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/learning/')
                   span.flyer-item-inner
                     i.fa.fa-long-arrow-right
                     !=global.__("Learning")
-              li(class=meta_data['url'].indexOf('/tags') >= 0 ? "active" : undefined)
-                a(href=(config.current_lang == 'it' ? '/it' : '')+'/tags/')
+              li(class=meta_data['url'].indexOf('/lab') >= 0 ? "active" : undefined)
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/lab/')
+                  span.flyer-item-inner
+                    i.fa.fa-long-arrow-right
+                    !=global.__("Lab")
+              li(class=meta_data['url'].indexOf('/awards-and-grants') >= 0 ? "active" : undefined)
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/awards-and-grants/')
+                  span.flyer-item-inner
+                    i.fa.fa-long-arrow-right
+                    !=global.__("Awards and Grants")
+              //li(class=meta_data['url'].indexOf('/tags') >= 0 ? "active" : undefined)
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/tags/')
                   span.flyer-item-inner
                     i.fa.fa-long-arrow-right
                     !=global.__("Tags")
@@ -141,11 +152,6 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
               span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("Customers")
-          li(class=meta_data['url'].indexOf('/lab') >= 0 ? "active" : undefined)
-            a( href=(config.current_lang == 'it' ? '/it' : '')+'/lab/')
-              span.flyer-item-inner
-                i.fa.fa-long-arrow-right
-                !=global.__("Lab")
           li(class=meta_data['url'].indexOf('/extra') >= 0 ? "active" : undefined)
             a(href=(config.current_lang == 'it' ? '/it' : '')+'/extra/')
               span.flyer-item-inner
@@ -156,11 +162,6 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
               span.flyer-item-inner
                 i.fa.fa-long-arrow-right
                 !=global.__("People")
-          li(class=meta_data['url'].indexOf('/awards-and-grants') >= 0 ? "active" : undefined)
-            a(href=(config.current_lang == 'it' ? '/it' : '')+'/awards-and-grants/')
-              span.flyer-item-inner
-                i.fa.fa-long-arrow-right
-                !=global.__("Awards and Grants")
           li.menu-spacer-after(class=meta_data['url'].indexOf('/contacts') >= 0 ? "active" : undefined)
             a(href=(config.current_lang == 'it' ? '/it' : '')+'/contacts/')
               span.flyer-item-inner

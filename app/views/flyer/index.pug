@@ -26,35 +26,56 @@ block content
       span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
       span.sr-only Next
   article#container.home(itemscope, itemtype='http://schema.org/Event')
+    h1.text-center=global.__("Creativity for cutting edge events")
     section.home-services
       .container-fluid
-        - console.log(profile)
         .row
-          .col-lg-2.col-lg-offset-2
+          .col-xl-2.col-xl-offset-2.col-lg-3
             .text-center
               img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-1-title'])
               h3=profile['wpcf-row-1-col-1-title']
               !=profile['wpcf-row-1-col-1-html-box']
-          .col-lg-2
+          .col-xl-2.col-lg-3
             .text-center
               img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-2-title'])
               h3=profile['wpcf-row-1-col-2-title']
               !=profile['wpcf-row-1-col-2-html-box']
-          .col-lg-2
+          .col-xl-2.col-lg-3
             .text-center
               img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-3-title'])
               h3=profile['wpcf-row-1-col-3-title']
               !=profile['wpcf-row-1-col-3-html-box']
-          .col-lg-2
+          .col-xl-2.col-lg-3
             .text-center
               img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-4-title'])
               h3=profile['wpcf-row-1-col-4-title']
               !=profile['wpcf-row-1-col-4-html-box']
-        .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/')
-            !=global.__("See all Services")
-            !=" "
-            span.fa.fa-long-arrow-right
+        .row
+          .col-xl-2.col-xl-offset-2.col-lg-3
+            .text-center.read-more
+              a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/web-and-mobile/')
+                !=global.__("Read more")
+                !=" "
+                span.fa.fa-long-arrow-right
+          .col-xl-2.col-lg-3
+            .text-center.read-more
+              a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/events/')
+                !=global.__("Read more")
+                !=" "
+                span.fa.fa-long-arrow-right
+          .col-xl-2.col-lg-3
+            .text-center.read-more
+              a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/learning/')
+                !=global.__("Read more")
+                !=" "
+                span.fa.fa-long-arrow-right
+          .col-xl-2.col-lg-3
+            .text-center.read-more
+              a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/lab/')
+                !=global.__("Read more")
+                !=" "
+                span.fa.fa-long-arrow-right
+
             
             
             
@@ -68,7 +89,7 @@ block content
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
               include boxes/box_event
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '') + '/events/')
+          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/events/')
             !=global.__("See all Events")
             !=" "
             span.fa.fa-long-arrow-right
@@ -83,9 +104,9 @@ block content
         .row.isotope
           each box in data.lab
             .col-lg-3.col-md-12.col-sm-12.isotopeitem
-              include boxes/box_lab_home
+              include boxes/box_lab
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '') + '/lab/')
+          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/lab/')
             !=global.__("See all Lab")
             !=" "
             span.fa.fa-long-arrow-right
@@ -102,7 +123,7 @@ block content
             .col-lg-3.col-md-12.col-sm-12.isotopeitem
               include boxes/box_web
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '') + '/web-and-mobile/')
+          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/web-and-mobile/')
             !=global.__("Web & Mobile")
             !=" "
             span.fa.fa-long-arrow-right
@@ -117,7 +138,7 @@ block content
             each box in data.learning
                 include boxes/box_learning_home
             .read-more
-              a(href=(config.current_lang == 'it' ? '/it' : '') + '/learning/')
+              a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/learning/')
                 !=global.__("See all Learnings")
                 !=" "
                 span.fa.fa-long-arrow-right
@@ -135,7 +156,7 @@ block content
               .col-lg-3.col-md-12.col-sm-12
                 include boxes/box_video_home
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '') + '/learning/')
+          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/videos/')
             !=global.__("See all Videos")
             !=" "
             span.fa.fa-long-arrow-right
@@ -147,28 +168,28 @@ block content
         header.text-center
           h1.entry-title.boxItem=global.__("Awards")
         .row
-          .col-lg-2.col-lg-offset-2
+          .col-xl-2.col-xl-offset-2.col-lg-3
             .text-center
               img.img-circle(src=data.awards[0].featured.thumbnail alt=data.awards[0].post_title)
               h3=data.awards[0].post_title
               !=data.awards[0].excerpt.rendered
-          .col-lg-2
+          .col-xl-2.col-lg-3
             .text-center
               img.img-circle(src=data.awards[1].featured.thumbnail alt=data.awards[1].post_title)
               h3=data.awards[1].post_title
               !=data.awards[1].excerpt.rendered
-          .col-lg-2
+          .col-xl-2.col-lg-3
             .text-center
               img.img-circle(src=data.awards[2].featured.thumbnail alt=data.awards[2].post_title)
               h3=data.awards[2].post_title
               !=data.awards[2].excerpt.rendered
-          .col-lg-2
+          .col-xl-2.col-lg-3
             .text-center
               img.img-circle(src=data.awards[3].featured.thumbnail alt=data.awards[3].post_title)
               h3=data.awards[3].post_title
               !=data.awards[3].excerpt.rendered
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '') + '/lab/')
+          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/lab/')
             !=global.__("See all Awards")
             !=" "
             span.fa.fa-long-arrow-right

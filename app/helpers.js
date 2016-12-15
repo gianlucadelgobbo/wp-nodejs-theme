@@ -40,14 +40,18 @@ exports.getAllUsers = function getAllEvents(req, type, callback) {
 //////// PAGES
 
 exports.getPage = function getPage(req,callback) {
+  if (req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   console.log(req.params.page);
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
   var wp = new WPAPI({ endpoint: config.sez.pages.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/mypages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.page).get(function( err, data ) {
     console.log("//// Page");
-    //console.log(err);
+    console.log(err);
     data = fnz.fixResult(data);
+    if (data.posts){
+      data.posts = fnz.fixResults(data.posts);
+    }
     if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     callback(data);
   });

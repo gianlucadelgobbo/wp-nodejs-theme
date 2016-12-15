@@ -556,6 +556,80 @@ a:hover img {
   color: #FFF;
 }
 
+/* BOX LEARNING */
+.Learning .box-list > div:last-child {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.Learning .supText{
+  font-size: 11px;
+}
+.Learning .list_title {
+  margin-top: 0;
+  font-size: 20px;
+}
+.Learning a{
+  color: #FFF;
+}
+.Learning a:hover{
+  opacity: .7;
+}
+.Learning .box-list{
+  background-color: #333;
+  padding: 30px;
+}
+
+.Learning .read-more-box{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  background-color: #333;
+  padding-bottom: 16px;
+  font-size: 20px;
+  color: #FFF;
+}
+
+/* BOX LEARNING */
+.Learning .box-list > div:last-child {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.Learning .supText{
+  font-size: 11px;
+}
+.Learning .list_title {
+  margin-top: 0;
+  font-size: 20px;
+}
+.Learning a{
+  color: #FFF;
+}
+.Learning a:hover{
+  opacity: .7;
+}
+.Learning .box-list{
+  background-color: #333;
+  padding: 30px;
+}
+
+.Learning .read-more-box{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  background-color: #333;
+  padding-bottom: 16px;
+  font-size: 20px;
+  color: #FFF;
+}
+
+/* BOX LAB */
+
+.Lab .list_title {
+  margin-top: 0;
+}
+
 /* HOME */
 .flyer-header-expanding .navbar {
   margin-bottom: 0;
@@ -575,17 +649,11 @@ a:hover img {
 }
 .home-lab{
 }
-.home-lab h3{
-  margin-top: 0;
-}
 .home-web{
   background-color: #EEE;
 }
 .home-learning{
   background-color: #999999;
-}
-.home-learning h3{
-  margin-top: 0;
 }
 .home-awards img{
   width: 100px;
