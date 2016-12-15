@@ -7,7 +7,7 @@
             !=global.__("Programming")
             !=": "
             b=box["wpcf-schedule"]
-    h3(itemprop='name')
+    h3.list_title(itemprop='name')
       a.ajaxloader(itemprop='url', href='/portfolio/learning/' + box.slug+"/", rel='bookmark', title=box.post_title)
         !=box.post_title+" "
         span.fa.fa-long-arrow-right

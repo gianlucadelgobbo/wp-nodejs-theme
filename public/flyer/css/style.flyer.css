@@ -634,7 +634,17 @@ a:hover img {
 .flyer-header-expanding .navbar {
   margin-bottom: 0;
 }
-
+.sameheightinner{
+  padding-bottom: 50px;
+}
+.home .read-more.bottom {
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+  margin-left: -62px;
+  width: 124px;
+  text-align: center;
+}
 .home section{
   padding: 50px 0;
 }
@@ -706,4 +716,10 @@ footer.navbar-inverse{
   margin:20px 0 0 0;
   padding: 15px 0;
   color: #FFF;
+}
+.sameheightcnt{
+  display: flex;
+}
+.sameheight{
+  flex-grow: 0;
 }
