@@ -24,7 +24,7 @@ block content
               - var conta = 0
               each col in row
                 - if (col.tit) conta++
-              - var lastspan = 12/conta
+              - var lastspan = 12/4
               - var span = (12-lastspan)/(conta-1)
               each col, index in row
                 if col.tit && col.tit != "."
@@ -33,7 +33,6 @@ block content
                     if index<row.length-1
                       .rientro!=col.box
                     else
-                      - console.log(data)
                       each box in data.posts
                         if box.post_type == "events"
                           include boxes/box_event
