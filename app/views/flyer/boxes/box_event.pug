@@ -3,7 +3,7 @@
     .thumb-cnt
       .thumb-cnt-cnt
         //.catlabel=box.type
-        a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/events/'+box.slug+"/", rel='bookmark', title!=box.post_title)
+        a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/portfolio/events/'+box.slug+"/", rel='bookmark', title!=box.post_title)
           img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
     .box-list
       .text-center
@@ -16,7 +16,7 @@
               - dateplace = box
               include ../inc_place
         h3.list_title(itemprop='name')!=box.post_title.replace(" | ","<br />")
-          //a.ajaxloader(itemprop='url', href='/events/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title.replace(" | ","<br />")
+          //a.ajaxloader(itemprop='url', href='/portfolio/events/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title.replace(" | ","<br />")
         .text-muted.small.tags
           if box.tags
             p.tags
@@ -29,6 +29,6 @@
                 p!=box.excerpt.rendered
             span.sr-only(itemprop='organizer')
       .read-more-box
-        //a.ajaxloader(itemprop='url', href='/events/'+box.slug+"/", rel='bookmark', title=box.post_title)
+        //a.ajaxloader(itemprop='url', href='/portfolio/events/'+box.slug+"/", rel='bookmark', title=box.post_title)
         .sr-only=__("Read more")
         span.fa.fa-long-arrow-right

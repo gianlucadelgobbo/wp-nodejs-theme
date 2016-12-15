@@ -2,7 +2,7 @@
   .Web(itemscope='', itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
       //.catlabel=box.type
-      a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/web-and-mobile/'+box.slug+"/", rel='bookmark', title!=box.post_title)
+      a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/portfolio/web-and-mobile/'+box.slug+"/", rel='bookmark', title!=box.post_title)
         img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
     .box-list
       if box.data_month
@@ -10,7 +10,7 @@
           .dates
               .date=box.data_month
       h3.list_title(itemprop='name')
-        a.ajaxloader(itemprop='url', href='/web-and-mobile/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
+        a.ajaxloader(itemprop='url', href='/portfolio/web-and-mobile/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
 
       if box.excerpt && box.excerpt.rendered
         .excerpt.text-muted(itemprop='headline')!=box.excerpt.rendered

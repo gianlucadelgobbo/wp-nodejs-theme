@@ -7,7 +7,7 @@
           iframe.embed-responsive-item(src=box.video_thumbnail ,webkitAllowFullScreen="webkitAllowFullScreen", mozallowfullscreen="mozallowfullscreen", allowFullScreen="allowFullScreen")
 
       else
-        a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/videos/'+box.slug+"/", rel='bookmark', title!=box.post_title)
+        a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/portfolio/videos/'+box.slug+"/", rel='bookmark', title!=box.post_title)
           img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
     .box-list
       .box-list-cnt
@@ -16,7 +16,7 @@
             .dates
                 .date=box.data_month
         h3.list_title(itemprop='name')
-          a.ajaxloader(itemprop='url', href='/videos/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
+          a.ajaxloader(itemprop='url', href='/portfolio/videos/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
         .text-muted.small.excerpt
           if box.excerpt && box.excerpt.rendered
             div(itemprop='headline')
