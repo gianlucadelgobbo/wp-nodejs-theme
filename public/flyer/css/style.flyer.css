@@ -13,12 +13,28 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     box-shadow: inset 0 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 }
+.sameheightinner{
+  padding-bottom: 50px;
+}
+.sameheightinner .img-circle{
+  width: 100px;
+  background-color: #EEE;
+}
+
 @media (min-width: 768px){
   .sameheightcnt{
     display: flex;
   }
   .sameheight{
     flex-grow: 0;
+  }
+  .sameheight .read-more.bottom {
+    bottom: 0;
+    position: absolute;
+    left: 50%;
+    margin-left: -62px;
+    width: 124px;
+    text-align: center;
   }
   /* CAROUSEL HACK FIT DESKTOP*/
   .carousel {
@@ -648,17 +664,6 @@ a:hover img {
 .flyer-header-expanding .navbar {
   margin-bottom: 0;
 }
-.sameheightinner{
-  padding-bottom: 50px;
-}
-.home .read-more.bottom {
-  bottom: 0;
-  position: absolute;
-  left: 50%;
-  margin-left: -62px;
-  width: 124px;
-  text-align: center;
-}
 .home section{
   padding: 50px 0;
 }
@@ -750,7 +755,7 @@ footer.navbar-inverse{
   height: 100%;
   width: 100%;
 }
-.Subpage .container-fluid .row header {
+.header {
   padding: 50px 0;
 }
 .Subpage .container-fluid .row {

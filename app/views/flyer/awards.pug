@@ -1,12 +1,26 @@
 extends layout
 block content
-	.container-fluid
-		article#container(itemscope, itemtype='http://schema.org/CreativeWork')
-			h1=posttype.labels.name
-			!=posttype.description
-			br
-			include inc_share
-			.row.isotope
-				each box in data
-					.col-lg-3.col-md-4.col-sm-6.col.isotopeitem
-						include boxes/box_award
+  .container-fluid
+    article#container(itemscope, itemtype='http://schema.org/ItemList')
+      .row
+        .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2.col-xs-12
+          header.header
+            .text-center
+              h1.entry-title=posttype.labels.name
+              !=posttype.description
+              br
+              include inc_share
+      .row.isotope
+        each box in data
+          .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(itemscope='', itemprop='itemListElement')
+            include boxes/box_award
+      .text-center.read-more
+        - console.log(page)
+        if (page + 1 <= data._paging.totalPages)
+          a(href=(config.current_lang == 'it' ? '/it' : '') + '/awards-and-grants/page/' + (parseInt(page) + 1))
+            !=global.__("Load more")
+            !=" "
+            span.fa.fa-long-arrow-right
+          span.loading Loading...
+        else
+          .end You reached the end

@@ -64,13 +64,14 @@
         "domain"	: "http://flyer.it",
         "limit"		: 20,
         "conf"		: {
-          "profile":{"itemtype":"AboutPage","pugpage":"page"},
+          "profile":{"itemtype":"AboutPage","pugpage":"page_profile"},
           "map":{"itemtype":"Map","pugpage":"page"},
           "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
           "press":{"itemtype":"CollectionPage","pugpage":"page"},
           "contacts":{"itemtype":"ContactPage","pugpage":"page"},
-          "search":{"itemtype":"SearchResultsPage","pugpage":"search"},
-          "default":{"itemtype":"ItemPage","pugpage":"page"}
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page_search"},
+          "lab":{"itemtype":"ItemPage","pugpage":"subpage_lab"},
+          "default":{"itemtype":"ItemPage","pugpage":"page","subpage":"subpage"}
         }
       }
     }

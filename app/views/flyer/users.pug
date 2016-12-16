@@ -1,11 +1,15 @@
 extends layout
 block content
-	.container-fluid
-		article#container(itemscope, itemtype='http://schema.org/ListItem')
-			h1=title
-			br
-			include inc_share
-			.row.isotope
-				each box in data
-					.col-lg-3.col-md-4.col-sm-6.col.isotopeitem(itemscope='', itemtype='http://schema.org/itemListElement')
-						include boxes/box_user
+  .container-fluid
+    article#container(itemscope, itemtype='http://schema.org/ItemList')
+      .row
+        .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2.col-xs-12
+          header.header
+            .text-center
+              h1.entry-title=title
+              br
+              include inc_share
+      .row.isotope
+        each box in data
+          .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(itemscope='', itemprop='itemListElement')
+            include boxes/box_user

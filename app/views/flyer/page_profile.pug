@@ -1,0 +1,37 @@
+extends layout
+block content
+  .container
+    article(itemscope, itemtype='http://schema.org/'+itemtype)
+      .row
+        .col-sm-9
+          header
+            h1.entry-title(itemprop='name')!=data.post_title
+          .rientro
+            div(itemprop='description')!=data.post_content
+            .text-muted
+              .dates
+                .date=data.data_evento
+                meta(itemprop="dateModified", content=data.dateModified)
+            br
+            include inc_share
+        .col-sm-3
+          img.img-responsive.main-image(src=data.featured.thumbnail, alt!=data.post_title, itemprop='image')
+      .row.sameheightcnt
+        .col-md-3.sameheight.boxItem
+          !=data['wpcf-row-1-col-1-html-box']
+          //.text-center
+            .sameheightinner
+              img.img-circle(src="/flyer/images/avatar_100.jpg" alt=data['wpcf-row-1-col-1-title'])
+              h3=data['wpcf-row-1-col-1-title']
+              !=data['wpcf-row-1-col-1-html-box']
+            .read-more.bottom
+              a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/web-and-mobile/')
+                !=global.__("Read more")
+                !=" "
+                span.fa.fa-long-arrow-right
+        .col-md-3.sameheight.boxItem
+          !=data['wpcf-row-1-col-2-html-box']
+        .col-md-3.sameheight.boxItem
+          !=data['wpcf-row-1-col-3-html-box']
+        .col-md-3.sameheight.boxItem
+          !=data['wpcf-row-1-col-4-html-box']

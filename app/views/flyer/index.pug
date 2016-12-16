@@ -31,49 +31,13 @@ block content
       .container-fluid
         .row.sameheightcnt
           .col-xl-2.col-xl-offset-2.col-lg-3.col-md-3.sameheight.boxItem
-            .text-center
-              .sameheightinner
-                img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-1-title'])
-                h3=profile['wpcf-row-1-col-1-title']
-                !=profile['wpcf-row-1-col-1-html-box']
-              .read-more.bottom
-                a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/web-and-mobile/')
-                  !=global.__("Read more")
-                  !=" "
-                  span.fa.fa-long-arrow-right
+            !=profile['wpcf-row-1-col-1-html-box']
           .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem
-            .text-center
-              .sameheightinner
-                img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-2-title'])
-                h3=profile['wpcf-row-1-col-2-title']
-                !=profile['wpcf-row-1-col-2-html-box']
-              .read-more.bottom
-                a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/events/')
-                  !=global.__("Read more")
-                  !=" "
-                  span.fa.fa-long-arrow-right
+            !=profile['wpcf-row-1-col-2-html-box']
           .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem
-            .text-center
-              .sameheightinner
-                img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-3-title'])
-                h3=profile['wpcf-row-1-col-3-title']
-                !=profile['wpcf-row-1-col-3-html-box']
-              .read-more.bottom
-                a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/learning/')
-                  !=global.__("Read more")
-                  !=" "
-                  span.fa.fa-long-arrow-right
+            !=profile['wpcf-row-1-col-3-html-box']
           .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem
-            .text-center
-              .sameheightinner
-                img.img-circle(src="/flyer/images/avatar_100.jpg" alt=profile['wpcf-row-1-col-4-title'])
-                h3=profile['wpcf-row-1-col-4-title']
-                !=profile['wpcf-row-1-col-4-html-box']
-              .read-more.bottom
-                a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/lab/')
-                  !=global.__("Read more")
-                  !=" "
-                  span.fa.fa-long-arrow-right
+            !=profile['wpcf-row-1-col-4-html-box']
 
             
             
