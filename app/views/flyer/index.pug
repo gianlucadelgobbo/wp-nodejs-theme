@@ -196,7 +196,7 @@ block content
               h3=data.awards[3].post_title
               !=data.awards[3].excerpt.rendered
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/awards/')
+          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/awards-and-grants/')
             !=global.__("See all Awards and Grants")
             !=" "
             span.fa.fa-long-arrow-right
@@ -210,8 +210,8 @@ block content
             .col-lg-3.col-md-12.col-sm-12.isotopeitem
               include boxes/box_news
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '') + '/news/')
-            !=global.__("See all News")
+          a(href=(config.current_lang == 'it' ? '/it' : '') + '/extra/')
+            !=global.__("See all Extras")
             !=" "
             span.fa.fa-long-arrow-right
 

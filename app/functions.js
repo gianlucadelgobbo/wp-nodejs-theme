@@ -108,9 +108,10 @@ exports.fixResult = function fixResult(data) {
   if (data['wpcf-location']) data['wpcf-location'] = this.formatLocation(data['wpcf-location']);
   if (data['data_evento'] && data['data_evento'].length && typeof data['data_evento'] == 'Array') data['data_evento'] = data['data_evento'][0];
   if (!data['data_evento']) {
-    data['data_evento'] = moment(data['date']).utc().format("MMMM D, YYYY");
+    data['data_evento'] = moment(data['post_modified']).utc().format("MMMM D, YYYY");
   }
   data['data_month'] = moment(data['date']).utc().format("MMMM YYYY");
   data['datePublished'] = moment(data['date']).utc().format("DD-MM-YYYY");
+  data['dateModified'] = moment(data['post_modified']).utc().format("DD-MM-YYYY");
   return data;
 };
