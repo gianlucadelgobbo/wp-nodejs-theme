@@ -18,16 +18,6 @@ block content
       .row.sameheightcnt
         .col-md-3.sameheight.boxItem
           !=data['wpcf-row-1-col-1-html-box']
-          //.text-center
-            .sameheightinner
-              img.img-circle(src="/flyer/images/avatar_100.jpg" alt=data['wpcf-row-1-col-1-title'])
-              h3=data['wpcf-row-1-col-1-title']
-              !=data['wpcf-row-1-col-1-html-box']
-            .read-more.bottom
-              a(href=(config.current_lang == 'it' ? '/it' : '') + '/profile/web-and-mobile/')
-                !=global.__("Read more")
-                !=" "
-                span.fa.fa-long-arrow-right
         .col-md-3.sameheight.boxItem
           !=data['wpcf-row-1-col-2-html-box']
         .col-md-3.sameheight.boxItem

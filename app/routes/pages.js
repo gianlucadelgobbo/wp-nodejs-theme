@@ -27,9 +27,9 @@ exports.getSubpage = function getSubpage(req, res) {
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
         if (result.featured) meta_data.meta['image_src'] = result.featured.full;
         if (result.meta_description) meta_data.meta['og_description'] = result.meta_description;
-
         console.log(req.query.q);
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].pugpage ? config.sez.pages.conf[req.params.subpage].pugpage : config.sez.pages.conf.default.subpage);
+        console.log("pug");
         console.log(pug);
         var itemtype = config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].itemtype ? config.sez.pages.conf[req.params.subpage].itemtype : config.sez.pages.conf.default.itemtype;
         console.log(itemtype);
