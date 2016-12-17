@@ -26,7 +26,7 @@ $(window).on("popstate", function(e) {
 })(history.pushState);
 $(window).load(function(){
   if (typeof(cx) !== "undefined") {
-    jQuery(".rientro.searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
+    jQuery(".rientro  .searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
     var gcse = document.createElement('script');
     gcse.type = 'text/javascript';
     gcse.async = true;

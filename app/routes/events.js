@@ -19,7 +19,7 @@ exports.getAll = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPostType(req, "events", function( posttype ) {
       helpers.getAllEvents(req, config.sez.events.limit, req.params.page ? req.params.page : 1, function( result ) {
-        meta_data.meta.title = __("Events") + " | " + meta_data.meta.name;
+        meta_data.meta.title = __("Live Visuals") + " | " + meta_data.meta.name;
         res.render(config.prefix+'/'+'events', {data: result, meta_data:meta_data, posttype:posttype,page:req.params.page ? req.params.page : 1});
       });
     });

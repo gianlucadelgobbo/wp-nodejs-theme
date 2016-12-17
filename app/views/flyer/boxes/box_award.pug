@@ -1,48 +1,8 @@
-.boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
-  .Web(itemscope='', itemtype='http://schema.org/CreativeWork')
-    .thumb-cnt
-      //.catlabel=box.type
-      a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/portfolio/awards-and-grants/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-        img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
-    .box-list
-      .box-list-cnt
-        if box.data_month
-          .text-muted
-            .dates
-                .date=box.data_month
-        h3.list_title(itemprop='name')
-          a.ajaxloader(itemprop='url', href='/portfolio/awards-and-grants/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
-        .text-muted.small.excerpt
-          if box.excerpt && box.excerpt.rendered
-            div(itemprop='headline')
-              p!=box.excerpt.rendered
-          if box.tags
-            p.tags
-              each tag in box.tags
-                span.label.label-primary=tag.name
-                !=" "
-          if box.capauthors
-            p
-              each capauthor in box.capauthors
-                if capauthor.user_role == 'customer'
-                  span(itemprop='sourceOrganization', itemscope='', itemtype='http://schema.org/Person')
-                    a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope='', itemtype='http://schema.org/Person')
-                      i.glyphicon.glyphicon-user
-                      !=" "
-                      span(itemprop='name')=capauthor.display_name
-                      !=" - "
-                      span(itemprop='jobTitle')=capauthor.user_role
-            p
-              each capauthor in box.capauthors
-                if capauthor.user_role != 'customer'
-                  span(itemprop='publisher')
-                    a(href='/people/'+capauthor.user_login, rel='author', itemprop='author', itemscope='', itemtype='http://schema.org/Person')
-                      i.glyphicon.glyphicon-user
-                      !=" "
-                      span(itemprop='name')=capauthor.display_name
-                      !=" - "
-                      span(itemprop='jobTitle')=capauthor.user_role
-                      span.hide
-                        !=" - "
-                        span.org(itemprop='affiliation') Flyer communication
-                !=" "
+.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
+  .Award(itemscope, itemtype='http://schema.org/CreativeWork')
+    .text-center.boxItem
+      a.ajaxloader(itemprop='url', href='/portfolio/awards-and-grants/' + box.slug + "/", rel='bookmark', title!=box.post_title)
+        img.img-circle(src=box.featured.full, alt!='Image for: '+box.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+      a.ajaxloader(itemprop='url', href='/portfolio/awards-and-grants/' + box.slug + "/", rel='bookmark', title!=box.post_title)
+        h3!=box.post_title.replace(" | ", "<br />").replace(" | ", "<br />")
+      !=box.excerpt.rendered

@@ -21,9 +21,9 @@ module.exports = function(app) {
   app.get('/it/portfolio/videos/(:video)', videosRoutes.get);
   app.get('/it/portfolio/videos/page/(:page)', videosRoutes.get);
 
-  app.get('/it/portfolio/events/', eventsRoutes.getAll);
-  app.get('/it/portfolio/events/(:event)', eventsRoutes.get);
-  app.get('/it/portfolio/events/page/(:page)', eventsRoutes.get);
+  app.get('/it/portfolio/live-visuals/', eventsRoutes.getAll);
+  app.get('/it/portfolio/live-visuals/(:event)', eventsRoutes.get);
+  app.get('/it/portfolio/live-visuals/page/(:page)', eventsRoutes.get);
 
   app.get('/it/portfolio/learning/', learningRoutes.getAll);
   app.get('/it/portfolio/learning/(:learning)', learningRoutes.get);
@@ -59,9 +59,9 @@ module.exports = function(app) {
   app.get('/portfolio/videos/(:video)', videosRoutes.get);
   app.get('/portfolio/videos/page/(:page)', videosRoutes.getAll);
 
-  app.get('/portfolio/events/', eventsRoutes.getAll);
-  app.get('/portfolio/events/(:event)', eventsRoutes.get);
-  app.get('/portfolio/events/page/(:page)', eventsRoutes.getAll);
+  app.get('/portfolio/live-visuals/', eventsRoutes.getAll);
+  app.get('/portfolio/live-visuals/(:event)', eventsRoutes.get);
+  app.get('/portfolio/live-visuals/page/(:page)', eventsRoutes.getAll);
 
   app.get('/portfolio/learning/', learningRoutes.getAll);
   app.get('/portfolio/learning/(:learning)', learningRoutes.get);
@@ -97,7 +97,7 @@ module.exports = function(app) {
    app.get('/performers/(:filter)/(:sorting)/(:page)', performersRoutes.get);
    app.get('/performers(*)', performersRoutes.get);
 
-   app.get('/events/(:filter)/(:sorting)/(:page)', eventsRoutes.get);
+   app.get('/live-visuals/(:filter)/(:sorting)/(:page)', eventsRoutes.get);
    app.get('/events(*)', eventsRoutes.get);
 
    app.get('/performances/(:filter)/(:sorting)/(:page)', performancesRoutes.get);
@@ -124,8 +124,8 @@ module.exports = function(app) {
 
    app.get('/image', imageRoutes.get);
 
-   app.get('/(:user)/events/(:event)/participate', userRoutes.participateAtUserEvent);
-   app.get('/(:user)/events/(:event)', userRoutes.getUserEvent);
+   app.get('/(:user)/live-visuals/(:event)/participate', userRoutes.participateAtUserEvent);
+   app.get('/(:user)/live-visuals/(:event)', userRoutes.getUserEvent);
    app.get('/(:user)/performances/(:performance)', userRoutes.getUserPerformance);
    app.get('/(:user)/tvshows/(:tvshow)', userRoutes.getUserTvshow);
 

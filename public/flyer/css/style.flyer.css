@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   }
   /* CAROUSEL HACK FIT DESKTOP*/
   .carousel {
-    /*height: 100vh;*/
+    max-height: 100vh;
     width: 100%;
     overflow:hidden;
   }
@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     object-fit: cover;
   }
   .carousel-caption {
-    bottom: 40px;
+    bottom: 120px;
   }
 
   /* TOP MENU HACK DESKTOP*/
@@ -660,6 +660,17 @@ a:hover img {
   margin-top: 0;
 }
 
+/* BOX AWARDS */
+
+.Award .img-circle {
+  width: 140px;
+  background-color: #EEE;
+}
+.Award h3 {
+  font-size: 20px;
+}
+
+
 /* HOME */
 .flyer-header-expanding .navbar {
   margin-bottom: 0;
@@ -763,4 +774,15 @@ footer.navbar-inverse{
   color: #FFF;
   position: relative;
   margin-bottom: 50px;
+}
+.share span{
+  display: inline-block;
+  padding: 2px 5px;
+  background-color: #EEE;
+}
+.share {
+  margin: 10px 0;
+}
+.pagepaddingtop{
+  padding-top: 50px;
 }

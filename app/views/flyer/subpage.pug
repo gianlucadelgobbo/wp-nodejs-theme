@@ -12,11 +12,9 @@ block content
             .text-center
               h1.entry-title(itemprop='name')!=data.post_title
               div(itemprop='headline')!=data.post_excerpt
-              br
               include inc_share
     .container
       .row
-
         .col-sm-8
           h3(itemprop='name')!=data.post_title+" Profile"
           .rientro(itemprop='description')
@@ -28,15 +26,42 @@ block content
 
         .col-sm-4
           h3=global.__("Portfolio")
-          each box in data.posts
-            if box.post_type == "events"
-              include boxes/box_event
-            if box.post_type == "web-and-mobile"
-              include boxes/box_web
-            if box.post_type == "lab"
-              include boxes/box_lab
-            if box.post_type == "learning"
-              include boxes/box_learning
+          if data.posts && data.posts.length
+            if data.posts[0].post_type == "events"
+              each box, index in data.posts
+                if index < 10
+                  include boxes/box_event
+              .text-center.read-more
+                a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/live-visuals/')
+                  !=global.__("See all Events")
+                  !=" "
+                  span.fa.fa-long-arrow-right
+            if data.posts[0].post_type == "web-and-mobile"
+              each box, index in data.posts
+                if index < 3
+                  include boxes/box_web
+              .text-center.read-more
+                a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/web-and-mobile/')
+                  !=global.__("See all Web & Mobile")
+                  !=" "
+                  span.fa.fa-long-arrow-right
+            if data.posts[0].post_type == "lab"
+              each box, index in data.posts
+                include boxes/box_lab
+              .text-center.read-more
+                a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/lab/')
+                  !=global.__("See all Lab")
+                  !=" "
+                  span.fa.fa-long-arrow-right
+            if data.posts[0].post_type == "learning"
+              each box, index in data.posts
+                if index < 2
+                  include boxes/box_learning
+              .text-center.read-more
+                a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/learning/')
+                  !=global.__("See all Learning")
+                  !=" "
+                  span.fa.fa-long-arrow-right
 
       if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
         include inc_grid
