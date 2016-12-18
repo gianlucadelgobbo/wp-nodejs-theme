@@ -24,7 +24,8 @@ $(window).on("popstate", function(e) {
     return original.apply(this, arguments);
   };
 })(history.pushState);
-$(window).load(function(){
+
+$(function() {
   if (typeof(cx) !== "undefined") {
     jQuery(".rientro  .searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
     var gcse = document.createElement('script');

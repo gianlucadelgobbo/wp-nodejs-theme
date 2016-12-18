@@ -60,14 +60,26 @@ exports.getGrid = function getGrid(data) {
   //console.log(grid);
   return grid;
 };
-exports.get_video = function get_video( video ) {
-  if (video.indexOf("//vimeo.com/")) {
-    video = "//player.vimeo.com/video/"+video.substring(video.indexOf("vimeo.com/")+10);
-  } else if (strpos($video, "watch?v=")) {
-    video = "//www.youtube.com/embed/"+video.substring(video.indexOf("watch?v=")+8);
+exports.get_video = function get_video( url ) {
+  var v = {};
+  console.log(url);
+  if (url.indexOf("vimeo.com/")>0) {
+    console.log("stocazzo 1");
+    var yts = url.substring(url.indexOf("video/")+6);
+    console.log(yts);
+    //v.embed = "//player.vimeo.com/video/"+url.substring(url.indexOf("vimeo.com/")+10);
+    v.embed = "//player.vimeo.com/video/"+yts;
+    v.thumb = "http://vimeo.com/api/v2/video/"+yts+".json";
+  } else if (url.indexOf("youtube.com/")>0) {
+    //var yts = url.substring(url.indexOf("watch?v=")+8);
+    console.log("stocazzo 2");
+    var yts = url.substring(url.indexOf("embed/")+6);
+    console.log(yts);
+    v.embed = "//www.youtube.com/embed/"+yts;
+    v.thumb = "//img.youtube.com/vi/"+yts+"/maxresdefault.jpg";
   }
-  return video;
-}
+  return v;
+};
 
 exports.fixResults = function fixResults(data) {
   for (var item in data){
@@ -91,6 +103,11 @@ exports.makeExcerpt = function makeExcerpt(descr,length) {
 };
 
 exports.fixResult = function fixResult(data) {
+  if (typeof(data.video_thumbnail) == "string" && data.video_thumbnail.length>0) {
+    - console.log("fixResult")
+    - console.log(typeof(data.video_thumbnail))
+    data.video = this.get_video(data.video_thumbnail);
+  }
   if (data.date) {
     data.date = moment(data.date).utc().format();
     data.dateHR = moment(data.date).utc().format("MMMM, Do YYYY, h:mm a");
