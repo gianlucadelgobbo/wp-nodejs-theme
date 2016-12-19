@@ -25,7 +25,7 @@ block content
 									- capauthors = data.capauthors
 									include inc_capauthors
 							.col-md-6
-								if data.web_site.length
+								if data.web_site.length && data.web_site[0].length
 									- websites = data.web_site
 									include inc_websites
 						include inc_share
