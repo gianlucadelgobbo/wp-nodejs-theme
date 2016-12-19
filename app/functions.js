@@ -62,10 +62,11 @@ exports.getGrid = function getGrid(data) {
 };
 exports.get_video = function get_video( url ) {
   var v = {};
+  var yts;
   console.log(url);
   if (url.indexOf("vimeo.com/")>0) {
     console.log("stocazzo 1");
-    var yts = url.substring(url.indexOf("video/")+6);
+    yts = url.substring(url.indexOf("video/")+6);
     console.log(yts);
     //v.embed = "//player.vimeo.com/video/"+url.substring(url.indexOf("vimeo.com/")+10);
     v.embed = "//player.vimeo.com/video/"+yts;
@@ -73,7 +74,7 @@ exports.get_video = function get_video( url ) {
   } else if (url.indexOf("youtube.com/")>0) {
     //var yts = url.substring(url.indexOf("watch?v=")+8);
     console.log("stocazzo 2");
-    var yts = url.substring(url.indexOf("embed/")+6);
+    yts = url.substring(url.indexOf("embed/")+6);
     console.log(yts);
     v.embed = "//www.youtube.com/embed/"+yts;
     v.thumb = "//img.youtube.com/vi/"+yts+"/maxresdefault.jpg";
@@ -83,7 +84,7 @@ exports.get_video = function get_video( url ) {
 
 exports.fixResults = function fixResults(data) {
   for (var item in data){
-    if (data[item].title || data[item].post_title) data[item] = this.fixResult(data[item]);
+    if (data[item] && (data[item].title || data[item].post_title)) data[item] = this.fixResult(data[item]);
   }
   //data.sort("this.sortByStartDate");
 
@@ -91,9 +92,13 @@ exports.fixResults = function fixResults(data) {
 };
 
 exports.makeExcerpt = function makeExcerpt(descr,length) {
-  descr = descr.replace(/<[^>]+>/ig,"");
-  descrA = descr.split(" ");
+  console.log("makeExcerpt"+descr.length);
+  var descr2 = descr.replace(/<[^>]+>/ig,"");
+  console.log("makeExcerpt");
+  var descrA = descr2.split(" ");
+  console.log("makeExcerpt");
   var d = "";
+  console.log("makeExcerpt");
   for (var item in descrA) {
     if (d.length<length){
       d+=descrA[item]+" "
@@ -104,8 +109,6 @@ exports.makeExcerpt = function makeExcerpt(descr,length) {
 
 exports.fixResult = function fixResult(data) {
   if (typeof(data.video_thumbnail) == "string" && data.video_thumbnail.length>0) {
-    - console.log("fixResult")
-    - console.log(typeof(data.video_thumbnail))
     data.video = this.get_video(data.video_thumbnail);
   }
   if (data.date) {
@@ -123,7 +126,7 @@ exports.fixResult = function fixResult(data) {
     data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
   }
   if (data['wpcf-location']) data['wpcf-location'] = this.formatLocation(data['wpcf-location']);
-  if (data['data_evento'] && data['data_evento'].length && typeof data['data_evento'] == 'Array') data['data_evento'] = data['data_evento'][0];
+  if (data['data_evento'] && data['data_evento'].length && typeof (data['data_evento']) == 'object') data['data_evento'] = data['data_evento'][0];
   if (!data['data_evento']) {
     data['data_evento'] = moment(data['post_modified']).utc().format("MMMM D, YYYY");
   }

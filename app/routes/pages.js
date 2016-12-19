@@ -1,17 +1,14 @@
 var helpers = require('./../helpers');
+var fnz = require('./../functions');
 
 exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPage(req, function( result ) {
       if(result['ID']) {
-        console.log(global.getLocale());
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
         if (result.featured) meta_data.meta['image_src'] = result.featured.full;
-        if (result.meta_description) meta_data.meta['og_description'] = result.meta_description;
-
-        console.log(req.query.q);
+        if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
-        console.log(pug);
         res.render(pug, {data: result, meta_data:meta_data, itemtype:config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q});
       } else {
         res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
@@ -26,8 +23,11 @@ exports.getSubpage = function getSubpage(req, res) {
         console.log(global.getLocale());
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
         if (result.featured) meta_data.meta['image_src'] = result.featured.full;
-        if (result.meta_description) meta_data.meta['og_description'] = result.meta_description;
-        console.log(req.query.q);
+        if (result.post_excerpt) {
+          meta_data.meta['og_description'] = fnz.makeExcerpt(result.post_excerpt, 160);
+        } else {
+          meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
+        }
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].pugpage ? config.sez.pages.conf[req.params.subpage].pugpage : config.sez.pages.conf.default.subpage);
         console.log("pug");
         console.log(pug);

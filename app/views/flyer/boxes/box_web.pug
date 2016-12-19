@@ -23,14 +23,12 @@
         each capauthor in box.capauthors
           if capauthor.user_role == 'customer'
             - showdiv = true
-        - console.log("showdiv")
-        - console.log(showdiv)
-        - if (showdiv == true)
+        if showdiv == true
           .small
             each capauthor in box.capauthors
               if capauthor.user_role == 'customer'
                 span(itemprop='sourceOrganization', itemscope='', itemtype='http://schema.org/Person')
-                  a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+                  a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author')
                     i.glyphicon.glyphicon-user
                     !=" "
                     span(itemprop='name')=capauthor.display_name

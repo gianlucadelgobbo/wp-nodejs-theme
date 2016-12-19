@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     padding-top: 0;
   }
   #top-menu.navbar-inverse.navbar-fixed-top{
-    margin-top:0px;
+    margin-top:0;
   }
   #top-menu #mainmenu{
     padding: 0;
@@ -785,4 +785,7 @@ footer.navbar-inverse{
 }
 .pagepaddingtop{
   padding-top: 50px;
+}
+.tagandcount{
+  white-space: nowrap;
 }

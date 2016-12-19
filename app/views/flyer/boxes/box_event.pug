@@ -3,8 +3,8 @@
     .thumb-cnt
       .thumb-cnt-cnt
         //.catlabel=box.type
-        a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/portfolio/live-visuals/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-          img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
+        a.ajaxloader(itemprop='url', href='/portfolio/live-visuals/'+box.slug+"/", rel='bookmark', title!=box.post_title)
+          img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
     .box-list
       .text-center
         .text-muted.supText

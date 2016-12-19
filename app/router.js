@@ -13,17 +13,22 @@ var pagesRoutes = require('./routes/pages');
  */
 module.exports = function(app) {
   app.get('/it/', indexRoutes.get);
+
   app.get('/it/portfolio/web-and-mobile/', webRoutes.getAll);
+  app.get('/it/portfolio/web-and-mobile/tags/', webRoutes.getAllTags);
   app.get('/it/portfolio/web-and-mobile/(:web)', webRoutes.get);
-  app.get('/it/portfolio/web-and-mobile/page/(:page)', webRoutes.get);
+  app.get('/it/portfolio/web-and-mobile/page/(:page)', webRoutes.getAll);
+  app.get('/it/portfolio/web-and-mobile/tags/(:tag)', webRoutes.getTag);
 
   app.get('/it/portfolio/videos/', videosRoutes.getAll);
   app.get('/it/portfolio/videos/(:video)', videosRoutes.get);
   app.get('/it/portfolio/videos/page/(:page)', videosRoutes.get);
 
   app.get('/it/portfolio/live-visuals/', eventsRoutes.getAll);
+  app.get('/it/portfolio/live-visuals/tags/', eventsRoutes.getAllTags);
   app.get('/it/portfolio/live-visuals/(:event)', eventsRoutes.get);
   app.get('/it/portfolio/live-visuals/page/(:page)', eventsRoutes.get);
+  app.get('/it/portfolio/live-visuals/tags/(:tag)', eventsRoutes.getAllTags);
 
   app.get('/it/portfolio/learning/', learningRoutes.getAll);
   app.get('/it/portfolio/learning/(:learning)', learningRoutes.get);
@@ -52,16 +57,20 @@ module.exports = function(app) {
   app.get('/', indexRoutes.get);
 
   app.get('/portfolio/web-and-mobile/', webRoutes.getAll);
+  app.get('/portfolio/web-and-mobile/tags/', webRoutes.getAllTags);
   app.get('/portfolio/web-and-mobile/(:web)', webRoutes.get);
   app.get('/portfolio/web-and-mobile/page/(:page)', webRoutes.getAll);
+  app.get('/portfolio/web-and-mobile/tags/(:tag)', webRoutes.getTag);
 
   app.get('/portfolio/videos/', videosRoutes.getAll);
   app.get('/portfolio/videos/(:video)', videosRoutes.get);
   app.get('/portfolio/videos/page/(:page)', videosRoutes.getAll);
 
   app.get('/portfolio/live-visuals/', eventsRoutes.getAll);
+  app.get('/portfolio/live-visuals/tags/', eventsRoutes.getAllTags);
   app.get('/portfolio/live-visuals/(:event)', eventsRoutes.get);
   app.get('/portfolio/live-visuals/page/(:page)', eventsRoutes.getAll);
+  app.get('/portfolio/live-visuals/tags/(:tag)', eventsRoutes.getTag);
 
   app.get('/portfolio/learning/', learningRoutes.getAll);
   app.get('/portfolio/learning/(:learning)', learningRoutes.get);

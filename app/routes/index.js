@@ -26,7 +26,7 @@ exports.get = function get(req, res) {
                               meta_data.meta.title = meta_data.meta.name;
                               var obj = {data: {news:result_news,events:result_events,web:result_web,learning:result_learning,videos:result_videos,lab:result_lab,awards:result_award}, meta_data:meta_data,posttype_events:posttype_events,profile:profile,posttype_lab:posttype_lab,posttype_web:posttype_web,posttype_video:posttype_video};
                               jsonfile.writeFile(file, obj, function (err) {
-                                console.error(config.root);
+                                console.log(err);
                               });
                               res.render(config.prefix+'/'+'index',obj);
                             });

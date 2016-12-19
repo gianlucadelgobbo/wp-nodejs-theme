@@ -1,7 +1,7 @@
 extends layout
 block content
   .container
-    article.pagepaddingtop#container(itemscope='', itemtype='http://schema.org/CreativeWork')
+    article.pagepaddingtop#container(itemprop=itemprop, itemscope='', itemtype='http://schema.org/Person')
       .row
         .col-sm-9
           header
@@ -21,7 +21,7 @@ block content
           img.img-responsive.main-image(src=data.data.img, alt=data.data.display_name, itemprop='image')
     each auth_content in data.data.auth_contents
       if auth_content.posts.length
-        section(itemscope='', itemtype="http://schema.org/itemList")
+        section(itemscope, itemtype="https://schema.org/ItemList")
           h3.entry-title(itemprop="name")=auth_content.labels.name
           .row.isotope
             each box in auth_content.posts

@@ -1,30 +1,31 @@
 var helpers = require('./../helpers');
+var fnz = require('./../functions');
 
 exports.get = function get(req, res) {
-	helpers.getMetaData(req, function( meta_data ) {
-		helpers.getLab(req, function( result ) {
-			if(result['ID']) {
-				meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
-				if (result.featured) meta_data.meta['image_src'] = result.featured.full;
-				if (result.meta_description) meta_data.meta['og_description'] = result.meta_description;
-
-				res.render(config.prefix+'/'+'lab', {data: result, meta_data:meta_data});
-			} else {
-				res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
-			}
-		});
-	});
+  helpers.getMetaData(req, function( meta_data ) {
+    helpers.getLab(req, function( result ) {
+      if(result['ID']) {
+        meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
+        if (result.featured) meta_data.meta['image_src'] = result.featured.full;
+        if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
+        res.render(config.prefix+'/'+'lab', {data: result, meta_data:meta_data});
+      } else {
+        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+      }
+    });
+  });
 };
 
 exports.getAll = function getAll(req, res) {
-	helpers.getMetaData(req, function( meta_data ) {
-		helpers.getPostType(req, "lab", function( posttype ) {
-			helpers.getAllLab(req, config.sez.lab.limit, req.params.page ? req.params.page : 1, function( result ) {
-				meta_data.meta.title = __("Lab") + " | " + meta_data.meta.name;
-				res.render(config.prefix+'/'+'labs', {data: result, meta_data:meta_data, posttype:posttype});
-			});
-		});
-	});
+  helpers.getMetaData(req, function( meta_data ) {
+    helpers.getPostType(req, "lab", function( posttype ) {
+      helpers.getAllLab(req, config.sez.lab.limit, req.params.page ? req.params.page : 1, function( result ) {
+        meta_data.meta.title = __("Lab") + " | " + meta_data.meta.name;
+		meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.description, 160);
+		res.render(config.prefix+'/'+'labs', {data: result, meta_data:meta_data, posttype:posttype});
+      });
+    });
+  });
 };
 
 
