@@ -17,7 +17,6 @@ module.exports = function(app, exp) {
   var env = process.env.NODE_ENV || 'development';
   app.set('views', [app.root + '/app/views']);
   app.set('view engine', 'pug');
-  //app.set('view cache', true);
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
   app.use(methodOverride());
@@ -27,10 +26,10 @@ module.exports = function(app, exp) {
   //app.use(require('stylus').middleware({ src: app.root + '/public' }));
   //app.use(session({ secret: 'wp-nodejs-theme', resave: false, saveUninitialized: true, cookie: { maxAge: 3600000 } }));
   app.use(i18n.init);
-  console.log("env ");
-  console.log(env);
   app.set('view options', { layout: false });
-  if ('development' == env) {
+  console.log("env "+env);
+  if (env == 'development') {
+    app.set('view cache', true);
     //app.set('view options', { doctype : 'html', pretty : true });
   }
 };
