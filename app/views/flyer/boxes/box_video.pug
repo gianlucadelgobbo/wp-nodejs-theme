@@ -8,7 +8,7 @@
 
       else
         a.ajaxloader(itemprop='url', href='/portfolio/videos/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-          img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject')
+          img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject')
     .box-list
       .box-list-cnt
         if box.data_month

@@ -789,3 +789,20 @@ footer.navbar-inverse{
 .tagandcount{
   white-space: nowrap;
 }
+
+.play-cnt .fa-play{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  color: white;
+  font-size: 54px;
+  top: -25px;
+  left: -25px;
+}
+
+.play-cnt {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}

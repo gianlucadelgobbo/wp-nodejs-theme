@@ -3,7 +3,7 @@
     .thumb-cnt
       .catlabel=box.type
       a(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/events/'+box.slug, rel='bookmark', title!=box.title.rendered)
-        img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.title.rendered, itemprop='url')
+        img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.title.rendered, itemprop='url')
     .box-list
       .box-list-cnt
         .text-muted

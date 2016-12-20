@@ -17,7 +17,7 @@ module.exports = function(app, exp) {
   var env = process.env.NODE_ENV || 'development';
   app.set('views', [app.root + '/app/views']);
   app.set('view engine', 'pug');
-  app.set('view cache', true);
+  //app.set('view cache', true);
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
   app.use(methodOverride());

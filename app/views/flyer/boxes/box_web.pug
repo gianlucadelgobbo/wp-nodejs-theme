@@ -3,7 +3,7 @@
     .thumb-cnt
       //.catlabel=box.type
       a.ajaxloader(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/portfolio/web-and-mobile/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-        img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='url')
+        img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='url')
     .box-list
       if box.data_month
         .text-muted

@@ -5,7 +5,7 @@
         .thumb-cnt
           //.catlabel=box.type
           a.ajaxloader(itemprop='url', href='/portfolio/lab/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-            img.img-responsive(src=box.featured.thumbnail, alt!='Image for: '+box.post_title, itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject')
+            img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject')
       .col-lg-9
         .box-list
           .box-list-cnt

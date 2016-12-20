@@ -266,7 +266,7 @@ exports.getAllVideo = function getAllVideo(req, limit, page, callback) {
   //console.log(wp.new());
   wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
     console.log("//// All Video");
-    //console.log(err || data);
+    console.log(err || data);
     data = fnz.fixResults(data);
     callback(data);
   });

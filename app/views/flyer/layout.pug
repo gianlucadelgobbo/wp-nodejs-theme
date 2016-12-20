@@ -301,11 +301,19 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
       js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=#{meta_data.meta.fb_appId}";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+  script.
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=#{meta_data.meta.fb_appId}";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   script(type="text/javascript").
     var sgp_config = {"sgp_selT": "2","sgp_sel": ".thumbnail","sgp_bT": "{#meta_data.meta.name}","sgp_bL": "#{meta_data.meta.description}","sgp_bU": "#{global.config.domain}","sgp_bg": "000000","sgp_bgo": "0.8","sgp_bb": "1","sgp_hb": "1","sgp_hbt": "1","sgp_ch": "","sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png","sgp_desc": "1","sgp_fb": "1","sgp_fbf": "1","sgp_fbc": "1","sgp_nav": "1","sgp_hon": "","sgp_usf":"1.2","sgp_mb":"10","sgp_theme":"classic","sgp_theme_root":"http://flyer.it/wp-content/plugins/flyer-social-gallery/themes/","sgp_iLoadR": "http://flyer.it/wp-content/plugins/flyer-social-gallery/i/loading.gif","sgp_iR": "http://flyer.it/wp-content/plugins/flyer-social-gallery/i/r.png","sgp_iL": "http://flyer.it/wp-content/plugins/flyer-social-gallery/i/l.png",};
     var sgp_ie = false;var sgp_ie7 = false;
   script(type='text/javascript', src='/'+config.prefix+'/js/jquery.min.js')
-  //script(type='text/javascript', src='/'+config.prefix+'/js/jquery-migrate.min.js')
+  script(type='text/javascript', src='/'+config.prefix+'/js/jquery-migrate.min.js')
   script(type='text/javascript', src='/'+config.prefix+'/js/bootstrap.min.js')
   script(type='text/javascript', src='/'+config.prefix+'/js/jquery.isotope.min.js')
   script(type='text/javascript', src='/'+config.prefix+'/js/imagesloaded.pkgd.min.js')
@@ -343,7 +351,7 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
     script(type='text/javascript', src='http://flyer.it/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.5')
     script(type='text/javascript', src='http://flyer.it/wp-content/plugins/custom-facebook-feed/js/cff-scripts.js?ver=2.4.5')
     script(type='text/javascript', src='http://flyer.it/wp-includes/js/wp-embed.min.js')
-  //script(type='text/javascript', src='http://flyer.it/wp-content/plugins/flyer-social-gallery/js/socialGalleryPluginLite.js')
+  script(type='text/javascript', src='/'+config.prefix+'/js/socialGalleryPluginLite.js')
   script.
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
