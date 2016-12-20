@@ -28,7 +28,8 @@ module.exports = function(app, exp) {
   app.use(i18n.init);
   app.set('view options', { layout: false });
   console.log("env "+env);
-  if (env == 'development') {
+  if (env == 'production') {
+    console.log("env "+env);
     app.set('view cache', true);
     //app.set('view options', { doctype : 'html', pretty : true });
   }

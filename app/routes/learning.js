@@ -8,7 +8,7 @@ exports.get = function get(req, res) {
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
         if (result.featured) meta_data.meta['image_src'] = result.featured.full;
         if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
-        res.render(config.prefix+'/'+'learning', {data: result, meta_data:meta_data});
+        res.render(config.prefix+'/'+'learning', {data: result, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
         res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
       }

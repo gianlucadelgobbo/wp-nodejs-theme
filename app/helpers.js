@@ -50,11 +50,16 @@ exports.getPage = function getPage(req,callback) {
   wp.myCustomResource().sluggg(req.params.page).get(function( err, data ) {
     console.log("//// Page");
     console.log(err);
-    data = fnz.fixResult(data);
-    if (data.posts){
-      data.posts = fnz.fixResults(data.posts);
+    if (!err && data) {
+      if (data) data = fnz.fixResult(data);
+      if (data.posts){
+        data.posts = fnz.fixResults(data.posts);
+      }
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+    } else {
+      data = {};
     }
-    if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+    console.log("//// Page");
     callback(data);
   });
 };
@@ -266,7 +271,7 @@ exports.getAllVideo = function getAllVideo(req, limit, page, callback) {
   //console.log(wp.new());
   wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
     console.log("//// All Video");
-    console.log(err || data);
+    //console.log(err || data);
     data = fnz.fixResults(data);
     callback(data);
   });

@@ -92,13 +92,9 @@ exports.fixResults = function fixResults(data) {
 };
 
 exports.makeExcerpt = function makeExcerpt(descr,length) {
-  console.log("makeExcerpt"+descr.length);
   var descr2 = descr.replace(/<[^>]+>/ig,"");
-  console.log("makeExcerpt");
   var descrA = descr2.split(" ");
-  console.log("makeExcerpt");
   var d = "";
-  console.log("makeExcerpt");
   for (var item in descrA) {
     if (d.length<length){
       d+=descrA[item]+" "

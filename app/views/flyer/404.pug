@@ -1,10 +1,10 @@
 extends layout
 block content
-	.container-fluid
+	.container
 		article#container(itemscope='', itemtype='http://schema.org/'+itemtype)
 			.row
 				.col-sm-9
-					header
+					header.header
 						h1.entry-title(itemprop='name')=global.__("Content NOT found")
 					.rientro
 						div(itemprop='description')!=global.__("The content you requested was not found on our server, please try to search for it")
