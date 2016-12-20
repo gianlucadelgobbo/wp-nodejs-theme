@@ -10,8 +10,8 @@ if customerExists
     li.navbar-text Customer
     each capauthor in capauthors
       if capauthor.user_role == 'Customer'
-        li(itemprop='sourceOrganization', itemscope='', itemtype='http://schema.org/Person')
-          a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+        li(itemprop='sourceOrganization', itemscope, itemtype='http://schema.org/Person')
+          a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
             i.glyphicon.glyphicon-user
             !=" "
             span(itemprop='name')=capauthor.display_name
@@ -23,7 +23,7 @@ if authorExists
     each capauthor in capauthors
       if capauthor.user_role != 'Customer'
         li(itemprop='publisher')
-          a(href='/people/' + capauthor.user_login, rel='author', itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+          a(href='/people/' + capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
             i.glyphicon.glyphicon-user
             !=" "
             span(itemprop='name')=capauthor.display_name

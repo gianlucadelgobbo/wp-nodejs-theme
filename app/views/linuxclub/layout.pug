@@ -137,7 +137,7 @@ html(lang='en')
 							input(type='hidden', name='lang', value='EN')
 							input(type='hidden', name='topic', value='livevisuals')
 						#nl_res.hide
-			.container-fluid(itemscope='', itemtype='http://schema.org/Event')
+			.container-fluid(itemscope, itemtype='http://schema.org/Event')
 				header
 					.row
 						.col-md-6
@@ -179,14 +179,14 @@ html(lang='en')
 								.date.updated(content='')=edition_data.edition.data_evento
 							each location in edition_data.edition['wpcf-location']
 								- locationA = location.split(";")
-								span(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+								span(itemprop='location', itemscope, itemtype='http://schema.org/Place')
 									span(itemprop='name')=locationA[0]
 									!="| ,"
-									span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+									span(itemprop='address', itemscope, itemtype='http://schema.org/PostalAddress')
 										span(itemprop='addressLocality')=locationA[1]
 										!="|  -"
 										span(itemprop='addressCountry')=locationA[2]
-									span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+									span(itemprop='geo', itemscope, itemtype='http://schema.org/GeoCoordinates')
 										meta(itemprop='latitude', content=locationA[3])
 										meta(itemprop='longitude', content=locationA[4])
 				.visible-xs

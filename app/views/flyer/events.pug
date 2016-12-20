@@ -11,17 +11,17 @@ block content
                 p!=posttype.description
             aside
               p.text-center
-                each tag in posttype.tags
+                each tag, index in posttype.tags
                   a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/live-visuals/tags/' + tag.slug+"/")
-                    span.tagandcount!=tag.name + " (" + tag.count + ")"
-                  !=" · "
-                  - console.log(tag)
+                    span.tagandcount!="#"+tag.name + " (" + tag.count + ")"
+                  if index+1<posttype.tags.length
+                    !=" · "
             .text-center
               include inc_share
       if data
         .row.isotope
           each box in data
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(itemscope='', itemprop='itemListElement')
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(itemscope, itemprop='itemListElement')
               include boxes/box_event
       if data && data._paging
         .text-center.read-more

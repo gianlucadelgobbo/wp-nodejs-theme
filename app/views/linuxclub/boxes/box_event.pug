@@ -1,8 +1,8 @@
-.boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
-  .Event(itemscope='', itemtype='http://schema.org/Event')
+.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
+  .Event(itemscope, itemtype='http://schema.org/Event')
     .thumb-cnt
       .catlabel=box.type
-      a(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/events/'+box.slug, rel='bookmark', title!=box.title.rendered)
+      a(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/events/'+box.slug, rel='bookmark', title!=box.title.rendered)
         img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.title.rendered, itemprop='url')
     .box-list
       .box-list-cnt
@@ -20,14 +20,14 @@
           //if box['wpcf-location'] && box['wpcf-location'].length
             each location in box['wpcf-location']
               - locationA = location.split(";")
-              .place(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+              .place(itemprop='location', itemscope, itemtype='http://schema.org/Place')
                 span.placeName(itemprop='name')=locationA[0]
                 !=", "
-                span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                span(itemprop='address', itemscope, itemtype='http://schema.org/PostalAddress')
                   span.addressLocality(itemprop='addressLocality')=locationA[1]
                   !=" | "
                   span.addressCountry(itemprop='addressCountry')=locationA[2]
-                span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                span(itemprop='geo', itemscope, itemtype='http://schema.org/GeoCoordinates')
                   meta(itemprop='latitude', content=locationA[3])
                   meta(itemprop='longitude', content=locationA[4])
         .text-muted.small.excerpt

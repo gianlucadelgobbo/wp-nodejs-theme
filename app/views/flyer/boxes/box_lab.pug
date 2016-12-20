@@ -1,10 +1,10 @@
-.boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
-  .Lab(itemscope='', itemtype='http://schema.org/CreativeWork')
+.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
+  .Lab(itemscope, itemtype='http://schema.org/CreativeWork')
     .row
       .col-xs-3
         .thumb-cnt
           a.ajaxloader(itemprop='url', href='/portfolio/lab/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-            img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject')
+            img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
       .col-xs-9
         .box-list
           h3.list_title(itemprop='name')

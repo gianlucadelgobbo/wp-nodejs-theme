@@ -1,27 +1,34 @@
 extends layout
 block content
-	.container
-		article.pagepaddingtop#container(itemscope='', itemtype='http://schema.org/Event')
-			.row
-				.col-sm-9
-					header
-						h1.entry-title(itemprop='name')!=data.post_title
-					.rientro
-						- var dateplace = data
-						include inc_dateplace
-						div(itemprop='description')!=data.post_content
-						.row
-							.col-md-6
-								if data.capauthors
-									- capauthors = data.capauthors
-									include inc_capauthors
-							.col-md-6
-								if data.web_site.length && data.web_site[0].length
-									- websites = data.web_site
-									include inc_websites
-						include inc_share
-				.col-sm-3
-					img.img-responsive.main-image(src=data.featured.thumbnail, alt=data.post_title, itemprop='image')
+  .container
+    article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Event')
+      .row
+        .col-sm-9
+          header
+            h1.entry-title(itemprop='name')!=data.post_title
+            if data.tags
+              p.tags
+                each tag, index in data.tags
+                  a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/live-visuals/tags/' + tag.slug + "/")
+                    span.tagandcount!="#"+tag.name + " (" + tag.count + ")"
+                  if index+1<data.tags.length
+                    !=" · "
+          .rientro
+            - var dateplace = data
+            include inc_dateplace
+            div(itemprop='description')!=data.post_content
+            .row
+              .col-md-6
+                if data.capauthors
+                  - capauthors = data.capauthors
+                  include inc_capauthors
+              .col-md-6
+                if data.web_site.length && data.web_site[0].length
+                  - websites = data.web_site
+                  include inc_websites
+            include inc_share
+        .col-sm-3
+          img.img-responsive.main-image(src=data.featured.thumbnail, alt=data.post_title, itemprop='image')
 
-			if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
-				include inc_grid
+      if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
+        include inc_grid

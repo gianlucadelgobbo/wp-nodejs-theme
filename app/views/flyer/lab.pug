@@ -1,18 +1,12 @@
 extends layout
 block content
   .container
-    article.pagepaddingtop#container(itemscope='', itemtype='http://schema.org/CreativeWork')
+    article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/CreativeWork')
       .row
         .col-sm-9
           header
             h1.entry-title(itemprop='name')=data.post_title
           .rientro
-            if data.tags
-              p.tags
-                each tag in data.tags
-                  a(href="/lab/tags/"+tag.slug)
-                    span.label.label-primary=tag.name
-                  !=" "
             if data.data_month
               .text-muted
                 .dates
@@ -35,7 +29,7 @@ block content
 
       each auth_content in data.auth_contents
         if auth_content.posts.length
-          section(itemscope='', itemtype="http://schema.org/itemList")
+          section(itemscope, itemtype="http://schema.org/itemList")
             h3.entry-title(itemprop="name")=auth_content.labels.name
             .row.isotope
               each box in auth_content.posts

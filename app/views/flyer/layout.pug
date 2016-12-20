@@ -220,8 +220,8 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
             div
               strong(itemprop='name') Flyer communication
               br
-              span(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
-                span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+              span(itemprop='location', itemscope, itemtype='http://schema.org/Place')
+                span(itemprop='address', itemscope, itemtype='http://schema.org/PostalAddress')
                   span(itemprop='streetAddress') Via del Verano 39
                   br
                   span(itemprop='postalCode') 00185
@@ -230,7 +230,7 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
                   !=" "
                   span(itemprop='addressCountry')=global.__('Italy')
                 br
-                span.hide(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                span.hide(itemprop='geo', itemscope, itemtype='http://schema.org/GeoCoordinates')
                   span(itemprop='latitude') 41.899316
                   | ,
                   span(itemprop='longitude') 12.520403

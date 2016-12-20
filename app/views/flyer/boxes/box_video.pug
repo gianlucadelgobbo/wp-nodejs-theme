@@ -1,5 +1,5 @@
-.boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
-  .Video(itemscope='', itemtype='http://schema.org/CreativeWork')
+.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
+  .Video(itemscope, itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
       //.catlabel=box.type
       if box.video_thumbnail
@@ -8,7 +8,7 @@
 
       else
         a.ajaxloader(itemprop='url', href='/portfolio/videos/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-          img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject')
+          img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
     .box-list
       .box-list-cnt
         if box.data_month
@@ -31,8 +31,8 @@
             p
               each capauthor in box.capauthors
                 if capauthor.user_role == 'customer'
-                  span(itemprop='sourceOrganization', itemscope='', itemtype='http://schema.org/Person')
-                    a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+                  span(itemprop='sourceOrganization', itemscope, itemtype='http://schema.org/Person')
+                    a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
                       i.glyphicon.glyphicon-user
                       !=" "
                       span(itemprop='name')=capauthor.display_name
@@ -42,7 +42,7 @@
               each capauthor in box.capauthors
                 if capauthor.user_role != 'customer'
                   span(itemprop='publisher')
-                    a(href='/people/'+capauthor.user_login, rel='author', itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+                    a(href='/people/'+capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
                       i.glyphicon.glyphicon-user
                       !=" "
                       span(itemprop='name')=capauthor.display_name
