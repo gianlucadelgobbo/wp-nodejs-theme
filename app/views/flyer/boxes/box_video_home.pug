@@ -5,6 +5,5 @@
         span.play-cnt
           i.fa.fa-play
         img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': ' + box.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
-        - console.log(box.video.thumb)
       //.embed-responsive.embed-responsive-16by9
         iframe.embed-responsive-item(src=box.video_thumbnail ,webkitAllowFullScreen="webkitAllowFullScreen", mozallowfullscreen="mozallowfullscreen", allowFullScreen="allowFullScreen")

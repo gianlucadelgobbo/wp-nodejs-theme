@@ -2,6 +2,6 @@ ul.nav.nav-pills.nav-stacked
   li.navbar-text Link
   each web_site in websites
     li
-      a(href=web_site, itemprop='url')
+      a(href=web_site, itemprop='url', target="_blank")
         i.glyphicon.glyphicon-new-window
         !=" " + web_site

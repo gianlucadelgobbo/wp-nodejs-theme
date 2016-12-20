@@ -43,7 +43,7 @@ block content
           h1.entry-title=global.__("Live Visuals")
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
-              .col-xs-12!=posttype_events.excerpt + "..."
+              .col-xs-12!=posttype_events.description
         .row.isotope
           each box, index in data.events
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>5 ? "hidden-lg visible-xl" : "")
@@ -62,7 +62,7 @@ block content
           h1.entry-title=posttype_lab.labels.name
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
-              .col-xs-12!=posttype_lab.excerpt + "..."
+              .col-xs-12!=posttype_lab.description
         .row.isotope
           each box, index in data.lab
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>5 ? "hidden-lg visible-xl" : "")
@@ -81,10 +81,10 @@ block content
           h1.entry-title=posttype_web.labels.name
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
-              .col-xs-12!=posttype_web.excerpt + "..."
+              .col-xs-12!=posttype_web.description
         .row.isotope
           each box, index in data.web
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>2 ? "hidden-lg visible-xl" : "")
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>2 ? "hidden-lg visible-xl visible-md" : "")
               include boxes/box_web
         .text-center.read-more
           a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/web-and-mobile/')
@@ -94,18 +94,20 @@ block content
 
 
 
-    section.home-learning
-      .container-fluid
-        .row
-          .col-lg-10.col-lg-offset-2.col-md-12.col-sm-12
-            h1.entry-title.boxItem=global.__("Learning")
-            each box in data.learning
-                include boxes/box_learning_home
-            .read-more
-              a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/learning/')
-                !=global.__("See all Learnings")
-                !=" "
-                span.fa.fa-long-arrow-right
+    .home-learning
+      section
+        .container-fluid
+          .row
+            .col-lg-6.col-lg-offset-2.col-md-12.col-sm-12
+              h1.entry-title.boxItem=global.__("Learning")
+              p!=posttype_learning.description
+              each box in data.learning
+                  include boxes/box_learning_home
+              .read-more
+                a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/learning/')
+                  !=global.__("See all Learnings")
+                  !=" "
+                  span.fa.fa-long-arrow-right
 
 
 
@@ -115,7 +117,7 @@ block content
           h1.entry-title=posttype_video.labels.name
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
-              .col-xs-12!=posttype_video.excerpt + "..."
+              .col-xs-12!=posttype_video.description
         .row
           each box in data.videos
             if box.video_thumbnail
@@ -133,6 +135,9 @@ block content
       .container-fluid(itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h1.entry-title.boxItem(itemprop="name")=global.__("Awards and Grants")
+          .row
+            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+              .col-xs-12!=posttype_awards.description
         .row
           each box, index in data.awards
             .col-xl-2.col-lg-3.col-md-3(class=(!index ? "col-xl-offset-2" : ""))
@@ -147,9 +152,12 @@ block content
       .container-fluid
         header.text-center
           h1.entry-title.boxItem=global.__("Extra")
+          .row
+            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+              .col-xs-12!=posttype_news.description
         .row.isotope
           each box in data.news
-            .col-lg-3.col-md-12.col-sm-12.isotopeitem
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
               include boxes/box_news
         .text-center.read-more
           a(href=(config.current_lang == 'it' ? '/it' : '') + '/extra/')

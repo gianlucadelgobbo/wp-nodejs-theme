@@ -693,7 +693,25 @@ a:hover img {
   background-color: #EEE;
 }
 .home-learning{
-  background-color: #999999;
+  position: relative;
+  background-color: #000;
+  color: #FFF;
+}
+.home-learning:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  background-repeat:  no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  opacity: .6;
+  height: 100%;
+  width: 100%;
+  background-image: url(http://flyer.it/files/2016/12/profile-learning.jpg);
 }
 .home-awards img{
   width: 100px;
@@ -806,3 +824,4 @@ footer.navbar-inverse{
   top: 50%;
   left: 50%;
 }
+
