@@ -82,15 +82,6 @@ exports.get_video = function get_video( url ) {
   return v;
 };
 
-exports.fixResults = function fixResults(data) {
-  for (var item in data){
-    if (data[item] && (data[item].title || data[item].post_title)) data[item] = this.fixResult(data[item]);
-  }
-  //data.sort("this.sortByStartDate");
-
-  return data;
-};
-
 exports.makeExcerpt = function makeExcerpt(descr,length) {
   var descr2 = descr.replace(/<[^>]+>/ig,"");
   var descrA = descr2.split(" ");
@@ -103,10 +94,19 @@ exports.makeExcerpt = function makeExcerpt(descr,length) {
   return d.trim();
 };
 
-exports.fixResult = function fixResult(data) {
-  if (typeof(data.video_thumbnail) == "string" && data.video_thumbnail.length>0) {
-    data.video = this.get_video(data.video_thumbnail);
+exports.fixResults = function fixResults(data) {
+  for (var item in data){
+    if (data[item] && (data[item].title || data[item].post_title)) data[item] = this.fixResult(data[item]);
   }
+  //data.sort("this.sortByStartDate");
+
+  return data;
+};
+
+exports.fixResult = function fixResult(data) {
+  /*if (typeof(data.video_thumbnail) == "string" && data.video_thumbnail.length>0) {
+    data.video = this.get_video(data.video_thumbnail);
+  }*/
   if (data.date) {
     data.date = moment(data.date).utc().format();
     data.dateHR = moment(data.date).utc().format("MMMM, Do YYYY, h:mm a");
