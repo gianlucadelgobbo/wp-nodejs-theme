@@ -34,7 +34,7 @@ exports.getTag = function getAll(req, res) {
       helpers.getAllWebByTag(req, config.sez.web.limit, req.params.page ? req.params.page : 1, function( result ) {
         meta_data.meta.title = "Web & Mobile #"+req.params.tag+" | " + meta_data.meta.name;
         meta_data.meta['og_description'] = fnz.makeExcerpt("Web & Mobile #"+req.params.tag+". "+posttype.description, 160);
-        res.render(config.prefix+'/'+'webs', {data: result, meta_data:meta_data, posttype:posttype});
+        res.render(config.prefix+'/'+'webs', {data: result, meta_data:meta_data, posttype:posttype,tag:req.params.tag});
       });
     });
   });

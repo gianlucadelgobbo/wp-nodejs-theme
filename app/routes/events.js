@@ -34,7 +34,7 @@ exports.getTag = function getAll(req, res) {
       helpers.getAllEventsByTag(req, config.sez.events.limit, req.params.page ? req.params.page : 1, function( result ) {
         meta_data.meta.title = "Live Visuals #"+req.params.tag+" | " + meta_data.meta.name;
         meta_data.meta['og_description'] = fnz.makeExcerpt("Live Visuals #"+req.params.tag+". "+posttype.description, 160);
-        res.render(config.prefix+'/'+'events', {data: result, meta_data:meta_data, posttype:posttype});
+        res.render(config.prefix+'/'+'events', {data: result, meta_data:meta_data, posttype:posttype, tag:req.params.tag});
       });
     });
   });

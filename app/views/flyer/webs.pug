@@ -7,12 +7,12 @@ block content
           .header
             header
               .text-center
-                h1.entry-title=posttype.labels.name
+                h1.entry-title=posttype.labels.name+(tag ? ": #"+tag : "")
                 p!=posttype.description
             aside
               p.text-center
                 each tag, index in posttype.tags
-                  a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/web-and-mobile/tags/'+tag.slug)
+                  a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/web-and-mobile/tags/'+tag.slug + "/")
                     span.tagandcount!="#"+tag.name+" ("+tag.count+")"
                   if index + 1 < posttype.tags.length
                     !=" · "

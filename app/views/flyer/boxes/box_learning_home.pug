@@ -12,25 +12,21 @@
         !=box.post_title+" "
         span.fa.fa-long-arrow-right
     .text-muted.small.excerpt
-      if box.excerpt && box.excerpt.rendered
-        div(itemprop='headline')
-          p!=box.excerpt.rendered
-      p
-        !=global.__("Duration")+": "
-        span(itemprop='duration')
-          b=box["wpcf-duration"]
-        br
-        - var auth = []
-        each capauthor in box.capauthors
-          - auth.push(capauthor.display_name)
-        if auth.length
-          if auth.length == 1
-            !=global.__("Teacher") + ": "
-          else
-            !=global.__("Teachers") + ": "
-          span(itemprop='performer')
-          b=auth.join(", ")
-        br
-        !=global.__("Price")+": "
-        span(itemprop='offers')
-          b=box["wpcf-price"] + " €"
+      !=global.__("Duration")+": "
+      span(itemprop='duration')
+        b=box["wpcf-duration"]
+      br
+      - var auth = []
+      each capauthor in box.capauthors
+        - auth.push(capauthor.display_name)
+      if auth.length
+        if auth.length == 1
+          !=global.__("Teacher") + ": "
+        else
+          !=global.__("Teachers") + ": "
+        span(itemprop='performer')
+        b=auth.join(", ")
+      br
+      !=global.__("Price")+": "
+      span(itemprop='offers')
+        b=box["wpcf-price"] + " €"

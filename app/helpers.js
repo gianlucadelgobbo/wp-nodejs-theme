@@ -172,7 +172,7 @@ exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
   console.log(req.params.tag);
   //console.log(wp.new());
   wp.myCustomResource().sluggg(req.params.tag).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// All Web");
+    console.log("//// All Web By Tag");
     //console.log(err || data);
     data = fnz.fixResults(data);
     callback(data);
