@@ -34,31 +34,59 @@
       },
       "web" : {
         "domain"	: "http://flyer.it",
-        "limit"		: 20
+        "post_type" : "web-and-mobile",
+        "baseurl"   : "web-and-mobile",
+        "limit"		: 20,
+        "puglist"   : "webs",
+        "pugdett"   : "web"
       },
       "events" : {
         "domain"	: "http://flyer.it",
-        "limit"		: 20
+        "post_type" : "events",
+        "baseurl"   : "live-visuals",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
       },
       "videos" : {
         "domain"	: "http://flyer.it",
-        "limit"		: 20
+        "post_type" : "videos",
+        "baseurl"   : "videos",
+        "limit"		: 20,
+        "puglist"   : "videos",
+        "pugdett"   : "video"
       },
       "learning" : {
         "domain"	: "http://flyer.it",
-        "limit"		: 20
+        "post_type" : "learning",
+        "baseurl"   : "learning",
+        "limit"		: 20,
+        "puglist"   : "learnings",
+        "pugdett"   : "learning"
       },
       "lab" : {
         "domain"	: "http://flyer.it",
-        "limit"		: 20
+        "post_type" : "lab",
+        "baseurl"   : "lab",
+        "limit"		: 20,
+        "puglist"   : "labs",
+        "pugdett"   : "lab"
       },
       "awards" : {
         "domain"	: "http://flyer.it",
-        "limit"		: 20
+        "post_type" : "awards-and-grants",
+        "baseurl"   : "awards-and-grants",
+        "limit"		: 20,
+        "puglist"   : "awards",
+        "pugdett"   : "award"
       },
       "news" : {
         "domain"	: "http://flyer.it",
-        "limit"		: 20
+        "post_type" : "news",
+        "baseurl"   : "extra",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
       },
       "pages" : {
         "domain"	: "http://flyer.it",

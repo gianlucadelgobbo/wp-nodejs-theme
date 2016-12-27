@@ -1,6 +1,8 @@
 var helpers = require('./../helpers');
 var fnz = require('./../functions');
 
+var sez = config.sez.news;
+
 exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getNew(req, function( result ) {
@@ -8,9 +10,9 @@ exports.get = function get(req, res) {
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
         if (result.featured) meta_data.meta['image_src'] = result.featured.full;
         if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
-        res.render(config.prefix+'/'+'new', {data: result, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+        res.render(config.prefix+'/'+sez.pugdett, {result: result, meta_data:meta_data, baseurl:sez.baseurl,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
-        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, baseurl:sez.baseurl, itemtype:"WebPage"});
       }
     });
   });
@@ -18,11 +20,11 @@ exports.get = function get(req, res) {
 
 exports.getAll = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
-    helpers.getPostType(req, "news", function( posttype ) {
-      helpers.getAllNews(req, config.sez.news.limit, req.params.page ? req.params.page : 1, function( result ) {
+    helpers.getPostType(req, sez.post_type, function( posttype ) {
+      helpers.getAllNews(req, sez.limit, req.params.page ? req.params.page : 1, function( results ) {
         meta_data.meta.title = __("News") + " | " + meta_data.meta.name;
         meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.description, 160);
-        res.render(config.prefix+'/'+'news', {data: result, meta_data:meta_data, posttype:posttype});
+        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
       });
     });
   });

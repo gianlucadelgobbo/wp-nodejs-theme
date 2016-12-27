@@ -1,0 +1,11 @@
+if (results._paging && results._paging.totalPages)
+  .text-center.read-more
+    - var nextpage = (parseInt(page) + 1)
+    if (nextpage <= results._paging.totalPages)
+      a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/'+basepath+'/page/' + nextpage)
+        !=global.__("Load more")
+        !=" "
+        span.fa.fa-long-arrow-right
+      span.loading Loading...
+    else
+      .end=global.__("You reached the end")

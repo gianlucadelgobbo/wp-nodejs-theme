@@ -1,31 +1,31 @@
 .boxItem(itemscope, itemtype='http://schema.org/itemListElement')
   .Web(itemscope, itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
-      //.catlabel=box.type
-      a.ajaxloader(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/portfolio/web-and-mobile/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-        img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='url')
+      //.catlabel=result.type
+      a.ajaxloader(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/portfolio/web-and-mobile/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='url')
     .box-list
-      if box.data_month
+      if result.data_month
         .text-muted
           .dates
-              .date=box.data_month
+              .date=result.data_month
       h3.list_title(itemprop='name')
-        a.ajaxloader(itemprop='url', href='/portfolio/web-and-mobile/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
+        a.ajaxloader(itemprop='url', href='/portfolio/web-and-mobile/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
 
-      if box.excerpt && box.excerpt.rendered
-        .excerpt.text-muted(itemprop='headline')!=box.excerpt.rendered
-      if box.tags
+      if result.excerpt && result.excerpt.rendered
+        .excerpt.text-muted(itemprop='headline')!=result.excerpt.rendered
+      if result.tags
         .tags.text-muted.small
-            each tag in box.tags
+            each tag in result.tags
               !="#"+tag.name+" "
-      if box.capauthors
+      if result.capauthors
         - var showdiv = false
-        each capauthor in box.capauthors
+        each capauthor in result.capauthors
           if capauthor.user_role == 'customer'
             - showdiv = true
         if showdiv == true
           .small
-            each capauthor in box.capauthors
+            each capauthor in result.capauthors
               if capauthor.user_role == 'customer'
                 span(itemprop='sourceOrganization', itemscope, itemtype='http://schema.org/Person')
                   a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author')

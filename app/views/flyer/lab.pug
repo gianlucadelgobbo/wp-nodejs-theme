@@ -5,49 +5,49 @@ block content
       .row
         .col-sm-9
           header
-            h1.entry-title(itemprop='name')=data.post_title
+            h1.entry-title(itemprop='name')=result.post_title
           .rientro
-            if data.data_month
+            if result.data_month
               .text-muted
                 .dates
-                  .date=data.data_month
-                  meta(itemprop="datePublished", content=data.datePublished)
-            div(itemprop='description')!=data.post_content
+                  .date=result.data_month
+                  meta(itemprop="datePublished", content=result.datePublished)
+            div(itemprop='description')!=result.post_content
             .row
               .col-md-6
-                if data.capauthors
-                  - capauthors = data.capauthors
+                if result.capauthors
+                  - capauthors = result.capauthors
                   include inc_capauthors
               .col-md-6
-                if data.web_site.length && data.web_site[0].length
-                  - websites = data.web_site
+                if result.web_site.length && result.web_site[0].length
+                  - websites = result.web_site
                   include inc_websites
             include inc_share
         .col-sm-3
-          img.img-responsive.main-image(src=data.featured.thumbnail, alt=data.post_title, itemprop='image')
+          img.img-responsive.main-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
 
 
-      each auth_content in data.auth_contents
+      each auth_content in result.auth_contents
         if auth_content.posts.length
           section(itemscope, itemtype="http://schema.org/itemList")
             h3.entry-title(itemprop="name")=auth_content.labels.name
             .row.isotope
-              each box in auth_content.posts
-                if box.post_type == 'events'
+              each result in auth_content.posts
+                if result.post_type == 'events'
                   .col-lg-3.col-md-12.col-sm-12.isotopeitem
                     include boxes/box_event
-                if box.post_type == 'videos'
+                if result.post_type == 'videos'
                   .col-lg-3.col-md-12.col-sm-12.isotopeitem
                     include boxes/box_video
-                if box.post_type == 'web-and-mobile'
+                if result.post_type == 'web-and-mobile'
                   .col-lg-3.col-md-12.col-sm-12.isotopeitem
                     include boxes/box_web
-                if box.post_type == 'lab'
+                if result.post_type == 'lab'
                   .col-lg-3.col-md-12.col-sm-12.isotopeitem
                     include boxes/box_lab
-                if box.post_type == 'learning'
+                if result.post_type == 'learning'
                   .col-lg-3.col-md-12.col-sm-12.isotopeitem
                     include boxes/box_learning
-                if box.post_type == 'awards-and-grants'
+                if result.post_type == 'awards-and-grants'
                   .col-lg-3.col-md-12.col-sm-12.isotopeitem
                     include boxes/box_award

@@ -1,9 +1,9 @@
 .boxItem(itemscope, itemtype='http://schema.org/itemListElement')
   .Video(itemscope, itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
-      a.ajaxloader(itemprop='url', href='/portfolio/videos/' + box.slug + "/", rel='bookmark', title!=box.post_title)
+      a.ajaxloader(itemprop='url', href='/portfolio/videos/' + result.slug + "/", rel='bookmark', title!=result.post_title)
         span.play-cnt
           i.fa.fa-play
-        img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': ' + box.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': ' + result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
       //.embed-responsive.embed-responsive-16by9
-        iframe.embed-responsive-item(src=box.video_thumbnail ,webkitAllowFullScreen="webkitAllowFullScreen", mozallowfullscreen="mozallowfullscreen", allowFullScreen="allowFullScreen")
+        iframe.embed-responsive-item(src=result.video_thumbnail ,webkitAllowFullScreen="webkitAllowFullScreen", mozallowfullscreen="mozallowfullscreen", allowFullScreen="allowFullScreen")

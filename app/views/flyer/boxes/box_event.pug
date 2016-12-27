@@ -2,33 +2,17 @@
   .Event(itemscope, itemtype='http://schema.org/Event')
     .thumb-cnt
       .thumb-cnt-cnt
-        //.catlabel=box.type
-        a.ajaxloader(itemprop='url', href='/portfolio/live-visuals/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-          img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+        //.catlabel=result.type
+        a.ajaxloader(itemprop='url', href='/portfolio/live-visuals/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+          img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
     .box-list
       .text-center
         .text-muted.supText
-          .dates
-            - dateplace = box
-            include ../inc_date
-          .places
-            if box['wpcf-location']
-              - dateplace = box
-              include ../inc_place
-        h3.list_title(itemprop='name')!=box.post_title.replace(" | ","<br />")
-          //a.ajaxloader(itemprop='url', href='/portfolio/live-visuals/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title.replace(" | ","<br />")
+          include ../inc_dateplace
+        h3.list_title(itemprop='name')!=result.post_title.replace(" | ","<br />")
+          //a.ajaxloader(itemprop='url', href='/portfolio/live-visuals/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title.replace(" | ","<br />")
         .text-muted.small.tags
-          if box.tags
-            p.tags
-              each tag in box.tags
-                !="#"+tag.name
-                !=" "
-          //.text-muted.small.excerpt
-            if box.excerpt && box.excerpt.rendered
-              div(itemprop='description')
-                p!=box.excerpt.rendered
-            span.sr-only(itemprop='organizer')
+          include ../inc_tags
       .read-more-box
-        //a.ajaxloader(itemprop='url', href='/portfolio/live-visuals/'+box.slug+"/", rel='bookmark', title=box.post_title)
         .sr-only=__("Read more")
         i.fa.fa-long-arrow-right

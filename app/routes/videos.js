@@ -1,6 +1,8 @@
 var helpers = require('./../helpers');
 var fnz = require('./../functions');
 
+var sez = config.sez.videos;
+
 exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getVideo(req, function( result ) {
@@ -8,9 +10,9 @@ exports.get = function get(req, res) {
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
         if (result.featured) meta_data.meta['image_src'] = result.featured.full;
         if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
-        res.render(config.prefix+'/'+'video', {data: result, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+        res.render(config.prefix+'/'+sez.pugdett, {result: result, meta_data:meta_data, baseurl:sez.baseurl, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
-        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, baseurl:sez.baseurl, itemtype:"WebPage"});
       }
     });
   });
@@ -18,10 +20,10 @@ exports.get = function get(req, res) {
 
 exports.getAll = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
-    helpers.getPostType(req, "videos", function( posttype ) {
-      helpers.getAllVideo(req, config.sez.videos.limit, req.params.page ? req.params.page : 1, function( result ) {
+    helpers.getPostType(req, sez.post_type, function( posttype ) {
+      helpers.getAllVideo(req, sez.limit, req.params.page ? req.params.page : 1, function( results ) {
         meta_data.meta.title = __("Videos") + " | " + meta_data.meta.name;
-        res.render(config.prefix+'/'+'videos', {data: result, meta_data:meta_data, posttype:posttype});
+        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
       });
     });
   });

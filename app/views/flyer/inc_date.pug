@@ -1,8 +1,8 @@
 span.sr-only
-    if dateplace.startdateHR
-        span(itemprop='startDate', content=dateplace.startdateISO)=dateplace.startdateHR
+    if result.startdateHR
+        span(itemprop='startDate', content=result.startdateISO)=result.startdateHR
         !=" | "
-    if dateplace.enddateHR
-        span(itemprop='endDate', content=dateplace.enddateISO)=dateplace.enddateHR
-if dateplace.data_evento
-    .date=dateplace.data_evento
+    if result.enddateHR
+        span(itemprop='endDate', content=result.enddateISO)=result.enddateHR
+if result.data_evento
+    .date=result.data_evento

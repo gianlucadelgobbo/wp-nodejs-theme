@@ -1,33 +1,33 @@
 .boxItem(itemscope, itemtype='http://schema.org/itemListElement')
   .Learning(itemscope, itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
-      //.catlabel=box.type
-      a.ajaxloader(itemprop='url', href='/portfolio/learning/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-        img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+      //.catlabel=result.type
+      a.ajaxloader(itemprop='url', href='/portfolio/learning/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
     .box-list
-      if box["wpcf-schedule"]
+      if result["wpcf-schedule"]
         .text-muted
           .dates
               .date=global.__("Programming")+": "
-                b=box["wpcf-schedule"]
+                b=result["wpcf-schedule"]
       h3.list_title(itemprop='name')
-        a.ajaxloader(itemprop='url', href='/portfolio/learning/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
+        a.ajaxloader(itemprop='url', href='/portfolio/learning/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
       .text-muted.small.excerpt
-        if box.excerpt && box.excerpt.rendered
+        if result.excerpt && result.excerpt.rendered
           div(itemprop='headline')
-            p!=box.excerpt.rendered
-        if box.tags
+            p!=result.excerpt.rendered
+        if result.tags
           p.tags
-            each tag in box.tags
+            each tag in result.tags
               span.label.label-primary=tag.name
               !=" "
       .text-muted
         !=global.__("Duration")+": "
         span(itemprop='duration')
-          b=box["wpcf-duration"]
+          b=result["wpcf-duration"]
         br
         - var auth = []
-        each capauthor in box.capauthors
+        each capauthor in result.capauthors
           - auth.push(capauthor.display_name)
         if auth.length
           if auth.length == 1
@@ -39,4 +39,4 @@
         br
         !=global.__("Price")+": "
         span(itemprop='offers')
-          b=box["wpcf-price"] + " €"
+          b=result["wpcf-price"] + " €"

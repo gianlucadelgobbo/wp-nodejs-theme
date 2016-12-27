@@ -1,35 +1,35 @@
 .boxItem(itemscope, itemtype='http://schema.org/itemListElement')
   .Video(itemscope, itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
-      //.catlabel=box.type
-      if box.video_thumbnail
+      //.catlabel=result.type
+      if result.video_thumbnail
         .embed-responsive.embed-responsive-16by9
-          iframe.embed-responsive-item(src=box.video_thumbnail ,webkitAllowFullScreen="webkitAllowFullScreen", mozallowfullscreen="mozallowfullscreen", allowFullScreen="allowFullScreen")
+          iframe.embed-responsive-item(src=result.video_thumbnail ,webkitAllowFullScreen="webkitAllowFullScreen", mozallowfullscreen="mozallowfullscreen", allowFullScreen="allowFullScreen")
 
       else
-        a.ajaxloader(itemprop='url', href='/portfolio/videos/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-          img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+        a.ajaxloader(itemprop='url', href='/portfolio/videos/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+          img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
     .box-list
       .box-list-cnt
-        if box.data_month
+        if result.data_month
           .text-muted
             .dates
-                .date=box.data_month
+                .date=result.data_month
         h3.list_title(itemprop='name')
-          a.ajaxloader(itemprop='url', href='/portfolio/videos/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
+          a.ajaxloader(itemprop='url', href='/portfolio/videos/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
         .text-muted.small.excerpt
-          if box.excerpt && box.excerpt.rendered
+          if result.excerpt && result.excerpt.rendered
             div(itemprop='headline')
-              p!=box.excerpt.rendered
-          if box.tags
+              p!=result.excerpt.rendered
+          if result.tags
             p.tags
-              each tag in box.tags
+              each tag in result.tags
                 span.label.label-primary=tag.name
                 !=" "
           //span.sr-only(itemprop='organizer')
-          if box.capauthors
+          if result.capauthors
             p
-              each capauthor in box.capauthors
+              each capauthor in result.capauthors
                 if capauthor.user_role == 'customer'
                   span(itemprop='sourceOrganization', itemscope, itemtype='http://schema.org/Person')
                     a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
@@ -39,7 +39,7 @@
                       !=" - "
                       span(itemprop='jobTitle')=capauthor.user_role
             p
-              each capauthor in box.capauthors
+              each capauthor in result.capauthors
                 if capauthor.user_role != 'customer'
                   span(itemprop='publisher')
                     a(href='/people/'+capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')

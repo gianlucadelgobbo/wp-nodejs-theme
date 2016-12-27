@@ -12,7 +12,7 @@ block content
               .col-md-6
                 !=global.__("Duration") + ": "
                 span(itemprop='duration')
-                  b=data["wpcf-duration"]
+                  b=result["wpcf-duration"]
                 br
                 - var auth = []
                 each capauthor in data.capauthors
@@ -27,7 +27,7 @@ block content
                 br
                 !=global.__("Price") + ": "
                 span(itemprop='offers')
-                  b=data["wpcf-price"] + " €"
+                  b=result["wpcf-price"] + " €"
               .col-md-6
                 if data.web_site.length && data.web_site[0].length
                   - websites = data.web_site
@@ -36,5 +36,5 @@ block content
         .col-sm-3
           img.img-responsive.main-image(src=data.featured.thumbnail, alt=data.post_title, itemprop='image')
 
-      if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
+      if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns']
         include inc_grid

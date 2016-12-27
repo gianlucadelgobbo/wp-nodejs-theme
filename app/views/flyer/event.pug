@@ -1,34 +1,22 @@
 extends layout
 block content
   .container
-    - console.log(data)
     article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Event')
       .row
         .col-sm-8
-          img.img-responsive.main-image(src=data.featured.full, alt=data.post_title, itemprop='image')
-          div(itemprop='description')!=data.post_content
-
+          img.img-responsive.main-image(src=result.featured.full, alt=result.post_title, itemprop='image')
+          .hidden-xs(itemprop='description')!=result.post_content
+          include inc_videos
         .col-sm-4
           header
-            h1.entry-title(itemprop='name')!=data.post_title
-            if data.tags
-              p.tags
-                each tag, index in data.tags
-                  a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/live-visuals/tags/' + tag.slug + "/")
-                    span.tagandcount!="#" + tag.name + " (" + tag.count + ")"
-                  if index + 1 < data.tags.length
-                    !=" · "
+            h1.entry-title(itemprop='name')!=result.post_title
+            include inc_tags
+
           .rientro
-            - var dateplace = data
             include inc_dateplace
-            include inc_place
-            if data.web_site.length && data.web_site[0].length
-              - websites = data.web_site
-              include inc_websites
-            if data.capauthors
-              - capauthors = data.capauthors
-              include inc_capauthors
+            .visible-xs(itemprop='description')!=result.post_content
+            include inc_websites
+            include inc_capauthors
             include inc_share
 
-      if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
-        include inc_grid
+      include inc_grid

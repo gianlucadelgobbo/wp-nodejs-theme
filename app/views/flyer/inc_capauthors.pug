@@ -1,34 +1,35 @@
-- var authorExists,customerExists
-each capauthor in capauthors
-  if capauthor.user_role == 'Customer'
-    - customerExists = true
-  if capauthor.user_role != 'Customer'
-    - authorExists = true
-if customerExists
-  //span.sr-only(itemprop='organizer')
-  ul.nav.nav-pills.nav-stacked
-    li.navbar-text Customer
-    each capauthor in capauthors
-      if capauthor.user_role == 'Customer'
-        li(itemprop='sourceOrganization', itemscope, itemtype='http://schema.org/Person')
-          a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
-            i.glyphicon.glyphicon-user
-            !=" "
-            span(itemprop='name')=capauthor.display_name
-            !=" - "
-            span(itemprop='jobTitle')=capauthor.user_role
-if authorExists
-  ul.nav.nav-pills.nav-stacked
-    li.navbar-text People
-    each capauthor in capauthors
-      if capauthor.user_role != 'Customer'
-        li(itemprop='publisher')
-          a(href='/people/' + capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
-            i.glyphicon.glyphicon-user
-            !=" "
-            span(itemprop='name')=capauthor.display_name
-            !=" - "
-            span(itemprop='jobTitle')=capauthor.user_role
-            span.hide
+if result.capauthors
+  - var authorExists,customerExists
+  each capauthor in result.capauthors
+    if capauthor.user_role == 'Customer'
+      - customerExists = true
+    if capauthor.user_role != 'Customer'
+      - authorExists = true
+  if customerExists
+    //span.sr-only(itemprop='organizer')
+    ul.nav.nav-pills.nav-stacked
+      li.navbar-text Customer
+      each capauthor in result.capauthors
+        if capauthor.user_role == 'Customer'
+          li(itemprop='sourceOrganization', itemscope, itemtype='http://schema.org/Person')
+            a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
+              i.glyphicon.glyphicon-user
+              !=" "
+              span(itemprop='name')=capauthor.display_name
               !=" - "
-              span.org(itemprop='affiliation') Flyer communication
+              span(itemprop='jobTitle')=capauthor.user_role
+  if authorExists
+    ul.nav.nav-pills.nav-stacked
+      li.navbar-text People
+      each capauthor in result.capauthors
+        if capauthor.user_role != 'Customer'
+          li(itemprop='publisher')
+            a(href='/people/' + capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
+              i.glyphicon.glyphicon-user
+              !=" "
+              span(itemprop='name')=capauthor.display_name
+              !=" - "
+              span(itemprop='jobTitle')=capauthor.user_role
+              span.hide
+                !=" - "
+                span.org(itemprop='affiliation') Flyer communication

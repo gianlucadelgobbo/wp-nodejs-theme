@@ -10,26 +10,12 @@ block content
                 h1.entry-title=global.__("Live Visuals")+(tag ? ": #"+tag : "")
                 p!=posttype.description
             aside
-              p.text-center
-                each tag, index in posttype.tags
-                  a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/live-visuals/tags/' + tag.slug+"/")
-                    span.tagandcount!="#"+tag.name + " (" + tag.count + ")"
-                  if index+1<posttype.tags.length
-                    !=" · "
+              .text-center
+                include inc_tags
             .text-center
               include inc_share
-      if data
-        .row.isotope
-          each box in data
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(itemscope, itemprop='itemListElement')
-              include boxes/box_event
-      if data && data._paging
-        .text-center.read-more
-          if (page+1 <= data._paging.totalPages)
-            a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/live-visuals/page/'+(parseInt(page)+1))
-              !=global.__("Load more")
-              !=" "
-              span.fa.fa-long-arrow-right
-            span.loading Loading...
-          else
-            .end=global.__("You reached the end")
+      .row.isotope
+        each result in results
+          .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
+            include boxes/box_event
+      include inc_pagination

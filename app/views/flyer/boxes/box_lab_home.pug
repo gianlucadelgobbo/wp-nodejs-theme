@@ -3,19 +3,19 @@
     .row
       .col-lg-3
         .thumb-cnt
-          //.catlabel=box.type
-          a.ajaxloader(itemprop='url', href='/portfolio/lab/'+box.slug+"/", rel='bookmark', title!=box.post_title)
-            img.img-responsive(src=box.featured.thumbnail, alt!=global.__('Image for')+': '+box.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+          //.catlabel=result.type
+          a.ajaxloader(itemprop='url', href='/portfolio/lab/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+            img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
       .col-lg-9
         .box-list
           .box-list-cnt
             h3(itemprop='name')
-              a.ajaxloader(itemprop='url', href='/portfolio/lab/'+box.slug+"/", rel='bookmark', title=box.post_title)!=box.post_title
-            if box.data_month
+              a.ajaxloader(itemprop='url', href='/portfolio/lab/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
+            if result.data_month
               .text-muted
                 .dates
-                  .date=box.data_month
+                  .date=result.data_month
             .text-muted.small.excerpt
-              if box.excerpt && box.excerpt.rendered
+              if result.excerpt && result.excerpt.rendered
                 div(itemprop='headline')
-                  p!=box.excerpt.rendered
+                  p!=result.excerpt.rendered

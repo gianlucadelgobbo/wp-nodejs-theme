@@ -12,13 +12,22 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     -webkit-box-shadow: inset 0 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 1px 0 rgba(255, 255, 255, 0.1);
     box-shadow: inset 0 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 1px 0 rgba(255, 255, 255, 0.1);
   }
-}
-.sameheightinner{
-  padding-bottom: 50px;
+  .sameheight{
+    padding-bottom: 30px;
+  }
+  .sameheight:last-child{
+    padding-bottom: 0;
+  }
 }
 .sameheightinner .img-circle{
   width: 100px;
   background-color: #EEE;
+}
+body.fixed-top{
+  padding-top: 54px;
+}
+body.expanding.fixed-top{
+  padding-top: 0;
 }
 
 @media (min-width: 768px){
@@ -27,6 +36,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   }
   .sameheight{
     flex-grow: 0;
+  }
+  .sameheightinner{
+    padding-bottom: 50px;
   }
   .sameheight .read-more.bottom {
     bottom: 0;
@@ -82,7 +94,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   .navbar {
     border-radius: 0;
     border: none;
-    margin-bottom:0;
   }
   #top-menu.navbar-inverse {
     background: none;
@@ -91,9 +102,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   }
   #top-menu.navbar-hidden-top{
     margin-top: -60px;
-  }
-  body.fixed-top{
-    padding-top: 54px;
   }
   body.fixed-top.expanding{
     padding-top: 0;
@@ -368,7 +376,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 #top-menu .navbar-toggle{
   border: 0;
   padding: 6px 10px;
-  margin-top: 9px;
+  margin-top: 10px;
   margin-bottom: 10px;
   background: none;
 }
@@ -496,6 +504,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .modal-backdrop.in {
   opacity: 0.95;
   filter: alpha(opacity=95);
+}
+@media (max-width: 767px) {
+  .modal-body, .modal-body .container{
+    padding:0;
+  }
 }
 
 
@@ -672,9 +685,6 @@ a:hover img {
 
 
 /* HOME */
-.flyer-header-expanding .navbar {
-  margin-bottom: 0;
-}
 .home section{
   padding: 50px 0;
 }
@@ -748,6 +758,7 @@ a:hover img {
   padding-right: 5px;
 }
 .navbar {
+  margin-bottom: 0;
   border: none;
 }
 .rientro{
@@ -801,8 +812,8 @@ footer.navbar-inverse{
 .share {
   margin: 10px 0;
 }
-.pagepaddingtop{
-  padding-top: 50px;
+.pagepaddingtop {
+  padding-top: 20px;
 }
 .tagandcount{
   white-space: nowrap;
@@ -825,3 +836,20 @@ footer.navbar-inverse{
   left: 50%;
 }
 
+ul.row.thumbnails{
+  list-style: none;
+  padding: 0;
+}
+.gallType{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+ul.row.thumbnails .cntGallImgOver{
+  display: block;
+  position: relative;
+}
+.cntGallImgOver img{
+  max-width: 100%;
+}
+.thumbnail .cntDida{text-align: center;height: 25px;padding-top: 5px;display: block;overflow: hidden;}

@@ -1,23 +1,23 @@
 .boxItem(itemscope, itemtype='http://schema.org/itemListElement')
   .Learning(itemscope, itemtype='http://schema.org/CreativeWork')
-    if box["wpcf-schedule"]
+    if result["wpcf-schedule"]
       .text-muted
         .dates
           .date
             !=global.__("Programming")
             !=": "
-            b=box["wpcf-schedule"]
+            b=result["wpcf-schedule"]
     h3.list_title(itemprop='name')
-      a.ajaxloader(itemprop='url', href='/portfolio/learning/' + box.slug+"/", rel='bookmark', title=box.post_title)
-        !=box.post_title+" "
+      a.ajaxloader(itemprop='url', href='/portfolio/learning/' + result.slug+"/", rel='bookmark', title=result.post_title)
+        !=result.post_title+" "
         span.fa.fa-long-arrow-right
     .text-muted.small.excerpt
       !=global.__("Duration")+": "
       span(itemprop='duration')
-        b=box["wpcf-duration"]
+        b=result["wpcf-duration"]
       br
       - var auth = []
-      each capauthor in box.capauthors
+      each capauthor in result.capauthors
         - auth.push(capauthor.display_name)
       if auth.length
         if auth.length == 1
@@ -29,4 +29,4 @@
       br
       !=global.__("Price")+": "
       span(itemprop='offers')
-        b=box["wpcf-price"] + " €"
+        b=result["wpcf-price"] + " €"

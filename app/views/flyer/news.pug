@@ -10,15 +10,7 @@ block content
               !=posttype.description
               include inc_share
       .row.isotope
-        each box in data
+        each result in results
           .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
             include boxes/box_news
-      .text-center.read-more
-        if (page + 1 <= data._paging.totalPages)
-          a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/extra/page/' + (parseInt(page) + 1))
-            !=global.__("Load more")
-            !=" "
-            span.fa.fa-long-arrow-right
-          span.loading Loading...
-        else
-          .end=global.__("You reached the end")
+      include inc_pagination

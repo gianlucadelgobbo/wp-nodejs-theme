@@ -1,6 +1,6 @@
-if data.startdateHR || data.enddateHR || data.data_evento
+if result.startdateHR || result.enddateHR || result.data_evento
    .dates
        include inc_date
-if data['wpcf-location'] && data['wpcf-location'].length
+if result['wpcf-location'] && result['wpcf-location'].length
    .places
        include inc_place

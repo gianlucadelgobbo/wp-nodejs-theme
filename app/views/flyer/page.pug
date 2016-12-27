@@ -5,15 +5,15 @@ block content
       .row
         .col-sm-9
           header
-            h1.entry-title(itemprop='name')!=data.post_title
+            h1.entry-title(itemprop='name')!=result.post_title
           .rientro
-            div(itemprop='description')!=data.post_content
+            div(itemprop='description')!=result.post_content
             .text-muted
               .dates
-                .date=data.data_evento
-                meta(itemprop="dateModified", content=data.dateModified)
+                .date=result.data_evento
+                meta(itemprop="dateModified", content=result.dateModified)
             include inc_share
         .col-sm-3
-          img.img-responsive.main-image(src=data.featured.thumbnail, alt!=data.post_title, itemprop='image')
-      if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
+          img.img-responsive.main-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
+      if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns']
         include inc_grid
