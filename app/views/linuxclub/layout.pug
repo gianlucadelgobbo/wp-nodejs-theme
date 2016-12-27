@@ -1,31 +1,31 @@
 doctype html
 html(lang='en')
 	head
-		title=edition_data.meta['title']
+		title=meta_data.meta['title']
 		meta(charset='UTF-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
 
 		// FLYER COMMUNICATION EASY SEO www.flyer.it
-		meta(property='fb:admins', content=edition_data.meta['fb_admin'])
-		meta(property='fb:app_id', content=edition_data.meta['fb_appId'])
-		meta(property='og:image', content=edition_data.meta['image_src'])
-		meta(property='og:title', content=edition_data.meta['title'])
-		meta(property='og:description', content=edition_data.meta['og_description'])
-		meta(property='og:site_name', content=edition_data.meta['name'])
+		meta(property='fb:admins', content=meta_data.meta['fb_admin'])
+		meta(property='fb:app_id', content=meta_data.meta['fb_appId'])
+		meta(property='og:image', content=meta_data.meta['image_src'])
+		meta(property='og:title', content=meta_data.meta['title'])
+		meta(property='og:description', content=meta_data.meta['og_description'])
+		meta(property='og:site_name', content=meta_data.meta['name'])
 		meta(property='og:url', content='http://liveperformersmeeting.net/')
 		link(rel='canonical', href='http://liveperformersmeeting.net/')
 		meta(property='og:type', content='website')
 		// HIDDEN FACEBOOK OPENG GRAPH (only facebook can see)
-		meta(name='description', content=edition_data.meta['og_description'])
-		meta(name='keywords', content=edition_data.meta['og_keywords'])
-		meta(name='google-site-verification', content=edition_data.meta['google_webmasterstools'])
-		link(rel='shortcut icon', href=edition_data.meta['favicon'])
-		link(rel='apple-touch-icon', sizes='57x57', href=edition_data.meta['icon57'])
-		link(rel='apple-touch-icon', sizes='72x72', href=edition_data.meta['icon72'])
-		link(rel='apple-touch-icon', sizes='114x114', href=edition_data.meta['icon114'])
-		link(rel='apple-touch-icon', sizes='120x120', href=edition_data.meta['icon120'])
-		link(rel='apple-touch-icon', sizes='144x144', href=edition_data.meta['icon144'])
-		link(rel='apple-touch-icon', sizes='152x152', href=edition_data.meta['icon152'])
+		meta(name='description', content=meta_data.meta['og_description'])
+		meta(name='keywords', content=meta_data.meta['og_keywords'])
+		meta(name='google-site-verification', content=meta_data.meta['google_webmasterstools'])
+		link(rel='shortcut icon', href=meta_data.meta['favicon'])
+		link(rel='apple-touch-icon', sizes='57x57', href=meta_data.meta['icon57'])
+		link(rel='apple-touch-icon', sizes='72x72', href=meta_data.meta['icon72'])
+		link(rel='apple-touch-icon', sizes='114x114', href=meta_data.meta['icon114'])
+		link(rel='apple-touch-icon', sizes='120x120', href=meta_data.meta['icon120'])
+		link(rel='apple-touch-icon', sizes='144x144', href=meta_data.meta['icon144'])
+		link(rel='apple-touch-icon', sizes='152x152', href=meta_data.meta['icon152'])
 		// END FLYER COMMUNICATION EASY SEO www.flyer.it
 
 		//link#flick-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/mailchimp//css/flick/flick.css', type='text/css', media='all')
@@ -39,17 +39,17 @@ html(lang='en')
 		link(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.12', type='text/css', media='all')
 		link(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/css/socialGalleryPluginLite.css', type='text/css', media='all')
 
-		//link(rel='stylesheet', href=edition_data.edition['wpcf-custom-css'][0], type='text/css')
-		//link(rel='stylesheet', href=edition_data.edition['wpcf-custom-css'][1], type='text/css')
+		//link(rel='stylesheet', href=meta_data.edition['wpcf-custom-css'][0], type='text/css')
+		//link(rel='stylesheet', href=meta_data.edition['wpcf-custom-css'][1], type='text/css')
 
 		link(rel='stylesheet', href='/'+config.prefix+'/css/cookielawinfo.css', type='text/css', media='all')
-		link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.'+config.prefix+'.'+edition_data.edition['post_name']+'.css', type='text/css')
+		link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.'+config.prefix+'.'+meta_data.edition['post_name']+'.css', type='text/css')
 		link(rel='stylesheet', href='/'+config.prefix+'/css/style.css', type='text/css', media='all')
 		link(rel='stylesheet', href='/'+config.prefix+'/css/style.' + config.prefix +'.css', type='text/css', media='all')
-		link(rel='stylesheet', href='/'+config.prefix+'/css/style.'+config.prefix+'.'+edition_data.edition['post_name']+'.css', type='text/css', media='all')
+		link(rel='stylesheet', href='/'+config.prefix+'/css/style.'+config.prefix+'.'+meta_data.edition['post_name']+'.css', type='text/css', media='all')
 
 		style(type='text/css').
-			body {background-image:url(#{edition_data.edition['wpcf-background-image']});}
+			body {background-image:url(#{meta_data.edition['wpcf-background-image']});}
 	body
 		.cnt
 			nav#top-menu.navbar.navbar-inverse(role='navigation')
@@ -60,8 +60,8 @@ html(lang='en')
 						span.icon-bar
 						span.icon-bar
 						span.icon-bar
-					a.navbar-brand(href='/', title=edition_data.meta['name'])
-						img.img-responsive(src=edition_data.meta.logo_bar, alt=edition_data.meta['name'])
+					a.navbar-brand(href='/', title=meta_data.meta['name'])
+						img.img-responsive(src=meta_data.meta.logo_bar, alt=meta_data.meta['name'])
 				// Collect the nav links, forms, and other content for toggling
 				#menu-MainMenu.collapse.navbar-collapse
 					ul.nav.navbar-nav
@@ -142,18 +142,18 @@ html(lang='en')
 					.row
 						.col-md-6
 							#logo
-								a(href='/', title=edition_data.meta['name'])
-									img.img-responsive(itemprop='image', src=edition_data.edition['wpcf-header-image'], alt=edition_data.meta['name'])
+								a(href='/', title=meta_data.meta['name'])
+									img.img-responsive(itemprop='image', src=meta_data.edition['wpcf-header-image'], alt=meta_data.meta['name'])
 						.col-md-6
 							.row
 								.col-md-12
 									#next-edition-cnt
-										#next-edition!=edition_data.edition['wpcf-sub-title']
+										#next-edition!=meta_data.edition['wpcf-sub-title']
 									#site-description-cnt
-										#site-description=edition_data.meta['description']
+										#site-description=meta_data.meta['description']
 				nav.hidden-xs(role='navigation')
 					ul.pulsa
-						each menu in edition_data.menu
+						each menu in meta_data.menu
 							li.btn-group
 								a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href=menu.permalink)=menu.post_title
 								- if (menu.childs.length)
@@ -167,17 +167,17 @@ html(lang='en')
 
 
 					span.sr-only
-						span(itemprop='name')=edition_data.meta.name+ " "+ edition_data.edition.post_title
-						- var dateplace = edition_data
+						span(itemprop='name')=meta_data.meta.name+ " "+ meta_data.edition.post_title
+						- var dateplace = meta_data
 						include inc_dateplace
 						//
 							.dates.sr-only
 								span.sr-only
-									span(itemprop='startDate', content=edition_data.edition.startdateISO)=edition_data.edition.startdateHR
+									span(itemprop='startDate', content=meta_data.edition.startdateISO)=meta_data.edition.startdateHR
 									!="|"
-									span(itemprop='startDate', content=edition_data.edition.enddateISO)=edition_data.edition.enddateHR
-								.date.updated(content='')=edition_data.edition.data_evento
-							each location in edition_data.edition['wpcf-location']
+									span(itemprop='startDate', content=meta_data.edition.enddateISO)=meta_data.edition.enddateHR
+								.date.updated(content='')=meta_data.edition.data_evento
+							each location in meta_data.edition['wpcf-location']
 								- locationA = location.split(";")
 								span(itemprop='location', itemscope, itemtype='http://schema.org/Place')
 									span(itemprop='name')=locationA[0]
@@ -202,7 +202,7 @@ html(lang='en')
 						#menu-edition-menu.collapse.navbar-collapse
 							// Collect the nav links, forms, and other content for toggling
 							ul.nav.navbar-nav
-								each menu in edition_data.menu
+								each menu in meta_data.menu
 									li
 										a(href=menu.permalink, data-toggle=menu.childs.length ? 'dropdown' : undefined)=menu.post_title
 											- if (menu.childs.length)
@@ -224,8 +224,8 @@ html(lang='en')
 					.navbar-inner
 						.row.links-horizontal
 							.col-sm-2
-								a(href='/', title=edition_data.meta['name'])
-									img.media-object(src=edition_data.meta.logo_footer, alt=edition_data.meta['name'], itemprop='logo')
+								a(href='/', title=meta_data.meta['name'])
+									img.media-object(src=meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
 							.col-sm-2.hidden-print
 								.margin-top-xs
 									p Corporate
@@ -266,7 +266,7 @@ html(lang='en')
 						.row
 							.col-sm-6
 								.footer-title
-									!="NO © "+new Date().getFullYear() + " " + edition_data.meta.name + " "
+									!="NO © "+new Date().getFullYear() + " " + meta_data.meta.name + " "
 									a(href='mailto:info@liveperformersmeeting.net', title='Write a message') info@liveperformersmeeting.net
 							.col-sm-5.pull-right
 								.footer-title.pull-right
@@ -308,11 +308,11 @@ html(lang='en')
 					if (d.getElementById(id)) return;
 					js = d.createElement(s);
 					js.id = id;
-					js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=#{edition_data.meta.fb_appId}";
+					js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=#{meta_data.meta.fb_appId}";
 					fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 			script(type="text/javascript").
-				var sgp_config = {"sgp_selT": "2","sgp_sel": ".thumbnail","sgp_bT": "{#edition_data.meta.name}","sgp_bL": "#{edition_data.meta.description}","sgp_bU": "#{global.config.domain}","sgp_bg": "000000","sgp_bgo": "0.8","sgp_bb": "1","sgp_hb": "1","sgp_hbt": "1","sgp_ch": "","sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png","sgp_desc": "1","sgp_fb": "1","sgp_fbf": "1","sgp_fbc": "1","sgp_nav": "1","sgp_hon": "","sgp_usf":"1.2","sgp_mb":"10","sgp_theme":"classic","sgp_theme_root":"http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/themes/","sgp_iLoadR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/loading.gif","sgp_iR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/r.png","sgp_iL": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/l.png",};
+				var sgp_config = {"sgp_selT": "2","sgp_sel": ".thumbnail","sgp_bT": "{#meta_data.meta.name}","sgp_bL": "#{meta_data.meta.description}","sgp_bU": "#{global.config.domain}","sgp_bg": "000000","sgp_bgo": "0.8","sgp_bb": "1","sgp_hb": "1","sgp_hbt": "1","sgp_ch": "","sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png","sgp_desc": "1","sgp_fb": "1","sgp_fbf": "1","sgp_fbc": "1","sgp_nav": "1","sgp_hon": "","sgp_usf":"1.2","sgp_mb":"10","sgp_theme":"classic","sgp_theme_root":"http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/themes/","sgp_iLoadR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/loading.gif","sgp_iR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/r.png","sgp_iL": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/l.png",};
 				var sgp_ie = false;var sgp_ie7 = false;
 			script(type='text/javascript', src='/'+config.prefix+'/js/jquery.min.js')
 			script(type='text/javascript', src='/'+config.prefix+'/js/jquery-migrate.min.js')
@@ -358,5 +358,5 @@ html(lang='en')
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-				ga('create', '#{edition_data.meta['google_analytics']}', 'auto');
+				ga('create', '#{meta_data.meta['google_analytics']}', 'auto');
 				ga('send', 'pageview');

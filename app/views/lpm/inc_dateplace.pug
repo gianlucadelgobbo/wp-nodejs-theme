@@ -1,0 +1,6 @@
+if dateplace.startdateHR || dateplace.enddateHR || dateplace.data_evento
+   .dates
+       include inc_date
+if dateplace['wpcf-location'] && dateplace['wpcf-location'].length
+   .places
+       include inc_place

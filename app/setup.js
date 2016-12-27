@@ -7,7 +7,7 @@ i18n.configure({
   locales: config.locales,
   defaultLocale: config.default_lang,
   cookie: config.prefix,
-  directory: config.root + '/locales',
+  directory: config.root + '/locales/'+config.prefix,
   register: global
 });
 

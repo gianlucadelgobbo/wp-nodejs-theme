@@ -47,23 +47,25 @@ exports.get404 = function get404(req, res) {
   });
 };
 
+exports.getTimeline = function getTimeline(req, res) {
+  helpers.getMetaData(req, function( meta_data ) {
+    req.params.page = "timeline";
+    helpers.getPage(req, function( result ) {
+      console.log(result);
+      meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
+      var year = parseInt(req.params.year ? req.params.year : new Date().getFullYear());
+      helpers.getAllEditionsEvents(req, year, function( results ) {
+        res.render(config.prefix+'/'+(config.sez.pages.conf.timeline.pugpage ? config.sez.pages.conf.timeline.pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : ""), {year: year, result: result, results:results, meta_data:meta_data, itemtype:config.sez.pages.conf.timeline.itemtype ? config.sez.pages.conf.timeline.itemtype : config.sez.pages.conf.default.itemtype});
+      });
+    });
+  });
+};
+
+
 /*
 exports.getSearch = function getSearch(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     res.render(config.prefix+'/search', {meta_data:meta_data, itemtype:"WebPage"});
-  });
-};
-
-exports.getTimeline = function getTimeline(req, res) {
-  helpers.getEditionData(req, function( meta_data ) {
-    req.params.page = "timeline";
-    helpers.getPage(req, function( data ) {
-      meta_data.meta.title = (data.title.rendered ? data.title.rendered+ " | " : "") + meta_data.meta.name;
-      var year = parseInt(req.params.year ? req.params.year : new Date().getFullYear());
-      helpers.getAllEditionsEvents(req, year, function( data_timeline ) {
-        res.render(config.prefix+'/'+(config.sez.pages.conf.timeline.pugpage ? config.sez.pages.conf.timeline.pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : ""), {year: year, data: data, data_timeline:data_timeline, meta_data:meta_data, itemtype:config.sez.pages.conf.timeline.itemtype ? config.sez.pages.conf.timeline.itemtype : config.sez.pages.conf.default.itemtype});
-      });
-    });
   });
 };
 

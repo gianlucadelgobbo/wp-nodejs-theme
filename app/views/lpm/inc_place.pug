@@ -1,0 +1,14 @@
+each val, country in dateplace['wpcf-location']
+   each val, city in dateplace['wpcf-location'][country]
+       each val, venue in dateplace['wpcf-location'][country][city]
+           .place(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+               if venue
+                   span.placeName(itemprop='name')=venue
+                   !=", "
+               span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                   span.addressLocality(itemprop='addressLocality')=city
+                   !=" | "
+                   span.addressCountry(itemprop='addressCountry')=country
+               span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                   meta(itemprop='latitude', content=val.lng)
+                   meta(itemprop='longitude', content=val.lat)

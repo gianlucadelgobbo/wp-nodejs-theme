@@ -1,13 +1,13 @@
-var indexRoutes = require('./routes/index');
-var webRoutes = require('./routes/web');
-var videosRoutes = require('./routes/videos');
-var eventsRoutes = require('./routes/events');
-var learningRoutes = require('./routes/learning');
-var labRoutes = require('./routes/lab');
-var newsRoutes = require('./routes/news');
-var awardsRoutes = require('./routes/awards');
-var usersRoutes = require('./routes/users');
-var pagesRoutes = require('./routes/pages');
+var indexRoutes = require('./routes_flyer/index');
+var webRoutes = require('./routes_common/web');
+var videosRoutes = require('./routes_common/videos');
+var eventsRoutes = require('./routes_common/events');
+var learningRoutes = require('./routes_common/learning');
+var labRoutes = require('./routes_common/lab');
+var newsRoutes = require('./routes_common/news');
+var awardsRoutes = require('./routes_common/awards');
+var usersRoutes = require('./routes_common/users');
+var pagesRoutes = require('./routes_common/pages');
 /*
  var searchRoutes = require('./routes/search');
  */

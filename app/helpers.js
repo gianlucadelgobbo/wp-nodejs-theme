@@ -95,6 +95,11 @@ exports.getEvent = function getEvent(req,callback) {
     callback(data);
   });
 };
+
+
+
+
+
 exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
   console.log("getAllEvents");
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
@@ -344,9 +349,10 @@ exports.getAllLab = function getAllLab(req, limit, page, callback) {
 exports.getMetaData = function getMetaData(req,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
   global.setLocale(config.current_lang);
-  var file = config.root+'/tmp/meta_'+config.current_lang+'.json';
+  var file = config.root+'/tmp/'+config.prefix+'/meta_'+config.current_lang+'.json';
+  if (config.last_edition) var edition = req.params.edition ? req.params.edition : config.last_edition;
   if (req.query.createcache==1 || !fs.existsSync(file)) {
-    request(config.domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/', function (error, response, body) {
+    request(config.domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? edition : ""), function (error, response, body) {
       if (!error && response.statusCode == 200) {
         var data = JSON.parse(body);
         jsonfile.writeFile(file, data, function (err) {
@@ -366,10 +372,162 @@ exports.getMetaData = function getMetaData(req,callback) {
     data.langSwitcher = {
       "it": (req.url.indexOf('/it/') === 0 ? req.url : '/it' + req.url),
       "en": (req.url.indexOf('/it/') === 0 ? req.url.substring(3) : req.url)
-    }
+    };
     callback(data);
   }
 };
+
+//////// EDITIONS
+
+exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
+  console.log("getAllEditions");
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Editions");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+exports.getAllEditionsByYear = function getAllEditionsByYear(req, year, limit, page, callback) {
+  console.log("getAllEditions");
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'after', new Date( (year-1)+'-12-31' ) ).param( 'before', new Date( (year+1)+'-01-01' ) ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Editions");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+
+
+exports.getEdition = function getEdition(req,callback) {
+  console.log(req.params.edition);
+  console.log(req.params.subedition);
+  console.log(req.params.subsubedition);
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
+  if (req.params.subsubedition) {
+    console.log("req.params.subsubedition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
+      console.log("//// SubSubEdition");
+      //data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      callback(data);
+    });
+  } else if (req.params.subedition) {
+    console.log("req.params.subedition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
+      console.log("//// SubEdition");
+      //data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      callback(data);
+    });
+  } else {
+    console.log("req.params.edition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)' );
+    console.log(wp.myCustomResource);
+    wp.myCustomResource().edition(req.params.edition,req.params.subsubedition,req.params.subsubedition).get(function( err, data ) {
+      console.log("//// Edition");
+      data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      callback(data);
+    });
+  }
+};
+
+exports.getEditionArtist = function getEditionArtist(req,callback) {
+  console.log(req.params.edition);
+  console.log(req.params.subedition);
+  console.log(req.params.subsubedition);
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
+  if (req.params.artist && req.params.performance) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).performances("performances").performance(req.params.performance).get(function( err, data ) {
+      console.log("//// Artist");
+      console.log(data);
+      callback(data);
+    });
+  } else if (req.params.artist) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).get(function( err, data ) {
+      console.log("//// Artist");
+      console.log(data);
+      callback(data);
+    });
+  } else {
+    console.log("req.params.subedition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("artists").get(function( err, data ) {
+      console.log("//// SubEdition");
+      callback(data);
+    });
+  }
+};
+
+exports.getEditionArtistGallery = function getEditionArtistGallery(req,callback) {
+  console.log(req.params.edition);
+  console.log(req.params.subedition);
+  console.log(req.params.subsubedition);
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
+  if (req.params.artist && req.params.gallery && req.params.galleryitem) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)/(?P<galleryitem>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).galleryitem(req.params.galleryitem).get(function( err, data ) {
+      console.log("//// Artist gallery item");
+      console.log(data);
+      callback(data);
+    });
+  } else if (req.params.artist && req.params.gallery) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).get(function( err, data ) {
+      console.log("//// Artist gallery");
+      console.log(data);
+      callback(data);
+    });
+    /*} else if (req.params.artist) {
+     console.log("req.params.artist");
+     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
+     wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).get(function( err, data ) {
+     console.log("//// Artist");
+     console.log(data);
+     callback(data);
+     });*/
+  } else {
+    console.log("req.params.subedition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").get(function( err, data ) {
+      console.log("//// SubEdition gallery");
+      callback(data);
+    });
+  }
+};
+exports.getAllEditionsEvents = function getAllEditionsEvents(req, year, callback) {
+  var trgt = this;
+  var data = [];
+  trgt.getAllEventsByYear(req, year, 100, 1, function (data_events) {
+    //console.log(data_events);
+    for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
+    console.log(data.length);
+    trgt.getAllEditionsByYear(req, year, 100, 1, function (data_editions) {
+      for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
+      data.sort(fnz.sortByStartDate);
+      for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
+      callback(data);
+    });
+  });
+};
+
 
 /*exports.getAll = function getAll(req, limit, page, callback) {
   var trgt = this;
