@@ -9,7 +9,7 @@ block content
 					div(itemprop='description')!=data.content.rendered
 					.dateModified(itemprop='dateModified', content=data.date)=data.dateHR
 					br
-					include inc_share
+					include ../common/inc_share
 			.col-sm-3
 				img.img-responsive.wp-post-image(src=data.featured.thumbnail, alt!=data.title.rendered, itemprop='image')
 

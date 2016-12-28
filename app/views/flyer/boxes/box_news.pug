@@ -9,13 +9,13 @@
         .text-muted
           .dates
             - dateplace = box
-            include ../inc_date
+            include ../../common/inc_date
         h3.list_title(itemprop='name')
           a.ajaxloader(itemprop='url', href='/extra/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
         .places
           if result['wpcf-location']
             - dateplace = box
-            include ../inc_place
+            include ../../common/inc_place
         .text-muted.small.excerpt
           if result.excerpt && result.excerpt.rendered
             div(itemprop='headline')

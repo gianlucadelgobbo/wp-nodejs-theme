@@ -8,11 +8,11 @@
     .box-list
       .text-center
         .text-muted.supText
-          include ../inc_dateplace
+          include ../../common/inc_dateplace
         h3.list_title(itemprop='name')!=result.post_title.replace(" | ","<br />")
           //a.ajaxloader(itemprop='url', href='/portfolio/live-visuals/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title.replace(" | ","<br />")
         .text-muted.small.tags
-          include ../inc_tags
+          include ../../common/inc_tags
       .read-more-box
         .sr-only=__("Read more")
         i.fa.fa-long-arrow-right

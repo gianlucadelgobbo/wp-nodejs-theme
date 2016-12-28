@@ -12,7 +12,7 @@ block content
             .text-center
               h1.entry-title(itemprop='name')!=data.post_title
               div(itemprop='headline')!=data.post_excerpt
-              include inc_share
+              include ../common/inc_share
     .container
       h3=global.__("Portfolio")
       each result in results.posts

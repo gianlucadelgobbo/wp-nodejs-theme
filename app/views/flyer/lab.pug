@@ -17,12 +17,12 @@ block content
               .col-md-6
                 if result.capauthors
                   - capauthors = result.capauthors
-                  include inc_capauthors
+                  include ../common/inc_capauthors
               .col-md-6
                 if result.web_site.length && result.web_site[0].length
                   - websites = result.web_site
-                  include inc_websites
-            include inc_share
+                  include ../common/inc_websites
+            include ../common/inc_share
         .col-sm-3
           img.img-responsive.main-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
 

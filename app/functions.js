@@ -1,7 +1,7 @@
 var moment = require( 'moment' );
 
 exports.sortByStartDate = function sortByStartDate(a,b) {
-  console.log("sortByStartDate");
+  //console.log("sortByStartDate");
   if (a['wpcf-startdate'] < b['wpcf-startdate'])
     return 1;
   if (a['wpcf-startdate'] > b['wpcf-startdate'])

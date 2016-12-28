@@ -11,11 +11,11 @@ block content
                 p!=posttype.description
             aside
               .text-center
-                include inc_tags
+                include ../common/inc_tags
             .text-center
-              include inc_share
+              include ../common/inc_share
       .row.isotope
         each result in results
           .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
             include boxes/box_event
-      include inc_pagination
+      include ../common/inc_pagination

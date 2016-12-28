@@ -6,17 +6,17 @@ block content
         .col-sm-8
           img.img-responsive.main-image(src=result.featured.full, alt=result.post_title, itemprop='image')
           .hidden-xs(itemprop='description')!=result.post_content
-          include inc_videos
+          include ../common/inc_videos
         .col-sm-4
           header
             h1.entry-title(itemprop='name')!=result.post_title
-            include inc_tags
+            include ../common/inc_tags
 
           .rientro
-            include inc_dateplace
+            include ../common/inc_dateplace
             .visible-xs(itemprop='description')!=result.post_content
-            include inc_websites
-            include inc_capauthors
-            include inc_share
+            include ../common/inc_websites
+            include ../common/inc_capauthors
+            include ../common/inc_share
 
-      include inc_grid
+      include ../common/inc_grid

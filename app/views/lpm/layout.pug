@@ -1,362 +1,387 @@
 doctype html
 html(lang='en')
-	head
-		title=meta_data.meta['title']
-		meta(charset='UTF-8')
-		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  head
+    title=meta_data.meta['title']
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    //- console.log(meta_data)
+    meta(property='fb:admins', content=meta_data.meta['fb_admin'])
+    meta(property='fb:app_id', content=meta_data.meta['fb_appId'])
+    meta(property='og:image', content=meta_data.meta['image_src'])
+    meta(property='og:title', content=meta_data.meta['title'])
+    meta(property='og:description', content=meta_data.meta['og_description'])
+    meta(property='og:site_name', content=meta_data.meta['name'])
+    meta(property='og:url', content=config.domain + meta_data['url'])
+    link(rel='canonical', href=config.domain + meta_data['url'])
+    meta(property='og:type', content='website')
+    meta(name='description', content=meta_data.meta['og_description'])
+    meta(name='keywords', content=meta_data.meta['og_keywords'])
+    meta(name='google-site-verification', content=meta_data.meta['google_webmasterstools'])
+    link(rel='shortcut icon', href=config.domain + meta_data.meta['favicon'])
+    link(rel='apple-touch-icon', sizes='57x57', href=config.domain + meta_data.meta['icon57'])
+    link(rel='apple-touch-icon', sizes='72x72', href=config.domain + meta_data.meta['icon72'])
+    link(rel='apple-touch-icon', sizes='114x114', href=config.domain + meta_data.meta['icon114'])
+    link(rel='apple-touch-icon', sizes='120x120', href=config.domain + meta_data.meta['icon120'])
+    link(rel='apple-touch-icon', sizes='144x144', href=config.domain + meta_data.meta['icon144'])
+    link(rel='apple-touch-icon', sizes='152x152', href=config.domain + meta_data.meta['icon152'])
+    // CSS
 
-		// FLYER COMMUNICATION EASY SEO www.flyer.it
-		meta(property='fb:admins', content=meta_data.meta['fb_admin'])
-		meta(property='fb:app_id', content=meta_data.meta['fb_appId'])
-		meta(property='og:image', content=meta_data.meta['image_src'])
-		meta(property='og:title', content=meta_data.meta['title'])
-		meta(property='og:description', content=meta_data.meta['og_description'])
-		meta(property='og:site_name', content=meta_data.meta['name'])
-		meta(property='og:url', content='http://liveperformersmeeting.net/')
-		link(rel='canonical', href='http://liveperformersmeeting.net/')
-		meta(property='og:type', content='website')
-		// HIDDEN FACEBOOK OPENG GRAPH (only facebook can see)
-		meta(name='description', content=meta_data.meta['og_description'])
-		meta(name='keywords', content=meta_data.meta['og_keywords'])
-		meta(name='google-site-verification', content=meta_data.meta['google_webmasterstools'])
-		link(rel='shortcut icon', href=meta_data.meta['favicon'])
-		link(rel='apple-touch-icon', sizes='57x57', href=meta_data.meta['icon57'])
-		link(rel='apple-touch-icon', sizes='72x72', href=meta_data.meta['icon72'])
-		link(rel='apple-touch-icon', sizes='114x114', href=meta_data.meta['icon114'])
-		link(rel='apple-touch-icon', sizes='120x120', href=meta_data.meta['icon120'])
-		link(rel='apple-touch-icon', sizes='144x144', href=meta_data.meta['icon144'])
-		link(rel='apple-touch-icon', sizes='152x152', href=meta_data.meta['icon152'])
-		// END FLYER COMMUNICATION EASY SEO www.flyer.it
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
+    if include_gallery
+      link(rel='stylesheet', href='/common/css/socialGalleryPluginLite.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/common/css/cookielawinfo.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/' + config.prefix + '/css/bootstrap.min.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css')
+    link(rel='stylesheet', href='/' + config.prefix + '/css/style.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css', media='all')
 
-		//link#flick-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/mailchimp//css/flick/flick.css', type='text/css', media='all')
-		//link#woocommerce_prettyPhoto_css-css(rel='stylesheet', href='/assets/prettyPhoto/prettyPhoto.css', type='text/css', media='all')
-		//link#bootstrap-css-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/themes/flyer-bs-lpm/bootstrap/css/bootstrap.min.css', type='text/css', media='all')
-		//link#font-awesome-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/types/library/toolset/toolset-common/res/lib/font-awesome/css/font-awesome.min.css?ver=4.4.0', type='text/css', media='all')
-		//link#bootstrap-social-css-css(rel='stylesheet', href='/assets/bootstrap/css/bootstrap-social.css', type='text/css', media='all')
-		//link#cff-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/custom-facebook-feed/css/cff-style.css?ver=2.4.5', type='text/css', media='all')
-		//link#youtube-simplegallery-css(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/youtube-simplegallery/youtube_simplegallery.css', type='text/css', media='all')
-		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
-		link(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.12', type='text/css', media='all')
-		link(rel='stylesheet', href='http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/css/socialGalleryPluginLite.css', type='text/css', media='all')
-
-		//link(rel='stylesheet', href=meta_data.edition['wpcf-custom-css'][0], type='text/css')
-		//link(rel='stylesheet', href=meta_data.edition['wpcf-custom-css'][1], type='text/css')
-
-		link(rel='stylesheet', href='/'+config.prefix+'/css/cookielawinfo.css', type='text/css', media='all')
-		link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.'+config.prefix+'.'+meta_data.edition['post_name']+'.css', type='text/css')
-		link(rel='stylesheet', href='/'+config.prefix+'/css/style.css', type='text/css', media='all')
-		link(rel='stylesheet', href='/'+config.prefix+'/css/style.' + config.prefix +'.css', type='text/css', media='all')
-		link(rel='stylesheet', href='/'+config.prefix+'/css/style.'+config.prefix+'.'+meta_data.edition['post_name']+'.css', type='text/css', media='all')
-
-		style(type='text/css').
-			body {background-image:url(#{meta_data.edition['wpcf-background-image']});}
-	body
-		.cnt
-			nav#top-menu.navbar.navbar-inverse(role='navigation')
-				// Brand and toggle get grouped for better mobile display
-				.navbar-header
-					button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-MainMenu')
-						span.sr-only Toggle navigation
-						span.icon-bar
-						span.icon-bar
-						span.icon-bar
-					a.navbar-brand(href='/', title=meta_data.meta['name'])
-						img.img-responsive(src=meta_data.meta.logo_bar, alt=meta_data.meta['name'])
-				// Collect the nav links, forms, and other content for toggling
-				#menu-MainMenu.collapse.navbar-collapse
-					ul.nav.navbar-nav
-						li
-							a(href='/idea/') Idea
-						li
-							a(href='/timeline/') Timeline
-						li
-							a(href='/map/') Map
-						li
-							a(href='/gallery/') Gallery
-						li
-							a.dropdown-toggle(href='#', data-toggle='dropdown')
-								| Reports 
-								span.caret
-							ul.dropdown-menu(role='menu')
-								li
-									a(href='/editions/2014-eindhoven/report/') 2014 Eindhoven
-								li
-									a(href='/editions/2013-cape-town/report/') 2013 Cape Town
-								li
-									a(href='/editions/2013-rome/report/') 2013 Rome
-								li
-									a(href='/editions/2013-mex/report/') 2013 Mexico
-								li
-									a(href='/editions/2012-rome/report/') 2012 Rome
-								li
-									a(href='/editions/2011-minsk/report/') 2011 Minsk
-								li
-									a(href='/editions/2011-rome/report/') 2011 Rome
-								li
-									a(href='/editions/2010-rome/report/') 2010 Rome
-								li
-									a(href='/editions/2009-rome/report/') 2009 Rome
-								li
-									a(href='/editions/2008-mex/report/') 2008 Mexico
-								li
-									a(href='/editions/2008-rome/report/') 2008 Rome
-								li
-									a(href='/editions/2007-rome/report/') 2007 Rome
-								li
-									a(href='/editions/2006-rome/report/') 2006 Rome
-						li
-							a(href='/the-app/') The App
-						li
-							a(href='/press/') Press
-						li
-							a(href='/contacts/') Contacts
-						li
-							a(href='/shop/') Shop
-						li
-							a(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
-						li
-							a(data-toggle='dropdown', href='/cart/', title='View your shopping cart')
-								span.sr-only Shopping Cart
-								i.glyphicon.glyphicon-shopping-cart
-								span.caret
-								span.sr-only Toggle Dropdown
-							ul.dropdown-menu(role='menu')
-								li
-									a.cart-contents(href='/cart/', title='View your shopping cart')
-										| 0 items
-										span.woocommerce-Price-amount.amount
-											span.woocommerce-Price-currencySymbol €
-											|  0,00
-					form#nl_form.navbar-form.navbar-right(method='post', action='#', onsubmit="createSend(this,'/wp-content/themes/lpm/subscribe.php'); return false;")
-						#nl_cnt
-							.input-group.input-group-sm
-								input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
-								label.sr-only(for='email') Email
-								span.input-group-btn
-									button#invia.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
-							input(type='hidden', name='lang', value='EN')
-							input(type='hidden', name='topic', value='livevisuals')
-						#nl_res.hide
-			.container-fluid(itemscope='', itemtype='http://schema.org/Event')
-				header
-					.row
-						.col-md-6
-							#logo
-								a(href='/', title=meta_data.meta['name'])
-									img.img-responsive(itemprop='image', src=meta_data.edition['wpcf-header-image'], alt=meta_data.meta['name'])
-						.col-md-6
-							.row
-								.col-md-12
-									#next-edition-cnt
-										#next-edition!=meta_data.edition['wpcf-sub-title']
-									#site-description-cnt
-										#site-description=meta_data.meta['description']
-				nav.hidden-xs(role='navigation')
-					ul.pulsa
-						each menu in meta_data.menu
-							li.btn-group
-								a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href=menu.permalink)=menu.post_title
-								- if (menu.childs.length)
-									button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown')
-										span.caret
-										span.sr-only Toggle Dropdown
-									ul.dropdown-menu
-										each child in menu.childs
-											li
-												a(href=child.permalink)=child.post_title
+    style(type='text/css').
+      body {
+        background-image: url(#{meta_data.edition[ 'wpcf-background-image' ]});
+      }
+  body
+    nav#top-menu.navbar.navbar-inverse(role='navigation')
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-MainMenu')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/', title=meta_data.meta['name'])
+            img.img-responsive(src=meta_data.meta.logo_bar, alt=meta_data.meta['name'])
+        // Collect the nav links, forms, and other content for toggling
+        #menu-MainMenu.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/idea/') Idea
+            li
+              a(href='/timeline/') Timeline
+            li
+              a(href='/map/') Map
+            li
+              a(href='/gallery/') Gallery
+            li
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                | Reports 
+                span.caret
+              ul.dropdown-menu(role='menu')
+                li
+                  a(href='/editions/2014-eindhoven/report/') 2014 Eindhoven
+                li
+                  a(href='/editions/2013-cape-town/report/') 2013 Cape Town
+                li
+                  a(href='/editions/2013-rome/report/') 2013 Rome
+                li
+                  a(href='/editions/2013-mex/report/') 2013 Mexico
+                li
+                  a(href='/editions/2012-rome/report/') 2012 Rome
+                li
+                  a(href='/editions/2011-minsk/report/') 2011 Minsk
+                li
+                  a(href='/editions/2011-rome/report/') 2011 Rome
+                li
+                  a(href='/editions/2010-rome/report/') 2010 Rome
+                li
+                  a(href='/editions/2009-rome/report/') 2009 Rome
+                li
+                  a(href='/editions/2008-mex/report/') 2008 Mexico
+                li
+                  a(href='/editions/2008-rome/report/') 2008 Rome
+                li
+                  a(href='/editions/2007-rome/report/') 2007 Rome
+                li
+                  a(href='/editions/2006-rome/report/') 2006 Rome
+            li
+              a(href='/the-app/') The App
+            li
+              a(href='/press/') Press
+            li
+              a(href='/contacts/') Contacts
+            li
+              a(href='/shop/') Shop
+            li
+              a(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+            li
+              a(data-toggle='dropdown', href='/cart/', title='View your shopping cart')
+                span.sr-only Shopping Cart
+                i.glyphicon.glyphicon-shopping-cart
+                span.caret
+                span.sr-only Toggle Dropdown
+              ul.dropdown-menu(role='menu')
+                li
+                  a.cart-contents(href='/cart/', title='View your shopping cart')
+                    | 0 items
+                    span.woocommerce-Price-amount.amount
+                      span.woocommerce-Price-currencySymbol €
+                      |  0,00
+          form#nl_form.navbar-form.navbar-right(method='post', action='#', onsubmit="createSend(this,'/wp-content/themes/lpm/subscribe.php'); return false;")
+            #nl_cnt
+              .input-group.input-group-sm
+                input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
+                label.sr-only(for='email') Email
+                span.input-group-btn
+                  button#invia.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
+              input(type='hidden', name='lang', value='EN')
+              input(type='hidden', name='topic', value='livevisuals')
+            #nl_res.hide
+    .cnt
+      .container-fluid(itemscope='', itemtype='http://schema.org/Event')
+        header
+          .row
+            .col-md-6
+              #logo
+                a(href='/', title=meta_data.meta['name'])
+                  img.img-responsive(itemprop='image', src=meta_data.edition['wpcf-header-image'], alt=meta_data.meta['name'])
+            .col-md-6
+              .row
+                .col-md-12
+                  #next-edition-cnt
+                    #next-edition!=meta_data.edition['wpcf-sub-title']
+                  #site-description-cnt
+                    #site-description=meta_data.meta['description']
+                  span.sr-onlye
+                    span(itemprop='name')=meta_data.meta.name + " " + meta_data.edition.post_title
+                    .dates.sr-only
+                      span.sr-only
+                        span(itemprop='startDate', content=meta_data.edition.startdateISO)=meta_data.edition.startdateHR
+                        !="|"
+                        span(itemprop='startDate', content=meta_data.edition.enddateISO)=meta_data.edition.enddateHR
+                      .date.updated(content='')=meta_data.edition.data_evento
+                    each location in meta_data.edition['wpcf-location']
+                      - locationA = location.split(";")
+                      span(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                        span(itemprop='name')=locationA[0]
+                        !="| ,"
+                        span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                          span(itemprop='addressLocality')=locationA[1]
+                          !="|  -"
+                          span(itemprop='addressCountry')=locationA[2]
+                        span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                          meta(itemprop='latitude', content=locationA[3])
+                          meta(itemprop='longitude', content=locationA[4])
+        nav.hidden-xs(role='navigation')
+          ul.pulsa
+            each menu in meta_data.menu
+              li.btn-group
+                a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href=menu.permalink)=menu.post_title
+                - if (menu.childs.length)
+                button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown')
+                  span.caret
+                  span.sr-only Toggle Dropdown
+                ul.dropdown-menu
+                  each child in menu.childs
+                    li
+                      a(href=child.permalink)=child.post_title
 
 
-					span.sr-only
-						span(itemprop='name')=meta_data.meta.name+ " "+ meta_data.edition.post_title
-						- var dateplace = meta_data
-						include inc_dateplace
-						//
-							.dates.sr-only
-								span.sr-only
-									span(itemprop='startDate', content=meta_data.edition.startdateISO)=meta_data.edition.startdateHR
-									!="|"
-									span(itemprop='startDate', content=meta_data.edition.enddateISO)=meta_data.edition.enddateHR
-								.date.updated(content='')=meta_data.edition.data_evento
-							each location in meta_data.edition['wpcf-location']
-								- locationA = location.split(";")
-								span(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
-									span(itemprop='name')=locationA[0]
-									!="| ,"
-									span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
-										span(itemprop='addressLocality')=locationA[1]
-										!="|  -"
-										span(itemprop='addressCountry')=locationA[2]
-									span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
-										meta(itemprop='latitude', content=locationA[3])
-										meta(itemprop='longitude', content=locationA[4])
-				.visible-xs
-					nav.navbar.navbar-default(role='navigation')
-						// Brand and toggle get grouped for better mobile display
-						.navbar-header
-							button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')
-								span.sr-only Toggle navigation
-								span.icon-bar
-								span.icon-bar
-								span.icon-bar
-							a.navbar-brand(href='')
-						#menu-edition-menu.collapse.navbar-collapse
-							// Collect the nav links, forms, and other content for toggling
-							ul.nav.navbar-nav
-								each menu in meta_data.menu
-									li
-										a(href=menu.permalink, data-toggle=menu.childs.length ? 'dropdown' : undefined)=menu.post_title
-											- if (menu.childs.length)
-												span.caret
-										- if (menu.childs.length)
-											ul.dropdown-menu
-												each child in menu.childs
-													li
-														a(href=child.permalink)=child.post_title
-					br
-				block content
-				.sr-only
-					| Author:
-					a(href='https://plus.google.com/+Liveperformersmeeting?rel=author') LPM Live Performers Meeting
-				.sr-only
-					| Author:
-					a(href='https://plus.google.com/+GianlucaDelGobbo?rel=author', rel='author') Gianluca Del Gobbo
-				footer.navbar.navbar-inverse.footer
-					.navbar-inner
-						.row.links-horizontal
-							.col-sm-2
-								a(href='/', title=meta_data.meta['name'])
-									img.media-object(src=meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
-							.col-sm-2.hidden-print
-								.margin-top-xs
-									p Corporate
-									ul#menu-navbar-menu.nav.nav-pills.nav-stacked
-										li#menu-item-12125.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12125
-											a(href='/idea/') Idea
-										li#menu-item-12128.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12128
-											a(href='/timeline/') Timeline
-										li#menu-item-13599.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-13599
-											a(href='/map/') Map
-										li#menu-item-12126.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12126
-											a(href='/gallery/') Gallery
-										li#menu-item-12140.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-12140
-											a(href='#') Reports
-										li#menu-item-14988.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-14988
-											a(href='/the-app/') The App
-										li#menu-item-12124.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12124
-											a(href='/press/') Press
-										li#menu-item-12127.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12127
-											a(href='/contacts/') Contacts
-										li#menu-item-12137.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12137
-											a(href='/shop/') Shop
-										li#menu-item-14810.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-14810
-											a(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
-							.col-sm-2.hidden-print
-								.margin-top-xs
-									p Projects
-									include inc_projects
-							.col-sm-3.hidden-print
-							.col-sm-3.hidden-print
-								.pull-right
-									.margin-top-xs
-										p Search
-										include inc_search
-								br.clearfix
-								br
-						br
-						.row
-							.col-sm-6
-								.footer-title
-									!="NO © "+new Date().getFullYear() + " " + meta_data.meta.name + " "
-									a(href='mailto:info@liveperformersmeeting.net', title='Write a message') info@liveperformersmeeting.net
-							.col-sm-5.pull-right
-								.footer-title.pull-right
-									a.tooltips(data-toggle='tooltip', href='http://flyer.it/', target='_blank', title='This website is made by Flyer Communication')
-										img(src='/'+config.prefix+'/images/logo_flyer.png', alt='Logo Flyer Communication')
-			#twCnt
-				div
-					#sc
-						a(href='http://flxer.net', title='FLxER network', target='_blank')
-							img(alt='FLxER network icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_50_flxer.png')
-						a(href='http://twitter.com/liveperformers', title='Twitter Profile', target='_blank')
-							img(alt='Twitter Profile icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_31_twitter.png')
-						a(href='http://www.facebook.com/LPM.LivePerformersMeeting', title='Facebook Page', target='_blank')
-							img(alt='Facebook Page icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_30_facebook.png')
-						a(href='http://www.facebook.com/group.php?gid=10387985422', title='Facebook Group', target='_blank')
-							img(alt='Facebook Group icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_51_facebook_group.png')
-						a(href='http://vimeo.com/lpm', title='Vimeo', target='_blank')
-							img(alt='Vimeo icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_34_vimeo.png')
-						a(href='https://plus.google.com/+Liveperformersmeeting', title='Google Plus', target='_blank', rel='publisher')
-							img(alt='Google Plus icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_02_google_plus.png')
-						a(href='http://www.youtube.com/LPMvideoreport', title='YouTube', target='_blank')
-							img(alt='YouTube icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_22_youtube.png')
-						a(href='http://apps.facebook.com/lpmgallery', title='Facebook App', target='_blank')
-							img(alt='Facebook App icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_52_facebook_app.png')
-						a(href='/feed', title='RSS Feed', target='_blank')
-							img(alt='RSS Feed icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_37_rss.png')
-					#tw
-			script(type='text/javascript').
-				(function(){var ticker=document.createElement('script');ticker.type='text/javascript';ticker.async=true;ticker.src='//twitcker.com/ticker/liveperformers.js?background=000000&tweet=000000&open=true&appearance=typewriter&container=own-container&own-container=tw';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(ticker);})();
-			// Custom Facebook Feed JS
-			script(type='text/javascript').
-				var cfflinkhashtags = "true";
-			script(type='text/javascript', src='http://platform.twitter.com/widgets.js')
-			script(type='text/javascript', src='//assets.pinterest.com/js/pinit.js')
-			#fb-root
-			script.
-				(function(d, s, id) {
-					var js, fjs = d.getElementsByTagName(s)[0];
-					if (d.getElementById(id)) return;
-					js = d.createElement(s);
-					js.id = id;
-					js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=#{meta_data.meta.fb_appId}";
-					fjs.parentNode.insertBefore(js, fjs);
-				}(document, 'script', 'facebook-jssdk'));
-			script(type="text/javascript").
-				var sgp_config = {"sgp_selT": "2","sgp_sel": ".thumbnail","sgp_bT": "{#meta_data.meta.name}","sgp_bL": "#{meta_data.meta.description}","sgp_bU": "#{global.config.domain}","sgp_bg": "000000","sgp_bgo": "0.8","sgp_bb": "1","sgp_hb": "1","sgp_hbt": "1","sgp_ch": "","sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png","sgp_desc": "1","sgp_fb": "1","sgp_fbf": "1","sgp_fbc": "1","sgp_nav": "1","sgp_hon": "","sgp_usf":"1.2","sgp_mb":"10","sgp_theme":"classic","sgp_theme_root":"http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/themes/","sgp_iLoadR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/loading.gif","sgp_iR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/r.png","sgp_iL": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/l.png",};
-				var sgp_ie = false;var sgp_ie7 = false;
-			script(type='text/javascript', src='/'+config.prefix+'/js/jquery.min.js')
-			script(type='text/javascript', src='/'+config.prefix+'/js/jquery-migrate.min.js')
-			script(type='text/javascript', src='/'+config.prefix+'/js/bootstrap.min.js')
-			script(type='text/javascript', src='/'+config.prefix+'/js/jquery.isotope.min.js')
-			script(type='text/javascript', src='/'+config.prefix+'/js/imagesloaded.pkgd.min.js')
-			script(type='text/javascript', src='/'+config.prefix+'/js/jquery.infinitescroll.js')
-			script(type='text/javascript', src='/'+config.prefix+'/js/cookielawinfo.js')
-			script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.0')
-			script(type='text/javascript', src='/'+config.prefix+'/js/script.js')
-			//script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/mailchimp/js/scrollTo.js?ver=1.5.2')
-				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20')
-				script(type='text/javascript').
-					/* <![CDATA[ */
-					var mailchimpSF = {"ajax_url":"http:\\/\/liveperformersmeeting.net\/"};
-					/* ]]> */
-				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/mailchimp/js/mailchimp.js?ver=1.5.2')
-				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4')
-				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/mailchimp//js/datepicker.js')
-			//script(type='text/javascript').
-				/* <![CDATA[ */
-				var _wpcf7 = {"loaderUrl":"http:\\/\/liveperformersmeeting.net\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}},"sending":"Sending ..."};
-				/* ]]> */
-				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.5')
-				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/custom-facebook-feed/js/cff-scripts.js?ver=2.4.5')
-				script(type='text/javascript', src='http://liveperformersmeeting.net/wp-includes/js/wp-embed.min.js')
-			script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/js/socialGalleryPluginLite.js')
-			#cookie-law-info-bar
-				span
-					| This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.
-					a#cookie_action_close_header.medium.cli-plugin-button.cli-plugin-main-button(href='#') Accept
-					a#CONSTANT_OPEN_URL.cli-plugin-main-link(href="/cookies-in-use-on-this-site/", target="_blank") Read More
-			script(type='text/javascript').
-				//<![CDATA[
-				jQuery(document).ready(function() {
-					cli_show_cookiebar({
-						settings: '{"animate_speed_hide":"500","animate_speed_show":"500","background":"#000000","border":"#444","border_on":true,"button_1_button_colour":"#ffffff","button_1_button_hover":"#cccccc","button_1_link_colour":"#000000","button_1_as_button":true,"button_2_button_colour":"#ffffff","button_2_button_hover":"#cccccc","button_2_link_colour":"#ffffff","button_2_as_button":false,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"top","scroll_close":false,"scroll_close_reload":false,"showagain_tab":false,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#ffffff","show_once_yn":false,"show_once":"10000"}'
-					});
-				});
-				//]]>
-			script.
-				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-				ga('create', '#{meta_data.meta['google_analytics']}', 'auto');
-				ga('send', 'pageview');
+
+        nav.visible-xs.navbar.navbar-default(role='navigation')
+          // Brand and toggle get grouped for better mobile display
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='')
+          #menu-edition-menu.collapse.navbar-collapse
+            // Collect the nav links, forms, and other content for toggling
+            ul.nav.navbar-nav
+              each menu in meta_data.menu
+                li
+                  a(href=menu.permalink, data-toggle=menu.childs.length ? 'dropdown' : undefined)=menu.post_title
+                  - if (menu.childs.length)
+                  span.caret
+                  - if (menu.childs.length)
+                  ul.dropdown-menu
+                    each child in menu.childs
+                      li
+                        a(href=child.permalink)=child.post_title
+        br
+        block content
+        .sr-onlye
+          | Author:
+          a(href='https://plus.google.com/+Liveperformersmeeting?rel=author', rel='author') LPM Live Performers Meeting
+        .sr-onlye
+          | Author:
+          a(href='https://plus.google.com/+GianlucaDelGobbo?rel=author', rel='author') Gianluca Del Gobbo
+        footer.navbar.navbar-inverse.footer
+          .navbar-inner
+            .row.links-horizontal
+              .col-sm-2
+                a(href='/', title=meta_data.meta['name'])
+                  img.media-object(src=meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
+              .col-sm-2.hidden-print
+                .margin-top-xs
+                  p Corporate
+                  ul#menu-navbar-menu.nav.nav-pills.nav-stacked
+                    li#menu-item-12125.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12125
+                      a(href='/idea/') Idea
+                    li#menu-item-12128.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12128
+                      a(href='/timeline/') Timeline
+                    li#menu-item-13599.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-13599
+                      a(href='/map/') Map
+                    li#menu-item-12126.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12126
+                      a(href='/gallery/') Gallery
+                    li#menu-item-12140.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-12140
+                      a(href='#') Reports
+                    li#menu-item-14988.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-14988
+                      a(href='/the-app/') The App
+                    li#menu-item-12124.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12124
+                      a(href='/press/') Press
+                    li#menu-item-12127.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12127
+                      a(href='/contacts/') Contacts
+                    li#menu-item-12137.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12137
+                      a(href='/shop/') Shop
+                    li#menu-item-14810.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-14810
+                      a(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+              .col-sm-2.hidden-print
+                .margin-top-xs
+                  p Projects
+                  include ../common/inc_projects
+              .col-sm-3.hidden-print
+              .col-sm-3.hidden-print
+                .pull-right
+                  .margin-top-xs
+                    p Search
+                    include ../common/inc_search
+                br.clearfix
+                br
+            br
+            .row
+              .col-sm-6
+                .footer-title
+                  !="NO © " + new Date().getFullYear() + " " + meta_data.meta.name + " "
+                  a(href='mailto:info@liveperformersmeeting.net', title='Write a message') info@liveperformersmeeting.net
+              .col-sm-5.pull-right
+                .footer-title.pull-right
+                  a.tooltips(data-toggle='tooltip', href='http://flyer.it/', target='_blank', title='This website is made by Flyer Communication')
+                    img(src='/' + config.prefix + '/images/logo_flyer.png', alt='Logo Flyer Communication')
+      #twCnt
+        div
+          #sc
+            a(href='http://flxer.net', title='FLxER network', target='_blank')
+              img(alt='FLxER network icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_50_flxer.png')
+            a(href='http://twitter.com/liveperformers', title='Twitter Profile', target='_blank')
+              img(alt='Twitter Profile icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_31_twitter.png')
+            a(href='http://www.facebook.com/LPM.LivePerformersMeeting', title='Facebook Page', target='_blank')
+              img(alt='Facebook Page icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_30_facebook.png')
+            a(href='http://www.facebook.com/group.php?gid=10387985422', title='Facebook Group', target='_blank')
+              img(alt='Facebook Group icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_51_facebook_group.png')
+            a(href='http://vimeo.com/lpm', title='Vimeo', target='_blank')
+              img(alt='Vimeo icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_34_vimeo.png')
+            a(href='https://plus.google.com/+Liveperformersmeeting', title='Google Plus', target='_blank', rel='publisher')
+              img(alt='Google Plus icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_02_google_plus.png')
+            a(href='http://www.youtube.com/LPMvideoreport', title='YouTube', target='_blank')
+              img(alt='YouTube icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_22_youtube.png')
+            a(href='http://apps.facebook.com/lpmgallery', title='Facebook App', target='_blank')
+              img(alt='Facebook App icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_52_facebook_app.png')
+            a(href='/feed', title='RSS Feed', target='_blank')
+              img(alt='RSS Feed icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_37_rss.png')
+          #tw
+      script(type='text/javascript').
+        (function () {
+          var ticker = document.createElement('script');
+          ticker.type = 'text/javascript';
+          ticker.async = true;
+          ticker.src = '//twitcker.com/ticker/liveperformers.js?background=000000&tweet=000000&open=true&appearance=typewriter&container=own-container&own-container=tw';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ticker);
+        })();
+      // Custom Facebook Feed JS
+      script(type='text/javascript').
+        var cfflinkhashtags = "true";
+      script(type='text/javascript', src='http://platform.twitter.com/widgets.js')
+      script(type='text/javascript', src='//assets.pinterest.com/js/pinit.js')
+      #fb-root
+      script.
+        (function (d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=#{meta_data.meta.fb_appId}";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      script(type="text/javascript").
+        var sgp_config = {
+          "sgp_selT": "2",
+          "sgp_sel": ".thumbnail",
+          "sgp_bT": "{#meta_data.meta.name}",
+          "sgp_bL": "#{meta_data.meta.description}",
+          "sgp_bU": "#{global.config.domain}",
+          "sgp_bg": "000000",
+          "sgp_bgo": "0.8",
+          "sgp_bb": "1",
+          "sgp_hb": "1",
+          "sgp_hbt": "1",
+          "sgp_ch": "",
+          "sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png",
+          "sgp_desc": "1",
+          "sgp_fb": "1",
+          "sgp_fbf": "1",
+          "sgp_fbc": "1",
+          "sgp_nav": "1",
+          "sgp_hon": "",
+          "sgp_usf": "1.2",
+          "sgp_mb": "10",
+          "sgp_theme": "classic",
+          "sgp_theme_root": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/themes/",
+          "sgp_iLoadR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/loading.gif",
+          "sgp_iR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/r.png",
+          "sgp_iL": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/l.png",
+        };
+        var sgp_ie = false;var sgp_ie7 = false;
+      script(type='text/javascript', src='/' + config.prefix + '/js/jquery.min.js')
+      script(type='text/javascript', src='/' + config.prefix + '/js/jquery-migrate.min.js')
+      script(type='text/javascript', src='/' + config.prefix + '/js/bootstrap.min.js')
+      script(type='text/javascript', src='/' + config.prefix + '/js/jquery.isotope.min.js')
+      script(type='text/javascript', src='/' + config.prefix + '/js/imagesloaded.pkgd.min.js')
+      script(type='text/javascript', src='/' + config.prefix + '/js/jquery.infinitescroll.js')
+      script(type='text/javascript', src='/' + config.prefix + '/js/cookielawinfo.js')
+      script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.0')
+      script(type='text/javascript', src='/' + config.prefix + '/js/script.js')
+      //script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/mailchimp/js/scrollTo.js?ver=1.5.2')
+        script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20')
+        script(type='text/javascript').
+          /* <![CDATA[ */
+          var mailchimpSF = {"ajax_url":"http:\\/\/liveperformersmeeting.net\/"};
+          /* ]]> */
+        script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/mailchimp/js/mailchimp.js?ver=1.5.2')
+        script(type='text/javascript', src='http://liveperformersmeeting.net/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4')
+        script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/mailchimp//js/datepicker.js')
+      //script(type='text/javascript').
+        /* <![CDATA[ */
+        var _wpcf7 = {"loaderUrl":"http:\\/\/liveperformersmeeting.net\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}},"sending":"Sending ..."};
+        /* ]]> */
+        script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.5')
+        script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/custom-facebook-feed/js/cff-scripts.js?ver=2.4.5')
+        script(type='text/javascript', src='http://liveperformersmeeting.net/wp-includes/js/wp-embed.min.js')
+      script(type='text/javascript', src='http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/js/socialGalleryPluginLite.js')
+      #cookie-law-info-bar
+        span
+          | This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.
+          a#cookie_action_close_header.medium.cli-plugin-button.cli-plugin-main-button(href='#') Accept
+          a#CONSTANT_OPEN_URL.cli-plugin-main-link(href="/cookies-in-use-on-this-site/", target="_blank") Read More
+      script(type='text/javascript').
+        //<![CDATA[
+        jQuery(document).ready(function () {
+          cli_show_cookiebar({
+            settings: '{"animate_speed_hide":"500","animate_speed_show":"500","background":"#000000","border":"#444","border_on":true,"button_1_button_colour":"#ffffff","button_1_button_hover":"#cccccc","button_1_link_colour":"#000000","button_1_as_button":true,"button_2_button_colour":"#ffffff","button_2_button_hover":"#cccccc","button_2_link_colour":"#ffffff","button_2_as_button":false,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"top","scroll_close":false,"scroll_close_reload":false,"showagain_tab":false,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#ffffff","show_once_yn":false,"show_once":"10000"}'
+          });
+        });
+        //]]>
+      script.
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                  }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+                  m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', '#{meta_data.meta['google_analytics']}', 'auto');
+        ga('send', 'pageview');

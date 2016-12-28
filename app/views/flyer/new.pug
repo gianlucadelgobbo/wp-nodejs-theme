@@ -7,7 +7,7 @@ block content
           header
             h1.entry-title(itemprop='name')=result.post_title
           .rientro
-            include inc_tags
+            include ../common/inc_tags
             if result.data_month
               .text-muted
                 .dates
@@ -16,11 +16,11 @@ block content
             div(itemprop='description')!=result.post_content
             .row
               .col-md-6
-                include inc_capauthors
+                include ../common/inc_capauthors
               .col-md-6
-                include inc_websites
-            include inc_share
+                include ../common/inc_websites
+            include ../common/inc_share
         .col-sm-3
           img.img-responsive.main-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
 
-      include inc_grid
+      include ../common/inc_grid

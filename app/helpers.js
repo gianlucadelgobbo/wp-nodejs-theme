@@ -349,8 +349,8 @@ exports.getAllLab = function getAllLab(req, limit, page, callback) {
 exports.getMetaData = function getMetaData(req,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
   global.setLocale(config.current_lang);
-  var file = config.root+'/tmp/'+config.prefix+'/meta_'+config.current_lang+'.json';
   if (config.last_edition) var edition = req.params.edition ? req.params.edition : config.last_edition;
+  var file = config.root+'/tmp/'+config.prefix+'/meta_'+(edition ? edition+"_" : "")+config.current_lang+'.json';
   if (req.query.createcache==1 || !fs.existsSync(file)) {
     request(config.domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? edition : ""), function (error, response, body) {
       if (!error && response.statusCode == 200) {
@@ -522,7 +522,7 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, year, callback
     trgt.getAllEditionsByYear(req, year, 100, 1, function (data_editions) {
       for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
       data.sort(fnz.sortByStartDate);
-      for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
+      //for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
       callback(data);
     });
   });

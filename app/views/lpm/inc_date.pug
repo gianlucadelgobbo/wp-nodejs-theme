@@ -1,8 +1,0 @@
-span.sr-only
-    if dateplace.startdateHR
-        span(itemprop='startDate', content=dateplace.startdateISO)=dateplace.startdateHR
-        !=" | "
-    if dateplace.enddateHR
-        span(itemprop='endDate', content=dateplace.enddateISO)=dateplace.enddateHR
-if dateplace.data_evento
-    .date=dateplace.data_evento

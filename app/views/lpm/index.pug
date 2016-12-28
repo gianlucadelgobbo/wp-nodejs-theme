@@ -4,14 +4,14 @@ block content
 		.row
 			.col-lg-3.col-md-4.col-sm-6
 				h1.entry-title.boxItem News
-				each box in data.news
+				each result in results.news
 					include boxes/box_event
 				.text-right.boxItem
 					a.btn.btn-primary(href="/news/") See all News
 			.col-lg-6.col-md-4.col-sm-6
 				h1.entry-title.boxItem Satellite Events
 				.row.isotope
-					each box in data.events
+					each result in results.events
 						.col-lg-6.col-md-12.col-sm-12.isotopeitem
 							include boxes/box_event
 				.text-right.boxItem
@@ -20,7 +20,7 @@ block content
 					a.btn.btn-primary(href="/map/") See all in a Map
 			.col-lg-3.col-md-4.col-sm-6
 				h1.entry-title.boxItem Editions
-				each box in data.editions
+				each result in results.editions
 					include boxes/box_event
 				.text-right.boxItem
 					a.btn.btn-primary(href="/timeline/") See all in a Timeline

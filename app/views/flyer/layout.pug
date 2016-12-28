@@ -5,7 +5,6 @@ html(lang=config.current_lang)
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     //- console.log(meta_data)
-    // FLYER COMMUNICATION EASY SEO www.flyer.it
     meta(property='fb:admins', content=meta_data.meta['fb_admin'])
     meta(property='fb:app_id', content=meta_data.meta['fb_appId'])
     meta(property='og:image', content=meta_data.meta['image_src'])
@@ -15,7 +14,6 @@ html(lang=config.current_lang)
     meta(property='og:url', content=config.domain+meta_data['url'])
     link(rel='canonical', href=config.domain+meta_data['url'])
     meta(property='og:type', content='website')
-    // HIDDEN FACEBOOK OPENG GRAPH (only facebook can see)
     meta(name='description', content=meta_data.meta['og_description'])
     meta(name='keywords', content=meta_data.meta['og_keywords'])
     meta(name='google-site-verification', content=meta_data.meta['google_webmasterstools'])
@@ -26,28 +24,14 @@ html(lang=config.current_lang)
     link(rel='apple-touch-icon', sizes='120x120', href=config.domain+meta_data.meta['icon120'])
     link(rel='apple-touch-icon', sizes='144x144', href=config.domain+meta_data.meta['icon144'])
     link(rel='apple-touch-icon', sizes='152x152', href=config.domain+meta_data.meta['icon152'])
-    // END FLYER COMMUNICATION EASY SEO www.flyer.it
-    link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700",rel="stylesheet")
-
-    //link#flick-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/mailchimp//css/flick/flick.css', type='text/css', media='all')
-    //link#woocommerce_prettyPhoto_css-css(rel='stylesheet', href='/assets/prettyPhoto/prettyPhoto.css', type='text/css', media='all')
-    //link#bootstrap-css-css(rel='stylesheet', href='http://flyer.it/wp-content/themes/flyer-bs-lpm/bootstrap/css/bootstrap.min.css', type='text/css', media='all')
-    //link#font-awesome-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/types/library/toolset/toolset-common/res/lib/font-awesome/css/font-awesome.min.css?ver=4.4.0', type='text/css', media='all')
-    //link#bootstrap-social-css-css(rel='stylesheet', href='/assets/bootstrap/css/bootstrap-social.css', type='text/css', media='all')
-    //link#cff-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/custom-facebook-feed/css/cff-style.css?ver=2.4.5', type='text/css', media='all')
-    //link#youtube-simplegallery-css(rel='stylesheet', href='http://flyer.it/wp-content/plugins/youtube-simplegallery/youtube_simplegallery.css', type='text/css', media='all')
+    // CSS
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700")
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
-    //link(rel='stylesheet', href='http://flyer.it/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.12', type='text/css', media='all')
     if include_gallery
-      link(rel='stylesheet', href='http://flyer.it/wp-content/plugins/flyer-social-gallery/css/socialGalleryPluginLite.css', type='text/css', media='all')
-
-    //link(rel='stylesheet', href=meta_data.edition['wpcf-custom-css'][0], type='text/css')
-    //link(rel='stylesheet', href=meta_data.edition['wpcf-custom-css'][1], type='text/css')
-
-    link(rel='stylesheet', href='/'+config.prefix+'/css/cookielawinfo.css', type='text/css', media='all')
+      link(rel='stylesheet', href='/common/css/socialGalleryPluginLite.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/common/css/cookielawinfo.css', type='text/css', media='all')
     link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.css', type='text/css')
-    link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrapXL.css', type='text/css', media='all')
-    //link(rel='stylesheet', href='/'+config.prefix+'/css/style.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/common/css/bootstrapXL.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
 
 body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['url'] == '/it' ? "flyer-header-expanding expanding" : undefined)
@@ -264,11 +248,11 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
           .col-sm-3.hidden-print
             .margin-top-xs
               p=global.__("Projects")
-              include inc_projects
+              include ../common/inc_projects
           .col-sm-3.hidden-print
             .margin-top-xs
               p=global.__("Social Networks")
-              include inc_socials
+              include ../common/inc_socials
             br.clearfix
             br
         br

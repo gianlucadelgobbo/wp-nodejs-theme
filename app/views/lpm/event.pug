@@ -6,12 +6,12 @@ block content
 				header
 					h1.entry-title(itemprop='name')=data.post_title
 				.rientro
-					include inc_dateplace
+					include ../common/inc_dateplace
 					div(itemprop='description')!=data.post_content
 					br
-					include inc_share
+					include ../common/inc_share
 			.col-sm-3
 				img.img-responsive.wp-post-image(src=data.featured.thumbnail, alt=data.post_title, itemprop='image')
 
 		if data['wpcf-add-grid-boxes'] && data['wpcf-rows'] && data['wpcf-columns']
-			include inc_grid
+			include ../common/inc_grid

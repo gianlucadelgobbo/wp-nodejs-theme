@@ -1,10 +1,9 @@
 var helpers = require('./../helpers');
-var fnz = require('./../functions');
 var jsonfile = require('jsonfile');
 var fs = require('fs');
 
 exports.get = function get(req, res) {
-  var file = config.root+'/tmp/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
+  var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
   helpers.getMetaData(req, function( meta_data ) {
     if (req.query.createcache==1 || !fs.existsSync(file)){
       helpers.getPage({"params":{"page":"profile"},"url":req.url}, function( profile ) {
