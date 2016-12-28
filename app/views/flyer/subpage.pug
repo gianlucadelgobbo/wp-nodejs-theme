@@ -34,7 +34,7 @@ block content
                 if index < 10
                   include boxes/box_event
               .text-center.read-more
-                a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/live-visuals/')
+                a(href=lang_preurl + '/portfolio/live-visuals/')
                   !=global.__("See all Events")
                   !=" "
                   span.fa.fa-long-arrow-right
@@ -43,7 +43,7 @@ block content
                 if index < 3
                   include boxes/box_web
               .text-center.read-more
-                a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/web-and-mobile/')
+                a(href=lang_preurl + '/portfolio/web-and-mobile/')
                   !=global.__("See all Web & Mobile")
                   !=" "
                   span.fa.fa-long-arrow-right
@@ -51,7 +51,7 @@ block content
               each result, index in posts
                 include boxes/box_lab
               .text-center.read-more
-                a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/lab/')
+                a(href=lang_preurl + '/portfolio/lab/')
                   !=global.__("See all Lab")
                   !=" "
                   span.fa.fa-long-arrow-right
@@ -60,7 +60,7 @@ block content
                 if index < 2
                   include boxes/box_learning
               .text-center.read-more
-                a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/learning/')
+                a(href=lang_preurl + '/portfolio/learning/')
                   !=global.__("See all Learning")
                   !=" "
                   span.fa.fa-long-arrow-right

@@ -2,7 +2,7 @@
   .Web(itemscope, itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
       //.catlabel=result.type
-      a.ajaxloader(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/portfolio/web-and-mobile/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+      a.ajaxloader(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href=lang_preurl+'/portfolio/web-and-mobile/'+result.slug+"/", rel='bookmark', title!=result.post_title)
         img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='url')
     .box-list
       if result.data_month
@@ -10,7 +10,7 @@
           .dates
               .date=result.data_month
       h3.list_title(itemprop='name')
-        a.ajaxloader(itemprop='url', href='/portfolio/web-and-mobile/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
+        a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/web-and-mobile/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
 
       if result.excerpt && result.excerpt.rendered
         .excerpt.text-muted(itemprop='headline')!=result.excerpt.rendered

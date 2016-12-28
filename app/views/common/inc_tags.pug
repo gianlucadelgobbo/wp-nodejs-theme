@@ -5,7 +5,7 @@ if posttype && posttype.tags
 if tags
   p.tags
     each tag, index in tags
-      a(href=(config.current_lang == 'it' ? '/it' : '') + '/portfolio/'+baseurl+'/tags/' + tag.slug + "/")
+      a(href=lang_preurl + '/portfolio/'+baseurl+'/tags/' + tag.slug + "/")
         span.tagandcount!="#" + tag.name + " (" + tag.count + ")"
       if index + 1 < tags.length
         !=" · "

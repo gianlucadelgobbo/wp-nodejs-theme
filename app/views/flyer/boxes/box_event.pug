@@ -3,14 +3,14 @@
     .thumb-cnt
       .thumb-cnt-cnt
         //.catlabel=result.type
-        a.ajaxloader(itemprop='url', href='/portfolio/live-visuals/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+        a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/live-visuals/'+result.slug+"/", rel='bookmark', title!=result.post_title)
           img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
     .box-list
       .text-center
         .text-muted.supText
           include ../../common/inc_dateplace
         h3.list_title(itemprop='name')!=result.post_title.replace(" | ","<br />")
-          //a.ajaxloader(itemprop='url', href='/portfolio/live-visuals/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title.replace(" | ","<br />")
+          //a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/live-visuals/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title.replace(" | ","<br />")
         .text-muted.small.tags
           include ../../common/inc_tags
       .read-more-box

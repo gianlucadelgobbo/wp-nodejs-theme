@@ -1,6 +1,6 @@
 var $container;
 var mySvgPanZoom;
-jQuery(window).load(function(){
+$(function() {
 	jQuery("#loadmore").click(function() {
 		jQuery.ajax({
 			method: "POST",

@@ -2,7 +2,7 @@
   .Learning(itemscope, itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
       //.catlabel=result.type
-      a.ajaxloader(itemprop='url', href='/portfolio/learning/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+      a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/learning/'+result.slug+"/", rel='bookmark', title!=result.post_title)
         img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
     .box-list
       if result["wpcf-schedule"]
@@ -11,7 +11,7 @@
               .date=global.__("Programming")+": "
                 b=result["wpcf-schedule"]
       h3.list_title(itemprop='name')
-        a.ajaxloader(itemprop='url', href='/portfolio/learning/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
+        a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/learning/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
       .text-muted.small.excerpt
         if result.excerpt && result.excerpt.rendered
           div(itemprop='headline')

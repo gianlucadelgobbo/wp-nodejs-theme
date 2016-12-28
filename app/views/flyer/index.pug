@@ -49,7 +49,7 @@ block content
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>5 ? "hidden-lg visible-xl" : "")
               include boxes/box_event
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/live-visuals/')
+          a(href=lang_preurl+'/portfolio/live-visuals/')
             !=global.__("See all Events")
             !=" "
             span.fa.fa-long-arrow-right
@@ -68,7 +68,7 @@ block content
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>5 ? "hidden-lg visible-xl" : "")
               include boxes/box_lab
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/lab/')
+          a(href=lang_preurl+'/portfolio/lab/')
             !=global.__("See all Lab")
             !=" "
             span.fa.fa-long-arrow-right
@@ -87,7 +87,7 @@ block content
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>2 ? "hidden-lg visible-xl visible-md" : "")
               include boxes/box_web
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/web-and-mobile/')
+          a(href=lang_preurl+'/portfolio/web-and-mobile/')
             !=global.__("See all Web & Mobile")
             !=" "
             span.fa.fa-long-arrow-right
@@ -103,7 +103,7 @@ block content
               each result in results.learning
                   include boxes/box_learning_home
               .read-more
-                a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/learning/')
+                a(href=lang_preurl+'/portfolio/learning/')
                   !=global.__("See all Learnings")
                   !=" "
                   span.fa.fa-long-arrow-right
@@ -122,7 +122,7 @@ block content
             .col-md-3.col-sm-12
               include boxes/box_video_home
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/videos/')
+          a(href=lang_preurl+'/portfolio/videos/')
             !=global.__("See all Videos")
             !=" "
             span.fa.fa-long-arrow-right
@@ -141,7 +141,7 @@ block content
             .col-xl-2.col-lg-3.col-md-3(class=(!index ? "col-xl-offset-2" : ""))
               include boxes/box_award
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '')+'/portfolio/awards-and-grants/')
+          a(href=lang_preurl+'/portfolio/awards-and-grants/')
             !=global.__("See all Awards and Grants")
             !=" "
             span.fa.fa-long-arrow-right
@@ -158,7 +158,7 @@ block content
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>2 ? "visible-md hidden-lg visible-xl" : "")
               include boxes/box_news
         .text-center.read-more
-          a(href=(config.current_lang == 'it' ? '/it' : '') + '/extra/')
+          a(href=lang_preurl + '/extra/')
             !=global.__("See all Extras ")
             !=" "
             span.fa.fa-long-arrow-right
