@@ -12,7 +12,7 @@ block content
 					include inc_share
 			.col-sm-3
 				if result.featured
-					img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt!=result.title.rendered, itemprop='image')
+					img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
 		.timeline
 			each result in results
 				include boxes/box_timeline
