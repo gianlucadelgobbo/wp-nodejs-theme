@@ -140,39 +140,20 @@ html(lang='en')
                     #next-edition!=meta_data.edition['wpcf-sub-title']
                   #site-description-cnt
                     #site-description=meta_data.meta['description']
-                  span.sr-onlye
-                    span(itemprop='name')=meta_data.meta.name + " " + meta_data.edition.post_title
-                    .dates.sr-only
-                      span.sr-only
-                        span(itemprop='startDate', content=meta_data.edition.startdateISO)=meta_data.edition.startdateHR
-                        !="|"
-                        span(itemprop='startDate', content=meta_data.edition.enddateISO)=meta_data.edition.enddateHR
-                      .date.updated(content='')=meta_data.edition.data_evento
-                    each location in meta_data.edition['wpcf-location']
-                      - locationA = location.split(";")
-                      span(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
-                        span(itemprop='name')=locationA[0]
-                        !="| ,"
-                        span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
-                          span(itemprop='addressLocality')=locationA[1]
-                          !="|  -"
-                          span(itemprop='addressCountry')=locationA[2]
-                        span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
-                          meta(itemprop='latitude', content=locationA[3])
-                          meta(itemprop='longitude', content=locationA[4])
+                  include ../common/inc_dateplace_meta
         nav.hidden-xs(role='navigation')
           ul.pulsa
             each menu in meta_data.menu
               li.btn-group
                 a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href=menu.permalink)=menu.post_title
                 - if (menu.childs.length)
-                button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown')
-                  span.caret
-                  span.sr-only Toggle Dropdown
-                ul.dropdown-menu
-                  each child in menu.childs
-                    li
-                      a(href=child.permalink)=child.post_title
+                  button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown')
+                    span.caret
+                    span.sr-only Toggle Dropdown
+                  ul.dropdown-menu
+                    each child in menu.childs
+                      li
+                        a(href=child.permalink)=child.post_title
 
 
 
@@ -190,14 +171,14 @@ html(lang='en')
             ul.nav.navbar-nav
               each menu in meta_data.menu
                 li
-                  a(href=menu.permalink, data-toggle=menu.childs.length ? 'dropdown' : undefined)=menu.post_title
-                  - if (menu.childs.length)
-                  span.caret
-                  - if (menu.childs.length)
-                  ul.dropdown-menu
-                    each child in menu.childs
-                      li
-                        a(href=child.permalink)=child.post_title
+                  a(href=menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined)=menu.post_title
+                    - if (menu.childs.length>0)
+                      span.caret
+                  - if (menu.childs.length>0)
+                    ul.dropdown-menu
+                      each child in menu.childs
+                        li
+                          a(href=child.permalink)=child.post_title
         br
         #result
           block content

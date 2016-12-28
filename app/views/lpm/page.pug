@@ -4,12 +4,12 @@ block content
 		.row
 			.col-sm-9
 				header
-					h1.entry-title(itemprop='name')!=data.title.rendered
+					h1.entry-title(itemprop='name')!=result.post_title
 				.rientro
-					div(itemprop='description')!=data.content.rendered
-					.dateModified(itemprop='dateModified', content=data.date)=data.dateHR
+					div(itemprop='description')!=result.post_content
+					.dateModified(itemprop='dateModified', content=result.date)=result.dateHR
 					br
 					include ../common/inc_share
 			.col-sm-3
-				img.img-responsive.wp-post-image(src=data.featured.thumbnail, alt!=data.title.rendered, itemprop='image')
+				img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
 

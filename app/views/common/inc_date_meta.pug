@@ -1,0 +1,8 @@
+span.sr-only
+    if meta_data.edition.startdateHR
+        span(itemprop='startDate', content=meta_data.edition.startdateISO)=meta_data.edition.startdateHR
+        !=" | "
+    if meta_data.edition.enddateHR
+        span(itemprop='endDate', content=meta_data.edition.enddateISO)=meta_data.edition.enddateHR
+if meta_data.edition.data_evento
+    .date=meta_data.edition.data_evento

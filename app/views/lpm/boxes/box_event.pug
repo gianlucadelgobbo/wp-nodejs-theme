@@ -1,36 +1,17 @@
-.boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
-  .Event(itemscope='', itemtype='http://schema.org/Event')
+.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
+  .Event(itemscope, itemtype='http://schema.org/Event')
     .thumb-cnt
-      if result.featured
-        .catlabel=result.type
-        a(itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject', href='/events/'+result.slug, rel='bookmark', title!=result.title.rendered)
-          img.img-responsive(src=result.featured.thumbnail, alt!='Image for: '+result.title.rendered, itemprop='url')
+      .thumb-cnt-cnt
+        //.catlabel=result.type
+        a.ajaxloader(itemprop='url', href='/events/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+          img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
     .box-list
-      .box-list-cnt
-        .text-muted
-          .dates
-            include ../../common/inc_date
-        h3.event_list_title(itemprop='name')
-          a(itemprop='url', href='/events/'+result.slug, rel='bookmark', title=result.title.rendered)!=result.title.rendered
-        .places
-          if result['wpcf-location']
-            include ../../common/inc_place
-
-          //if box['wpcf-location'] && box['wpcf-location'].length
-            each location in box['wpcf-location']
-              - locationA = location.split(";")
-              .place(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
-                span.placeName(itemprop='name')=locationA[0]
-                !=", "
-                span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
-                  span.addressLocality(itemprop='addressLocality')=locationA[1]
-                  !=" | "
-                  span.addressCountry(itemprop='addressCountry')=locationA[2]
-                span(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
-                  meta(itemprop='latitude', content=locationA[3])
-                  meta(itemprop='longitude', content=locationA[4])
-        .text-muted.small.excerpt
-          if result.excerpt && result.excerpt.rendered
-            div(itemprop='description')
-              p!=result.excerpt.rendered
-          span.sr-only(itemprop='organizer')
+      .text-center
+        .text-muted.supText
+          include ../../common/inc_dateplace
+        h3.list_title(itemprop='name')!=result.post_title.replace(" | ","<br />")
+        .text-muted.small.tags
+          include ../../common/inc_tags
+      .read-more-box
+        .sr-only=__("Read more")
+        i.fa.fa-long-arrow-right

@@ -49,7 +49,7 @@ exports.getPage = function getPage(req,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/mypages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.page).get(function( err, data ) {
     console.log("//// Page");
-    console.log(err);
+    console.log(data);
     if (!err && data) {
       if (data) data = fnz.fixResult(data);
       if (data.posts){
@@ -355,6 +355,7 @@ exports.getMetaData = function getMetaData(req,callback) {
     request(config.domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? edition : ""), function (error, response, body) {
       if (!error && response.statusCode == 200) {
         var data = JSON.parse(body);
+        data.edition = fnz.fixResult(data.edition);
         jsonfile.writeFile(file, data, function (err) {
           console.log(err);
         });
@@ -433,7 +434,6 @@ exports.getEdition = function getEdition(req,callback) {
   } else {
     console.log("req.params.edition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)' );
-    console.log(wp.myCustomResource);
     wp.myCustomResource().edition(req.params.edition,req.params.subsubedition,req.params.subsubedition).get(function( err, data ) {
       console.log("//// Edition");
       data = fnz.fixResult(data);
