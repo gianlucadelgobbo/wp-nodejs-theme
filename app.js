@@ -3,7 +3,7 @@ var app = express();
 
 var sites = ["flyer","lpm","linuxclub"];
 
-global.config = require('config')[sites[1]];
+global.config = require('config')[sites[0]];
 
 //console.log(config);
 
