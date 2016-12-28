@@ -28,10 +28,10 @@ html(lang=config.current_lang)
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700")
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
     if include_gallery
-      link(rel='stylesheet', href='/common/css/socialGalleryPluginLite.css', type='text/css', media='all')
-    link(rel='stylesheet', href='/common/css/cookielawinfo.css', type='text/css', media='all')
+      link(rel='stylesheet', href='/_common/css/socialGalleryPluginLite.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/_common/css/cookielawinfo.css', type='text/css', media='all')
     link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.css', type='text/css')
-    link(rel='stylesheet', href='/common/css/bootstrapXL.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
 
 body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['url'] == '/it' ? "flyer-header-expanding expanding" : undefined)
@@ -248,11 +248,11 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
           .col-sm-3.hidden-print
             .margin-top-xs
               p=global.__("Projects")
-              include ../common/inc_projects
+              include ../_common/inc_projects
           .col-sm-3.hidden-print
             .margin-top-xs
               p=global.__("Social Networks")
-              include ../common/inc_socials
+              include ../_common/inc_socials
             br.clearfix
             br
         br
@@ -264,7 +264,7 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
           .col-sm-5.pull-right
             .footer-title.pull-right
               a.tooltips(data-toggle='tooltip', href='/', target='_blank', title=global.__('This website is made by Flyer Communication'))
-                img(src='/'+config.prefix+'/images/logo_flyer.png', alt='Logo Flyer Communication')
+                img(src='/_common/images/logo_flyer.png', alt='Logo Flyer Communication')
   .modal.modal-fullscreen.fade#cntModal(tabindex='-1', role='dialog', aria-labelledby='gridSystemModalLabel')
     .modal-dialog(role='document')
       .modal-content
@@ -275,25 +275,12 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
         .modal-body
           .loading Loading...
 
-  script(type='text/javascript', src='/'+config.prefix+'/js/jquery.min.js')
-  script(type='text/javascript', src='/'+config.prefix+'/js/bootstrap.min.js')
-  script(type='text/javascript', src='/'+config.prefix+'/js/jquery.isotope.min.js')
-  script(type='text/javascript', src='/'+config.prefix+'/js/imagesloaded.pkgd.min.js')
-  script(type='text/javascript', src='/'+config.prefix+'/js/cookielawinfo.js')
-  #cookie-law-info-bar.hide
-    span
-      !=global.__("This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.")
-      a#cookie_action_close_header.medium.cli-plugin-button.cli-plugin-main-button(href='#')=global.__('Accept')
-      a#CONSTANT_OPEN_URL.cli-plugin-main-link(href='/cookies-in-use-on-this-site/')=global.__('Read More')
-  script(type='text/javascript').
-    //<![Cresult[
-    jQuery(document).ready(function () {
-      cli_show_cookiebar({
-        settings: '{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":true,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"showagain_tab":false,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000"}'
-      });
-      $("#cookie-law-info-bar").removeClass("hide");
-    });
-    //]]>
+  script(type='text/javascript', src='/_common/js/jquery.min.js')
+  script(type='text/javascript', src='/_common/js/bootstrap.min.js')
+  script(type='text/javascript', src='/_common/js/jquery.isotope.min.js')
+  script(type='text/javascript', src='/_common/js/imagesloaded.pkgd.min.js')
+  include ../common/inc_cookielawinfo
+
   if include_gallery
     #fb-root
     script.
@@ -329,13 +316,13 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
         "sgp_mb": "10",
         "sgp_theme": "classic",
         /*"sgp_theme_root": "http://flyer.it/wp-content/plugins/flyer-social-gallery/themes/",*/
-        "sgp_iLoadR": '/#{config.prefix}/images/social-gallery-loading.gif',
-        "sgp_iR": '/#{config.prefix}/images/social-gallery-r.png',
-        "sgp_iL": '/#{config.prefix}/images/social-gallery-l.png'
+        "sgp_iLoadR": '/_common/images/social-gallery-loading.gif',
+        "sgp_iR": '/_common/images/social-gallery-r.png',
+        "sgp_iL": '/_common/images/social-gallery-l.png'
       };
       var sgp_ie = false;var sgp_ie7 = false;
-    script(type='text/javascript', src='/' + config.prefix + '/js/jquery-migrate.min.js')
-    script(type='text/javascript', src='/' + config.prefix + '/js/socialGalleryPluginLite.js')
+    script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
+    script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.js')
 
   script(type='text/javascript', src='/' + config.prefix + '/js/script.js')
   script.
@@ -353,7 +340,7 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
     ga('create', '#{meta_data.meta['google_analytics']}', 'auto');
     ga('send', 'pageview');
   //
-    script(type='text/javascript', src='/'+config.prefix+'/js/jquery.infinitescroll.js')
+    script(type='text/javascript', src='/_common/js/jquery.infinitescroll.js')
     script(type='text/javascript', src='http://flyer.it/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.0')
     script(type='text/javascript', src='http://flyer.it/wp-content/plugins/mailchimp/js/scrollTo.js?ver=1.5.2')
     script(type='text/javascript', src='http://flyer.it/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20')
