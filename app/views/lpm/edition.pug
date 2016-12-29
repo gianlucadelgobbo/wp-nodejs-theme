@@ -1,14 +1,15 @@
 extends layout
 block content
-	article#container(itemscope, itemtype='http://schema.org/Event')
-		.row
-			.col-sm-9
-				header
-					h1.entry-title(itemprop='name')=result.post_title
-				.rientro
-					include ../common/inc_dateplace_meta
-					div(itemprop='description')!=result.post_content
-			.col-sm-3
-				img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
-		include ../common/inc_grid
+	.container
+		article#container(itemscope, itemtype='http://schema.org/Event')
+			.row
+				.col-sm-9
+					header
+						h1.entry-title(itemprop='name')=result.post_title
+					.rientro
+						include ../common/inc_dateplace_meta
+						div(itemprop='description')!=result.post_content
+				.col-sm-3
+					img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
+			include ../common/inc_grid
 
