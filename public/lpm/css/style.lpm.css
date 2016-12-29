@@ -1,16 +1,3 @@
-/*
-Theme Name: Flyer Bootstrap LPM
-Theme URI: http://www.flyer.it/
-Description: The Bootstrap Flyer theme for WordPress is responsive, stylish, customizable, simple, and readable -- make it yours with a custom menu, header image, and background.
-Author: Flyer communication
-Version: 1.0
-License: GNU General Public License
-
-Template: flyer-bs
-*/
-
-/* #Import CSS
-================================================== */
 body {background-position:center 52px;}
 /* a:hover , a:focus,.current-menu-item a{text-decoration: none;} */
 a:hover img{opacity: .7;}
@@ -22,10 +9,13 @@ h1 ,.h1like{margin-top: 0;margin-bottom:10px;}
 #next-edition img{float: right;}
 article .wp-post-image{margin-bottom:30px;}
 .navbar {border-radius:0;}
-.navbar-form.navbar-right {margin-top: 10px;width: 330px;}
+.navbar-brand img{max-width: 170px;max-height:20px}
+.navbar-form.navbar-right {margin-top: 10px;width: 330px;padding: 0 10px 0 0;}
 .navbar-form.navbar-right .close {line-height: 0.9;}
 .navbar-form.navbar-right .alert {padding:5px 15px;margin-bottom:0;}
+/*
 h3{clear: right !important;  margin:0 0 10px 0; padding:10px; position: relative; width: auto;text-transform: uppercase;}
+*/
 .pulsa{margin:0 0 20px 0;text-align:right;padding:0}
 .pulsa ul{text-align:left}
 .pulsa{text-align:center}
@@ -51,7 +41,6 @@ h3{clear: right !important;  margin:0 0 10px 0; padding:10px; position: relative
 .event_list_title{margin:5px 0;font-size: 15px;}
 .rowTimeline h2{margin:5px 0;font-size: 15px;}
 .box-list .excerpt{margin-top:10px;}
-*/
 #infscr-loading{
   clear: both;
   display: none;
@@ -63,6 +52,7 @@ h3{clear: right !important;  margin:0 0 10px 0; padding:10px; position: relative
 .timeline #infscr-loading{
   margin: 15px 15px 15px 15px;
 }
+*/
 
 #top-menu{border-radius: 0;}
 .rientro{padding:10px;position: relative;}
@@ -82,7 +72,7 @@ ul.lists{margin: 0; padding:0;list-style: none;}
 .doclist a{text-decoration: none;}
 .doclist li{line-height: 30px;}
 
-/* AVnode*/
+/* AVnode
 .media-heading{font-size: 15px;}
 
 footer.navbar {margin-bottom: 45px;color: #999999;position: relative; z-index: 6;}
@@ -93,7 +83,7 @@ footer.navbar-inverse .navbar-inner {
   filter: none;
   border-color: #000000;
 }
-
+*/
 /* TWITTER */
 #twCnt {position:fixed; bottom:0;width: 100%;z-index:9999;background-color: #000;padding:2px 0;}
 #tw {overflow:hidden;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative;}
@@ -122,33 +112,10 @@ footer.navbar-inverse .navbar-inner {
 a.thumbnail:hover{-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;}
 /* END GALLERY */
 
-.onsale{
-  position: absolute;
-  top: 10px;
-  left: 25px;
+.addressLocality{
+  font-weight: bold;
 }
-.attachment-shop_catalog {
-  display: block;
-  height: auto;
-  max-width: 100%;
-}
-.price{
-  font-size: 33px;
-  text-align: right;
-}
-.price ins{text-decoration: none;font-weight: bold;}
-td.product-thumbnail img{width: 100px;height: auto;}
-.remove{
-  color: red;
-  font-size: 25px;
-}
-.woocommerce_content{
-  position: relative;
-}
-.quantity input {max-width:70px;text-align: right;margin-right:20px}
-.addtoany_list{display: block;}
-
-
+/*
 ul.lists .media{margin-bottom: 5px;}
 ul.lists .media h2{}
 
@@ -158,3 +125,4 @@ ul.lists .media h2{}
 
 .performance-dett,.artist-dett,.alert-artist{margin-top: 20px;}
 
+*/

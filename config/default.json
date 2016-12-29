@@ -106,7 +106,7 @@
     }
   },
   "lpm" : {
-    "port"		    : 3002,
+    "port"		    : 3001,
     "host"		    : "localhost",
     "domain"		: "http://liveperformersmeeting.net",
     "last_edition"  : "2016-amsterdam",

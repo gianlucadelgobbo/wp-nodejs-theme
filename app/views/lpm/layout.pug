@@ -31,7 +31,7 @@ html(lang='en')
       link(rel='stylesheet', href='/_common/css/socialGalleryPluginLite.css', type='text/css', media='all')
     link(rel='stylesheet', href='/_common/css/cookielawinfo.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/bootstrap.min.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css')
-    link(rel='stylesheet', href='/' + config.prefix + '/css/style.css', type='text/css', media='all')
+    //link(rel='stylesheet', href='/' + config.prefix + '/css/style.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css', media='all')
 
@@ -116,7 +116,7 @@ html(lang='en')
                     span.woocommerce-Price-currencySymbol €
                     |  0,00
         form#nl_form.navbar-form.navbar-right(method='post', action='#', onsubmit="createSend(this,'/wp-content/themes/lpm/subscribe.php'); return false;")
-          #nl_cnt
+          #nl_cnt.pull-right
             .input-group.input-group-sm
               input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
               label.sr-only(for='email') Email

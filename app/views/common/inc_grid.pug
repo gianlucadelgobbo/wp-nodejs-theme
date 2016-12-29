@@ -16,7 +16,7 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
           each col in row
             if col.tit && col.tit!="."
               div(class="col-sm-"+span)
-                h3!=col.tit+(col.stit ? "<br /><small>"+col.stit+"</small>" : "")
+                h3.grid-title!=col.tit+(col.stit ? "<br /><small>"+col.stit+"</small>" : "")
                 .rientro!=col.box
   else
     if result.grid
@@ -27,5 +27,5 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
             div(class="col-sm-"+span)
               each row in col
                 if row.tit && col.tit != "."
-                  h3!=row.tit + (row.stit ? "<br /><small>"+row.stit+"</small>" : "")
+                  h3.grid-title!=row.tit + (row.stit ? "<br /><small>"+row.stit+"</small>" : "")
                   .rientro!=row.box

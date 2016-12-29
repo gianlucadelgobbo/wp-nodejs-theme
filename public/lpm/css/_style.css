@@ -1,14 +1,3 @@
-/*
-Theme Name: Flyer Bootstrap
-Theme URI: http://www.flyer.it/
-Description: The Bootstrap Flyer theme for WordPress is responsive, stylish, customizable, simple, and readable -- make it yours with a custom menu, header image, and background.
-Author: Flyer communication
-Version: 1.0
-License: GNU General Public License
-*/
-
-
-/* -------------------------------------------------------------- */
 .event_list_title,.event-top{margin:0;}
 .img-fullwidth{max-width: 100%;height: auto;}
 .catlabel{position: absolute; right:0;padding: 10px;background-color: rgba(0,0,0,.3);color: #FFF;z-index: 1;}
