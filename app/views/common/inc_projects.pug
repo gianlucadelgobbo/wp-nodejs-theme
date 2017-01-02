@@ -1,45 +1,34 @@
-ul.nav.nav-pills.nav-stacked
-    li.menu-item(class=config.domain =="http://flyer.it" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://flyer.it/', title='Flyer communication: new media agency')
-            span.glyphicon.glyphicon-star
-            |  FLYER
-    li.menu-item(class=config.domain =="http://avnode.org" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://avnode.org/', title='International Network for Audio Visual art')
-            span.glyphicon.glyphicon-star
-            |  AVNODE
-    li.menu-item(class=config.domain =="http://flxer.net" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='https://flxer.net/', title='FLxER: Live visuals community and software')
-            span.glyphicon.glyphicon-star
-            |  FLxER
-    li.menu-item(class=config.domain =="http://vjtelevision.com" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://vjtelevision.com/', title='Vj television: the first 24-hour live video broadcast channel')
-            span.glyphicon.glyphicon-star
-            |  VJ TELEVISION
-    li.menu-item(class=config.domain =="http://liveperformersmeeting.net" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://liveperformersmeeting.net/', title='Live video performers, visual artists and vj meeting')
-            span.glyphicon.glyphicon-star
-            |  LPM
-    li.menu-item(class=config.domain =="http://livecinemafestival.com" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://livecinemafestival.com/', title='Festival of Audio-Video performances of live cinema')
-            span.glyphicon.glyphicon-star
-            |  Live Cinema
-    li.menu-item(class=config.domain =="http://chromosphere.eu" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://chromosphere.eu/', title='Festival of Audio-Video performances on full domes')
-            span.glyphicon.glyphicon-star
-            |  Chromosphere
-    li.menu-item(class=config.domain =="http://shockart.net" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://shockart.net/', title='Shockart: web art project')
-            span.glyphicon.glyphicon-star
-            |  SHOCKART
-    li.menu-item(class=config.domain =="http://wam.flyer.it" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://wam.flyer.it/', title='WAM: Web Art Museum')
-            span.glyphicon.glyphicon-star
-            |  WAM
-    li.menu-item(class=config.domain =="http://linux-club.org" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://linux-club.org/', title='Linux Club Italia')
-            span.glyphicon.glyphicon-star
-            |  LINUX CLUB
-    li.menu-item(class=config.domain =="http://fhf.it" ? "active" : undefined)
-        a.tooltips(data-placement='right', data-toggle='tooltip', target='_blank', href='http://fhf.it/', title='Free Hardware Foundation')
-            span.glyphicon.glyphicon-star
-            |  FHF
+ul.footer-nav.footer-nav-inline
+  li(class=config.domain =="http://flyer.it" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='http://flyer.it/', title='Flyer communication: new media agency')
+      img(src='/' + config.prefix + '/images/labs-flyer.svg', alt='Flyer communication: new media agency')
+  li(class=config.domain =="http://avnode.org" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='http://avnode.org/', title='International Network for Audio Visual art')
+      img(src='/' + config.prefix + '/images/labs-avnode.svg', alt='International Network for Audio Visual art')
+  li(class=config.domain =="http://flxer.net" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='https://flxer.net/', title='FLxER: Live visuals community and software')
+      img(src='/' + config.prefix + '/images/labs-flxer.svg', alt='FLxER: Live visuals community and software')
+  li(class=config.domain =="http://vjtelevision.com" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='http://vjtelevision.com/', title='Vj television: the first 24-hour live video broadcast channel')
+      img(src='/' + config.prefix + '/images/labs-vjtv.svg', alt='Vj television: the first 24-hour live video broadcast channel')
+  li(class=config.domain =="http://liveperformersmeeting.net" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='http://liveperformersmeeting.net/', title='Live video performers, visual artists and vj meeting')
+      img(src='/' + config.prefix + '/images/labs-lpm.svg', alt='Live video performers, visual artists and vj meeting')
+  li(class=config.domain =="http://livecinemafestival.com" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='http://livecinemafestival.com/', title='Festival of Audio-Video performances of live cinema')
+      img(src='/' + config.prefix + '/images/labs-lcf.svg', alt='Festival of Audio-Video performances of live cinema')
+  li(class=config.domain =="http://chromosphere.eu" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='http://chromosphere.eu/', title='Festival of Audio-Video performances on full domes')
+      img(src='/' + config.prefix + '/images/labs-chromosphere.svg', alt='Festival of Audio-Video performances on full domes')
+  li(class=config.domain =="http://shockart.net" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='http://shockart.net/', title='Shockart: web art project')
+      img(src='/' + config.prefix + '/images/labs-shockart.svg', alt='Shockart: web art project')
+  li(class=config.domain =="http://wam.flyer.it" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='http://wam.flyer.it/', title='WAM: Web Art Museum')
+      img(src='/' + config.prefix + '/images/labs-wam.svg', alt='WAM: Web Art Museum')
+  li(class=config.domain =="http://linux-club.org" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='http://linux-club.org/', title='Linux Club Italia')
+      img(src='/' + config.prefix + '/images/labs-linux.svg', alt='Linux Club Italia')
+  li(class=config.domain =="http://fhf.it" ? "active" : undefined)
+    a.tooltips(data-placement='bottom', data-toggle='tooltip', target='_blank', href='http://fhf.it/', title='Free Hardware Foundation')
+      img(src='/' + config.prefix + '/images/labs-fhf.svg', alt='Free Hardware Foundation')

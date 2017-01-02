@@ -2,7 +2,7 @@
   .Award(itemscope, itemtype='http://schema.org/CreativeWork')
     .text-center.boxItem
       a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/awards-and-grants/' + result.slug + "/", rel='bookmark', title!=result.post_title)
-        img.img-circle(src=result.featured.full, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+        img(src=result.featured.full, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
       a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/awards-and-grants/' + result.slug + "/", rel='bookmark', title!=result.post_title)
         h3!=result.post_title.replace(" | ", "<br />").replace(" | ", "<br />")
       !=result.excerpt.rendered

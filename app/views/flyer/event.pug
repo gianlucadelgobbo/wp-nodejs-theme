@@ -10,13 +10,11 @@ block content
         .col-sm-4
           header
             h1.entry-title(itemprop='name')!=result.post_title
-            include ../common/inc_tags
-
-          .rientro
-            include ../common/inc_dateplace
-            .visible-xs(itemprop='description')!=result.post_content
-            include ../common/inc_websites
-            include ../common/inc_capauthors
-            include ../common/inc_share
+          include ../common/inc_tags
+          include ../common/inc_dateplace
+          .visible-xs(itemprop='description')!=result.post_content
+          include ../common/inc_websites
+          include ../common/inc_capauthors
+          include ../common/inc_share
 
       include ../common/inc_grid

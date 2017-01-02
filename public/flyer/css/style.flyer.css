@@ -444,73 +444,6 @@ body.expanding.fixed-top{
   background-color: #fff !important;
 }
 
-/* MODAL PORTFOLIO*/
-.modal-header{
-  position: fixed;
-  width: 100%;
-  color: #FFF;
-}
-.close {
-  color: #FFF;
-  opacity: 1;
-}
-.close:hover, .close:focus {
-  color: #FFF;
-  opacity: .6;
-}
-.modal-body{
-  overflow-x: scroll;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  padding: 15px 15px 61px 15px;
-  margin-top: 56px;
-}
-.modal-open .modal{
-  overflow-x: initial;
-  overflow-y: initial;
-}
-.modal-fullscreen {
-  background: transparent;
-  padding-right: 0 !important;
-}
-.modal-fullscreen .modal-content {
-  background: transparent;
-  border: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  height: 100%;
-}
-.modal-backdrop.modal-backdrop-fullscreen {
-  background: #ffffff;
-}
-.modal-backdrop.modal-backdrop-fullscreen.in {
-  opacity: .97;
-  filter: alpha(opacity=97);
-}
-
-.modal-body #container{
-  background-color: #fff;
-  padding: 30px;
-}
-
-.modal-fullscreen .modal-dialog {
-  margin: 0;
-  margin-right: auto;
-  margin-left: auto;
-  width: 100%;
-  height: 100%;
-}
-.modal-backdrop.in {
-  opacity: 0.95;
-  filter: alpha(opacity=95);
-}
-@media (max-width: 767px) {
-  .modal-body, .modal-body .container{
-    padding:0;
-  }
-}
-
 
 /* BOXES */
 
@@ -528,6 +461,9 @@ a:hover img {
 /* BOX EVENT */
 .Event .supText{
   font-size: 11px;
+}
+.Event .text-muted {
+  color: #ccc;
 }
 .Event .list_title{
   margin-top: 10px;
@@ -570,6 +506,9 @@ a:hover img {
   margin-top: 10px;
   margin-bottom: 0;
 }
+.Web .text-muted {
+  color: #ccc;
+}
 .Web .supText{
   font-size: 11px;
 }
@@ -589,40 +528,6 @@ a:hover img {
 }
 
 .Web .read-more-box{
-  bottom: 0;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  background-color: #333;
-  padding-bottom: 16px;
-  font-size: 20px;
-  color: #FFF;
-}
-
-/* BOX LEARNING */
-.Learning .box-list > div:last-child {
-  margin-top: 10px;
-  margin-bottom: 0;
-}
-.Learning .supText{
-  font-size: 11px;
-}
-.Learning .list_title {
-  margin-top: 0;
-  font-size: 20px;
-}
-.Learning a{
-  color: #FFF;
-}
-.Learning a:hover{
-  opacity: .7;
-}
-.Learning .box-list{
-  background-color: #333;
-  padding: 30px;
-}
-
-.Learning .read-more-box{
   bottom: 0;
   position: absolute;
   width: 100%;
@@ -707,6 +612,9 @@ a:hover img {
   background-color: #000;
   color: #FFF;
 }
+.home-learning .text-muted {
+  color: #ccc;
+}
 .home-learning:before {
   content: ' ';
   display: block;
@@ -724,7 +632,7 @@ a:hover img {
   background-image: url(http://flyer.it/files/2016/12/profile-learning.jpg);
 }
 .home-awards img{
-  width: 100px;
+  width: 140px;
 }
 .home .read-more,#container > .read-more{
   margin-top: 20px;
@@ -736,6 +644,10 @@ a:hover img {
   display: inline-block;
   padding: 8px 15px;
   border: 2px solid #DDD;
+  background-color: #FFF;
+}
+.read-more a:hover {
+  background-color: #000;
 }
 #container > .read-more .loading{
   display: none;
@@ -803,14 +715,6 @@ footer.navbar-inverse{
   color: #FFF;
   position: relative;
   margin-bottom: 50px;
-}
-.share span{
-  display: inline-block;
-  padding: 2px 5px;
-  background-color: #EEE;
-}
-.share {
-  margin: 10px 0;
 }
 .pagepaddingtop {
   padding-top: 20px;

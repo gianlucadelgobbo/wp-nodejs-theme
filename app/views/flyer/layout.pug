@@ -33,6 +33,7 @@ html(lang=config.current_lang)
     link(rel='stylesheet', href='/_common/css/cookielawinfo.css', type='text/css', media='all')
     link(rel='stylesheet', href='/'+config.prefix+'/css/bootstrap.min.css', type='text/css')
     link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/_common/css/style.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
 
 body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['url'] == '/it' ? "flyer-header-expanding expanding" : undefined)
@@ -58,8 +59,8 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
       a(href='https://plus.google.com/+GianlucaDelGobbo?rel=author', rel='author') Gianluca Del Gobbo
     footer.navbar-inverse
       .container-fluid
-        .row.links-horizontal
-          .col-sm-3
+        .row
+          .col-sm-3(itemscope, itemtype='http://schema.org/Organization')
             a(href=lang_preurl+'/', title=meta_data.meta['name'])
               img.media-object(src=config.domain+meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
             br
@@ -95,28 +96,23 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
               span(itemprop='vatID') IT06589171005
               br
               a(itemprop='email', title=global.__('Write to Flyer'), href='mailto:info@flyer.it') info@flyer.it
-          .col-sm-3.hidden-print
-            .margin-top-xs
-              p Corporate
-              ul#menu-navbar-menu.nav.nav-pills.nav-stacked
-                li
-                  a(title='Home', href=lang_preurl+'/')=global.__("Home")
-                li
-                  a(title='Profile', href=lang_preurl+'/profile/')=global.__("Profile")
-                li
-                  a(title='Awards and Grants', href=lang_preurl+'/awards-and-grants/')=global.__("Awards and Grants")
-                li
-                  a(title='Contacts', href=lang_preurl+'/contacts/')=global.__("Contacts")
-          .col-sm-3.hidden-print
-            .margin-top-xs
-              p=global.__("Projects")
-              include ../common/inc_projects
-          .col-sm-3.hidden-print
-            .margin-top-xs
-              p=global.__("Social Networks")
-              include includes/socials
-            br.clearfix
-            br
+          .col-sm-2.hidden-print
+            p Corporate
+            ul.footer-nav
+              li
+                a(title='Home', href=lang_preurl+'/')=global.__("Home")
+              li
+                a(title='Profile', href=lang_preurl+'/profile/')=global.__("Profile")
+              li
+                a(title='Awards and Grants', href=lang_preurl+'/awards-and-grants/')=global.__("Awards and Grants")
+              li
+                a(title='Contacts', href=lang_preurl+'/contacts/')=global.__("Contacts")
+          .col-sm-2.hidden-print
+            p=global.__("Social Networks")
+            include includes/socials
+          .col-sm-5.hidden-print
+            p=global.__("Projects")
+            include ../common/inc_projects
         br
         .row
           .col-sm-6
@@ -176,17 +172,23 @@ body(class=meta_data['url'] == '/' || meta_data['url'] == '/it/' || meta_data['u
         "sgp_hon": "",
         "sgp_usf": "1.2",
         "sgp_mb": "10",
-        "sgp_theme": "classic",
-        /*"sgp_theme_root": "http://flyer.it/wp-content/plugins/flyer-social-gallery/themes/",*/
-        "sgp_iLoadR": '/_common/images/social-gallery-loading.gif',
-        "sgp_iR": '/_common/images/social-gallery-r.png',
-        "sgp_iL": '/_common/images/social-gallery-l.png'
+        "sgp_theme": "images",
+        "sgp_theme_root": "/_common/",
+        "sgp_iLoadR": 'social-gallery-loading.gif',
+        "sgp_iR": 'social-gallery-r.png',
+        "sgp_iL": 'social-gallery-l.png'
       };
-      var sgp_ie = false;var sgp_ie7 = false;
+      var sgp_ie = false;
+      var sgp_ie7 = false;
+    //[if IE]
+    // <script type = "text/javascript" >var sgp_ie = true;</script><![endif]-->
+    // <!--[if lte IE 7]><script type="text/javascript">var sgp_ie7 = true;</script><![endif]-->
+
     script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
     script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.js')
 
-  script(type='text/javascript', src='/' + config.prefix + '/js/script.js')
+script(type='text/javascript', src='/_common/js/script.js')
+script(type='text/javascript', src='/' + config.prefix + '/js/script.js')
   script.
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;

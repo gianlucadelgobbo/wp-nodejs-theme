@@ -130,11 +130,19 @@
       },
       "events" : {
         "domain"	: "http://flyer.it",
-        "limit"		: 20
+        "post_type" : "events",
+        "baseurl"   : "events",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
       },
       "news" : {
         "domain"	: "http://flyer.it",
-        "limit"		: 20
+        "post_type" : "news",
+        "baseurl"   : "news",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
       },
       "pages" : {
         "domain"	: "http://liveperformersmeeting.net",

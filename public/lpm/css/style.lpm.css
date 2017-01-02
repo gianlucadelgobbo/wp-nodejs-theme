@@ -103,18 +103,78 @@ footer.navbar-inverse .navbar-inner {
 
 /* GALLERY */
 #listItems{padding: 0;list-style: none;}
+.cntGallImgOver{position: relative}
+.cntGallImgOver{vertical-align: bottom}
 .cntGallImgDett{background-color: #000;text-align: center;margin-bottom:30px;}
-.cntGallImgImg{position: relative;width: 184px;}
+.cntGallImgImg{position: relative;display: inline;max-width:100%}
 .thumbnails {padding: 0;list-style: none;}
-.gallType{position:absolute;left:0;top:0;}
+.gallType{position:absolute;right:0;bottom:0;}
 .thumbnail {display: block;padding:5px;line-height: 20px;border: 0;-webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
-.thumbnail span{text-align: center;height: 30px;display: block;overflow: hidden;}
+.thumbnail .cntDida{text-align: center;height: 25px;padding-top: 5px;display: block;overflow: hidden;}
 a.thumbnail:hover{-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;}
 /* END GALLERY */
 
 .addressLocality{
   font-weight: bold;
 }
+/* BOXES */
+
+.boxItem {
+  position: relative;
+  margin-bottom: 30px;
+}
+a:hover img {
+  opacity: .6;
+}
+.boxItem a:hover{
+  text-decoration: none;
+}
+.box-list {
+  padding: 15px;
+}
+.list_title {
+  margin-top: 0;
+}
+/* BOX EVENT */
+.Event .supText{
+  font-size: 11px;
+}
+.Event .list_title{
+  margin-top: 10px;
+  font-size: 20px;
+  color: #FFF;
+}
+.Event:hover .box-list{
+  opacity: 1;
+}
+.Event .box-list{
+  padding: 0;
+  pointer-events: none;
+  position: absolute;
+  top:0;
+  background-color: #333;
+  height: 100%;
+  opacity: 0;
+  width: 100%;
+  overflow: hidden;
+  -webkit-transition: opacity .3s ease-out;
+  transition: opacity .3s ease-out;
+}
+.Event .box-list .text-center{
+  padding: 30px;
+}
+
+.Event .read-more-box{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  background-color: #333;
+  padding-bottom: 16px;
+  font-size: 20px;
+  color: #FFF;
+}
+
 /*
 ul.lists .media{margin-bottom: 5px;}
 ul.lists .media h2{}

@@ -1,8 +1,9 @@
 if (results._paging && results._paging.totalPages)
   .text-center.read-more
     - var nextpage = (parseInt(page) + 1)
+    - console.log(nextpage);
     if (nextpage <= results._paging.totalPages)
-      a(href=lang_preurl + '/portfolio/'+basepath+'/page/' + nextpage)
+      a(href=lang_preurl + '/portfolio/'+baseurl+'/page/' + nextpage)
         !=global.__("Load more")
         !=" "
         span.fa.fa-long-arrow-right

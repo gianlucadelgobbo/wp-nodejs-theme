@@ -21,7 +21,8 @@ exports.get = function get(req, res) {
 exports.getAll = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPostType(req, sez.post_type, function( posttype ) {
-      helpers.getAllAward(req, sez.limit, req.params.page ? req.params.page : 1, function( results ) {
+      var page = req.params.page ? req.params.page : 1;
+      helpers.getAllAward(req, sez.limit, page, function( results ) {
         meta_data.meta.title = __("Awards & Grants") + " | " + meta_data.meta.name;
 		meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.description, 160);
         res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});

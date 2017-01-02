@@ -11,13 +11,10 @@
               .date=result.data_month
       h3.list_title(itemprop='name')
         a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/web-and-mobile/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
-
       if result.excerpt && result.excerpt.rendered
         .excerpt.text-muted(itemprop='headline')!=result.excerpt.rendered
-      if result.tags
-        .tags.text-muted.small
-            each tag in result.tags
-              !="#"+tag.name+" "
+      .tags.text-muted.small
+        include ../../common/inc_tags_nolink
       if result.capauthors
         - var showdiv = false
         each capauthor in result.capauthors

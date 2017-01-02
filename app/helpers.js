@@ -49,7 +49,7 @@ exports.getPage = function getPage(req,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/mypages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.page).get(function( err, data ) {
     console.log("//// Page");
-    console.log(data);
+    //console.log(data);
     if (!err && data) {
       if (data) data = fnz.fixResult(data);
       if (data.posts){
@@ -383,7 +383,7 @@ exports.getMetaData = function getMetaData(req,callback) {
 exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
   console.log("getAllEditions");
   var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition' );
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions' );
   //console.log(wp.myCustomResource);
   //console.log(wp.new());
   wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
@@ -429,6 +429,7 @@ exports.getEdition = function getEdition(req,callback) {
       console.log("//// SubEdition");
       //data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      console.log("//// SubEdition");
       callback(data);
     });
   } else {
@@ -450,15 +451,15 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
   var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
   if (req.params.artist && req.params.performance) {
     console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
     wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).performances("performances").performance(req.params.performance).get(function( err, data ) {
-      console.log("//// Artist");
+      console.log("//// Artist Performance");
       console.log(data);
       callback(data);
     });
   } else if (req.params.artist) {
     console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
     wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).get(function( err, data ) {
       console.log("//// Artist");
       console.log(data);
@@ -468,7 +469,7 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
     console.log("req.params.subedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
     wp.myCustomResource().edition(req.params.edition).subedition("artists").get(function( err, data ) {
-      console.log("//// SubEdition");
+      console.log("//// SubEdition Artists");
       callback(data);
     });
   }
@@ -481,7 +482,7 @@ exports.getEditionArtistGallery = function getEditionArtistGallery(req,callback)
   var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
   if (req.params.artist && req.params.gallery && req.params.galleryitem) {
     console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)/(?P<galleryitem>)' );
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/gallery/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)/(?P<galleryitem>)' );
     wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).galleryitem(req.params.galleryitem).get(function( err, data ) {
       console.log("//// Artist gallery item");
       console.log(data);
@@ -489,7 +490,7 @@ exports.getEditionArtistGallery = function getEditionArtistGallery(req,callback)
     });
   } else if (req.params.artist && req.params.gallery) {
     console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)' );
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/gallery/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)' );
     wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).get(function( err, data ) {
       console.log("//// Artist gallery");
       console.log(data);
@@ -512,6 +513,47 @@ exports.getEditionArtistGallery = function getEditionArtistGallery(req,callback)
     });
   }
 };
+
+
+exports.getArtistGallery = function getArtistGallery(req,callback) {
+  console.log(req.params.edition);
+  console.log(req.params.subedition);
+  console.log(req.params.subsubedition);
+  var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
+  if (req.params.artist && req.params.gallery && req.params.galleryitem) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/gallerypage/(?P<sluggg>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)/(?P<galleryitem>)' );
+    wp.myCustomResource().sluggg(req.params.page).artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).galleryitem(req.params.galleryitem).get(function( err, data ) {
+      console.log("//// Artist page gallery item");
+      console.log(data);
+      callback(data);
+    });
+  } else if (req.params.artist && req.params.gallery) {
+    console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/gallerypage/(?P<sluggg>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)' );
+    wp.myCustomResource().sluggg("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).get(function( err, data ) {
+      console.log("//// Artist page gallery");
+      console.log(data);
+      callback(data);
+    });
+    /*} else if (req.params.artist) {
+     console.log("req.params.artist");
+     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
+     wp.myCustomResource().edition(req.params.edition).subedition("gallery").artist(req.params.artist).get(function( err, data ) {
+     console.log("//// Artist");
+     console.log(data);
+     callback(data);
+     });*/
+  } else {
+    console.log("req.params.subedition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
+    wp.myCustomResource().edition(req.params.edition).subedition("gallery").get(function( err, data ) {
+      console.log("//// SubEdition gallery");
+      callback(data);
+    });
+  }
+};
+
 exports.getAllEditionsEvents = function getAllEditionsEvents(req, year, callback) {
   var trgt = this;
   var data = [];

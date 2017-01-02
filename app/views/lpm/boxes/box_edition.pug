@@ -1,20 +1,18 @@
 .boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
-  .Event(itemscope='', itemtype='http://schema.org/Event')
+  .Edition(itemscope='', itemtype='http://schema.org/Event')
     .thumb-cnt
-      if result.featured
-        .catlabel=result.type
-        a(itemprop='url', href='/editions/'+result.slug+"/", rel='bookmark', title!=result.title.rendered)
-          img.img-responsive(src=result.featured.thumbnail, alt!='Image for: '+result.title.rendered, itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject')
+      a(itemprop='url', href='/editions/'+result.slug+"/", rel='bookmark', title!=result.title.rendered)
+        img.img-responsive(src=result.featured.thumbnail, alt!='Image for: '+result.title.rendered, itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject')
     .box-list
       .box-list-cnt
         .text-muted
           include ../../common/inc_date
-        h3.event_list_title(itemprop='name')
+        h3.list_title(itemprop='name')
           a(itemprop='url', href='/editions/'+result.slug+"/", rel='bookmark', title=result.title.rendered)!=result.title.rendered
         .places
           include ../../common/inc_place
         .text-muted.small.excerpt
           if result.excerpt && result.excerpt.rendered
-            div(itemprop='description')
+            div(itemprop='headline')
               p!=result.excerpt.rendered
           span.sr-only(itemprop='organizer')

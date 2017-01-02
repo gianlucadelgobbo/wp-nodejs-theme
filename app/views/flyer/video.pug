@@ -8,17 +8,16 @@ block content
             iframe.embed-responsive-item(src=result.video_thumbnail ,webkitAllowFullScreen="webkitAllowFullScreen", mozallowfullscreen="mozallowfullscreen", allowFullScreen="allowFullScreen")
           br
           .hidden-xs(itemprop='description')!=result.post_content
+          include ../common/inc_videos
         .col-sm-4
           header
             h1.entry-title(itemprop='name')!=result.post_title
-            include ../common/inc_tags
-
-          .rientro
-            if result.data_month
-              .text-muted
-                .dates
-                  .date=result.data_month
-                  meta(itemprop="datePublished", content=result.datePublished)
+          include ../common/inc_tags
+          if result.data_month
+            .text-muted
+              .dates
+                .date=result.data_month
+                meta(itemprop="datePublished", content=result.datePublished)
             .visible-xs(itemprop='description')!=result.post_content
             include ../common/inc_websites
             include ../common/inc_capauthors

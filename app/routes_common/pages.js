@@ -40,8 +40,63 @@ exports.getSubpage = function getSubpage(req, res) {
     });
   });
 };
+exports.getGallery = function getGallery(req, res) {
+  helpers.getMetaData(req, function( meta_data ) {
+    req.params.page = "gallery";
+    helpers.getPage(req, function( result ) {
+      var request = require('request');
+      if (result.post_content.indexOf(">ERROR<")===-1) {
+        if (req.params.artist && req.params.gallery) {
+          var url = "https://flxer.net/api/"+req.params.artist+"/gallery/"+req.params.gallery+(req.params.galleryitem ? "/"+req.params.galleryitem :"")+"/";
+          console.log(url);
+          request(url, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+              result.post_gallery = JSON.parse(body);
+              console.log(result.post_gallery);
+              meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
+              res.render(config.prefix+'/'+'gallery_dett', {result: result, meta_data:meta_data, include_gallery:false});
+            }
+          });
+        } else {
+          var shortcode = require('shortcode-parser');
+          result.post_content = result.post_content.replace("source=https","source='https").replace("/ view=","/' view='").replace("]","']");
+          //var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
+          shortcode.add('avnode', function(buf, opts) {
+            if (opts.source) {
+              request(opts.source, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                  result.post_gallery = JSON.parse(body).gallery;
+                  console.log(result.post_gallery);
+                  meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
+                  res.render(config.prefix+'/'+'gallery', {result: result, meta_data:meta_data, include_gallery:false});
+                }
+              });
+            }
+          });
+
+        }
+
+        var shortcode = require('shortcode-parser');
+        result.post_content = result.post_content.replace("source=https","source='https").replace("/ view=","/' view='").replace("]","']");
+        var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
+        shortcode.add('avnode', function(buf, opts) {
+          if (opts.source) {
+
+          }
+        });
+      } else {
+        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+      }
+      shortcode.parse(result.post_content);
+      //console.log(shortcode.parse(str));
+      /*var url = "https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/";
+      */
+    });
+  });
+};
+
 exports.get404 = function get404(req, res) {
-  console.log("get404");
+  console.log("get404 "+req.url);
   helpers.getMetaData(req, function( meta_data ) {
     res.render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
   });

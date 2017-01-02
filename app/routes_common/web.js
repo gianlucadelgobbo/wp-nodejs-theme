@@ -21,10 +21,11 @@ exports.get = function get(req, res) {
 exports.getAll = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPostType(req, sez.post_type, function( posttype ) {
-      helpers.getAllWeb(req, sez.limit, req.params.page ? req.params.page : 1, function( results ) {
+      var page = req.params.page ? req.params.page : 1;
+      helpers.getAllWeb(req, sez.limit, page, function( results ) {
         meta_data.meta.title = "Web & Mobile | " + meta_data.meta.name;
         meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.description, 160);
-        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
+        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype,page:page});
       });
     });
   });
@@ -33,10 +34,11 @@ exports.getAll = function getAll(req, res) {
 exports.getTag = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPostType(req, sez.post_type, function( posttype ) {
-      helpers.getAllWebByTag(req, sez.limit, req.params.page ? req.params.page : 1, function( results ) {
+      var page = req.params.page ? req.params.page : 1;
+      helpers.getAllWebByTag(req, sez.limit, page, function( results ) {
         meta_data.meta.title = "Web & Mobile #"+req.params.tag+" | " + meta_data.meta.name;
         meta_data.meta['og_description'] = fnz.makeExcerpt("Web & Mobile #"+req.params.tag+". "+posttype.description, 160);
-        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype,tag:req.params.tag});
+        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype,tag:req.params.tag,page:page});
       });
     });
   });

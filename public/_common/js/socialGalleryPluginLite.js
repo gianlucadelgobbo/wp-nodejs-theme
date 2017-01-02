@@ -278,22 +278,22 @@ function initNavVideo(){
 		
 		jQuery("#sgRightVideo").mouseenter(function(){
 			jQuery(this).css("background","url("+window.sgptheme.iRi+") 40px 30px no-repeat").css("opacity",1)
-		}).mouseleave(function(){
+		})/*.mouseleave(function(){
 			if(!window.sgp_ie){
 				jQuery(this).css("background","transparent")
 			} else {
 				jQuery(this).css("background","#FFF").css("opacity",0)
 			}
-		});
+		})*/;
 		jQuery("#sgLeftVideo").mouseenter(function(){
 			jQuery(this).css("background","url("+window.sgptheme.iLe+") 30px 30px no-repeat").css("opacity",1)
-		}).mouseleave(function(){
+		})/*.mouseleave(function(){
 			if(!window.sgp_ie){
 				jQuery(this).css("background","transparent")
 			}else{
 				jQuery(this).css("background","#FFF").css("opacity",0)
 			}
-		});
+		})*/;
 		jQuery("#sgRightVideo").click(function(){
 			sgRightAct()
 		});
@@ -330,22 +330,22 @@ function initNav(){
 		
 		jQuery("#sgRight").mouseenter(function(){
 			jQuery(this).css("background","url("+window.sgptheme.iRi+") "+l+"px "+i+"px no-repeat").css("opacity",1)
-		}).mouseleave(function(){
+		})/*.mouseleave(function(){
 			if(!window.sgp_ie){
 				jQuery(this).css("background","transparent")
 			} else {
 				jQuery(this).css("background","#FFF").css("opacity",0)
 			}
-		});
+		})*/;
 		jQuery("#sgLeft").mouseenter(function(){
 			jQuery(this).css("background","url("+window.sgptheme.iLe+") 10px "+i+"px no-repeat").css("opacity",1)
-		}).mouseleave(function(){
+		})/*.mouseleave(function(){
 			if(!window.sgp_ie){
 				jQuery(this).css("background","transparent")
 			}else{
 				jQuery(this).css("background","#FFF").css("opacity",0)
 			}
-		});
+		})*/;
 		jQuery("#sgRight").click(function(){
 			sgRightAct()
 		});
@@ -881,10 +881,10 @@ function sgGetElements(){
 }
 
 function initVar(){
-	window.sgptheme.themename="classic";
+	window.sgptheme.themename= window.sgp_config.sgp_theme ? window.sgp_config.sgp_theme : "classic";
 	window.sgptheme.themedir=window.sgp_config.sgp_theme_root+window.sgptheme.themename+"/";
-	window.sgptheme.iLe=window.sgptheme.themedir+"l.png";
-	window.sgptheme.iRi=window.sgptheme.themedir+"r.png";
-	window.sgptheme.iLo=window.sgptheme.themedir+"loading.gif";
-	window.sgptheme.iFs=window.sgptheme.themedir+"fullscreen.png"
+	window.sgptheme.iLe=window.sgptheme.themedir+"social-gallery-l.png";
+	window.sgptheme.iRi=window.sgptheme.themedir+"social-gallery-r.png";
+	window.sgptheme.iLo=window.sgptheme.themedir+"social-gallery-loading.gif";
+	window.sgptheme.iFs=window.sgptheme.themedir+"social-gallery-fullscreen.png"
 }

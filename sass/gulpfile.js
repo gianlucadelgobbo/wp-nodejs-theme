@@ -3,31 +3,41 @@ var sass = require('gulp-sass');
 
 var config = {
 	bowerDir: '../bower_components',
-	publicDir: '../public/lpm',
+	publicDir: '../public',
 };
 
-gulp.task('css_bs', function() {
-	return gulp.src('./*.scss')
+gulp.task('css_lpm_bs', function() {
+	return gulp.src('./lpm/*.scss')
 		.pipe(sass({
-			style: 'compressed',
+			outputStyle: 'compressed',
 			includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
 		}))
-		.pipe(gulp.dest(config.publicDir + '/css'));
+		.pipe(gulp.dest(config.publicDir + '/lpm/css'));
 });
 
+gulp.task('css_flyer_bs', function() {
+	return gulp.src('./flyer/*.scss')
+		.pipe(sass({
+			outputStyle: 'compressed',
+			includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+		}))
+		.pipe(gulp.dest(config.publicDir + '/flyer/css'));
+});
+
+
 gulp.task('fonts_bs', function() {
-	return gulp.src(config.bowerDir + '/bootstrap-sass/assets/fonts/**/*')
-		.pipe(gulp.dest(config.publicDir + '/fonts'));
+	return gulp.src(config.bowerDir + '/bootstrap-sass/assets/fonts/bootstrap/**/*')
+		.pipe(gulp.dest(config.publicDir + '/_common/fonts'));
 });
 
 gulp.task('js_bs', function() {
 	return gulp.src(config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js')
-		.pipe(gulp.dest(config.publicDir + '/js'));
+		.pipe(gulp.dest(config.publicDir + '/_common/js'));
 });
 
 gulp.task('js_jq', function() {
 	return gulp.src(config.bowerDir + '/jquery/dist/jquery.min.js')
-		.pipe(gulp.dest(config.publicDir + '/js'));
+		.pipe(gulp.dest(config.publicDir + '/_common/js'));
 });
 
-gulp.task('default', ['css_bs', 'js_bs', 'fonts_bs', 'js_jq']);
+gulp.task('default', ['css_lpm_bs', 'css_flyer_bs', 'js_bs', 'fonts_bs', 'js_jq']);
