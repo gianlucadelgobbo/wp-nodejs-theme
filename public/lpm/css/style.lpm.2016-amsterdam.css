@@ -1,6 +1,6 @@
 body {background-color:#000;background-repeat:repeat-y;}
 .cnt{background-image: url('/lpm/images/LPM2016_code.png');background-position-x: 0;background-repeat: no-repeat;}
-.entry-title,.grid-title{color:#FFF; background-color:#3FA9F5 ;padding: 3px 5px 0 10px;min-height: 44px; font-size:25px; line-height: 1.5em;margin-bottom: 0;}
+.entry-title,.grid-title{color:#FFF; background-color:#3FA9F5 ;padding: 3px 5px 0 10px;min-height: 44px; font-size:25px; line-height: 1.5em;}
 h1.entry-title a{color:#FFF;}
 #logo a {display: block; }
 #logo {padding:0px;margin:0 0 10px 0;}

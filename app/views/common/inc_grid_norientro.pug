@@ -16,11 +16,8 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
           each col in row
             if col.tit && col.tit!="."
               div(class="col-sm-"+span)
-                h3.grid-title!=col.tit+(col.stit ? "<br /><small>"+col.stit+"</small>" : "")
-                if col.box.indexOf("itemListElement")>0
-                  !=col.box
-                else
-                  .rientro!=col.box
+                h3!=col.tit+(col.stit ? "<br /><small>"+col.stit+"</small>" : "")
+                !=col.box
   else
     if result.grid
       .row
@@ -30,8 +27,5 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
             div(class="col-sm-"+span)
               each row in col
                 if row.tit && col.tit != "."
-                  h3.grid-title!=row.tit + (row.stit ? "<br /><small>"+row.stit+"</small>" : "")
-                  if row.box.indexOf("itemListElement")>0
-                    !=row.box
-                  else
-                    .rientro!=row.box
+                  h3!=row.tit + (row.stit ? "<br /><small>"+row.stit+"</small>" : "")
+                  !=row.box
