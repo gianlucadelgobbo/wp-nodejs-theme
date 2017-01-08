@@ -3,10 +3,10 @@ div(class="rowTimeline rowTimeline-"+result.type, itemscope, itemtype='http://sc
     div(class="col-sm-"+(result.type=="edition" ? 3 :4))
       .timelineDate
         .dates
-          include ../../common/inc_date
+          include ../../_common/inc_date
         .places
           if result['wpcf-location']
-            include ../../common/inc_place
+            include ../../_common/inc_place
     div(class="col-sm-"+(result.type=="edition" ? 4 :2))
       a(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/events/' + result.slug, rel='bookmark', title!=result.title.rendered)
         if result.featured

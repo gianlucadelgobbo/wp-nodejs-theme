@@ -24,6 +24,15 @@ gulp.task('css_flyer_bs', function() {
 		.pipe(gulp.dest(config.publicDir + '/flyer/css'));
 });
 
+gulp.task('css_shockart_bs', function() {
+	return gulp.src('./shockart/*.scss')
+		.pipe(sass({
+			outputStyle: 'compressed',
+			includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+		}))
+		.pipe(gulp.dest(config.publicDir + '/shockart/css'));
+});
+
 
 gulp.task('fonts_bs', function() {
 	return gulp.src(config.bowerDir + '/bootstrap-sass/assets/fonts/bootstrap/**/*')
@@ -40,4 +49,4 @@ gulp.task('js_jq', function() {
 		.pipe(gulp.dest(config.publicDir + '/_common/js'));
 });
 
-gulp.task('default', ['css_lpm_bs', 'css_flyer_bs', 'js_bs', 'fonts_bs', 'js_jq']);
+gulp.task('default', ['css_lpm_bs', 'css_flyer_bs', 'css_shockart_bs', 'js_bs', 'fonts_bs', 'js_jq']);

@@ -1,0 +1,18 @@
+.boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
+  .Edition(itemscope='', itemtype='http://schema.org/Event')
+    .thumb-cnt
+      a(itemprop='url', href='/exhibitions/'+result.slug+"/", rel='bookmark', title!=result.title.rendered)
+        img.img-responsive(src=result.featured.thumbnail, alt!='Image for: '+result.title.rendered, itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject')
+    .box-list
+      .box-list-cnt
+        .text-muted
+          include ../../_common/inc_date
+        h3.list_title(itemprop='name')
+          a(itemprop='url', href='/exhibitions/'+result.slug+"/", rel='bookmark', title=result.title.rendered)!=result.title.rendered
+        .places
+          include ../../_common/inc_place
+        .text-muted.small.excerpt
+          if result.excerpt && result.excerpt.rendered
+            div(itemprop='headline')
+              p!=result.excerpt.rendered
+          span.sr-only(itemprop='organizer')

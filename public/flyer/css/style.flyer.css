@@ -683,10 +683,8 @@ a:hover img {
 .main-image{
   margin-bottom: 30px;
 }
-footer.navbar-inverse{
-  margin:20px 0 0 0;
-  padding: 15px 0;
-  color: #FFF;
+footer a:hover {
+  color:#f0ad4e;
 }
 
 

@@ -25,10 +25,10 @@ exports.getUser = function getUser(req, callback) {
   });
 };
 
-exports.getAllUsers = function getAllEvents(req, type, callback) {
+exports.getAllUsers = function getAllUsers(req, type, callback) {
   console.log("getAllUsers");
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez.users.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/authors/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(type).get(function( err, data ) {
 
@@ -198,7 +198,7 @@ exports.getWeb = function getWeb(req,callback) {
 
 exports.getPostType = function getWeb(req,posttype,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.web.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez[posttype].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_type/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(posttype).get(function( err, data ) {
     console.log("//// posttype"+posttype);
@@ -353,9 +353,10 @@ exports.getMetaData = function getMetaData(req,callback) {
   var file = config.root+'/tmp/'+config.prefix+'/meta_'+(edition ? edition+"_" : "")+config.current_lang+'.json';
   if (req.query.createcache==1 || !fs.existsSync(file)) {
     request(config.domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? edition : ""), function (error, response, body) {
+      console.log(body);
       if (!error && response.statusCode == 200) {
         var data = JSON.parse(body);
-        data.edition = fnz.fixResult(data.edition);
+        if (data.edition) data.edition = fnz.fixResult(data.edition);
         jsonfile.writeFile(file, data, function (err) {
           console.log(err);
         });
@@ -378,6 +379,58 @@ exports.getMetaData = function getMetaData(req,callback) {
   }
 };
 
+//////// EXHIBITIONS
+
+exports.getAllExhibitions = function getAllExhibitions(req, limit, page, callback) {
+  console.log("getAllExhibitions");
+  var wp = new WPAPI({ endpoint: config.sez.exhibitions.domain+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibitions' );
+  //console.log(wp.myCustomResource);
+  //console.log(wp.new());
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Exhibitions");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+
+exports.getExhibition = function getExhibition(req,callback) {
+  console.log(req.params.exhibition);
+  console.log(req.params.subexhibition);
+  console.log(req.params.subsubexhibition);
+  var wp = new WPAPI({ endpoint: config.sez.exhibitions.domain+'/wp-json' });
+  if (req.params.subsubexhibition) {
+    console.log("req.params.subsubexhibition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibitions/(?P<exhibition>)/(?P<subexhibition>)/(?P<subsubexhibition>)' );
+    wp.myCustomResource().exhibition(req.params.exhibition).subexhibition(req.params.subexhibition).subsubexhibition(req.params.subsubexhibition).get(function( err, data ) {
+      console.log("//// SubSubExhibition");
+      //data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      callback(data);
+    });
+  } else if (req.params.subexhibition) {
+    console.log("req.params.subexhibition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibitions/(?P<exhibition>)/(?P<subexhibition>)' );
+    wp.myCustomResource().exhibition(req.params.exhibition).subexhibition(req.params.subexhibition).get(function( err, data ) {
+      console.log("//// SubExhibition ");
+      //data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      console.log("//// SubExhibition ");
+      callback(data);
+    });
+  } else {
+    console.log("req.params.exhibition");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibitions/(?P<exhibition>)' );
+    wp.myCustomResource().exhibition(req.params.exhibition).get(function( err, data ) {
+      console.log("//// Exhibition ");
+      data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      callback(data);
+    });
+  }
+};
+
 //////// EDITIONS
 
 exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
@@ -393,6 +446,7 @@ exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
     callback(data);
   });
 };
+
 exports.getAllEditionsByYear = function getAllEditionsByYear(req, year, limit, page, callback) {
   console.log("getAllEditions");
   var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
@@ -435,7 +489,7 @@ exports.getEdition = function getEdition(req,callback) {
   } else {
     console.log("req.params.edition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)' );
-    wp.myCustomResource().edition(req.params.edition,req.params.subsubedition,req.params.subsubedition).get(function( err, data ) {
+    wp.myCustomResource().edition(req.params.edition).get(function( err, data ) {
       console.log("//// Edition");
       data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);

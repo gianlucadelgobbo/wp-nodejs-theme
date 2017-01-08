@@ -1,0 +1,85 @@
+nav#top-menu.navbar.navbar-inverse(role='navigation')
+  // Brand and toggle get grouped for better mobile display
+  .navbar-header
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-MainMenu')
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand(href='/', title=meta_data.meta['name'])
+      img.img-responsive(src=meta_data.meta.logo_bar, alt=meta_data.meta['name'])
+  // Collect the nav links, forms, and other content for toggling
+  #menu-MainMenu.collapse.navbar-collapse
+    ul.nav.navbar-nav
+      li
+        a(href='/idea/') Idea
+      li
+        a(href='/timeline/') Timeline
+      li
+        a(href='/map/') Map
+      li
+        a(href='/gallery/') Gallery
+      li
+        a.dropdown-toggle(href='#', data-toggle='dropdown')
+          | Reports 
+          span.caret
+        ul.dropdown-menu(role='menu')
+          li
+            a(href='/editions/2014-eindhoven/report/') 2014 Eindhoven
+          li
+            a(href='/editions/2013-cape-town/report/') 2013 Cape Town
+          li
+            a(href='/editions/2013-rome/report/') 2013 Rome
+          li
+            a(href='/editions/2013-mex/report/') 2013 Mexico
+          li
+            a(href='/editions/2012-rome/report/') 2012 Rome
+          li
+            a(href='/editions/2011-minsk/report/') 2011 Minsk
+          li
+            a(href='/editions/2011-rome/report/') 2011 Rome
+          li
+            a(href='/editions/2010-rome/report/') 2010 Rome
+          li
+            a(href='/editions/2009-rome/report/') 2009 Rome
+          li
+            a(href='/editions/2008-mex/report/') 2008 Mexico
+          li
+            a(href='/editions/2008-rome/report/') 2008 Rome
+          li
+            a(href='/editions/2007-rome/report/') 2007 Rome
+          li
+            a(href='/editions/2006-rome/report/') 2006 Rome
+      li
+        a(href='/the-app/') The App
+      li
+        a(href='/press/') Press
+      li
+        a(href='/contacts/') Contacts
+      li
+        a(href='/shop/') Shop
+      li
+        a(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+      li
+        a(data-toggle='dropdown', href='/cart/', title='View your shopping cart')
+          span.sr-only Shopping Cart
+          i.glyphicon.glyphicon-shopping-cart
+          span.caret
+          span.sr-only Toggle Dropdown
+        ul.dropdown-menu(role='menu')
+          li
+            a.cart-contents(href='/cart/', title='View your shopping cart')
+              | 0 items
+              span.woocommerce-Price-amount.amount
+                span.woocommerce-Price-currencySymbol €
+                |  0,00
+    form#nl_form.navbar-form.navbar-right(method='post', action='#', onsubmit="createSend(this,'/wp-content/themes/lpm/subscribe.php'); return false;")
+      #nl_cnt.pull-right
+        .input-group.input-group-sm
+          input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
+          label.sr-only(for='email') Email
+          span.input-group-btn
+            button#invia.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
+        input(type='hidden', name='lang', value='EN')
+        input(type='hidden', name='topic', value='livevisuals')
+      #nl_res.hide

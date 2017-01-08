@@ -130,7 +130,7 @@ html(lang='en')
                     #next-edition!=meta_data.edition['wpcf-sub-title']
                   #site-description-cnt
                     #site-description=meta_data.meta['description']
-                  include ../common/inc_dateplace_meta
+                  include ../_common/inc_dateplace_meta
         nav.hidden-xs(role='navigation')
           ul.pulsa
             each menu in meta_data.menu
@@ -211,13 +211,13 @@ html(lang='en')
               .col-sm-2.hidden-print
                 .margin-top-xs
                   p Projects
-                  include ../common/inc_projects
+                  include ../_common/inc_projects
               .col-sm-3.hidden-print
               .col-sm-3.hidden-print
                 .pull-right
                   .margin-top-xs
                     p Search
-                    include ../common/inc_search
+                    include ../_common/inc_search
                 br.clearfix
                 br
             br
@@ -265,7 +265,7 @@ html(lang='en')
   script(type='text/javascript', src='/_common/js/bootstrap.min.js')
   script(type='text/javascript', src='/_common/js/jquery.isotope.min.js')
   script(type='text/javascript', src='/_common/js/imagesloaded.pkgd.min.js')
-  include ../common/inc_cookielawinfo
+  include ../_common/inc_cookielawinfo
 
   // TICKER
   script(type='text/javascript').

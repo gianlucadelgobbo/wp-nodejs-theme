@@ -64,6 +64,8 @@
     padding:0;
   }
 }
+
+/* FOOTER */
 .footer-nav{
   list-style: none;
   padding-left: 0;
@@ -76,7 +78,6 @@ footer a:link, footer a:visited, footer a:active{
   color: #ccc;
 }
 footer a:hover {
-  color:#f0ad4e;
   text-decoration: none;
 }
 .footer-nav-inline{
@@ -95,6 +96,29 @@ footer a:hover {
 .footer-nav .tooltip.bottom .tooltip-arrow{border-bottom-color:#ccc}
 .footer-nav i{
   font-size: 30px;
+}
+footer.navbar-inverse {
+  margin: 20px 0 0 0;
+  padding: 15px 0;
+  color: #FFF;
+}
+
+/* NAVBAR AFFIX*/
+.affix {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.affix .navbar {
+  border-radius: 0;
+}
+.affix .navbar-brand img {
+  max-width: 170px;
+  max-height: 20px;
+}
+.affix-top .navbar-nav>li:first-child{
+  margin-left: -15px;
 }
 
 .dateplace{

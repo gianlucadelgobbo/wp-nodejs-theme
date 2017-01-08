@@ -1,0 +1,12 @@
+article#container(itemscope, itemtype='http://schema.org/'+itemtype)
+  .text-center
+      header.header
+        h1.entry-title(itemprop='name')=global.__("Content NOT found")
+      .rientro
+        div(itemprop='description')!=global.__("The content you requested was not found on our server, please try to search for it")
+        br
+        form.form-inline(action='/search/', method='get')
+          input.form-control(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
+          button.btn.btn-primary(type='submit')
+            i.glyphicon.glyphicon-search
+              .sr-only=global.__("Search")

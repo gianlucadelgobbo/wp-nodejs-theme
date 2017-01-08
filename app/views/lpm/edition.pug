@@ -8,11 +8,11 @@ block content
             header
               h1.entry-title(itemprop='name')=meta_data.meta.title
             .rientro
-              include ../common/inc_dateplace_meta
+              include ../_common/inc_dateplace_meta
               div(itemprop='description')!=result.post_content
           .col-sm-3
             img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
       else
         header
           h1.entry-title(itemprop='name')=result.post_title
-      include ../common/inc_grid
+      include ../_common/inc_grid

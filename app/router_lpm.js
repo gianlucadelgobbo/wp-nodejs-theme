@@ -1,9 +1,10 @@
-var indexRoutes = require('./routes_lpm/index');
-var usersRoutes = require('./routes_common/users');
-var eventsRoutes = require('./routes_common/events');
-var newsRoutes = require('./routes_common/news');
-var editionsRoutes = require('./routes_lpm/editions');
-var pagesRoutes = require('./routes_common/pages');
+var indexRoutes = require('./routes/lpm/index');
+var editionsRoutes = require('./routes/lpm/editions');
+
+var usersRoutes = require('./routes/_common/users');
+var eventsRoutes = require('./routes/_common/events');
+var newsRoutes = require('./routes/_common/news');
+var pagesRoutes = require('./routes/_common/pages');
 /*
  var searchRoutes = require('./routes/search');
  */

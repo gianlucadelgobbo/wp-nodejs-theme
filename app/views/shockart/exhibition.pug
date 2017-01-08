@@ -1,0 +1,18 @@
+extends layout
+block content
+  article#container(itemscope, itemtype='http://schema.org/Event')
+    .row
+      .col-sm-9
+        header
+          h1.entry-title(itemprop='name')=result.post_title
+        .rientro
+          include ../_common/inc_dateplace
+          div(itemprop='description')!=result.post_content
+          include ../_common/inc_videos
+          include ../_common/inc_websites
+          include ../_common/inc_capauthors
+  .col-sm-3
+        img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
+        include ../_common/inc_docs_small
+    include ../_common/inc_grid
+

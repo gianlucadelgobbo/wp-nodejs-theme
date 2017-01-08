@@ -14,7 +14,7 @@
       if result.excerpt && result.excerpt.rendered
         .excerpt.text-muted(itemprop='headline')!=result.excerpt.rendered
       .tags.text-muted.small
-        include ../../common/inc_tags_nolink
+        include ../../_common/inc_tags_nolink
       if result.capauthors
         - var showdiv = false
         each capauthor in result.capauthors

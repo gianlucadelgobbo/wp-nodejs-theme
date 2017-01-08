@@ -1,0 +1,40 @@
+#myAffix.affix-top(data-spy='affix', data-offset-top='90')
+  nav.navbar.navbar-inverse(role='navigation')
+    .container-fluid
+      // Brand and toggle get grouped for better mobile display
+      .navbar-header
+        // .navbar-toggle is used as the toggle for collapsed navbar content
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-navbar')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        // Be sure to leave the brand out there if you want it shown
+        a.navbar-brand.visible-xs(href='/', title='Shockart.net')
+          img.img-responsive(src='https://shockart.net/files/2013/08/logo455.png', alt='Shockart.net')
+      // Place everything within .navbar-collapse to hide it until above 768px
+      #main-navbar.collapse.navbar-collapse
+        ul#menu-main-menu.nav.navbar-nav
+          li#menu-item-133.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-
+            a(title='Home', href='/') Home
+          li#menu-item-25.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+            a(title='Project', href='/project/') Project
+          li#menu-item-1591.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+            a(title='Events', href='/events/') Events
+          li#menu-item-213.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+            a(title='Exhibitions', href='/exhibitions/') Exhibitions
+          li#menu-item-36.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+            a(title='Backstage', href='/backstage/') Backstage
+          li#menu-item-560.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+            a(title='Newsletter', href='/newsletter/') Newsletter
+          li#menu-item-134.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-
+            a(title='Contacts', href='/contacts/') Contacts
+        ul.nav.navbar-nav.navbar-right
+          li.lang-en(class=meta_data["langSwitcher"]["en"] == meta_data['url'] ? 'active' : '')
+            a(href=meta_data["langSwitcher"]["en"], hreflang='en', title='English') EN
+          li.menu-spacer-after.lang-it(class=meta_data["langSwitcher"]["it"] == meta_data['url'] ? 'active' : '')
+            a(href=meta_data["langSwitcher"]["it"], hreflang='it', title='Italiano') IT
+          li.menu-spacer-after.hidden-xs
+            a(href='#', title=global.__("Search")).flyer-search-opener
+              i.glyphicon.glyphicon-search
+              .sr-only=global.__("Search")

@@ -22,6 +22,34 @@ $(window).on("popstate", function(e) {
   };
 })(history.pushState);
 
+$("#container > .read-more a").click(function() {
+  infiniteScroll(this);
+  return false;
+});
+function infiniteScroll(t) {
+  var url = t.href;
+  $('#container > .read-more a').hide();
+  $('#container > .read-more .loading').show();
+  $.ajax({
+    method: "GET",
+    url: url
+  }).done(function (msg) {
+    console.log(url);
+    $("#container > .read-more").html($(msg).find("#container > .read-more").html());
+    $("#container .read-more a").click(function() {
+      infiniteScroll(this);
+      return false;
+    });
+    $('#container > .read-more .loading').hide();
+    var $newItems = $($(msg).find("#container .isotope").html());
+    $containerappend = $("#container .isotope").append($newItems);
+    $containerappend.imagesLoaded( function(){
+      $containerappend.isotope( 'appended', $newItems );
+    });
+  });
+}
+
+
 $(function() {
   if (typeof(cx) !== "undefined") {
     jQuery(".rientro  .searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
