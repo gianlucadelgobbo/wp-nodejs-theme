@@ -213,7 +213,7 @@ exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
 exports.getWeb = function getWeb(req,callback) {
   console.log(req.params.web);
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.web.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez["web-and-mobile"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/web-and-mobile/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.web).get(function( err, data ) {
     console.log("//// Web");

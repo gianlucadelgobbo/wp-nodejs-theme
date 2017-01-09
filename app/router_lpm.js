@@ -1,6 +1,8 @@
 var indexRoutes = require('./routes/lpm/index');
 var editionsRoutes = require('./routes/lpm/editions');
 var timelinemapRoutes = require('./routes/lpm/timeline-map');
+var signupRoutes = require('./routes/_common/signup');
+
 
 var usersRoutes = require('./routes/_common/users');
 var eventsRoutes = require('./routes/_common/events');
@@ -35,6 +37,7 @@ module.exports = function(app) {
   //app.get('/map/(:year)/', timelinemapRoutes.getTimeline);
   //app.post('/timeline/(:year)/', pagesRoutes.postTimeline);
   app.get('/(:page)', pagesRoutes.get);
+  app.post('/signup', signupRoutes.post);
   app.get('*', pagesRoutes.get404);
   //app.get('/users/(:user)', usersRoutes.getUser);
   /*

@@ -1,7 +1,7 @@
 var helpers = require('../../helpers');
 var fnz = require('../../functions');
 
-var sez = config.sez.web;
+var sez = config.sez["web-and-mobile"];
 
 exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {

@@ -36,7 +36,7 @@
       "users" : {
         "domain"	: "https://flyer.dev.flyer.it"
       },
-      "web" : {
+      "web-and-mobile" : {
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "web-and-mobile",
         "baseurl"   : "web-and-mobile",
@@ -76,7 +76,7 @@
         "puglist"   : "labs",
         "pugdett"   : "lab"
       },
-      "awards" : {
+      "awards-and-grants" : {
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "awards-and-grants",
         "baseurl"   : "awards-and-grants",

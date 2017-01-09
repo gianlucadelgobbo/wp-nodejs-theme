@@ -1,6 +1,6 @@
 extends layout
 block content
-	article(itemscope, itemtype='http://schema.org/'+itemtype)
+	article.container(itemscope, itemtype='http://schema.org/'+itemtype)
 		header
 			h1.entry-title(itemprop='name')!=result.post_title
 		!=result.post_content
