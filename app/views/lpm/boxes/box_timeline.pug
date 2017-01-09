@@ -8,12 +8,12 @@ div(class="rowTimeline rowTimeline-"+result.type, itemscope, itemtype='http://sc
           if result['wpcf-location']
             include ../../_common/inc_place
     div(class="col-sm-"+(result.type=="edition" ? 4 :2))
-      a(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/events/' + result.slug, rel='bookmark', title!=result.title.rendered)
+      a(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/events/' + result.slug, rel='bookmark', title!=result.post_title)
         if result.featured
-          img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.title.rendered, itemprop='url')
+          img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='url')
     div(class="col-sm-"+(result.type=="edition" ? 3 :4))
       h2.timelineTitle(itemprop='name')
-        a(itemprop='url', href='/events/' + result.slug, rel='bookmark', title=result.title.rendered)!=result.title.rendered
+        a(itemprop='url', href='/events/' + result.slug, rel='bookmark', title=result.post_title)!=result.post_title
       .text-muted.small
         .catlabel=result.type
         p!=result.excerpt.rendered

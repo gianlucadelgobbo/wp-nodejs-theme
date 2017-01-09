@@ -44,9 +44,9 @@ block content
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_events.description
-        .row.isotope
+        .row.isotope.results
           each result, index in results.events
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>5 ? "hidden-lg visible-xl" : "")
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotope.resultsitem(class=index>5 ? "hidden-lg visible-xl" : "")
               include boxes/box_event
         .text-center.read-more
           a(href=lang_preurl+'/portfolio/live-visuals/')
@@ -63,9 +63,9 @@ block content
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_lab.description
-        .row.isotope
+        .row.isotope.results
           each result, index in results.lab
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>5 ? "hidden-lg visible-xl" : "")
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotope.resultsitem(class=index>5 ? "hidden-lg visible-xl" : "")
               include boxes/box_lab
         .text-center.read-more
           a(href=lang_preurl+'/portfolio/lab/')
@@ -82,9 +82,9 @@ block content
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_web.description
-        .row.isotope
+        .row.isotope.results
           each result, index in results.web
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>2 ? "hidden-lg visible-xl visible-md" : "")
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotope.resultsitem(class=index>2 ? "hidden-lg visible-xl visible-md" : "")
               include boxes/box_web
         .text-center.read-more
           a(href=lang_preurl+'/portfolio/web-and-mobile/')
@@ -153,9 +153,9 @@ block content
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_news.description
-        .row.isotope
+        .row.isotope.results
           each result, index in results.news
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>2 ? "visible-md hidden-lg visible-xl" : "")
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotope.resultsitem(class=index>2 ? "visible-md hidden-lg visible-xl" : "")
               include boxes/box_news
         .text-center.read-more
           a(href=lang_preurl + '/extra/')

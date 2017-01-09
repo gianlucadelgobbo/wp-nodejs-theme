@@ -10,9 +10,9 @@ block content
           a.btn.btn-primary(href="/news/") See all News
       .col-lg-6.col-md-4.col-sm-6
         h1.entry-title.boxItem Satellite Events
-        .row.isotope
+        .row.isotope.results
           each result in results.events
-            .col-lg-6.col-md-12.col-sm-12.isotopeitem
+            .col-lg-6.col-md-12.col-sm-12.isotope.resultsitem
               include boxes/box_event
         .text-right.boxItem
           a.btn.btn-primary(href="/timeline/") See all in a Timeline

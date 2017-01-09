@@ -76,7 +76,7 @@ exports.getGallery = function getGallery(req, res) {
           });
 
         }
-
+        /*
         var shortcode = require('shortcode-parser');
         result.post_content = result.post_content.replace("source=https","source='https").replace("/ view=","/' view='").replace("]","']");
         var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
@@ -85,10 +85,11 @@ exports.getGallery = function getGallery(req, res) {
 
           }
         });
+        */
       } else {
         res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
       }
-      shortcode.parse(result.post_content);
+      //shortcode.parse(result.post_content);
       //console.log(shortcode.parse(str));
       /*var url = "https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/";
       */
@@ -103,22 +104,6 @@ exports.get404 = function get404(req, res) {
   });
 };
 
-exports.getTimeline = function getTimeline(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
-    req.params.page = "timeline";
-    helpers.getPage(req, function( result ) {
-      //console.log(result);
-      meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
-      var year = parseInt(req.params.year ? req.params.year : new Date().getFullYear());
-      helpers.getAllEditionsEvents(req, year, function( results ) {
-        var pugpage = (config.sez.pages.conf.timeline.pugpage ? config.sez.pages.conf.timeline.pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : "");
-        var itemtype = config.sez.pages.conf.timeline.itemtype ? config.sez.pages.conf.timeline.itemtype : config.sez.pages.conf.default.itemtype;
-        //console.log(result);
-        res.render(config.prefix+'/'+pugpage, {year: year, result: result, results:results, meta_data:meta_data, itemtype:itemtype});
-      });
-    });
-  });
-};
 
 
 /*

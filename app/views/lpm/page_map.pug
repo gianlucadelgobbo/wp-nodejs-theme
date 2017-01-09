@@ -14,17 +14,7 @@ block content
       .col-sm-3
         if result.featured
           img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
-    .timeline.results
-      each result in results
-        include boxes/box_timeline
-    .text-center.read-more
-      if (next)
-        a(href='/timeline/' + next)
-          !=global.__("Load more")
-          !=" "
-          span.fa.fa-long-arrow-right
-        span.loading Loading...
-      else
-        .end=global.__("You reached the end")
-
-
+    #map-canvas(style="height:700px")
+    script(type="text/javascript").
+      var markers = !{JSON.stringify(markers)};
+    script(type="text/javascript", src='/' + config.prefix + '/js/map.js')

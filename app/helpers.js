@@ -96,20 +96,45 @@ exports.getEvent = function getEvent(req,callback) {
   });
 };
 
+exports.getAllEvents = function getAllEvents(req, years, callback) {
+  console.log("getAllEvents");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  if (years) {
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/all-events/(?P<siteee>)/(?P<yearsss>)');
+    console.log(years);
+    wp.myCustomResource().siteee(config.site_tax).yearsss(years).get(function( err, data ) {
+      console.log("//// All Events"+years);
+      //console.log(err || data._paging);
+      data = fnz.fixResults(data);
+      callback(data);
+    });
+  } else {
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/all-events/(?P<siteee>)');
+    console.log(years);
+    wp.myCustomResource().siteee(config.site_tax).get(function( err, data ) {
+      console.log("//// All Events");
+      //console.log(err || data);
+      data = fnz.fixResults(data);
+      callback(data);
+    });
+  }
+};
 
 
 
 
+/*
 exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
   console.log("getAllEvents");
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
   var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/events');
-  //console.log(wp.myCustomResource);
+  console.log(config.sez.events.domain);
   //console.log(wp.event());
-  wp.myCustomResource()/*.param( 'before', new Date( '2016-09-22' ) )*/.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+  wp.myCustomResource().param( 'before', new Date( '2016-09-22' ) ).param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
     console.log("//// Events");
-    console.log(err);
+    //console.log(err);
     //console.log(data.length);
 
     //console.log(err || data._paging);
@@ -117,7 +142,7 @@ exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
     callback(data);
   });
 };
-
+*/
 exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page, callback) {
   console.log("getAllEventsByYear");
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
@@ -125,12 +150,13 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page,
   wp.myCustomResource = wp.registerRoute('wp/v2', '/events' );
   //console.log(wp.myCustomResource);
   //console.log(wp.event());
-  wp.myCustomResource().param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax ).param('after', new Date((year-1)+'-12-31')).param('before', new Date((year+1)+'-01-01') ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+  //wp.myCustomResource().param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax ).param('after', ((year-1)+'-12-31T00:00:00.000Z')).param('before', ((year+1)+'-01-01T00:00:00.000Z') ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+  wp.myCustomResource().param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
     console.log("//// EventsByYear");
-    //console.log(new Date( (year-1)+'-12-31' ));
-    //console.log(new Date( (year+1)+'-01-01' ));
+    console.log(new Date( (year-1)+'-12-31' ));
+    console.log(new Date( (year+1)+'-01-01' ));
     //console.log(data.length);
-    //console.log(err || data);
+    console.log(err || data);
     data = fnz.fixResults(data);
     callback(data);
   });
@@ -447,18 +473,31 @@ exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
   });
 };
 
-exports.getAllEditionsByYear = function getAllEditionsByYear(req, year, limit, page, callback) {
-  console.log("getAllEditions");
+exports.getAllEditionsByYear = function getAllEditionsByYear(req, years, limit, page, callback) {
+  console.log("getAllEditionsByYear");
   var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/edition' );
-  //console.log(wp.myCustomResource);
-  //console.log(wp.new());
-  wp.myCustomResource().param( 'after', new Date( (year-1)+'-12-31' ) ).param( 'before', new Date( (year+1)+'-01-01' ) ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// All Editions");
-    //console.log(err || data);
-    data = fnz.fixResults(data);
-    callback(data);
-  });
+  if (years){
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/all-editions/(?P<yearsss>)' );
+    //console.log(wp.myCustomResource);
+    //console.log(wp.new());
+    wp.myCustomResource().yearsss(years).get(function( err, data ) {
+      console.log("//// All EditionsByYear "+years);
+      //console.log(err || data);
+      data = fnz.fixResults(data);
+      callback(data);
+    });
+  } else {
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/all-editions' );
+    //console.log(wp.myCustomResource);
+    //console.log(wp.new());
+    wp.myCustomResource().get(function( err, data ) {
+      console.log("//// All EditionsByYear");
+      //console.log(err || data);
+      data = fnz.fixResults(data);
+      callback(data);
+    });
+
+  }
 };
 
 
@@ -608,16 +647,18 @@ exports.getArtistGallery = function getArtistGallery(req,callback) {
   }
 };
 
-exports.getAllEditionsEvents = function getAllEditionsEvents(req, year, callback) {
+exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callback) {
   var trgt = this;
   var data = [];
-  trgt.getAllEventsByYear(req, year, 100, 1, function (data_events) {
+  trgt.getAllEvents(req, years, function (data_events) {
     //console.log(data_events);
     for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
-    console.log(data.length);
-    trgt.getAllEditionsByYear(req, year, 100, 1, function (data_editions) {
+    //console.log(data.length);
+    trgt.getAllEditionsByYear(req, years, 100, 1, function (data_editions) {
       for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
+      console.log("stocazzo");
       data.sort(fnz.sortByStartDate);
+      console.log("stocazzo");
       //for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
       callback(data);
     });

@@ -1,7 +1,7 @@
 var $container;
 var mySvgPanZoom;
 $(function() {
-	jQuery("#loadmore").click(function() {
+	/*jQuery("#loadmore").click(function() {
 		jQuery.ajax({
 			method: "POST",
 			url: "/timeline/" + year + "/",
@@ -12,7 +12,7 @@ $(function() {
 			alert("Data Saved: " + msg);
 		});
 		return false;
-	});
+	});*/
 	jQuery(".tooltips").tooltip();
 	$container = jQuery('.isotope');
 	$container.imagesLoaded( function(){

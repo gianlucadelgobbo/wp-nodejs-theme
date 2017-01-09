@@ -1,5 +1,6 @@
 var indexRoutes = require('./routes/lpm/index');
 var editionsRoutes = require('./routes/lpm/editions');
+var timelinemapRoutes = require('./routes/lpm/timeline-map');
 
 var usersRoutes = require('./routes/_common/users');
 var eventsRoutes = require('./routes/_common/events');
@@ -28,8 +29,10 @@ module.exports = function(app) {
   app.get('/gallery', pagesRoutes.getGallery);
   app.get('/gallery/(:artist)/(:gallery)', pagesRoutes.getGallery);
   app.get('/gallery/(:artist)/(:gallery)/(:galleryitem)', pagesRoutes.getGallery);
-  app.get('/timeline', pagesRoutes.getTimeline);
-  app.get('/timeline/(:year)/', pagesRoutes.getTimeline);
+  app.get('/timeline', timelinemapRoutes.getTimeline);
+  app.get('/timeline/(:year)/', timelinemapRoutes.getTimeline);
+  app.get('/map', timelinemapRoutes.getMap);
+  //app.get('/map/(:year)/', timelinemapRoutes.getTimeline);
   //app.post('/timeline/(:year)/', pagesRoutes.postTimeline);
   app.get('/(:page)', pagesRoutes.get);
   app.get('*', pagesRoutes.get404);
