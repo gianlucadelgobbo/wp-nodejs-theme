@@ -10,8 +10,6 @@
         .text-muted.supText
           include ../../_common/inc_eventdateplace
         h3.list_title(itemprop='name')!=result.post_title.replace(" | ","<br />")
-        .text-muted.small.tags
-          include ../../_common/inc_tags_nolink
       .read-more-box
         .sr-only=__("Read more")
         i.fa.fa-long-arrow-right
