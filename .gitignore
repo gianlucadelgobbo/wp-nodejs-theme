@@ -4,3 +4,13 @@ bower_components
 files
 locales/*
 config/*
+tmp/*
+public/flyer/images/labs-ai.svg
+public/flyer/images/labs-avnode.svg
+public/flyer/images/labs-chromosphere.svg
+public/flyer/images/labs-flxer.svg
+public/flyer/images/labs-lcf.svg
+public/flyer/images/labs-lpm.svg
+public/flyer/images/labs-shockart.svg
+public/flyer/images/labs-vjtv.svg
+public/flyer/images/labs-wam.svg
