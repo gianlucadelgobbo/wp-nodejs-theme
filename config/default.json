@@ -128,7 +128,7 @@
     "locales"       : ["en"],
     "default_lang"  : "en",
     "current_lang"  : "en",
-    "site_tax"      : "liveperformersmeeting-net",
+    "site_tax"      : [460], // 460 liveperformersmeeting-net
     "router"        : "router_lpm",
     "accounts"      : {
       "newsletter"    : {
@@ -144,7 +144,7 @@
     "sez":{
       "home" : {
         "events" : {
-          "limit"		: 30
+          "limit"		: 50
         },
         "news" : {
           "limit"		: 16

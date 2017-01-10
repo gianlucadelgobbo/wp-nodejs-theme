@@ -96,24 +96,24 @@ exports.getEvent = function getEvent(req,callback) {
   });
 };
 
-exports.getAllEvents = function getAllEvents(req, years, callback) {
-  console.log("getAllEvents");
+exports.getAllEventsByYear = function getAllEventsByYear(req, years, callback) {
+  console.log("getAllEventsByYear");
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
   var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   if (years) {
     wp.myCustomResource = wp.registerRoute('wp/v2', '/all-events/(?P<siteee>)/(?P<yearsss>)');
     console.log(years);
     wp.myCustomResource().siteee(config.site_tax).yearsss(years).get(function( err, data ) {
-      console.log("//// All Events"+years);
+      console.log("//// All Events by year "+years);
       //console.log(err || data._paging);
       data = fnz.fixResults(data);
       callback(data);
     });
   } else {
-    wp.myCustomResource = wp.registerRoute('wp/v2', '/all-events/(?P<siteee>)');
+    wp.myCustomResource = wp.registerRoute('wp/v2', '/all-events/(?P<siteee>)', {params: [ 'before', 'after', 'author', 'parent', 'post' ]});
     console.log(years);
     wp.myCustomResource().siteee(config.site_tax).get(function( err, data ) {
-      console.log("//// All Events");
+      console.log("//// All Events ALL");
       //console.log(err || data);
       data = fnz.fixResults(data);
       callback(data);
@@ -124,25 +124,24 @@ exports.getAllEvents = function getAllEvents(req, years, callback) {
 
 
 
-/*
 exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
   console.log("getAllEvents");
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
   var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/events');
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/events', {params: [ 'before', 'after', 'author', 'parent' ]});
   console.log(config.sez.events.domain);
   //console.log(wp.event());
-  wp.myCustomResource().param( 'before', new Date( '2016-09-22' ) ).param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// Events");
+  wp.myCustomResource().param('site', config.site_tax ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    console.log("//// All Events");
     //console.log(err);
     //console.log(data.length);
 
-    //console.log(err || data._paging);
+    console.log(err || data);
     data = fnz.fixResults(data);
     callback(data);
   });
 };
-*/
+/*
 exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page, callback) {
   console.log("getAllEventsByYear");
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
@@ -161,7 +160,7 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page,
     callback(data);
   });
 };
-
+*/
 
 //////// NEWS
 
@@ -650,7 +649,7 @@ exports.getArtistGallery = function getArtistGallery(req,callback) {
 exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callback) {
   var trgt = this;
   var data = [];
-  trgt.getAllEvents(req, years, function (data_events) {
+  trgt.getAllEventsByYear(req, years, function (data_events) {
     //console.log(data_events);
     for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
     //console.log(data.length);

@@ -5,37 +5,32 @@ block content
       .row
         .col-sm-9
           header
-            h1.entry-title(itemprop='name')=data.post_title
+            h1.entry-title(itemprop='name')=result.post_title
           .rientro
             include ../_common/inc_type_hidden
-            div(itemprop='description')!=data.post_content
-            .row
-              .col-md-6
-                !=global.__("Duration") + ": "
-                span(itemprop='duration')
-                  b=result["wpcf-duration"]
-                br
-                - var auth = []
-                each capauthor in data.capauthors
-                  - auth.push(capauthor.display_name)
-                if auth.length
-                  if auth.length == 1
-                    !=global.__("Teacher") + ": "
-                  else
-                    !=global.__("Teachers") + ": "
-                  span(itemprop='performer')
-                  b=auth.join(", ")
-                br
-                !=global.__("Price") + ": "
-                span(itemprop='offers')
-                  b=result["wpcf-price"] + " €"
-              .col-md-6
-                if data.web_site.length && data.web_site[0].length
-                  - websites = data.web_site
-                  include ../_common/inc_websites
+            div(itemprop='description')!=result.post_content
+            !=global.__("Duration") + ": "
+            span(itemprop='duration')
+              b=result["wpcf-duration"]
+            br
+            - var auth = []
+            each capauthor in result.capauthors
+              - auth.push(capauthor.display_name)
+            if auth.length
+              if auth.length == 1
+                !=global.__("Teacher") + ": "
+              else
+                !=global.__("Teachers") + ": "
+              span(itemprop='performer')
+              b=auth.join(", ")
+            br
+            !=global.__("Price") + ": "
+            span(itemprop='offers')
+              b=result["wpcf-price"] + " €"
+            include ../_common/inc_websites
             include ../_common/inc_share
         .col-sm-3
-          img.img-responsive.main-image(src=data.featured.thumbnail, alt=data.post_title, itemprop='image')
+          img.img-responsive.main-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
 
       if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns']
         include ../_common/inc_grid

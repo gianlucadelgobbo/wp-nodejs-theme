@@ -1,3 +1,4 @@
+// NODE_ENV=production site=flyer forever start -l forever.log -o out.log -e err.log ./forever.json
 [
   {
     "uid": "app",

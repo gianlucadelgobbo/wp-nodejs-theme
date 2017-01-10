@@ -11,7 +11,7 @@ exports.get = function get(req, res) {
         var yearAfter = now.getMonth()>7 ? now.getFullYear() : now.getFullYear()-1;
         var years = yearAfter+"-"+now.getFullYear();
         console.log(years);
-        helpers.getAllEvents(req, years, function (result_events) {
+        helpers.getAllEvents(req, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAllEditions(req, config.sez.home.editions.limit, 1, function (result_editions) {
             meta_data.meta.title = meta_data.meta.name+ " "+ (meta_data.edition && meta_data.edition.post_title ? meta_data.edition.post_title : "");
             console.log("bingo");

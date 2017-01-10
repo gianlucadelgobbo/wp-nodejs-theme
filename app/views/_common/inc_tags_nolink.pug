@@ -1,10 +1,6 @@
-if result && result.tags
-  - tags = result.tags
-if posttype && posttype.tags
-  - tags = posttype.tags
-if tags
+if posttype.tags
   p.tags
-    each tag, index in tags
+    each tag, index in posttype.tags
       span.tagandcount!="#" + tag.name + " (" + tag.count + ")"
-      if index + 1 < tags.length
+      if index + 1 < posttype.tags.length
         !=" · "

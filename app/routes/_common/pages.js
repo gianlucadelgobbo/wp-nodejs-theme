@@ -113,12 +113,6 @@ exports.getSearch = function getSearch(req, res) {
   });
 };
 
-exports.postTimeline = function postTimeline(req, res) {
-  var year = parseInt(req.params.year ? req.params.year : new Date().getFullYear());
-  helpers.getAllEditionsEvents(req, year, function( data_timeline ) {
-    res.render(config.prefix+'/'+(config.sez.pages.conf.timeline.pugpage ? config.sez.pages.conf.timeline.pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : ""), {year: year, data_timeline:data_timeline, itemtype:config.sez.pages.conf.timeline.itemtype ? config.sez.pages.conf.timeline.itemtype : config.sez.pages.conf.default.itemtype});
-  });
-};
 */
 //select * from flyer_wp_20_terms,flyer_wp_20_term_relationships,flyer_wp_20_term_taxonomy where flyer_wp_20_term_taxonomy.term_taxonomy_id=flyer_wp_20_term_relationships.term_taxonomy_id and flyer_wp_20_term_taxonomy.term_id=flyer_wp_20_terms.term_id and  flyer_wp_20_term_relationships.object_id =49197;
 //wp.taxonomies().taxonomy( 'author' ).terms().get(function( err2, data2 ) {
