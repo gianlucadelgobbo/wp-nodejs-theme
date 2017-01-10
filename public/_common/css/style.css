@@ -1,3 +1,6 @@
+.list_title {
+  margin-top: 0;
+}
 /* MODAL PORTFOLIO*/
 .modal-header{
   position: fixed;
@@ -141,7 +144,10 @@ footer.navbar-inverse {
   list-style: none;
   padding-left: 0;
 }
-.authors,.links,.dateplace, .share{
+.authors,.links, .share{
+  margin: 30px 0 0 0;
+}
+.box-list .dateplace {
   margin: 30px 0 0 0;
 }
 .authors li{

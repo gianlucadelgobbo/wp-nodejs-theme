@@ -7,12 +7,9 @@ block content
           header
             h1.entry-title(itemprop='name')=result.post_title
           .rientro
+            include ../_common/inc_type_hidden
             include ../_common/inc_tags
-            if result.data_month
-              .text-muted
-                .dates
-                  .date=result.data_month
-                  meta(itemprop="datePublished", content=result.datePublished)
+            include ../_common/inc_datemonth
             div(itemprop='description')!=result.post_content
             .row
               .col-md-6

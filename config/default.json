@@ -1,5 +1,7 @@
 {
   "flyer" : {
+    "project_name"  : "Flyer communication",
+    "project_email" : "info@flyer.it",
     "port"		    : 3000,
     "host"		    : "localhost",
     "domain"	    : "https://flyer.it",
@@ -37,6 +39,7 @@
         "domain"	: "https://flyer.dev.flyer.it"
       },
       "web-and-mobile" : {
+        "title"     : "Portfolio: Web & Mobile",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "web-and-mobile",
         "baseurl"   : "web-and-mobile",
@@ -45,6 +48,7 @@
         "pugdett"   : "web"
       },
       "events" : {
+        "title"     : "Portfolio: Live Visuals",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "events",
         "baseurl"   : "live-visuals",
@@ -53,6 +57,7 @@
         "pugdett"   : "event"
       },
       "videos" : {
+        "title"     : "Portfolio: Videos",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "videos",
         "baseurl"   : "videos",
@@ -61,6 +66,7 @@
         "pugdett"   : "video"
       },
       "learning" : {
+        "title"     : "Portfolio: Learning",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "learning",
         "baseurl"   : "learning",
@@ -69,6 +75,7 @@
         "pugdett"   : "learning"
       },
       "lab" : {
+        "title"     : "LAB",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "lab",
         "baseurl"   : "lab",
@@ -77,6 +84,7 @@
         "pugdett"   : "lab"
       },
       "awards-and-grants" : {
+        "title"     : "Awards and Grants",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "awards-and-grants",
         "baseurl"   : "awards-and-grants",
@@ -85,6 +93,7 @@
         "pugdett"   : "award"
       },
       "news" : {
+        "title"     : "EXTRA",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "news",
         "baseurl"   : "extra",
@@ -109,6 +118,8 @@
     }
   },
   "lpm" : {
+    "project_name"  : "LPM Live Performers Meeting",
+    "project_email" : "info@liveperformersmeeting.net",
     "port"		    : 3001,
     "host"		    : "localhost",
     "domain"		: "https://liveperformersmeeting.net",
@@ -119,6 +130,17 @@
     "current_lang"  : "en",
     "site_tax"      : "liveperformersmeeting-net",
     "router"        : "router_lpm",
+    "accounts"      : {
+      "newsletter"    : {
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8/members",
+        "apikey"        : "b7105e27ad52b156f2bd004161a173b4-us7",
+        "merge_fields"  : {}
+      },
+      "gmail"         : {
+        "user"            : "xxx",
+        "password"        : "xxx"
+      }
+    },
     "sez":{
       "home" : {
         "events" : {
@@ -135,6 +157,7 @@
         "domain"	: "https://lpm.dev.flyer.it"
       },
       "events" : {
+        "title"     : "Events",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "events",
         "baseurl"   : "events",
@@ -143,6 +166,7 @@
         "pugdett"   : "event"
       },
       "news" : {
+        "title"     : "News",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "news",
         "baseurl"   : "news",
@@ -175,6 +199,8 @@
     }
   },
   "shockart" : {
+    "project_name"  : "Shockart.net",
+    "project_email" : "info@shockart.net",
     "port"		    : 3002,
     "host"		    : "localhost",
     "domain"	    : "https://shockart.net",
@@ -200,6 +226,7 @@
         "domain"	: "https://shockart.dev.flyer.it"
       },
       "events" : {
+        "title"     : "Events",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "events",
         "baseurl"   : "live-visuals",
@@ -208,6 +235,7 @@
         "pugdett"   : "event"
       },
       "news" : {
+        "title"     : "News",
         "domain"	: "https://flyer.dev.flyer.it",
         "post_type" : "news",
         "baseurl"   : "extra",

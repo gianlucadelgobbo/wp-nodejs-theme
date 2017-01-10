@@ -8,7 +8,7 @@
     .box-list
       .text-center
         .text-muted.supText
-          include ../../_common/inc_dateplace
+          include ../../_common/inc_eventdateplace
         h3.list_title(itemprop='name')!=result.post_title.replace(" | ","<br />")
           //a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/live-visuals/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title.replace(" | ","<br />")
         .text-muted.small.tags

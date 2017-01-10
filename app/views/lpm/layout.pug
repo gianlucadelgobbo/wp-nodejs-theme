@@ -109,19 +109,20 @@ html(lang='en')
 
 
 
-        form#nl_form.navbar-form.navbar-right(method='post', action='/signup')
-          input(type='hidden', name='u', value='83e33d9fb160a93c214e927ac')
-          input(type='hidden', name='id', value='6be13adfd8')
-          #nl_cnt.pull-right
+        form#subscribe.navbar-form.navbar-right(method='post', action='/signup')
+          .pull-right
             .input-group.input-group-sm
-              input#b_email.form-control(autocomplete='off', type='text', name='b_email', placeholder='your email')
+              input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
               label.sr-only(for='email') Email
               span.input-group-btn
-                button#invia.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
-            //input(type='hidden', name='lang', value='EN')
-            input(type='hidden', name='group[2161][2]', value='1')
-          #nl_res.hide
-    .cnt
+                button.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
+            .loading.hide
+              !="Loading..."
+            .alert.hide
+              button(type="button",class="close",onclick="jQuery('#subscribe').show();jQuery('#subscribe_res').hide();")!="×"
+              span.msg
+
+  .cnt
       .container-fluid(itemscope='', itemtype='http://schema.org/Event')
         header
           .row
@@ -136,7 +137,7 @@ html(lang='en')
                     #next-edition!=meta_data.edition['wpcf-sub-title']
                   #site-description-cnt
                     #site-description=meta_data.meta['description']
-                  include ../_common/inc_dateplace_meta
+                  include ../_common/inc_eventdateplace_meta
         nav.hidden-xs(role='navigation')
           ul.pulsa
             each menu in meta_data.menu
@@ -184,89 +185,8 @@ html(lang='en')
         .sr-onlye
           | Author:
           a(href='https://plus.google.com/+GianlucaDelGobbo?rel=author', rel='author') Gianluca Del Gobbo
-        footer.navbar.navbar-inverse.footer
-          .navbar-inner
-            .row.links-horizontal
-              .col-sm-2
-                a(href='/', title=meta_data.meta['name'])
-                  img.media-object(src=meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
-              .col-sm-2.hidden-print
-                .margin-top-xs
-                  p Corporate
-                  ul#menu-navbar-menu.nav.nav-pills.nav-stacked
-                    li#menu-item-12125.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12125
-                      a(href='/idea/') Idea
-                    li#menu-item-12128.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12128
-                      a(href='/timeline/') Timeline
-                    li#menu-item-13599.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-13599
-                      a(href='/map/') Map
-                    li#menu-item-12126.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12126
-                      a(href='/gallery/') Gallery
-                    li#menu-item-12140.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-12140
-                      a(href='#') Reports
-                    li#menu-item-14988.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-14988
-                      a(href='/the-app/') The App
-                    li#menu-item-12124.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12124
-                      a(href='/press/') Press
-                    li#menu-item-12127.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12127
-                      a(href='/contacts/') Contacts
-                    li#menu-item-12137.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-12137
-                      a(href='/shop/') Shop
-                    li#menu-item-14810.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-14810
-                      a(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
-              .col-sm-2.hidden-print
-                .margin-top-xs
-                  p Projects
-                  include ../_common/inc_projects
-              .col-sm-3.hidden-print
-              .col-sm-3.hidden-print
-                .pull-right
-                  .margin-top-xs
-                    p Search
-                    include ../_common/inc_search
-                br.clearfix
-                br
-            br
-            .row
-              .col-sm-6
-                .footer-title
-                  !="NO © " + new Date().getFullYear() + " " + meta_data.meta.name + " "
-                  a(href='mailto:info@liveperformersmeeting.net', title='Write a message') info@liveperformersmeeting.net
-              .col-sm-5.pull-right
-                .footer-title.pull-right
-                  a.tooltips(data-toggle='tooltip', href='http://flyer.it/', target='_blank', title='This website is made by Flyer Communication')
-                    img(src='/_common/images/logo_flyer.png', alt='Logo Flyer Communication')
-      #twCnt
-        div
-          #sc
-            a(href='http://flxer.net', title='FLxER network', target='_blank')
-              img(alt='FLxER network icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_50_flxer.png')
-            a(href='http://twitter.com/liveperformers', title='Twitter Profile', target='_blank')
-              img(alt='Twitter Profile icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_31_twitter.png')
-            a(href='http://www.facebook.com/LPM.LivePerformersMeeting', title='Facebook Page', target='_blank')
-              img(alt='Facebook Page icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_30_facebook.png')
-            a(href='http://www.facebook.com/group.php?gid=10387985422', title='Facebook Group', target='_blank')
-              img(alt='Facebook Group icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_51_facebook_group.png')
-            a(href='http://vimeo.com/lpm', title='Vimeo', target='_blank')
-              img(alt='Vimeo icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_34_vimeo.png')
-            a(href='https://plus.google.com/+Liveperformersmeeting', title='Google Plus', target='_blank', rel='publisher')
-              img(alt='Google Plus icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_02_google_plus.png')
-            a(href='http://www.youtube.com/LPMvideoreport', title='YouTube', target='_blank')
-              img(alt='YouTube icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_22_youtube.png')
-            a(href='http://apps.facebook.com/lpmgallery', title='Facebook App', target='_blank')
-              img(alt='Facebook App icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_52_facebook_app.png')
-            a(href='/feed', title='RSS Feed', target='_blank')
-              img(alt='RSS Feed icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_37_rss.png')
-  .modal.modal-fullscreen.fade#cntModal(tabindex='-1', role='dialog', aria-labelledby='gridSystemModalLabel')
-    .modal-dialog(role='document')
-      .modal-content
-        .modal-header
-          button.close(type='button', data-dismiss='modal', aria-label='Close')
-            span(aria-hidden='true') ×
-          h4#gridSystemModalLabel.modal-title Portfolio
-        .modal-body
-          .loading Loading...
-  #tw
+      include includes/footer
+  include ../_common/modal-full
   script(type='text/javascript', src='/_common/js/jquery.min.js')
   script(type='text/javascript', src='/_common/js/bootstrap.min.js')
   script(type='text/javascript', src='/_common/js/jquery.isotope.min.js')

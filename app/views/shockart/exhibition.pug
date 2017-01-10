@@ -6,7 +6,8 @@ block content
         header
           h1.entry-title(itemprop='name')=result.post_title
         .rientro
-          include ../_common/inc_dateplace
+          include ../_common/inc_type_hidden
+          include ../_common/inc_eventdateplace
           div(itemprop='description')!=result.post_content
           include ../_common/inc_videos
           include ../_common/inc_websites

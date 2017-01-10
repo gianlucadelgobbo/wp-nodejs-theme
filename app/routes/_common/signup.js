@@ -1,24 +1,51 @@
-var request = require('superagent');
+var request = require('request');
 
-var mailchimpInstance   = 'us7',
-    listUniqueId        = '6be13adfd8',
-    mailchimpApiKey     = 'd6f941b09ba398bb520ffbb594e48054-us7';
+exports.get = function(req, res){
+  request({
+      method: 'GET',
+      //url: 'https://us7.api.mailchimp.com/3.0/lists/6be13adfd8/interest-categories/94dbbdfc87/interests', // Topics
+      url: 'https://us7.api.mailchimp.com/3.0/lists/6be13adfd8/interest-categories/e9d31d255c/interests', // Private
+      headers: {
+        Authorization: 'apikey b7105e27ad52b156f2bd004161a173b4-us7',
+        'Content-Type': 'application/json'
+      }
+    },
+    function(error, response, body){
+      if(error) {
+        res.send(error);
+      } else {
+        var bodyObj = JSON.parse(body);
+        res.send(bodyObj);
+      }
+    }
+  );
+};
 
-exports.post = function post(req, res) {
-  request
-      .post('https://' + mailchimpInstance + '.api.mailchimp.com/3.0/lists/' + listUniqueId + '/members/')
-      .set('Content-Type', 'application/json;charset=utf-8')
-      .set('Authorization', 'Basic ' + new Buffer('any:' + mailchimpApiKey ).toString('base64'))
-      .send({
-        'email_address': req.body.email,
-        'status': 'subscribed'
-      })
-      .end(function(err, response) {
-        console.log(response);
-        if (response.status < 300 || (response.status === 400 && response.body.title === "Member Exists")) {
-          res.send('Signed Up!');
-        } else {
-          res.send('Sign Up Failed :(');
+exports.post = function(req, res){
+  request({
+      method: 'POST',
+      url: 'https://us7.api.mailchimp.com/3.0/lists/6be13adfd8/members',
+      body: JSON.stringify({
+        "email_address": req.body.email,
+        "status": "subscribed",
+        "double_optin": false,
+        "interests" :{
+          "c7850d049e" : true, // Topic livevisuals
+          "62930ecf78" : true // Private LPMsite
         }
-      });
-}
+      }),
+      headers: {
+        Authorization: 'apikey b7105e27ad52b156f2bd004161a173b4-us7',
+        'Content-Type': 'application/json'
+      }
+    },
+    function(error, response, body){
+      if(error) {
+        res.send(error);
+      } else {
+        var bodyObj = JSON.parse(body);
+        res.send(bodyObj);
+      }
+    }
+  );
+};

@@ -18,7 +18,7 @@ module.exports = function(app) {
   app.get('/events/', eventsRoutes.getAll);
   app.get('/events/(:event)', eventsRoutes.get);
   app.get('/news/', newsRoutes.getAll);
-  app.get('/news/(:news)', newsRoutes.get);
+  app.get('/news/(:new)', newsRoutes.get);
   app.get('/editions/', editionsRoutes.getAll);
   app.get('/editions/(:edition)', editionsRoutes.get);
   app.get('/editions/(:edition)/artists', editionsRoutes.getArtist);
@@ -36,6 +36,7 @@ module.exports = function(app) {
   app.get('/map', timelinemapRoutes.getMap);
   //app.get('/map/(:year)/', timelinemapRoutes.getTimeline);
   //app.post('/timeline/(:year)/', pagesRoutes.postTimeline);
+  //app.get('/signup', signupRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
   app.post('/signup', signupRoutes.post);
   app.get('*', pagesRoutes.get404);

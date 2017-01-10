@@ -7,6 +7,7 @@ block content
           header
             h1.entry-title(itemprop='name')=data.post_title
           .rientro
+            include ../_common/inc_type_hidden
             div(itemprop='description')!=data.post_content
             .row
               .col-md-6

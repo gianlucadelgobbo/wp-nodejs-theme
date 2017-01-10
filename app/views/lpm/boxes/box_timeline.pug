@@ -3,7 +3,7 @@ div(class="rowTimeline rowTimeline-"+result.type, itemscope, itemtype='http://sc
     div(class="col-sm-"+(result.type=="edition" ? 3 :4))
       .timelineDate
         .dates
-          include ../../_common/inc_date
+          include ../../_common/inc_eventdate
         .places
           if result['wpcf-location']
             include ../../_common/inc_place

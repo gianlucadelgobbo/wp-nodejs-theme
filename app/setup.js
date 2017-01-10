@@ -32,5 +32,7 @@ module.exports = function(app, exp) {
     console.log("env "+env);
     app.set('view cache', true);
     //app.set('view options', { doctype : 'html', pretty : true });
+  } else {
+    //app.use(exp.errorHandler());
   }
 };

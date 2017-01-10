@@ -1,6 +1,36 @@
 var $container;
 var mySvgPanZoom;
 $(function() {
+  $("#subscribe .close").click(function(event) {
+    $("#subscribe .input-group").removeClass("hide");
+    $('#subscribe .loading').addClass("hide");
+    $('#subscribe .alert').addClass("hide");
+    $("#subscribe .alert").removeClass("alert-danger");
+    $("#subscribe .alert").removeClass("alert-success");
+  });
+  $("#subscribe").submit(function(event) {
+    event.preventDefault();
+    $("#subscribe .input-group").addClass("hide");
+    $('#subscribe .loading').removeClass("hide");
+    jQuery.ajax({
+      method: "POST",
+      url: "/signup",
+      data: $("#subscribe").serialize()
+    }).done(function (data) {
+      if (data.id) {
+        $("#subscribe .alert").addClass("alert-success");
+        $('#subscribe .alert .msg').html("<strong>Congratulations!</strong> Your subscription was successful&nbsp;&nbsp;&nbsp;");
+      } else {
+        $("#subscribe .alert").addClass("alert-danger");
+        $('#subscribe .alert .msg').html("<strong>Warning!</strong> "+data.title+"&nbsp;&nbsp;&nbsp;");
+      }
+      $('#subscribe .loading').addClass("hide");
+      $('#subscribe .alert').removeClass("hide");
+
+      console.log(data);
+    });
+    return false;
+  });
 	/*jQuery("#loadmore").click(function() {
 		jQuery.ajax({
 			method: "POST",
@@ -32,7 +62,6 @@ $(function() {
 			console.log('unaff');
 			jQuery(".navbar-brand").addClass( 'visible-xs' );
 		} );
-
 	}
 	/*jQuery('a[href*=#]:not([href=#])').click(function() {
 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {

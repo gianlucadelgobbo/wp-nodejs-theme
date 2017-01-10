@@ -78,7 +78,7 @@ $(function() {
     history.pushState({}, title, url);
     $(document).prop('title',title);
     $( "#cntModal .modal-body" ).load( url+" #result" , function(response) {
-      /*console.log($(response).find(".entry-title").html());*/
+      $( "#cntModal .modal-title" ).html($(response).find(".type").html())
     });
 
     return false;

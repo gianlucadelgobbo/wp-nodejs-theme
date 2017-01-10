@@ -57,13 +57,8 @@ h1 ,.h1like{margin-top: 0;margin-bottom:10px;}
   background: rgba(255, 255, 255, .5);
   color: #000;
   padding: 5px 10px;
-  font-size: font-size: 15px;
+  font-size: 15px;
   text-transform: uppercase;
-}
-h3 {
-  background-color: #3FA9F5;
-  color: #FFFFFF;
-  padding: 10px;
 }
 .caption-soldout {
   position: absolute;
@@ -75,7 +70,7 @@ h3 {
   transform-origin: top left;
   width: 200px;
   text-align: center;
-  background-color: #FF6103;
+  background-color: #FF0000;
   font-weight: bold;
   z-index: 1;
   font-size: 20px;
@@ -120,8 +115,8 @@ h3{clear: right !important;  margin:0 0 10px 0; padding:10px; position: relative
   .btn-group > .btn{float: left;}
   .btn-group a{width:auto;}
   .navbar-edition {
-    background-color: none;
-    border-color: none;
+    background-color: unset;
+    border-color: unset;
   }
 }
 .popup h4{margin: 0;}
@@ -175,10 +170,10 @@ footer.navbar-inverse .navbar-inner {
 }
 */
 /* TWITTER */
-#twCnt {position:fixed; bottom:0;width: 100%;z-index:9999;background-color: #000;padding:2px 0;}
+#twCnt {position:fixed; bottom:0;width: 100%;z-index:9999;background-color: #000;padding:2px 15px 2px 5px;}
 #tw {overflow:hidden;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative;}
 #tw .info{display:none;}
-#sc{background-color: #000000;}
+#sc{background-color: #000000;text-align: right;}
 #sc a {padding:5px 3px 4px 3px;display:inline-block;}
 #tw #twitcker-bar div.box a {color: #999999;text-shadow:none;}
 #tw #twitcker-bar a.logo {top:2px;}
@@ -187,7 +182,14 @@ footer.navbar-inverse .navbar-inner {
 #twitcker-bar div.box {background:none;}
 @media (min-width: 768px) {
   #tw {overflow:hidden;margin-right:272px;}
-  #sc{float: right;width:272px;}
+  #sc{
+    /* float: right; */
+    width: 272px;
+    position: absolute;
+    right: 13px;
+    top: 1px;
+
+  }
 }
 /* END TWITTER */
 
@@ -221,9 +223,6 @@ a:hover img {
 }
 .box-list {
   padding: 15px;
-}
-.list_title {
-  margin-top: 0;
 }
 /* BOX EVENT */
 .Event .supText{
