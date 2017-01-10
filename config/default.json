@@ -132,9 +132,12 @@
     "router"        : "router_lpm",
     "accounts"      : {
       "newsletter"    : {
-        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8/members",
-        "apikey"        : "b7105e27ad52b156f2bd004161a173b4-us7",
-        "merge_fields"  : {}
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8",
+        "apikey"        : "b7ef93c564178a225881fce224bdce98-us7",
+        "interests"     : {
+          "c7850d049e" : true, // Topic livevisuals
+          "62930ecf78" : true // Private LPMsite
+        }
       },
       "gmail"         : {
         "user"            : "xxx",
