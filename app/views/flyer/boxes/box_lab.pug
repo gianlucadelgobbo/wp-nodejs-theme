@@ -1,12 +1,13 @@
-.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
-  .Lab(itemscope, itemtype='http://schema.org/CreativeWork')
+.boxItem(itemscope, itemprop="itemListElement", itemtype='http://schema.org/CreativeWork')
+  .Lab
     .row
       .col-xs-3
         .thumb-cnt
           a(itemprop='url', href=lang_preurl+'/portfolio/lab/'+result.slug+"/", rel='bookmark', title!=result.post_title)
-            img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+            img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='contentUrl')
       .col-xs-9
         .box-list
+          meta(itemprop="position" content=position+1)
           h3.list_title(itemprop='name')
             a(itemprop='url', href=lang_preurl+'/portfolio/lab/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
           if result.data_month

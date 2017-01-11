@@ -90,6 +90,7 @@ $(function() {
   });
   $('#cntModal').on('hidden.bs.modal', function (e) {
     $( "#cntModal .modal-body" ).html("<div class='loading'>Loading...</div>");
+    $( "#cntModal .modal-title" ).html("");
     history.pushState({}, onclose_title, onclose_url);
     $(document).prop('title',onclose_title);
   });

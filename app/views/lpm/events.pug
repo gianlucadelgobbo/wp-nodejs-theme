@@ -1,12 +1,12 @@
 extends layout
 block content
-  article.container#container(itemscope, itemtype='http://schema.org/ItemList')
+  article#container(itemscope, itemtype='http://schema.org/ItemList')
     header
       h1.entry-title
           span.pull-left=posttype.labels.name
           span.pull-right
             include ../_common/inc_share_span
     .row.isotope.results
-      each result in results
+      each result, position in results
         .col-md-4.col-sm-6.col.isotopeitem
           include boxes/box_event

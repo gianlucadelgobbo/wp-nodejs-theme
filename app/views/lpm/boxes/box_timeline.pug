@@ -1,14 +1,15 @@
-div(class="rowTimeline rowTimeline-"+result.type, itemscope, itemtype='http://schema.org/itemListElement')
-  .row(itemscope='', itemtype='http://schema.org/Event')
+div(class="rowTimeline rowTimeline-"+result.type, itemscope, itemprop="itemListElement", itemtype='http://schema.org/Event')
+  .row
     div(class="col-sm-"+(result.type=="edition" ? 3 :4))
       .timelineDate
         .dates
           include ../../_common/inc_eventdate
+          meta(itemprop="position" content=position+1)
         .places
           if result['wpcf-location']
             include ../../_common/inc_place
     div(class="col-sm-"+(result.type=="edition" ? 4 :2))
-      a(itemprop='image', itemscope, itemtype='https://schema.org/ImageObject', href='/events/' + result.slug, rel='bookmark', title!=result.post_title)
+      a(itemprop='contentUrl', href='/events/' + result.slug, rel='bookmark', title!=result.post_title)
         if result.featured
           img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='url')
     div(class="col-sm-"+(result.type=="edition" ? 3 :4))

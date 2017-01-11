@@ -1,5 +1,5 @@
-.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
-  .Video(itemscope, itemtype='http://schema.org/CreativeWork')
+.boxItem(itemscope, itemprop="itemListElement", itemtype='http://schema.org/CreativeWork')
+  .Video
     .thumb-cnt
       //.catlabel=result.type
       if result.video_thumbnail
@@ -8,13 +8,11 @@
 
       else
         a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/videos/'+result.slug+"/", rel='bookmark', title!=result.post_title)
-          img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+          img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='contentUrl')
     .box-list
       .box-list-cnt
-        if result.data_month
-          .text-muted
-            .dates
-                .date=result.data_month
+        meta(itemprop="position" content=position+1)
+        include ../../_common/inc_datemonth
         h3.list_title(itemprop='name')
           a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/videos/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
         .text-muted.small.excerpt

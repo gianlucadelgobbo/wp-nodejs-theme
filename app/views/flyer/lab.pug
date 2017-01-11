@@ -23,7 +23,7 @@ block content
           section(itemscope, itemtype="http://schema.org/itemList")
             h3.entry-title(itemprop="name")=auth_content.labels.name
             .row.isotope.results
-              each result in auth_content.posts
+              each result, position in auth_content.posts
                 if result.post_type == 'events'
                   .col-lg-3.col-md-12.col-sm-12.isotopeitem
                     include boxes/box_event

@@ -35,6 +35,6 @@
           li.menu-spacer-after.lang-it(class=meta_data["langSwitcher"]["it"] == meta_data['url'] ? 'active' : '')
             a(href=meta_data["langSwitcher"]["it"], hreflang='it', title='Italiano') IT
           li.menu-spacer-after.hidden-xs
-            a(href='#', title=global.__("Search")).flyer-search-opener
+            a#cntSearchButton(href="/search/")
               i.glyphicon.glyphicon-search
               .sr-only=global.__("Search")

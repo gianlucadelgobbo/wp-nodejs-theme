@@ -7,6 +7,9 @@
   width: 100%;
   color: #FFF;
 }
+.modal-header .close {
+  margin-top: 3px;
+}
 .close {
   color: #FFF;
   opacity: 1;
@@ -145,6 +148,35 @@ footer .socials {
 }
 .affix-top .navbar-nav>li:first-child{
   margin-left: -15px;
+}
+/* READ MORE */
+.read-more{
+  margin-top: 20px;
+}
+.read-more a:hover{
+  text-decoration: none;
+}
+.read-more a {
+  display: inline-block;
+  padding: 8px 15px;
+  border: 2px solid #DDD;
+  color: #000;
+  background-color: #FFF;
+}
+.read-more.inverse a {
+  color: #FFF;
+  background-color: #000;
+}
+.read-more a:hover {
+  background-color: #000;
+  border-color: #000;
+}
+.read-more.inverse a:hover {
+  background-color: #FFF;
+  border-color: #FFF;
+}
+.read-more .loading{
+  display: none;
 }
 
 .dateplace{

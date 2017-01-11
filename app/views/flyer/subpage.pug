@@ -30,7 +30,7 @@ block content
             - data = result
             - posts = result.posts
             if posts[0].post_type == "events"
-              each result, index in posts
+              each result, position in posts
                 if index < 10
                   include boxes/box_event
               .text-center.read-more
@@ -39,7 +39,7 @@ block content
                   !=" "
                   i.icon-right
             if posts[0].post_type == "web-and-mobile"
-              each result, index in posts
+              each result, position in posts
                 if index < 3
                   include boxes/box_web
               .text-center.read-more
@@ -48,7 +48,7 @@ block content
                   !=" "
                   i.icon-right
             if posts[0].post_type == "lab"
-              each result, index in posts
+              each result, position in posts
                 include boxes/box_lab
               .text-center.read-more
                 a(href=lang_preurl + '/portfolio/lab/')
@@ -56,7 +56,7 @@ block content
                   !=" "
                   i.icon-right
             if posts[0].post_type == "learning"
-              each result, index in posts
+              each result, position in posts
                 if index < 2
                   include boxes/box_learning
               .text-center.read-more

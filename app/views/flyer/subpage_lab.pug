@@ -15,6 +15,6 @@ block content
               include ../_common/inc_share
     .container
       h3=global.__("Portfolio")
-      each result in results.posts
+      each result, position in results.posts
         if box.post_type == "lab"
           include boxes/box_lab

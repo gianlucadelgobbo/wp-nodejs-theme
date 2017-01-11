@@ -1,6 +1,6 @@
 extends layout
 block content
-  article.container#container(itemscope, itemtype='http://schema.org/' + itemtype)
+  article#container(itemscope, itemtype='http://schema.org/' + itemtype)
     .row
       .col-sm-9
         header
@@ -14,15 +14,15 @@ block content
         if result.featured
           img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
     .timeline.results
-      each result in results
+      each result, position in results
         include boxes/box_timeline
-    .text-center.read-more
+    .text-center.read-more.inverse
       if (next)
         a(href='/timeline/' + next)
           !=global.__("Load more")
           !=" "
           i.icon-right
-        span.loading
+        span.loading.hide
           i.icon-spin3.animate-spin
           span.sr-only=" Loading..."
       else

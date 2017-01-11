@@ -45,7 +45,7 @@ block content
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_events.description
         .row.isotope.results
-          each result, index in results.events
+          each result, position in results.events
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>5 ? "hidden-lg visible-xl" : "")
               include boxes/box_event
         .text-center.read-more
@@ -64,7 +64,7 @@ block content
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_lab.description
         .row.isotope.results
-          each result, index in results.lab
+          each result, position in results.lab
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>5 ? "hidden-lg visible-xl" : "")
               include boxes/box_lab
         .text-center.read-more
@@ -83,7 +83,7 @@ block content
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_web.description
         .row.isotope.results
-          each result, index in results.web
+          each result, position in results.web
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>2 ? "hidden-lg visible-xl visible-md" : "")
               include boxes/box_web
         .text-center.read-more
@@ -100,9 +100,9 @@ block content
           .row
             .col-lg-6.col-lg-offset-2.col-md-12.col-sm-12
               h1.entry-title.boxItem=global.__("Learning")
-              each result in results.learning
+              each result, position in results.learning
                   include boxes/box_learning_home
-              .read-more
+              .read-more.inverse
                 a(href=lang_preurl+'/portfolio/learning/')
                   !=global.__("See all Learnings")
                   !=" "
@@ -118,7 +118,7 @@ block content
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_video.description
         .row
-          each result in results.videos
+          each result, position in results.videos
             .col-md-3.col-sm-12
               include boxes/box_video_home
         .text-center.read-more
@@ -137,7 +137,7 @@ block content
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_awards.description
         .row
-          each result, index in results.awards
+          each result, position in results.awards
             .col-xl-2.col-lg-3.col-md-3(class=(!index ? "col-xl-offset-2" : ""))
               include boxes/box_award
         .text-center.read-more
@@ -154,7 +154,7 @@ block content
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_news.description
         .row.isotope.results
-          each result, index in results.news
+          each result, position in results.news
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>2 ? "visible-md hidden-lg visible-xl" : "")
               include boxes/box_news
         .text-center.read-more

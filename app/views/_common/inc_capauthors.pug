@@ -14,7 +14,12 @@ if result.capauthors
       each capauthor in result.capauthors
         if capauthor.user_role == 'Customer'
           li(itemprop='sourceOrganization', itemscope, itemtype='http://schema.org/Person')
-            a(href='/customers/' + capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
+            a(href='/customers/' + capauthor.user_login, rel='author')
+              b(itemprop='name')=capauthor.display_name
+              !=" "
+              span(itemprop='jobTitle')=capauthor.user_role
+          li(itemprop='author', itemscope, itemtype='http://schema.org/Person')
+            a(href='/customers/' + capauthor.user_login, rel='author')
               b(itemprop='name')=capauthor.display_name
               !=" "
               span(itemprop='jobTitle')=capauthor.user_role
@@ -25,8 +30,11 @@ if result.capauthors
         !=" People"
       each capauthor in result.capauthors
         if capauthor.user_role != 'Customer'
-          li(itemprop='publisher')
-            a(href='/people/' + capauthor.user_login, rel='author', itemprop='author', itemscope, itemtype='http://schema.org/Person')
+          li.sr-only(itemprop='publisher', itemscope, itemtype='http://schema.org/Organization')
+            a(href='/people/' + capauthor.user_login, rel='author')
+              b(itemprop='name')=capauthor.display_name
+          li(itemprop='author', itemscope, itemtype='http://schema.org/Person')
+            a(href='/people/' + capauthor.user_login, rel='author')
               b(itemprop='name')=capauthor.display_name
               !=" "
               span(itemprop='jobTitle')=capauthor.user_role

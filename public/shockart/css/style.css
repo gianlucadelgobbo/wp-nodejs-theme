@@ -1,3 +1,60 @@
 footer a:hover {
   color:#73bd20;
 }
+.header {
+  padding: 20px 0 50px 0;
+}
+
+/* BOX EVENT */
+.Event .supText{
+  font-size: 11px;
+}
+.Event .text-muted {
+  color: #ccc;
+}
+.Event .list_title{
+  margin-top: 10px;
+  font-size: 20px;
+  color: #FFF;
+}
+.Event:hover .box-list{
+  opacity: 1;
+}
+.Event .box-list{
+  pointer-events: none;
+  position: absolute;
+  top:0;
+  background-color: #333;
+  height: 100%;
+  opacity: 0;
+  width: 100%;
+  overflow: hidden;
+  -webkit-transition: opacity .3s ease-out;
+  transition: opacity .3s ease-out;
+}
+.Event{
+  margin-bottom:30px;
+}
+.Event .box-list .text-center{
+  padding: 30px;
+}
+
+.Event .read-more-box{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  background-color: #333;
+  padding-bottom: 16px;
+  font-size: 20px;
+  color: #FFF;
+}
+
+/* BOX NEWS */
+.News .box-list{
+  padding: 10px;
+}
+
+.Edition .box-list{
+  padding: 10px;
+}

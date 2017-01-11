@@ -1,8 +1,8 @@
-.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
+.boxItem(itemscope, itemprop="itemListElement")
   .News(itemscope, itemtype='http://schema.org/Event')
     .thumb-cnt
       a.ajaxloader(itemprop='url', href='/extra/'+result.slug+"/", rel='bookmark', title!=result.post_title)
-        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='contentUrl')
     .box-list
       .box-list-cnt
         .text-muted

@@ -42,106 +42,19 @@ html(lang='en')
         background-image: url(#{meta_data.edition[ 'wpcf-background-image' ]});
       }
   body
-    nav#top-menu.navbar.navbar-inverse(role='navigation')
-      // Brand and toggle get grouped for better mobile display
-      .navbar-header
-        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-MainMenu')
-          span.sr-only Toggle navigation
-          i.icon-bar
-          i.icon-bar
-          i.icon-bar
-        a.navbar-brand(href='/', title=meta_data.meta['name'])
-          img.img-responsive(src=meta_data.meta.logo_bar, alt=meta_data.meta['name'])
-      // Collect the nav links, forms, and other content for toggling
-      #menu-MainMenu.collapse.navbar-collapse
-        ul.nav.navbar-nav
-          li
-            a(href='/idea/') Idea
-          li
-            a(href='/timeline/') Timeline
-          li
-            a(href='/map/') Map
-          li
-            a(href='/gallery/') Gallery
-          li
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              | Editions 
-              span.caret
-            ul.dropdown-menu(role='menu')
-              li
-                a(href='/editions/2016-amsterdam/') 2016 Amsterdam
-              li
-                a(href='/editions/2015-rome/') 2015 Rome
-              li
-                a(href='/editions/2014-eindhoven/') 2014 Eindhoven
-              li
-                a(href='/editions/2013-cape-town/') 2013 Cape Town
-              li
-                a(href='/editions/2013-rome/') 2013 Rome
-              li
-                a(href='/editions/2013-mex/') 2013 Mexico
-              li
-                a(href='/editions/2012-rome/') 2012 Rome
-              li
-                a(href='/editions/2011-minsk/') 2011 Minsk
-              li
-                a(href='/editions/2011-rome/') 2011 Rome
-              li
-                a(href='/editions/2010-rome/') 2010 Rome
-              li
-                a(href='/editions/2009-rome/') 2009 Rome
-              li
-                a(href='/editions/2008-mex/') 2008 Mexico
-              li
-                a(href='/editions/2008-rome/') 2008 Rome
-              li
-                a(href='/editions/2007-rome/') 2007 Rome
-              li
-                a(href='/editions/2006-rome/') 2006 Rome
-              li
-                a(href='/editions/2005-rome/') 2005 Rome
-              li
-                a(href='/editions/2004-rome/') 2004 Rome
-          li
-            a(href='/the-app/') The App
-          li
-            a(href='/press/') Press
-          li
-            a(href='/contacts/') Contacts
-          li
-            a(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
-          li
-            a#cntSearchButton(href="/search/")
-              i.glyphicon.glyphicon-search
-              .sr-only=global.__("Search")
-
-
-
-        form#subscribe.navbar-form.navbar-right(method='post', action='/signup')
-          .pull-right
-            .input-group.input-group-sm
-              input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
-              label.sr-only(for='email') Email
-              span.input-group-btn
-                button.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
-            .loading.hide
-              i.icon-spin3.animate-spin
-              span.sr-only=" Loading..."
-            .alert.hide
-              button(type="button",class="close",onclick="jQuery('#subscribe').show();jQuery('#subscribe_res').hide();")!="×"
-              span.msg
-
-  .cnt
-      .container-fluid(itemscope='', itemtype='http://schema.org/Event')
+    .cnt(itemscope, itemtype='http://schema.org/Event')
+      include includes/menu
+      div(class=meta_data['url'] == "/" ? "container-fluid" : "container")
         header
           .row
             .col-md-6
               #logo
-                a(href='/', title=meta_data.meta['name'])
-                  img.img-responsive(itemprop='image', src=meta_data.edition['wpcf-header-image'], alt=meta_data.meta['name'])
+                a(href='/', title=meta_data.meta['name']+" "+meta_data.edition['post_title'], itemprop='url')
+                  img.img-responsive(itemprop='image', src=meta_data.edition['wpcf-header-image'], alt=meta_data.meta['name']+" "+meta_data.edition['post_title'])
+                  .sr-only(itemprop='name')=meta_data.meta['name']+" "+meta_data.edition['post_title']
             .col-md-6
               .row
-                .col-md-12
+                .col-md-12(itemprop='description')
                   #next-edition-cnt
                     #next-edition!=meta_data.edition['wpcf-sub-title']
                   #site-description-cnt
@@ -186,15 +99,15 @@ html(lang='en')
                         li
                           a(href=child.permalink)=child.post_title
         br
-      #result
-        block content
-        .sr-onlye
-          | Author:
-          a(href='https://plus.google.com/+Liveperformersmeeting?rel=author', rel='author') LPM Live Performers Meeting
-        .sr-onlye
-          | Author:
-          a(href='https://plus.google.com/+GianlucaDelGobbo?rel=author', rel='author') Gianluca Del Gobbo
-      include includes/footer
+        #result
+          block content
+          .sr-onlye
+            | Author:
+            a(href='https://plus.google.com/+Liveperformersmeeting?rel=author', rel='author') LPM Live Performers Meeting
+          .sr-onlye
+            | Author:
+            a(href='https://plus.google.com/+GianlucaDelGobbo?rel=author', rel='author') Gianluca Del Gobbo
+        include includes/footer
   include ../_common/modal-full
   include ../_common/modal-search
   script(type='text/javascript', src='/_common/js/jquery.min.js')

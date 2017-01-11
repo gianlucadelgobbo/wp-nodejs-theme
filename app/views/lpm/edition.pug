@@ -1,11 +1,11 @@
 extends layout
 block content
-  article.container#container(itemscope, itemtype='http://schema.org/Event')
+  article#container
     if result.post_content!=""
       .row
         .col-sm-9
           header
-            h1.entry-title(itemprop='name')=meta_data.meta.title
+            h1.entry-title(itemprop='name')=result.post_title
           .rientro
             //include ../_common/inc_dateplace
             div(itemprop='description')!=result.post_content

@@ -264,6 +264,10 @@ a:hover img {
   color: #FFF;
 }
 
+/* BOX NEWS */
+.News .box-list{
+  padding: 10px;
+}
 /*
 ul.lists .media{margin-bottom: 5px;}
 ul.lists .media h2{}

@@ -1,8 +1,12 @@
-.boxItem(itemscope='', itemtype='http://schema.org/itemListElement')
-  .Edition(itemscope='', itemtype='http://schema.org/Event')
-    .thumb-cnt
-      a(itemprop='url', href='/editions/'+result.slug+"/", rel='bookmark', title!=result.title.rendered)
-        img.img-responsive(src=result.featured.thumbnail, alt!='Image for: '+result.title.rendered, itemprop='image', itemscope='', itemtype='https://schema.org/ImageObject')
+.boxItem(itemprop="itemListElement", itemscope, itemtype='http://schema.org/Event')
+  meta(itemprop="position" content=position + 1)
+  .Edition
+    .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+
+      a(href='/editions/'+result.slug+"/", rel='bookmark', title!=result.title.rendered)
+        img.img-responsive(src=result.featured.thumbnail, alt!='Image for: '+result.title.rendered, itemprop='url')
+        meta(itemprop="width" content="480")
+        meta(itemprop="height" content="270")
     .box-list
       .box-list-cnt
         .text-muted
@@ -13,6 +17,6 @@
           include ../../_common/inc_place
         .text-muted.small.excerpt
           if result.excerpt && result.excerpt.rendered
-            div(itemprop='headline')
+            div(itemprop='description')
               p!=result.excerpt.rendered
           span.sr-only(itemprop='organizer')

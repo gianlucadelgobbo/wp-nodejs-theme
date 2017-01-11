@@ -1,5 +1,5 @@
 if result.data_month
   .text-muted
     .dates
-      .date=result.data_month
+      .dateheadline(itemprop="headline")=result.data_month
       meta(itemprop="datePublished", content=result.datePublished)

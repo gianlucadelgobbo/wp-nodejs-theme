@@ -1,14 +1,20 @@
-.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
-  .News(itemscope, itemtype='http://schema.org/Article')
-    .thumb-cnt
-      a.ajaxloader(itemprop='url', href='/news/'+result.slug+"/", rel='bookmark', title!=result.post_title)
-        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/Article")
+  meta(itemprop="position" content=position+1)
+  .News
+    .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+
+      a.ajaxloader(href='/news/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='url')
+        meta(itemprop="width" content="480")
+        meta(itemprop="height" content="270")
     .box-list
       .box-list-cnt
         include ../../_common/inc_datemonth
-        h3.list_title(itemprop='name')
+        h3.list_title
           a.ajaxloader(itemprop='url', href='/news/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
         .text-muted.small.excerpt
           if result.excerpt && result.excerpt.rendered
-            div(itemprop='headline')
+            div(itemprop='description')
               p!=result.excerpt.rendered
+        .sr-only
+          include ../../_common/inc_capauthors

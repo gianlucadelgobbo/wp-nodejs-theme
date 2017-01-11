@@ -26,7 +26,7 @@ html(lang='en')
     link(rel='apple-touch-icon', sizes='152x152', href=meta_data.meta['icon152'])
     // CSS
 
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
+    link(rel='stylesheet', href='/_common/css/fontello.css', type='text/css', media='all')
     if include_gallery
       link(rel='stylesheet', href='/_common/css/socialGalleryPluginLite.css', type='text/css', media='all')
     link(rel='stylesheet', href='/_common/css/cookielawinfo.css', type='text/css', media='all')
@@ -49,10 +49,11 @@ html(lang='en')
         block content
       include includes/footer
     include ../_common/modal-full
+    include ../_common/modal-search
 
     script(type='text/javascript', src='/_common/js/jquery.min.js')
     script(type='text/javascript', src='/_common/js/bootstrap.min.js')
-    script(type='text/javascript', src='/_common/js/jquery.isotope.results.min.js')
+    script(type='text/javascript', src='/_common/js/jquery.isotope.min.js')
     script(type='text/javascript', src='/_common/js/imagesloaded.pkgd.min.js')
     include ../_common/inc_cookielawinfo
 

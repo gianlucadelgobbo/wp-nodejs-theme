@@ -1,26 +1,26 @@
 extends layout
 block content
-  article.container-fluid#container(itemscope, itemtype='http://schema.org/Event')
+  section#container
     .row
-      .col-lg-3.col-md-4.col-sm-6
-        h1.entry-title.boxItem News
-        each result in results.news
+      .col-lg-3.col-md-4.col-sm-6(itemscope, itemtype='http://schema.org/ItemList')
+        h1.entry-title.boxItem(itemprop="name") News
+        each result, position in results.news
           include boxes/box_news
         .text-right.boxItem
           a.btn.btn-primary(href="/news/") See all News
-      .col-lg-6.col-md-4.col-sm-6
-        h1.entry-title.boxItem Satellite Events
+      .col-lg-6.col-md-4.col-sm-6(itemscope, itemtype='http://schema.org/ItemList')
+        h1.entry-title.boxItem(itemprop="name") Satellite Events
         .row.isotope.results
-          each result in results.events
+          each result, position in results.events
             .col-lg-6.col-md-12.col-sm-12.isotopeitem
               include boxes/box_event
         .text-right.boxItem
           a.btn.btn-primary(href="/timeline/") See all in a Timeline
           !="&nbsp;&nbsp;"
           a.btn.btn-primary(href="/map/") See all in a Map
-      .col-lg-3.col-md-4.col-sm-6
-        h1.entry-title.boxItem Editions
-        each result in results.editions
+      .col-lg-3.col-md-4.col-sm-6(itemscope, itemtype='http://schema.org/ItemList')
+        h1.entry-title.boxItem(itemprop="name") Editions
+        each result, position in results.editions
           include boxes/box_edition
         .text-right.boxItem
           a.btn.btn-primary(href="/timeline/") See all in a Timeline

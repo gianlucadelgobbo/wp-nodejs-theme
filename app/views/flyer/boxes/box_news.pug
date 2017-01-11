@@ -1,11 +1,12 @@
-.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
-  .News(itemscope, itemtype='http://schema.org/Article')
+.boxItem(itemscope, itemprop="itemListElement", itemtype='http://schema.org/Article')
+  .News
     .thumb-cnt
       a.ajaxloader(itemprop='url', href='/extra/'+result.slug+"/", rel='bookmark', title!=result.post_title)
-        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
+        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='contentUrl')
     .box-list
       .box-list-cnt
         include ../../_common/inc_datemonth
+        meta(itemprop="position" content=position+1)
         h3.list_title(itemprop='name')
           a.ajaxloader(itemprop='url', href='/extra/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
         .text-muted.small.excerpt

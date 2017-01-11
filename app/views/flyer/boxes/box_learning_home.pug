@@ -1,5 +1,5 @@
-.boxItem(itemscope, itemtype='http://schema.org/itemListElement')
-  .Learning(itemscope, itemtype='http://schema.org/CreativeWork')
+.boxItem(itemscope, itemprop="itemListElement", itemtype='http://schema.org/CreativeWork')
+  .Learning
     if result["wpcf-schedule"]
       .text-muted
         .dates
@@ -7,6 +7,7 @@
             !=global.__("Programming")
             !=": "
             b=result["wpcf-schedule"]
+    meta(itemprop="position" content=position+1)
     h3.list_title(itemprop='name')
       a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/learning/' + result.slug+"/", rel='bookmark', title=result.post_title)
         !=result.post_title+" "

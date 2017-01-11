@@ -578,6 +578,11 @@ a:hover img {
   margin-top: 0;
 }
 
+/* BOX NEWS */
+.News .box-list{
+  padding: 10px;
+}
+
 /* BOX AWARDS */
 
 .Award .img-circle {
@@ -637,21 +642,7 @@ a:hover img {
 .home .read-more,#container > .read-more{
   margin-top: 20px;
 }
-.home .read-more a:hover,#container > .read-more a:hover{
-  text-decoration: none;
-}
-.read-more a {
-  display: inline-block;
-  padding: 8px 15px;
-  border: 2px solid #DDD;
-  background-color: #FFF;
-}
-.read-more a:hover {
-  background-color: #000;
-}
-#container > .read-more .loading{
-  display: none;
-}
+
 
 
 
@@ -683,7 +674,8 @@ a:hover img {
 .main-image{
   margin-bottom: 30px;
 }
-footer a:hover {
+
+a:hover, .read-more.inverse a:hover {
   color:#f0ad4e;
 }
 
@@ -732,7 +724,6 @@ footer a:hover {
 }
 
 .play-cnt {
-  z-index: 2;
   position: absolute;
   top: 50%;
   left: 50%;

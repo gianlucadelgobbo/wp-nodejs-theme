@@ -10,7 +10,7 @@ block content
               div(itemprop="description")!=posttype.description
               include ../_common/inc_share
       .row.isotope.results
-        each result in results
+        each result, position in results
           .col-lg-3.col-md-6.col-sm-6.col-xs-12.isotopeitem
             include boxes/box_award
       include ../_common/inc_pagination

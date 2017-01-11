@@ -1,9 +1,10 @@
-div(itemprop=itemprop, itemscope, itemtype='http://schema.org/Person')
+div(itemprop="itemListElement", itemscope, itemtype='http://schema.org/Person')
   .row
     .col-sm-4
       a(itemprop='url', href='/'+author_base+'/'+result.data.user_nicename+'/', rel='bookmark', title='Logo: '+result.data.display_name)
         img.img-responsive(alt='Logo: '+result.data.display_name, itemprop="image", itemscope, itemtype='https://schema.org/ImageObject', src=result.data.img)
     .col-sm-8
+      meta(itemprop="position" content=position+1)
       h5.media-heading
         a(itemprop='url', href='/'+author_base+'/'+result.data.user_nicename+'/')
           span(itemprop='name')=result.data.display_name
