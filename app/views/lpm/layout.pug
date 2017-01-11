@@ -26,7 +26,8 @@ html(lang='en')
     link(rel='apple-touch-icon', sizes='152x152', href=meta_data.meta['icon152'])
     // CSS
 
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
+    //link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=4.5.0', type='text/css', media='all')
+    link(rel='stylesheet', href='/_common/css/fontello.css', type='text/css', media='all')
     if include_gallery
       link(rel='stylesheet', href='/_common/css/socialGalleryPluginLite.css', type='text/css', media='all')
     link(rel='stylesheet', href='/_common/css/cookielawinfo.css', type='text/css', media='all')
@@ -46,9 +47,9 @@ html(lang='en')
       .navbar-header
         button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-MainMenu')
           span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
+          i.icon-bar
+          i.icon-bar
+          i.icon-bar
         a.navbar-brand(href='/', title=meta_data.meta['name'])
           img.img-responsive(src=meta_data.meta.logo_bar, alt=meta_data.meta['name'])
       // Collect the nav links, forms, and other content for toggling
@@ -97,6 +98,10 @@ html(lang='en')
                 a(href='/editions/2007-rome/') 2007 Rome
               li
                 a(href='/editions/2006-rome/') 2006 Rome
+              li
+                a(href='/editions/2005-rome/') 2005 Rome
+              li
+                a(href='/editions/2004-rome/') 2004 Rome
           li
             a(href='/the-app/') The App
           li
@@ -105,7 +110,10 @@ html(lang='en')
             a(href='/contacts/') Contacts
           li
             a(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
-
+          li
+            a#cntSearchButton(href="/search/")
+              i.glyphicon.glyphicon-search
+              .sr-only=global.__("Search")
 
 
 
@@ -117,7 +125,8 @@ html(lang='en')
               span.input-group-btn
                 button.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
             .loading.hide
-              !="Loading..."
+              i.icon-spin3.animate-spin
+              span.sr-only=" Loading..."
             .alert.hide
               button(type="button",class="close",onclick="jQuery('#subscribe').show();jQuery('#subscribe_res').hide();")!="×"
               span.msg
@@ -159,9 +168,9 @@ html(lang='en')
           .navbar-header
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')
               span.sr-only Toggle navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
+              i.icon-bar
+              i.icon-bar
+              i.icon-bar
             a.navbar-brand(href='')
           #menu-edition-menu.collapse.navbar-collapse
             // Collect the nav links, forms, and other content for toggling
@@ -187,6 +196,7 @@ html(lang='en')
           a(href='https://plus.google.com/+GianlucaDelGobbo?rel=author', rel='author') Gianluca Del Gobbo
       include includes/footer
   include ../_common/modal-full
+  include ../_common/modal-search
   script(type='text/javascript', src='/_common/js/jquery.min.js')
   script(type='text/javascript', src='/_common/js/bootstrap.min.js')
   script(type='text/javascript', src='/_common/js/jquery.isotope.min.js')

@@ -3,7 +3,7 @@
     .thumb-cnt
       a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/videos/' + result.slug + "/", rel='bookmark', title!=result.post_title)
         span.play-cnt
-          i.fa.fa-play
+          i.icon-play
         img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': ' + result.post_title, itemprop='image', itemscope, itemtype='https://schema.org/ImageObject')
       //.embed-responsive.embed-responsive-16by9
         iframe.embed-responsive-item(src=result.video_thumbnail ,webkitAllowFullScreen="webkitAllowFullScreen", mozallowfullscreen="mozallowfullscreen", allowFullScreen="allowFullScreen")

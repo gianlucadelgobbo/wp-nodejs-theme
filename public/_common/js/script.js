@@ -52,7 +52,8 @@ function infiniteScroll(t) {
 
 $(function() {
   if (typeof(cx) !== "undefined") {
-    jQuery(".rientro  .searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
+    console.log("append gcse:searchresults-only")
+    jQuery(".rientro.searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
     var gcse = document.createElement('script');
     gcse.type = 'text/javascript';
     gcse.async = true;
@@ -67,6 +68,10 @@ $(function() {
       itemSelector: 'div.isotopeitem',
       masonry: {}
     });
+  });
+  $("#cntSearchButton").click(function(event) {
+    $('#cntSearch').modal();
+    event.preventDefault();
   });
   $(".ajaxloader").click(function() {
     var options = {};

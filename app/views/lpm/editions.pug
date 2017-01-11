@@ -1,8 +1,13 @@
 extends layout
 block content
-	article#container(itemscope, itemtype='http://schema.org/Event')
-		.row
-			each result in results
-				.col-lg-3.col-md-4.col-sm-6.col
-					//pre=JSON.stringify(box)
-					include boxes/box_edition
+  article.container#container(itemscope, itemtype='http://schema.org/Event')
+    header
+      h1.entry-title
+        span.pull-left=global.__("Editions")
+        span.pull-right
+          include ../_common/inc_share_span
+    .row.isotope
+      each result in results
+        .col-md-4.col-sm-6.col.isotopeitem
+          //pre=JSON.stringify(box)
+          include boxes/box_edition

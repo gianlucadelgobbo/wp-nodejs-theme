@@ -37,7 +37,7 @@ block content
                 a(href=lang_preurl + '/portfolio/live-visuals/')
                   !=global.__("See all Events")
                   !=" "
-                  span.fa.fa-long-arrow-right
+                  i.icon-right
             if posts[0].post_type == "web-and-mobile"
               each result, index in posts
                 if index < 3
@@ -46,7 +46,7 @@ block content
                 a(href=lang_preurl + '/portfolio/web-and-mobile/')
                   !=global.__("See all Web & Mobile")
                   !=" "
-                  span.fa.fa-long-arrow-right
+                  i.icon-right
             if posts[0].post_type == "lab"
               each result, index in posts
                 include boxes/box_lab
@@ -54,7 +54,7 @@ block content
                 a(href=lang_preurl + '/portfolio/lab/')
                   !=global.__("See all Lab")
                   !=" "
-                  span.fa.fa-long-arrow-right
+                  i.icon-right
             if posts[0].post_type == "learning"
               each result, index in posts
                 if index < 2
@@ -63,7 +63,7 @@ block content
                 a(href=lang_preurl + '/portfolio/learning/')
                   !=global.__("See all Learning")
                   !=" "
-                  span.fa.fa-long-arrow-right
+                  i.icon-right
             - result = data
 
 

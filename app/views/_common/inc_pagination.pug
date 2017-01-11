@@ -6,7 +6,9 @@ if (results._paging && results._paging.totalPages)
       a(href=lang_preurl + '/portfolio/'+baseurl+'/page/' + nextpage)
         !=global.__("Load more")
         !=" "
-        span.fa.fa-long-arrow-right
-      span.loading Loading...
+        i.icon-right
+      span.loading
+        i.icon-spin3.animate-spin
+        span.sr-only=" Loading..."
     else
       .end=global.__("You reached the end")
