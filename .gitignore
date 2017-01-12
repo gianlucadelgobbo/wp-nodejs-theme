@@ -5,3 +5,6 @@ bower_components
 files
 config/default.json
 tmp/*
+err.log
+out.log
+forever.log
