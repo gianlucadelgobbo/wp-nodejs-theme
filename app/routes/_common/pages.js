@@ -21,7 +21,6 @@ exports.getSubpage = function getSubpage(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPage(req, function( result ) {
       if(result['ID']) {
-        console.log(global.getLocale());
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
         if (result.featured) meta_data.meta['image_src'] = result.featured.full;
         if (result.post_excerpt) {
@@ -31,7 +30,6 @@ exports.getSubpage = function getSubpage(req, res) {
         }
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].pugpage ? config.sez.pages.conf[req.params.subpage].pugpage : config.sez.pages.conf.default.subpage);
         console.log("pug");
-        console.log(pug);
         var itemtype = config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].itemtype ? config.sez.pages.conf[req.params.subpage].itemtype : config.sez.pages.conf.default.itemtype;
         console.log(itemtype);
         res.render(pug, {result: result, meta_data:meta_data, itemtype:itemtype,q:req.query.q,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});

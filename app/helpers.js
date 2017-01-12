@@ -56,7 +56,6 @@ exports.getPage = function getPage(req,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/mypages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.page).get(function( err, data ) {
     console.log("//// Page" + req.params.page);
-    //console.log(data);
     if (!err && data) {
       if (data) data = fnz.fixResult(data);
       if (data.posts){
@@ -66,6 +65,7 @@ exports.getPage = function getPage(req,callback) {
     } else {
       data = {};
     }
+    console.log(data.posts);
     callback(data);
   });
 };
@@ -587,7 +587,6 @@ exports.getMetaData = function getMetaData(req,callback) {
   global.setLocale(config.current_lang);
   var moment = require('moment');
   require('moment/locale/'+(config.current_lang=="en" ? "en-gb" : config.current_lang));
-  console.log(moment.locale());
   if (config.last_edition) var edition = req.params.edition ? req.params.edition : config.last_edition;
   var file = config.root+'/tmp/'+config.prefix+'/meta_'+(edition ? edition+"_" : "")+config.current_lang+'.json';
   if (req.query.createcache==1 || !fs.existsSync(file)) {

@@ -27,11 +27,11 @@ block content
         .col-sm-4
           h3=global.__("Portfolio")
           if result.posts && result.posts.length
-            - data = result
-            - posts = result.posts
+            - var data = result
+            - var posts = result.posts
             if posts[0].post_type == "events"
               each result, position in posts
-                if index < 10
+                if position   < 10
                   include boxes/box_event
               .text-center.read-more
                 a(href=lang_preurl + '/portfolio/live-visuals/')
@@ -40,7 +40,7 @@ block content
                   i.icon-right
             if posts[0].post_type == "web-and-mobile"
               each result, position in posts
-                if index < 3
+                if position < 3
                   include boxes/box_web
               .text-center.read-more
                 a(href=lang_preurl + '/portfolio/web-and-mobile/')
@@ -57,7 +57,7 @@ block content
                   i.icon-right
             if posts[0].post_type == "learning"
               each result, position in posts
-                if index < 2
+                if position   < 2
                   include boxes/box_learning
               .text-center.read-more
                 a(href=lang_preurl + '/portfolio/learning/')

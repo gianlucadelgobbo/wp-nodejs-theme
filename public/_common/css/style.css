@@ -192,6 +192,9 @@ span.share {
 span.share a{
   text-decoration: none;
 }
+span.share a:hover{
+  text-decoration: none;
+}
 .entry-title .pull-right{
   line-height: 1.2;
 }
