@@ -8,7 +8,8 @@
             !=global.__("Programming")
             !=": "
             b=result["wpcf-schedule"]
-          include ../../_common/inc_eventdateplace
+          .sr-only
+            include ../../_common/inc_eventdateplace
     h3.list_title(itemprop='name')
       a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/learning/' + result.slug+"/", rel='bookmark', title=result.post_title)
         !=result.post_title+" "

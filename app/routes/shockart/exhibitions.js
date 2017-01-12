@@ -20,7 +20,7 @@ exports.getAll = function getAll(req, res) {
     helpers.getPostType(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAllExhibitions(req, config.sez.exhibitions.limit, page, function( results ) {
-        meta_data.meta.title = __("Awards & Grants") + " | " + meta_data.meta.name;
+        meta_data.meta.title = __("Exhibitions") + " | " + meta_data.meta.name;
         console.log("stocazzo");
         console.log(posttype);
         console.log("stocazzo");

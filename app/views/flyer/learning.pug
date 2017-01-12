@@ -9,24 +9,36 @@ block content
           .rientro
             include ../_common/inc_type_hidden
             div(itemprop='description')!=result.post_content
-            !=global.__("Duration") + ": "
-            span(itemprop='duration')
-              b=result["wpcf-duration"]
-            br
-            - var auth = []
-            each capauthor in result.capauthors
-              - auth.push(capauthor.display_name)
-            if auth.length
-              if auth.length == 1
-                !=global.__("Teacher") + ": "
-              else
-                !=global.__("Teachers") + ": "
-              span(itemprop='performer')
-              b=auth.join(", ")
-            br
-            !=global.__("Price") + ": "
-            span(itemprop='offers')
-              b=result["wpcf-price"] + " €"
+            .excerpt
+              if result["wpcf-schedule"]
+                include ../_common/inc_eventdateplace
+              if result["wpcf-schedule"]
+                .dates
+                  .date
+                    !=global.__("Programming")
+                    !=": "
+                    b=result["wpcf-schedule"]
+              !=global.__("Duration") + ": "
+              span(itemprop='duration')
+                b=result["wpcf-duration"]
+              br
+              - var auth = []
+              each capauthor in result.capauthors
+                - auth.push("<span itemprop='performer' itemscope itemtype='http://schema.org/Person'><span itemprop='name'>"+capauthor.display_name+"</span></span>")
+              if auth.length
+                if auth.length == 1
+                  !=global.__("Teacher") + ": "
+                else
+                  !=global.__("Teachers") + ": "
+                b!=auth.join(", ")
+              br
+              !=global.__("Price") + ": "
+              span(itemprop='offers', itemscope, itemtype="http://schema.org/Offer")
+                b
+                  span(itemprop='price', content=parseInt(result["wpcf-price"]))=result["wpcf-price"]
+                  !=" "
+                  span(itemprop='priceCurrency', content="EURO")="€"
+                a.hide(itemprop='url', href=lang_preurl + '/portfolio/learning/' + result.slug + "/")
             include ../_common/inc_websites
             include ../_common/inc_share
         .col-sm-3

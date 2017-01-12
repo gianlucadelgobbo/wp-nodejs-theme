@@ -159,21 +159,12 @@ footer .socials {
 .read-more a {
   display: inline-block;
   padding: 8px 15px;
-  border: 2px solid #DDD;
-  color: #000;
-  background-color: #FFF;
-}
-.read-more.inverse a {
   color: #FFF;
   background-color: #000;
 }
-.read-more a:hover {
-  background-color: #000;
-  border-color: #000;
-}
-.read-more.inverse a:hover {
+.read-more.inverse a {
+  color: #000;
   background-color: #FFF;
-  border-color: #FFF;
 }
 .read-more .loading{
   display: none;
@@ -213,15 +204,18 @@ span.share a{
   list-style: none;
   padding-left: 0;
 }
-div.authors,div.links, div.share{
+ul.authors,ul.links, div.share{
   margin: 30px 0 0 0;
+}
+.box-list ul.authors{
+  margin:0;
 }
 .box-list .dateplace {
   margin: 15px 0 0 0;
 }
 .authors li{
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 0;
 }
 .authors li:first-child{
   margin-left: 0;
@@ -229,3 +223,14 @@ div.authors,div.links, div.share{
 .boxItem .authors {
   margin-bottom: 0;
 }
+#top-menu .dropdown-menu > li.active{
+  background-color: #000;
+}
+#top-menu .dropdown-menu > li > a:hover{
+  background-color: unset;
+}
+
+.rientro .dates {
+  margin-bottom: 10px;
+}
+.dateheadline:first-letter {text-transform: uppercase}

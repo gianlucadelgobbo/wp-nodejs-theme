@@ -21,7 +21,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 .sameheightinner .img-circle{
   width: 100px;
-  background-color: #EEE;
 }
 body.fixed-top{
   padding-top: 54px;
@@ -83,9 +82,11 @@ body.expanding.fixed-top{
     width: 20px;
     font-size: 15px;
   }
-
+  .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus{
+    background-color: unset;
+  }
   #top-menu ul > li > a:hover > .flyer-item-inner {
-    left: 0;
+    left: -8px;
   }
   #top-menu .dropdown-menu > li > a{
     padding: 5px;
@@ -97,7 +98,7 @@ body.expanding.fixed-top{
   }
   #top-menu.navbar-inverse {
     background: none;
-    z-index: 2;
+    z-index: 3;
     transition: margin-top .3s ease-out;
   }
   #top-menu.navbar-hidden-top{
@@ -462,6 +463,9 @@ a:hover img {
 .Event .supText{
   font-size: 11px;
 }
+.Event .supText i{
+  display: none;
+}
 .Event .text-muted {
   color: #ccc;
 }
@@ -487,6 +491,9 @@ a:hover img {
 }
 .Event .box-list .text-center{
   padding: 30px;
+}
+
+.Event .read-more-box{
 }
 
 .Event .read-more-box{
@@ -585,9 +592,8 @@ a:hover img {
 
 /* BOX AWARDS */
 
-.Award .img-circle {
+.Award img {
   width: 140px;
-  background-color: #EEE;
 }
 .Award h3 {
   font-size: 20px;
@@ -635,9 +641,6 @@ a:hover img {
   height: 100%;
   width: 100%;
   background-image: url(http://flyer.it/files/2016/12/profile-learning.jpg);
-}
-.home-awards img{
-  width: 140px;
 }
 .home .read-more,#container > .read-more{
   margin-top: 20px;
@@ -713,7 +716,7 @@ a:hover, .read-more.inverse a:hover {
   white-space: nowrap;
 }
 
-.play-cnt .icon-play{
+.play-cnt .icon-play:before{
   width: 50px;
   height: 50px;
   position: absolute;
@@ -727,6 +730,7 @@ a:hover, .read-more.inverse a:hover {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 2;
 }
 
 ul.row.thumbnails{

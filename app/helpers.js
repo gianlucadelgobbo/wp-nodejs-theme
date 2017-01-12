@@ -585,6 +585,9 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callbac
 exports.getMetaData = function getMetaData(req,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
   global.setLocale(config.current_lang);
+  var moment = require('moment');
+  require('moment/locale/'+(config.current_lang=="en" ? "en-gb" : config.current_lang));
+  console.log(moment.locale());
   if (config.last_edition) var edition = req.params.edition ? req.params.edition : config.last_edition;
   var file = config.root+'/tmp/'+config.prefix+'/meta_'+(edition ? edition+"_" : "")+config.current_lang+'.json';
   if (req.query.createcache==1 || !fs.existsSync(file)) {
