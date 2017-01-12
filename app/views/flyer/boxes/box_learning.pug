@@ -1,5 +1,6 @@
-.boxItem(itemscope, itemprop="itemListElement", itemtype='http://schema.org/CreativeWork')
-  .Learning
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Learning(itemscope, itemprop="item", itemtype='http://schema.org/EducationEvent')
     .thumb-cnt
       //.catlabel=result.type
       a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/learning/'+result.slug+"/", rel='bookmark', title!=result.post_title)

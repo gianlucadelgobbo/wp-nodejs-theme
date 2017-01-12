@@ -1,11 +1,11 @@
 extends layout
 block content
 
-    article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Event')
+    article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http://schema.org/Event')
       .row
         .col-sm-8
           img.img-responsive.main-image(src=result.featured.full, alt=result.post_title, itemprop='image')
-          .rientro.hidden-xs(itemprop='description')!=result.post_content
+          .rientro.hidden-xs!=result.post_content
           include ../_common/inc_videos
           - console.log(result)
         .col-sm-4

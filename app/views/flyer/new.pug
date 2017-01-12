@@ -8,7 +8,9 @@ block content
             h1.entry-title(itemprop='name')=result.post_title
           .rientro
             include ../_common/inc_type_hidden
-            include ../_common/inc_datemonth
+            .text-right
+              include ../_common/inc_datemonth
+            br
             div(itemprop='description')!=result.post_content
             .row
               .col-md-6

@@ -6,6 +6,7 @@ exports.get = function get(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getUser(req, function( result ) {
 			meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
+			var pugPage = result.
 			res.render(config.prefix+'/'+'user_'+(req.url.indexOf("/people/")>=0 ? "people" : "customer"), {result: result, meta_data:meta_data, itemprop:req.url.indexOf("/people/")>=0 ? "employee" : "sponsor"});
 		});
 	});

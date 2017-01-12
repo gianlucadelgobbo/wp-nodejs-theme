@@ -1,5 +1,6 @@
-.boxItem(itemscope, itemprop="itemListElement", itemtype='http://schema.org/CreativeWork')
-  .Video
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Video(itemscope, itemprop="item", itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
       //.catlabel=result.type
       if result.video_thumbnail

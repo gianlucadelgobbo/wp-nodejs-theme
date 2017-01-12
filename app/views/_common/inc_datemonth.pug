@@ -1,5 +1,7 @@
 if result.data_month
   .text-muted
     .dates
-      .dateheadline(itemprop="headline")=result.data_month
+      .dateheadline=result.data_month+" "
       meta(itemprop="datePublished", content=result.datePublished)
+      if (result.post_type=="news")
+        meta(itemprop="dateModified", content=result.dateModified)

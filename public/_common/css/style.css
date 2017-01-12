@@ -226,3 +226,6 @@ div.authors,div.links, div.share{
 .authors li:first-child{
   margin-left: 0;
 }
+.boxItem .authors {
+  margin-bottom: 0;
+}

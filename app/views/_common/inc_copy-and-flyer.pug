@@ -2,7 +2,7 @@
   .col-sm-6
     .footer-title
       !="NO © " + new Date().getFullYear() + " " + meta_data.meta.name + " "
-      a(href='mailto:info@flyer.it', title=global.__('Write to Flyer')) info@flyer.it
+      a(title=global.__('Write to') + " " + config.project_name, href='mailto:' + config.project_email)=config.project_email
   .col-sm-5.pull-right
     .footer-title.pull-right
       a.tooltips(data-toggle='tooltip', href='/', target='_blank', title=global.__('This website is made by Flyer Communication'))

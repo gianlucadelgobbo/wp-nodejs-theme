@@ -1,37 +1,15 @@
 footer.navbar-inverse
-  -fluid
-    .row.links-horizontal
-      .col-sm-3
-        include ../../_common/address
-      .col-sm-2.hidden-print
-        p Corporate
-        include menu-corporate
-      .col-sm-2.hidden-print
-        p=global.__("Social Networks")
-        include socials
-      .col-sm-5.hidden-print
-        p=global.__("Projects")
-        include ../../_common/inc_projects
-    br
-    include ../../_common/inc_copy-and-flyer
-#twCnt
-  #tw
-  #sc
-    a(href='http://flxer.net', title='FLxER network', target='_blank')
-      img(alt='FLxER network icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_50_flxer.png')
-    a(href='http://twitter.com/liveperformers', title='Twitter Profile', target='_blank')
-      img(alt='Twitter Profile icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_31_twitter.png')
-    a(href='http://www.facebook.com/LPM.LivePerformersMeeting', title='Facebook Page', target='_blank')
-      img(alt='Facebook Page icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_30_facebook.png')
-    a(href='http://www.facebook.com/group.php?gid=10387985422', title='Facebook Group', target='_blank')
-      img(alt='Facebook Group icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_51_facebook_group.png')
-    a(href='http://vimeo.com/lpm', title='Vimeo', target='_blank')
-      img(alt='Vimeo icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_34_vimeo.png')
-    a(href='https://plus.google.com/+Liveperformersmeeting', title='Google Plus', target='_blank', rel='publisher')
-      img(alt='Google Plus icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_02_google_plus.png')
-    a(href='http://www.youtube.com/LPMvideoreport', title='YouTube', target='_blank')
-      img(alt='YouTube icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_22_youtube.png')
-    a(href='http://apps.facebook.com/lpmgallery', title='Facebook App', target='_blank')
-      img(alt='Facebook App icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_52_facebook_app.png')
-    a(href='/feed', title='RSS Feed', target='_blank')
-      img(alt='RSS Feed icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_37_rss.png')
+  .row.links-horizontal
+    .col-sm-3
+      include ../../_common/address
+    .col-sm-2.hidden-print
+      p Corporate
+      include menu-corporate
+    .col-sm-2.hidden-print
+      p=global.__("Social Networks")
+      include socials
+    .col-sm-5.hidden-print
+      p=global.__("Projects")
+      include ../../_common/inc_projects
+  br
+  include ../../_common/inc_copy-and-flyer

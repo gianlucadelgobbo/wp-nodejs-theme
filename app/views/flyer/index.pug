@@ -19,34 +19,39 @@ block content
     a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
       span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
       span.sr-only Next
-  article#container.home(itemscope, itemtype='http://schema.org/Event')
+  article#container.home
     .text-center(style="padding-top: 20px;")
       h1.entry-title=meta_data.meta.description
-    section.home-services
+    section.home-services(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
+      .sr-only(itemprop="name")=global.__("Services")
       .container-fluid
         .row.sameheightcnt
-          .col-xl-2.col-xl-offset-2.col-lg-3.col-md-3.sameheight.boxItem
+          .col-xl-2.col-xl-offset-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+            meta(itemprop="position", content="1")
             !=profile['wpcf-row-1-col-1-html-box']
-          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem
+          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+            meta(itemprop="position", content="2")
             !=profile['wpcf-row-1-col-2-html-box']
-          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem
+          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+            meta(itemprop="position", content="3")
             !=profile['wpcf-row-1-col-3-html-box']
-          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem
+          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+            meta(itemprop="position", content="4")
             !=profile['wpcf-row-1-col-4-html-box']
 
             
             
             
-    section.home-events
+    section.home-events(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title=global.__("Live Visuals")
+          h1.entry-title(itemprop="name")=global.__("Live Visuals")
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_events.description
         .row.isotope.results
           each result, position in results.events
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>5 ? "hidden-lg visible-xl" : "")
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>5 ? "hidden-lg visible-xl" : "")
               include boxes/box_event
         .text-center.read-more
           a(href=lang_preurl+'/portfolio/live-visuals/')
@@ -56,16 +61,16 @@ block content
             
             
             
-    section.home-lab
+    section.home-lab(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title=posttype_lab.labels.name
+          h1.entry-title(itemprop="name")=posttype_lab.labels.name
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_lab.description
         .row.isotope.results
           each result, position in results.lab
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>5 ? "hidden-lg visible-xl" : "")
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>5 ? "hidden-lg visible-xl" : "")
               include boxes/box_lab
         .text-center.read-more
           a(href=lang_preurl+'/portfolio/lab/')
@@ -75,16 +80,16 @@ block content
 
 
 
-    section.home-web
+    section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title=posttype_web.labels.name
+          h1.entry-title(itemprop="name")=posttype_web.labels.name
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_web.description
         .row.isotope.results
           each result, position in results.web
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>2 ? "hidden-lg visible-xl visible-md" : "")
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "hidden-lg visible-xl visible-md" : "")
               include boxes/box_web
         .text-center.read-more
           a(href=lang_preurl+'/portfolio/web-and-mobile/')
@@ -94,12 +99,12 @@ block content
 
 
 
-    .home-learning
+    .home-learning(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       section
         .container-fluid
           .row
             .col-lg-6.col-lg-offset-2.col-md-12.col-sm-12
-              h1.entry-title.boxItem=global.__("Learning")
+              h1.entry-title.boxItem(itemprop="name")=global.__("Learning")
               each result, position in results.learning
                   include boxes/box_learning_home
               .read-more.inverse
@@ -110,10 +115,10 @@ block content
 
 
 
-    section.home-videos
+    section.home-videos(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title=posttype_video.labels.name
+          h1.entry-title(itemprop="name")=posttype_video.labels.name
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_video.description
@@ -129,8 +134,8 @@ block content
 
 
 
-    section.home-awards
-      .container-fluid(itemscope, itemtype='http://schema.org/ItemList')
+    section.home-awards(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
         header.text-center
           h1.entry-title.boxItem(itemprop="name")=global.__("Awards and Grants")
           .row
@@ -138,7 +143,7 @@ block content
               .col-xs-12!=posttype_awards.description
         .row
           each result, position in results.awards
-            .col-xl-2.col-lg-3.col-md-3(class=(!index ? "col-xl-offset-2" : ""))
+            .col-xl-2.col-lg-3.col-md-3(class=(!position ? "col-xl-offset-2" : ""))
               include boxes/box_award
         .text-center.read-more
           a(href=lang_preurl+'/portfolio/awards-and-grants/')
@@ -146,16 +151,16 @@ block content
             !=" "
             i.icon-right
 
-    section.home-news
+    section.home-news(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title.boxItem=global.__("Extra")
+          h1.entry-title.boxItem(itemprop="name")=global.__("Extra")
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_news.description
         .row.isotope.results
           each result, position in results.news
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=index>2 ? "visible-md hidden-lg visible-xl" : "")
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "visible-md hidden-lg visible-xl" : "")
               include boxes/box_news
         .text-center.read-more
           a(href=lang_preurl + '/extra/')

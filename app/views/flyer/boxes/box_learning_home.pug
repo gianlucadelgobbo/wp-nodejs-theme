@@ -1,5 +1,6 @@
-.boxItem(itemscope, itemprop="itemListElement", itemtype='http://schema.org/CreativeWork')
-  .Learning
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Learning(itemscope, itemprop="item", itemtype='http://schema.org/EducationEvent')
     if result["wpcf-schedule"]
       .text-muted
         .dates
@@ -7,7 +8,7 @@
             !=global.__("Programming")
             !=": "
             b=result["wpcf-schedule"]
-    meta(itemprop="position" content=position+1)
+          include ../../_common/inc_eventdateplace
     h3.list_title(itemprop='name')
       a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/learning/' + result.slug+"/", rel='bookmark', title=result.post_title)
         !=result.post_title+" "
@@ -19,15 +20,18 @@
       br
       - var auth = []
       each capauthor in result.capauthors
-        - auth.push(capauthor.display_name)
+        - auth.push("<span itemprop='performer' itemscope itemtype='http://schema.org/Person'><span itemprop='name'>"+capauthor.display_name+"</span></span>")
       if auth.length
         if auth.length == 1
           !=global.__("Teacher") + ": "
         else
           !=global.__("Teachers") + ": "
-        span(itemprop='performer')
-        b=auth.join(", ")
+        b!=auth.join(", ")
       br
       !=global.__("Price")+": "
-      span(itemprop='offers')
-        b=result["wpcf-price"] + " €"
+      span(itemprop='offers', itemscope, itemtype="http://schema.org/Offer")
+        b
+          span(itemprop='price', content=parseInt(result["wpcf-price"]))=result["wpcf-price"]
+          !=" "
+          span(itemprop='priceCurrency', content="EURO")="€"
+        a.hide(itemprop='url', href=lang_preurl+'/portfolio/learning/' + result.slug+"/")

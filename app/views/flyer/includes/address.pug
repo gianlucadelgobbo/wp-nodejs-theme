@@ -1,4 +1,4 @@
-div(itemscope, itemtype='http://schema.org/Organization')
+div
   a(href=lang_preurl + '/', title=meta_data.meta['name'])
     img.media-object(src=config.domain + meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
   br
@@ -33,3 +33,5 @@ div(itemscope, itemtype='http://schema.org/Organization')
   span(itemprop='vatID') IT06589171005
   br
   a(itemprop='email', title=global.__('Write to')+" Flyer communication", href='mailto:info@flyer.it') info@flyer.it
+  br
+  a(itemprop='url', title=config.project_name+" Web Site", href=config.domain)=config.domain
