@@ -1,6 +1,6 @@
 .boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
   meta(itemprop="position", content=position+1)
-  .Lab(itemprop="item", itemscope, itemtype='http://schema.org/CreativeWork')
+  .Lab(itemprop="item", itemscope, itemtype='http://schema.org/Organization')
     .row
       .col-xs-3
         .thumb-cnt
@@ -8,7 +8,6 @@
             img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image')
       .col-xs-9
         .box-list
-          meta(itemprop="position" content=position+1)
           h3.list_title(itemprop='name')
             a(href=lang_preurl+'/portfolio/lab/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
           if result.data_month
@@ -17,5 +16,5 @@
                 .date=result.data_month
           .text-muted.small.excerpt
             if result.excerpt && result.excerpt.rendered
-              div(itemprop='headline')
+              div(itemprop='description')
                 p!=result.excerpt.rendered

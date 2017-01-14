@@ -16,7 +16,7 @@ if result.capauthors
       each capauthor, index in result.capauthors
         if (customerExists && config.sez.users.posttypes[result.post_type].publisher.roles.indexOf(capauthor.user_role_value)!=-1) || !customerExists
           - var baseurl = baseurl = config.sez.users.posttypes[result.post_type].publisher.baseurl
-          li(itemprop=result.post_type=="news" ? 'publisher' : post_type=="events" || post_type=="editions" ? 'organizer' : "sourceOrganization", itemscope, itemtype='http://schema.org/Organization', class=index>0? "sr-only" : undefined)
+          li(itemprop=itemprop=config.sez.users.posttypes[result.post_type].publisher.itemprop, itemscope, itemtype='http://schema.org/Organization', class=index>0? "sr-only" : undefined)
             a(href='/'+baseurl+'/' + capauthor.user_login, rel='author')
               i.glyphicon.glyphicon-user
               !=" "
@@ -30,7 +30,7 @@ if result.capauthors
       !=" "+config.sez.users.posttypes[result.post_type].authors.label_multi+authorExists
     each capauthor in result.capauthors
       if (authorExists && config.sez.users.posttypes[result.post_type].publisher.roles.indexOf(capauthor.user_role_value)==-1) || !authorExists
-        li(itemprop=result.post_type=="events" ? 'performer' : "author", itemscope, itemtype='http://schema.org/Person')
+        li(itemprop=itemprop=config.sez.users.posttypes[result.post_type].authors.itemprop, itemscope, itemtype='http://schema.org/Person')
           - var baseurl = config.sez.users.posttypes[result.post_type].authors.baseurl
           a(href='/'+baseurl+'/' + capauthor.user_login, rel='author')
             i.glyphicon.glyphicon-user

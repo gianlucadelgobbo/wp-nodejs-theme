@@ -1,8 +1,7 @@
-.boxItem(itemprop="itemListElement", itemscope, itemtype='http://schema.org/Event')
-  meta(itemprop="position" content=position + 1)
-  .Edition
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Edition(itemprop="item", itemscope, itemtype='http://schema.org/Event')
     .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
-
       a(href='/editions/'+result.slug+"/", rel='bookmark', title!=result.title.rendered)
         img.img-responsive(src=result.featured.thumbnail, alt!='Image for: '+result.title.rendered, itemprop='url')
         meta(itemprop="width" content="480")

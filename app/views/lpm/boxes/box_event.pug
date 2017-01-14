@@ -1,6 +1,6 @@
-.boxItem(itemprop="itemListElement", itemscope, itemtype='http://schema.org/Event')
-  meta(itemprop="position" content=position+1)
-  .Event
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Event(itemprop="item", itemscope, itemtype='http://schema.org/Event')
     .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
       .thumb-cnt-cnt
         a.ajaxloader(href='/events/'+result.slug+"/", rel='bookmark', title!=result.post_title)

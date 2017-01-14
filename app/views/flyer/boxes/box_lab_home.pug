@@ -1,6 +1,6 @@
 .boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
   meta(itemprop="position", content=position+1)
-  .LabHome(itemprop="item", itemscope, itemtype='http://schema.org/CreativeWork')
+  .LabHome(itemprop="item", itemscope, itemtype='http://schema.org/Organization')
     .row
       .col-lg-3
         .thumb-cnt
@@ -10,7 +10,6 @@
       .col-lg-9
         .box-list
           .box-list-cnt
-            meta(itemprop="position" content=position+1)
             h3(itemprop='name')
               a.ajaxloader(href=lang_preurl+'/portfolio/lab/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
             if result.data_month
@@ -19,5 +18,5 @@
                   .date=result.data_month
             .text-muted.small.excerpt
               if result.excerpt && result.excerpt.rendered
-                div(itemprop='headline')
+                div(itemprop='description')
                   p!=result.excerpt.rendered

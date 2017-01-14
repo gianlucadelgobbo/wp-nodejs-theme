@@ -1,13 +1,13 @@
 extends layout
 block content
   .container-fluid
-    article#container(itemscope, itemtype='http://schema.org/ItemList')
+    article#container(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .row
         .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2.col-xs-12
           header.header
             .text-center
-              h1.entry-title=posttype.labels.name
-              !=posttype.description
+              h1.entry-title(itemprop="name")=posttype.labels.name
+              p(itemprop="description")!=posttype.description
               include ../_common/inc_share
       .row.isotope.results
         each result, position in results

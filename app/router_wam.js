@@ -6,16 +6,6 @@ var exhibitionsRoutes = require('./routes/shockart/exhibitions');
 var pagesRoutes = require('./routes/_common/pages');
 
 module.exports = function(app) {
-  app.get('/it/', indexRoutes.get);
-  app.get('/it/backstage', usersRoutes.getAllPeople);
-  app.get('/it/backstage/(:user)', usersRoutes.get);
-  app.get('/it/events/', eventsRoutes.getAll);
-  app.get('/it/events/(:event)', eventsRoutes.get);
-  app.get('/it/news/', newsRoutes.getAll);
-  app.get('/it/news/(:news)', newsRoutes.get);
-  app.get('/it/exhibitions/', exhibitionsRoutes.getAll);
-  app.get('/it/exhibitions/(:exhibition)', exhibitionsRoutes.get);
-
   app.get('/', indexRoutes.get);
   app.get('/backstage', usersRoutes.getAllPeople);
   app.get('/backstage/(:user)', usersRoutes.get);

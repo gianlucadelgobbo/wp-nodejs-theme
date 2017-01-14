@@ -1,7 +1,7 @@
 extends layout
 block content
   .container
-    article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/CreativeWork')
+    article.pagepaddingtop#container(itemprop="mainEntity", itemscope, itemtype='http://schema.org/CreativeWork')
       .row
         .col-sm-8
           img.img-responsive.main-image(src=result.featured.full, alt=result.post_title, itemprop='image')
@@ -14,7 +14,7 @@ block content
           .rientro
             include ../_common/inc_type_hidden
             include ../_common/inc_datemonth
-            .visible-xs(itemprop='description')!=result.post_content
+            .visible-xs!=result.post_content
             include ../_common/inc_websites
             include ../_common/inc_capauthors
             include ../_common/inc_share

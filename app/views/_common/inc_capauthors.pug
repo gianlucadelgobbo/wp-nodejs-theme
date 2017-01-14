@@ -16,7 +16,7 @@ if result.capauthors
       each capauthor in result.capauthors
         if (customerExists && config.sez.users.posttypes[result.post_type].publisher.roles.indexOf(capauthor.user_role_value)!=-1) || !customerExists
           - var baseurl = baseurl = config.sez.users.posttypes[result.post_type].authors.baseurl
-          li(itemprop=result.post_type=="news" ? 'publisher' : "organizer", itemscope, itemtype='http://schema.org/Organization')
+          li(itemprop=config.sez.users.posttypes[result.post_type].publisher.itemprop, itemscope, itemtype='http://schema.org/Organization')
             a(href='/'+baseurl+'/' + capauthor.user_login, rel='author')
               b(itemprop='name')=capauthor.display_name
             if result.post_type == "news"
@@ -28,7 +28,7 @@ if result.capauthors
       !=" "+config.sez.users.posttypes[result.post_type].authors.label_multi
     each capauthor in result.capauthors
       if (authorExists && config.sez.users.posttypes[result.post_type].publisher.roles.indexOf(capauthor.user_role_value)==-1) || !authorExists
-        li(itemprop=result.post_type=="events" ? 'performer' : "author", itemscope, itemtype='http://schema.org/Person')
+        li(itemprop=itemprop=config.sez.users.posttypes[result.post_type].authors.itemprop, itemscope, itemtype='http://schema.org/Person')
           - var baseurl = config.sez.users.posttypes[result.post_type].authors.baseurl
           a(href='/'+baseurl+'/' + capauthor.user_login, rel='author')
             b(itemprop='name')=capauthor.display_name

@@ -1,6 +1,6 @@
 .boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
   meta(itemprop="position", content=position+1)
-  div(itemprop="item", itemscope, itemtype='http://schema.org/Person')
+  div(itemprop="item", itemscope, itemtype='http://schema.org/Organization')
     .row
       .col-sm-4(itemprop="image", itemscope, itemtype='https://schema.org/ImageObject')
         a(href='/'+author_base+'/'+result.data.user_nicename+'/', rel='bookmark', title='Logo: '+result.data.display_name)
@@ -11,7 +11,7 @@
         h5.media-heading
           a(itemprop='url', href='/'+author_base+'/'+result.data.user_nicename+'/')
             span(itemprop='name')=result.data.display_name
-        p(itemprop='jobTitle')
+        p
           i=result.data.role
         p
           each auth_content in result.data.auth_contents

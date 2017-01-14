@@ -16,7 +16,7 @@ exports.getAllCustomers = function getAllCustomers(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getAllUsers(req, "customers", function( results ) {
 			meta_data.meta.title = __("Customers") + " | " + meta_data.meta.name;
-			res.render(config.prefix+'/'+'users', {results: results, meta_data:meta_data,author_base:'customers', title: __("Customers"), itemprop:"sponsor"});
+			res.render(config.prefix+'/'+'users_customer', {results: results, meta_data:meta_data,author_base:'customers', title: __("Customers"), itemprop:"sponsor"});
 		});
 	});
 };
@@ -25,7 +25,7 @@ exports.getAllPeople = function getAllPeople(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getAllUsers(req, "people", function( results ) {
 			meta_data.meta.title = __("People") + " | " + meta_data.meta.name;
-			res.render(config.prefix+'/'+'users', {results: results, meta_data:meta_data,author_base:'people', title: __("People"), itemprop:"employee"});
+			res.render(config.prefix+'/'+'users_people', {results: results, meta_data:meta_data,author_base:'people', title: __("People"), itemprop:"employee"});
 		});
 	});
 };
