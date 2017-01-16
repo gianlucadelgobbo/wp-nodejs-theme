@@ -94,7 +94,7 @@ h1 ,.h1like{margin-top: 0;margin-bottom:10px;}
 #next-edition img{float: right;}
 article .wp-post-image{margin-bottom:30px;}
 .navbar {border-radius:0;}
-.navbar-brand img{max-width: 170px;max-height:20px}
+.navbar-brand{padding: 4px 0 0 4px;font-size: 48px;}
 .navbar-form.navbar-right {margin-top: 10px;width: 330px;padding: 0 10px 0 0;}
 .navbar-form.navbar-right .close {line-height: 0.9;}
 .navbar-form.navbar-right .alert {padding:5px 15px;margin-bottom:0;}

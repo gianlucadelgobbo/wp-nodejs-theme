@@ -1,4 +1,5 @@
 var indexRoutes = require('./routes/flyer/index');
+var sitemapRoutes = require('./routes/_common/sitemap');
 var webRoutes = require('./routes/_common/web');
 var videosRoutes = require('./routes/_common/videos');
 var eventsRoutes = require('./routes/_common/events');
@@ -11,7 +12,15 @@ var pagesRoutes = require('./routes/_common/pages');
 /*
  var searchRoutes = require('./routes/search');
  */
+
 module.exports = function(app) {
+  app.get('/sitemap.xml', sitemapRoutes.get);
+  app.get("/sitemap-home.xml", sitemapRoutes.get);
+  app.get("/sitemap-pages.xml", sitemapRoutes.get);
+  app.get("/sitemap-posttype-(:posttype).xml", sitemapRoutes.get);
+  app.get("/sitemap-taxonomy-(:taxonomy).xml", sitemapRoutes.get);
+  app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
+
   app.get('/it/', indexRoutes.get);
 
   app.get('/it/portfolio/web-and-mobile/', webRoutes.getAll);

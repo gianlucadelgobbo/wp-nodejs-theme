@@ -1,0 +1,18 @@
+doctype xml
+sitemapindex(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9', xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance', xsi:schemalocation='http://www.sitemaps.org/schemas/sitemap/0.9\ http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd')
+  each result in results
+    sitemap
+      loc=config.domain+"/"+config.sezsuburl+config.sez[result.type].baseurl +"/"+result.slug+"/"
+      if (config.locales.length > 1)
+        each locale in config.locales
+          if locale == config.default_lang
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + config.sezsuburl+config.sez[result.type].baseurl +"/"+result.slug+"/")
+          else
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + config.sezsuburl+config.sez[result.type].baseurl +"/"+result.slug+"/")
+
+      lastmod=result.startdateISO
+      changefreq yearly
+      priority 1.0
+      image:image
+        image:loc=result.featured.full
+        image:title!="<![CDATA["+result.post_title+"]]>"

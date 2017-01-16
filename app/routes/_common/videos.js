@@ -22,7 +22,7 @@ exports.getAll = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPostType(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
-      helpers.getAllVideo(req, sez.limit, page, function( results ) {
+      helpers.getAll(req, sez, sez.limit, page, function( results ) {
         meta_data.meta.title = __("Videos") + " | " + meta_data.meta.name;
         res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype,page:page});
       });

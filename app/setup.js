@@ -11,9 +11,11 @@ i18n.configure({
   register: global
 });
 
+
 //global.i18n = i18n;
 
 module.exports = function(app, exp) {
+
   var env = process.env.NODE_ENV || 'development';
   app.set('views', [app.root + '/app/views']);
   app.set('view engine', 'pug');
@@ -33,6 +35,7 @@ module.exports = function(app, exp) {
     app.set('view cache', true);
     //app.set('view options', { doctype : 'html', pretty : true });
   } else {
+    app.locals.pretty = true;
     //app.use(exp.errorHandler());
   }
 };

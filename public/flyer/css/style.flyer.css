@@ -28,7 +28,78 @@ body.fixed-top{
 body.expanding.fixed-top{
   padding-top: 0;
 }
+#top-menu .navbar-toggle{
+  border: 0;
+  padding: 6px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: none;
+}
+#top-menu .navbar-toggle .flyer-expanding-icon {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  height: 13px;
+  width: 18px;
+}
 
+#top-menu.navbar-inverse .navbar-nav > .active > a, #top-menu.navbar-inverse .navbar-nav > .active > a:hover, #top-menu.navbar-inverse .navbar-nav > .active > a:focus {
+  background: none;
+}
+#top-menu .navbar-toggle .flyer-expanding-icon .flyer-line {
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #303030;
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
+}
+
+#top-menu .navbar-toggle .flyer-expanding-icon .flyer-line:first-child {
+  top: 0;
+  transform-origin: 2px 1px;
+}
+
+#top-menu .navbar-toggle .flyer-expanding-icon .flyer-line:last-child {
+  top: 10px;
+  transform-origin: 2px 1px;
+}
+
+.flyer-header-expanding #top-menu.flyer-opened .flyer-menu-appear .flyer-line:first-child {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.flyer-header-expanding #top-menu.flyer-opened .flyer-menu-appear .flyer-line:nth-child(2) {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  transform: scale(0);
+}
+
+.flyer-header-expanding #top-menu.flyer-opened .flyer-menu-appear .flyer-line:last-child {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#top-menu .flyer-line {
+  background-color: #fff !important;
+}
+#top-menu .navbar-brand .icon-flyer{
+  font-size: 30px;
+}
+#top-menu .navbar-brand {
+  padding: 11px 0 0 1px;
+  color:#f0ad4e;
+}
+#top-menu .navbar-brand:hover {
+  color:#FFF;
+}
 @media (min-width: 768px){
   .sameheightcnt{
     display: flex;
@@ -60,6 +131,9 @@ body.expanding.fixed-top{
   .carousel .carousel-inner img {
     display:block;
     object-fit: cover;
+  }
+  .carousel a:hover img {
+    opacity: 1;
   }
   .carousel-caption {
     bottom: 120px;
@@ -121,7 +195,6 @@ body.expanding.fixed-top{
     display: block;
   }
   #top-menu .navbar-brand {
-    padding: 0;
     height: 54px;
     width: 54px;
     overflow: hidden;
@@ -130,16 +203,10 @@ body.expanding.fixed-top{
   .flyer-header-expanding #top-menu .navbar-brand{
     height: 84px;
     width: 84px;
+    padding: 22px 0 0 10px;
   }
-  #top-menu .navbar-brand img{
-    padding: 0;
-    height: 54px;
-    width: 54px;
-  }
-  .flyer-header-expanding #top-menu .navbar-brand img{
-    padding: 0;
-    height: 84px;
-    width: 84px;
+  .flyer-header-expanding #top-menu .navbar-brand .icon-flyer{
+    font-size: 36px;
   }
   #top-menu #mainmenu .menu-spacer-after {
     padding-right: 20px;
@@ -374,77 +441,6 @@ body.expanding.fixed-top{
 
 
 
-#top-menu .navbar-toggle{
-  border: 0;
-  padding: 6px 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background: none;
-}
-#top-menu .navbar-brand > img {
-  display: block;
-  height: 50px;
-  margin-top: 0;
-}
-#top-menu .navbar-brand {
-  padding: 0;
-}
-#top-menu .navbar-toggle .flyer-expanding-icon {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  height: 13px;
-  width: 18px;
-}
-
-#top-menu.navbar-inverse .navbar-nav > .active > a, #top-menu.navbar-inverse .navbar-nav > .active > a:hover, #top-menu.navbar-inverse .navbar-nav > .active > a:focus {
-  background: none;
-}
-#top-menu .navbar-toggle .flyer-expanding-icon .flyer-line {
-  position: absolute;
-  display: inline-block;
-  vertical-align: middle;
-  top: 5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #303030;
-  -webkit-transition: -webkit-transform .3s ease-out;
-  transition: transform .3s ease-out;
-}
-
-#top-menu .navbar-toggle .flyer-expanding-icon .flyer-line:first-child {
-  top: 0;
-  transform-origin: 2px 1px;
-}
-
-#top-menu .navbar-toggle .flyer-expanding-icon .flyer-line:last-child {
-  top: 10px;
-  transform-origin: 2px 1px;
-}
-
-.flyer-header-expanding #top-menu.flyer-opened .flyer-menu-appear .flyer-line:first-child {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.flyer-header-expanding #top-menu.flyer-opened .flyer-menu-appear .flyer-line:nth-child(2) {
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  transform: scale(0);
-}
-
-.flyer-header-expanding #top-menu.flyer-opened .flyer-menu-appear .flyer-line:last-child {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-
-#top-menu .flyer-line {
-  background-color: #fff !important;
-}
-
 
 /* BOXES */
 
@@ -678,7 +674,7 @@ a:hover img {
   margin-bottom: 30px;
 }
 
-a:hover, .read-more.inverse a:hover {
+a:hover, footer a:hover, .read-more.inverse a:hover {
   color:#f0ad4e;
 }
 

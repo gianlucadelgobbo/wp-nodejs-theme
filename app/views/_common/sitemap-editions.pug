@@ -1,0 +1,8 @@
+doctype xml
+sitemapindex(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9', xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance', xsi:schemalocation='http://www.sitemaps.org/schemas/sitemap/0.9\ http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd')
+  each result in results
+    sitemap
+      loc=config.domain+"/sitemap-"+result.type +"-"+result.slug+".xml"
+      lastmod=result.startdateISO
+      changefreq yearly
+      priority 1.0

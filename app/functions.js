@@ -107,7 +107,7 @@ exports.fixResult = function fixResult(data) {
   /*if (typeof(data.video_thumbnail) == "string" && data.video_thumbnail.length>0) {
     data.video = this.get_video(data.video_thumbnail);
   }*/
-  console.log(moment.locale());
+  //console.log(moment.locale());
   if (data.date) {
     data.date = moment(data.date).utc().format();
     data.dateHR = moment(data.date).utc().format("MMMM, Do YYYY, h:mm a");

@@ -1,9 +1,9 @@
-.row
-  .col-sm-6
-    .footer-title
-      !="NO © " + new Date().getFullYear() + " " + meta_data.meta.name + " "
-      a(title=global.__('Write to') + " " + config.project_name, href='mailto:' + config.project_email)=config.project_email
-  .col-sm-5.pull-right
-    .footer-title.pull-right
-      a.tooltips(data-toggle='tooltip', href='/', target='_blank', title=global.__('This website is made by Flyer Communication'))
-        img(src='/_common/images/logo_flyer.png', alt='Logo Flyer Communication')
+.row.subfooter
+  .col-sm-9
+    !="NO © " + new Date().getFullYear() + " " + meta_data.meta.name + " "
+    a(title=global.__('Write to') + " " + config.project_name, href='mailto:' + config.project_email)=config.project_email
+  .col-sm-3
+    .madeby.pull-right
+      a.tooltips(data-toggle='tooltip', data-placement="left", href='https://flyer.it', target='_blank', title=global.__('This website is made by Flyer Communication'))
+        i.icon-flyer
+        .sr-only='Logo Flyer Communication'

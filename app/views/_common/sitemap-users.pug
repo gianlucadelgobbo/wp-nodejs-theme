@@ -1,0 +1,18 @@
+doctype xml
+sitemapindex(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9', xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance', xsi:schemalocation='http://www.sitemaps.org/schemas/sitemap/0.9\ http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd')
+  each result in results
+    sitemap
+      loc=config.domain+"/"+ baseurl +"/"+result.data.user_login+"/"
+      if (config.locales.length > 1)
+        each locale in config.locales
+          if locale == config.default_lang
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + baseurl +"/"+result.data.user_login+"/")
+          else
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + baseurl +"/"+result.data.user_login+"/")
+
+      lastmod=config.sitemap.lastmod
+      changefreq monthly
+      priority 1.0
+      image:image
+        image:loc=result.data.img
+        image:title!="<![CDATA["+result.data.user_login+"]]>"

@@ -1,0 +1,15 @@
+doctype xml
+sitemapindex(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9', xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance', xsi:schemalocation='http://www.sitemaps.org/schemas/sitemap/0.9\ http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd')
+  each result in results.tags
+    sitemap
+      loc=config.domain+"/"+config.sezsuburl+config.sez[results.name].baseurl +"/tags/"+result.slug+"/"
+      if (config.locales.length > 1)
+        each locale in config.locales
+          if locale == config.default_lang
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + config.sezsuburl+config.sez[results.name].baseurl +"/tags/"+result.slug+"/")
+          else
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + config.sezsuburl+config.sez[results.name].baseurl +"/tags/"+result.slug+"/")
+
+      lastmod=config.sitemap.lastmod
+      changefreq monthly
+      priority 1.0

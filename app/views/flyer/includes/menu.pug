@@ -9,7 +9,8 @@ nav#top-menu.navbar.navbar-inverse(role='navigation')
           span.flyer-line
           span.flyer-line
       a.navbar-brand(href=lang_preurl+'/', title=meta_data.meta['name'])
-        img(src='/'+config.prefix+'/images/LogoFlyerWebSite2017_2_solo.svg', alt=meta_data.meta['name'])
+        i.icon-flyer
+        .sr-only=meta_data.meta['name']
     // Collect the nav links, forms, and other content for toggling
     #mainmenu.collapse.navbar-collapse
       .nav.navbar-nav.navbar-right.flyer-expanding-icon-holder

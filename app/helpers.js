@@ -12,6 +12,7 @@ exports.getPostType = function getWeb(req,posttype,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_type/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(posttype).get(function( err, data ) {
     console.log("//// PostType "+posttype);
+    console.log(err || data);
     //data = fnz.fixResult(data);
     callback(data);
   });
@@ -70,6 +71,58 @@ exports.getPage = function getPage(req,callback) {
   });
 };
 
+exports.getAll = function getAll(req, sez, limit, page, callback) {
+  this.getAllReturn(req, sez, limit, page, [], callback);
+};
+
+exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback) {
+  var trgt = this;
+  var previousdata = p;
+  console.log("getAll "+sez.post_type);
+  console.log("page "+page);
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: sez.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/'+sez.post_type );
+  var mylimit =  limit>0 ? limit : 50;
+
+  if (sez.site_tax) {
+    wp.myCustomResource().param('site', sez.site_tax ).param( 'parent', 0 ).perPage(mylimit).page(page).get(function( err, data ) {
+      console.log("//// AllFilterTax "+sez.post_type+" "+sez.site_tax);
+      //console.log(err || data);
+      data = fnz.fixResults(data);
+      if (limit == -1) {
+        for(var d in data) if (data[d].id) previousdata.push(data[d]);
+        if (data._paging.totalPages>page) {
+          trgt.getAllReturn(req, sez, limit, page+1, previousdata, callback);
+        } else {
+          callback(previousdata);
+        }
+      } else {
+        callback(data);
+      }
+
+    });
+  } else {
+    wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax )*/.perPage(mylimit).page(page).get(function( err, data ) {
+      console.log("//// All "+sez.post_type);
+      console.log(err || data);
+      data = fnz.fixResults(data);
+      if (limit == -1) {
+        for(var d in data) if (data[d].id) previousdata.push(data[d]);
+        if (data._paging.totalPages>page) {
+          trgt.getAllReturn(req, sez, limit, page+1, previousdata, callback);
+        } else {
+          callback(previousdata);
+        }
+      } else {
+        callback(data);
+      }
+    });
+  }
+};
+
+
+
 
 //////// EVENTS
 
@@ -124,7 +177,7 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, years, callback) {
 exports.getAllEventsByTag = function getAllEventsByTag(req, limit, page, callback) {
   console.log("getAllEventsByTag "+req.params.tag);
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/events_tag/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.tag).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
     console.log("//// All Events By Tag "+req.params.tag);
@@ -160,7 +213,7 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page,
 
 exports.getNew = function getNew(req,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez["news"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/news/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
     console.log("//// New");
@@ -168,20 +221,6 @@ exports.getNew = function getNew(req,callback) {
     callback(data);
   });
 };
-
-exports.getAllNews = function getAllNews(req, limit, page, callback) {
-  console.log("getAllNews");
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/news' );
-  wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax )*/.perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// News");
-    //console.log(err || data);
-    data = fnz.fixResults(data);
-    callback(data);
-  });
-};
-
 
 //////// WEB & MOBILE
 
@@ -196,23 +235,10 @@ exports.getWeb = function getWeb(req,callback) {
   });
 };
 
-exports.getAllWeb = function getAllWeb(req, limit, page, callback) {
-  console.log("getAllWeb");
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/web-and-mobile' );
-  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// All Web");
-    //console.log(err || data);
-    data = fnz.fixResults(data);
-    callback(data);
-  });
-};
-
 exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
   console.log("getAllWebByTag "+req.params.tag);
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez["web-and-mobile"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_tag/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.tag).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
     console.log("//// All Web By Tag");
@@ -227,7 +253,7 @@ exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
 
 exports.getLearning = function getLearning(req,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez["learning"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/learning/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.learning).get(function( err, data ) {
     console.log("//// Learning");
@@ -236,25 +262,11 @@ exports.getLearning = function getLearning(req,callback) {
   });
 };
 
-exports.getAllLearning = function getAllLearning(req, limit, page, callback) {
-  console.log("getAllLearning");
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/learning' );
-  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// All learning");
-    //console.log(err || data);
-    data = fnz.fixResults(data);
-    callback(data);
-  });
-};
-
-
 //////// VIDEOS
 
 exports.getVideo = function getVideo(req,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez["videos"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/videos/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.video).get(function( err, data ) {
     console.log("//// Video");
@@ -263,25 +275,11 @@ exports.getVideo = function getVideo(req,callback) {
   });
 };
 
-exports.getAllVideo = function getAllVideo(req, limit, page, callback) {
-  console.log("getAllVideo");
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/videos' );
-  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// All Video");
-    //console.log(err || data);
-    data = fnz.fixResults(data);
-    callback(data);
-  });
-};
-
-
 //////// AWARDS
 
 exports.getAward = function getAward(req,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez["awards-and-grants"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/awards-and-grants/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.award). get(function( err, data ) {
     console.log("//// Award");
@@ -290,24 +288,11 @@ exports.getAward = function getAward(req,callback) {
   });
 };
 
-exports.getAllAward = function getAllAward(req, limit, page, callback) {
-  console.log("getAllAward");
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/awards-and-grants' );
-  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// All Award");
-    //console.log(err || data);
-    data = fnz.fixResults(data);
-    callback(data);
-  });
-};
-
 //////// LAB
 
 exports.getLab = function getLab(req,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.sez["lab"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/lab/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.lab).get(function( err, data ) {
     console.log("//// Lab");
@@ -316,20 +301,6 @@ exports.getLab = function getLab(req,callback) {
     callback(data);
   });
 };
-
-exports.getAllLab = function getAllLab(req, limit, page, callback) {
-  console.log("getAllLab");
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez.news.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/lab' );
-  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// All Lab");
-    //console.log(err || data);
-    data = fnz.fixResults(data);
-    callback(data);
-  });
-};
-
 
 
 //////// EXHIBITIONS

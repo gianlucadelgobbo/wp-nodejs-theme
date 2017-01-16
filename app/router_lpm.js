@@ -1,9 +1,9 @@
 var indexRoutes = require('./routes/lpm/index');
 var editionsRoutes = require('./routes/lpm/editions');
 var timelinemapRoutes = require('./routes/lpm/timeline-map');
+
+var sitemapRoutes = require('./routes/_common/sitemap');
 var signupRoutes = require('./routes/_common/signup');
-
-
 var usersRoutes = require('./routes/_common/users');
 var eventsRoutes = require('./routes/_common/events');
 var newsRoutes = require('./routes/_common/news');
@@ -13,6 +13,14 @@ var pagesRoutes = require('./routes/_common/pages');
  */
 module.exports = function(app) {
   app.get('/', indexRoutes.get);
+
+  app.get('/sitemap.xml', sitemapRoutes.get);
+  app.get("/sitemap-home.xml", sitemapRoutes.get);
+  app.get("/sitemap-pages.xml", sitemapRoutes.get);
+  app.get("/sitemap-posttype-(:posttype).xml", sitemapRoutes.get);
+  app.get("/sitemap-editions-(:edition).xml", sitemapRoutes.get);
+  app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
+
   //app.get('/users', usersRoutes.getAll);
   app.get('/user/(:user)', usersRoutes.get);
   app.get('/events/', eventsRoutes.getAll);

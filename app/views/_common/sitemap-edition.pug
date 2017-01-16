@@ -1,0 +1,26 @@
+doctype xml
+//- console.log(result)
+
+- var now = new Date()
+
+sitemapindex(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9', xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance', xsi:schemalocation='http://www.sitemaps.org/schemas/sitemap/0.9\ http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd')
+  each page in result.menu
+    sitemap
+      loc=config.domain+page.permalink
+      if (config.locales.length > 1)
+        each locale in config.locales
+          if locale == config.default_lang
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + config.sezsuburl+config.sez[result.type].baseurl +"/"+result.slug+"/")
+          else
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + config.sezsuburl+config.sez[result.type].baseurl +"/"+result.slug+"/")
+
+      - var date = new Date(result.edition["wpcf-startdate"]*1000)
+      - var timeDiff = (date.getTime() - now.getTime());
+      - var diffDays = (timeDiff / (1000 * 3600 * 24));
+      - console.log(diffDays)
+      lastmod=diffDays < 0 ? date.toISOString() : now.toISOString()
+      changefreq=diffDays < 0 ? "yearly" : "daily"
+      priority 1.0
+      image:image
+        image:loc=page.img.full
+        image:title!="<![CDATA["+page.post_title+"]]>"

@@ -1,6 +1,20 @@
 .list_title {
   margin-top: 0;
 }
+.subfooter .madeby a{
+  display: block;
+  margin: -15px -7px 0 0;
+  color:#f0ad4e;
+}
+.subfooter .madeby a:hover{
+  color:#FFF;
+}
+.subfooter .madeby .icon-flyer{
+  font-size: 30px;
+}
+.footer-nav-inline a{
+  display: block;
+}
 /* MODAL PORTFOLIO*/
 .modal-header{
   position: fixed;
@@ -96,7 +110,7 @@
 footer a:link, footer a:visited, footer a:active{
   color: #ccc;
 }
-footer a:hover {
+a:hover {
   text-decoration: none;
 }
 .footer-nav-inline{
@@ -108,11 +122,12 @@ footer a:hover {
 .footer-nav-inline li img{
   height: 40px;
 }
-.footer-nav .tooltip.bottom .tooltip-inner{
+footer .tooltip.bottom .tooltip-inner, footer .tooltip.left .tooltip-inner{
   background-color:#ccc;
   color: #000;
 }
-.footer-nav .tooltip.bottom .tooltip-arrow{border-bottom-color:#ccc}
+footer .tooltip.bottom .tooltip-arrow{border-bottom-color:#ccc}
+footer .tooltip.left .tooltip-arrow{border-left-color:#ccc}
 .footer-nav i{
   font-size: 30px;
 }

@@ -1,0 +1,15 @@
+doctype xml
+- var now = new Date()
+- now.setHours(now.getHours() - 4)
+sitemapindex(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9', xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance', xsi:schemalocation='http://www.sitemaps.org/schemas/sitemap/0.9\ http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd')
+  sitemap
+    loc=config.domain
+    if (config.locales.length>1)
+      each locale in config.locales
+        if locale == config.default_lang
+          xhtml:link(rel="alternate", hreflang=locale, href=config.domain)
+        else
+          xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/"+locale+"/")
+    lastmod=now.toISOString()
+    changefreq daily
+    priority 1.0
