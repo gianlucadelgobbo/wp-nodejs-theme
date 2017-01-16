@@ -24,8 +24,10 @@ module.exports = function(app) {
   //app.get('/users', usersRoutes.getAll);
   app.get('/user/(:user)', usersRoutes.get);
   app.get('/events/', eventsRoutes.getAll);
+  app.get('/events/page/(:page)', eventsRoutes.getAll);
   app.get('/events/(:event)', eventsRoutes.get);
   app.get('/news/', newsRoutes.getAll);
+  app.get('/news/page/(:page)', newsRoutes.getAll);
   app.get('/news/(:new)', newsRoutes.get);
   app.get('/editions/', editionsRoutes.getAll);
   app.get('/editions/(:edition)', editionsRoutes.get);

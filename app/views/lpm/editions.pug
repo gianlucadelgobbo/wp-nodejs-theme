@@ -1,9 +1,9 @@
 extends layout
 block content
-  article#container
+  article#container(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
     header
       h1.entry-title
-        span.pull-left=global.__("Editions")
+        span.pull-left(itemprop="name")=global.__("Editions")
         span.pull-right
           include ../_common/inc_share_span
     .row.isotope

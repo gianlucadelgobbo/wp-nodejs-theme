@@ -12,7 +12,7 @@ exports.getPostType = function getWeb(req,posttype,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_type/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(posttype).get(function( err, data ) {
     console.log("//// PostType "+posttype);
-    console.log(err || data);
+    //console.log(err || data);
     //data = fnz.fixResult(data);
     callback(data);
   });
@@ -56,7 +56,7 @@ exports.getPage = function getPage(req,callback) {
   var wp = new WPAPI({ endpoint: config.sez.pages.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/mypages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.page).get(function( err, data ) {
-    console.log("//// Page" + req.params.page);
+    console.log("//// Page " + req.params.page);
     if (!err && data) {
       if (data) data = fnz.fixResult(data);
       if (data.posts){
@@ -66,7 +66,7 @@ exports.getPage = function getPage(req,callback) {
     } else {
       data = {};
     }
-    console.log(data.posts);
+    //console.log(data.posts);
     callback(data);
   });
 };
@@ -88,7 +88,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   if (sez.site_tax) {
     wp.myCustomResource().param('site', sez.site_tax ).param( 'parent', 0 ).perPage(mylimit).page(page).get(function( err, data ) {
       console.log("//// AllFilterTax "+sez.post_type+" "+sez.site_tax);
-      //console.log(err || data);
+      console.log(err || data);
       data = fnz.fixResults(data);
       if (limit == -1) {
         for(var d in data) if (data[d].id) previousdata.push(data[d]);
@@ -138,6 +138,7 @@ exports.getEvent = function getEvent(req,callback) {
   });
 };
 
+/*
 exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
   console.log("getAllEvents");
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
@@ -150,14 +151,16 @@ exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
     callback(data);
   });
 };
+*/
 
 exports.getAllEventsByYear = function getAllEventsByYear(req, years, callback) {
   console.log("getAllEventsByYear");
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
   var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   if (years) {
+    console.log('/all-events/'+config.sez.events.site_tax[0]+"/"+years);
     wp.myCustomResource = wp.registerRoute('wp/v2', '/all-events/(?P<siteee>)/(?P<yearsss>)');
-    wp.myCustomResource().siteee(config.site_tax[0]).yearsss(years).get(function( err, data ) {
+    wp.myCustomResource().siteee(config.sez.events.site_tax[0]).yearsss(years).get(function( err, data ) {
       console.log("//// All Events by year "+years);
       //console.log(err || data);
       data = fnz.fixResults(data);
@@ -165,7 +168,7 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, years, callback) {
     });
   } else {
     wp.myCustomResource = wp.registerRoute('wp/v2', '/all-events/(?P<siteee>)', {params: [ 'before', 'after', 'author', 'parent', 'post' ]});
-    wp.myCustomResource().siteee(config.site_tax[0]).get(function( err, data ) {
+    wp.myCustomResource().siteee(config.sez.events.site_tax[0]).get(function( err, data ) {
       console.log("//// All Events ALL");
       //console.log(err || data);
       data = fnz.fixResults(data);
@@ -340,6 +343,7 @@ exports.getExhibition = function getExhibition(req,callback) {
   }
 };
 
+/*
 exports.getAllExhibitions = function getAllExhibitions(req, limit, page, callback) {
   console.log("getAllExhibitions");
   var wp = new WPAPI({ endpoint: config.sez.exhibitions.domain+'/wp-json' });
@@ -351,10 +355,10 @@ exports.getAllExhibitions = function getAllExhibitions(req, limit, page, callbac
     callback(data);
   });
 };
-
+*/
 
 //////// EDITIONS
-
+/*
 exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
   console.log("getAllEditions");
   var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });
@@ -366,7 +370,7 @@ exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
     callback(data);
   });
 };
-
+*/
 exports.getAllEditionsByYear = function getAllEditionsByYear(req, years, limit, page, callback) {
   console.log("getAllEditionsByYear");
   var wp = new WPAPI({ endpoint: config.sez.editions.domain+'/wp-json' });

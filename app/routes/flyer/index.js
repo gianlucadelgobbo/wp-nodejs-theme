@@ -7,23 +7,20 @@ exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     if (req.query.createcache==1 || !fs.existsSync(file)){
       helpers.getPage({"params":{"page":"profile"},"url":req.url}, function( profile ) {
-        helpers.getAllNews(req, config.sez.home.news.limit, 1, function (result_news) {
+        helpers.getPostType(req, "news", function( posttype_news ) {
           helpers.getPostType(req, "events", function( posttype_events ) {
-            //posttype_events.excerpt = fnz.makeExcerpt(posttype_events.description,280);
-            helpers.getPostType(req, "lab", function( posttype_lab ) {
-              //posttype_lab.excerpt = fnz.makeExcerpt(posttype_lab.description,280);
-              helpers.getPostType(req, "web-and-mobile", function( posttype_web ) {
-                //posttype_web.excerpt = fnz.makeExcerpt(posttype_web.description,280);
+            helpers.getPostType(req, "web-and-mobile", function( posttype_web ) {
+              helpers.getPostType(req, "learning", function( posttype_learning ) {
                 helpers.getPostType(req, "videos", function( posttype_video ) {
-                  helpers.getPostType(req, "learning", function( posttype_learning ) {
-                    helpers.getPostType(req, "news", function( posttype_news ) {
-                      helpers.getPostType(req, "awards-and-grants", function( posttype_awards ) {
-                        helpers.getAllEvents(req, config.sez.home.events.limit, 1, function (result_events) {
-                          helpers.getAllWeb(req, config.sez.home.web.limit, 1, function (result_web) {
-                            helpers.getAllLearning(req, config.sez.home.learning.limit, 1, function (result_learning) {
-                              helpers.getAllVideo(req, config.sez.home.videos.limit, 1, function (result_videos) {
-                                helpers.getAllLab(req, config.sez.home.lab.limit, 1, function (result_lab) {
-                                  helpers.getAllAward(req, config.sez.home.award.limit, 1, function (result_award) {
+                  helpers.getPostType(req, "lab", function( posttype_lab ) {
+                    helpers.getPostType(req, "awards-and-grants", function( posttype_awards ) {
+                      helpers.getAll(req, config.sez["news"], config.sez.home.news.limit, 1, function (result_news) {
+                        helpers.getAll(req, config.sez["events"], config.sez.home.events.limit, 1, function (result_events) {
+                          helpers.getAll(req, config.sez["web-and-mobile"], config.sez.home.web.limit, 1, function (result_web) {
+                            helpers.getAll(req, config.sez["learning"], config.sez.home.learning.limit, 1, function (result_learning) {
+                              helpers.getAll(req, config.sez["videos"], config.sez.home.videos.limit, 1, function (result_videos) {
+                                helpers.getAll(req, config.sez["lab"], config.sez.home.lab.limit, 1, function (result_lab) {
+                                  helpers.getAll(req, config.sez["awards-and-grants"], config.sez.home.award.limit, 1, function (result_award) {
                                     meta_data.meta.title = meta_data.meta.name;
                                     var obj = {
                                       results: {news:result_news,events:result_events,web:result_web,learning:result_learning,videos:result_videos,lab:result_lab,awards:result_award},

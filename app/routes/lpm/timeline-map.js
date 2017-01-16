@@ -18,7 +18,8 @@ exports.getTimeline = function getTimeline(req, res) {
       var endyear = parseInt(year.split("-")[1])-1;
       if (endyear<2004) endyear = 2004;
       var next = endyear == 2004 ? null : startyear+"-"+endyear;
-      console.log(next);
+      console.log("year "+year);
+      console.log("next "+next);
       helpers.getAllEditionsEvents(req, year, function( results ) {
         var pugpage = (config.sez.pages.conf.timeline.pugpage ? config.sez.pages.conf.timeline.pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : "");
         var itemtype = config.sez.pages.conf.timeline.itemtype ? config.sez.pages.conf.timeline.itemtype : config.sez.pages.conf.default.itemtype;

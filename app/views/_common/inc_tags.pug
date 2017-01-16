@@ -1,7 +1,7 @@
 if posttype.tags
   p.tags
     each tag, index in posttype.tags
-      a(href=lang_preurl + '/portfolio/'+baseurl+'/tags/' + tag.slug + "/")
+      a(href=lang_preurl + '/'+baseurl+'/tags/' + tag.slug + "/")
         span.tagandcount!="#" + tag.name + " (" + tag.count + ")"
       if index + 1 < posttype.tags.length
         !=" · "

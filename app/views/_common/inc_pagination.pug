@@ -3,7 +3,7 @@ if (results._paging && results._paging.totalPages)
     - var nextpage = (parseInt(page) + 1)
     - console.log(nextpage);
     if (nextpage <= results._paging.totalPages)
-      a(href=lang_preurl + '/portfolio/'+baseurl+'/page/' + nextpage)
+      a(href=(lang_preurl ? lang_preurl : '') + '/'+baseurl+'/page/' + nextpage)
         !=global.__("Load More")
         !=" "
         i.icon-right

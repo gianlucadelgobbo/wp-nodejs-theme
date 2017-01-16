@@ -6,13 +6,13 @@ exports.get = function get(req, res) {
   var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
   helpers.getMetaData(req, function( meta_data ) {
     if (req.query.createcache==1 || !fs.existsSync(file)){
-      helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
+      helpers.getAllNews(req, config.sez.home.news.limit, 1, function (result_news) {
         var now = new Date();
         var yearAfter = now.getMonth()>7 ? now.getFullYear() : now.getFullYear()-1;
         var years = yearAfter+"-"+now.getFullYear();
         console.log(years);
-        helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
-          helpers.getAll(req, config.sez.editions, config.sez.home.editions.limit, 1, function (result_editions) {
+        helpers.getAll(req, config.sez.home.events.limit, 1, function (result_events) {
+          helpers.getAll(req, config.sez.home.editions.limit, 1, function (result_editions) {
             meta_data.meta.title = meta_data.meta.name+ " "+ (meta_data.edition && meta_data.edition.post_title ? meta_data.edition.post_title : "");
             console.log("bingo");
             var obj = {
