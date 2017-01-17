@@ -19,7 +19,7 @@ exports.getAll = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPostType(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
-      helpers.getAllExhibitions(req, config.sez.exhibitions.limit, page, function( results ) {
+      helpers.getAll(req, sez, sez.limit, page, function( results ) {
         meta_data.meta.title = __("Exhibitions") + " | " + meta_data.meta.name;
         console.log("stocazzo");
         console.log(posttype);
@@ -31,7 +31,6 @@ exports.getAll = function getAll(req, res) {
   });
 };
 
-/*
 exports.getArtist = function getArtist(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getExhibitionArtist(req, function( result ) {
@@ -41,6 +40,7 @@ exports.getArtist = function getArtist(req, res) {
     });
   });
 };
+/*
 
 exports.getGallery = function getGallery(req, res) {
   helpers.getMetaData(req, function( meta_data ) {

@@ -46,7 +46,7 @@ exports.getGallery = function getGallery(req, res) {
 
 exports.getAll = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
-    helpers.getAllEditions(req, config.sez.editions.limit, 1, function( results ) {
+    helpers.getAll(req, config.sez.editions, config.sez.editions.limit, 1, function( results ) {
       console.log(results);
       meta_data.meta.title = "Editions | " + meta_data.meta.name+ " "+ meta_data.edition.post_title;
       res.render(config.prefix+'/'+'editions', {results: results, meta_data:meta_data});

@@ -6,9 +6,9 @@ exports.get = function get(req, res) {
   var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
   helpers.getMetaData(req, function( meta_data ) {
     if (req.query.createcache==1 || !fs.existsSync(file)){
-      helpers.getAllNews(req, config.sez.home.news.limit, 1, function (result_news) {
-        helpers.getAllEvents(req, config.sez.home.events.limit, 1, function (result_events) {
-          helpers.getAllExhibitions(req, config.sez.home.exhibitions.limit, 1, function (result_exhibitions) {
+      helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
+        helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
+          helpers.getAll(req, config.sez.exhibitions, config.sez.home.exhibitions.limit, 1, function (result_exhibitions) {
             meta_data.meta.title = meta_data.meta.name+ " "+ (meta_data.exhibition && meta_data.exhibition.post_title ? meta_data.exhibition.post_title : "");
             console.log("bingo");
             var obj = {

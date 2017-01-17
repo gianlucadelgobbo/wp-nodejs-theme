@@ -51,28 +51,33 @@ exports.getGallery = function getGallery(req, res) {
           request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
               result.post_gallery = JSON.parse(body);
-              console.log(result.post_gallery);
+              //console.log(result.post_gallery);
               meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
-              res.render(config.prefix+'/'+'gallery_dett', {result: result, meta_data:meta_data, include_gallery:false});
+              res.render(config.prefix+'/'+'gallery_dett', {result: result, meta_data:meta_data, include_gallery:true});
             }
           });
         } else {
           var shortcode = require('shortcode-parser');
           result.post_content = result.post_content.replace("source=https","source='https").replace("/ view=","/' view='").replace("]","']");
+          console.log(result.post_content);
           //var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
           shortcode.add('avnode', function(buf, opts) {
             if (opts.source) {
+              console.log("/stoqui2");
               request(opts.source, function (error, response, body) {
+                console.log("/stoqui3");
+                console.log(error);
                 if (!error && response.statusCode == 200) {
                   result.post_gallery = JSON.parse(body).gallery;
-                  console.log(result.post_gallery);
+                  //console.log(result.post_gallery);
                   meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
                   res.render(config.prefix+'/'+'gallery', {result: result, meta_data:meta_data, include_gallery:false});
                 }
               });
             }
           });
-
+          console.log("/stoqui1");
+          shortcode.parse(result.post_content);
         }
         /*
         var shortcode = require('shortcode-parser');

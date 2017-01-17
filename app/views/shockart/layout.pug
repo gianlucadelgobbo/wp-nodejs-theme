@@ -1,5 +1,6 @@
 doctype html
-html(lang='en')
+html(lang=config.current_lang)
+  - var lang_preurl = (config.current_lang == config.default_lang ? '' :'/'+config.current_lang)
   head
     title=meta_data.meta['title']
     meta(charset='UTF-8')
@@ -50,6 +51,7 @@ html(lang='en')
       include includes/footer
     include ../_common/modal-full
     include ../_common/modal-search
+    include includes/modal-resize
 
     script(type='text/javascript', src='/_common/js/jquery.min.js')
     script(type='text/javascript', src='/_common/js/bootstrap.min.js')

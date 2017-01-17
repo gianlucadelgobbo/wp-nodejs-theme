@@ -2,6 +2,8 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 //var session = require('exp-session');
 var methodOverride = require('method-override');
+var errorhandler = require('errorhandler')
+
 var i18n = require('i18n');
 i18n.configure({
   locales: config.locales,
@@ -36,6 +38,13 @@ module.exports = function(app, exp) {
     //app.set('view options', { doctype : 'html', pretty : true });
   } else {
     app.locals.pretty = true;
-    //app.use(exp.errorHandler());
+    var logger = require('morgan');
+    app.use(logger('combined'));
+    app.use(errorhandler());
+    app.use(function(err, req, res, next) {
+      // Do logging and user-friendly error message display
+      console.error(err);
+      res.status(500).send({status:500, message: 'internal error', type:'internal'});
+    })/**/
   }
 };

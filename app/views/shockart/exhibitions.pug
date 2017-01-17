@@ -1,16 +1,14 @@
 extends layout
 block content
-  .container-fluid
-    article#container(itemscope, itemtype='http://schema.org/ItemList')
-      .row
-        .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2.col-xs-12
-          header.header
-            .text-center
-              h1.entry-title(itemprop="name")=posttype.labels.name
-              div(itemprop="description")!=posttype.description
-              include ../_common/inc_share
-      .row.isotope.results
-        each result, position in results
-          .col-lg-3.col-md-6.col-sm-6.col-xs-12.isotopeitem
-            include boxes/box_exhibition
-      include ../_common/inc_pagination
+  article#container(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
+    .row
+      .col-xs-10
+        h1.entry-title(itemprop="name")=posttype.labels.name
+      .col-xs-2
+        .pull-right
+          include ../_common/inc_share_span
+    .row.isotope.results
+      each result, position in results
+        .col-md-4.col-sm-6.col.isotopeitem
+          include boxes/box_exhibition
+    include ../_common/inc_pagination

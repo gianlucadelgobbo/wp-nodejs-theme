@@ -5,6 +5,10 @@ h1 ,.h1like{margin-top: 0;margin-bottom:10px;}
 .itemListElement {
   position: relative;
   margin-bottom: 20px;
+  overflow: hidden;
+}
+.itemListElement .media{
+  margin-bottom: 10px;
 }
 .caption {
   position: absolute;

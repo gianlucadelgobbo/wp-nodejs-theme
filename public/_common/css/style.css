@@ -15,24 +15,24 @@
 .footer-nav-inline a{
   display: block;
 }
-/* MODAL PORTFOLIO*/
-.modal-header{
+/* MODAL PORTFOLIO*/#cntSearch
+.modal-fullscreen .modal-header{
   position: fixed;
   width: 100%;
   color: #FFF;
 }
-.modal-header .close {
+.modal-fullscreen .modal-header .close {
   margin-top: 3px;
 }
-.close {
+.modal-fullscreen .close {
   color: #FFF;
   opacity: 1;
 }
-.close:hover, .close:focus {
+.modal-fullscreen .close:hover, .close:focus {
   color: #FFF;
   opacity: .6;
 }
-.modal-body {
+.modal-fullscreen .modal-body {
   overflow-x: scroll;
   height: 100%;
   width: 100%;
@@ -40,12 +40,12 @@
   padding: 15px 15px 61px 15px;
   margin-top: 56px;
 }
-.modal-body .loadingcnt{
+.modal-fullscreen .modal-body .loadingcnt{
   position: absolute;
   top: 40%;
   left: 50%;
 }
-.modal-body .loadingcnt .loading {
+.modal-fullscreen .modal-body .loadingcnt .loading {
   position: absolute;
   top: -50px;
   left: -50px;
@@ -53,7 +53,7 @@
   width: 100px;
   height: 100px;
 }
-.modal-open .modal{
+.modal-fullscreen .modal-open .modal{
   overflow-x: initial;
   overflow-y: initial;
 }

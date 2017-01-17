@@ -15,9 +15,9 @@ if result.capauthors
         !=" "+config.sez.users.posttypes[result.post_type].publisher.label_multi
       each capauthor in result.capauthors
         if (customerExists && config.sez.users.posttypes[result.post_type].publisher.roles.indexOf(capauthor.user_role_value)!=-1) || !customerExists
-          - var baseurl = baseurl = config.sez.users.posttypes[result.post_type].authors.baseurl
+          - var baseurl = baseurl = config.sez.users.customers.baseurl
           li(itemprop=config.sez.users.posttypes[result.post_type].publisher.itemprop, itemscope, itemtype='http://schema.org/Organization')
-            a(href='/'+baseurl+'/' + capauthor.user_login, rel='author')
+            a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author')
               b(itemprop='name')=capauthor.display_name
             if result.post_type == "news"
               .sr-only(itemprop='logo', itemscope, itemtype="http://schema.org/ImageObject")
@@ -29,8 +29,8 @@ if result.capauthors
     each capauthor in result.capauthors
       if (authorExists && config.sez.users.posttypes[result.post_type].publisher.roles.indexOf(capauthor.user_role_value)==-1) || !authorExists
         li(itemprop=itemprop=config.sez.users.posttypes[result.post_type].authors.itemprop, itemscope, itemtype='http://schema.org/Person')
-          - var baseurl = config.sez.users.posttypes[result.post_type].authors.baseurl
-          a(href='/'+baseurl+'/' + capauthor.user_login, rel='author')
+          - var baseurl = config.sez.users.people.baseurl
+          a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author')
             b(itemprop='name')=capauthor.display_name
             !=" "
             span(itemprop='jobTitle')=capauthor.user_role

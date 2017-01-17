@@ -6,8 +6,8 @@ exports.get = function get(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getUser(req, function( result ) {
 			meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
-			var pugPage = result.
-			res.render(config.prefix+'/'+'user_'+(req.url.indexOf("/people/")>=0 ? "people" : "customer"), {result: result, meta_data:meta_data, itemprop:req.url.indexOf("/people/")>=0 ? "employee" : "sponsor"});
+			var pugPage = config.prefix+'/'+'user_'+(req.url.indexOf(config.sez.users.people.baseurl)>=0 ? "people" : "customer");
+			res.render(pugPage, {result: result, meta_data:meta_data, itemprop:req.url.indexOf(config.sez.users.people.baseurl)>=0 ? "employee" : "sponsor"});
 		});
 	});
 };
@@ -15,8 +15,8 @@ exports.get = function get(req, res) {
 exports.getAllCustomers = function getAllCustomers(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getAllUsers(req, "customers", function( results ) {
-			meta_data.meta.title = __("Customers") + " | " + meta_data.meta.name;
-			res.render(config.prefix+'/'+'users_customer', {results: results, meta_data:meta_data,author_base:'customers', title: __("Customers"), itemprop:"sponsor"});
+			meta_data.meta.title = __(config.sez.users.customers.title) + " | " + meta_data.meta.name;
+			res.render(config.prefix+'/'+'users_customer', {results: results, meta_data:meta_data,author_base:config.sez.users.customers.baseurl, title: __(config.sez.users.customers.title), itemprop:"sponsor"});
 		});
 	});
 };
@@ -24,8 +24,8 @@ exports.getAllCustomers = function getAllCustomers(req, res) {
 exports.getAllPeople = function getAllPeople(req, res) {
 	helpers.getMetaData(req, function( meta_data ) {
 		helpers.getAllUsers(req, "people", function( results ) {
-			meta_data.meta.title = __("People") + " | " + meta_data.meta.name;
-			res.render(config.prefix+'/'+'users_people', {results: results, meta_data:meta_data,author_base:'people', title: __("People"), itemprop:"employee"});
+			meta_data.meta.title = __(config.sez.users.people.title) + " | " + meta_data.meta.name;
+			res.render(config.prefix+'/'+'users_people', {results: results, meta_data:meta_data,author_base:config.sez.users.people.baseurl, title: __(config.sez.users.people.title), itemprop:"employee"});
 		});
 	});
 };

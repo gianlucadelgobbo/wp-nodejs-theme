@@ -2,22 +2,23 @@ extends layout
 block content
   article#container(itemscope='', itemtype='http://schema.org/Event')
     header
-      h1.entry-title(itemprop='name')=result.post_title+": "+result.post_gallery.titolo+(result.post_gallery.dettMedia.titolo ? " | "+result.post_gallery.dettMedia.titolo : "")
+      h1.entry-title(itemprop='name')=result.post_title+": "+result.post_gallery.titolo+(result.post_gallery.dettMedia && result.post_gallery.dettMedia.titolo ? " | "+result.post_gallery.dettMedia.titolo : "")
         !=" "
         small=result.post_gallery.performers[0].nomearte
     if result.post_gallery.dettMedia
       img.img-responsive(itemprop='image', src='https://flxer.net/' + result.post_gallery.dettMedia.folder+'/' + result.post_gallery.dettMedia.name, alt=result.post_gallery.dettMedia.titolo)
     ul#listItems.row
-      each gall in result.post_gallery.sorted
-        - console.log(gall)
-        li.col-xl-3.col-lg-4(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/CreativeWork')
-          a(itemprop='url', href='/gallery/'+result.post_gallery.performers[0].login+'/'+result.post_gallery.permalink+'/'+gall.permalink+'/', title='Gallery image of '+gall.titolo)
-            img.img-responsive(itemprop='image', src='https://flxer.net'+gall.thumb, alt='')
-          .caption(style='padding-right:15px;padding-left:15px;')
-            .caption-body
-              h2.caption-title(itemprop='name')=gall.titolo
-              .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
-                !="<br />"+gall.visite
-
-
-
+      each gall, index in result.post_gallery.sorted
+        if gall.id
+          li.col-xs-12.col-md-4.col-lg-3.col-xl-2.nggthumbnail(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+            meta(itemprop='position', content=index)
+            div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+              a.thumbnail(title=gall.titolo, style='position:relative;', itemprop='url', href='/gallery/' + result.post_gallery.performers[0].login + '/' + result.post_gallery.permalink + '/' + gall.permalink + '/')
+                span.cntGallImgOver
+                  - var thumb = gall.preview_file ? 'https://flxer.net/'+gall.preview_file : 'https://flxer.net'+gall.thumb.replace("128x96","400x300")
+                  img.cntGallImgImg(itemprop='image', src=thumb, alt=gall.titolo)
+                  img.gallType(src='https://flxer.net/_images/over_'+gall.type+'.png', alt=gall.titolo)
+                span.cntDida(itemprop='name')=gall.titolo
+              script.
+                if (typeof glink==='undefined') var glink = [];
+                glink.push('https://flxer.net/#{gall.folder}/#{gall.name}');

@@ -28,10 +28,18 @@ exports.get = function get(req, res) {
       res.render('_common/sitemap-edition', {result:result});
     });
 
+  } else if (req.params.exhibition) {
+    console.log(req.params.exhibition);
+    helpers.getMetaData(req, function( result ) {
+      res.render('_common/sitemap-exhibition', {result:result});
+    });
+
   } else if (req.params.posttype) {
     console.log(config.sez[req.params.posttype]);
     helpers.getAll(req, config.sez[req.params.posttype], -1, 1, function( results ) {
-      if (req.params.posttype == "editions") {
+      if (req.params.posttype == "exhibitions") {
+        res.render('_common/sitemap-exhibitions', {results:results});
+      } else if (req.params.posttype == "editions") {
         res.render('_common/sitemap-editions', {results:results});
       } else {
         res.render('_common/sitemap-posttype', {results:results});

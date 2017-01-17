@@ -4,7 +4,48 @@ footer a:hover {
 .header {
   padding: 20px 0 50px 0;
 }
+.main-image{
+  margin-bottom: 30px;
+}
+.entry-title{
+  margin-top: 0;
+}
+.box-list i {
+  display: none;
+}
 
+
+
+ul.lists {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul.lists .itemListElement {
+  position: relative;
+  margin-bottom: 20px;
+}
+ul.lists .itemListElement .caption {
+  position: absolute;
+  pointer-events: none;
+  color: #FFF;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  bottom: 0px;
+  overflow: hidden;
+}
+ul.lists .itemListElement .caption .caption-body {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  text-shadow: 0 2px 4px black;
+}
+ul.lists .itemListElement .caption .caption-body .caption-title {
+  font-size: 21px;
+  margin-top: 0;
+}
 /* BOX EVENT */
 .Event .supText{
   font-size: 11px;
@@ -34,6 +75,7 @@ footer a:hover {
 }
 .Event{
   margin-bottom:30px;
+  position: relative;
 }
 .Event .box-list .text-center{
   padding: 30px;
@@ -55,6 +97,9 @@ footer a:hover {
   padding: 10px;
 }
 
-.Edition .box-list{
-  padding: 10px;
+/* BOX Exhibition */
+.Exhibition .box-list{
+  padding: 15px;
+  background-color: #EEE;
+  margin-bottom: 30px;
 }

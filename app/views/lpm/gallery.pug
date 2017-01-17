@@ -5,17 +5,18 @@ block content
       h1.entry-title(itemprop='name')=result.post_title
     ul#listItems.row
       each gall in result.post_gallery
-        - console.log(gall)
-        li.col-xl-3.col-lg-4(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/CreativeWork')
-          a(itemprop='url', href='/gallery/'+gall.performers[0].login+'/'+gall.permalink+'/', title='Gallery image of '+gall.titolo)
-            img.img-responsive(itemprop='image', src='https://flxer.net'+gall.img_arr, alt='')
-          .caption(style='padding-right:15px;padding-left:15px;')
-            .caption-body
-              h2.caption-title(itemprop='name')=gall.titolo
-              .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
-                b(itemprop='name')=gall.performers[0].nomearte
-                each stat, k  in gall.stats
-                  !="<br />"+k+": "+stat
+        li.col-xs-12.col-md-4.col-lg-3.col-xl-2(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+          meta(itemprop='position', content=index)
+          div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+            a(itemprop='url', href='/gallery/'+gall.performers[0].login+'/'+gall.permalink+'/', title='Gallery image of '+gall.titolo)
+              img.img-responsive(itemprop='image', src='https://flxer.net'+gall.img_arr, alt='')
+            .caption(style='padding-right:15px;padding-left:15px;')
+              .caption-body
+                h2.caption-title(itemprop='name')=gall.titolo
+                .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+                  b(itemprop='name')=gall.performers[0].nomearte
+                  each stat, k  in gall.stats
+                    !="<br />"+k+": "+stat
 
 
 
