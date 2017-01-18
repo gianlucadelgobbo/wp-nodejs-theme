@@ -3,6 +3,7 @@ if result.capauthors
   - var authorExists = false
   - var customerExists = false
   each capauthor in result.capauthors
+    - console.log(result.post_type)
     if config.sez.users.posttypes[result.post_type].publisher.roles.indexOf(capauthor.user_role_value)!=-1
       - customerExists = true
     else if capauthor.display_name
