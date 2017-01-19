@@ -7,7 +7,7 @@ var pagesRoutes = require('./routes/_common/pages');
 
 module.exports = function(app) {
   app.get('/', indexRoutes.get);
-  app.get('/backstage', usersRoutes.getAllPeople);
+  app.get('/backstage', usersRoutes.getUsers);
   app.get('/backstage/(:user)', usersRoutes.get);
   app.get('/events/', eventsRoutes.getAll);
   app.get('/events/(:event)', eventsRoutes.get);

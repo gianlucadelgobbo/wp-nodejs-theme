@@ -16,9 +16,9 @@ module.exports = function(app) {
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
   app.get('/it/', indexRoutes.get);
-  app.get('/it/members', usersRoutes.getAllPeople);
+  app.get('/it/members', usersRoutes.getUsers);
   app.get('/it/members/(:user)', usersRoutes.get);
-  app.get('/it/partners', usersRoutes.getAllCustomers);
+  app.get('/it/partners', usersRoutes.getUsers);
   app.get('/it/partners/(:user)', usersRoutes.get);
   app.get('/it/events/', eventsRoutes.getAll);
   app.get('/it/events/(:event)', eventsRoutes.get);
@@ -29,9 +29,9 @@ module.exports = function(app) {
   app.get('/it/(:page)/', pagesRoutes.get);
 
   app.get('/', indexRoutes.get);
-  app.get('/members', usersRoutes.getAllPeople);
+  app.get('/members', usersRoutes.getUsers);
   app.get('/members/(:user)', usersRoutes.get);
-  app.get('/partners', usersRoutes.getAllCustomers);
+  app.get('/partners', usersRoutes.getUsers);
   app.get('/partners/(:user)', usersRoutes.get);
   app.get('/events/', eventsRoutes.getAll);
   app.get('/events/(:event)', eventsRoutes.get);

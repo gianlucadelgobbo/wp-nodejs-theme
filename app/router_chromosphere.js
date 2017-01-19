@@ -9,9 +9,9 @@ var pagesRoutes = require('./routes/_common/pages');
 
 module.exports = function(app) {
   app.get('/it/', indexRoutes.get);
-  app.get('/it/team', usersRoutes.getAllPeople);
+  app.get('/it/team', usersRoutes.getUsers);
   app.get('/it/team/(:user)', usersRoutes.get);
-  app.get('/it/partners', usersRoutes.getAllCustomers);
+  app.get('/it/partners', usersRoutes.getUsers);
   app.get('/it/partners/(:user)', usersRoutes.get);
   app.get('/it/events/', eventsRoutes.getAll);
   app.get('/it/events/(:event)', eventsRoutes.get);
@@ -32,9 +32,9 @@ module.exports = function(app) {
   app.get('/it/(:page)', pagesRoutes.get);
 
   app.get('/', indexRoutes.get);
-  app.get('/team', usersRoutes.getAllPeople);
+  app.get('/team', usersRoutes.getUsers);
   app.get('/team/(:user)', usersRoutes.get);
-  app.get('/partners', usersRoutes.getAllCustomers);
+  app.get('/partners', usersRoutes.getUsers);
   app.get('/partners/(:user)', usersRoutes.get);
   app.get('/events/', eventsRoutes.getAll);
   app.get('/events/(:event)', eventsRoutes.get);

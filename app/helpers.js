@@ -20,14 +20,15 @@ exports.getPostType = function getWeb(req,posttype,callback) {
 
 /* USERS */
 
-exports.getUser = function getUser(req, callback) {
-  console.log("getUser");
+exports.getUser = function getUser(req, user_sez, callback) {
+  console.log("getUser"+config.sez.users[user_sez].domain);
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wpflyer = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wpflyer = new WPAPI({ endpoint: config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/author/(?P<siteee>)/(?P<sluggg>)' );
   wpflyer.myCustomResource().sluggg(req.params.user).siteee(config.sez.users.site_tax).get(function( err, data ) {
+    console.log(config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/author/'+config.sez.users.site_tax+'/'+req.params.user+'/');
     //console.log(data.data.auth_contents);
-    if (config.sez.users.domain != config.sez.events.domain) {
+    if (config.sez.users.externals && config.sez.users[user_sez].domain != config.sez.users.externals.domain) {
       console.log("//// User "+req.params.user+" "+config.sez.users.site_tax);
       if(data.data.auth_contents) {
         for(auth_content in data.data.auth_contents) {
@@ -36,9 +37,9 @@ exports.getUser = function getUser(req, callback) {
       }
       console.log("getUser2");
       config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-      var wp = new WPAPI({ endpoint: config.sez.users.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-      wp.myCustomResource = wp.registerRoute('wp/v2', '/author/(?P<sluggg>)' );
-      wp.myCustomResource().sluggg(req.params.user).get(function( err2, data2 ) {
+      var wp = new WPAPI({ endpoint: config.sez.users.externals.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+      wp.myCustomResource = wp.registerRoute('wp/v2', '/author/(?P<siteee>)/(?P<sluggg>)' );
+      wp.myCustomResource().sluggg(req.params.user).siteee(config.sez.users.site_tax).get(function( err2, data2 ) {
         console.log("//// User2 "+req.params.user);
         if(data2.data.auth_contents) {
           if(!data.data.auth_contents) data.data.auth_contents = {};
@@ -65,64 +66,126 @@ exports.getUser = function getUser(req, callback) {
   });
 };
 
-exports.getAllUsers = function getAllUsers(req, type, callback) {
-  console.log("getAllUsers");
+exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
+  console.log("getAllUsers "+user_sez);
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wpflyer = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var wpflyer = new WPAPI({ endpoint: config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/authors/(?P<siteee>)/(?P<sluggg>)' );
-  wpflyer.myCustomResource().sluggg(type).siteee(config.sez.users.site_tax).get(function( err, data ) {
+  console.log(config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/authors/'+config.sez.users.site_tax+'/'+user_sez+'/');
+  wpflyer.myCustomResource().sluggg(user_sez).siteee(config.sez.users.site_tax).get(function( err, data ) {
     //console.log(err || data);
-    console.log("stoqui"+type);
-    if (config.sez.users.domain != config.sez.events.domain) {
-      var wp = new WPAPI({ endpoint: config.sez.users.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-      wp.myCustomResource = wp.registerRoute('wp/v2', '/authors/(?P<sluggg>)' );
-      wp.myCustomResource().sluggg(type).get(function( err2, data2 ) {
+    console.log("stoqui"+user_sez);
+    if (config.sez.users["externals"].domain != config.sez.users[user_sez].domain) {
+      console.log("SOMMO "+user_sez);
+
+      var wp = new WPAPI({ endpoint: config.sez.users.externals.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+      wp.myCustomResource = wp.registerRoute('wp/v2', '/authors/(?P<siteee>)/(?P<sluggg>)' );
+      wp.myCustomResource().sluggg("externals").siteee(config.sez.users.site_tax).get(function( err2, data2 ) {
+        console.log(config.sez.users.externals.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/authors/'+config.sez.users.site_tax+'/externals/');
+        console.log("//// Mode "+config.sez.users[user_sez].querymode);
         var datanew = [];
-        for (var userflyer in data) {
-          for (var user in data2) {
-            console.log(err2 || data2[user].data.auth_contents);
-            if (data2[user].ID==data[userflyer].ID) {
-              for (var auth_content in data2[user].data.auth_contents) {
-                data[userflyer].data.auth_contents[auth_content] = data2[user].data.auth_contents[auth_content];
+        switch (config.sez.users[user_sez].querymode) {
+          case "only" :
+            for (var userflyer in data2) {
+              for (var user in data) {
+                if (data2[userflyer].ID==data[user].ID) {
+                  for (var auth_content in data2[userflyer].data.auth_contents) {
+                    data[user].data.auth_contents[auth_content] = data2[userflyer].data.auth_contents[auth_content];
+                  }
+                  datanew.push(data[user]);
+                }
               }
-              datanew.push(data[userflyer]);
+              /*
+               if (data2[user].data.auth_contents) {
+               if (!data.data.auth_contents) data.data.auth_contents = {};
+               for (auth_content in data2[user].data.auth_contents) {
+
+               data.data.auth_contents[auth_content] = data2[user].data.auth_contents[auth_content];
+               data.data.auth_contents[auth_content].posts = fnz.fixResults(data2[user].data.auth_contents[auth_content].posts);
+               console.log("stoqui");
+               }
+               }
+               */
             }
-          }
-          /*
-          if (data2[user].data.auth_contents) {
-            if (!data.data.auth_contents) data.data.auth_contents = {};
-            for (auth_content in data2[user].data.auth_contents) {
-
-              data.data.auth_contents[auth_content] = data2[user].data.auth_contents[auth_content];
-              data.data.auth_contents[auth_content].posts = fnz.fixResults(data2[user].data.auth_contents[auth_content].posts);
-              console.log("stoqui");
+            /*
+            for (var user in data2) {
+              var insert = true;
+              for (var usernew in datanew) {
+                if (datanew[usernew].ID == data2[user].ID) insert = false;
+              }
+              if (insert) datanew.push(data2[user]);
             }
-          }
-          */
-        }
-        for (var user in data2) {
-          var insert = true;
-          for (var usernew in datanew) {
-            if (datanew[usernew].ID == data2[user].ID) insert = false;
-          }
-          if (insert) datanew.push(data2[user]);
-        }
-        for (var userflyer in data) {
-          var insert = true;
-          for (var usernew in datanew) {
-            if (datanew[usernew].ID == data[userflyer].ID) insert = false;
-          }
-          if (insert) datanew.push(data[userflyer]);
-        }
-          //data2.push(data[userflyer]);
+            for (var userflyer in data) {
+              var insert = true;
+              for (var usernew in datanew) {
+                if (datanew[usernew].ID == data[userflyer].ID) insert = false;
+              }
+              if (insert) datanew.push(data[userflyer]);
+            }*/
+            //data2.push(data[userflyer]);
 
-        console.log("//// Users "+type);
+            console.log("//// Users "+user_sez);
+            console.log(datanew);
 
-        //data = fnz.fixResults(data);
-        callback(datanew);
+            //data = fnz.fixResults(data);
+            callback(datanew);
+
+            break;
+          case "merge" :
+            for (var userflyer in data2) {
+              var insert = true;
+              for (var user in data) {
+                if (data2[userflyer].ID==data[user].ID) {
+                  var insert = false;
+                  for (var auth_content in data2[userflyer].data.auth_contents) {
+                    data[user].data.auth_contents[auth_content] = data2[userflyer].data.auth_contents[auth_content];
+                  }
+                  datanew.push(data[user]);
+                }
+              }
+              if (config.sez.users[user_sez].merge_exclude.indexOf(data2[userflyer].roles[0])==-1)datanew.push(data2[userflyer]);
+              /*
+               if (data2[user].data.auth_contents) {
+               if (!data.data.auth_contents) data.data.auth_contents = {};
+               for (auth_content in data2[user].data.auth_contents) {
+
+               data.data.auth_contents[auth_content] = data2[user].data.auth_contents[auth_content];
+               data.data.auth_contents[auth_content].posts = fnz.fixResults(data2[user].data.auth_contents[auth_content].posts);
+               console.log("stoqui");
+               }
+               }
+               */
+            }
+            /*
+             for (var user in data2) {
+             var insert = true;
+             for (var usernew in datanew) {
+             if (datanew[usernew].ID == data2[user].ID) insert = false;
+             }
+             if (insert) datanew.push(data2[user]);
+             }
+             for (var userflyer in data) {
+             var insert = true;
+             for (var usernew in datanew) {
+             if (datanew[usernew].ID == data[userflyer].ID) insert = false;
+             }
+             if (insert) datanew.push(data[userflyer]);
+             }*/
+            //data2.push(data[userflyer]);
+
+            console.log("//// Users "+user_sez);
+            console.log(datanew);
+
+            //data = fnz.fixResults(data);
+            callback(datanew);
+            break;
+          default :
+            break;
+        }
       });
     } else {
-      console.log("//// Users "+type);
+      console.log("//// Users "+user_sez);
+      console.log("//// Mode ONLY ");
       //console.log(err || data);
       //data = fnz.fixResults(data);
       callback(data);

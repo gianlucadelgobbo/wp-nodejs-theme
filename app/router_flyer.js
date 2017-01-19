@@ -55,9 +55,9 @@ module.exports = function(app) {
   app.get('/it/portfolio/awards-and-grants/(:award)', awardsRoutes.get);
   app.get('/it/portfolio/awards-and-grants/page/(:page)', awardsRoutes.get);
 
-  app.get('/it/people', usersRoutes.getAllPeople);
+  app.get('/it/people', usersRoutes.getUsers);
   app.get('/it/people/(:user)', usersRoutes.get);
-  app.get('/it/customers', usersRoutes.getAllCustomers);
+  app.get('/it/customers', usersRoutes.getUsers);
   app.get('/it/customers/(:user)', usersRoutes.get);
 
   app.get('/it/(:page)/', pagesRoutes.get);
@@ -97,9 +97,9 @@ module.exports = function(app) {
   app.get('/portfolio/awards-and-grants/(:award)', awardsRoutes.get);
   app.get('/portfolio/awards-and-grants/page/(:page)', awardsRoutes.getAll);
 
-  app.get('/people', usersRoutes.getAllPeople);
+  app.get('/people', usersRoutes.getUsers);
   app.get('/people/(:user)', usersRoutes.get);
-  app.get('/customers', usersRoutes.getAllCustomers);
+  app.get('/customers', usersRoutes.getUsers);
   app.get('/customers/(:user)', usersRoutes.get);
 
   app.get('/(:page)/', pagesRoutes.get);
