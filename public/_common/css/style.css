@@ -15,7 +15,10 @@
 .footer-nav-inline a{
   display: block;
 }
-/* MODAL PORTFOLIO*/#cntSearch
+/* MODAL PORTFOLIO*/
+.modal-fullscreen .modal-title {
+  color: #FFF;
+}
 .modal-fullscreen .modal-header{
   position: fixed;
   width: 100%;
