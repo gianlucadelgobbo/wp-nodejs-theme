@@ -1,5 +1,3 @@
-var WPAPI = require( 'wpapi' );
-var wp = new WPAPI({ endpoint: 'http://flyer.it/wp-json' });
 var helpers = require('../../helpers');
 
 exports.get = function get(req, res) {
