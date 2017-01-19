@@ -86,13 +86,15 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
         var datanew = [];
         switch (config.sez.users[user_sez].querymode) {
           case "only" :
+            var datanewIDS = [];
             for (var userflyer in data2) {
               for (var user in data) {
                 if (data2[userflyer].ID==data[user].ID) {
                   for (var auth_content in data2[userflyer].data.auth_contents) {
                     data[user].data.auth_contents[auth_content] = data2[userflyer].data.auth_contents[auth_content];
                   }
-                  datanew.push(data[user]);
+                  //datanew.push(data[user]);
+                  //datanewIDS.push(data[user].ID);
                 }
               }
               /*
@@ -107,8 +109,10 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
                }
                */
             }
+            //for (var user in data) if (datanewIDS.indexOf(data[user].ID)==-1) datanew.push(data[user]);
+            //for (var user in data) print_r(data[user].ID);
             /*
-            for (var user in data2) {
+            for (var user in data) {
               var insert = true;
               for (var usernew in datanew) {
                 if (datanew[usernew].ID == data2[user].ID) insert = false;
@@ -125,10 +129,10 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
             //data2.push(data[userflyer]);
 
             console.log("//// Users "+user_sez);
-            console.log(datanew);
+            console.log(data);
 
             //data = fnz.fixResults(data);
-            callback(datanew);
+            callback(data);
 
             break;
           case "merge" :
@@ -143,7 +147,7 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
                   datanew.push(data[user]);
                 }
               }
-              if (config.sez.users[user_sez].merge_exclude.indexOf(data2[userflyer].roles[0])==-1)datanew.push(data2[userflyer]);
+              if (!config.sez.users[user_sez].merge_exclude || config.sez.users[user_sez].merge_exclude.indexOf(data2[userflyer].roles[0])==-1)datanew.push(data2[userflyer]);
               /*
                if (data2[user].data.auth_contents) {
                if (!data.data.auth_contents) data.data.auth_contents = {};

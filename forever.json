@@ -23,5 +23,13 @@
     "script": "app.js",
     "sourceDir": "./",
     "args": ["-site", "shockart"]
+  },
+  {
+    "uid": "app",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "./",
+    "args": ["-site", "avnode"]
   }
 ]
