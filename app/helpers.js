@@ -233,9 +233,9 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   wp.myCustomResource = wp.registerRoute('wp/v2', '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;
 
-  if (sez.site_tax) {
-    wp.myCustomResource().param('site', sez.site_tax ).param( 'parent', 0 ).perPage(mylimit).page(page).get(function( err, data ) {
-      console.log("//// AllFilterTax "+sez.post_type+" "+sez.site_tax);
+  if (sez.site_tax_id) {
+    wp.myCustomResource().param('site', sez.site_tax_id ).param( 'parent', 0 ).perPage(mylimit).page(page).get(function( err, data ) {
+      console.log("//// AllFilterTax "+sez.post_type+" "+sez.site_tax_id);
       console.log(err || data);
       data = fnz.fixResults(data);
       if (limit == -1) {
@@ -251,7 +251,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
 
     });
   } else {
-    wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax )*/.perPage(mylimit).page(page).get(function( err, data ) {
+    wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax_id )*/.perPage(mylimit).page(page).get(function( err, data ) {
       console.log("//// All "+sez.post_type);
       console.log(err || data);
       data = fnz.fixResults(data);
@@ -755,7 +755,9 @@ exports.getMetaData = function getMetaData(req,callback) {
   }
   console.log("ecchime");
   if (req.query.createcache==1 || !fs.existsSync(file)) {
-    request(config.domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""), function (error, response, body) {
+    request(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""), function (error, response, body) {
+      console.log(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""));
+      console.log(error);
       if (!error && response.statusCode == 200) {
         var data = JSON.parse(body);
         if (data.edition) data.edition = fnz.fixResult(data.edition);
