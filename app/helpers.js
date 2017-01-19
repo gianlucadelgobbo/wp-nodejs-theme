@@ -686,6 +686,7 @@ exports.getMetaData = function getMetaData(req,callback) {
   } else {
     var file = config.root+'/tmp/'+config.prefix+'/meta_'+config.current_lang+'.json';
   }
+  console.log("ecchime");
   if (req.query.createcache==1 || !fs.existsSync(file)) {
     request(config.domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""), function (error, response, body) {
       if (!error && response.statusCode == 200) {

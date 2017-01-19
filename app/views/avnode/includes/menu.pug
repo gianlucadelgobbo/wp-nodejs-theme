@@ -18,24 +18,25 @@
           li
             a(href=lang_preurl+'/')=global.__("Home")
           li
-            a(href=lang_preurl+'/project/')=global.__("Project")
+            a(href=lang_preurl+'/manifesto/')=global.__("Manifesto")
           li
-            a(href=lang_preurl+'/exhibitions/')=global.__("Exhibitions")
+            a(href=lang_preurl + '/members/')=global.__("Members")
+          li
+            a(href=lang_preurl+'/activities/')=global.__("Activities")
           li
             a(href=lang_preurl + '/events/')=global.__("Events")
           li
             a(href=lang_preurl + '/news/')=global.__("News")
-          li
-            a(href=lang_preurl+'/backstage/')=global.__("Backstage")
-          li
-            a(href=lang_preurl+'/newsletter/')=global.__("Newsletter")
-          li
-            a(href=lang_preurl+'/contacts/')=global.__("Contacts")
+
         ul.nav.navbar-nav.navbar-right
-          li.lang-en(class=meta_data["langSwitcher"]["en"] == meta_data['url'] ? 'active' : '')
-            a(href=meta_data["langSwitcher"]["en"], hreflang='en', title='English') EN
-          li.menu-spacer-after.lang-it(class=meta_data["langSwitcher"]["it"] == meta_data['url'] ? 'active' : '')
-            a(href=meta_data["langSwitcher"]["it"], hreflang='it', title='Italiano') IT
+          li
+            a(href=lang_preurl + '/join/')=global.__("Join")
+          li
+            a(href=lang_preurl + '/newsletter/')=global.__("Newsletter")
+          li
+            a(href=lang_preurl + '/contacts/')=global.__("Contacts")
+          li
+            a(href=lang_preurl + '/login/')=global.__("Login")
           li.menu-spacer-after.hidden-xs
             a#cntSearchButton(href="/search/")
               i.glyphicon.glyphicon-search

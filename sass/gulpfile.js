@@ -25,12 +25,21 @@ gulp.task('css_flyer_bs', function() {
 });
 
 gulp.task('css_shockart_bs', function() {
-	return gulp.src('./shockart/*.scss')
-		.pipe(sass({
-			outputStyle: 'compressed',
-			includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
-		}))
-		.pipe(gulp.dest(config.publicDir + '/shockart/css'));
+  return gulp.src('./shockart/*.scss')
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+    }))
+    .pipe(gulp.dest(config.publicDir + '/shockart/css'));
+});
+
+gulp.task('css_avnode_bs', function() {
+  return gulp.src('./avnode/*.scss')
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+    }))
+    .pipe(gulp.dest(config.publicDir + '/avnode/css'));
 });
 
 
@@ -49,4 +58,4 @@ gulp.task('js_jq', function() {
 		.pipe(gulp.dest(config.publicDir + '/_common/js'));
 });
 
-gulp.task('default', ['css_lpm_bs', 'css_flyer_bs', 'css_shockart_bs', 'js_bs', 'fonts_bs', 'js_jq']);
+gulp.task('default', ['css_lpm_bs', 'css_flyer_bs', 'css_shockart_bs', 'css_avnode_bs', 'js_bs', 'fonts_bs', 'js_jq']);

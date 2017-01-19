@@ -9,7 +9,7 @@ exports.get = function get(req, res) {
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAll(req, config.sez.exhibitions, config.sez.home.exhibitions.limit, 1, function (result_exhibitions) {
-            meta_data.meta.title = meta_data.meta.name+ " "+ (meta_data.exhibition && meta_data.exhibition.post_title ? meta_data.exhibition.post_title : "");
+            meta_data.meta.title = meta_data.meta.name;
             console.log("bingo");
             var obj = {
               results: {news:result_news,events:result_events,exhibitions:result_exhibitions},
