@@ -106,7 +106,7 @@ exports.fixResults = function fixResults(data) {
 exports.fixResult = function fixResult(data) {
   /*if (typeof(data.video_thumbnail) == "string" && data.video_thumbnail.length>0) {
     data.video = this.get_video(data.video_thumbnail);
-  }*/
+  }
   if (data.featured) {
     data.featured.thumbnail = data.featured.thumbnail.replace(/http(.+)files/g, config.domain+"/files");
     data.featured.full = data.featured.full.replace(/http(.+)files/g, config.domain+"/files");
@@ -116,6 +116,7 @@ exports.fixResult = function fixResult(data) {
       data.capauthors[auth].img = data.capauthors[auth].img.replace(/http(.+)files/g, config.domain+"/files");
     }
   }
+   */
   //console.log(moment.locale());
   if (data.date) {
     data.date = moment(data.date).utc().format();
