@@ -20,7 +20,7 @@ exports.getPostType = function getPostType(req,posttype,callback) {
 
 exports.getContainerPage = function getContainerPage(req,slug,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var domain = config.sez.users[slug] ? config.sez.users[slug].domain : config.sez[slug].domain;
+  var domain = config.sez.users[slug] ? config.sez.users[slug].page_domain : config.sez[slug].page_domain;
   var wp = new WPAPI({ endpoint: domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(slug).get(function( err, data ) {
