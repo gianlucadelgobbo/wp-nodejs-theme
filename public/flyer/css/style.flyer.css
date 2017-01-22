@@ -677,6 +677,9 @@ a:hover img {
 a:hover, footer a:hover, .read-more.inverse a:hover {
   color:#f0ad4e;
 }
+footer .active a {
+  color:#f0ad4e;
+}
 
 
 /* PAGE DETAIL */
