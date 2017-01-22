@@ -7,13 +7,13 @@ exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     if (req.query.createcache==1 || !fs.existsSync(file)){
       helpers.getPage({"params":{"page":"profile"},"url":req.url}, function( profile ) {
-        helpers.getPostType(req, "news", function( posttype_news ) {
-          helpers.getPostType(req, "events", function( posttype_events ) {
-            helpers.getPostType(req, "web-and-mobile", function( posttype_web ) {
-              helpers.getPostType(req, "learning", function( posttype_learning ) {
-                helpers.getPostType(req, "videos", function( posttype_video ) {
-                  helpers.getPostType(req, "lab", function( posttype_lab ) {
-                    helpers.getPostType(req, "awards-and-grants", function( posttype_awards ) {
+        helpers.getContainerPage(req, "news", function( posttype_news ) {
+          helpers.getContainerPage(req, "events", function( posttype_events ) {
+            helpers.getContainerPage(req, "web-and-mobile", function( posttype_web ) {
+              helpers.getContainerPage(req, "learning", function( posttype_learning ) {
+                helpers.getContainerPage(req, "videos", function( posttype_video ) {
+                  helpers.getContainerPage(req, "lab", function( posttype_lab ) {
+                    helpers.getContainerPage(req, "awards-and-grants", function( posttype_awards ) {
                       helpers.getAll(req, config.sez["news"], config.sez.home.news.limit, 1, function (result_news) {
                         helpers.getAll(req, config.sez["events"], config.sez.home.events.limit, 1, function (result_events) {
                           helpers.getAll(req, config.sez["web-and-mobile"], config.sez.home.web.limit, 1, function (result_web) {

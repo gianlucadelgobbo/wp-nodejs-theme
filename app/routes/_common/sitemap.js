@@ -56,7 +56,7 @@ exports.get = function get(req, res) {
 
 exports.getAll = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
-    helpers.getPostType(req, sez.post_type, function( posttype ) {
+    helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAllAward(req, sez.limit, page, function( results ) {
         meta_data.meta.title = __("Awards and Grants") + " | " + meta_data.meta.name;

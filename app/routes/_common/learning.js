@@ -20,7 +20,7 @@ exports.get = function get(req, res) {
 
 exports.getAll = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
-    helpers.getPostType(req, sez.post_type, function( posttype ) {
+    helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAll(req, sez, sez.limit, page, function( results ) {
         meta_data.meta.title = __("Learnings") + " | " + meta_data.meta.name;

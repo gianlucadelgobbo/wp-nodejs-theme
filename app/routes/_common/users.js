@@ -4,11 +4,11 @@ exports.get = function get(req, res) {
   var user_sez = req.url.split("/")[1];
   console.log("user_sez "+user_sez);
   helpers.getMetaData(req, function( meta_data ) {
-    helpers.getUser(req, user_sez, function( result ) {
-      meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
-      var pugPage = config.prefix+'/'+'user_'+user_sez;
-      res.render(pugPage, {result: result, meta_data:meta_data, itemprop:config.sez.users[user_sez].itemprop});
-    });
+      helpers.getUser(req, user_sez, function( result ) {
+        meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
+        var pugPage = config.prefix+'/'+'user_'+user_sez;
+        res.render(pugPage, {result: result, meta_data:meta_data, itemprop:config.sez.users[user_sez].itemprop});
+      });
   });
 };
 /*
@@ -35,9 +35,11 @@ exports.getUsers = function getUsers(req, res) {
   var user_sez = req.url.split("/")[1];
   console.log("user_sez "+user_sez);
   helpers.getMetaData(req, function( meta_data ) {
-    helpers.getAllUsers(req, user_sez, function( results ) {
-      meta_data.meta.title = __(config.sez.users[user_sez].title) + " | " + meta_data.meta.name;
-      res.render(config.prefix+'/'+'users_'+user_sez, {results: results, meta_data:meta_data,author_base:config.sez.users[user_sez].baseurl, title: __(config.sez.users[user_sez].title)/*, itemprop:"sponsor"*/});
+    helpers.getContainerPage(req, user_sez, function( posttype ) {
+      helpers.getAllUsers(req, user_sez, function( results ) {
+        meta_data.meta.title = __(config.sez.users[user_sez].title) + " | " + meta_data.meta.name;
+        res.render(config.prefix+'/'+'users_'+user_sez, {results: results, meta_data:meta_data, posttype:posttype, author_base:config.sez.users[user_sez].baseurl, title: __(config.sez.users[user_sez].title)/*, itemprop:"sponsor"*/});
+      });
     });
   });
 };

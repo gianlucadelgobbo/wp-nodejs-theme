@@ -28,7 +28,7 @@ block content
       span.sr-only Next
   article#container.home
     .text-center(style="padding-top: 20px;")
-      h1.entry-title=meta_data.meta.description
+      h1.entry-title=meta_data.meta.post_content
     section.home-services(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .sr-only(itemprop="name")=global.__("Services")
       .container-fluid
@@ -55,7 +55,7 @@ block content
           h1.entry-title(itemprop="name")=global.__("Live Visuals")
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
-              .col-xs-12!=posttype_events.description
+              .col-xs-12!=posttype_events.post_content
         .row.isotope.results
           each result, position in results.events
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>5 ? "hidden-lg visible-xl" : "")
@@ -71,10 +71,10 @@ block content
     section.home-lab(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title(itemprop="name")=posttype_lab.labels.name
+          h1.entry-title(itemprop="name")=posttype_lab.post_title
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
-              .col-xs-12!=posttype_lab.description
+              .col-xs-12!=posttype_lab.post_content
         .row.isotope.results
           each result, position in results.lab
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>5 ? "hidden-lg visible-xl" : "")
@@ -90,10 +90,10 @@ block content
     section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title(itemprop="name")=posttype_web.labels.name
+          h1.entry-title(itemprop="name")=posttype_web.post_title
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
-              .col-xs-12!=posttype_web.description
+              .col-xs-12!=posttype_web.post_content
         .row.isotope.results
           each result, position in results.web
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "hidden-lg visible-xl visible-md" : "")
@@ -125,10 +125,10 @@ block content
     section.home-videos(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title(itemprop="name")=posttype_video.labels.name
+          h1.entry-title(itemprop="name")=posttype_video.post_title
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
-              .col-xs-12!=posttype_video.description
+              .col-xs-12!=posttype_video.post_content
         .row
           each result, position in results.videos
             .col-md-3.col-sm-12
@@ -147,7 +147,7 @@ block content
           h1.entry-title.boxItem(itemprop="name")=global.__("Awards and Grants")
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
-              .col-xs-12!=posttype_awards.description
+              .col-xs-12!=posttype_awards.post_content
         .row
           each result, position in results.awards
             .col-xl-2.col-lg-3.col-md-3(class=(!position ? "col-xl-offset-2" : ""))
@@ -164,7 +164,7 @@ block content
           h1.entry-title.boxItem(itemprop="name")=global.__("Extra")
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
-              .col-xs-12!=posttype_news.description
+              .col-xs-12!=posttype_news.post_content
         .row.isotope.results
           each result, position in results.news
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "visible-md hidden-lg visible-xl" : "")

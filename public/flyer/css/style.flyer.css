@@ -238,7 +238,7 @@ body.expanding.fixed-top{
   }
   #top-menu .menu-expand-bkg {
     width: 100%;
-    height: 54px;
+    height: 55px;
     position: absolute;
     top: 0;
     right: 0;
@@ -681,7 +681,7 @@ a:hover, footer a:hover, .read-more.inverse a:hover {
 
 /* PAGE DETAIL */
 
-.Subpage .container-fluid .row:before {
+.row.bkgCnt:before {
   content: ' ';
   display: block;
   position: absolute;
@@ -699,7 +699,13 @@ a:hover, footer a:hover, .read-more.inverse a:hover {
 .header {
   padding: 50px 0;
 }
-.Subpage .container-fluid .row {
+.row.bkgCnt a{
+  color: #FFF;
+}
+.row.bkgCnt a:hover{
+  color: #f0ad4e;
+}
+.row.bkgCnt {
   background-color: #000;
   color: #FFF;
   position: relative;

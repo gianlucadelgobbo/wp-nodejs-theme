@@ -20,7 +20,8 @@ exports.getPostType = function getPostType(req,posttype,callback) {
 
 exports.getContainerPage = function getContainerPage(req,slug,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-  var wp = new WPAPI({ endpoint: config.sez[slug].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  var domain = config.sez.users[slug] ? config.sez.users[slug].domain : config.sez[slug].domain;
+  var wp = new WPAPI({ endpoint: domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(slug).get(function( err, data ) {
     console.log("//// ContainerPage "+slug);
@@ -768,7 +769,7 @@ exports.getMetaData = function getMetaData(req,callback) {
   if (req.query.createcache==1 || !fs.existsSync(file)) {
     request(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""), function (error, response, body) {
       console.log(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""));
-      console.log(error);
+      //console.log(error);
       if (!error && response.statusCode == 200) {
         var data = JSON.parse(body);
         if (data.edition) data.edition = fnz.fixResult(data.edition);

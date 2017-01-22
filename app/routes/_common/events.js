@@ -34,11 +34,12 @@ exports.getAll = function getAll(req, res) {
 
 exports.getTag = function getAll(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
-    helpers.getPostType(req, sez.post_type, function( posttype ) {
+    helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAllEventsByTag(req, sez.limit, page, function( results ) {
-        meta_data.meta.title = __("Live Visuals") + " #"+req.params.tag+" | " + meta_data.meta.name;
-        meta_data.meta['og_description'] = fnz.makeExcerpt(__("Live Visuals") + " #"+req.params.tag+". "+posttype.description, 160);
+        meta_data.meta.title = posttype.post_title + " #"+req.params.tag+" | " + meta_data.meta.name;
+        if (posttype.featured) meta_data.meta['image_src'] = posttype.featured.full;
+        if (posttype.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.meta_description, 160);
         res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype, tag:req.params.tag});
       });
     });
@@ -47,9 +48,10 @@ exports.getTag = function getAll(req, res) {
 
 exports.getAllTags = function getAllTags(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
-    helpers.getPostType(req, sez.post_type, function( posttype ) {
-      meta_data.meta.title = __("Live Visuals") + " TAGS | " + meta_data.meta.name;
-      meta_data.meta['og_description'] = fnz.makeExcerpt(__("Live Visuals") + " TAGS. "+posttype.description, 160);
+    helpers.getContainerPage(req, sez.post_type, function( posttype ) {
+      meta_data.meta.title = posttype.post_title + " TAGS | " + meta_data.meta.name;
+      if (posttype.featured) meta_data.meta['image_src'] = posttype.featured.full;
+      if (posttype.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.meta_description, 160);
       res.render(config.prefix+'/'+sez.puglist, {meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
     });
   });
