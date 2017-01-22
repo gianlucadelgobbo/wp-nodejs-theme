@@ -7,8 +7,8 @@ block content
           .header
             header
               .text-center
-                h1.entry-title(itemprop="name")=posttype.labels.name+(tag ? ": #"+tag : "")
-                p(itemprop="description")!=posttype.description
+                h1.entry-title(itemprop="name")=posttype.post_title+(tag ? ": #"+tag : "")
+                p(itemprop="description")!=posttype.post_content
             aside
               .text-center
                 include ../_common/inc_tags

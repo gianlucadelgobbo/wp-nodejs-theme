@@ -6,12 +6,24 @@ var jsonfile = require('jsonfile');
 var fs = require('fs');
 
 /* POST TYPE */
-exports.getPostType = function getWeb(req,posttype,callback) {
+exports.getPostType = function getPostType(req,posttype,callback) {
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
   var wp = new WPAPI({ endpoint: config.sez[posttype].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_type/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(posttype).get(function( err, data ) {
     console.log("//// PostType "+posttype);
+    //console.log(err || data);
+    //data = fnz.fixResult(data);
+    callback(data);
+  });
+};
+
+exports.getContainerPage = function getContainerPage(req,slug,callback) {
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez[slug].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(slug).get(function( err, data ) {
+    console.log("//// ContainerPage "+slug);
     //console.log(err || data);
     //data = fnz.fixResult(data);
     callback(data);
@@ -236,7 +248,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   if (sez.site_tax_id) {
     wp.myCustomResource().param('site', sez.site_tax_id ).param( 'parent', 0 ).perPage(mylimit).page(page).get(function( err, data ) {
       console.log("//// AllFilterTax "+sez.post_type+" "+sez.site_tax_id);
-      console.log(err || data);
+      //console.log(err || data);
       data = fnz.fixResults(data);
       if (limit == -1) {
         for(var d in data) if (data[d].id) previousdata.push(data[d]);
@@ -253,7 +265,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   } else {
     wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax_id )*/.perPage(mylimit).page(page).get(function( err, data ) {
       console.log("//// All "+sez.post_type);
-      console.log(err || data);
+      //console.log(err || data);
       data = fnz.fixResults(data);
       if (limit == -1) {
         for(var d in data) if (data[d].id) previousdata.push(data[d]);
@@ -753,7 +765,6 @@ exports.getMetaData = function getMetaData(req,callback) {
   } else {
     var file = config.root+'/tmp/'+config.prefix+'/meta_'+config.current_lang+'.json';
   }
-  console.log("ecchime");
   if (req.query.createcache==1 || !fs.existsSync(file)) {
     request(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""), function (error, response, body) {
       console.log(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""));
