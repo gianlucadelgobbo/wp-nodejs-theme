@@ -4,7 +4,7 @@ html(lang='en')
     title=meta_data.meta['title']
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    //- console.log(meta_data)
+    //- //console.log(meta_data)
     meta(property='fb:admins', content=meta_data.meta['fb_admin'])
     meta(property='fb:app_id', content=meta_data.meta['fb_appId'])
     meta(property='og:image', content=meta_data.meta['image_src'])
@@ -75,8 +75,12 @@ html(lang='en')
                     span.sr-only Toggle Dropdown
                   ul.dropdown-menu
                     each child in menu.childs
-                      li
-                        a(href=child.permalink)=child.post_title
+                      if child.post_status == 'publish'
+                        li
+                          a(href=child.permalink)=child.post_title
+                      else
+                        li.disabled
+                          a(href="#")=child.post_title
 
 
 

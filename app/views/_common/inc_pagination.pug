@@ -1,7 +1,7 @@
 if (results._paging && results._paging.totalPages)
   .text-center.read-more
     - var nextpage = (page ? parseInt(page) + 1 : 2)
-    - console.log(nextpage);
+    - //console.log(nextpage);
     if (nextpage <= results._paging.totalPages)
       a(href=(lang_preurl ? lang_preurl : '') + '/'+baseurl+'/page/' + nextpage)
         !=global.__("Load More")

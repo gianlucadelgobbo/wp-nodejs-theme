@@ -10,7 +10,6 @@ exports.get = function get(req, res) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAll(req, config.sez.editions, config.sez.home.editions.limit, 1, function (result_editions) {
             meta_data.meta.title = meta_data.meta.name+ " "+ (meta_data.edition && meta_data.edition.post_title ? meta_data.edition.post_title : "");
-            console.log("bingo");
             var obj = {
               results: {news:result_news,events:result_events,editions:result_editions},
               meta_data:meta_data
