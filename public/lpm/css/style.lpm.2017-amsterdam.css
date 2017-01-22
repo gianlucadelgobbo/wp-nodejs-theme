@@ -1,6 +1,5 @@
-body {background-color:#000;background-repeat:repeat-y;}
-.cnt{background-image: url('/lpm/images/LPM2016_code.png');background-position-x: 0;background-repeat: no-repeat;}
-.entry-title,.grid-title{color:#FFF; background-color:#3FA9F5 ;padding: 3px 5px 0 10px;min-height: 44px; font-size:25px; line-height: 1.5em;}
+body {background-color:#000;background-size: cover;background-attachment: fixed;background-position: center 0;}
+.entry-title,.grid-title{color:#FFF; background-color:#ff893d ;padding: 3px 5px 0 10px;min-height: 44px; font-size:25px; line-height: 1.5em;}
 h1.entry-title a{color:#FFF;}
 #logo a {display: block; }
 #logo {padding:0px;margin:0 0 10px 0;}
@@ -19,17 +18,17 @@ margin-bottom: 0;
 footer.navbar-inverse .navbar-inner {
 background-color: #333;
 }
-.partners .stit {background-color: rgba(63,169,245,.6);display: inline-block;padding: 0 3px;}
+.partners .stit {background-color: rgba(255,137,61,.6);display: inline-block;padding: 0 3px;}
 .event_list_title{background: none; padding:0; color: inherit;}
 
 /* GALLERY COLORS */
-.galleryItem{background-color:#3FA9F5;} 
+.galleryItem{background-color:#ff893d;} 
 .gallTit{color:#FFF;}
 .gallStit{color:#000;}
-.galleryCnt{background-color:#3FA9F5 ;}
-#gallery a:hover{background-color:#3FA9F5 ;color:#FFF;}
+.galleryCnt{background-color:#ff893d ;}
+#gallery a:hover{background-color:#ff893d ;color:#FFF;}
 .caption-soldout{
-	background-color:#3FA9F5;
+	background-color:#ff893d;
 }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
     font-weight: normal;
