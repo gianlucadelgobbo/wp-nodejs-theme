@@ -4,12 +4,14 @@ block content
     .row
       .col-sm-9
         header
-          h1.entry-title(itemprop='name')!=result.post_title
+          h1.entry-title
+            span.pull-left(itemprop="name")=result.post_title
+            span.pull-right
+              include ../_common/inc_share_span
         .rientro
           div(itemprop='description')!=result.post_content
+          include ../_common/inc_docs_large
           .dateModified(itemprop='dateModified', content=result.date)=result.dateHR
-          br
-          include ../_common/inc_share
       .col-sm-3
         img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
 

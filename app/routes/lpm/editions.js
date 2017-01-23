@@ -12,7 +12,7 @@ exports.get = function get(req, res) {
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
         if (result.featured) meta_data.meta['image_src'] = result.featured.full;
         if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
-        res.render(config.prefix+'/'+'edition', {result: result, meta_data:meta_data,rientro:rientro});
+        res.render(config.prefix+'/'+'edition'+(req.url.indexOf("/gallery/")>0 ? "_artists" : ""), {result: result, meta_data:meta_data,rientro:rientro});
       } else {
         res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
       }

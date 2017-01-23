@@ -13,5 +13,8 @@ block content
   - }
   article#container(itemprop='performer', itemscope, itemtype=itemtype)
     header
-      h1.entry-title(itemprop='name')=result.post_title
+      h1.entry-title
+        span.pull-left(itemprop="name")=result.post_title
+        span.pull-right
+          include ../_common/inc_share_span
     !=result.post_content

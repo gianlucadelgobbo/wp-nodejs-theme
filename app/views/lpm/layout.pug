@@ -69,7 +69,7 @@ html(lang='en')
               li.btn-group
                 a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
-                  button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown')
+                  button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
                     span.caret
                     span.sr-only Toggle Dropdown
                   ul.dropdown-menu

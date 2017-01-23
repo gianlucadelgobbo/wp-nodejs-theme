@@ -255,3 +255,14 @@ ul.authors,ul.links, div.share{
   margin-bottom: 10px;
 }
 .dateheadline:first-letter {text-transform: uppercase}
+
+.docsLarge {
+  padding-left:0;
+}
+.docsLarge i{
+  font-size: 40px;
+}
+.docsLarge .media-body{
+  padding-top: 10px;
+}
+.dateModified{margin-top: 30px}
