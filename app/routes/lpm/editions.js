@@ -39,6 +39,8 @@ exports.getGallery = function getGallery(req, res) {
     helpers.getEditionArtistGallery(req, function( result ) {
       if (result.post_content.indexOf(">ERROR<")===-1) {
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
+        result.post_content = result.post_content.replace(new RegExp('itemprop="url" href="/', 'g'), 'itemprop="url" href="'+config.domain+"/");
+        console.log(result.post_content);
         res.render(config.prefix+'/'+'edition_artists', {result: result, meta_data:meta_data, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
         res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
