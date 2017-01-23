@@ -1,5 +1,6 @@
-body {background-color:#000;background-size: cover;background-attachment: fixed;background-position: center 0;}
-.entry-title,.grid-title{color:#FFF; background-color:#ff893d ;padding: 3px 5px 0 10px;min-height: 44px; font-size:25px; line-height: 1.5em;}
+body {background-color:#000;background-repeat:repeat-y;    background-size: cover;background-attachment: fixed;}
+.cnt{background-image: url('/lpm/images/LPM2016_code.png');background-position-x: 0;background-repeat: no-repeat;}
+.entry-title,.grid-title{color:#FFF; background-color:#1abc9c ;padding: 3px 5px 0 10px;min-height: 44px; font-size:25px; line-height: 1.5em;}
 h1.entry-title a{color:#FFF;}
 #logo a {display: block; }
 #logo {padding:0px;margin:0 0 10px 0;}
@@ -22,13 +23,13 @@ background-color: #333;
 .event_list_title{background: none; padding:0; color: inherit;}
 
 /* GALLERY COLORS */
-.galleryItem{background-color:#ff893d;} 
+.galleryItem{background-color:#1abc9c;} 
 .gallTit{color:#FFF;}
 .gallStit{color:#000;}
-.galleryCnt{background-color:#ff893d ;}
-#gallery a:hover{background-color:#ff893d ;color:#FFF;}
+.galleryCnt{background-color:#1abc9c ;}
+#gallery a:hover{background-color:#1abc9c ;color:#FFF;}
 .caption-soldout{
-	background-color:#ff893d;
+	background-color:#1abc9c;
 }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
     font-weight: normal;
