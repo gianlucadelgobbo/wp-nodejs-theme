@@ -68,19 +68,15 @@ html(lang='en')
           ul.pulsa
             each menu in meta_data.menu
               li.btn-group
-                a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href=menu.permalink)=menu.post_title
-                - if (menu.childs.length)
+                a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+                if menu.childs.length
                   button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown')
                     span.caret
                     span.sr-only Toggle Dropdown
                   ul.dropdown-menu
                     each child in menu.childs
-                      if child.post_status == 'publish'
-                        li
-                          a(href=child.permalink)=child.post_title
-                      else
-                        li.disabled
-                          a(href="#")=child.post_title
+                      li(class=child.post_status == 'publish' ? undefined : "disabled")
+                        a(href=child.post_status == 'publish' ? child.permalink : "#")=child.post_title
 
 
 
