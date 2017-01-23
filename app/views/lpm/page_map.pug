@@ -10,7 +10,7 @@ block content
           include ../_common/inc_share_span
     .rientro
       div(itemprop='description')!=result.post_content
-      .dateModified.hidden(itemprop='dateModified', content=result.date)=result.dateHR
+      .dateModified.hidden(itemprop='dateModified', content=result.date)=result.dateModifiedHR
       //.col-sm-3
         if result.featured
           img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
