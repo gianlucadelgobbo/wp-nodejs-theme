@@ -83,6 +83,8 @@ exports.get_video = function get_video( url ) {
 };
 
 exports.makeExcerpt = function makeExcerpt(descr,length) {
+  console.log("makeExcerpt");
+  console.log(descr);
   var descr2 = descr.replace(/<[^>]+>/ig,"");
   var descrA = descr2.split(" ");
   var d = "";
