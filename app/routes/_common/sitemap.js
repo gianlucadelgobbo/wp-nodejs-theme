@@ -5,13 +5,9 @@ var sez = config.sez["awards-and-grants"];
 
 exports.get = function get(req, res) {
   res.header('Content-Type', 'text/xml');
-  var now = new Date()
-  now.setHours(now.getHours() - 4)
-  function ISODateString(d) {
-     function pad(n) {return n<10 ? '0'+n : n}
-     return d.getUTCFullYear()+'-'+ pad(d.getUTCMonth() + 1)+'-'+ pad(d.getUTCDate())+'T'+ pad(d.getUTCHours())+':'+ pad(d.getUTCMinutes())+':'+ pad(d.getUTCSeconds())+'+01:00'
-  }
-  var isodate = ISODateString(now)
+  var now = new Date();
+  now.setHours(now.getHours() - 4);
+  var isodate = fnz.ISODateString(now);
 
   if (req.url == "/sitemap.xml") {
     console.log(req.url);

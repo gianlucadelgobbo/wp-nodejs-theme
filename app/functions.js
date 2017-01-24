@@ -102,6 +102,10 @@ exports.fixResults = function fixResults(data) {
 
   return data;
 };
+exports.ISODateString = function ISODateString(d) {
+  function pad(n) {return n<10 ? '0'+n : n}
+  return d.getUTCFullYear()+'-'+ pad(d.getUTCMonth() + 1)+'-'+ pad(d.getUTCDate())+'T'+ pad(d.getUTCHours())+':'+ pad(d.getUTCMinutes())+':'+ pad(d.getUTCSeconds())+'+01:00'
+}
 
 exports.fixResult = function fixResult(data) {
   /*if (typeof(data.video_thumbnail) == "string" && data.video_thumbnail.length>0) {
