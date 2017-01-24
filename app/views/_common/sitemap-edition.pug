@@ -9,14 +9,10 @@ urlset(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9', xmlns:image="http://
             xhtml:link(rel="alternate", hreflang=locale, href=config.domain + page.permalink)
           else
             xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + page.permalink)
-
-      - var date = new Date(result.edition["wpcf-startdate"]*1000)
-      - var timeDiff = (date.getTime() - now.getTime());
-      - var diffDays = (timeDiff / (1000 * 3600 * 24));
-      - //console.log(diffDays)
-      lastmod=diffDays < 0 ? date.toISOString() : now.toISOString()
-      changefreq=diffDays < 0 ? "yearly" : "daily"
+      lastmod=lastmod
+      changefreq=diffDays
       priority 1.0
-      image:image
-        image:loc=page.img.full
-        image:title!="<![CDATA["+page.post_title+"]]>"
+      if page.img && page.img.full
+        image:image
+          image:loc=page.img.full
+          image:title!="<![CDATA["+page.post_title+"]]>"
