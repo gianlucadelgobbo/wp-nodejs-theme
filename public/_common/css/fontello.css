@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'fontello';
-  src: url('../fonts/fontello.eot?800397');
-  src: url('../fonts/fontello.eot?800397#iefix') format('embedded-opentype'),
-       url('../fonts/fontello.woff2?800397') format('woff2'),
-       url('../fonts/fontello.woff?800397') format('woff'),
-       url('../fonts/fontello.ttf?800397') format('truetype'),
-       url('../fonts/fontello.svg?800397#fontello') format('svg');
+  src: url('../fonts/fontello.eot?62759927');
+  src: url('../fonts/fontello.eot?62759927#iefix') format('embedded-opentype'),
+       url('../fonts/fontello.woff2?62759927') format('woff2'),
+       url('../fonts/fontello.woff?62759927') format('woff'),
+       url('../fonts/fontello.ttf?62759927') format('truetype'),
+       url('../fonts/fontello.svg?62759927#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../fonts/fontello.svg?800397#fontello') format('svg');
+    src: url('../fonts/fontello.svg?62759927#fontello') format('svg');
   }
 }
 */
@@ -84,6 +84,7 @@
 .icon-lcf-line:before { content: '\e81a'; } /* '' */
 .icon-linux:before { content: '\e81b'; } /* '' */
 .icon-lpm:before { content: '\e81c'; } /* '' */
+.icon-doc:before { content: '\e81d'; } /* '' */
 .icon-spin3:before { content: '\e832'; } /* '' */
 .icon-spin4:before { content: '\e834'; } /* '' */
 .icon-fhf:before { content: '\e843'; } /* '' */
@@ -111,6 +112,10 @@
 .icon-vimeo-squared:before { content: '\f194'; } /* '' */
 .icon-behance:before { content: '\f1b4'; } /* '' */
 .icon-behance-squared:before { content: '\f1b5'; } /* '' */
+.icon-file-pdf:before { content: '\f1c1'; } /* '' */
+.icon-file-archive:before { content: '\f1c6'; } /* '' */
+.icon-file-audio:before { content: '\f1c7'; } /* '' */
+.icon-file-video:before { content: '\f1c8'; } /* '' */
 .icon-share:before { content: '\f1e0'; } /* '' */
 .icon-share-squared:before { content: '\f1e1'; } /* '' */
 .icon-facebook-official:before { content: '\f230'; } /* '' */

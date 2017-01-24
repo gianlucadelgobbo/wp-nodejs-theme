@@ -1,8 +1,9 @@
 extends layout
 block content
-	article(itemscope, itemtype='http://schema.org/'+itemtype)
-		header
-			h1.entry-title(itemprop='name')!=result.post_title
-		!=result.post_content
-		br
-		include ../_common/inc_share
+  article(itemscope, itemtype='http://schema.org/'+itemtype)
+    header
+      h1.entry-title
+        span.pull-left(itemprop="name")=result.post_title
+        span.pull-right
+          include ../_common/inc_share_span
+    !=result.post_content

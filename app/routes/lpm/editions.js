@@ -1,4 +1,5 @@
 var helpers = require('../../helpers');
+var fnz = require('../../functions')
 
 exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
@@ -6,10 +7,12 @@ exports.get = function get(req, res) {
     helpers.getEdition(req, function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
       console.log("rientro");
-      console.log(req.url.indexOf("/program/")>0);
+      //console.log(result);
       if (result.post_title) {
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
-        res.render(config.prefix+'/'+'edition', {result: result, meta_data:meta_data,rientro:rientro});
+        if (result.featured) meta_data.meta['image_src'] = result.featured.full;
+        if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
+        res.render(config.prefix+'/'+'edition'+(req.url.indexOf("/gallery/")>0 ? "_artists" : ""), {result: result, meta_data:meta_data,rientro:rientro});
       } else {
         res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
       }
@@ -36,6 +39,8 @@ exports.getGallery = function getGallery(req, res) {
     helpers.getEditionArtistGallery(req, function( result ) {
       if (result.post_content.indexOf(">ERROR<")===-1) {
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
+        result.post_content = result.post_content.replace(new RegExp('itemprop="url" href="/', 'g'), 'itemprop="url" href="'+config.domain+"/");
+        console.log(result.post_content);
         res.render(config.prefix+'/'+'edition_artists', {result: result, meta_data:meta_data, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
         res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});

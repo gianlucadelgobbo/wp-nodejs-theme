@@ -1,6 +1,6 @@
-div(class="rowTimeline rowTimeline-"+result.type, itemscope, itemprop="itemListElement", itemtype='http://schema.org/Event')
+div(class="rowTimeline rowTimeline-"+result.post_type, itemscope, itemprop="itemListElement", itemtype='http://schema.org/Event')
   .row
-    div(class="col-sm-"+(result.type=="edition" ? 3 :4))
+    div(class="col-sm-"+(result.post_type=="editions" ? 3 :4))
       .timelineDate
         .dates
           include ../../_common/inc_eventdate
@@ -8,15 +8,15 @@ div(class="rowTimeline rowTimeline-"+result.type, itemscope, itemprop="itemListE
         .places
           if result['wpcf-location']
             include ../../_common/inc_place
-    div(class="col-sm-"+(result.type=="edition" ? 4 :2))
-      a(itemprop='contentUrl', href='/events/' + result.slug, rel='bookmark', title!=result.post_title)
+    div(class="col-sm-"+(result.post_type=="editions" ? 4 :2))
+      a(class=result.post_type=="editions" ? undefined : "ajaxloader", itemprop='contentUrl', href='/'+result.post_type+'/' + result.slug+'/', rel='bookmark', title=result.post_title)
         if result.featured
           img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='url')
-    div(class="col-sm-"+(result.type=="edition" ? 3 :4))
+    div(class="col-sm-"+(result.post_type=="editions" ? 3 :4))
       h2.timelineTitle(itemprop='name')
-        a(itemprop='url', href='/events/' + result.slug, rel='bookmark', title=result.post_title)!=result.post_title
+        a(class=result.post_type=="editions" ? undefined : "ajaxloader", itemprop='url', href='/'+result.post_type+'/' + result.slug+'/', rel='bookmark', title=result.post_title)!=result.post_title
       .text-muted.small
-        .catlabel=result.type
+        //.catlabel=result.post_type
         p!=result.excerpt.rendered
     .col-sm-2
       //include ../inc_staticmap

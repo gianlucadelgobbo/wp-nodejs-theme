@@ -120,7 +120,13 @@ exports.fixResult = function fixResult(data) {
   //console.log(moment.locale());
   if (data.date) {
     data.date = moment(data.date).utc().format();
-    data.dateHR = moment(data.date).utc().format("MMMM, Do YYYY, h:mm a");
+    data.datetimeHR = moment(data.date).utc().format("MMMM, Do YYYY, h:mm a");
+    data.dateHR = moment(data.date).utc().format("MMMM, Do YYYY");
+  }
+  if (data['post_modified']) {
+    data.dateModified = moment(data['post_modified']).utc().format("DD-MM-YYYY");
+    data.datetimeModifiedHR = moment(data['post_modified']).utc().format("MMMM, Do YYYY, h:mm a");
+    data.dateModifiedHR = moment(data['post_modified']).utc().format("MMMM, Do YYYY");
   }
   if (data['wpcf-startdate']){
     data['wpcf-startdate'] = parseInt(data['wpcf-startdate']);
@@ -139,6 +145,5 @@ exports.fixResult = function fixResult(data) {
   }
   data['data_month'] = moment(data['date']).utc().format("MMMM YYYY");
   data['datePublished'] = moment(data['date']).utc().format("DD-MM-YYYY");
-  data['dateModified'] = moment(data['post_modified']).utc().format("DD-MM-YYYY");
   return data;
 };
