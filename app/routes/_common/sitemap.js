@@ -30,7 +30,13 @@ exports.get = function get(req, res) {
   } else if (req.params.edition) {
     console.log(req.params.edition);
     helpers.getMetaData(req, function( result ) {
-      res.render('_common/sitemap-edition', {result:result, isodate:isodate});
+      var now = new Date();
+      var date = new Date(result.edition["wpcf-startdate"]*1000);
+      var timeDiff = (date.getTime() - now.getTime());
+      var diffDays = (timeDiff / (1000 * 3600 * 24));
+      var lastmod = diffDays < 0 ? fnz.ISODateString(date) : fnz.ISODateString(now);
+      var changefreq = diffDays < 0 ? "yearly" : "daily";
+      res.render('_common/sitemap-edition', {result:result, lastmod:lastmod, changefreq:changefreq});
     });
 
   } else if (req.params.exhibition) {
