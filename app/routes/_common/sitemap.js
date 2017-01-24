@@ -5,45 +5,53 @@ var sez = config.sez["awards-and-grants"];
 
 exports.get = function get(req, res) {
   res.header('Content-Type', 'text/xml');
+  var now = new Date()
+  now.setHours(now.getHours() - 4)
+  function ISODateString(d) {
+     function pad(n) {return n<10 ? '0'+n : n}
+     return d.getUTCFullYear()+'-'+ pad(d.getUTCMonth() + 1)+'-'+ pad(d.getUTCDate())+'T'+ pad(d.getUTCHours())+':'+ pad(d.getUTCMinutes())+':'+ pad(d.getUTCSeconds())+'+01:00'
+  }
+  var isodate = ISODateString(now)
+
   if (req.url == "/sitemap.xml") {
     console.log(req.url);
-    res.render(config.prefix+'/sitemap', {});
+    res.render(config.prefix+'/sitemap', {isodate:isodate});
 
   } else if (req.url == "/sitemap-home.xml") {
     console.log(req.url);
-    res.render('_common/sitemap-home', {});
+    res.render('_common/sitemap-home', {isodate:isodate});
 
   } else if (req.url == "/sitemap-pages.xml") {
     console.log(req.url);
-    res.render('_common/sitemap-pages', {});
+    res.render('_common/sitemap-pages', {isodate:isodate});
 
   } else if (req.params.taxonomy) {
     console.log(req.params.taxonomy);
     helpers.getPostType(req, req.params.taxonomy, function( results ) {
-      res.render('_common/sitemap-taxonomy', {results:results});
+      res.render('_common/sitemap-taxonomy', {results:results, isodate:isodate});
     });
 
   } else if (req.params.edition) {
     console.log(req.params.edition);
     helpers.getMetaData(req, function( result ) {
-      res.render('_common/sitemap-edition', {result:result});
+      res.render('_common/sitemap-edition', {result:result, isodate:isodate});
     });
 
   } else if (req.params.exhibition) {
     console.log(req.params.exhibition);
     helpers.getMetaData(req, function( result ) {
-      res.render('_common/sitemap-exhibition', {result:result});
+      res.render('_common/sitemap-exhibition', {result:result, isodate:isodate});
     });
 
   } else if (req.params.posttype) {
     console.log(config.sez[req.params.posttype]);
     helpers.getAll(req, config.sez[req.params.posttype], -1, 1, function( results ) {
       if (req.params.posttype == "exhibitions") {
-        res.render('_common/sitemap-exhibitions', {results:results});
+        res.render('_common/sitemap-exhibitions', {results:results, isodate:isodate});
       } else if (req.params.posttype == "editions") {
-        res.render('_common/sitemap-editions', {results:results});
+        res.render('_common/sitemap-editions', {results:results, isodate:isodate});
       } else {
-        res.render('_common/sitemap-posttype', {results:results});
+        res.render('_common/sitemap-posttype', {results:results, isodate:isodate});
       }
     });
 
