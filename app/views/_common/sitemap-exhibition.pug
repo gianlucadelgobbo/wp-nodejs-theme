@@ -3,7 +3,7 @@ doctype xml
 
 - var now = new Date()
 
-urlset(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
+urlset(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9', xmlns:image="http://www.google.com/schemas/sitemap-image/1.1")
   each page in result.menu
     url
       loc=config.domain+page.permalink
