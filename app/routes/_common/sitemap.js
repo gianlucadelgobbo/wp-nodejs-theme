@@ -4,6 +4,7 @@ var fnz = require('../../functions');
 var sez = config.sez["awards-and-grants"];
 
 exports.get = function get(req, res) {
+  res.header('Content-Type', 'text/xml');
   if (req.url == "/sitemap.xml") {
     console.log(req.url);
     res.render(config.prefix+'/sitemap', {});
