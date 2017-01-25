@@ -134,12 +134,12 @@ exports.fixResult = function fixResult(data) {
   }
   if (data['wpcf-startdate']){
     data['wpcf-startdate'] = parseInt(data['wpcf-startdate']);
-    data.startdateISO = moment(data['wpcf-startdate']*1000).utc().format();
+    data.startdateISO = this.ISODateString(new Date(data['wpcf-startdate']*1000));
     data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
   }
   if (data['wpcf-enddate']){
     data['wpcf-enddate'] = parseInt(data['wpcf-enddate']);
-    data.enddateISO = moment(data['wpcf-enddate']*1000).utc().format();
+    data.enddateISO = this.ISODateString(new Date(data['wpcf-enddate']*1000));
     data.enddateHR = moment(data['wpcf-enddate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
   }
   if (data['wpcf-location']) data['wpcf-location'] = this.formatLocation(data['wpcf-location']);
