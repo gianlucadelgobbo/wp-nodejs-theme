@@ -67,7 +67,7 @@ html(lang='en')
           ul.pulsa
             each menu in meta_data.menu
               li.btn-group
-                a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+                a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(title=menu.post_title, href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
                   button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
                     span.caret
@@ -75,7 +75,7 @@ html(lang='en')
                   ul.dropdown-menu
                     each child in menu.childs
                       li(class=child.post_status == 'publish' ? undefined : "disabled")
-                        a(href=child.post_status == 'publish' ? child.permalink : "#")=child.post_title
+                        a(href=child.post_status == 'publish' ? child.permalink : "#", title=child.post_title)=child.post_title
 
 
 
@@ -87,20 +87,20 @@ html(lang='en')
               i.icon-bar
               i.icon-bar
               i.icon-bar
-            a.navbar-brand(href='')
+            a.navbar-brand(href='/', title="Home")
           #menu-edition-menu.collapse.navbar-collapse
             // Collect the nav links, forms, and other content for toggling
             ul.nav.navbar-nav
               each menu in meta_data.menu
                 li
-                  a(href=menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined)=menu.post_title
+                  a(href=menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
                     - if (menu.childs.length>0)
                       span.caret
                   - if (menu.childs.length>0)
                     ul.dropdown-menu
                       each child in menu.childs
                         li
-                          a(href=child.permalink)=child.post_title
+                          a(href=child.permalink, title=child.post_title)=child.post_title
         br
         #result
           block content

@@ -35,4 +35,4 @@
           span(itemprop='price', content=parseInt(result["wpcf-price"]))=result["wpcf-price"]
           !=" "
           span(itemprop='priceCurrency', content="EURO")="€"
-        a.hide(itemprop='url', href=lang_preurl+'/portfolio/learning/' + result.slug+"/")
+        a.hide(itemprop='url', title=result.post_title, href=lang_preurl+'/portfolio/learning/' + result.slug+"/")

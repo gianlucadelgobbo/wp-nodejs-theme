@@ -24,10 +24,10 @@ block content
 
 
     // Controls
-    a.left.carousel-control(href='#carousel', role='button', data-slide='prev')
+    a.left.carousel-control(href='#carousel', role='button', data-slide='prev', title=global.__("Previous slide"))
       span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
       span.sr-only Previous
-    a.right.carousel-control(href='#carousel', role='button', data-slide='next')
+    a.right.carousel-control(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
       span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
       span.sr-only Next
   article.home
@@ -68,7 +68,7 @@ block content
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>5 ? "hidden-lg visible-xl" : "")
               include boxes/box_event
         .text-center.read-more
-          a(href=lang_preurl+'/portfolio/live-visuals/')
+          a(href=lang_preurl+'/portfolio/live-visuals/', title=global.__("See all Events"))
             !=global.__("See all Events")
             !=" "
             i.icon-right
@@ -87,7 +87,7 @@ block content
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>5 ? "hidden-lg visible-xl" : "")
               include boxes/box_lab
         .text-center.read-more
-          a(href=lang_preurl+'/portfolio/lab/')
+          a(href=lang_preurl+'/portfolio/lab/', title=global.__("See all Lab"))
             !=global.__("See all Lab")
             !=" "
             i.icon-right
@@ -106,7 +106,7 @@ block content
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "hidden-lg visible-xl visible-md" : "")
               include boxes/box_web
         .text-center.read-more
-          a(href=lang_preurl+'/portfolio/web-and-mobile/')
+          a(href=lang_preurl+'/portfolio/web-and-mobile/', title=global.__("See all Web & Mobile"))
             !=global.__("See all Web & Mobile")
             !=" "
             i.icon-right
@@ -122,7 +122,7 @@ block content
               each result, position in results.learning
                   include boxes/box_learning_home
               .read-more.inverse
-                a(href=lang_preurl+'/portfolio/learning/')
+                a(href=lang_preurl+'/portfolio/learning/', title=global.__("See all Learnings"))
                   !=global.__("See all Learnings")
                   !=" "
                   i.icon-right
@@ -141,7 +141,7 @@ block content
             .col-md-3.col-sm-12
               include boxes/box_video_home
         .text-center.read-more
-          a(href=lang_preurl+'/portfolio/videos/')
+          a(href=lang_preurl+'/portfolio/videos/', title=global.__("See all Videos"))
             !=global.__("See all Videos")
             !=" "
             i.icon-right
@@ -160,7 +160,7 @@ block content
             .col-xl-2.col-lg-3.col-md-3(class=(!position ? "col-xl-offset-2" : ""))
               include boxes/box_award
         .text-center.read-more
-          a(href=lang_preurl+'/portfolio/awards-and-grants/')
+          a(href=lang_preurl+'/portfolio/awards-and-grants/', title=global.__("See all Awards and Grants"))
             !=global.__("See all Awards and Grants")
             !=" "
             i.icon-right
@@ -178,7 +178,7 @@ block content
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "visible-md hidden-lg visible-xl" : "")
               include boxes/box_news
         .text-center.read-more
-          a(href=lang_preurl + '/extra/')
+          a(href=lang_preurl + '/extra/', title=global.__("See all Extras"))
             !=global.__("See all Extras")
             !=" "
             i.icon-right

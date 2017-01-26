@@ -16,28 +16,28 @@
       #main-navbar.collapse.navbar-collapse
         ul#menu-main-menu.nav.navbar-nav
           li
-            a(href=lang_preurl+'/')=global.__("Home")
+            a(href=lang_preurl+'/', title=global.__("Home"))=global.__("Home")
           li
-            a(href=lang_preurl+'/manifesto/')=global.__("Manifesto")
+            a(href=lang_preurl+'/manifesto/', title=global.__("Manifesto"))=global.__("Manifesto")
           li
-            a(href=lang_preurl + '/members/')=global.__("Members")
+            a(href=lang_preurl + '/members/', title=global.__("Members"))=global.__("Members")
           li
-            a(href=lang_preurl+'/activities/')=global.__("Activities")
+            a(href=lang_preurl+'/activities/', title=global.__("Activities"))=global.__("Activities")
           li
-            a(href=lang_preurl + '/events/')=global.__("Events")
+            a(href=lang_preurl + '/events/', title=global.__("Events"))=global.__("Events")
           li
-            a(href=lang_preurl + '/news/')=global.__("News")
+            a(href=lang_preurl + '/news/', title=global.__("News"))=global.__("News")
 
         ul.nav.navbar-nav.navbar-right
           li
-            a(href=lang_preurl + '/join/')=global.__("Join")
+            a(href=lang_preurl + '/join/', title=global.__("Join"))=global.__("Join")
           li
-            a(href=lang_preurl + '/newsletter/')=global.__("Newsletter")
+            a(href=lang_preurl + '/newsletter/', title=global.__("Newsletter"))=global.__("Newsletter")
           li
-            a(href=lang_preurl + '/contacts/')=global.__("Contacts")
+            a(href=lang_preurl + '/contacts/', title=global.__("Contacts"))=global.__("Contacts")
           li
-            a(href=lang_preurl + '/login/')=global.__("Login")
+            a(href=lang_preurl + '/login/', title=global.__("Login"))=global.__("Login")
           li.menu-spacer-after.hidden-xs
-            a#cntSearchButton(href="/search/")
+            a#cntSearchButton(href="/search/", title=global.__("Search"))
               i.glyphicon.glyphicon-search
               .sr-only=global.__("Search")

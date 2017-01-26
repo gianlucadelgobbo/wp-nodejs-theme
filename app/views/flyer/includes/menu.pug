@@ -15,7 +15,7 @@ nav#top-menu.navbar.navbar-inverse
     #mainmenu.collapse.navbar-collapse
       .nav.navbar-nav.navbar-right.flyer-expanding-icon-holder
         .flyer-expanding-icon-holder-inner
-          a.flyer-menu-appear(href="#")
+          a.flyer-menu-appear(href="#", title=global.__("Open menu"))
             span.flyer-expanding-icon
               span.flyer-line
               span.flyer-line
@@ -42,20 +42,20 @@ nav#top-menu.navbar.navbar-inverse
               input(type='hidden', name='cof', value='FORID:10')
               input(type='hidden', name='ie', value='UTF-8')
               input.edgt_search_field(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
-              a.flyer-search-close(href='#') &times;
+              a.flyer-search-close(href='#', title=global.__("Close")) &times;
       ul.nav.navbar-nav.navbar-right.menu-hide.border-right
         li(class=meta_data['url'] == '/' ? "active" : undefined)
-          a(href=lang_preurl+'/')
+          a(href=lang_preurl+'/', title=global.__("Home"))
             span.flyer-item-inner
               i.icon-right
               | Home
         li(class=meta_data['url'].indexOf('/profile') >= 0 ? "active" : undefined)
-          a(href=lang_preurl+'/profile/')
+          a(href=lang_preurl+'/profile/', title=global.__("Profile"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("Profile")
         li.dropdown(class=meta_data['url'].indexOf('/portfolio') >= 0 ? "active" : undefined)
-          a.dropdown-toggle(role='button', href='#', data-toggle='dropdown', aria-haspopup='true')
+          a.dropdown-toggle(role='button', href='#', data-toggle='dropdown', aria-haspopup='true', title=global.__("Portfolio"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("Portfolio")
@@ -63,32 +63,32 @@ nav#top-menu.navbar.navbar-inverse
               span.caret
           ul.dropdown-menu(role='menu')
             li(class=meta_data['url'].indexOf('/portfolio/web-and-mobile') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/web-and-mobile/')
+              a(href=lang_preurl+'/portfolio/web-and-mobile/', title=global.__("Web & Mobile"))
                 span.flyer-item-inner
                   i.icon-right
                   !=global.__("Web & Mobile")
             li(class=meta_data['url'].indexOf('/portfolio/live-visuals') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/live-visuals/')
+              a(href=lang_preurl+'/portfolio/live-visuals/', title=global.__("Live Visuals"))
                 span.flyer-item-inner
                   i.icon-right
                   !=global.__("Live Visuals")
             li(class=meta_data['url'].indexOf('/portfolio/videos/') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/videos/')
+              a(href=lang_preurl+'/portfolio/videos/', title=global.__("Videos"))
                 span.flyer-item-inner
                   i.icon-right
                   !=global.__("Videos")
             li(class=meta_data['url'].indexOf('/portfolio/learning') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/learning/')
+              a(href=lang_preurl+'/portfolio/learning/', title=global.__("Learning"))
                 span.flyer-item-inner
                   i.icon-right
                   !=global.__("Learning")
             li(class=meta_data['url'].indexOf('/portfolio/lab') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/lab/')
+              a(href=lang_preurl+'/portfolio/lab/', title=global.__("Lab"))
                 span.flyer-item-inner
                   i.icon-right
                   !=global.__("Lab")
             li(class=meta_data['url'].indexOf('/portfolio/awards-and-grants') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/awards-and-grants/')
+              a(href=lang_preurl+'/portfolio/awards-and-grants/', title=global.__("Awards and Grants"))
                 span.flyer-item-inner
                   i.icon-right
                   !=global.__("Awards and Grants")
@@ -98,22 +98,22 @@ nav#top-menu.navbar.navbar-inverse
                   i.icon-right
                   !=global.__("Tags")
         li(class=meta_data['url'].indexOf('/customers') >= 0 ? "active" : undefined)
-          a(href=lang_preurl+'/customers/')
+          a(href=lang_preurl+'/customers/', title=global.__("Customers"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("Customers")
         li(class=meta_data['url'].indexOf('/extra') >= 0 ? "active" : undefined)
-          a(href=lang_preurl+'/extra/')
+          a(href=lang_preurl+'/extra/', title=global.__("Extra"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("Extra")
         li(class=meta_data['url'].indexOf('/people') >= 0 ? "active" : undefined)
-          a(href=lang_preurl+'/people/')
+          a(href=lang_preurl+'/people/', title=global.__("People"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("People")
         li.menu-spacer-after(class=meta_data['url'].indexOf('/contacts') >= 0 ? "active" : undefined)
-          a(href=lang_preurl+'/contacts/')
+          a(href=lang_preurl+'/contacts/', title=global.__("Contacts"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("Contacts")

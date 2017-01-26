@@ -19,7 +19,7 @@ block content
         include boxes/box_timeline
     .text-center.read-more.inverse
       if (next)
-        a(href='/timeline/' + next)
+        a(href='/timeline/' + next, title=global.__("Load More"))
           !=global.__("Load More")
           !=" "
           i.icon-right

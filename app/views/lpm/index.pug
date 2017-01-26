@@ -7,7 +7,7 @@ block content
         each result, position in results.news
           include boxes/box_news
         .text-right.boxItem
-          a.btn.btn-primary(href="/news/") See all News
+          a.btn.btn-primary(href="/news/", title="See all News") See all News
       .col-lg-6.col-md-4.col-sm-6(itemscope, itemtype='http://schema.org/ItemList')
         h1.entry-title(itemprop="name") Satellite Events
         .row.isotope.results
@@ -15,12 +15,12 @@ block content
             .col-lg-6.col-md-12.col-sm-12.isotopeitem
               include boxes/box_event
         .text-right.boxItem
-          a.btn.btn-primary(href="/timeline/") See all in a Timeline
+          a.btn.btn-primary(href="/timeline/", title="See all in a Timeline") See all in a Timeline
           !="&nbsp;&nbsp;"
-          a.btn.btn-primary(href="/map/") See all in a Map
+          a.btn.btn-primary(href="/map/", title="See all in a Map") See all in a Map
       .col-lg-3.col-md-4.col-sm-6(itemscope, itemtype='http://schema.org/ItemList')
         h1.entry-title(itemprop="name") Editions
         each result, position in results.editions
           include boxes/box_edition
         .text-right.boxItem
-          a.btn.btn-primary(href="/timeline/") See all in a Timeline
+          a.btn.btn-primary(href="/timeline/", title="See all in a Timeline") See all in a Timeline

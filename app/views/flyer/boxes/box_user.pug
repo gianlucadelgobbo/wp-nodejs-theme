@@ -9,7 +9,7 @@
           meta(itemprop="height" content="270")
       .col-sm-8
         h5.media-heading
-          a(itemprop='url', href='/'+author_base+'/'+result.data.user_nicename+'/')
+          a(itemprop='url', href='/'+author_base+'/'+result.data.user_nicename+'/', title='Logo: '+result.data.display_name)
             span(itemprop='name')=result.data.display_name
         p(itemprop='jobTitle')
           i=result.data.role
