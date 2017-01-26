@@ -1,4 +1,4 @@
-nav#top-menu.navbar.navbar-inverse(role='navigation')
+nav#top-menu.navbar.navbar-inverse
   .container-fluid
     // Brand and toggle get grouped for better mobile display
     .navbar-header
@@ -35,7 +35,7 @@ nav#top-menu.navbar.navbar-inverse(role='navigation')
           .flyer-search-submit-holder
             button(type='submit', name='sa')
               i.glyphicon.glyphicon-search
-                .sr-only=global.__("Search")
+              .sr-only=global.__("Search")
           .flyer-form-holder
             .flyer-form-holder-inner
               input(type='hidden', name='cx', value=meta_data.meta.google_search)
