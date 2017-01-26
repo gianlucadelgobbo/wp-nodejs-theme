@@ -127,7 +127,8 @@ exports.fixResult = function fixResult(data) {
     data.datetimeHR = moment(data.date).utc().format("MMMM, Do YYYY, h:mm a");
     data.dateHR = moment(data.date).utc().format("MMMM, Do YYYY");
   }
-  if (data['post_modified']) {
+  if (data['post_modified'] || data['modified']) {
+    var dateModified = data['post_modified'] || data['modified'];
     data.dateModified = moment(data['post_modified']).utc().format("DD-MM-YYYY");
     data.datetimeModifiedHR = moment(data['post_modified']).utc().format("MMMM, Do YYYY, h:mm a");
     data.dateModifiedHR = moment(data['post_modified']).utc().format("MMMM, Do YYYY");
