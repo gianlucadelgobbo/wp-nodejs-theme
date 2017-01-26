@@ -56,7 +56,7 @@ block content
     section.home-events(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title(itemprop="name")=global.__("Live Visuals")
+          h2.entry-title(itemprop="name")=global.__("Live Visuals")
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_events.post_content
@@ -75,7 +75,7 @@ block content
     section.home-lab(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title(itemprop="name")=posttype_lab.post_title
+          h2.entry-title(itemprop="name")=posttype_lab.post_title
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_lab.post_content
@@ -94,7 +94,7 @@ block content
     section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title(itemprop="name")=posttype_web.post_title
+          h2.entry-title(itemprop="name")=posttype_web.post_title
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_web.post_content
@@ -115,7 +115,7 @@ block content
         .container-fluid
           .row
             .col-lg-6.col-lg-offset-2.col-md-12.col-sm-12
-              h1.entry-title.boxItem(itemprop="name")=global.__("Learning")
+              h2.entry-title.boxItem(itemprop="name")=global.__("Learning")
               each result, position in results.learning
                   include boxes/box_learning_home
               .read-more.inverse
@@ -129,7 +129,7 @@ block content
     section.home-videos(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title(itemprop="name")=posttype_video.post_title
+          h2.entry-title(itemprop="name")=posttype_video.post_title
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_video.post_content
@@ -148,7 +148,7 @@ block content
     section.home-awards(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
         header.text-center
-          h1.entry-title.boxItem(itemprop="name")=global.__("Awards and Grants")
+          h2.entry-title.boxItem(itemprop="name")=global.__("Awards and Grants")
           .row
             .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
               .col-xs-12!=posttype_awards.post_content
