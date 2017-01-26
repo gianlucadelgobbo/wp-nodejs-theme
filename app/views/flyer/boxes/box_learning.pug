@@ -16,8 +16,7 @@
         a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/learning/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
       .text-muted.small.excerpt
         if result.excerpt && result.excerpt.rendered
-          div(itemprop='headline')
-            p!=result.excerpt.rendered
+          div(itemprop='headline')!=result.excerpt.rendered
         if result.tags
           p.tags
             each tag in result.tags

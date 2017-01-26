@@ -16,6 +16,5 @@
           include ../../_common/inc_place
         .text-muted.small.excerpt
           if result.excerpt && result.excerpt.rendered
-            div(itemprop='description')
-              p!=result.excerpt.rendered
+            div(itemprop='description')!=result.excerpt.rendered
           span.sr-only(itemprop='organizer')

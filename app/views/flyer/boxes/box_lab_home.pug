@@ -18,5 +18,4 @@
                   .date=result.data_month
             .text-muted.small.excerpt
               if result.excerpt && result.excerpt.rendered
-                div(itemprop='description')
-                  p!=result.excerpt.rendered
+                div(itemprop='description')!=result.excerpt.rendered

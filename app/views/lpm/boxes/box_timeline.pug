@@ -15,8 +15,6 @@ div(class="rowTimeline rowTimeline-"+result.post_type, itemscope, itemprop="item
     div(class="col-sm-"+(result.post_type=="editions" ? 3 :4))
       h2.timelineTitle(itemprop='name')
         a(class=result.post_type=="editions" ? undefined : "ajaxloader", itemprop='url', href='/'+result.post_type+'/' + result.slug+'/', rel='bookmark', title=result.post_title)!=result.post_title
-      .text-muted.small
-        //.catlabel=result.post_type
-        p!=result.excerpt.rendered
+      .text-muted.small!=result.excerpt.rendered
     .col-sm-2
       //include ../inc_staticmap
