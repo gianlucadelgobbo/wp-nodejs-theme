@@ -1,5 +1,6 @@
 var indexRoutes = require('./routes/flyer/index');
 var sitemapRoutes = require('./routes/_common/sitemap');
+var robotsRoutes = require('./routes/_common/robots');
 var webRoutes = require('./routes/_common/web');
 var videosRoutes = require('./routes/_common/videos');
 var eventsRoutes = require('./routes/_common/events');
@@ -14,6 +15,7 @@ var pagesRoutes = require('./routes/_common/pages');
  */
 
 module.exports = function(app) {
+  app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
