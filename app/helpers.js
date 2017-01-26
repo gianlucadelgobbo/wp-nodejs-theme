@@ -249,7 +249,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   if (sez.site_tax_id) {
     wp.myCustomResource().param('site', sez.site_tax_id ).param( 'parent', 0 ).perPage(mylimit).page(page).get(function( err, data ) {
       console.log("//// AllFilterTax "+sez.post_type+" "+sez.site_tax_id);
-      console.log(err || data);
+      //console.log(err || data);
       data = fnz.fixResults(data);
       if (limit == -1) {
         for(var d in data) if (data[d].id) previousdata.push(data[d]);

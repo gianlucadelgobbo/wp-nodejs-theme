@@ -1,7 +1,7 @@
 var helpers = require('../../helpers');
 
 exports.get = function get(req, res) {
-  var user_sez = req.url.split("/")[1];
+  var user_sez = req.url.indexOf('/it/')===0 ? req.url.split("/")[2] : req.url.split("/")[1];
   console.log("user_sez "+user_sez);
   helpers.getMetaData(req, function( meta_data ) {
       helpers.getUser(req, user_sez, function( result ) {
