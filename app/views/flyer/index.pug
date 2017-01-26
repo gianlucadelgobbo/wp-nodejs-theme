@@ -30,31 +30,34 @@ block content
     a.right.carousel-control(href='#carousel', role='button', data-slide='next')
       span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
       span.sr-only Next
-  article#container.home
+  article.home
     .text-center(style="padding-top: 20px;")
-      h1.entry-title=meta_data.meta.description
-    section.home-services(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
-      .sr-only(itemprop="name")=global.__("Services")
-      .container-fluid
-        .row.sameheightcnt
-          .col-xl-2.col-xl-offset-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
-            meta(itemprop="position", content="1")
-            !=profile['wpcf-row-1-col-1-html-box']
-          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
-            meta(itemprop="position", content="2")
-            !=profile['wpcf-row-1-col-2-html-box']
-          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
-            meta(itemprop="position", content="3")
-            !=profile['wpcf-row-1-col-3-html-box']
-          .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
-            meta(itemprop="position", content="4")
-            !=profile['wpcf-row-1-col-4-html-box']
+      h1.entry-title
+        span.sr-only=meta_data.meta.name
+        !=meta_data.meta.description
+    section(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .home-services(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        .sr-only(itemprop="name")=global.__("Services")
+        .container-fluid
+          .row.sameheightcnt
+            .col-xl-2.col-xl-offset-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+              meta(itemprop="position", content="1")
+              !=profile['wpcf-row-1-col-1-html-box']
+            .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+              meta(itemprop="position", content="2")
+              !=profile['wpcf-row-1-col-2-html-box']
+            .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+              meta(itemprop="position", content="3")
+              !=profile['wpcf-row-1-col-3-html-box']
+            .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+              meta(itemprop="position", content="4")
+              !=profile['wpcf-row-1-col-4-html-box']
 
             
             
             
-    section.home-events(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
-      .container-fluid
+    section.home-events(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title(itemprop="name")=global.__("Live Visuals")
           .row
@@ -72,8 +75,8 @@ block content
             
             
             
-    section.home-lab(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
-      .container-fluid
+    section.home-lab(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title(itemprop="name")=posttype_lab.post_title
           .row
@@ -91,8 +94,8 @@ block content
 
 
 
-    section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
-      .container-fluid
+    section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title(itemprop="name")=posttype_web.post_title
           .row
@@ -110,9 +113,9 @@ block content
 
 
 
-    .home-learning(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
+    .home-learning(itemprop="owns", itemscope, itemtype = 'http://schema.org/OwnershipInfo')
       section
-        .container-fluid
+        .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
           .row
             .col-lg-6.col-lg-offset-2.col-md-12.col-sm-12
               h2.entry-title.boxItem(itemprop="name")=global.__("Learning")
@@ -126,8 +129,8 @@ block content
 
 
 
-    section.home-videos(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
-      .container-fluid
+    section.home-videos(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title(itemprop="name")=posttype_video.post_title
           .row
@@ -145,8 +148,8 @@ block content
 
 
 
-    section.home-awards(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
-      .container-fluid
+    section.home-awards(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title.boxItem(itemprop="name")=global.__("Awards and Grants")
           .row
@@ -162,8 +165,8 @@ block content
             !=" "
             i.icon-right
 
-    section.home-news(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
-      .container-fluid
+    section.home-news(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title.boxItem(itemprop="name")=global.__("Extra")
           .row
