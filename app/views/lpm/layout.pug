@@ -1,5 +1,6 @@
 doctype html
 html(lang='en')
+  - var lang_preurl = (config.current_lang == config.default_lang ? '' :'/'+config.current_lang)
   head
     title=meta_data.meta['title']
     meta(charset='UTF-8')
@@ -63,7 +64,7 @@ html(lang='en')
                       #site-description=meta_data.meta['description']
                   .sr-only
                     include ../_common/inc_eventdateplace_meta
-        nav.hidden-xs(role='navigation')
+        nav.hidden-xs
           ul.pulsa
             each menu in meta_data.menu
               li.btn-group
@@ -79,7 +80,7 @@ html(lang='en')
 
 
 
-        nav.visible-xs.navbar.navbar-default(role='navigation')
+        nav.visible-xs.navbar.navbar-default
           // Brand and toggle get grouped for better mobile display
           .navbar-header
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')
