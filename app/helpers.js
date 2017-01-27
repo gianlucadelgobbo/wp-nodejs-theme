@@ -65,7 +65,7 @@ exports.getUser = function getUser(req, user_sez, callback) {
         }
         //console.log(err2 || data2);
         //data = fnz.fixResults(data);
-        if (!data.data.img || data.data.img=="") data.data.img = config.sez.users[user_sez].default_img;
+        if (!data.data.img || data.data.img=="") data.data.img = config.domain + config.sez.users[user_sez].default_img;
         callback(data);
       });
     } else {
@@ -75,7 +75,7 @@ exports.getUser = function getUser(req, user_sez, callback) {
       }
       //console.log(err || data);
       //data = fnz.fixResults(data);
-      if (!data.data.img || data.data.img=="") data.data.img = config.sez.users[user_sez].default_img;
+      if (!data.data.img || data.data.img=="") data.data.img = config.domain + config.sez.users[user_sez].default_img;
       callback(data);
     }
   });
@@ -106,7 +106,7 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
               for (var user in data) {
                 if (data2[userflyer].ID==data[user].ID) {
                   for (var auth_content in data2[userflyer].data.auth_contents) {
-                    if (!data[user].data.img || data[user].data.img=="") data[user].data.img = config.sez.users[user_sez].default_img;
+                    if (!data[user].data.img || data[user].data.img=="") data[user].data.img = config.domain + config.sez.users[user_sez].default_img;
                     data[user].data.auth_contents[auth_content] = data2[userflyer].data.auth_contents[auth_content];
                   }
                   //datanew.push(data[user]);
@@ -160,7 +160,7 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
                   for (var auth_content in data2[userflyer].data.auth_contents) {
                     data[user].data.auth_contents[auth_content] = data2[userflyer].data.auth_contents[auth_content];
                   }
-                  if (!data[user].data.img || data[user].data.img=="") data[user].data.img = config.sez.users[user_sez].default_img;
+                  if (!data[user].data.img || data[user].data.img=="") data[user].data.img = config.domain + config.sez.users[user_sez].default_img;
                   datanew.push(data[user]);
                 }
               }
@@ -207,7 +207,7 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
     } else {
       console.log("//// Users "+user_sez);
       console.log("//// Mode ONLY ");
-      for (var user in data) if (!data[user].data.img || data[user].data.img=="") data[user].data.img = config.sez.users[user_sez].default_img;
+      for (var user in data) if (!data[user].data.img || data[user].data.img=="") data[user].data.img = config.domain + config.sez.users[user_sez].default_img;
       //console.log(err || data);
       //data = fnz.fixResults(data);
       callback(data);
