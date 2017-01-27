@@ -32,7 +32,7 @@ exports.getAllPeople = function getAllPeople(req, res) {
 };
 */
 exports.getUsers = function getUsers(req, res) {
-  var user_sez = req.url.split("/")[1];
+  var user_sez = req.url.indexOf('/it/')===0 ? req.url.split("/")[2] : req.url.split("/")[1];
   console.log("user_sez "+user_sez);
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getContainerPage(req, user_sez, function( posttype ) {
