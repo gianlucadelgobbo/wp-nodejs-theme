@@ -472,6 +472,21 @@ exports.getLab = function getLab(req,callback) {
   });
 };
 
+//////// ACTIVITY
+
+exports.getActivity = function getActivity(req,callback) {
+  console.log("//// getActivity");
+  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  var wp = new WPAPI({ endpoint: config.sez["activities"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/activities/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.activity).get(function( err, data ) {
+    console.log("//// Activities");
+    //data.auth_contents["events"].posts = fnz.fixResults(data.auth_contents["events"].posts);
+    data = fnz.fixResult(data);
+    callback(data);
+  });
+};
+
 
 //////// EXHIBITIONS
 

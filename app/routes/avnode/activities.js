@@ -8,7 +8,7 @@ exports.get = function get(req, res) {
     console.log("result._post_template");
     helpers.getActivity(req, function( result ) {
       console.log("result._post_template2");
-      //console.log(result);
+      console.log(result);
       meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
       res.render(config.prefix+'/'+'activity', {result: result, meta_data:meta_data, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
     });
