@@ -275,6 +275,12 @@ a:hover img {
 .News .box-list{
   padding: 10px;
 }
+.entry-title, .grid-title {
+  padding: 3px 5px 0 10px;
+  min-height: 44px;
+  font-size: 25px;
+  line-height: 1.5em;
+}
 /*
 ul.lists .media{margin-bottom: 5px;}
 ul.lists .media h2{}
