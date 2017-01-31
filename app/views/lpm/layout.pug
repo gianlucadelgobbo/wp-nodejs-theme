@@ -37,7 +37,8 @@ html(lang='en')
     link(rel='stylesheet', href='/_common/css/style.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css', media='all')
-    link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
+    if (['2011-minsk','2011-rome','2010-rome','2009-rome','2008-rome','2008-mex','2007-rome','2006-rome','2005-rome','2004-rome'].indexOf(meta_data.edition['post_name'])==-1)
+      link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
 
     style(type='text/css').
       body {
