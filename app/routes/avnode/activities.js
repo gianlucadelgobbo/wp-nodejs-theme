@@ -21,9 +21,6 @@ exports.getAll = function getAll(req, res) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAll(req, sez, sez.limit, page, function( results ) {
         meta_data.meta.title = __("Activities") + " | " + meta_data.meta.name;
-        console.log("stocazzo");
-        console.log(posttype);
-        console.log("stocazzo");
         meta_data.meta.title = posttype.post_title + " | " + meta_data.meta.name;
         if (posttype.featured) meta_data.meta['image_src'] = posttype.featured.full;
         if (posttype.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.meta_description, 160);
