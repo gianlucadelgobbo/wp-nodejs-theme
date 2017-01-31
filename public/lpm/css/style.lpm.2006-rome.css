@@ -3,7 +3,7 @@ h1,.h1like{color:#FFF; background-color:#97A1B5;padding: 0 5px 5px 10px; font-si
 h1 a{color:#FFF;}
 #logo{margin:10px 0 45px 0;max-width:none;}
 
-#next-edition{}
+#next-edition{margin:0px 15px 65px 144px;}
 h3{background-color: #97A1B5; color: #FFFFFF;}
 
 @media (min-width: 1200px) {
