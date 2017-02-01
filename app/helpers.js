@@ -40,44 +40,50 @@ exports.getUser = function getUser(req, user_sez, callback) {
   wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/author/(?P<siteee>)/(?P<sluggg>)' );
   wpflyer.myCustomResource().sluggg(req.params.user).siteee(config.sez.users.site_tax).get(function( err, data ) {
     console.log(config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/author/'+config.sez.users.site_tax+'/'+req.params.user+'/');
-    //console.log(data.data.auth_contents);
-    if (config.sez.users.externals && config.sez.users[user_sez].domain != config.sez.users.externals.domain) {
-      console.log("//// User "+req.params.user+" "+config.sez.users.site_tax);
-      if(data.data.auth_contents) {
+    //
+    if (err) {
+      callback({});
+    } else {
+      if (config.sez.users.externals && config.sez.users[user_sez].domain != config.sez.users.externals.domain) {
+        console.log("//// User "+req.params.user+" "+config.sez.users.site_tax);
+        if(data.data.auth_contents) {
+          for(auth_content in data.data.auth_contents) {
+            data.data.auth_contents[auth_content].posts = fnz.fixResults(data.data.auth_contents[auth_content].posts);
+          }
+        }
+        console.log("getUser2");
+        config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+        var wp = new WPAPI({ endpoint: config.sez.users.externals.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+        wp.myCustomResource = wp.registerRoute('wp/v2', '/author/(?P<siteee>)/(?P<sluggg>)' );
+        wp.myCustomResource().sluggg(req.params.user).siteee(config.sez.users.site_tax).get(function( err2, data2 ) {
+          console.log("//// User2 "+req.params.user);
+          if(data2.data.auth_contents) {
+            if(!data.data.auth_contents) data.data.auth_contents = {};
+            for (auth_content in data2.data.auth_contents) {
+              console.log("stoqui");
+              data.data.auth_contents[auth_content] = data2.data.auth_contents[auth_content];
+              data.data.auth_contents[auth_content].posts = fnz.fixResults(data2.data.auth_contents[auth_content].posts);
+              console.log("stoqui");
+            }
+          }
+          //console.log(err2 || data2);
+          //data = fnz.fixResults(data);
+          if (!data.data.img || data.data.img=="") data.data.img = config.domain + config.sez.users[user_sez].default_img;
+          callback(data);
+        });
+      } else {
+        console.log("//// User "+req.params.user+" "+config.sez.users.site_tax);
         for(auth_content in data.data.auth_contents) {
           data.data.auth_contents[auth_content].posts = fnz.fixResults(data.data.auth_contents[auth_content].posts);
         }
-      }
-      console.log("getUser2");
-      config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
-      var wp = new WPAPI({ endpoint: config.sez.users.externals.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-      wp.myCustomResource = wp.registerRoute('wp/v2', '/author/(?P<siteee>)/(?P<sluggg>)' );
-      wp.myCustomResource().sluggg(req.params.user).siteee(config.sez.users.site_tax).get(function( err2, data2 ) {
-        console.log("//// User2 "+req.params.user);
-        if(data2.data.auth_contents) {
-          if(!data.data.auth_contents) data.data.auth_contents = {};
-          for (auth_content in data2.data.auth_contents) {
-            console.log("stoqui");
-            data.data.auth_contents[auth_content] = data2.data.auth_contents[auth_content];
-            data.data.auth_contents[auth_content].posts = fnz.fixResults(data2.data.auth_contents[auth_content].posts);
-            console.log("stoqui");
-          }
-        }
-        //console.log(err2 || data2);
+        //console.log(err || data);
         //data = fnz.fixResults(data);
         if (!data.data.img || data.data.img=="") data.data.img = config.domain + config.sez.users[user_sez].default_img;
         callback(data);
-      });
-    } else {
-      console.log("//// User "+req.params.user+" "+config.sez.users.site_tax);
-      for(auth_content in data.data.auth_contents) {
-        data.data.auth_contents[auth_content].posts = fnz.fixResults(data.data.auth_contents[auth_content].posts);
       }
-      //console.log(err || data);
-      //data = fnz.fixResults(data);
-      if (!data.data.img || data.data.img=="") data.data.img = config.domain + config.sez.users[user_sez].default_img;
-      callback(data);
+
     }
+
   });
 };
 
