@@ -33,29 +33,29 @@ module.exports = function(app) {
 
   app.get('/it/portfolio/videos/', videosRoutes.getAll);
   app.get('/it/portfolio/videos/(:video)', videosRoutes.get);
-  app.get('/it/portfolio/videos/page/(:page)', videosRoutes.get);
+  app.get('/it/portfolio/videos/page/(:page)', videosRoutes.getAll);
 
   app.get('/it/portfolio/live-visuals/', eventsRoutes.getAll);
   app.get('/it/portfolio/live-visuals/tags/', eventsRoutes.getAllTags);
   app.get('/it/portfolio/live-visuals/(:event)', eventsRoutes.get);
-  app.get('/it/portfolio/live-visuals/page/(:page)', eventsRoutes.get);
+  app.get('/it/portfolio/live-visuals/page/(:page)', eventsRoutes.getAll);
   app.get('/it/portfolio/live-visuals/tags/(:tag)', eventsRoutes.getAllTags);
 
   app.get('/it/portfolio/learning/', learningRoutes.getAll);
   app.get('/it/portfolio/learning/(:learning)', learningRoutes.get);
-  app.get('/it/portfolio/learning/page/(:page)', learningRoutes.get);
+  app.get('/it/portfolio/learning/page/(:page)', learningRoutes.getAll);
 
   app.get('/it/portfolio/lab/', labRoutes.getAll);
   app.get('/it/portfolio/lab/(:lab)', labRoutes.get);
-  app.get('/it/portfolio/lab/page/(:page)', labRoutes.get);
+  app.get('/it/portfolio/lab/page/(:page)', labRoutes.getAll);
 
   app.get('/it/extra/', newsRoutes.getAll);
   app.get('/it/extra/(:new)', newsRoutes.get);
-  app.get('/it/extra/page/(:page)', newsRoutes.get);
+  app.get('/it/extra/page/(:page)', newsRoutes.getAll);
 
   app.get('/it/portfolio/awards-and-grants/', awardsRoutes.getAll);
   app.get('/it/portfolio/awards-and-grants/(:award)', awardsRoutes.get);
-  app.get('/it/portfolio/awards-and-grants/page/(:page)', awardsRoutes.get);
+  app.get('/it/portfolio/awards-and-grants/page/(:page)', awardsRoutes.getAll);
 
   app.get('/it/people', usersRoutes.getUsers);
   app.get('/it/people/(:user)', usersRoutes.get);
