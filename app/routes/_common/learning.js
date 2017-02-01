@@ -23,9 +23,10 @@ exports.getAll = function getAll(req, res) {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAll(req, sez, sez.limit, page, function( results ) {
-        meta_data.meta.title = __("Learnings") + " | " + meta_data.meta.name;
-		meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.description, 160);
-        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype,page:page});
+        meta_data.meta.title = posttype.post_title + " | " + meta_data.meta.name;
+        if (posttype.featured) meta_data.meta['image_src'] = posttype.featured.full;
+        if (posttype.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.meta_description, 160);
+        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
       });
     });
   });
