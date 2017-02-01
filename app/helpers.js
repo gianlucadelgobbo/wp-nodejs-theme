@@ -405,7 +405,7 @@ exports.getWeb = function getWeb(req,callback) {
   var wp = new WPAPI({ endpoint: config.sez["web-and-mobile"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/web-and-mobile/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.web).get(function( err, data ) {
-    console.log("//// Web");
+    console.log("//// Web "+config.sez["web-and-mobile"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/web-and-mobile/'+req.params.web);
     data = fnz.fixResult(data);
     callback(data);
   });
