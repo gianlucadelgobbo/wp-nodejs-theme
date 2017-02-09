@@ -8,7 +8,7 @@ exports.get = function get(req, res) {
     console.log("result._post_template");
     helpers.getActivity(req, function( result ) {
       console.log("result._post_template2");
-      //console.log(result);
+      console.log(result);
       meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
       res.render(config.prefix+'/'+'activity', {result: result, meta_data:meta_data, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
     });
@@ -21,9 +21,6 @@ exports.getAll = function getAll(req, res) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAll(req, sez, sez.limit, page, function( results ) {
         meta_data.meta.title = __("Activities") + " | " + meta_data.meta.name;
-        console.log("stocazzo");
-        console.log(posttype);
-        console.log("stocazzo");
         meta_data.meta.title = posttype.post_title + " | " + meta_data.meta.name;
         if (posttype.featured) meta_data.meta['image_src'] = posttype.featured.full;
         if (posttype.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.meta_description, 160);

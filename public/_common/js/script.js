@@ -69,8 +69,8 @@ $(function() {
       masonry: {}
     });
   });
-  $("#cntSearchButton").click(function(event) {
-    $('#cntSearch').modal();
+  $("#searchModalButton").click(function(event) {
+    $('#searchModal').modal();
     event.preventDefault();
   });
   $(".ajaxloader").click(function() {

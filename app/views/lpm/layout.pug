@@ -1,5 +1,6 @@
 doctype html
 html(lang='en')
+  - var lang_preurl = (config.current_lang == config.default_lang ? '' :'/'+config.current_lang)
   head
     title=meta_data.meta['title']
     meta(charset='UTF-8')
@@ -36,7 +37,8 @@ html(lang='en')
     link(rel='stylesheet', href='/_common/css/style.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css', media='all')
-    link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
+    if (['2011-minsk','2011-rome','2010-rome','2009-rome','2008-rome','2008-mex','2007-rome','2006-rome','2005-rome','2004-rome'].indexOf(meta_data.edition['post_name'])==-1)
+      link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
 
     style(type='text/css').
       body {
@@ -63,7 +65,7 @@ html(lang='en')
                       #site-description=meta_data.meta['description']
                   .sr-only
                     include ../_common/inc_eventdateplace_meta
-        nav.hidden-xs(role='navigation')
+        nav.hidden-xs
           ul.pulsa
             each menu in meta_data.menu
               li.btn-group
@@ -79,7 +81,7 @@ html(lang='en')
 
 
 
-        nav.visible-xs.navbar.navbar-default(role='navigation')
+        nav.visible-xs.navbar.navbar-default
           // Brand and toggle get grouped for better mobile display
           .navbar-header
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')

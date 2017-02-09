@@ -5,11 +5,9 @@ header {margin:0 0 20px 0;}
 #next-edition img{float:none;}
 h3{color:#FFF; background-color:#000000;}
 @media (min-width: 992px) {
-	#next-edition img{float:right;}
-	#next-edition{margin:10px 10px 150px 0;}
+	#next-edition{margin:10px 10px 130px 225px;text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.8);}
 	#site-description {width: 240px;margin-right: 10px;float:right}
 	body {background-size: 1140px;}
-	header{height: 303px;}
 	#logo{margin:16px 0 0 163px;}
 	#logo img {max-width: none;}
 }

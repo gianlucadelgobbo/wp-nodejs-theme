@@ -6,6 +6,7 @@ var sez = config.sez["web-and-mobile"];
 exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getWeb(req, function( result ) {
+      console.log(result);
       if(result['ID']) {
         meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
         if (result.featured) meta_data.meta['image_src'] = result.featured.full;
