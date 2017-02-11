@@ -71,7 +71,7 @@ module.exports = function(app) {
   app.get('/it/event/2008-mex/', function(req, res) {res.redirect(301, req.url.replace('/event/2008-mex/','/portfolio/live-visuals/lpm-2008-mexico/'))});
   app.get('/it/event/2009-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2009-rome/','/portfolio/live-visuals/lpm-2009-rome/'))});
   app.get('/it/event/2011-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2011-rome/','/portfolio/live-visuals/lpm-2011-rome/'))});
-  app.get('/it/event/2011-minsk/', function(req, res) {res.redirect(301, req.url.replace('/event/2011-rome/','/portfolio/live-visuals/lpm-2011-minsk/'))});
+  app.get('/it/event/2011-minsk/', function(req, res) {res.redirect(301, req.url.replace('/event/2011-minsk/','/portfolio/live-visuals/lpm-2011-minsk/'))});
   app.get('/it/event/2013-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2013-rome/','/portfolio/live-visuals/lpm-2013-rome/'))});
   app.get('/it/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/portfolio/live-visuals/'))});
   app.get('/it/event-tag/*', function(req, res) {res.redirect(301, req.url.replace('/event-tag/','/portfolio/live-visuals/tags/'))});

@@ -9,7 +9,9 @@ article#container(itemscope, itemtype='http://schema.org/'+itemtype)
           input(type='hidden', name='cx', value=meta_data.meta.google_search)
           input(type='hidden', name='cof', value='FORID:10')
           input(type='hidden', name='ie', value='UTF-8')
-          input.form-control(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
-          button.btn.btn-primary(type='submit')
-            i.glyphicon.glyphicon-search
-              .sr-only=global.__("Search")
+          .input-group
+            input.form-control(type='text', placeholder=global.__("Search"), name='s', autocomplete='off')
+            span.input-group-btn
+              button.btn.btn-primary(type='submit')
+              i.glyphicon.glyphicon-search
+                .sr-only=global.__("Search")

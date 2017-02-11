@@ -37,13 +37,12 @@ nav#top-menu.navbar.navbar-inverse
               i.glyphicon.glyphicon-search
               span.sr-only=global.__("Search")
           .flyer-form-holder
-            .flyer-form-holder-inner.input-group
+            .flyer-form-holder-inner
               input(type='hidden', name='cx', value=meta_data.meta.google_search)
               input(type='hidden', name='cof', value='FORID:10')
               input(type='hidden', name='ie', value='UTF-8')
               input.edgt_search_field(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
-              span.input-group-btn
-                a.flyer-search-close(href='#', title=global.__("Close")) &times;
+              a.flyer-search-close(href='#', title=global.__("Close")) &times;
       ul.nav.navbar-nav.navbar-right.menu-hide.border-right
         li(class=meta_data['url'] == '/' ? "active" : undefined)
           a(href=lang_preurl+'/', title=global.__("Home"))
