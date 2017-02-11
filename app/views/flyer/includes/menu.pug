@@ -30,19 +30,20 @@ nav#top-menu.navbar.navbar-inverse
           span.input-group-btn
             button.btn.btn-default(type='submit', name='sa')=global.__("Search")
 
-      form.flyer-search-cover.hidden-xs(action='/search/', method='get')
+      form.flyer-search-cover.hidden-xs(action=lang_preurl+'/search/', method='get')
         .flyer-form-holder-outer
           .flyer-search-submit-holder
             button(type='submit', name='sa')
               i.glyphicon.glyphicon-search
               span.sr-only=global.__("Search")
           .flyer-form-holder
-            .flyer-form-holder-inner
+            .flyer-form-holder-inner.input-group
               input(type='hidden', name='cx', value=meta_data.meta.google_search)
               input(type='hidden', name='cof', value='FORID:10')
               input(type='hidden', name='ie', value='UTF-8')
               input.edgt_search_field(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
-              a.flyer-search-close(href='#', title=global.__("Close")) &times;
+              span.input-group-btn
+                a.flyer-search-close(href='#', title=global.__("Close")) &times;
       ul.nav.navbar-nav.navbar-right.menu-hide.border-right
         li(class=meta_data['url'] == '/' ? "active" : undefined)
           a(href=lang_preurl+'/', title=global.__("Home"))
