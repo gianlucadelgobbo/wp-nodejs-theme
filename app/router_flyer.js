@@ -34,6 +34,7 @@ module.exports = function(app) {
   app.get('/events/2014-eindhoven/', function(req, res) {res.redirect(301, req.url.replace('/events/2014-eindhoven/','/portfolio/live-visuals/lpm-2014-eindhoven/'))});
   app.get('/events/2015-rome/', function(req, res) {res.redirect(301, req.url.replace('/events/2015-rome/','/portfolio/live-visuals/lpm-2015-rome/'))});
   app.get('/events/*', function(req, res) {res.redirect(301, req.url.replace('/events/','/portfolio/live-visuals/'))});
+  app.get('/portfolio/events/*', function(req, res) {res.redirect(301, req.url.replace('/portfolio/events/','/portfolio/live-visuals/'))});
   app.get('/event/2008-mex/', function(req, res) {res.redirect(301, req.url.replace('/event/2008-mex/','/portfolio/live-visuals/lpm-2008-mexico/'))});
   app.get('/event/2009-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2009-rome/','/portfolio/live-visuals/lpm-2009-rome/'))});
   app.get('/event/2011-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2011-rome/','/portfolio/live-visuals/lpm-2011-rome/'))});
@@ -63,6 +64,7 @@ module.exports = function(app) {
   app.get('/it/events/2013-mex/', function(req, res) {res.redirect(301, req.url.replace('/events/2013-mex/','/portfolio/live-visuals/lpm-2013-mex/'))});
   app.get('/it/events/2014-eindhoven/', function(req, res) {res.redirect(301, req.url.replace('/events/2014-eindhoven/','/portfolio/live-visuals/lpm-2014-eindhoven/'))});
   app.get('/it/events/2015-rome/', function(req, res) {res.redirect(301, req.url.replace('/events/2015-rome/','/portfolio/live-visuals/lpm-2015-rome/'))});
+  app.get('/it/portfolio/events/*', function(req, res) {res.redirect(301, req.url.replace('/portfolio/events/','/portfolio/live-visuals/'))});
   app.get('/it/events/*', function(req, res) {res.redirect(301, req.url.replace('/events/','/portfolio/live-visuals/'))});
   app.get('/it/event/2008-mex/', function(req, res) {res.redirect(301, req.url.replace('/event/2008-mex/','/portfolio/live-visuals/lpm-2008-mexico/'))});
   app.get('/it/event/2009-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2009-rome/','/portfolio/live-visuals/lpm-2009-rome/'))});
