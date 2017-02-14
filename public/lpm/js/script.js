@@ -1,6 +1,10 @@
 var $container;
 var mySvgPanZoom;
 $(function() {
+  $(".availablesoon").click(function(event) {
+    alert("Available soon!!!");
+    return false;
+  });
   $("#subscribe .close").click(function(event) {
     $("#subscribe .input-group").removeClass("hide");
     $('#subscribe .loading').addClass("hide");
