@@ -36,19 +36,11 @@ html(lang=config.current_lang)
     link(rel='stylesheet', href='/_common/css/style.css', type='text/css', media='all')
     link(rel='stylesheet', href='/' + config.prefix + '/css/style.css', type='text/css', media='all')
   body
+    include includes/menu
     .container
-      header#myHeader.hidden-xs
-        .row
-          .col-sm-8
-            h2
-              a(href='/', title=meta_data.meta.name)
-                img.img-responsive(src=config.domain + meta_data.meta.logo_main, alt=meta_data.meta.name)
-          .col-sm-4
-            h3.text-right=meta_data.meta.description
-      include includes/menu
       #result
         block content
-      include includes/footer
+    include includes/footer
     include ../_common/modal-full
     include ../_common/modal-search
     include includes/modal-resize

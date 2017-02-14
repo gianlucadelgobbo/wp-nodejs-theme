@@ -1,5 +1,35 @@
 extends layout
 block content
+  #carousel.carousel.slide(data-ride='carousel')
+    // Indicators
+    ol.carousel-indicators
+      li.active(data-target='#carousel', data-slide-to='0')
+      li(data-target='#carousel', data-slide-to='1')
+      li(data-target='#carousel', data-slide-to='2')
+      li(data-target='#carousel', data-slide-to='3')
+    // Wrapper for slides
+    .carousel-inner(role='listbox')
+      .item.active
+        a(href="/portfolio/live-visuals/video-mapping-maxxi-spring-attitude-2016/", title="Video Mapping MAXXI Spring Attitude 2016")
+          img(src='https://flyer.dev.flyer.it/files/2016/12/event-mapping-SA.jpg', alt=global.__('Image for') + ': ' + 'Video Mapping MAXXI Spring Attitude 2016')
+      .item
+        a(href="/portfolio/web-and-mobile/funder35/", title="Funder35")
+          img(src='https://flyer.dev.flyer.it/files/2015/06/Flyer-slider-Europe.jpg', alt=global.__('Image for') + ': ' + 'European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
+      .item
+        a(href="/portfolio/awards-and-grants/european-union-avnode-lpm-2015-2018-creative-europe-large-scale-cooperation/", title="Funder35")
+          img(src='https://flyer.dev.flyer.it/files/2016/11/wm_funder35.jpg', alt=global.__('Image for') + ': ' + 'Funder35')
+      .item
+        a(href="/portfolio/videos/live-cinema-festival-2016-video-report/", title="Live Cinema Festival 2016 Video Report")
+          img(src='https://flyer.dev.flyer.it/files/2016/11/LCF2016_report-thumb.jpg', alt=global.__('Image for') + ': ' + 'Live Cinema Festival 2016 Video Report')
+
+
+    // Controls
+    a.left.carousel-control(href='#carousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+      span.sr-only Previous
+    a.right.carousel-control(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+      span.sr-only Next
   article#container(itemscope, itemtype='http://schema.org/Event')
     .row
       .col-lg-3.col-md-4.col-sm-6

@@ -13,6 +13,9 @@ footer a:hover {
 .box-list i {
   display: none;
 }
+.navbar-brand>img {
+  height: 41px;
+}
 
 
 
@@ -102,4 +105,19 @@ ul.lists .itemListElement .caption .caption-body .caption-title {
   padding: 15px;
   background-color: #EEE;
   margin-bottom: 30px;
+}
+@media (min-width: 768px){
+  body {
+    padding-top: 70px;
+  }
+  .navbar-nav>li>a {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .carousel-inner>.item{
+    max-height:280px;
+  }
+  .carousel {
+    margin-bottom: 20px;
+  }
 }
