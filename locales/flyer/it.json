@@ -42,12 +42,13 @@
 	"Read More": "Leggi Tutto",
 	"Load More": "Carica Altri",
 	"You reached the end": "Hai raggiunto la fine",
-	"Services": "Services",
-	"See all Extras ": "See all Extras ",
-	"Open menu": "Open menu",
-	"Close": "Close",
-	"Share": "Share",
-	"Phone": "Phone",
-	"Content NOT found": "Content NOT found",
-	"The content you requested was not found on our server, please try to search for it": "The content you requested was not found on our server, please try to search for it"
+	"Services": "Servizi",
+	"See all Extras ": "Vedi tutti gli Extra ",
+	"Open menu": "Apri menu",
+	"Close": "Chiudi",
+	"Share": "Condividi",
+	"Phone": "Telefono",
+	"Content NOT found": "Contenuto NON trovato",
+	"The content you requested was not found on our server, please try to search for it": "Il contenuto che stai cercando non è stato trovato sul nostro server, ti preghiamo di provare a cercarlo",
+	"Here you can find all the projects made with": "Qui puoi trovare tutti i progetti realizzati con"
 }
