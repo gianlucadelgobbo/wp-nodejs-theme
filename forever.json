@@ -1,11 +1,14 @@
-// NODE_ENV=production forever start -l /sites/wp-nodejs-theme/forever.log -o /sites/wp-nodejs-theme/out.log -e /sites/wp-nodejs-theme/err.log /sites/wp-nodejs-theme/./forever.json
+// NODE_ENV=production forever start -l /sites/wp-nodejs-theme/forever.log -o /sites/wp-nodejs-theme/out.log -e /sites/wp-nodejs-theme/err.log /sites/wp-nodejs-theme/forever.json
 [
   {
     "uid": "flyer",
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "./",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_flyer_forever.log",
+    "outFile": "/var/log/nginx/node_flyer_out.log",
+    "errFile": "/var/log/nginx/node_flyer_err.log",
     "args": ["-site", "flyer"]
   },
   {
@@ -13,7 +16,10 @@
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "./",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_lpm_forever.log",
+    "outFile": "/var/log/nginx/node_lpm_out.log",
+    "errFile": "/var/log/nginx/node_lpm_err.log",
     "args": ["-site", "lpm"]
   },
   {
@@ -21,7 +27,10 @@
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "./",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_shockart_forever.log",
+    "outFile": "/var/log/nginx/node_shockart_out.log",
+    "errFile": "/var/log/nginx/node_shockart_err.log",
     "args": ["-site", "shockart"]
   },
   {
@@ -29,10 +38,10 @@
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme",
-    "logFile": "/sites/wp-nodejs-theme/_logs/avnode_forever.log",
-    "outFile": "/sites/wp-nodejs-theme/_logs/avnode_out.log",
-    "errFile": "/sites/wp-nodejs-theme/_logs/err.log",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_avnode_forever.log",
+    "outFile": "/var/log/nginx/node_avnode_out.log",
+    "errFile": "/var/log/nginx/node_avnode_err.log",
     "args": ["-site", "avnode"]
   }
 ]
