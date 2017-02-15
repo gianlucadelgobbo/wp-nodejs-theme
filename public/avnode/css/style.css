@@ -54,6 +54,11 @@ footer .media-object{
   margin-bottom: 20px;
 }
 
+#container{
+  padding-top: 20px;
+}
+
+
 ul.lists {
   margin: 0;
   padding: 0;
