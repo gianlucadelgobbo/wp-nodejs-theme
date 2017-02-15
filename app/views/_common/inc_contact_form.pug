@@ -1,0 +1,27 @@
+form#contact-form(method='post', action='contact.php', role='form')
+  .messages
+  .controls
+    .row
+      .col-md-6
+        .form-group
+          label(for='form_name') Name *
+          input#form_name.form-control(type='text', name='name', placeholder='Please enter your name *', required='required', data-error='Name is required.')
+          .help-block.with-errors
+      .col-md-6
+        .form-group
+          label(for='form_email') Email *
+          input#form_email.form-control(type='email', name='email', placeholder='Please enter your email *', required='required', data-error='Valid email is required.')
+          .help-block.with-errors
+    .row
+      .col-md-12
+        .form-group
+          label(for='form_message') Message *
+          textarea#form_message.form-control(name='message', placeholder='Message for me *', rows='4', required='required', data-error='Please,leave us a message.')
+          .help-block.with-errors
+    .row
+      .col-md-4
+        input.btn.btn-success.btn-send(type='submit', value='Send message')
+      .col-md-8
+        p.text-muted.text-right
+          strong *
+          |  These fields are required.
