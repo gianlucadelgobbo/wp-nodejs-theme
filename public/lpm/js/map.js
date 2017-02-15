@@ -146,7 +146,7 @@ function initialize() {
 function loadScript() {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src = 'https://maps.googleapis.com/maps/api/js?key=' + 'AIzaSyCnPQejpSsDokpyYWT_-sXyEmdBS1iCdyI' + '&callback=initialize';
+  script.src = 'https://maps.googleapis.com/maps/api/js?key=' + 'AIzaSyASnEyLC6p7QPwzHg4caCxV1XidHf8d_G4' + '&callback=initialize';
   document.body.appendChild(script);
 }
 
