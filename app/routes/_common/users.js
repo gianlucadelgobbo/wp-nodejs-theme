@@ -44,7 +44,6 @@ exports.getUsers = function getUsers(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getContainerPage(req, user_sez, function( posttype ) {
       helpers.getAllUsers(req, user_sez, function( results ) {
-        console.log(results);
         var markers = [];
         if (results[0].data && results[0].data.geolocation) {
 
