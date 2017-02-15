@@ -59,7 +59,7 @@ function initialize() {
 
   var latlngbounds = new google.maps.LatLngBounds();
   for (i = 0; i < markers.length; i++) {
-    if (markers[i].type == "members") {
+    if (markers[i].type == "member") {
       var data = markers[i];
       var myLatlng = new google.maps.LatLng(data.lat, data.lng);
       latlngbounds.extend(myLatlng);
@@ -95,7 +95,7 @@ function initialize() {
       })(marker, data);
     }
   }
-  for (i = 0; i < markers.length; i++) {
+  /*for (i = 0; i < markers.length; i++) {
     if (markers[i].type == "editions") {
       var data = markers[i];
       var myLatlng = new google.maps.LatLng(data.lat, data.lng);
@@ -111,15 +111,6 @@ function initialize() {
         icon: pinImage,
         animation: google.maps.Animation.DROP,
         title: data.display_name
-        /*
-         icon: "/wordpress/wp-content/themes/Glider/css/img/marker.png",
-         draggable: true,
-         raiseOnDrag: true,
-         labelContent: i, // your number
-         labelAnchor: new google.maps.Point(3, 30),
-         labelClass: "labels", // the CSS class for the label
-         labelInBackground: false
-         */
       });
       marker.setZIndex(1000);
       (function (marker, data) {
@@ -139,7 +130,7 @@ function initialize() {
 
       })(marker, data);
     }
-  }
+  }*/
   map.fitBounds(latlngbounds);
 }
 
