@@ -1,7 +1,7 @@
 // NODE_ENV=production site=flyer forever start -l forever.log -o out.log -e err.log ./forever.json
 [
   {
-    "uid": "app",
+    "uid": "flyer",
     "append": true,
     "watch": true,
     "script": "app.js",
@@ -9,7 +9,7 @@
     "args": ["-site", "flyer"]
   },
   {
-    "uid": "app",
+    "uid": "lpm",
     "append": true,
     "watch": true,
     "script": "app.js",
@@ -17,7 +17,7 @@
     "args": ["-site", "lpm"]
   },
   {
-    "uid": "app",
+    "uid": "shockart",
     "append": true,
     "watch": true,
     "script": "app.js",
@@ -25,11 +25,11 @@
     "args": ["-site", "shockart"]
   },
   {
-    "uid": "app",
+    "uid": "avnode",
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "./",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
     "args": ["-site", "avnode"]
   }
 ]

@@ -46,7 +46,6 @@ exports.getUsers = function getUsers(req, res) {
       helpers.getAllUsers(req, user_sez, function( results ) {
         var markers = [];
         if (results[0].data && results[0].data.geolocation) {
-
           for (var item=0;item<results.length;item++) {
             console.log("bella");
             console.log(results[item]);
