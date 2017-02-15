@@ -44,9 +44,36 @@ exports.getUsers = function getUsers(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getContainerPage(req, user_sez, function( posttype ) {
       helpers.getAllUsers(req, user_sez, function( results ) {
+        console.log(results);
+        var markers = [];
+        if (results[0].data && results[0].data.geolocation) {
+
+          for (var item=0;item<results.length;item++) {
+            console.log("bella");
+            console.log(results[item]);
+            var latlang = [];
+            if (results[item].data.geolocation) latlang = results[item].data.geolocation.split(";");
+            console.log(results[item]);
+            console.log(latlang);
+            if (latlang.length) {
+              var marker = {
+                lat:latlang[0],
+                lng:latlang[1],
+                type:results[item].roles[0],
+                slug:'/'+config.sez.users[user_sez].baseurl+'/'+results[item].data.user_nicename+'/',
+                display_name:results[item].data.display_name,
+                date:results[item].data_evento,
+                destination:results[item].data.city+", "+results[item].data.country
+              };
+              console.log(marker);
+              markers.push(marker);
+            }
+          }
+        }
+        console.log("bingo");
         meta_data.meta.title = __(config.sez.users[user_sez].title) + " | " + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ")+ meta_data.meta.name;
         if (posttype.post_content) meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.post_content, 160);
-        res.render(config.prefix+'/'+'users_'+user_sez, {results: results, meta_data:meta_data, posttype:posttype, author_base:config.sez.users[user_sez].baseurl, title: __(config.sez.users[user_sez].title)/*, itemprop:"sponsor"*/});
+        res.render(config.prefix+'/'+'users_'+user_sez, {results: results, markers:markers, meta_data:meta_data, posttype:posttype, author_base:config.sez.users[user_sez].baseurl, title: __(config.sez.users[user_sez].title)/*, itemprop:"sponsor"*/});
       });
     });
   });

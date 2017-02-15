@@ -1,5 +1,5 @@
 footer a:hover {
-  color:#73bd20;
+  color:#EC1B45;
 }
 .header {
   padding: 20px 0 50px 0;
@@ -16,8 +16,43 @@ footer a:hover {
 .navbar-brand>img {
   height: 41px;
 }
+.entry-title.boxItem{
+  font-size: 24px;
+}
+.home-title{
+  margin:0;
+  padding: 20px;
+  background: repeating-linear-gradient(
+    -55deg,
+    #222,
+    #222 10px,
+    #333 10px,
+    #333 20px
+  );
+  color: #FFF;
+}
+.home-col-1,.home-col-2,.home-col-3{
+  padding: 20px;
+  height: 100%;
+}
+.home-col-1 {
+  background-color: #FFF;
+  margin:0 -15px 0 0;
+}
 
+.home-col-2 {
+  background-color: #f7f7f7;
+  margin:0 -15px 0 -15px;
+}
 
+.home-col-3 {
+  background-color: #eaeaea;
+  margin:0 0 0 -15px;
+}
+footer .media-object{
+  height: 50px;
+  margin-bottom: 20px;
+}
 
 ul.lists {
   margin: 0;
@@ -114,10 +149,7 @@ ul.lists .itemListElement .caption .caption-body .caption-title {
     padding-top: 25px;
     padding-bottom: 25px;
   }
-  .carousel-inner>.item{
-    max-height:280px;
-  }
-  .carousel {
-    margin-bottom: 20px;
+  .carousel-inner {
+    height:280px;
   }
 }

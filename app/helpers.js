@@ -151,7 +151,7 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
             //data2.push(data[userflyer]);
 
             console.log("//// Users "+user_sez);
-            console.log(data);
+            //console.log(data);
 
             //data = fnz.fixResults(data);
             callback(data);

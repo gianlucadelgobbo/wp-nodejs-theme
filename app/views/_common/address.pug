@@ -1,38 +1,39 @@
 div(itemprop="organizer", itemscope, itemtype='http://schema.org/Organization')
   a(href=lang_preurl + '/', title=meta_data.meta['name'])
-    img.media-object(src=config.domain + meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
-  br
-  strong(itemprop='name')=config.project_name
-  br
-  !=global.__("a project of")+" Flyer communication"
+    img.media-object(src="/avnode/images/LogoAVnode-bar.svg", alt=meta_data.meta['name'], itemprop='logo')
+  //br
+  strong.sr-only(itemprop='name')=config.project_name
+  //br
+  !=global.__("a project of")+" Stichting AVnode"
   br
   span(itemprop='location', itemscope, itemtype='http://schema.org/Place')
     span(itemprop='address', itemscope, itemtype='http://schema.org/PostalAddress')
-      span(itemprop='streetAddress') Via del Verano 39
+      span(itemprop='streetAddress') Arondeusstraat 7
+      !=" "
+      span(itemprop='postalCode') 1063GB
       br
-      span(itemprop='postalCode') 00185
       !=" "
-      span(itemprop='addressLocality')=global.__('Rome')
+      span(itemprop='addressLocality') Amsterdam
       !=" "
-      span(itemprop='addressCountry')=global.__('Italy')
+      span(itemprop='addressCountry') Netherlands
     br
     span.hide(itemprop='geo', itemscope, itemtype='http://schema.org/GeoCoordinates')
-      span(itemprop='latitude') 41.899316
+      span(itemprop='latitude') 52.3823559
       | ,
-      span(itemprop='longitude') 12.520403
-    a(itemprop='url', title=global.__('map'), href='https://www.google.com/maps/place/Flyer+Communication+Srl/@41.899316,12.520403,963m/data=!3m2!1e3!4b1!4m2!3m1!1s0x132f618364bd1e11:0x4bbf08536c8fc4c9?hl=en', target='_blank')=global.__('map')
+      span(itemprop='longitude') 4.8237471
+    a(itemprop='url', title=global.__('map'), href='https://www.google.it/maps/place/Arondeusstraat+7,+1063+GB+Amsterdam,+Netherlands/@52.3823559,4.8237471,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5e251a2807e6b:0xf143ebca2731e3fb!8m2!3d52.3823559!4d4.8259358!10m1!1e1', target='_blank')=global.__('map')
     br
-  |    Tel.
-  !=" "
-  a(href='tel:+390678147301', itemprop='telephone', title=global.__('Phone number')) +39 06 78147301
-  br
-  |    Fax
-  !=" "
-  span(itemprop='faxNumber') +39 06 78390805
-  br
+  //|    Tel.
+    !=" "
+    a(href='tel:+390678147301', itemprop='telephone', title=global.__('Phone number')) +39 06 78147301
+    br
+    |    Fax
+    !=" "
+    span(itemprop='faxNumber') +39 06 78390805
+    br
   !=global.__('VAT N°')
   !=" "
-  span(itemprop='vatID') IT06589171005
+  span(itemprop='vatID') NL856555253B01
   br
   a(itemprop='email', title=global.__('Write to') + " " + config.project_name, href='mailto:' + config.project_email)=config.project_email
   br

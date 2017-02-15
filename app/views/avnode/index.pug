@@ -30,25 +30,32 @@ block content
     a.right.carousel-control(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
       span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
       span.sr-only Next
-  article#container(itemscope, itemtype='http://schema.org/Event')
-    .row
-      .col-lg-3.col-md-4.col-sm-6
-        h1.entry-title.boxItem News
-        each result, position in results.news
-          include boxes/box_news
-        .text-right.boxItem
-          a.btn.btn-primary(href="/news/", title=global.__("See all News"))=global.__("See all News")
-      .col-lg-6.col-md-4.col-sm-6
-        h1.entry-title.boxItem=global.__("Members Events")
-        .row.isotope.results
-          each result, position in results.events
-            .col-lg-6.col-md-12.col-sm-12.isotopeitem
-              include boxes/box_event
-        .text-right.boxItem
-          a.btn.btn-primary(href="/events/", title=global.__("See all Events"))=global.__("See all Events")
-      .col-lg-3.col-md-4.col-sm-6
-        h1.entry-title.boxItem=global.__("Activities")
-        each result, position in results.activities
-          include boxes/box_activity
-        .text-right.boxItem
-          a.btn.btn-primary(href="/activities/", title=global.__("See all Activities"))=global.__("See all Activities")
+  article#container
+    .text-center
+      h1.home-title
+        span.sr-only=meta_data.meta.name + " "
+        !=meta_data.meta.description
+    .row(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .col-lg-3.col-md-4.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        .home-col-1
+          h2.entry-title.boxItem(itemprop="name") News
+          each result, position in results.news
+            include boxes/box_news
+          .text-right.boxItem
+            a.btn.btn-primary(href="/news/", title=global.__("See all News"))=global.__("See all News")
+      .col-lg-6.col-md-4.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        .home-col-2
+          h2.entry-title.boxItem(itemprop="name")=global.__("Members Events")
+          .row.isotope.results
+            each result, position in results.events
+              .col-lg-6.col-md-12.col-sm-12.isotopeitem
+                include boxes/box_event
+          .text-right.boxItem
+            a.btn.btn-primary(href="/events/", title=global.__("See all Events"))=global.__("See all Events")
+      .col-lg-3.col-md-4.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        .home-col-3
+          h2.entry-title.boxItem(itemprop="name")=global.__("Activities")
+          each result, position in results.activities
+            include boxes/box_activity
+          .text-right.boxItem
+            a.btn.btn-primary(href="/activities/", title=global.__("See all Activities"))=global.__("See all Activities")

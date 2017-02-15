@@ -4,6 +4,7 @@ var fs = require('fs');
 
 exports.get = function get(req, res) {
   console.log("ecchime");
+  console.log(config.sez.home);
   var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
   helpers.getMetaData(req, function( meta_data ) {
     if (req.query.createcache==1 || !fs.existsSync(file)){
