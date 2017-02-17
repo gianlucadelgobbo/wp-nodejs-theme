@@ -4,6 +4,42 @@ var moment = require( 'moment' );
 var fnz = require('./functions');
 var jsonfile = require('jsonfile');
 var fs = require('fs');
+var Validators = require('./validators').Validators;
+
+exports.validateFormEmail = function validateFormEmail(o,callback) {
+  var e = [];
+  if (!Validators.validateStringLength(o.name, 3, 100)){
+    e.push({name:"name",m:__("Please enter a valid Name")});
+  }
+  if(!Validators.validateEmail(o.email)){
+    e.push({name:"email",m:__("Email is not an email")});
+  }
+  if (!Validators.validateStringLength(o.message, 3, 100)){
+    e.push({name:"name",m:__("Please enter a valid Action name")});
+  }
+  callback(e, o);
+};
+
+exports.validateFormNewsletter = function validateFormNewsletter(o,callback) {
+  var e = [];
+  if (!Validators.validateStringLength(o.name, 3, 100)){
+    e.push({name:"name",m:__("Please enter a valid name")});
+  }
+  if (!Validators.validateStringLength(o.surname, 3, 100)){
+    e.push({name:"surname",m:__("Please enter a valid surname")});
+  }
+  if(!Validators.validateEmail(o.email)){
+    e.push({name:"email",m:__("Email is not an email")});
+  }
+  if(!Validators.validateStringLength(o.country, 3, 100)){
+    e.push({name:"country",m:__("Please select your country")});
+  }
+  if(!o.topics.length){
+    e.push({name:"topics",m:__("Please select at least one topic")});
+  }
+  callback(e, o);
+};
+
 
 /* POST TYPE */
 exports.getPostType = function getPostType(req,posttype,callback) {

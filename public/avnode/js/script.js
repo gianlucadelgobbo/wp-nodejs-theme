@@ -1,3 +1,5 @@
+$.fn.validator.Constructor.FOCUS_OFFSET = 100;
+
 jQuery( window ).resize(function() {
   resetAffix();
 });

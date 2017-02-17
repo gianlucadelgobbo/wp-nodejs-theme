@@ -40,7 +40,8 @@ module.exports = function(app) {
   app.get('/activities/', activitiesRoutes.getAll);
   app.get('/activities/(:activity)', activitiesRoutes.get);
 
-  app.get('/(:page)/', pagesRoutes.get);
+  app.get('/(:page)', pagesRoutes.get);
+  app.post('/(:page)', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 

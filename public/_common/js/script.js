@@ -51,16 +51,19 @@ function infiniteScroll(t) {
 
 
 $(function() {
+
   $('#contact-form').validator();
 
   $('#contact-form').on('submit', function (e) {
     if (!e.isDefaultPrevented()) {
-      var url = "contact.php";
-
+      var url = $(this).action;
+      var dat = $(this).serialize()+"&ajax=1";
+      //dat.ajax = 1;
+      console.log(dat);
       $.ajax({
         type: "POST",
         url: url,
-        data: $(this).serialize(),
+        data: dat,
         success: function (data)
         {
           var messageAlert = 'alert-' + data.type;
@@ -69,7 +72,35 @@ $(function() {
           var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
           if (messageAlert && messageText) {
             $('#contact-form').find('.messages').html(alertBox);
-            $('#contact-form')[0].reset();
+            if (data.type=="success") $('#contact-form')[0].reset();
+          }
+        }
+      });
+      return false;
+    }
+  });
+
+  $('#newsletter-form').validator();
+
+  $('#newsletter-form').on('submit', function (e) {
+    if (!e.isDefaultPrevented()) {
+      var url = $(this).action;
+      var dat = $(this).serialize()+"&ajax=1";
+      //dat.ajax = 1;
+      console.log(dat);
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: dat,
+        success: function (data)
+        {
+          var messageAlert = 'alert-' + data.type;
+          var messageText = data.message;
+
+          var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+          if (messageAlert && messageText) {
+            $('#newsletter-form').find('.messages').html(alertBox);
+            if (data.type=="success") $('#newsletter-form')[0].reset();
           }
         }
       });

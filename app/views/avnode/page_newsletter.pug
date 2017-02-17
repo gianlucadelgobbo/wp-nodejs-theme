@@ -10,9 +10,22 @@ block content
             .pull-right
               include ../_common/inc_share_span
         .rientro
+          - if (typeof msg !== "undefined" && typeof msg.e !== "undefined" && msg.e.length)
+            .alert.alert-danger
+              h4=__("There are some errors")
+              ul
+                - for(a=0;a<msg.e.length;a++)
+                  li=msg.e[a].m
+          - if (typeof msg !== "undefined" && typeof msg.c !== "undefined" && msg.c.length)
+            .alert.alert-success
+              h4=__("There are some messages")
+              ul
+                - for(a=0;a<msg.c.length;a++)
+                  li=msg.c[a].m
+          include ../_common/inc_form_newsletter
           div(itemprop='description')!=result.post_content
           include ../_common/inc_videos
-          .text-muted
+          .text-muted.sr-only
             .dates
               .date=result.data_evento
               meta(itemprop="dateModified", content=result.dateModified)
