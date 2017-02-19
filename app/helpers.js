@@ -15,7 +15,7 @@ exports.validateFormEmail = function validateFormEmail(o,callback) {
     e.push({name:"email",m:__("Email is not an email")});
   }
   if (!Validators.validateStringLength(o.message, 3, 100)){
-    e.push({name:"name",m:__("Please enter a valid Action name")});
+    e.push({name:"name",m:__("Please enter a valid Message")});
   }
   callback(e, o);
 };
@@ -36,6 +36,29 @@ exports.validateFormNewsletter = function validateFormNewsletter(o,callback) {
   }
   if(!o.topics.length){
     e.push({name:"topics",m:__("Please select at least one topic")});
+  }
+  callback(e, o);
+};
+
+exports.validateFormJoin = function validateFormJoin(o,callback) {
+  var e = [];
+  if (!Validators.validateStringLength(o.organization_name, 3, 100)){
+    e.push({name:"organization_name",m:__("Organization name is required")});
+  }
+  if(!Validators.validateStringLength(o.organization_country, 3, 100)){
+    e.push({name:"organization_country",m:__("Please select your Organization country")});
+  }
+  if (!Validators.validateStringLength(o.name, 3, 100)){
+    e.push({name:"name",m:__("Your name is required")});
+  }
+  if(!Validators.validateEmail(o.email)){
+    e.push({name:"email",m:__("Email is not an email")});
+  }
+  if (!Validators.validateStringLength(o.activity_description, 3, 100)){
+    e.push({name:"activity_description",m:__("Organization activity description is required")});
+  }
+  if (!Validators.validateStringLength(o.activity_list, 3, 100)){
+    e.push({name:"activity_list",m:__("Activities name list is required")});
   }
   callback(e, o);
 };

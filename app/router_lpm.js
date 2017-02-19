@@ -91,7 +91,7 @@ module.exports = function(app) {
   app.get('/map', timelinemapRoutes.getMap);
   //app.get('/map/(:year)/', timelinemapRoutes.getTimeline);
   //app.post('/timeline/(:year)/', pagesRoutes.postTimeline);
-  //app.get('/signup', signupRoutes.get);
+  app.get('/signup', signupRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
   app.post('/signup', signupRoutes.post);
   app.get('*', pagesRoutes.get404);

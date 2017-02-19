@@ -146,6 +146,16 @@ ul.lists .itemListElement .caption .caption-body .caption-title {
   background-color: #EEE;
   margin-bottom: 30px;
 }
+
+
+.home-col-1,.home-col-2,.home-col-3{
+  padding: 20px;
+  height: 100%;
+}
+.navbar-brand>img {
+  height: 22px;
+}
+
 @media (min-width: 768px){
   body {
     padding-top: 70px;
@@ -157,4 +167,23 @@ ul.lists .itemListElement .caption .caption-body .caption-title {
   .carousel-inner {
     height:280px;
   }
+  .home-col-1 {
+    background-color: #FFF;
+    margin:0 -15px 0 0;
+  }
+  .home-col-2 {
+    background-color: #f7f7f7;
+    margin:0 0 0 -15px;
+  }
+  .navbar-brand>img {
+    height: 41px;
+  }
 }
+@media (min-width: 1200px){
+  .home-col-2 {
+    background-color: #f7f7f7;
+    margin:0 -15px 0 -15px;
+  }
+}
+
+

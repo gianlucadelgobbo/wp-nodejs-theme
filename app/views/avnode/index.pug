@@ -36,26 +36,30 @@ block content
         span.sr-only=meta_data.meta.name + " "
         !=meta_data.meta.description
     .row(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
-      .col-lg-3.col-md-4.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+      .col-xl-3.col-lg-4.col-md-6.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         .home-col-1
           h2.entry-title.boxItem(itemprop="name") News
-          each result, position in results.news
-            include boxes/box_news
+          .row.isotope.results
+            each result, position in results.news
+              .col-sm-12.isotopeitem
+                include boxes/box_news
           .text-right.boxItem
             a.btn.btn-primary(href="/news/", title=global.__("See all News"))=global.__("See all News")
-      .col-lg-6.col-md-4.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+      .col-xl-6.col-lg-5.col-md-6.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         .home-col-2
           h2.entry-title.boxItem(itemprop="name")=global.__("Members Events")
           .row.isotope.results
             each result, position in results.events
-              .col-lg-6.col-md-12.col-sm-12.isotopeitem
+              .col-xl-6.col-md-12.col-sm-12.isotopeitem(class=position+1>=config.sez.home.events.limit/2 ? "visible-xl hidden-lg" : undefined)
                 include boxes/box_event
           .text-right.boxItem
             a.btn.btn-primary(href="/events/", title=global.__("See all Events"))=global.__("See all Events")
-      .col-lg-3.col-md-4.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+      .col-lg-3.col-md-12.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         .home-col-3
           h2.entry-title.boxItem(itemprop="name")=global.__("Activities")
-          each result, position in results.activities
-            include boxes/box_activity
+          .row.isotope.results
+            each result, position in results.activities
+              .col-sm-12.isotopeitem
+                include boxes/box_activity
           .text-right.boxItem
             a.btn.btn-primary(href="/activities/", title=global.__("See all Activities"))=global.__("See all Activities")
