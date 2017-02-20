@@ -72,6 +72,9 @@ exports.get = function(req, res){
 };
 
 exports.post = function(req, res){
+  var interests = {};
+  for (var item in config.accounts.newsletter.interests) interests[item] = true;
+  interests[config.accounts.newsletter.site_from] = true;
   request({
       method: 'POST',
       url: config.accounts.newsletter.url+"/members",
@@ -79,7 +82,7 @@ exports.post = function(req, res){
         "email_address": req.body.email,
         "status": "subscribed",
         "double_optin": false,
-        "interests" :config.accounts.newsletter.interests
+        "interests" : interests
       }),
       headers: {
         Authorization: 'apikey '+config.accounts.newsletter.apikey,
