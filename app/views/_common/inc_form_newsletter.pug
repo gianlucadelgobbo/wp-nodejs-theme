@@ -37,7 +37,7 @@ form#newsletter-form(method='post', action=meta_data['url'], role='form')
           each item, index in config.accounts.newsletter.interests
             .radio
               label(for='maintopics' + index)
-                input(type='radio', checked=result.body.topics[0]==index ? "checked" : undefined, name='topics', required='required', id='maintopics' + index, value=index, data-atleastone="topics", data-error=__("Main topic is required"))
+                input(type='radio', checked=result.body.topics && result.body.topics.length && result.body.topics[0]==index ? "checked" : undefined, name='topics', required='required', id='maintopics' + index, value=index, data-atleastone="topics", data-error=__("Main topic is required"))
                 !=" " + item
               .help-block.with-errors
       .col-md-6
@@ -47,7 +47,7 @@ form#newsletter-form(method='post', action=meta_data['url'], role='form')
           each item, index in config.accounts.newsletter.interests
             .checkbox
               label(for='topics' + index)
-                input(type='checkbox', checked=result.body.topics.indexOf(index)>0 ? "checked" : undefined, name='topics', id='topics' + index, value=index)
+                input(type='checkbox', checked=result.body.topics && result.body.topics.indexOf(index)>0 ? "checked" : undefined, name='topics', id='topics' + index, value=index)
                 !=" " + item
               .help-block.with-errors
     .row
