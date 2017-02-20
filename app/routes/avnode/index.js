@@ -1,6 +1,8 @@
 var helpers = require('../../helpers');
 var jsonfile = require('jsonfile');
 var fs = require('fs');
+var ig = require('instagram-node').instagram();
+ig.use({ client_id: '818216a3ba354059b19c8464d87ca865', client_secret: '6220780a13ad48f989c191865969c09f' });
 
 exports.get = function get(req, res) {
   console.log("ecchime");
@@ -14,14 +16,39 @@ exports.get = function get(req, res) {
             meta_data.meta.title = meta_data.meta.name;
             console.log("bingo");
             console.log(result_activities);
+            var redirect_uri = config.domain+":3007"+req.url;
             var obj = {
               results: {news:result_news,events:result_events,activities:result_activities/**/},
               meta_data:meta_data
             };
-            jsonfile.writeFile(file, obj, function (err) {
-              console.log(err);
-            });
-            res.render(config.prefix+'/'+'index',obj);
+            if (req.query.code) {
+              ig.authorize_user(req.query.code, redirect_uri, function(err, result) {
+                if (err) {
+                  console.log(err);
+                  console.log("Didn't work"+req.query.code);
+                } else {
+                  console.log('Yay! Access token is ' + result.access_token);
+                  ig.use({ access_token: result.access_token });
+
+                  ig.user_self_media_recent(function(err, medias, pagination, remaining, limit) {
+                    //ig.use({ access_token: '818216a3ba354059b19c8464d87ca865' });
+                    console.log("instagram-node");
+                    console.log(err);
+                    console.log(medias);
+                    console.log(pagination);
+                    console.log(remaining);
+                    console.log(limit);
+                    jsonfile.writeFile(file, obj, function (err) {
+                      console.log(err);
+                    });
+                    res.render(config.prefix+'/'+'index',obj);
+                  });
+
+                }
+              });
+            } else {
+              res.redirect(ig.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
+            }
             //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,activities:result_activities}, meta_data:meta_data});
           });
         });
