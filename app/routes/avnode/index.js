@@ -16,7 +16,7 @@ exports.get = function get(req, res) {
             meta_data.meta.title = meta_data.meta.name;
             console.log("bingo");
             console.log(result_activities);
-            var redirect_uri = config.domain+":3007"+req.url;
+            var redirect_uri = config.domain+""+req.url;
             var obj = {
               results: {news:result_news,events:result_events,activities:result_activities/**/},
               meta_data:meta_data
