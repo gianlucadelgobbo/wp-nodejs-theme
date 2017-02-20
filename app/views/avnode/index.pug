@@ -67,8 +67,8 @@ block content
           h2.entry-title.boxItem(itemprop="name")=global.__("Instagram")
           .row.isotope.results
             each result, position in insta
-              .col-sm-12.isotopeitem
-                a(href=result.link)
-                  img(src=result.img.url)
+              .col-sm-6(style="margin-bottom:30px;")
+                a(href=result.link, target="_blank")
+                  img.img-responsive(src=result.img.url)
           .text-right.boxItem
-            a.btn.btn-primary(href="/activities/", title=global.__("See all Activities"))=global.__("See all Activities")
+            a.btn.btn-primary(href="https://www.instagram.com/avnodenet/", target="_blank", title=global.__("See all on Instagram"))=global.__("See all on Instagram")

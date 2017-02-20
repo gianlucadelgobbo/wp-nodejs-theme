@@ -31,7 +31,7 @@ server {
   ssl_certificate  /etc/letsencrypt/live/79things.com/fullchain.pem ;
   ssl_certificate_key /etc/letsencrypt/live/79things.com/privkey.pem ;
 
-  server_name 79things.com;
+  server_name 79things.com 79things.dev.flyer.it www.79things.com;
 
   root /sites/dev.flyer;
   index index.php;

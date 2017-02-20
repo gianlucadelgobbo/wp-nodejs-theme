@@ -9,6 +9,9 @@
 .subfooter .madeby a:hover{
   color:#FFF;
 }
+a:hover img{
+  opacity: .7;
+}
 .subfooter .madeby .icon-flyer{
   font-size: 30px;
 }

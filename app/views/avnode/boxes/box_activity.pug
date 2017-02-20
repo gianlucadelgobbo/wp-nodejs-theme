@@ -12,8 +12,6 @@
           include ../../_common/inc_eventdate
         h3.list_title(itemprop='name')
           a(itemprop='url', href=lang_preurl+'/activities/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
-        .places
-          include ../../_common/inc_place
         .text-muted.small.excerpt
           if result.excerpt && result.excerpt.rendered
             div(itemprop='description')!=result.excerpt.rendered

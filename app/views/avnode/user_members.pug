@@ -7,12 +7,11 @@ block content
 
         div(itemprop='description')!=result.data.description
 
-        if result.data.auth_contents.activities && result.data.auth_contents.activities.posts.length
-          - var res = result.data.auth_contents.activities
+        if result.data.auth_contents["member-activities"] && result.data.auth_contents["member-activities"].posts.length
+          - var res = result.data.auth_contents["member-activities"]
           section(itemscope, itemtype="https://schema.org/ItemList")
             h3(itemprop="name")=res.labels.name
             each result, position in res.posts
-              -console.log(result);
               .row
                 .col-lg-4.col-md-12.col-sm-12
                   img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='url')
@@ -27,6 +26,7 @@ block content
                   .text-muted.small.excerpt
                     if result.post_content
                       div(itemprop='description')!=result.post_content
+              hr
       .col-sm-3
         header
           h1.entry-title(itemprop='name')=result.data.display_name
@@ -37,6 +37,9 @@ block content
             p(itemprop='jobTitle')
               i=result.data.role
           p
+            if result.data.auth_contents["member-activities"] && result.data.auth_contents["member-activities"].posts.length
+              !=result.data.auth_contents["member-activities"].labels.name + ": " + result.data.auth_contents["member-activities"].posts.length
+              br
             if result.data.auth_contents.activities && result.data.auth_contents.activities.posts.length
               !=result.data.auth_contents.activities.labels.name + ": " + result.data.auth_contents.activities.posts.length
               br
@@ -59,9 +62,17 @@ block content
                 !=result.data.organisationurl
           if result.data.organisationgeolocation && result.data.organisationgeolocation.length
             p
-              img.img-responsive(src="https://maps.googleapis.com/maps/api/staticmap?size=300x150&maptype=roadmap&markers=color:red%7Clabel:A%7C"+result.data.organisationgeolocation[0]+","+result.data.organisationgeolocation[1]+"&sensor=false&key=AIzaSyAsyZ_vqmKYfFIJ1FW7F2_P-hk0GJ4XIR8")
+              img.img-responsive(src="https://maps.googleapis.com/maps/api/staticmap?size=300x150&maptype=roadmap&markers=color:red%7Clabel:A%7C"+result.data.organisationgeolocation[0]+","+result.data.organisationgeolocation[1]+"&sensor=false&key=AIzaSyBJ_PEUV1D4Uw6TktDxQp-ErObMyRQuvm4")
           include ../_common/inc_share
 
+    if result.data.auth_contents.activities && result.data.auth_contents.activities.posts.length
+      - var res = result.data.auth_contents.activities
+      section(itemscope, itemtype="https://schema.org/ItemList")
+        h3(itemprop="name")=res.labels.name
+        .row.isotope.results
+          each result, position in res.posts
+            .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+              include boxes/box_activity
     if result.data.auth_contents.events && result.data.auth_contents.events.posts.length
       - var res = result.data.auth_contents.events
       section(itemscope, itemtype="https://schema.org/ItemList")
