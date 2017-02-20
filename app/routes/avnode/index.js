@@ -24,7 +24,6 @@ exports.get = function get(req, res) {
               meta_data:meta_data
             };
             if (req.query.code) {
-
               ig.authorize_user(req.query.code, redirect_uri, function(err, result) {
                 if (err) {
                   console.log(err);
@@ -37,6 +36,7 @@ exports.get = function get(req, res) {
                   ig.user_self_media_recent(function(err, medias, pagination, remaining, limit) {
                     //ig.use({ access_token: '818216a3ba354059b19c8464d87ca865' });
                     console.log("instagram-node");
+                    for(var item in medias) console.log(console.log(medias[item].images.standard_resolution);
                     console.log(err);
                     console.log(medias);
                     console.log(pagination);
