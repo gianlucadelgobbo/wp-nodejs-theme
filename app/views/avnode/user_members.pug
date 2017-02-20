@@ -6,31 +6,62 @@ block content
         img.img-responsive.main-image(src=result.data.img, alt=result.data.display_name, itemprop='image')
 
         div(itemprop='description')!=result.data.description
+
+        if result.data.auth_contents.activities && result.data.auth_contents.activities.posts.length
+          - var res = result.data.auth_contents.activities
+          section(itemscope, itemtype="https://schema.org/ItemList")
+            h3(itemprop="name")=res.labels.name
+            each result, position in res.posts
+              -console.log(result);
+              .row
+                .col-lg-4.col-md-12.col-sm-12
+                  img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='url')
+                  meta(itemprop="width" content="480")
+                  meta(itemprop="height" content="270")
+                .col-lg-8.col-md-12.col-sm-12
+                  .text-muted
+                    include ../_common/inc_eventdate
+                  h3.list_title(itemprop='name')=result.post_title
+                  .places
+                    include ../_common/inc_place
+                  .text-muted.small.excerpt
+                    if result.post_content
+                      div(itemprop='description')!=result.post_content
       .col-sm-3
         header
           h1.entry-title(itemprop='name')=result.data.display_name
         .rientro
-          p(itemprop='jobTitle')
-            i=result.data.role
+          if result.data.organisationtype
             p
-              if result.data.auth_contents.activities && result.data.auth_contents.activities.posts.length
-                !=result.data.auth_contents.activities.labels.name + ": " + result.data.auth_contents.activities.posts.length
-                br
-              if result.data.auth_contents.events && result.data.auth_contents.events.posts.length
-                !=result.data.auth_contents.events.labels.name + ": " + result.data.auth_contents.events.posts.length
-                br
-              if result.data.auth_contents.news && result.data.auth_contents.news.posts.length
-                !=result.data.auth_contents.news.labels.name + ": " + result.data.auth_contents.news.posts.length
-                br
+              i=result.data.organisationtype
+            p(itemprop='jobTitle')
+              i=result.data.role
+          p
+            if result.data.auth_contents.activities && result.data.auth_contents.activities.posts.length
+              !=result.data.auth_contents.activities.labels.name + ": " + result.data.auth_contents.activities.posts.length
+              br
+            if result.data.auth_contents.events && result.data.auth_contents.events.posts.length
+              !=result.data.auth_contents.events.labels.name + ": " + result.data.auth_contents.events.posts.length
+              br
+            if result.data.auth_contents.news && result.data.auth_contents.news.posts.length
+              !=result.data.auth_contents.news.labels.name + ": " + result.data.auth_contents.news.posts.length
+          if result.data.organisationurl
+            p
+              a(href=result.data.organisationurl, target="_blank")
+                i.glyphicon.glyphicon-globe
+                !=" "
+                !=result.data.organisationurl
+          if result.data.organisationemail
+            p
+              a(href="mailto:"+result.data.organisationemail)
+                i.glyphicon.glyphicon-envelope
+                !=" "
+                !=result.data.organisationurl
+          if result.data.organisationgeolocation && result.data.organisationgeolocation.length
+            p
+              img.img-responsive(src="https://maps.googleapis.com/maps/api/staticmap?size=300x150&maptype=roadmap&markers=color:red%7Clabel:A%7C"+result.data.organisationgeolocation[0]+","+result.data.organisationgeolocation[1]+"&sensor=false&key=AIzaSyAsyZ_vqmKYfFIJ1FW7F2_P-hk0GJ4XIR8")
           include ../_common/inc_share
-    if result.data.auth_contents.activities && result.data.auth_contents.activities.posts.length
-      - var res = result.data.auth_contents.activities
-      section(itemscope, itemtype="https://schema.org/ItemList")
-        h3(itemprop="name")=res.labels.name
-        .row.isotope.results
-          each result, position in res.posts
-            .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
-              include boxes/box_activity
+
     if result.data.auth_contents.events && result.data.auth_contents.events.posts.length
       - var res = result.data.auth_contents.events
       section(itemscope, itemtype="https://schema.org/ItemList")

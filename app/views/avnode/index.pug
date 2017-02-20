@@ -63,3 +63,12 @@ block content
                 include boxes/box_activity
           .text-right.boxItem
             a.btn.btn-primary(href="/activities/", title=global.__("See all Activities"))=global.__("See all Activities")
+          br
+          h2.entry-title.boxItem(itemprop="name")=global.__("Instagram")
+          .row.isotope.results
+            each result, position in insta
+              .col-sm-12.isotopeitem
+                a(href=result.link)
+                  img(src=result.img.url)
+          .text-right.boxItem
+            a.btn.btn-primary(href="/activities/", title=global.__("See all Activities"))=global.__("See all Activities")

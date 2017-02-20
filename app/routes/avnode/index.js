@@ -16,8 +16,8 @@ exports.get = function get(req, res) {
             meta_data.meta.title = meta_data.meta.name;
             console.log("bingo");
             console.log(result_activities);
-            var redirect_uri = config.domain+"/"/*+req.url*/;
-            //var redirect_uri = "http://localhost:3007/";
+            //var redirect_uri = config.domain+"/"/*+req.url*/;
+            var redirect_uri = "http://localhost:3007/";
             console.log(redirect_uri);
             var obj = {
               results: {news:result_news,events:result_events,activities:result_activities/**/},
@@ -36,10 +36,6 @@ exports.get = function get(req, res) {
                   ig.user_self_media_recent(function(err, medias, pagination, remaining, limit) {
                     //ig.use({ access_token: '818216a3ba354059b19c8464d87ca865' });
                     obj.insta = [];
-                    var insta = {
-
-                    }
-
                     console.log("instagram-node");
                     for(var item in medias) {
                       obj.insta.push({
