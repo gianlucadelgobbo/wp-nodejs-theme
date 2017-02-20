@@ -16,16 +16,20 @@ exports.get = function get(req, res) {
             meta_data.meta.title = meta_data.meta.name;
             console.log("bingo");
             console.log(result_activities);
-            var redirect_uri = config.domain+""+req.url;
+            var redirect_uri = config.domain+"/"/*+req.url*/;
+            //var redirect_uri = "http://localhost:3007"+req.url;
+            console.log(redirect_uri);
             var obj = {
               results: {news:result_news,events:result_events,activities:result_activities/**/},
               meta_data:meta_data
             };
             if (req.query.code) {
+
               ig.authorize_user(req.query.code, redirect_uri, function(err, result) {
                 if (err) {
                   console.log(err);
                   console.log("Didn't work"+req.query.code);
+                  console.log(redirect_uri);
                 } else {
                   console.log('Yay! Access token is ' + result.access_token);
                   ig.use({ access_token: result.access_token });
@@ -47,7 +51,9 @@ exports.get = function get(req, res) {
                 }
               });
             } else {
-              res.redirect(ig.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
+              var url = 'https://api.instagram.com/oauth/authorize/?client_id='+'818216a3ba354059b19c8464d87ca865'+'&redirect_uri='+redirect_uri+'&response_type=code'
+              res.redirect(url);
+              //res.redirect(ig.get_authorization_url(redirect_uri, { scope: ['likes']}));
             }
             //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,activities:result_activities}, meta_data:meta_data});
           });
