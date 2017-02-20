@@ -22,13 +22,13 @@ block content
               ul
                 - for(a=0;a<msg.c.length;a++)
                   li=msg.c[a].m
+          div(itemprop='description')!=result.post_content
           if (form == "contacts")
             include ../_common/inc_form_contacts
           if (form == "newsletter")
             include ../_common/inc_form_newsletter
           if (form == "join")
             include ../_common/inc_form_join
-          div(itemprop='description')!=result.post_content
           include ../_common/inc_videos
           .text-muted
             .dates
