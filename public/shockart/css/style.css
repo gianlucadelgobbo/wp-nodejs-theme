@@ -13,8 +13,9 @@ footer a:hover {
 .box-list i {
   display: none;
 }
-#myHeader img{
-  max-width: 300px;
+#myHeader img {
+  max-width: 400px;
+  margin-bottom: 20px;
 }
 
 

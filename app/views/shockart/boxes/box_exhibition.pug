@@ -1,6 +1,6 @@
 .boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
   meta(itemprop="position", content=position+1)
-  .Activity(itemprop="item", itemscope, itemtype='http://schema.org/Event')
+  .Exhibition(itemprop="item", itemscope, itemtype='http://schema.org/Event')
     .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
       a(href=lang_preurl+'/exhibitions/'+result.slug+"/", rel='bookmark', title!=result.post_title)
         img.img-responsive(src=result.featured.thumbnail, alt!='Image for: '+result.post_title, itemprop='url')

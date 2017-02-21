@@ -2,21 +2,21 @@ extends layout
 block content
   article#container(itemscope, itemtype='http://schema.org/Event')
     .row
-      .col-lg-3.col-md-4.col-sm-6
+      .col-xl-3.col-md-4
         h1.entry-title.boxItem News
         each result, position in results.news
           include boxes/box_news
         .text-right.boxItem
           a.btn.btn-primary(href="/news/")=global.__("See all News")
-      .col-lg-6.col-md-4.col-sm-6
+      .col-xl-6.col-md-4
         h1.entry-title.boxItem=global.__("Satellite Events")
         .row.isotope.results
           each result, position in results.events
-            .col-lg-6.col-md-12.col-sm-12.isotopeitem
+            .col-xl-6.col-xs-12.isotopeitem(class=position+1>=config.sez.home.events.limit/2 ? "visible-xl hidden-lg" : undefined)
               include boxes/box_event
         .text-right.boxItem
           a.btn.btn-primary(href="/events/")=global.__("See all Events")
-      .col-lg-3.col-md-4.col-sm-6
+      .col-xl-3.col-md-4
         h1.entry-title.boxItem=global.__("Exhibitions")
         each result, position in results.exhibitions
           include boxes/box_exhibition
