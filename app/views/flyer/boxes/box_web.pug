@@ -7,7 +7,6 @@
         img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image')
     .box-list
       include ../../_common/inc_datemonth
-      meta(itemprop="position" content=position + 1)
       h3.list_title(itemprop='name')
         a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/web-and-mobile/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
       if result.excerpt && result.excerpt.rendered

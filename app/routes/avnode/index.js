@@ -33,7 +33,7 @@ exports.get = function get(req, res) {
                   console.log('Yay! Access token is ' + result.access_token);
                   ig.use({ access_token: result.access_token });
 
-                  ig.user_self_media_recent(function(err, medias, pagination, remaining, limit) {
+                  ig.user_self_media_recent({count:6},function(err, medias, pagination, remaining, limit) {
                     //ig.use({ access_token: '818216a3ba354059b19c8464d87ca865' });
                     obj.insta = [];
                     console.log("instagram-node");
