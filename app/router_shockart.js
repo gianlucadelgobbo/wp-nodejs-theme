@@ -6,8 +6,10 @@ var usersRoutes = require('./routes/_common/users');
 var eventsRoutes = require('./routes/_common/events');
 var newsRoutes = require('./routes/_common/news');
 var pagesRoutes = require('./routes/_common/pages');
+var robotsRoutes = require('./routes/_common/robots');
 
 module.exports = function(app) {
+  app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);

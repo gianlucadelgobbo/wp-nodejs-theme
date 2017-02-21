@@ -8,6 +8,7 @@ var usersRoutes = require('./routes/_common/users');
 var eventsRoutes = require('./routes/_common/events');
 var newsRoutes = require('./routes/_common/news');
 var pagesRoutes = require('./routes/_common/pages');
+var robotsRoutes = require('./routes/_common/robots');
 /*
  var searchRoutes = require('./routes/search');
  */
@@ -54,6 +55,7 @@ module.exports = function(app) {
 
   app.get('/', indexRoutes.get);
 
+  app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get('/sitemap-editions.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
