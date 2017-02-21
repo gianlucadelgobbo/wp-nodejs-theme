@@ -15,21 +15,21 @@
       // Place everything within .navbar-collapse to hide it until above 768px
       #main-navbar.collapse.navbar-collapse
         ul#menu-main-menu.nav.navbar-nav
-          li
+          li(class=meta_data['url']=="/" || meta_data['url']=="/it/" ? "active" : undefined)
             a(href=lang_preurl+'/')=global.__("Home")
-          li
+          li(class=meta_data['url'].indexOf('/project') >= 0 ? "active" : undefined)
             a(href=lang_preurl+'/project/')=global.__("Project")
-          li
+          li(class=meta_data['url'].indexOf('/exhibitions') >= 0 ? "active" : undefined)
             a(href=lang_preurl+'/exhibitions/')=global.__("Exhibitions")
-          li
+          li(class=meta_data['url'].indexOf('/events') >= 0 ? "active" : undefined)
             a(href=lang_preurl + '/events/')=global.__("Events")
-          li
+          li(class=meta_data['url'].indexOf('/news') >= 0 ? "active" : undefined)
             a(href=lang_preurl + '/news/')=global.__("News")
-          li
+          li(class=meta_data['url'].indexOf('/backstage') >= 0 ? "active" : undefined)
             a(href=lang_preurl+'/backstage/')=global.__("Backstage")
-          li
+          li(class=meta_data['url'].indexOf('/newsletter') >= 0 ? "active" : undefined)
             a(href=lang_preurl+'/newsletter/')=global.__("Newsletter")
-          li
+          li(class=meta_data['url'].indexOf('/contacts') >= 0 ? "active" : undefined)
             a(href=lang_preurl+'/contacts/')=global.__("Contacts")
         ul.nav.navbar-nav.navbar-right
           li.lang-en(class=meta_data["langSwitcher"]["en"] == meta_data['url'] ? 'active' : '')
