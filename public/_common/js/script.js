@@ -51,7 +51,7 @@ function infiniteScroll(t) {
 
 
 $(function() {
-  if ($('#contact-form')) {
+  if ($('#contact-form').length) {
     $('#contact-form').validator();
 
     $('#contact-form').on('submit', function (e) {
@@ -79,7 +79,7 @@ $(function() {
       }
     });
   }
-  if ($('#newsletter-form')){
+  if ($('#newsletter-form').length){
     $('#newsletter-form').validator();
 
     $('#newsletter-form').on('submit', function (e) {
@@ -108,7 +108,7 @@ $(function() {
       }
     });
   }
-  if ($('#join-form')){
+  if ($('#join-form').length){
     $('#join-form').validator();
 
     $('#join-form').on('submit', function (e) {
