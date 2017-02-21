@@ -13,7 +13,9 @@ footer a:hover {
 .box-list i {
   display: none;
 }
-
+#myHeader img{
+  max-width: 300px;
+}
 
 
 ul.lists {
