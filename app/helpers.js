@@ -171,6 +171,7 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
               for (var user in data) {
                 if (data2[userflyer].ID==data[user].ID) {
                   for (var auth_content in data2[userflyer].data.auth_contents) {
+                    if ((!data[user].data.img || data[user].data.img=="") && data2[userflyer].data.img) data[user].data.img = data2[userflyer].data.img;
                     if (!data[user].data.img || data[user].data.img=="") data[user].data.img = config.domain + config.sez.users[user_sez].default_img;
                     data[user].data.auth_contents[auth_content] = data2[userflyer].data.auth_contents[auth_content];
                   }
@@ -190,6 +191,7 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
                }
                */
             }
+            for (var user in data) if (!data[user].data.img || data[user].data.img=="") data[user].data.img = config.domain + config.sez.users[user_sez].default_img;
             //for (var user in data) if (datanewIDS.indexOf(data[user].ID)==-1) datanew.push(data[user]);
             //for (var user in data) print_r(data[user].ID);
             /*

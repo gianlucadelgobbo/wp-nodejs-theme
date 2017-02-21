@@ -60,6 +60,8 @@ exports.get = function get(req, res) {
   } else if (req.params.users) {
     console.log(req.params.users);
     helpers.getAllUsers(req, req.params.users, function( results ) {
+      console.log("eccomi");
+      console.log("eccomi");
       res.render('_common/sitemap-users', {results: results, baseurl:config.sitemap.users[req.params.users].baseurl});
     });
   }
