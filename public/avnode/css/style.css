@@ -141,10 +141,8 @@ ul.lists .itemListElement .caption .caption-body .caption-title {
 }
 
 /* BOX Exhibition */
-.Exhibition .box-list{
-  padding: 15px;
-  background-color: #EEE;
-  margin-bottom: 30px;
+.Activity .box-list {
+  padding: 10px;
 }
 
 

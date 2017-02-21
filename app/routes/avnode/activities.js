@@ -9,8 +9,16 @@ exports.get = function get(req, res) {
     helpers.getActivity(req, function( result ) {
       console.log("result._post_template2");
       console.log(result);
-      meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
-      res.render(config.prefix+'/'+'activity', {result: result, meta_data:meta_data, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+      //meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name;
+      //res.render(config.prefix+'/'+'activity', {result: result, meta_data:meta_data, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+      if(result['ID']) {
+        meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + meta_data.meta.name;
+        if (result.featured) meta_data.meta['image_src'] = result.featured.full;
+        if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
+        res.render(config.prefix+'/'+sez.pugdett, {result: result, meta_data:meta_data, baseurl:sez.baseurl,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+      } else {
+        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, baseurl:sez.baseurl, itemtype:"WebPage"});
+      }
     });
   });
 };
