@@ -19,15 +19,15 @@ i18n.configure({
 module.exports = function(app, exp) {
 
   var env = process.env.NODE_ENV || 'development';
+  app.use(require('stylus').middleware({ src: app.root + '/public' }));
+  app.use(exp.static(app.root + '/public'));
+  app.use(exp.static(app.root + '/files'));
   app.set('views', [app.root + '/app/views']);
   app.set('view engine', 'pug');
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
   app.use(methodOverride());
-  app.use(exp.static(app.root + '/public'));
-  app.use(exp.static(app.root + '/files'));
   //app.use(exp.static(app.root + '/any'));
-  //app.use(require('stylus').middleware({ src: app.root + '/public' }));
   //app.use(session({ secret: 'wp-nodejs-theme', resave: false, saveUninitialized: true, cookie: { maxAge: 3600000 } }));
   app.use(i18n.init);
   app.set('view options', { layout: false });

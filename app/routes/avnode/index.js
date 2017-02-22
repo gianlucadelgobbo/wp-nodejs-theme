@@ -16,8 +16,8 @@ exports.get = function get(req, res) {
             meta_data.meta.title = meta_data.meta.name;
             console.log("bingo");
             console.log(result_activities);
-            var redirect_uri = config.domain+"/"/*+req.url*/;
-            //var redirect_uri = "http://localhost:3007/";
+            //var redirect_uri = config.domain+"/"/*+req.url*/;
+            var redirect_uri = "http://localhost:3007/";
             console.log(redirect_uri);
             var obj = {
               results: {news:result_news,events:result_events,activities:result_activities/**/},
