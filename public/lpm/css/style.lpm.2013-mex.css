@@ -1,6 +1,1 @@
-body {background-color:#000000; color:#999999; background-repeat:no-repeat; background-image: url("_images/fondo2.jpg");}
-h1,.h1like{color:#FFF; background-color:#19734B;padding: 0 5px 5px 10px; font-size: 2.3em; line-height: 1.5em;}
-h1 a{color:#FFF;}
-#logo{padding:0px;margin:-30px 0 -45px -28px;}
-#site-description{padding:0px;margin:30px 0 0 0;}
-h3{background-color: #19734B; color: #FFFFFF;}
+body{background-color:#000;color:#999;background-repeat:no-repeat;background-image:url("_images/fondo2.jpg")}h1,.h1like{color:#fff;background-color:#19734b;padding:0 5px 5px 10px;font-size:2.3em;line-height:1.5em}h1 a{color:#fff}#logo{padding:0;margin:-30px 0 -45px -28px}#site-description{padding:0;margin:30px 0 0 0}h3{background-color:#19734b;color:#fff}

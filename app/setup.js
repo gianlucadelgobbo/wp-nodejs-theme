@@ -19,9 +19,6 @@ i18n.configure({
 module.exports = function(app, exp) {
 
   var env = process.env.NODE_ENV || 'development';
-  app.use(require('stylus').middleware({ src: app.root + '/public' }));
-  app.use(exp.static(app.root + '/public'));
-  app.use(exp.static(app.root + '/files'));
   app.set('views', [app.root + '/app/views']);
   app.set('view engine', 'pug');
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,6 +35,17 @@ module.exports = function(app, exp) {
     //app.set('view options', { doctype : 'html', pretty : true });
   } else {
     app.locals.pretty = true;
+    var stylus = require('stylus');
+    var nib = require('nib');
+    app.use(stylus.middleware({ src: app.root + '/public', compile:function (str, path) {
+      return stylus(str)
+          .set('filename', path)
+          .set('compress', true)
+          .use(nib())
+          .import('nib');
+    } }));
+    app.use(exp.static(app.root + '/public'));
+    app.use(exp.static(app.root + '/files'));
     var logger = require('morgan');
     app.use(logger('combined'));
     app.use(errorhandler());

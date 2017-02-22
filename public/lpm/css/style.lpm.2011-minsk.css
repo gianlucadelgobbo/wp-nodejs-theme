@@ -1,12 +1,1 @@
-body {background-color:#000000; color:#333333; background-repeat:no-repeat;background-size: contain;}
-h1,.h1like{color:#FFF; background-color:#E5239E;padding: 0 5px 5px 10px; font-size: 2.3em; line-height: 1.5em;}
-h1 a{color:#FFF;}
-header{color: #FFF;text-shadow: 2px 2px 4px #000000}
-#logo{margin:0 0 0 0px;}
-h3{background-color: #E5239E; color: #FFFFFF;}
-.rientro{background: rgba(255,255,255,.8);margin-bottom:20px;}
-@media (min-width: 992px) {
-	body {background-size:initial;}
-}
-
-
+body{background-color:#000;color:#333;background-repeat:no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain}h1,.h1like{color:#fff;background-color:#e5239e;padding:0 5px 5px 10px;font-size:2.3em;line-height:1.5em}h1 a{color:#fff}header{color:#fff;text-shadow:2px 2px 4px #000}#logo{margin:0 0 0 0}h3{background-color:#e5239e;color:#fff}.rientro{background:rgba(255,255,255,0.8);margin-bottom:20px}@media (min-width:992px){body{-webkit-background-size:initial;-moz-background-size:initial;background-size:initial}}
