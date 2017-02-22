@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var minify = require('gulp-minify');
+var concat = require('gulp-concat');
 
 var config = {
   bowerDir: '../bower_components',
@@ -118,6 +119,33 @@ gulp.task('compress_js_shockart', function() {
       }))
       .pipe(gulp.dest(config.publicDir + '/shockart/js/'))
 });
+
+gulp.task('concat_common_scripts', function() {
+  return gulp.src([
+    config.publicDir + '/_common/js/jquery.min.js',
+    config.publicDir + '/_common/js/bootstrap.min.js',
+    config.publicDir + '/_common/js/jquery.isotope.min.js',
+    config.publicDir + '/_common/js/imagesloaded.pkgd.min.js',
+    config.publicDir + '/_common/js/cookielawinfo.min.js',
+    config.publicDir + '/_common/js/script.min.js'
+  ])
+      .pipe(concat('combo.min.js'))
+      .pipe(gulp.dest(config.publicDir + '/_common/js/'));
+});
+gulp.task('concat_avnode_css', function() {
+  return gulp.src([
+    config.publicDir + '/_common/css/fontello.min.css',
+    config.publicDir + '/_common/css/fontello-animation.min.css',
+    config.publicDir + '/_common/css/socialGalleryPluginLite.min.css',
+    config.publicDir + '/_common/css/cookielawinfo.min.css',
+    config.publicDir + '/avnode/css/bootstrap.min.css',
+    config.publicDir + '/_common/css/bootstrapXL.min.css',
+    config.publicDir + '/_common/css/style.css',
+    config.publicDir + '/avnode/css/style.css',
+  ])
+      .pipe(concat('combo.min.css'), {newLine: '\r\n'})
+      .pipe(gulp.dest(config.publicDir + '/avnode/css/'));
+});
 gulp.task('default', [
   'css_lpm_bs',
   'css_flyer_bs',
@@ -130,5 +158,7 @@ gulp.task('default', [
   'compress_js_avnode',
   'compress_js_lpm',
   'compress_js_flyer',
-  'compress_js_shockart'
+  'compress_js_shockart',
+  'concat_common_scripts',
+  'concat_avnode_css'
 ]);

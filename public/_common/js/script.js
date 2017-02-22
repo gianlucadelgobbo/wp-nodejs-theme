@@ -137,6 +137,7 @@ $(function() {
       }
     });
   }
+  $(function() {
 
   if (typeof(cx) !== "undefined") {
     console.log("append gcse:searchresults-only")
@@ -181,4 +182,7 @@ $(function() {
     history.pushState({}, onclose_title, onclose_url);
     $(document).prop('title',onclose_title);
   });
+  });
+
 });
+

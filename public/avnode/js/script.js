@@ -1,5 +1,5 @@
 $(function() {
-  $.fn.validator.Constructor.FOCUS_OFFSET = 100;
+  if($.fn.validator) $.fn.validator.Constructor.FOCUS_OFFSET = 100;
 });
 
 jQuery( window ).resize(function() {
