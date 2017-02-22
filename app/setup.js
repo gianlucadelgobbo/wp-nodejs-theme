@@ -44,8 +44,6 @@ module.exports = function(app, exp) {
           .use(nib())
           .import('nib');
     } }));
-    app.use(exp.static(app.root + '/public'));
-    app.use(exp.static(app.root + '/files'));
     var logger = require('morgan');
     app.use(logger('combined'));
     app.use(errorhandler());
@@ -55,4 +53,6 @@ module.exports = function(app, exp) {
       res.status(500).send({status:500, message: 'internal error', type:'internal'});
     })/**/
   }
+  app.use(exp.static(app.root + '/public'));
+  app.use(exp.static(app.root + '/files'));
 };
