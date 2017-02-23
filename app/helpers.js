@@ -838,8 +838,19 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callbac
 
 //////// GLOBAL
 
+exports.setCurrentLang = function setCurrentLang() {
+  config.current_lang = config.default_lang;
+  for(var item in config.locales) {
+    if (config.locales[item]!=config.default_lang && req.url.indexOf('/'+config.locales[item]+'/')===0) {
+      config.current_lang = config.locales[item];
+    }
+  }
+};
+
+//////// GLOBAL
+
 exports.getMetaData = function getMetaData(req,callback) {
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  this.setCurrentLang();
   global.setLocale(config.current_lang);
   var moment = require('moment');
   require('moment/locale/'+(config.current_lang=="en" ? "en-gb" : config.current_lang));
@@ -855,7 +866,7 @@ exports.getMetaData = function getMetaData(req,callback) {
     var file = config.root+'/tmp/'+config.prefix+'/meta_'+config.current_lang+'.json';
   }
   if (req.query.createcache==1 || !fs.existsSync(file)) {
-    /*request(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""), function (error, response, body) {
+    request(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""), function (error, response, body) {
       console.log(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""));
       //console.log(error);
       if (!error && response.statusCode == 200) {
@@ -871,8 +882,9 @@ exports.getMetaData = function getMetaData(req,callback) {
         };
         callback(data);
       }
-    });*/
-    req.send("error");
+    });/**/
+    console.log(file);
+    callback([]);
   } else {
     var data = jsonfile.readFileSync(file);
     data.url = req.url;
