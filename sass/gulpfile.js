@@ -219,7 +219,8 @@ gulp.task('concat_lpm_css', function() {
       config.publicDir + '/_common/css/socialGalleryPluginLite.css',
       config.publicDir + '/_common/css/cookielawinfo.css',
       config.publicDir + '/lpm/css/bootstrap.min.lpm.' + editions[item] + '.css',
-      config.publicDir + '/_common/css/style.lpm.css',
+      config.publicDir + '/_common/css/style.css',
+      config.publicDir + '/lpm/css/style.lpm.css',
       config.publicDir + '/lpm/css/style.lpm.' + editions[item] + '.css',
     ];
     if (excludeXL.indexOf(editions[item]) == -1) csslist.push(config.publicDir + '/_common/css/bootstrapXL.css');
