@@ -27,14 +27,15 @@ html(lang=config.current_lang)
     link(rel='apple-touch-icon', sizes='152x152', href=meta_data.meta['icon152'])
     // CSS
 
-    link(rel='stylesheet', href='/_common/css/fontello.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css', media='all')
+    //link(rel='stylesheet', href='/_common/css/fontello.css', type='text/css', media='all')
     if include_gallery
       link(rel='stylesheet', href='/_common/css/socialGalleryPluginLite.css', type='text/css', media='all')
-    link(rel='stylesheet', href='/_common/css/cookielawinfo.css', type='text/css', media='all')
-    link(rel='stylesheet', href='/' + config.prefix + '/css/bootstrap.min.css', type='text/css')
-    link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
-    link(rel='stylesheet', href='/_common/css/style.css', type='text/css', media='all')
-    link(rel='stylesheet', href='/' + config.prefix + '/css/style.css', type='text/css', media='all')
+    //link(rel='stylesheet', href='/_common/css/cookielawinfo.css', type='text/css', media='all')
+      link(rel='stylesheet', href='/' + config.prefix + '/css/bootstrap.min.css', type='text/css')
+      link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
+      link(rel='stylesheet', href='/_common/css/style.css', type='text/css', media='all')
+      link(rel='stylesheet', href='/' + config.prefix + '/css/style.css', type='text/css', media='all')
   body
     .container
       header#myHeader.hidden-xs
@@ -53,10 +54,14 @@ html(lang=config.current_lang)
     include ../_common/modal-search
     include includes/modal-resize
 
-    script(type='text/javascript', src='/_common/js/jquery.min.js')
-    script(type='text/javascript', src='/_common/js/bootstrap.min.js')
-    script(type='text/javascript', src='/_common/js/jquery.isotope.min.js')
-    script(type='text/javascript', src='/_common/js/imagesloaded.pkgd.min.js')
+    script(type='text/javascript', src='/_common/js/combo.min.js')
+    if form
+      script(type='text/javascript', src='/_common/js/validator.min.js')
+    //script(type='text/javascript', src='/_common/js/jquery.min.js')
+      script(type='text/javascript', src='/_common/js/bootstrap.min.js')
+      script(type='text/javascript', src='/_common/js/jquery.isotope.min.js')
+      script(type='text/javascript', src='/_common/js/imagesloaded.pkgd.min.js')
+      script(type='text/javascript', src='/_common/js/cookielawinfo.min.js')
     include ../_common/inc_cookielawinfo
 
     if include_gallery
@@ -102,6 +107,6 @@ html(lang=config.current_lang)
       script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
       script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.min.js')
 
-    script(type='text/javascript', src='/_common/js/script.min.js')
+    //script(type='text/javascript', src='/_common/js/script.min.js')
     script(type='text/javascript', src='/' + config.prefix + '/js/script.min.js')
     include ../_common/inc_analytics
