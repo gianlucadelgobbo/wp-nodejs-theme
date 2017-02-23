@@ -24,9 +24,12 @@ module.exports = function(app) {
   app.get('/it/partners/(:user)', usersRoutes.get);
   app.get('/it/events/', eventsRoutes.getAll);
   app.get('/it/events/(:event)', eventsRoutes.get);
+  app.get('/it/events/page/(:page)', eventsRoutes.getAll);
   app.get('/it/news/', newsRoutes.getAll);
   app.get('/it/news/(:news)', newsRoutes.get);
+  app.get('/it/news/page/(:page)', newsRoutes.getAll);
   app.get('/it/exhibitions/', exhibitionsRoutes.getAll);
+  app.get('/it/exhibitions/page/(:page)', exhibitionsRoutes.getAll);
   app.get('/it/exhibitions/(:exhibition)', exhibitionsRoutes.get);
   app.get('/it/exhibitions/(:exhibition)/artists', exhibitionsRoutes.getArtist);
   app.get('/it/exhibitions/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);
@@ -39,10 +42,13 @@ module.exports = function(app) {
   app.get('/partners', usersRoutes.getUsers);
   app.get('/partners/(:user)', usersRoutes.get);
   app.get('/events/', eventsRoutes.getAll);
+  app.get('/events/page/(:page)', eventsRoutes.getAll);
   app.get('/events/(:event)', eventsRoutes.get);
   app.get('/news/', newsRoutes.getAll);
+  app.get('/news/page/(:page)', newsRoutes.getAll);
   app.get('/news/(:new)', newsRoutes.get);
   app.get('/exhibitions/', exhibitionsRoutes.getAll);
+  app.get('/exhibitions/page/(:page)', exhibitionsRoutes.getAll);
   app.get('/exhibitions/(:exhibition)', exhibitionsRoutes.get);
   app.get('/exhibitions/(:exhibition)/artists', exhibitionsRoutes.getArtist);
   app.get('/exhibitions/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);

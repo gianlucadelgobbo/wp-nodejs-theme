@@ -41,9 +41,10 @@ function infiniteScroll(t) {
       return false;
     });
     $('#container > .read-more .loading').hide();
-    var $newItems = $($(msg).find("#container .results  ").html());
-    $containerappend = $("#container .results  ").append($newItems);
+    var $newItems = $($(msg).find("#container .results").html());
+    $containerappend = $("#container .results").append($newItems);
     $containerappend.imagesLoaded( function(){
+      console.log("appended");
       $containerappend.isotope( 'appended', $newItems );
     });
   });

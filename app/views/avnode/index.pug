@@ -70,7 +70,10 @@ block content
           .text-right.boxItem
             a.btn.btn-primary(href="/activities/", title=global.__("See all Activities"))=global.__("See all Activities")
           br
-          h2.entry-title.boxItem(itemprop="name")=global.__("Instagram")
+          h2.entry-title.boxItem(itemprop="name")
+            i.icon-instagram
+            !=" "
+            !=global.__("Instagram")
           .row.isotope.results
             each result, position in insta
               .col-sm-6.isotopeitem(style="margin-bottom:30px;")

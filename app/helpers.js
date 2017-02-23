@@ -314,6 +314,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   console.log("getAll "+sez.post_type);
   console.log("page "+page);
   config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  console.log(sez.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+sez.site_tax_id);
   var wp = new WPAPI({ endpoint: sez.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;

@@ -17,7 +17,7 @@ module.exports = function(app) {
   app.get("/sitemap-activities-(:activity).xml", sitemapRoutes.get);
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
-  app.get('/it/', indexRoutes.get);
+  /*app.get('/it/', indexRoutes.get);
   app.get('/it/members', usersRoutes.getUsers);
   app.get('/it/members/(:user)', usersRoutes.get);
   app.get('/it/partners', usersRoutes.getUsers);
@@ -29,7 +29,7 @@ module.exports = function(app) {
   app.get('/it/activities/', activitiesRoutes.getAll);
   app.get('/it/activities/(:activity)', activitiesRoutes.get);
   app.get('/it/(:page)/', pagesRoutes.get);
-
+*/
   app.get('/', indexRoutes.get);
   app.get('/members', usersRoutes.getUsers);
   app.get('/members/(:user)', usersRoutes.get);
@@ -37,10 +37,13 @@ module.exports = function(app) {
   app.get('/partners/(:user)', usersRoutes.get);
   app.get('/events/', eventsRoutes.getAll);
   app.get('/events/(:event)', eventsRoutes.get);
+  app.get('/events/page/(:page)', eventsRoutes.getAll);
   app.get('/news/', newsRoutes.getAll);
   app.get('/news/(:new)', newsRoutes.get);
+  app.get('/events/page/(:page)', newsRoutes.getAll);
   app.get('/activities/', activitiesRoutes.getAll);
   app.get('/activities/(:activity)', activitiesRoutes.get);
+  app.get('/activities/page/(:page)', activitiesRoutes.getAll);
 
   app.get('/(:page)', pagesRoutes.get);
   app.post('/(:page)', pagesRoutes.post);
