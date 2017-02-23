@@ -855,7 +855,7 @@ exports.getMetaData = function getMetaData(req,callback) {
     var file = config.root+'/tmp/'+config.prefix+'/meta_'+config.current_lang+'.json';
   }
   if (req.query.createcache==1 || !fs.existsSync(file)) {
-    request(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""), function (error, response, body) {
+    /*request(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""), function (error, response, body) {
       console.log(config.meta_domain + (config.current_lang != config.default_lang ? '/' + config.current_lang : '') + '/wp-json/wp/v2/meta_data/'+(edition ? posttype+"/"+edition : ""));
       //console.log(error);
       if (!error && response.statusCode == 200) {
@@ -871,7 +871,8 @@ exports.getMetaData = function getMetaData(req,callback) {
         };
         callback(data);
       }
-    });
+    });*/
+    req.send("error");
   } else {
     var data = jsonfile.readFileSync(file);
     data.url = req.url;
