@@ -22,13 +22,17 @@ exports.get = function get(req, res) {
                                 helpers.getAll(req, config.sez["lab"], config.sez.home.lab.limit, 1, function (result_lab) {
                                   helpers.getAll(req, config.sez["awards-and-grants"], config.sez.home.award.limit, 1, function (result_award) {
                                     meta_data.meta.title = meta_data.meta.name+(config.current_lang == config.default_lang ? "" : " | "+config.current_lang.toUpperCase())+" | "+meta_data.meta.description;
+                                    console.log("bingo");
                                     var obj = {
                                       results: {news:result_news,events:result_events,web:result_web,learning:result_learning,videos:result_videos,lab:result_lab,awards:result_award},
                                       meta_data:meta_data,posttype_events:posttype_events,profile:profile,posttype_lab:posttype_lab,posttype_web:posttype_web,posttype_video:posttype_video,posttype_learning:posttype_learning,posttype_news:posttype_news,posttype_awards:posttype_awards
                                     };
+                                    console.log("bingo 1");
                                     jsonfile.writeFile(file, obj, function (err) {
+                                      console.log("bingo 2");
                                       if(err) console.log(err);
                                     });
+                                    console.log("bingo 3");
                                     res.render(config.prefix+'/'+'index',obj);
                                   });
                                 });
