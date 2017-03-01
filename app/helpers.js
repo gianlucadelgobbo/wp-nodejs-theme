@@ -728,10 +728,11 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
     });
   } else if (req.params.artist) {
     console.log("req.params.artist");
+    console.log(config.sez.editions.domain+'/wp-json/wp/v2/artists/?edition='+req.params.edition+"&subedition=artists&artist="+req.params.artist);
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
     wp.myCustomResource().edition(req.params.edition).subedition("artists").artist(req.params.artist).get(function( err, data ) {
       console.log("//// Artist");
-      //console.log(data);
+      console.log(wp.myCustomResource);
       callback(data);
     });
   } else {
