@@ -9,6 +9,11 @@ exports.sortByStartDate = function sortByStartDate(a,b) {
   return 0;
 };
 
+exports.getCurrentLang = function getCurrentLang(req) {
+  var urlA = req.url.split("/");
+  return urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.current_lang;
+};
+
 exports.formatLocation = function formatLocation(l) {
   //console.log(l);
   var loc = {};

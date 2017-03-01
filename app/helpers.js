@@ -66,7 +66,7 @@ exports.validateFormJoin = function validateFormJoin(o,callback) {
 
 /* POST TYPE */
 exports.getPostType = function getPostType(req,posttype,callback) {
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez[posttype].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_type/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(posttype).get(function( err, data ) {
@@ -78,7 +78,16 @@ exports.getPostType = function getPostType(req,posttype,callback) {
 };
 
 exports.getContainerPage = function getContainerPage(req,slug,callback) {
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+};
+
+exports.getContainerPage = function getContainerPage(req,slug,callback) {
+  config.current_lang =  fnz.getCurrentLang(req);
+  var urlA = req.url.split("/");
+  config.current_lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.current_lang;
+  console.log("getContainerPage 2");
+  console.log(config.current_lang);
+
+
   var domain = config.sez.users[slug] ? config.sez.users[slug].page_domain : config.sez[slug].page_domain;
   var wp = new WPAPI({ endpoint: domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
@@ -94,7 +103,7 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
 
 exports.getUser = function getUser(req, user_sez, callback) {
   console.log("getUser"+config.sez.users[user_sez].domain);
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wpflyer = new WPAPI({ endpoint: config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/author/(?P<siteee>)/(?P<sluggg>)' );
   wpflyer.myCustomResource().sluggg(req.params.user).siteee(config.sez.users.site_tax).get(function( err, data ) {
@@ -111,7 +120,7 @@ exports.getUser = function getUser(req, user_sez, callback) {
           }
         }
         console.log("getUser2");
-        config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+        config.current_lang =  fnz.getCurrentLang(req);
         var wp = new WPAPI({ endpoint: config.sez.users.externals.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
         wp.myCustomResource = wp.registerRoute('wp/v2', '/author/(?P<siteee>)/(?P<sluggg>)' );
         wp.myCustomResource().sluggg(req.params.user).siteee(config.sez.users.site_tax).get(function( err2, data2 ) {
@@ -148,7 +157,7 @@ exports.getUser = function getUser(req, user_sez, callback) {
 
 exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
   console.log("getAllUsers "+user_sez);
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wpflyer = new WPAPI({ endpoint: config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/authors/(?P<siteee>)/(?P<sluggg>)' );
   console.log(config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/authors/'+config.sez.users.site_tax+'/'+user_sez+'/');
@@ -285,7 +294,7 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
 
 exports.getPage = function getPage(req,callback) {
   if (req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez.pages.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/mypages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.page).get(function( err, data ) {
@@ -313,7 +322,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   var previousdata = p;
   console.log("getAll "+sez.post_type);
   console.log("page "+page);
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: sez.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;
@@ -362,7 +371,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
 //////// EVENTS
 
 exports.getEvent = function getEvent(req,callback) {
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/events/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.event).get(function( err, data ) {
@@ -376,7 +385,7 @@ exports.getEvent = function getEvent(req,callback) {
 /*
 exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
   console.log("getAllEvents");
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/events', {params: [ 'before', 'after', 'author', 'parent' ]});
   wp.myCustomResource().param('site', config.site_tax ).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
@@ -390,7 +399,7 @@ exports.getAllEvents = function getAllEvents(req, limit, page, callback) {
 
 exports.getAllEventsByYear = function getAllEventsByYear(req, years, callback) {
   console.log("getAllEventsByYear");
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   if (years) {
     console.log('/all-events/'+config.sez.events.site_tax[0]+"/"+years);
@@ -414,7 +423,7 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, years, callback) {
 
 exports.getAllEventsByTag = function getAllEventsByTag(req, limit, page, callback) {
   console.log("getAllEventsByTag "+req.params.tag);
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/events_tag/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.tag).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
@@ -429,7 +438,7 @@ exports.getAllEventsByTag = function getAllEventsByTag(req, limit, page, callbac
 /*
 exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page, callback) {
   console.log("getAllEventsByYear");
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez.events.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/events' );
   //console.log(wp.myCustomResource);
@@ -451,7 +460,7 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page,
 
 exports.getNew = function getNew(req,callback) {
   console.log("getNew"+req.params.new);
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez["news"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/news/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
@@ -464,7 +473,7 @@ exports.getNew = function getNew(req,callback) {
 //////// WEB & MOBILE
 
 exports.getWeb = function getWeb(req,callback) {
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez["web-and-mobile"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/web-and-mobile/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.web).get(function( err, data ) {
@@ -476,7 +485,7 @@ exports.getWeb = function getWeb(req,callback) {
 
 exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
   console.log("getAllWebByTag "+req.params.tag);
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez["web-and-mobile"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_tag/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.tag).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
@@ -491,7 +500,7 @@ exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
 //////// LEARNING
 
 exports.getLearning = function getLearning(req,callback) {
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez["learning"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/learning/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.learning).get(function( err, data ) {
@@ -504,7 +513,7 @@ exports.getLearning = function getLearning(req,callback) {
 //////// VIDEOS
 
 exports.getVideo = function getVideo(req,callback) {
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez["videos"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/videos/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.video).get(function( err, data ) {
@@ -517,7 +526,7 @@ exports.getVideo = function getVideo(req,callback) {
 //////// AWARDS
 
 exports.getAward = function getAward(req,callback) {
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez["awards-and-grants"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/awards-and-grants/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.award). get(function( err, data ) {
@@ -530,7 +539,7 @@ exports.getAward = function getAward(req,callback) {
 //////// LAB
 
 exports.getLab = function getLab(req,callback) {
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez["lab"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/lab/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.lab).get(function( err, data ) {
@@ -545,7 +554,7 @@ exports.getLab = function getLab(req,callback) {
 
 exports.getActivity = function getActivity(req,callback) {
   console.log("//// getActivity");
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez["activities"].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/activities/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.activity).get(function( err, data ) {
@@ -841,7 +850,7 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callbac
 //////// GLOBAL
 
 exports.getMetaData = function getMetaData(req,callback) {
-  config.current_lang =  req.url.indexOf('/it/')===0 ? 'it' : 'en';
+  config.current_lang =  fnz.getCurrentLang(req);
   global.setLocale(config.current_lang);
   var moment = require('moment');
   require('moment/locale/'+(config.current_lang=="en" ? "en-gb" : config.current_lang));
