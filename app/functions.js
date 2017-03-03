@@ -10,8 +10,12 @@ exports.sortByStartDate = function sortByStartDate(a,b) {
 };
 
 exports.getCurrentLang = function getCurrentLang(req) {
+  console.log("getCurrentLang");
   var urlA = req.url.split("/");
-  return urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.current_lang;
+  console.log(urlA);
+  var lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.default_lang;
+  console.log(lang);
+  return lang;
 };
 
 exports.formatLocation = function formatLocation(l) {

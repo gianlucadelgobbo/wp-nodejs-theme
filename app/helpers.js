@@ -82,12 +82,6 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
 
 exports.getContainerPage = function getContainerPage(req,slug,callback) {
   config.current_lang =  fnz.getCurrentLang(req);
-  var urlA = req.url.split("/");
-  config.current_lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.current_lang;
-  console.log("getContainerPage 2");
-  console.log(config.current_lang);
-
-
   var domain = config.sez.users[slug] ? config.sez.users[slug].page_domain : config.sez[slug].page_domain;
   var wp = new WPAPI({ endpoint: domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
@@ -610,7 +604,7 @@ exports.getExhibitionArtist = function getExhibitionArtist(req,callback) {
   var wp = new WPAPI({ endpoint: config.sez.exhibitions.domain+'/wp-json' });
   if (req.params.artist && req.params.performance) {
     console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<exhibition>)/(?P<subexhibition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibition_artists/(?P<exhibition>)/(?P<subexhibition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
     wp.myCustomResource().exhibition(req.params.exhibition).subexhibition("artists").artist(req.params.artist).performances("performances").performance(req.params.performance).get(function( err, data ) {
       console.log("//// Artist Performance");
       //console.log(data);
@@ -618,7 +612,7 @@ exports.getExhibitionArtist = function getExhibitionArtist(req,callback) {
     });
   } else if (req.params.artist) {
     console.log("req.params.artist");
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<exhibition>)/(?P<subexhibition>)/(?P<artist>)' );
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibition_artists/(?P<exhibition>)/(?P<subexhibition>)/(?P<artist>)' );
     wp.myCustomResource().exhibition(req.params.exhibition).subexhibition("artists").artist(req.params.artist).get(function( err, data ) {
       console.log("//// Artist");
       //console.log(data);
