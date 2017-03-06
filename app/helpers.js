@@ -81,6 +81,7 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
   config.current_lang =  fnz.getCurrentLang(req);
   var domain = config.sez.users[slug] ? config.sez.users[slug].page_domain : config.sez[slug].page_domain;
   var wp = new WPAPI({ endpoint: domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  console.log(domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/container_pages/'+config.prefix+'/'+ slug);
   wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(config.prefix+'/'+ slug).get(function( err, data ) {
     console.log("//// ContainerPage "+slug);
@@ -149,6 +150,24 @@ exports.getUser = function getUser(req, user_sez, callback) {
 exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
   console.log("getAllUsers "+user_sez);
   config.current_lang =  fnz.getCurrentLang(req);
+  console.log(config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/authors/'+config.prefix+'/'+config.sez.users.site_tax+'/'+user_sez+'/');
+  var wpflyer = new WPAPI({ endpoint: config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+  wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/authors/(?P<site>)/(?P<sitetax>/(?P<usersez>)' );
+  console.log("stoqui"+user_sez);
+  wpflyer.myCustomResource().site(config.prefix).sitetax(config.sez.users.site_tax).usersez(user_sez).get(function( err, data ) {
+    console.log(err || data);
+    console.log("stoqui"+user_sez);
+    console.log("//// Users "+user_sez);
+    console.log("//// Mode ONLY ");
+    for (var user in data) if (!data[user].data.img || data[user].data.img=="") data[user].data.img = config.domain + config.sez.users[user_sez].default_img;
+    //console.log(err || data);
+    //data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+exports.getAllUsers2 = function getAllUsers2(req, user_sez, callback) {
+  console.log("getAllUsers "+user_sez);
+  config.current_lang =  fnz.getCurrentLang(req);
   var wpflyer = new WPAPI({ endpoint: config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/authors/(?P<siteee>)/(?P<sluggg>)' );
   console.log(config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/authors/'+config.sez.users.site_tax+'/'+user_sez+'/');
@@ -195,20 +214,20 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
             //for (var user in data) if (datanewIDS.indexOf(data[user].ID)==-1) datanew.push(data[user]);
             //for (var user in data) print_r(data[user].ID);
             /*
-            for (var user in data) {
-              var insert = true;
-              for (var usernew in datanew) {
-                if (datanew[usernew].ID == data2[user].ID) insert = false;
-              }
-              if (insert) datanew.push(data2[user]);
-            }
-            for (var userflyer in data) {
-              var insert = true;
-              for (var usernew in datanew) {
-                if (datanew[usernew].ID == data[userflyer].ID) insert = false;
-              }
-              if (insert) datanew.push(data[userflyer]);
-            }*/
+             for (var user in data) {
+             var insert = true;
+             for (var usernew in datanew) {
+             if (datanew[usernew].ID == data2[user].ID) insert = false;
+             }
+             if (insert) datanew.push(data2[user]);
+             }
+             for (var userflyer in data) {
+             var insert = true;
+             for (var usernew in datanew) {
+             if (datanew[usernew].ID == data[userflyer].ID) insert = false;
+             }
+             if (insert) datanew.push(data[userflyer]);
+             }*/
             //data2.push(data[userflyer]);
 
             console.log("//// Users "+user_sez);

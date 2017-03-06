@@ -69,6 +69,7 @@ exports.getUsers = function getUsers(req, res) {
           }
         }
         console.log("bingo");
+        console.log(posttype);
         meta_data.meta.title = __(config.sez.users[user_sez].title) + " | " + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ")+ meta_data.meta.name;
         if (posttype.post_content) meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.post_content, 160);
         res.render(config.prefix+'/'+'users_'+user_sez, {results: results, markers:markers, meta_data:meta_data, posttype:posttype, author_base:config.sez.users[user_sez].baseurl, title: __(config.sez.users[user_sez].title)/*, itemprop:"sponsor"*/});
