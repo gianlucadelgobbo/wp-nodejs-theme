@@ -78,14 +78,11 @@ exports.getPostType = function getPostType(req,posttype,callback) {
 };
 
 exports.getContainerPage = function getContainerPage(req,slug,callback) {
-};
-
-exports.getContainerPage = function getContainerPage(req,slug,callback) {
   config.current_lang =  fnz.getCurrentLang(req);
   var domain = config.sez.users[slug] ? config.sez.users[slug].page_domain : config.sez[slug].page_domain;
   var wp = new WPAPI({ endpoint: domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(slug).get(function( err, data ) {
+  wp.myCustomResource().sluggg(config.prefix+'/'+ slug).get(function( err, data ) {
     console.log("//// ContainerPage "+slug);
     //console.log(err || data);
     //data = fnz.fixResult(data);
@@ -291,7 +288,7 @@ exports.getPage = function getPage(req,callback) {
   config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.sez.pages.domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/mypages/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.page).get(function( err, data ) {
+  wp.myCustomResource().sluggg(config.prefix+'/'+req.params.page).get(function( err, data ) {
     console.log("//// Page " + req.params.page);
     if (!err && data) {
       if (data) data = fnz.fixResult(data);
