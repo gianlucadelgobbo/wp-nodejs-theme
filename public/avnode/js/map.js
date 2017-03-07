@@ -59,7 +59,7 @@ function initialize() {
 
   var latlngbounds = new google.maps.LatLngBounds();
   for (i = 0; i < markers.length; i++) {
-    if (markers[i].type == "member") {
+    if (markers[i].type == "production" || markers[i].type == "customer") {
       var data = markers[i];
       var myLatlng = new google.maps.LatLng(data.lat, data.lng);
       latlngbounds.extend(myLatlng);
