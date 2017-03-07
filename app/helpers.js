@@ -152,7 +152,7 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
   config.current_lang =  fnz.getCurrentLang(req);
   console.log(config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/authors/'+config.prefix+'/'+config.sez.users.site_tax+'/'+user_sez+'/');
   var wpflyer = new WPAPI({ endpoint: config.sez.users[user_sez].domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-  wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/authors/(?P<site>)/(?P<sitetax>/(?P<usersez>)' );
+  wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/authors/(?P<site>)/(?P<sitetax>)/(?P<usersez>)' );
   console.log("stoqui"+user_sez);
   wpflyer.myCustomResource().site(config.prefix).sitetax(config.sez.users.site_tax).usersez(user_sez).get(function( err, data ) {
     console.log(err || data);
