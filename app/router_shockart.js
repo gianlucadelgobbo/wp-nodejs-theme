@@ -9,6 +9,7 @@ var pagesRoutes = require('./routes/_common/pages');
 var robotsRoutes = require('./routes/_common/robots');
 
 module.exports = function(app) {
+  app.get('/wp-login.php', pagesRoutes.get404);
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
