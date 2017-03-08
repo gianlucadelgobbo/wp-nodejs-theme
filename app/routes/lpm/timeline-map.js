@@ -14,8 +14,8 @@ exports.getTimeline = function getTimeline(req, res) {
         var yearAfter = now.getMonth()>7 ? now.getFullYear() : now.getFullYear()-1;
         year = yearAfter+"-"+now.getFullYear();
       }
-      var startyear = parseInt(year.split("-")[0])-1;
-      var endyear = parseInt(year.split("-")[1])-1;
+      var startyear = parseInt(year.split("-")[0])-2;
+      var endyear = parseInt(year.split("-")[1])-2;
       if (endyear<2004) endyear = 2004;
       var next = endyear == 2004 ? null : startyear+"-"+endyear;
       console.log("year "+year);

@@ -129,7 +129,7 @@ gulp.task('concat_common_scripts', function() {
     config.publicDir + '/_common/js/cookielawinfo.min.js',
     config.publicDir + '/_common/js/script.min.js'
   ])
-      .pipe(concat('combo.min.js'))
+      .pipe(concat('combo2.min.js'))
       .pipe(gulp.dest(config.publicDir + '/_common/js/'));
 });
 gulp.task('concat_avnode_css', function() {
@@ -173,7 +173,7 @@ var tasklist = [
   'compress_js_lpm',
   'compress_js_flyer',
   'compress_js_shockart',
-  //'concat_common_scripts',
+  'concat_common_scripts',
   'concat_avnode_css',
   'concat_flyer_css',
   'concat_lpm_css',

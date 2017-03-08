@@ -44,8 +44,7 @@ function infiniteScroll(t) {
     var $newItems = $($(msg).find("#container .results").html());
     $containerappend = $("#container .results").append($newItems);
     $containerappend.imagesLoaded( function(){
-      console.log("appended");
-      $containerappend.isotope( 'appended', $newItems );
+      if ($("#container .results.isotope").length) $containerappend.isotope("appended", $newItems );
     });
   });
 }

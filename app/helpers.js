@@ -246,9 +246,9 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, years, callback) {
   config.current_lang =  fnz.getCurrentLang(req);
   var wp = new WPAPI({ endpoint: config.data_domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   if (years) {
-    console.log('/all-events/'+config.sez.events.site_tax_id[0]+"/"+years);
+    console.log('/all-events/'+config.site_tax_id+"/"+years);
     wp.myCustomResource = wp.registerRoute('wp/v2', '/all-events/(?P<site>)/(?P<years>)');
-    wp.myCustomResource().site(config.sez.events.site_tax_id[0]).years(years).get(function( err, data ) {
+    wp.myCustomResource().site(config.site_tax_id).years(years).get(function( err, data ) {
       console.log("//// All Events by year "+years);
       //console.log(err || data);
       data = fnz.fixResults(data);
@@ -256,7 +256,7 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, years, callback) {
     });
   } else {
     wp.myCustomResource = wp.registerRoute('wp/v2', '/all-events/(?P<siteee>)', {params: [ 'before', 'after', 'author', 'parent', 'post' ]});
-    wp.myCustomResource().siteee(config.sez.events.site_tax_id[0]).get(function( err, data ) {
+    wp.myCustomResource().siteee(config.site_tax_id).get(function( err, data ) {
       console.log("//// All Events ALL");
       //console.log(err || data);
       data = fnz.fixResults(data);
