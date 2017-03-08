@@ -1,6 +1,8 @@
 div
-  a(href=lang_preurl + '/', title=meta_data.meta['name'])
-    img.media-object(src=config.domain + meta_data.meta.logo_footer, alt=meta_data.meta['name'], itemprop='logo')
+  .logofooter
+    a(href=lang_preurl + '/', title=config.project_name)
+      i(class="icon-" + config.prefix, itemprop='logo')
+      .sr-only=config.project_name
   br
   strong(itemprop='name') Flyer communication
   br
@@ -13,7 +15,8 @@ div
       span(itemprop='addressLocality')=global.__('Rome')
       !=" "
       span(itemprop='addressCountry')=global.__('Italy')
-    br
+    !=" "
+
     span.hide(itemprop='geo', itemscope, itemtype='http://schema.org/GeoCoordinates')
       span(itemprop='latitude') 41.899316
       | ,
@@ -33,5 +36,5 @@ div
   span(itemprop='vatID') IT06589171005
   br
   a(itemprop='email', title=global.__('Write to')+" Flyer communication", href='mailto:info@flyer.it') info@flyer.it
-  br
-  a(itemprop='url', title=config.project_name+" Web Site", href=config.domain)=config.domain
+  br.sr-only
+  a.sr-only(itemprop='url', title=config.project_name+" Web Site", href=config.domain)=config.domain

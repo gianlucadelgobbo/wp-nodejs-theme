@@ -5,9 +5,9 @@ exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPage(req, function( result ) {
       if(result['ID']) {
-        meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + meta_data.meta.name;
-        if (result.featured) meta_data.meta['image_src'] = result.featured.full;
-        if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
+        meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
+        if (result.featured) meta_data.image_src = result.featured.full;
+        if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -59,9 +59,9 @@ exports.post = function post(req, res) {
         helpers.getMetaData(req, function( meta_data ) {
           helpers.getPage(req, function( result ) {
             if(result['ID']) {
-              meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + meta_data.meta.name;
-              if (result.featured) meta_data.meta['image_src'] = result.featured.full;
-              if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
+              meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
+              if (result.featured) meta_data.image_src = result.featured.full;
+              if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
               var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -144,9 +144,9 @@ exports.post = function post(req, res) {
         helpers.getMetaData(req, function( meta_data ) {
           helpers.getPage(req, function( result ) {
             if(result['ID']) {
-              meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + meta_data.meta.name;
-              if (result.featured) meta_data.meta['image_src'] = result.featured.full;
-              if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
+              meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
+              if (result.featured) meta_data.image_src = result.featured.full;
+              if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
               var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -234,9 +234,9 @@ exports.post = function post(req, res) {
         helpers.getMetaData(req, function( meta_data ) {
           helpers.getPage(req, function( result ) {
             if(result['ID']) {
-              meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + meta_data.meta.name;
-              if (result.featured) meta_data.meta['image_src'] = result.featured.full;
-              if (result.meta_description) meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
+              meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
+              if (result.featured) meta_data.image_src = result.featured.full;
+              if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
               var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -271,12 +271,12 @@ exports.getSubpage = function getSubpage(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPage(req, function( result ) {
       if(result['ID']) {
-        meta_data.meta.title = (result.post_parent ? result.post_parent.post_title+ ": " : "") + (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + meta_data.meta.name;
-        if (result.featured) meta_data.meta['image_src'] = result.featured.full;
+        meta_data.title = (result.post_parent ? result.post_parent.post_title+ ": " : "") + (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
+        if (result.featured) meta_data.image_src = result.featured.full;
         if (result.post_excerpt) {
-          meta_data.meta['og_description'] = fnz.makeExcerpt(result.post_excerpt, 160);
+          meta_data.description[config.current_lang] = fnz.makeExcerpt(result.post_excerpt, 160);
         } else {
-          meta_data.meta['og_description'] = fnz.makeExcerpt(result.meta_description, 160);
+          meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
         }
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].pugpage ? config.sez.pages.conf[req.params.subpage].pugpage : config.sez.pages.conf.default.subpage);
         console.log("getSubpage");
@@ -303,7 +303,7 @@ exports.getGallery = function getGallery(req, res) {
             if (!error && response.statusCode == 200) {
               result.post_gallery = JSON.parse(body);
               //console.log(result.post_gallery);
-              meta_data.meta.title = (result.title ? result.title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
+              meta_data.title = (result.title ? result.title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name+ " "+ meta_data.editions[config.current_edition].title;
               res.render(config.prefix+'/'+'gallery_dett', {result: result, meta_data:meta_data, include_gallery:true});
             }
           });
@@ -321,7 +321,7 @@ exports.getGallery = function getGallery(req, res) {
                 if (!error && response.statusCode == 200) {
                   result.post_gallery = JSON.parse(body).gallery;
                   //console.log(result.post_gallery);
-                  meta_data.meta.title = (result.title ? result.title+ " | " : "") + meta_data.meta.name+ " "+ meta_data.edition.post_title;
+                  meta_data.title = (result.title ? result.title+ " | " : "") + config.project_name+ " "+ meta_data.editions[config.current_edition].title;
                   res.render(config.prefix+'/'+'gallery', {result: result, meta_data:meta_data, include_gallery:false});
                 }
               });

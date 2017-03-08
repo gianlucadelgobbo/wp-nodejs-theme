@@ -55,6 +55,7 @@ module.exports = function(app) {
 
   app.get('/', indexRoutes.get);
 
+  app.get('/meta/', robotsRoutes.getMeta);
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get('/sitemap-editions.xml', sitemapRoutes.get);

@@ -72,8 +72,8 @@ exports.getAll = function getAll(req, res) {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAllAward(req, sez.limit, page, function( results ) {
-        meta_data.meta.title = __("Awards and Grants") + " | " + meta_data.meta.name;
-		meta_data.meta['og_description'] = fnz.makeExcerpt(posttype.description, 160);
+        meta_data.title = __("Awards and Grants") + " | " + config.project_name;
+		meta_data.description[config.current_lang] = fnz.makeExcerpt(posttype.description, 160);
         res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
       });
     });

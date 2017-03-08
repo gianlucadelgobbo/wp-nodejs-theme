@@ -1,6 +1,6 @@
 div(itemprop="organizer", itemscope, itemtype='http://schema.org/Organization')
-  a(href=lang_preurl + '/', title=meta_data.meta['name'])
-    img.media-object(src="/avnode/images/LogoAVnode-bar.svg", alt=meta_data.meta['name'], itemprop='logo')
+  a(href=lang_preurl + '/', title=config.project_name)
+    img.media-object(src="/avnode/images/LogoAVnode-bar.svg", alt=config.project_name, itemprop='logo')
   //br
   strong.sr-only(itemprop='name')=config.project_name
   //br
@@ -16,7 +16,7 @@ div(itemprop="organizer", itemscope, itemtype='http://schema.org/Organization')
       span(itemprop='addressLocality') Amsterdam
       !=" "
       span(itemprop='addressCountry') Netherlands
-    br
+    !=" "
     span.hide(itemprop='geo', itemscope, itemtype='http://schema.org/GeoCoordinates')
       span(itemprop='latitude') 52.3823559
       | ,
@@ -36,5 +36,5 @@ div(itemprop="organizer", itemscope, itemtype='http://schema.org/Organization')
   span(itemprop='vatID') NL856555253B01
   br
   a(itemprop='email', title=global.__('Write to') + " " + config.project_name, href='mailto:' + config.project_email)=config.project_email
-  br
-  a(itemprop='url', title=config.project_name+" Web Site", href=config.domain)=config.domain
+  br.sr-only
+  a.sr-only(itemprop='url', title=config.project_name+" Web Site", href=config.domain)=config.domain

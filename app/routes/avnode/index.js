@@ -13,7 +13,7 @@ exports.get = function get(req, res) {
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAll(req, config.sez.activities, config.sez.home.activities.limit, 1, function (result_activities) {
-            meta_data.meta.title = meta_data.meta.name;
+            meta_data.title = config.project_name;
             console.log("bingo");
             console.log(result_activities);
             var redirect_uri = config.domain+"/"/*+req.url*/;
@@ -76,7 +76,7 @@ exports.get = function get(req, res) {
     } else {
       var obj = jsonfile.readFileSync(file);
       obj.meta_data = meta_data;
-      meta_data.meta.title = meta_data.meta.name;
+      meta_data.title = config.project_name+" | "+meta_data.headline[config.current_lang];
       res.render(config.prefix+'/'+'index',obj);
     }
   });

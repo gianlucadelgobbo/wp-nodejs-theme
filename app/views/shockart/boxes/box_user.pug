@@ -17,6 +17,6 @@
           p
             each auth_content in result.data.auth_contents
               if auth_content.posts
-                !=(auth_content["labels"]["name"] == "Events" ? "Live Visuals" : auth_content["labels"]["name"])+": "+auth_content.posts
+                !=auth_content["labels"]["name"]+": "+auth_content.posts
                 br
     hr

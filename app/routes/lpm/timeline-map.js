@@ -5,7 +5,7 @@ exports.getTimeline = function getTimeline(req, res) {
     req.params.page = "timeline";
     helpers.getPage(req, function( result ) {
       //console.log(result);
-      meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
+      meta_data.title = (result.post_title ? result.post_title+ " | " : "") + config.project_name;
       var year;
       if (req.params.year) {
         year = req.params.year;
@@ -33,7 +33,7 @@ exports.getMap = function getMap(req, res) {
     req.params.page = "map";
     helpers.getPage(req, function( result ) {
       //console.log(result);
-      meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
+      meta_data.title = (result.post_title ? result.post_title+ " | " : "") + config.project_name;
       var year = null;
       helpers.getAllEditionsEvents(req, year, function( results ) {
         var pugpage = (config.sez.pages.conf.map  .pugpage ? config.sez.pages.conf.map  .pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : "");

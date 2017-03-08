@@ -2,71 +2,71 @@ doctype html
 html(lang='en')
   - var lang_preurl = (config.current_lang == config.default_lang ? '' :'/'+config.current_lang)
   head
-    title=meta_data.meta['title']
+    title=meta_data.title
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(property='fb:admins', content=meta_data.meta['fb_admin'])
-    meta(property='fb:app_id', content=meta_data.meta['fb_appId'])
-    meta(property='og:image', content=meta_data.meta['image_src'])
-    meta(property='og:title', content=meta_data.meta['title'])
-    meta(property='og:description', content=meta_data.meta['og_description'])
-    meta(property='og:site_name', content=meta_data.meta['name'])
-    meta(property='og:url', content=config.domain + meta_data['url'])
-    link(rel='canonical', href=config.domain + meta_data['url'])
+    meta(property='fb:admins', content=meta_data.fb_admin)
+    meta(property='fb:app_id', content=meta_data.fb_appId)
+    meta(property='og:image', content=meta_data.image_src)
+    meta(property='og:title', content=meta_data.title)
+    meta(property='og:description', content=meta_data.description[config.current_lang])
+    meta(property='og:site_name', content=config.project_name)
+    meta(property='og:url', content=config.domain + meta_data.url)
+    link(rel='canonical', href=config.domain + meta_data.url)
     meta(property='og:type', content='website')
-    meta(name='description', content=meta_data.meta['og_description'])
-    meta(name='keywords', content=meta_data.meta['og_keywords'])
-    meta(name='google-site-verification', content=meta_data.meta['google_webmasterstools'])
-    link(rel='shortcut icon', href=meta_data.meta['favicon'])
-    link(rel='apple-touch-icon', sizes='57x57', href=meta_data.meta['icon57'])
-    link(rel='apple-touch-icon', sizes='72x72', href=meta_data.meta['icon72'])
-    link(rel='apple-touch-icon', sizes='114x114', href=meta_data.meta['icon114'])
-    link(rel='apple-touch-icon', sizes='120x120', href=meta_data.meta['icon120'])
-    link(rel='apple-touch-icon', sizes='144x144', href=meta_data.meta['icon144'])
-    link(rel='apple-touch-icon', sizes='152x152', href=meta_data.meta['icon152'])
+    meta(name='description', content=meta_data.description[config.current_lang])
+    meta(name='keywords', content=meta_data.keywords)
+    meta(name='google-site-verification', content=meta_data.google_webmasterstools)
+    link(rel='shortcut icon', href=meta_data['favicon'])
+    link(rel='apple-touch-icon', sizes='57x57', href=meta_data['icon57'])
+    link(rel='apple-touch-icon', sizes='72x72', href=meta_data['icon72'])
+    link(rel='apple-touch-icon', sizes='114x114', href=meta_data['icon114'])
+    link(rel='apple-touch-icon', sizes='120x120', href=meta_data['icon120'])
+    link(rel='apple-touch-icon', sizes='144x144', href=meta_data['icon144'])
+    link(rel='apple-touch-icon', sizes='152x152', href=meta_data['icon152'])
     // CSS
-    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + meta_data.edition['post_name'] + '.min.css', type='text/css')
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + config.current_edition + '.min.css', type='text/css')
 
     //link(rel='stylesheet', href='/_common/css/fontello.css', type='text/css', media='all')
       link(rel='stylesheet', href='/_common/css/fontello-animation.css', type='text/css', media='all')
     if include_gallery
       link(rel='stylesheet', href='/_common/css/socialGalleryPluginLite.css', type='text/css', media='all')
     //link(rel='stylesheet', href='/_common/css/cookielawinfo.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/' + config.prefix + '/css/bootstrap.min.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css')
+      link(rel='stylesheet', href='/css/bootstrap.min.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css')
       link(rel='stylesheet', href='/_common/css/style.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/' + config.prefix + '/css/style.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css', media='all')
+      link(rel='stylesheet', href='/css/style.' + config.prefix + '.css', type='text/css', media='all')
+      link(rel='stylesheet', href='/css/style.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css', media='all')
       if (['2011-minsk','2011-rome','2010-rome','2009-rome','2008-rome','2008-mex','2007-rome','2006-rome','2005-rome','2004-rome'].indexOf(meta_data.edition['post_name'])==-1)
         link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
-    if meta_data.edition[ 'wpcf-background-image' ]
+    if meta_data.editions[config.current_edition][ 'wpcf-background-image' ]
       style(type='text/css').
         body {
-          background-image: url(#{meta_data.edition[ 'wpcf-background-image' ]});
+          background-image: url(#{meta_data.editions[config.current_edition][ 'wpcf-background-image' ]});
         }
   body
     .cnt(itemscope, itemtype='http://schema.org/Event')
       include includes/menu
-      div(class=meta_data['url'] == "/" ? "container-fluid" : "container")
+      div(class=meta_data.url == "/" ? "container-fluid" : "container")
         header
           .row
             .col-md-6
               #logo
-                a(href='/', title=meta_data.meta['name']+" "+meta_data.edition['post_title'], itemprop='url')
-                  img.img-responsive(itemprop='image', src=meta_data.edition['wpcf-header-image'], alt=meta_data.meta['name']+" "+meta_data.edition['post_title'])
-                  .sr-only(itemprop='name')=meta_data.meta['name']+" "+meta_data.edition['post_title']
+                a(href='/', title=meta_data.editions[config.current_edition].title, itemprop='url')
+                  img.img-responsive(itemprop='image', src=meta_data.editions[config.current_edition]['wpcf-header-image'], alt=meta_data.editions[config.current_edition].title)
+                  .sr-only(itemprop='name')=meta_data.editions[config.current_edition].title
             .col-md-6
               .row
                 .col-md-12
                   div(itemprop='disambiguatingDescription')
                     #next-edition-cnt
-                      #next-edition!=meta_data.edition['wpcf-sub-title']
+                      #next-edition!=meta_data.editions[config.current_edition]['wpcf-sub-title']
                     #site-description-cnt
-                      #site-description=meta_data.meta['description']
+                      #site-description=meta_data.headline[config.current_lang]
                   .sr-only
                     include ../_common/inc_eventdateplace_meta
         nav.hidden-xs
           ul.pulsa
-            each menu in meta_data.menu
+            each menu in meta_data.editions[config.current_edition].menu
               li.btn-group
                 a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(title=menu.post_title, href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
@@ -92,7 +92,7 @@ html(lang='en')
           #menu-edition-menu.collapse.navbar-collapse
             // Collect the nav links, forms, and other content for toggling
             ul.nav.navbar-nav
-              each menu in meta_data.menu
+              each menu in meta_data.editions[config.current_edition].menu
                 li
                   a(href=menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
                     - if (menu.childs.length>0)
@@ -110,23 +110,23 @@ html(lang='en')
       #tw
       #sc
         a(href='http://flxer.net', title='FLxER network', target='_blank')
-          img(alt='FLxER network icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_50_flxer.png')
+          img(alt='FLxER network icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_50_flxer.png')
         a(href='http://twitter.com/liveperformers', title='Twitter Profile', target='_blank')
-          img(alt='Twitter Profile icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_31_twitter.png')
+          img(alt='Twitter Profile icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_31_twitter.png')
         a(href='http://www.facebook.com/LPM.LivePerformersMeeting', title='Facebook Page', target='_blank')
-          img(alt='Facebook Page icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_30_facebook.png')
+          img(alt='Facebook Page icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_30_facebook.png')
         a(href='http://www.facebook.com/group.php?gid=10387985422', title='Facebook Group', target='_blank')
-          img(alt='Facebook Group icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_51_facebook_group.png')
+          img(alt='Facebook Group icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_51_facebook_group.png')
         a(href='http://vimeo.com/lpm', title='Vimeo', target='_blank')
-          img(alt='Vimeo icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_34_vimeo.png')
+          img(alt='Vimeo icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_34_vimeo.png')
         a(href='https://plus.google.com/+Liveperformersmeeting', title='Google Plus', target='_blank', rel='publisher')
-          img(alt='Google Plus icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_02_google_plus.png')
+          img(alt='Google Plus icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_02_google_plus.png')
         a(href='http://www.youtube.com/LPMvideoreport', title='YouTube', target='_blank')
-          img(alt='YouTube icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_22_youtube.png')
+          img(alt='YouTube icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_22_youtube.png')
         a(href='http://apps.facebook.com/lpmgallery', title='Facebook App', target='_blank')
-          img(alt='Facebook App icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_52_facebook_app.png')
+          img(alt='Facebook App icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_52_facebook_app.png')
         a(href='/feed', title='RSS Feed', target='_blank')
-          img(alt='RSS Feed icon', src='/' + config.prefix + '/images/glyphicons_social/png/glyphicons_social_37_rss.png')
+          img(alt='RSS Feed icon', src='/'+config.prefix+'/images/glyphicons_social/png/glyphicons_social_37_rss.png')
     include ../_common/modal-full
     include ../_common/modal-search
 
@@ -162,15 +162,15 @@ html(lang='en')
           if (d.getElementById(id)) return;
           js = d.createElement(s);
           js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=#{meta_data.meta.fb_appId}";
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=#{meta_data.fb_appId}";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
       script(type="text/javascript").
         var sgp_config = {
           "sgp_selT": "2",
           "sgp_sel": ".thumbnail",
-          "sgp_bT": "#{meta_data.meta.name}",
-          "sgp_bL": "#{meta_data.meta.description}",
+          "sgp_bT": "#{config.project_name}",
+          "sgp_bL": "#{meta_data.headline[config.current_lang]}",
           "sgp_bU": "#{global.config.domain}",
           "sgp_bg": "000000",
           "sgp_bgo": "0.8",

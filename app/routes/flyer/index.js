@@ -21,7 +21,7 @@ exports.get = function get(req, res) {
                               helpers.getAll(req, config.sez["videos"], config.sez.home.videos.limit, 1, function (result_videos) {
                                 helpers.getAll(req, config.sez["lab"], config.sez.home.lab.limit, 1, function (result_lab) {
                                   helpers.getAll(req, config.sez["awards-and-grants"], config.sez.home.award.limit, 1, function (result_award) {
-                                    meta_data.meta.title = meta_data.meta.name+(config.current_lang == config.default_lang ? "" : " | "+config.current_lang.toUpperCase())+" | "+meta_data.meta.description;
+                                    meta_data.title = config.project_name+(config.current_lang == config.default_lang ? "" : " | "+config.current_lang.toUpperCase())+" | "+meta_data.headline[config.current_lang];
                                     console.log("bingo");
                                     var obj = {
                                       results: {news:result_news,events:result_events,web:result_web,learning:result_learning,videos:result_videos,lab:result_lab,awards:result_award},
@@ -52,7 +52,7 @@ exports.get = function get(req, res) {
     } else {
       var obj = jsonfile.readFileSync(file);
       obj.meta_data = meta_data;
-      meta_data.meta.title = meta_data.meta.name+" | "+meta_data.meta.description;
+      meta_data.title = config.project_name+" | "+meta_data.headline[config.current_lang];
       res.render(config.prefix+'/'+'index',obj);
     }
   });

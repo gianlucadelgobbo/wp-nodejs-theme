@@ -33,8 +33,8 @@ block content
   article.home
     .text-center(style="padding-top: 20px;")
       h1.entry-title
-        span.sr-only=meta_data.meta.name+" "
-        !=meta_data.meta.description
+        span.sr-only=config.project_name+" "
+        !=meta_data.headline[config.current_lang]
     section(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .home-services(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         .sr-only(itemprop="name")=global.__("Services")
