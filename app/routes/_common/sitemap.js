@@ -46,6 +46,7 @@ exports.get = function get(req, res) {
     });
 
   } else if (req.params.posttype) {
+    console.log("eccomi");
     console.log(config.sez[req.params.posttype]);
     helpers.getAll(req, config.sez[req.params.posttype], -1, 1, function( results ) {
       if (req.params.posttype == "exhibitions") {
