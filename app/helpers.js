@@ -72,7 +72,7 @@ exports.getPostType = function getPostType(req,posttype,callback) {
   wp.myCustomResource().sluggg(posttype).get(function( err, data ) {
     console.log("//// PostType "+posttype);
     //console.log(err || data);
-    //data = fnz.fixResult(data);
+    //if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });
 };
@@ -85,7 +85,7 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
   wp.myCustomResource().sluggg(config.prefix+'/'+ slug).get(function( err, data ) {
     console.log("//// ContainerPage "+slug);
     //console.log(err || data);
-    //data = fnz.fixResult(data);
+    //if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });
 };
@@ -219,9 +219,10 @@ exports.getEvent = function getEvent(req,callback) {
   var wp = new WPAPI({ endpoint: config.data_domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/events/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.event).get(function( err, data ) {
+    console.log("//// Eventoooo");
+    console.log(data);
+    if (data && data.ID) data = fnz.fixResult(data);
     console.log("//// Event");
-    //console.log(data);
-    data = fnz.fixResult(data);
     callback(data);
   });
 };
@@ -309,7 +310,7 @@ exports.getNew = function getNew(req,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/news/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
     console.log("//// New");
-    data = fnz.fixResult(data);
+    if (data && data.ID) if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });
 };
@@ -322,7 +323,7 @@ exports.getWeb = function getWeb(req,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/web-and-mobile/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.web).get(function( err, data ) {
     console.log("//// Web "+config.data_domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json/wp/v2/web-and-mobile/'+req.params.web);
-    data = fnz.fixResult(data);
+    if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });
 };
@@ -349,7 +350,7 @@ exports.getLearning = function getLearning(req,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/learning/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.learning).get(function( err, data ) {
     console.log("//// Learning");
-    data = fnz.fixResult(data);
+    if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });
 };
@@ -362,7 +363,7 @@ exports.getVideo = function getVideo(req,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/videos/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.video).get(function( err, data ) {
     console.log("//// Video");
-    data = fnz.fixResult(data);
+    if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });
 };
@@ -375,7 +376,7 @@ exports.getAward = function getAward(req,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/awards-and-grants/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.award). get(function( err, data ) {
     console.log("//// Award");
-    data = fnz.fixResult(data);
+    if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });
 };
@@ -389,7 +390,7 @@ exports.getLab = function getLab(req,callback) {
   wp.myCustomResource().sluggg(req.params.lab).get(function( err, data ) {
     console.log("//// Lab");
     data.auth_contents["events"].posts = fnz.fixResults(data.auth_contents["events"].posts);
-    data = fnz.fixResult(data);
+    if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });
 };
@@ -404,7 +405,7 @@ exports.getActivity = function getActivity(req,callback) {
   wp.myCustomResource().sluggg(req.params.activity).get(function( err, data ) {
     console.log("//// Activities");
     //data.auth_contents["events"].posts = fnz.fixResults(data.auth_contents["events"].posts);
-    data = fnz.fixResult(data);
+    if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });
 };
@@ -422,7 +423,7 @@ exports.getExhibition = function getExhibition(req,callback) {
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibitions/(?P<exhibition>)/(?P<subexhibition>)/(?P<subsubexhibition>)' );
     wp.myCustomResource().exhibition(req.params.exhibition).subexhibition(req.params.subexhibition).subsubexhibition(req.params.subsubexhibition).get(function( err, data ) {
       console.log("//// SubSubExhibition");
-      //data = fnz.fixResult(data);
+      //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       callback(data);
     });
@@ -431,7 +432,7 @@ exports.getExhibition = function getExhibition(req,callback) {
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibitions/(?P<exhibition>)/(?P<subexhibition>)' );
     wp.myCustomResource().exhibition(req.params.exhibition).subexhibition(req.params.subexhibition).get(function( err, data ) {
       console.log("//// SubExhibition ");
-      //data = fnz.fixResult(data);
+      //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       callback(data);
     });
@@ -440,7 +441,7 @@ exports.getExhibition = function getExhibition(req,callback) {
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibitions/(?P<exhibition>)' );
     wp.myCustomResource().exhibition(req.params.exhibition).get(function( err, data ) {
       console.log("//// Exhibition ");
-      data = fnz.fixResult(data);
+      if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       callback(data);
     });
@@ -541,7 +542,7 @@ exports.getEdition = function getEdition(req,callback) {
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
       console.log("//// SubSubEdition");
-      //data = fnz.fixResult(data);
+      //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       callback(data);
     });
@@ -550,7 +551,7 @@ exports.getEdition = function getEdition(req,callback) {
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
     wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
       console.log("//// SubEdition");
-      //data = fnz.fixResult(data);
+      //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       callback(data);
     });
@@ -559,7 +560,7 @@ exports.getEdition = function getEdition(req,callback) {
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)' );
     wp.myCustomResource().edition(req.params.edition).get(function( err, data ) {
       console.log("//// Edition");
-      data = fnz.fixResult(data);
+      if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       callback(data);
     });

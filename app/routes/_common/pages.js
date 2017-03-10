@@ -4,7 +4,7 @@ var fnz = require('../../functions');
 exports.get = function get(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPage(req, function( result ) {
-      if(result['ID']) {
+      if(result && result['ID']) {
         meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
         if (result.featured) meta_data.image_src = result.featured.full;
         if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
@@ -58,7 +58,7 @@ exports.post = function post(req, res) {
       } else {
         helpers.getMetaData(req, function( meta_data ) {
           helpers.getPage(req, function( result ) {
-            if(result['ID']) {
+            if(result && result['ID']) {
               meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
               if (result.featured) meta_data.image_src = result.featured.full;
               if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
@@ -143,7 +143,7 @@ exports.post = function post(req, res) {
       } else {
         helpers.getMetaData(req, function( meta_data ) {
           helpers.getPage(req, function( result ) {
-            if(result['ID']) {
+            if(result && result['ID']) {
               meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
               if (result.featured) meta_data.image_src = result.featured.full;
               if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
@@ -233,7 +233,7 @@ exports.post = function post(req, res) {
       } else {
         helpers.getMetaData(req, function( meta_data ) {
           helpers.getPage(req, function( result ) {
-            if(result['ID']) {
+            if(result && result['ID']) {
               meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
               if (result.featured) meta_data.image_src = result.featured.full;
               if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
@@ -270,7 +270,7 @@ exports.post = function post(req, res) {
 exports.getSubpage = function getSubpage(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getPage(req, function( result ) {
-      if(result['ID']) {
+      if(result && result['ID']) {
         meta_data.title = (result.post_parent ? result.post_parent.post_title+ ": " : "") + (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
         if (result.featured) meta_data.image_src = result.featured.full;
         if (result.post_excerpt) {

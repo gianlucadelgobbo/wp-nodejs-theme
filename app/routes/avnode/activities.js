@@ -11,7 +11,7 @@ exports.get = function get(req, res) {
       console.log(result);
       //meta_data.title = (result.title ? result.title+ " | " : "") + config.project_name;
       //res.render(config.prefix+'/'+'activity', {result: result, meta_data:meta_data, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
-      if(result['ID']) {
+      if(result && result['ID']) {
         meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
         if (result.featured) meta_data.image_src = result.featured.full;
         if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
