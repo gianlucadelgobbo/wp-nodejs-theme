@@ -291,6 +291,7 @@ exports.getSubpage = function getSubpage(req, res) {
   });
 };
 exports.getGallery = function getGallery(req, res) {
+  console.log("getGallery");
   helpers.getMetaData(req, function( meta_data ) {
     req.params.page = "gallery";
     helpers.getPage(req, function( result ) {

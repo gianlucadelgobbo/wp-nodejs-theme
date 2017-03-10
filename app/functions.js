@@ -142,9 +142,9 @@ exports.fixResult = function fixResult(data) {
     data.datetimeModifiedHR = moment(dateModified).utc().format("MMMM, Do YYYY, h:mm a");
     data.dateModifiedHR = moment(dateModified).utc().format("MMMM, Do YYYY");
   }
-  if (!data['wpcf-startdate'].length){
+  if (!data['wpcf-startdate'] || !data['wpcf-startdate'].length){
     var dd = new Date(dateModified);
-    data['wpcf-startdate'].push(dd.getTime()/1000);
+    data['wpcf-startdate'] = [dd.getTime()/1000];
   }
   if (data['wpcf-startdate']){
     data['wpcf-startdate'] = parseInt(data['wpcf-startdate'][0]);
