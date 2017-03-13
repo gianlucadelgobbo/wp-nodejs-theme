@@ -13,7 +13,7 @@ exports.get = function get(req, res) {
           var pugPage = config.prefix+'/'+'user_'+user_sez;
           res.render(pugPage, {result: result, meta_data:meta_data, itemprop:config.sez.users[user_sez].itemprop});
         } else {
-          res.status(404).render(config.prefix+'/404', {meta_data:meta_data, baseurl:config.sez.users[user_sez].baseurl, itemtype:"WebPage"});
+          res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
         }
       });
   });
@@ -47,12 +47,12 @@ exports.getUsers = function getUsers(req, res) {
         var markers = [];
         if (results[0].data && results[0].data.geolocation) {
           for (var item=0;item<results.length;item++) {
-            console.log("bella");
-            console.log(results[item]);
+            //console.log("bella");
+            //console.log(results[item]);
             var latlang = [];
             if (results[item].data.geolocation) latlang = results[item].data.geolocation.split(";");
-            console.log(results[item]);
-            console.log(latlang);
+            //console.log(results[item]);
+            //console.log(latlang);
             if (latlang.length) {
               var marker = {
                 lat:latlang[0],
@@ -63,16 +63,16 @@ exports.getUsers = function getUsers(req, res) {
                 date:results[item].data_evento,
                 destination:results[item].data.city+", "+results[item].data.country
               };
-              console.log(marker);
+              //console.log(marker);
               markers.push(marker);
             }
           }
         }
         console.log("bingo");
-        console.log(posttype);
+        //console.log(posttype);
         meta_data.title = __(config.sez.users[user_sez].title) + " | " + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ")+ config.project_name;
         if (posttype.post_content) meta_data.description[config.current_lang] = fnz.makeExcerpt(posttype.post_content, 160);
-        res.render(config.prefix+'/'+'users_'+user_sez, {results: results, markers:markers, meta_data:meta_data, posttype:posttype, author_base:config.sez.users[user_sez].baseurl, title: __(config.sez.users[user_sez].title)/*, itemprop:"sponsor"*/});
+        res.render(config.prefix+'/'+'users_'+user_sez, {results: results, markers:markers, meta_data:meta_data, posttype:posttype, sez:config.sez.users, title: __(config.sez.users[user_sez].title)/*, itemprop:"sponsor"*/});
       });
     });
   });
