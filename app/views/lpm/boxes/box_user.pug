@@ -4,7 +4,7 @@
     .row
       .col-sm-4(itemprop="image", itemscope, itemtype='https://schema.org/ImageObject')
         a(href='/'+sez.baseurls[result.roles[0]]+'/'+result.data.user_nicename+'/', rel='bookmark', title=result.data.display_name)
-          img.img-responsive(alt='Logo: '+result.data.display_name, itemprop="url", src=result.data.img)
+          img.img-responsive.svg-image(alt='Logo: '+result.data.display_name, itemprop="url", src=result.data.img)
           meta(itemprop="width" content="480")
           meta(itemprop="height" content="270")
       .col-sm-8

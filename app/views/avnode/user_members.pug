@@ -34,7 +34,7 @@ block content
                       div(itemprop='description')!=result.post_content
               hr
       .col-sm-3
-        img.img-responsive.main-image(src=result.data.img, alt=result.data.display_name, itemprop='image')
+        img.img-responsive.main-image.svg-image(src=result.data.img, alt=result.data.display_name, itemprop='image')
 
         .rientro
           p
@@ -63,7 +63,7 @@ block content
                 !=result.data.organisationurl
           if result.data.organisationgeolocation && result.data.organisationgeolocation.length
             p
-              img.img-responsive(src="https://maps.googleapis.com/maps/api/staticmap?size=300x150&maptype=roadmap&markers=color:red%7Clabel:A%7C"+result.data.organisationgeolocation[0]+","+result.data.organisationgeolocation[1]+"&sensor=false&key=AIzaSyBJ_PEUV1D4Uw6TktDxQp-ErObMyRQuvm4")
+              img.img-responsive(src="https://maps.googleapis.com/maps/api/staticmap?size=370x200&maptype=roadmap&markers=color:red%7Clabel:A%7C"+result.data.organisationgeolocation[0]+","+result.data.organisationgeolocation[1]+"&sensor=false&key=AIzaSyBJ_PEUV1D4Uw6TktDxQp-ErObMyRQuvm4")
           include ../_common/inc_share
 
     if result.data.auth_contents.activities && result.data.auth_contents.activities.posts.length
