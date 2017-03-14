@@ -15,6 +15,7 @@ var pagesRoutes = require('./routes/_common/pages');
  */
 
 module.exports = function(app) {
+  app.get('/*.php', pagesRoutes.get404);
   app.get('/en/*', function(req, res) {res.redirect(301, req.url.replace('/en/','/'))});
   app.get('/web-and-mobile/*', function(req, res) {res.redirect(301, req.url.replace('/web-and-mobile/','/portfolio/web-and-mobile/'))});
   app.get('/web-portfolio/*', function(req, res) {res.redirect(301, req.url.replace('/web-portfolio/','/portfolio/web-and-mobile/'))});
@@ -41,6 +42,9 @@ module.exports = function(app) {
   app.get('/event/2011-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2011-rome/','/portfolio/live-visuals/lpm-2011-rome/'))});
   app.get('/event/2013-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2013-rome/','/portfolio/live-visuals/lpm-2013-rome/'))});
   app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/portfolio/live-visuals/'))});
+  app.get('/lab/*', function(req, res) {res.redirect(301, req.url.replace('/lab/','/portfolio/lab/'))});
+  app.get('/videos/*', function(req, res) {res.redirect(301, req.url.replace('/videos/','/portfolio/videos/'))});
+  app.get('/tag/*', function(req, res) {res.redirect(301, req.url.replace('/tag/','/portfolio/web-and-mobile/tags/'))});
   app.get('/event-tag/*', function(req, res) {res.redirect(301, req.url.replace('/event-tag/','/portfolio/live-visuals/tags/'))});
   app.get('/web-projects-categories/*', function(req, res) {res.redirect(301, req.url.replace('/web-projects-categories/','/portfolio/live-visuals/tags/'))});
   app.get('/news/*', function(req, res) {res.redirect(301, req.url.replace('/news/','/extra/'))});
@@ -74,6 +78,9 @@ module.exports = function(app) {
   app.get('/it/event/2011-minsk/', function(req, res) {res.redirect(301, req.url.replace('/event/2011-minsk/','/portfolio/live-visuals/lpm-2011-minsk/'))});
   app.get('/it/event/2013-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2013-rome/','/portfolio/live-visuals/lpm-2013-rome/'))});
   app.get('/it/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/portfolio/live-visuals/'))});
+  app.get('/it/lab/*', function(req, res) {res.redirect(301, req.url.replace('/lab/','/portfolio/lab/'))});
+  app.get('/it/videos/*', function(req, res) {res.redirect(301, req.url.replace('/videos/','/portfolio/videos/'))});
+  app.get('/it/tag/*', function(req, res) {res.redirect(301, req.url.replace('/tag/','/portfolio/web-and-mobile/tags/'))});
   app.get('/it/event-tag/*', function(req, res) {res.redirect(301, req.url.replace('/event-tag/','/portfolio/live-visuals/tags/'))});
   app.get('/it/web-projects-categories/*', function(req, res) {res.redirect(301, req.url.replace('/web-projects-categories/','/portfolio/live-visuals/tags/'))});
   app.get('/it/news/*', function(req, res) {res.redirect(301, req.url.replace('/news/','/extra/'))});

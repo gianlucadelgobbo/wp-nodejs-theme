@@ -138,12 +138,16 @@ exports.fixResult = function fixResult(data) {
   }
   if (data['post_modified'] || data['modified']) {
     var dateModified = data['post_modified'] || data['modified'];
-    data.dateModified = moment(data['post_modified']).utc().format("DD-MM-YYYY");
-    data.datetimeModifiedHR = moment(data['post_modified']).utc().format("MMMM, Do YYYY, h:mm a");
-    data.dateModifiedHR = moment(data['post_modified']).utc().format("MMMM, Do YYYY");
+    data.dateModified = moment(dateModified).utc().format("DD-MM-YYYY");
+    data.datetimeModifiedHR = moment(dateModified).utc().format("MMMM, Do YYYY, h:mm a");
+    data.dateModifiedHR = moment(dateModified).utc().format("MMMM, Do YYYY");
+  }
+  if (!data['wpcf-startdate'] || !data['wpcf-startdate'].length){
+    var dd = new Date(dateModified);
+    data['wpcf-startdate'] = [dd.getTime()/1000];
   }
   if (data['wpcf-startdate']){
-    data['wpcf-startdate'] = parseInt(data['wpcf-startdate']);
+    data['wpcf-startdate'] = parseInt(data['wpcf-startdate'][0]);
     data.startdateISO = this.ISODateString(new Date(data['wpcf-startdate']*1000));
     data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
   }

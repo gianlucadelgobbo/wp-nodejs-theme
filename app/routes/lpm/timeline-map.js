@@ -5,7 +5,7 @@ exports.getTimeline = function getTimeline(req, res) {
     req.params.page = "timeline";
     helpers.getPage(req, function( result ) {
       //console.log(result);
-      meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
+      meta_data.title = (result.post_title ? result.post_title+ " | " : "") + config.project_name;
       var year;
       if (req.params.year) {
         year = req.params.year;
@@ -14,8 +14,8 @@ exports.getTimeline = function getTimeline(req, res) {
         var yearAfter = now.getMonth()>7 ? now.getFullYear() : now.getFullYear()-1;
         year = yearAfter+"-"+now.getFullYear();
       }
-      var startyear = parseInt(year.split("-")[0])-1;
-      var endyear = parseInt(year.split("-")[1])-1;
+      var startyear = parseInt(year.split("-")[0])-2;
+      var endyear = parseInt(year.split("-")[1])-2;
       if (endyear<2004) endyear = 2004;
       var next = endyear == 2004 ? null : startyear+"-"+endyear;
       console.log("year "+year);
@@ -33,7 +33,7 @@ exports.getMap = function getMap(req, res) {
     req.params.page = "map";
     helpers.getPage(req, function( result ) {
       //console.log(result);
-      meta_data.meta.title = (result.post_title ? result.post_title+ " | " : "") + meta_data.meta.name;
+      meta_data.title = (result.post_title ? result.post_title+ " | " : "") + config.project_name;
       var year = null;
       helpers.getAllEditionsEvents(req, year, function( results ) {
         var pugpage = (config.sez.pages.conf.map  .pugpage ? config.sez.pages.conf.map  .pugpage : config.sez.pages.conf.default.pugpage)+(req.body.ajax ? "_cnt" : "");

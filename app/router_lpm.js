@@ -13,6 +13,7 @@ var robotsRoutes = require('./routes/_common/robots');
  var searchRoutes = require('./routes/search');
  */
 module.exports = function(app) {
+  app.get('/*.php', pagesRoutes.get404);
   app.get('/event/2004-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2004-rome/','/editions/2004-rome/'))});
   app.get('/event/2005-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2005-rome/','/editions/2005-rome/'))});
   app.get('/event/2006-rome/', function(req, res) {res.redirect(301, req.url.replace('/event/2006-rome/','/editions/2006-rome/'))});
@@ -55,6 +56,7 @@ module.exports = function(app) {
 
   app.get('/', indexRoutes.get);
 
+  app.get('/meta/', robotsRoutes.getMeta);
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get('/sitemap-editions.xml', sitemapRoutes.get);

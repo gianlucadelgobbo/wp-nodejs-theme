@@ -3,13 +3,13 @@
   div(itemprop="item", itemscope, itemtype='http://schema.org/Organization')
     .row
       .col-sm-4(itemprop="image", itemscope, itemtype='https://schema.org/ImageObject')
-        a(title='Logo: '+result.data.display_name, href='/'+author_base+'/'+result.data.user_nicename+'/', rel='bookmark', title='Logo: '+result.data.display_name)
-          img.img-responsive(alt='Logo: '+result.data.display_name, itemprop="url", src=result.data.img)
+        a(title='Logo: '+result.data.display_name, href='/'+sez.baseurls[result.roles[0]]+'/'+result.data.user_nicename+'/', rel='bookmark', title='Logo: '+result.data.display_name)
+          img.img-responsive.svg-image(alt='Logo: '+result.data.display_name, itemprop="url", src=result.data.img)
           meta(itemprop="width" content="480")
           meta(itemprop="height" content="270")
       .col-sm-8
         h5.media-heading
-          a(itemprop='url', title='Logo: '+result.data.display_name, href='/'+author_base+'/'+result.data.user_nicename+'/')
+          a(itemprop='url', title='Logo: '+result.data.display_name, href='/'+sez.baseurls[result.roles[0]]+'/'+result.data.user_nicename+'/')
             span(itemprop='name')=result.data.display_name
         p
           i=result.data.role
