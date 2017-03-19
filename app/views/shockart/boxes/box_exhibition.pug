@@ -1,8 +1,9 @@
 .boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
   meta(itemprop="position", content=position+1)
+  meta(itemprop="eventStatus" content="confirmed")
   .Exhibition(itemprop="item", itemscope, itemtype='http://schema.org/Event')
     .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
-      a(href=lang_preurl+'/exhibitions/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+      a(href=lang_preurl+'/exhibitions/'+result.slug+"/", rel='bookmark', title!=result.post_title, itemprop='url')
         img.img-responsive(src=result.featured.thumbnail, alt!='Image for: '+result.post_title, itemprop='contentUrl')
         meta(itemprop="width" content="480")
         meta(itemprop="height" content="270")
@@ -17,4 +18,3 @@
         .text-muted.small.excerpt
           if result.excerpt && result.excerpt.rendered
             div(itemprop='description')!=result.excerpt.rendered
-          span.sr-only(itemprop='organizer')

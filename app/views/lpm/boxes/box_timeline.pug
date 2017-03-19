@@ -1,4 +1,5 @@
 div(class="rowTimeline rowTimeline-"+result.post_type, itemscope, itemprop="itemListElement", itemtype='http://schema.org/Event')
+  meta(itemprop="eventStatus" content="confirmed")
   .row
     div(class="col-sm-"+(result.post_type=="editions" ? 3 :4))
       .timelineDate
@@ -9,7 +10,7 @@ div(class="rowTimeline rowTimeline-"+result.post_type, itemscope, itemprop="item
           if result['wpcf-location']
             include ../../_common/inc_place
     div(class="col-sm-"+(result.post_type=="editions" ? 4 :2), itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
-      a(class=result.post_type=="editions" ? undefined : "ajaxloader", href='/'+result.post_type+'/' + result.slug+'/', rel='bookmark', title=result.post_title)
+      a(class=result.post_type=="editions" ? undefined : "ajaxloader", href='/'+result.post_type+'/' + result.slug+'/', rel='bookmark', title=result.post_title, itemprop='url')
         if result.featured
           img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='contentUrl')
     div(class="col-sm-"+(result.post_type=="editions" ? 3 :4))
