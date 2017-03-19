@@ -22,7 +22,7 @@ if result.capauthors
         li(itemprop=config.posttypes_authors[result.post_type].publisher.itemprop, itemscope, itemtype='http://schema.org/Organization')
           - var baseurl = config.sez.users.baseurls[capauthor.user_role_value]
           if baseurl
-            a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author', title=capauthor.display_name)
+            a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author', title=capauthor.display_name, itemprop='url')
               b(itemprop='name')=capauthor.display_name
           else
             b(itemprop='name')=capauthor.display_name
@@ -35,7 +35,7 @@ if result.capauthors
         li(itemprop=itemprop=config.posttypes_authors[result.post_type].authors.itemprop, itemscope, itemtype='http://schema.org/Person')
           - var baseurl = config.sez.users.baseurls[capauthor.user_role_value]
           if baseurl
-            a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author', title=capauthor.display_name)
+            a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author', title=capauthor.display_name, itemprop='url')
               b(itemprop='name')=capauthor.display_name
               !=" "
               span(itemprop='jobTitle')=capauthor.user_role
