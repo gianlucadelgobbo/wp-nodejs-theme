@@ -24,7 +24,7 @@ exports.getArtist = function getArtist(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getEditionArtist(req, function( result ) {
       if (result.post_content.indexOf(">ERROR<")===-1) {
-        console.log(result._post_template);
+        console.log(result);
         meta_data.title = (result.post_title ? result.post_title+ " | " : "") + config.project_name+ " "+ meta_data.editions[config.current_edition].title;
         res.render(config.prefix+'/'+'edition_artists', {result: result, meta_data:meta_data});
       } else {

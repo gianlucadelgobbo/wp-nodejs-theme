@@ -8,10 +8,10 @@ div(class="rowTimeline rowTimeline-"+result.post_type, itemscope, itemprop="item
         .places
           if result['wpcf-location']
             include ../../_common/inc_place
-    div(class="col-sm-"+(result.post_type=="editions" ? 4 :2))
-      a(class=result.post_type=="editions" ? undefined : "ajaxloader", itemprop='contentUrl', href='/'+result.post_type+'/' + result.slug+'/', rel='bookmark', title=result.post_title)
+    div(class="col-sm-"+(result.post_type=="editions" ? 4 :2), itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+      a(class=result.post_type=="editions" ? undefined : "ajaxloader", href='/'+result.post_type+'/' + result.slug+'/', rel='bookmark', title=result.post_title)
         if result.featured
-          img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='url')
+          img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='contentUrl')
     div(class="col-sm-"+(result.post_type=="editions" ? 3 :4))
       h2.timelineTitle(itemprop='name')
         a(class=result.post_type=="editions" ? undefined : "ajaxloader", itemprop='url', href='/'+result.post_type+'/' + result.slug+'/', rel='bookmark', title=result.post_title)!=result.post_title

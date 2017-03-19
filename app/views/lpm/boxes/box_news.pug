@@ -4,7 +4,7 @@
     .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
 
       a.ajaxloader(href='/news/'+result.slug+"/", rel='bookmark', title!=result.post_title)
-        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='url')
+        img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='contentUrl')
         meta(itemprop="width" content="480")
         meta(itemprop="height" content="270")
     .box-list

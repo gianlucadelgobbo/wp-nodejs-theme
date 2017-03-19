@@ -33,24 +33,34 @@ exports.getMeta = function getMeta(req, res) {
     "2006-rome",
     "2005-rome",
     "2004-rome"];
-  getMetaSingle(editions[conta.length]);
-  function getMetaSingle(val) {
-    console.log("getMetaSingle 1 "+val);
-    var wp = new WPAPI({ endpoint: config.data_domain+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/meta_data/(?P<sez>)/(?P<edition>)' );
-    wp.myCustomResource().edition(val).sez("editions").get(function( err, data ) {
-      console.log("getMetaSingle 2");
-      //console.log(data);
-      meta[val] = data.meta.edition;
-      conta.push(val);
-      console.log('wp/v2/meta_data/editions/'+val);
-      console.log(conta.length +" - "+editions.length);
-      if (conta.length==editions.length) {
-        res.send(JSON.stringify(meta, null, 2));
-      } else {
-        console.log("getMetaSingle 3 "+editions[conta.length]);
-        getMetaSingle(editions[conta.length]);
-      }
-    });
+  if (!req.query.check){
+    res.render("lpm/meta_test", {meta:config.meta.editions});
+  } else {
+    getMetaSingle(editions[conta.length],req);
+    function getMetaSingle(val,req) {
+      console.log("getMetaSingle 1 "+val);
+      var wp = new WPAPI({ endpoint: "https://lpm.dev.flyer.it"+(config.current_lang!=config.default_lang ? '/'+config.current_lang : '')+'/wp-json' });
+      wp.myCustomResource = wp.registerRoute( 'wp/v2', '/meta_data/(?P<sez>)/(?P<edition>)' );
+      wp.myCustomResource().edition(val).sez("editions").get(function( err, data ) {
+        console.log("getMetaSingle 2");
+        //console.log(data);
+        meta[val] = data.meta.edition;
+        conta.push(val);
+        console.log('wp/v2/meta_data/editions/'+val);
+        console.log(conta.length +" - "+editions.length);
+        console.log(req.query.check);
+        if (conta.length==editions.length) {
+          if (req.query.check){
+            res.render("lpm/meta_test", {meta:meta});
+          } else {
+            res.send(JSON.stringify({meta:meta}, null, 2));
+          }
+        } else {
+          console.log("getMetaSingle 3 "+editions[conta.length]);
+          getMetaSingle(editions[conta.length],req);
+        }
+      });
+    }
   }
+
 };
