@@ -31,7 +31,11 @@ if result.capauthors
             b(itemprop='name')=capauthor.display_name
           if result.post_type == "news" && capauthor.img
             .sr-only(itemprop='logo', itemscope, itemtype="http://schema.org/ImageObject")
-              img(itemprop='contentUrl', src=capauthor.img, alt=global.__("Logo of") + " " + capauthor.display_name)
+              if baseurl
+                a(href='/'+baseurl+'/' + capauthor.user_login+'/', title=capauthor.display_name, itemprop='url')
+                  img(itemprop='contentUrl', src=capauthor.img, alt=global.__("Logo of") + " " + capauthor.display_name)
+              else
+                img(itemprop='contentUrl', src=capauthor.img, alt=global.__("Logo of") + " " + capauthor.display_name)
   if authors.length
     ul.authors(class=authors.length == 1 && config.posttypes_authors[result.post_type].authors.default && authors[0].ID == config.posttypes_authors[result.post_type].authors.default.ID ? "sr-only" : undefined)
       li
