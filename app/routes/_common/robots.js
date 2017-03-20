@@ -33,7 +33,7 @@ exports.getMeta = function getMeta(req, res) {
     "2006-rome",
     "2005-rome",
     "2004-rome"];
-  if (!req.query.check){
+  if (!req.query.generate){
     res.render("lpm/meta_test", {meta:config.meta.editions});
   } else {
     getMetaSingle(editions[conta.length],req);
@@ -53,7 +53,7 @@ exports.getMeta = function getMeta(req, res) {
           if (req.query.check){
             res.render("lpm/meta_test", {meta:meta});
           } else {
-            res.send(JSON.stringify({meta:meta}, null, 2));
+            res.send(JSON.stringify(meta, null, 2));
           }
         } else {
           console.log("getMetaSingle 3 "+editions[conta.length]);

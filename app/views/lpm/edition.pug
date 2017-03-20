@@ -17,4 +17,17 @@ block content
     else
       header
         h1.entry-title(itemprop='name')=result.post_title
+    if (config.current_edition == config.last_edition && config.last_edition_status == "call")
+      style.
+        .schedule {
+          display: none
+        }
+      if (meta_data.url.indexOf("/workshops/") == meta_data.url.length - 11)
+        br
+        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The list of the FREE workshops include ONLY the submissions approved till today and their schedule may change.<br />The list of workshop with a fee is FINAL and you can buy it!<br /> <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"../participate/\">PARTICIPATE</a>"
+      else if (result.post_content.indexOf('<p class="type">Workshop</p>') == -1)
+        br
+        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The list of acts include ONLY the submissions approved till today and their schedule will be available soon.<br /><b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"../participate/\">PARTICIPATE</a>"
+    if (config.current_edition == config.last_edition && config.last_edition_status == "approving")
+      !="approving"
     include ../_common/inc_grid
