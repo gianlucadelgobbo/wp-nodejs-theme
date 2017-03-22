@@ -26,6 +26,8 @@ exports.getArtist = function getArtist(req, res) {
       if (result.post_content.indexOf(">ERROR<")===-1) {
         console.log(result);
         meta_data.title = (result.post_title ? result.post_title+ " | " : "") + config.project_name+ " "+ meta_data.editions[config.current_edition].title;
+        if (result.featured) meta_data.image_src = result.featured;
+        if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
         res.render(config.prefix+'/'+'edition_artists', {result: result, meta_data:meta_data});
       } else {
         res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
