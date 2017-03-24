@@ -1,6 +1,6 @@
 doctype html
 html(lang='en')
-  - var lang_preurl = (config.current_lang == config.default_lang ? '' :'/'+config.current_lang)
+  - var lang_preurl = (meta_data.current_lang == config.default_lang ? '' :'/'+meta_data.current_lang)
   head
     title=meta_data.title
     meta(charset='UTF-8')
@@ -9,12 +9,12 @@ html(lang='en')
     meta(property='fb:app_id', content=meta_data.fb_appId)
     meta(property='og:image', content=meta_data.image_src)
     meta(property='og:title', content=meta_data.title)
-    meta(property='og:description', content=meta_data.description[config.current_lang])
+    meta(property='og:description', content=meta_data.description[meta_data.current_lang])
     meta(property='og:site_name', content=config.project_name)
     meta(property='og:url', content=config.domain + meta_data.url)
     link(rel='canonical', href=config.domain + meta_data.url)
     meta(property='og:type', content='website')
-    meta(name='description', content=meta_data.description[config.current_lang])
+    meta(name='description', content=meta_data.description[meta_data.current_lang])
     meta(name='keywords', content=meta_data.keywords)
     meta(name='google-site-verification', content=meta_data.google_webmasterstools)
     link(rel='shortcut icon', href=meta_data['favicon'])
@@ -25,7 +25,7 @@ html(lang='en')
     link(rel='apple-touch-icon', sizes='144x144', href=meta_data['icon144'])
     link(rel='apple-touch-icon', sizes='152x152', href=meta_data['icon152'])
     // CSS
-    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + config.current_edition + '.min.css', type='text/css')
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + meta_data.current_edition + '.min.css', type='text/css')
 
     //link(rel='stylesheet', href='/_common/css/fontello.css', type='text/css', media='all')
       link(rel='stylesheet', href='/_common/css/fontello-animation.css', type='text/css', media='all')
@@ -38,10 +38,10 @@ html(lang='en')
       link(rel='stylesheet', href='/css/style.' + config.prefix + '.' + meta_data.edition['post_name'] + '.css', type='text/css', media='all')
       if (['2011-minsk','2011-rome','2010-rome','2009-rome','2008-rome','2008-mex','2007-rome','2006-rome','2005-rome','2004-rome'].indexOf(meta_data.edition['post_name'])==-1)
         link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
-    if meta_data.editions[config.current_edition][ 'wpcf-background-image' ]
+    if meta_data.editions[meta_data.current_edition][ 'wpcf-background-image' ]
       style(type='text/css').
         body {
-          background-image: url(#{meta_data.editions[config.current_edition][ 'wpcf-background-image' ]});
+          background-image: url(#{meta_data.editions[meta_data.current_edition][ 'wpcf-background-image' ]});
         }
   body
     .cnt(itemscope, itemtype='http://schema.org/Event')
@@ -51,22 +51,22 @@ html(lang='en')
           .row
             .col-md-6
               #logo
-                a(href='/', title=meta_data.editions[config.current_edition].title, itemprop='url')
-                  img.img-responsive(itemprop='image', src=meta_data.editions[config.current_edition]['wpcf-header-image'], alt=meta_data.editions[config.current_edition].title)
-                  .sr-only(itemprop='name')=meta_data.editions[config.current_edition].title
+                a(href='/', title=meta_data.editions[meta_data.current_edition].title, itemprop='url')
+                  img.img-responsive(itemprop='image', src=meta_data.editions[meta_data.current_edition]['wpcf-header-image'], alt=meta_data.editions[meta_data.current_edition].title)
+                  .sr-only(itemprop='name')=meta_data.editions[meta_data.current_edition].title
             .col-md-6
               .row
                 .col-md-12
                   div(itemprop='disambiguatingDescription')
                     #next-edition-cnt
-                      #next-edition!=meta_data.editions[config.current_edition]['wpcf-sub-title']
+                      #next-edition!=meta_data.editions[meta_data.current_edition]['wpcf-sub-title']
                     #site-description-cnt
-                      #site-description=meta_data.headline[config.current_lang]
+                      #site-description=meta_data.headline[meta_data.current_lang]
                   .sr-only
                     include ../_common/inc_eventdateplace_meta
         nav.hidden-xs
           ul.pulsa
-            each menu in meta_data.editions[config.current_edition].menu
+            each menu in meta_data.editions[meta_data.current_edition].menu
               li.btn-group
                 a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(title=menu.post_title, href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
@@ -92,7 +92,7 @@ html(lang='en')
           #menu-edition-menu.collapse.navbar-collapse
             // Collect the nav links, forms, and other content for toggling
             ul.nav.navbar-nav
-              each menu in meta_data.editions[config.current_edition].menu
+              each menu in meta_data.editions[meta_data.current_edition].menu
                 li
                   a(href=menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
                     - if (menu.childs.length>0)
@@ -170,7 +170,7 @@ html(lang='en')
           "sgp_selT": "2",
           "sgp_sel": ".thumbnail",
           "sgp_bT": "#{config.project_name}",
-          "sgp_bL": "#{meta_data.headline[config.current_lang]}",
+          "sgp_bL": "#{meta_data.headline[meta_data.current_lang]}",
           "sgp_bU": "#{global.config.domain}",
           "sgp_bg": "000000",
           "sgp_bgo": "0.8",

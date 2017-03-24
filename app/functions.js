@@ -14,8 +14,11 @@ exports.getCurrentLang = function getCurrentLang(req) {
   var urlA = req.url.split("/");
   console.log(urlA);
   var lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.default_lang;
-  console.log(lang);
-  return lang;
+  if(req.session.meta.current_lang != lang) {
+    req.session.meta.current_lang = lang;
+    require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
+    global.setLocale(lang);
+  }
 };
 
 exports.formatLocation = function formatLocation(l) {

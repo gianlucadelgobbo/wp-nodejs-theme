@@ -74,7 +74,7 @@ exports.getAll = function getAll(req, res) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAllAward(req, sez.limit, page, function( results ) {
         meta_data.title = __("Awards and Grants") + " | " + config.project_name;
-		meta_data.description[config.current_lang] = fnz.makeExcerpt(posttype.description, 160);
+		meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(posttype.description, 160);
         res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
       });
     });

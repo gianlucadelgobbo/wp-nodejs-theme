@@ -34,7 +34,7 @@ block content
     .text-center(style="padding-top: 20px;")
       h1.entry-title
         span.sr-only=config.project_name+" "
-        !=meta_data.headline[config.current_lang]
+        !=meta_data.headline[meta_data.current_lang]
     section(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .home-services(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         .sr-only(itemprop="name")=global.__("Services")

@@ -17,7 +17,7 @@ block content
     else
       header
         h1.entry-title(itemprop='name')=result.post_title
-    if (config.current_edition == config.last_edition && config.last_edition_status == "call")
+    if (meta_data.current_edition == config.last_edition && config.last_edition_status == "call")
       style.
         .schedule {
           display: none
@@ -28,6 +28,6 @@ block content
       else if (result.post_content.indexOf('<p class="type">Workshop</p>') == -1)
         br
         .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The list of acts include ONLY the submissions approved till today and their schedule will be available soon.<br /><b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"../participate/\">PARTICIPATE</a>"
-    if (config.current_edition == config.last_edition && config.last_edition_status == "approving")
+    if (meta_data.current_edition == config.last_edition && config.last_edition_status == "approving")
       !="approving"
     include ../_common/inc_grid

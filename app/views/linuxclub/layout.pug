@@ -10,13 +10,13 @@ html(lang='en')
 		meta(property='fb:app_id', content=meta_data.fb_appId)
 		meta(property='og:image', content=meta_data.image_src)
 		meta(property='og:title', content=meta_data.title)
-		meta(property='og:description', content=meta_data.description[config.current_lang])
+		meta(property='og:description', content=meta_data.description[meta_data.current_lang])
 		meta(property='og:site_name', content=config.project_name)
 		meta(property='og:url', content='http://liveperformersmeeting.net/')
 		link(rel='canonical', href='http://liveperformersmeeting.net/')
 		meta(property='og:type', content='website')
 		// HIDDEN FACEBOOK OPENG GRAPH (only facebook can see)
-		meta(name='description', content=meta_data.description[config.current_lang])
+		meta(name='description', content=meta_data.description[meta_data.current_lang])
 		meta(name='keywords', content=meta_data.keywords)
 		meta(name='google-site-verification', content=meta_data.google_webmasterstools)
 		link(rel='shortcut icon', href=meta_data['favicon'])
@@ -150,7 +150,7 @@ html(lang='en')
 									#next-edition-cnt
 										#next-edition!=meta_data.edition['wpcf-sub-title']
 									#site-description-cnt
-										#site-description=meta_data.description[config.current_lang]
+										#site-description=meta_data.description[meta_data.current_lang]
 				nav.hidden-xs(role='navigation')
 					ul.pulsa
 						each menu in meta_data.menu
@@ -167,7 +167,7 @@ html(lang='en')
 
 
 					span.sr-only
-						span(itemprop='name')=config.project_name+ " "+ meta_data.editions[config.current_edition].title
+						span(itemprop='name')=config.project_name+ " "+ meta_data.editions[meta_data.current_edition].title
 						- var dateplace = meta_data
 						include inc_dateplace
 						//
@@ -312,7 +312,7 @@ html(lang='en')
 					fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 			script(type="text/javascript").
-				var sgp_config = {"sgp_selT": "2","sgp_sel": ".thumbnail","sgp_bT": "{#config.project_name}","sgp_bL": "#{meta_data.headline[config.current_lang]}","sgp_bU": "#{global.config.domain}","sgp_bg": "000000","sgp_bgo": "0.8","sgp_bb": "1","sgp_hb": "1","sgp_hbt": "1","sgp_ch": "","sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png","sgp_desc": "1","sgp_fb": "1","sgp_fbf": "1","sgp_fbc": "1","sgp_nav": "1","sgp_hon": "","sgp_usf":"1.2","sgp_mb":"10","sgp_theme":"classic","sgp_theme_root":"http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/themes/","sgp_iLoadR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/loading.gif","sgp_iR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/r.png","sgp_iL": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/l.png",};
+				var sgp_config = {"sgp_selT": "2","sgp_sel": ".thumbnail","sgp_bT": "{#config.project_name}","sgp_bL": "#{meta_data.headline[meta_data.current_lang]}","sgp_bU": "#{global.config.domain}","sgp_bg": "000000","sgp_bgo": "0.8","sgp_bb": "1","sgp_hb": "1","sgp_hbt": "1","sgp_ch": "","sgp_hbi": "http://lpm.dev.flyer.it/files/2014/01/social-plugin-icon-50x50.png","sgp_desc": "1","sgp_fb": "1","sgp_fbf": "1","sgp_fbc": "1","sgp_nav": "1","sgp_hon": "","sgp_usf":"1.2","sgp_mb":"10","sgp_theme":"classic","sgp_theme_root":"http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/themes/","sgp_iLoadR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/loading.gif","sgp_iR": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/r.png","sgp_iL": "http://liveperformersmeeting.net/wp-content/plugins/flyer-social-gallery/i/l.png",};
 				var sgp_ie = false;var sgp_ie7 = false;
 			script(type='text/javascript', src='/'+config.prefix+'/js/jquery.min.js')
 			script(type='text/javascript', src='/'+config.prefix+'/js/jquery-migrate.min.js')

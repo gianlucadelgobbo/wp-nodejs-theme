@@ -26,7 +26,7 @@ exports.getAll = function getAll(req, res) {
         console.log("stocazzo");
         meta_data.title = posttype.post_title + " | " + config.project_name;
         if (posttype.featured) meta_data.image_src = posttype.featured.full;
-        if (posttype.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(posttype.meta_description, 160);
+        if (posttype.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(posttype.meta_description, 160);
         res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
       });
     });

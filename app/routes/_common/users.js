@@ -8,8 +8,8 @@ exports.get = function get(req, res) {
       helpers.getUser(req, user_sez, function( result ) {
         console.log(result);
         if (result && result.data  && result.data.display_name) {
-          meta_data.title = result.data.display_name+ " | " + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
-          meta_data.description[config.current_lang] = result.data.description ? fnz.makeExcerpt(result.data.description, 160) : __("Here you can find all the projects made with")+" "+ result.data.display_name;
+          meta_data.title = result.data.display_name+ " | " + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name;
+          meta_data.description[meta_data.current_lang] = result.data.description ? fnz.makeExcerpt(result.data.description, 160) : __("Here you can find all the projects made with")+" "+ result.data.display_name;
           var pugPage = config.prefix+'/'+'user_'+user_sez;
           res.render(pugPage, {result: result, meta_data:meta_data, itemprop:config.sez.users[user_sez].itemprop});
         } else {
@@ -70,8 +70,8 @@ exports.getUsers = function getUsers(req, res) {
         }
         console.log("bingo");
         //console.log(posttype);
-        meta_data.title = __(config.sez.users[user_sez].title) + " | " + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ")+ config.project_name;
-        if (posttype.post_content) meta_data.description[config.current_lang] = fnz.makeExcerpt(posttype.post_content, 160);
+        meta_data.title = __(config.sez.users[user_sez].title) + " | " + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ")+ config.project_name;
+        if (posttype.post_content) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(posttype.post_content, 160);
         res.render(config.prefix+'/'+'users_'+user_sez, {results: results, markers:markers, meta_data:meta_data, posttype:posttype, sez:config.sez.users, title: __(config.sez.users[user_sez].title)/*, itemprop:"sponsor"*/});
       });
     });

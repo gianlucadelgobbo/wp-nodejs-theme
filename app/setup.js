@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-//var session = require('exp-session');
+//var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var methodOverride = require('method-override');
 var errorhandler = require('errorhandler')
 
@@ -21,13 +21,12 @@ module.exports = function(app, exp) {
   var env = process.env.NODE_ENV || 'development';
   app.set('views', [app.root + '/app/views']);
   app.set('view engine', 'pug');
+  //app.set('view options', { layout: false });
+  app.use(session({ secret: 'wp-nodejs-theme', resave: false, saveUninitialized: true, cookie: { secure: true, maxAge: 3600000 } }));
   app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(cookieParser());
-  app.use(methodOverride());
-  //app.use(exp.static(app.root + '/any'));
-  //app.use(session({ secret: 'wp-nodejs-theme', resave: false, saveUninitialized: true, cookie: { maxAge: 3600000 } }));
+  //app.use(cookieParser());
+  //app.use(methodOverride());
   app.use(i18n.init);
-  app.set('view options', { layout: false });
   console.log("env "+env);
   if (env == 'production') {
     console.log("env "+env);

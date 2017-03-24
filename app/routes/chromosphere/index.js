@@ -9,7 +9,7 @@ exports.get = function get(req, res) {
       helpers.getAllNews(req, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAllEvents(req, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAllEditions(req, config.sez.home.editions.limit, 1, function (result_editions) {
-            meta_data.title = config.project_name+ " "+ (meta_data.edition && meta_data.editions[config.current_edition].title ? meta_data.editions[config.current_edition].title : "");
+            meta_data.title = config.project_name+ " "+ (meta_data.edition && meta_data.editions[req.session.meta.current_edition].title ? meta_data.editions[req.session.meta.current_edition].title : "");
             console.log("bingo");
             var obj = {
               results: {news:result_news,events:result_events,editions:result_editions},

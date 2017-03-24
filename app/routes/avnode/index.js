@@ -76,7 +76,7 @@ exports.get = function get(req, res) {
     } else {
       var obj = jsonfile.readFileSync(file);
       obj.meta_data = meta_data;
-      meta_data.title = config.project_name+" | "+meta_data.headline[config.current_lang];
+      meta_data.title = config.project_name+" | "+meta_data.headline[meta_data.current_lang];
       res.render(config.prefix+'/'+'index',obj);
     }
   });

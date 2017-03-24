@@ -8,9 +8,9 @@ exports.get = function get(req, res) {
     helpers.getEvent(req, function( result ) {
       console.log("aaaaa");
       if(result && result['ID']) {
-        meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
+        meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name;
         if (result.featured) meta_data.image_src = result.featured.full;
-        if (result.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
+        if (result.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
         res.render(config.prefix+'/'+sez.pugdett, {result: result, meta_data:meta_data, baseurl:sez.baseurl, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
         res.status(404).render(config.prefix+'/404', {meta_data:meta_data, baseurl:sez.baseurl, itemtype:"WebPage"});
@@ -24,9 +24,9 @@ exports.getAll = function getAll(req, res) {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAll(req, sez, sez.limit, page, function( results ) {
-        meta_data.title = posttype.post_title + " | " + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
+        meta_data.title = posttype.post_title + " | " + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name;
         if (posttype.featured) meta_data.image_src = posttype.featured.full;
-        if (posttype.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(posttype.meta_description, 160);
+        if (posttype.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(posttype.meta_description, 160);
         res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype,page:page});
       });
     });
@@ -38,9 +38,9 @@ exports.getTag = function getAll(req, res) {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAllEventsByTag(req, sez.limit, page, function( results ) {
-        meta_data.title = posttype.post_title + " #"+req.params.tag+" | " + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ")+ config.project_name;
+        meta_data.title = posttype.post_title + " #"+req.params.tag+" | " + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ")+ config.project_name;
         if (posttype.featured) meta_data.image_src = posttype.featured.full;
-        if (posttype.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(posttype.meta_description, 160);
+        if (posttype.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(posttype.meta_description, 160);
         res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype, tag:req.params.tag});
       });
     });
@@ -50,9 +50,9 @@ exports.getTag = function getAll(req, res) {
 exports.getAllTags = function getAllTags(req, res) {
   helpers.getMetaData(req, function( meta_data ) {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
-      meta_data.title = posttype.post_title + " TAGS | " + (config.current_lang == config.default_lang ? "" : config.current_lang.toUpperCase()+" | ") + config.project_name;
+      meta_data.title = posttype.post_title + " TAGS | " + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name;
       if (posttype.featured) meta_data.image_src = posttype.featured.full;
-      if (posttype.meta_description) meta_data.description[config.current_lang] = fnz.makeExcerpt(posttype.meta_description, 160);
+      if (posttype.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(posttype.meta_description, 160);
       res.render(config.prefix+'/'+sez.puglist, {meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
     });
   });
