@@ -2,12 +2,10 @@ var helpers = require('../../helpers');
 var fnz = require('../../functions');
 
 exports.get = function get(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
+      var page_data = fnz.setPageData(req, result);
       if(result && result['ID']) {
-        meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name;
-        if (result.featured) meta_data.image_src = result.featured.full;
-        if (result.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -16,9 +14,9 @@ exports.get = function get(req, res) {
           var form = pug.split("_")[1];
           pug = config.prefix+"/page";
         }
-        res.render(pug, {result: result, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+        res.render(pug, {result: result, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
       } else {
-        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }
     });
   });
@@ -56,12 +54,10 @@ exports.post = function post(req, res) {
           });
         }
       } else {
-        helpers.getMetaData(req, function( meta_data ) {
+        helpers.setSessions(req, function() {
           helpers.getPage(req, function( result ) {
             if(result && result['ID']) {
-              meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name;
-              if (result.featured) meta_data.image_src = result.featured.full;
-              if (result.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
+              var page_data = fnz.setPageData(req, result);
               var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -72,18 +68,18 @@ exports.post = function post(req, res) {
               }
               if (e.length) {
                 result.body = o;
-                res.render(pug, {result: result, msg:{e:e}, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
               } else {
                 mailer.send(config.accounts.emails.gmail, message, function(e, c){
                   if (e.length) {
-                    res.render(pug, {result: result, msg:{e:e}, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                    res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                   } else {
-                    res.render(pug, {result: result, msg:{c:c}, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                    res.render(pug, {result: result, msg:{c:c}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                   }
                 });
               }
             } else {
-              res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+              res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
             }
           });
         });
@@ -141,12 +137,10 @@ exports.post = function post(req, res) {
           );
         }
       } else {
-        helpers.getMetaData(req, function( meta_data ) {
+        helpers.setSessions(req, function() {
           helpers.getPage(req, function( result ) {
             if(result && result['ID']) {
-              meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name;
-              if (result.featured) meta_data.image_src = result.featured.full;
-              if (result.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
+              var page_data = fnz.setPageData(req, result);
               var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -158,7 +152,7 @@ exports.post = function post(req, res) {
               result.body = o;
               if (e.length) {
 
-                res.render(pug, {result: result, msg:{e:e}, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
               } else {
                 request({
                     method: 'POST',
@@ -181,20 +175,20 @@ exports.post = function post(req, res) {
                     console.log(response);
                     console.log(body);
                     if(error) {
-                      res.render(pug, {result: result, msg:{e:e}, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                      res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                     } else {
                       var bodyObj = JSON.parse(body);
                       if (bodyObj.id) {
-                        res.render(pug, {result: result, msg:{c:[{m:__("Subscription success!!!")}]}, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                        res.render(pug, {result: result, msg:{c:[{m:__("Subscription success!!!")}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                       } else {
-                        res.render(pug, {result: result, msg:{e:[{m:__(bodyObj.title)}]}, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                        res.render(pug, {result: result, msg:{e:[{m:__(bodyObj.title)}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                       }
                     }
                   }
                 );
               }
             } else {
-              res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+              res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
             }
           });
         });
@@ -231,12 +225,10 @@ exports.post = function post(req, res) {
           });
         }
       } else {
-        helpers.getMetaData(req, function( meta_data ) {
+        helpers.setSessions(req, function() {
           helpers.getPage(req, function( result ) {
             if(result && result['ID']) {
-              meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name;
-              if (result.featured) meta_data.image_src = result.featured.full;
-              if (result.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
+              var page_data = fnz.setPageData(req, result);
               var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -247,18 +239,18 @@ exports.post = function post(req, res) {
               }
               if (e.length) {
                 result.body = o;
-                res.render(pug, {result: result, msg:{e:e}, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
               } else {
                 mailer.send(config.accounts.emails.gmail, message, function(e, c){
                   if (e.length) {
-                    res.render(pug, {result: result, msg:{e:e}, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                    res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                   } else {
-                    res.render(pug, {result: result, msg:{c:c}, meta_data:meta_data,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                    res.render(pug, {result: result, msg:{c:c}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                   }
                 });
               }
             } else {
-              res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+              res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
             }
           });
         });
@@ -268,31 +260,26 @@ exports.post = function post(req, res) {
 };
 
 exports.getSubpage = function getSubpage(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
       if(result && result['ID']) {
-        meta_data.title = (result.post_parent ? result.post_parent.post_title+ ": " : "") + (result.post_title ? result.post_title+ " | " : "") + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name;
-        if (result.featured) meta_data.image_src = result.featured.full;
-        if (result.post_excerpt) {
-          meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(result.post_excerpt, 160);
-        } else {
-          meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
-        }
+        if (result.post_excerpt) result.meta_description = result.post_excerpt;
+        var page_data = fnz.setPageData(req, result);
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].pugpage ? config.sez.pages.conf[req.params.subpage].pugpage : config.sez.pages.conf.default.subpage);
         console.log("getSubpage");
         console.log(result);
         var itemtype = config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].itemtype ? config.sez.pages.conf[req.params.subpage].itemtype : config.sez.pages.conf.default.itemtype;
         console.log(itemtype);
-        res.render(pug, {result: result, meta_data:meta_data, itemtype:itemtype,q:req.query.q,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+        res.render(pug, {result: result, page_data:page_data, sessions:req.session.sessions, itemtype:itemtype,q:req.query.q,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
-        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }
     });
   });
 };
 exports.getGallery = function getGallery(req, res) {
   console.log("getGallery");
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     req.params.page = "gallery";
     helpers.getPage(req, function( result ) {
       var request = require('request');
@@ -304,8 +291,8 @@ exports.getGallery = function getGallery(req, res) {
             if (!error && response.statusCode == 200) {
               result.post_gallery = JSON.parse(body);
               //console.log(result.post_gallery);
-              meta_data.title = (result.title ? result.title+ " | " : "") + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name+ " "+ meta_data.editions[req.session.meta.current_edition].title;
-              res.render(config.prefix+'/'+'gallery_dett', {result: result, meta_data:meta_data, include_gallery:true});
+              var page_data = fnz.setPageData(req, result);
+              res.render(config.prefix+'/'+'gallery_dett', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:true});
             }
           });
         } else {
@@ -321,9 +308,8 @@ exports.getGallery = function getGallery(req, res) {
                 console.log(error);
                 if (!error && response.statusCode == 200) {
                   result.post_gallery = JSON.parse(body).gallery;
-                  //console.log(result.post_gallery);
-                  meta_data.title = (result.title ? result.title+ " | " : "") + config.project_name+ " "+ meta_data.editions[req.session.meta.current_edition].title;
-                  res.render(config.prefix+'/'+'gallery', {result: result, meta_data:meta_data, include_gallery:false});
+                  var page_data = fnz.setPageData(req, result);
+                  res.render(config.prefix+'/'+'gallery', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:false});
                 }
               });
             }
@@ -342,7 +328,7 @@ exports.getGallery = function getGallery(req, res) {
         });
         */
       } else {
-        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }
       //shortcode.parse(result.post_content);
       //console.log(shortcode.parse(str));
@@ -354,8 +340,8 @@ exports.getGallery = function getGallery(req, res) {
 
 exports.get404 = function get404(req, res) {
   console.log("get404 "+req.url);
-  helpers.getMetaData(req, function( meta_data ) {
-    res.render(config.prefix+'/404', {meta_data:meta_data, itemtype:"WebPage"});
+  helpers.setSessions(req, function() {
+    res.render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
   });
 };
 
@@ -363,8 +349,8 @@ exports.get404 = function get404(req, res) {
 
 /*
 exports.getSearch = function getSearch(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
-    res.render(config.prefix+'/search', {meta_data:meta_data, itemtype:"WebPage"});
+  helpers.setSessions(req, function() {
+    res.render(config.prefix+'/search', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
   });
 };
 

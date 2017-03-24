@@ -39,7 +39,7 @@ exports.getMeta = function getMeta(req, res) {
     getMetaSingle(editions[conta.length],req);
     function getMetaSingle(val,req) {
       console.log("getMetaSingle 1 "+val);
-      var wp = new WPAPI({ endpoint: config.data_domain+(meta_data.current_lang!=config.default_lang ? '/'+meta_data.current_lang : '')+'/wp-json' });
+      var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
       wp.myCustomResource = wp.registerRoute( 'wp/v2', '/meta_data/(?P<sez>)/(?P<edition>)' );
       wp.myCustomResource().edition(val).sez("editions").get(function( err, data ) {
         console.log("getMetaSingle 2");

@@ -3,25 +3,21 @@ var jsonfile = require('jsonfile');
 var fs = require('fs');
 var ig = require('instagram-node').instagram();
 ig.use({ client_id: '818216a3ba354059b19c8464d87ca865', client_secret: '6220780a13ad48f989c191865969c09f' });
+var fnz = require('../../functions');
 
 exports.get = function get(req, res) {
-  console.log("ecchime");
-  console.log(config.sez.home);
   var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     if (req.query.createcache==1 || !fs.existsSync(file) || req.query.code){
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAll(req, config.sez.activities, config.sez.home.activities.limit, 1, function (result_activities) {
-            meta_data.title = config.project_name;
-            console.log("bingo");
-            console.log(result_activities);
-            var redirect_uri = config.domain+"/"/*+req.url*/;
-            //var redirect_uri = "http://localhost:3007/";
-            console.log(redirect_uri);
+            var page_data = fnz.setPageData(req, {'ID':'100'});
+            //var redirect_uri = config.domain+"/"/*+req.url*/;
+            var redirect_uri = "http://localhost:3007/";
             var obj = {
               results: {news:result_news,events:result_events,activities:result_activities/**/},
-              meta_data:meta_data
+              page_data:page_data, sessions:req.session.sessions
             };
             if (req.query.code) {
               ig.authorize_user(req.query.code, redirect_uri, function(err, result) {
@@ -69,14 +65,14 @@ exports.get = function get(req, res) {
               res.redirect(url);
               //res.redirect(ig.get_authorization_url(redirect_uri, { scope: ['likes']}));
             }
-            //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,activities:result_activities}, meta_data:meta_data});
+            //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,activities:result_activities}, page_data:page_data, sessions:req.session.sessions});
           });
         });
       });
     } else {
       var obj = jsonfile.readFileSync(file);
-      obj.meta_data = meta_data;
-      meta_data.title = config.project_name+" | "+meta_data.headline[meta_data.current_lang];
+      obj.page_data.url = obj.page_data.url.replace("?createcache=1","")
+      for(item in obj.page_data.langSwitcher) obj.page_data.langSwitcher[item] = obj.page_data.langSwitcher[item].replace("?createcache=1","");
       res.render(config.prefix+'/'+'index',obj);
     }
   });

@@ -4,52 +4,44 @@ var fnz = require('../../functions');
 var sez = config.sez.exhibitions;
 
 exports.get = function get(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     console.log("result._post_template");
     helpers.getExhibition(req, function( result ) {
       console.log("result._post_template2");
-      //console.log(result);
-      meta_data.title = (result.title ? result.title+ " | " : "") + config.project_name;
-      res.render(config.prefix+'/'+'exhibition', {result: result, meta_data:meta_data, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+      var page_data = fnz.setPageData(req, result);
+      res.render(config.prefix+'/'+'exhibition', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
     });
   });
 };
 
 exports.getAll = function getAll(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAll(req, sez, sez.limit, page, function( results ) {
-        meta_data.title = __("Exhibitions") + " | " + config.project_name;
-        console.log("stocazzo");
-        console.log(posttype);
-        console.log("stocazzo");
-        meta_data.title = posttype.post_title + " | " + config.project_name;
-        if (posttype.featured) meta_data.image_src = posttype.featured.full;
-        if (posttype.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(posttype.meta_description, 160);
-        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
+        var page_data = fnz.setPageData(req, posttype);
+        res.render(config.prefix+'/'+sez.puglist, {results: results, page_data:page_data, sessions:req.session.sessions, baseurl:sez.baseurl, posttype:posttype});
       });
     });
   });
 };
 
 exports.getArtist = function getArtist(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     helpers.getExhibitionArtist(req, function( result ) {
-      console.log(result._post_template);
-      meta_data.title = (result.title ? result.title+ " | " : "") + config.project_name;
-      res.render(config.prefix+'/'+'exhibition_artists', {result: result, meta_data:meta_data});
+      var page_data = fnz.setPageData(req, result);
+      res.render(config.prefix+'/'+'exhibition_artists', {result: result, page_data:page_data, sessions:req.session.sessions});
     });
   });
 };
 /*
 
 exports.getGallery = function getGallery(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     helpers.getExhibitionArtistGallery(req, function( result ) {
       console.log(result._post_template);
       meta_data.title = (result.title ? result.title+ " | " : "") + config.project_name;
-      res.render(config.prefix+'/'+'exhibition_artists', {result: result, meta_data:meta_data});
+      res.render(config.prefix+'/'+'exhibition_artists', {result: result, page_data:page_data, sessions:req.session.sessions});
     });
   });
 };

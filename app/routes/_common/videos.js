@@ -4,29 +4,25 @@ var fnz = require('../../functions');
 var sez = config.sez.videos;
 
 exports.get = function get(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     helpers.getVideo(req, function( result ) {
+      var page_data = fnz.setPageData(req, result);
       if(result && result['ID']) {
-        meta_data.title = (result.post_title ? result.post_title+ " | " : "") + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ") + config.project_name;
-        if (result.featured) meta_data.image_src = result.featured.full;
-        if (result.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(result.meta_description, 160);
-        res.render(config.prefix+'/'+sez.pugdett, {result: result, meta_data:meta_data, baseurl:sez.baseurl, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+        res.render(config.prefix+'/'+sez.pugdett, {result: result, page_data:page_data, sessions:req.session.sessions, baseurl:sez.baseurl, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
-        res.status(404).render(config.prefix+'/404', {meta_data:meta_data, baseurl:sez.baseurl, itemtype:"WebPage"});
+        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, baseurl:sez.baseurl, itemtype:"WebPage"});
       }
     });
   });
 };
 
 exports.getAll = function getAll(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAll(req, sez, sez.limit, page, function( results ) {
-        meta_data.title = posttype.post_title + " | " + (meta_data.current_lang == config.default_lang ? "" : meta_data.current_lang.toUpperCase()+" | ")+ config.project_name;
-        if (posttype.featured) meta_data.image_src = posttype.featured.full;
-        if (posttype.meta_description) meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(posttype.meta_description, 160);
-        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype,page:page});
+        var page_data = fnz.setPageData(req, posttype);
+        res.render(config.prefix+'/'+sez.puglist, {results: results, page_data:page_data, sessions:req.session.sessions, baseurl:sez.baseurl, posttype:posttype,page:page});
       });
     });
   });

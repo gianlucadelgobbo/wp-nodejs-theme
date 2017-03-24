@@ -3,7 +3,7 @@
   .Learning(itemscope, itemprop="item", itemtype='http://schema.org/EducationEvent')
     .thumb-cnt
       //.catlabel=result.type
-      a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/learning/'+result.slug+"/", rel='bookmark', title!=result.post_title, itemprop='url')
+      a.ajaxloader(href=lang_preurl+'/portfolio/learning/'+result.slug+"/", rel='bookmark', title!=result.post_title, itemprop='url')
         img.img-responsive(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='contentUrl')
     .box-list
       if result["wpcf-schedule"]

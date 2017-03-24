@@ -4,29 +4,30 @@ var fs = require('fs');
 
 exports.get = function get(req, res) {
   var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     if (req.query.createcache==1 || !fs.existsSync(file)){
       helpers.getAllNews(req, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAllEvents(req, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAllEditions(req, config.sez.home.editions.limit, 1, function (result_editions) {
-            meta_data.title = config.project_name+ " "+ (meta_data.edition && meta_data.editions[req.session.meta.current_edition].title ? meta_data.editions[req.session.meta.current_edition].title : "");
+            var page_data = fnz.setPageData(req, {'ID':'100'});
+            //meta_data.title = config.project_name+ " "+ (meta_data.edition && meta_data.editions[req.session.sessions.current_edition].title ? meta_data.editions[req.session.sessions.current_edition].title : "");
             console.log("bingo");
             var obj = {
               results: {news:result_news,events:result_events,editions:result_editions},
-              meta_data:meta_data
+              page_data:page_data, sessions:req.session.sessions
             };
             jsonfile.writeFile(file, obj, function (err) {
               console.log(err);
             });
             res.render(config.prefix+'/'+'index',obj);
-            //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,editions:result_editions}, meta_data:meta_data});
+            //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,editions:result_editions}, page_data:page_data, sessions:req.session.sessions});
           });
         });
       });
     } else {
       var obj = jsonfile.readFileSync(file);
-      obj.meta_data = meta_data;
-      meta_data.title = config.project_name;
+      obj.page_data.url = obj.page_data.url.replace("?createcache=1","")
+      for(item in obj.page_data.langSwitcher) obj.page_data.langSwitcher[item] = obj.page_data.langSwitcher[item].replace("?createcache=1","");
       res.render(config.prefix+'/'+'index',obj);
     }
   });

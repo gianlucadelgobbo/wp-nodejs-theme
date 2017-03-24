@@ -2,13 +2,13 @@ extends layout
 block content
   - var itemtype
   - //console.log("indexOf")
-  - //console.log(meta_data.url.indexOf("/artists/"))
-  - //console.log(meta_data.url.length-9)
-  - if (meta_data.url.indexOf("/performances/")>0) {
+  - //console.log(page_data.url.indexOf("/artists/"))
+  - //console.log(page_data.url.length-9)
+  - if (page_data.url.indexOf("/performances/")>0) {
   -    itemtype = 'http://schema.org/CreativeWork'
-  - } else if (meta_data.url.indexOf("/artists/")<meta_data.url.length-9) {
+  - } else if (page_data.url.indexOf("/artists/")<page_data.url.length-9) {
   -    itemtype = 'http://schema.org/Person'
-  - } else if (meta_data.url.indexOf("/artists/")==meta_data.url.length-9) {
+  - } else if (page_data.url.indexOf("/artists/")==page_data.url.length-9) {
   -    itemtype = 'http://schema.org/ItemList'
   - }
   article#container(itemprop='performer', itemscope, itemtype=itemtype)
@@ -17,15 +17,15 @@ block content
         span.pull-left(itemprop="name")=result.post_title
         span.pull-right
           include ../_common/inc_share_span
-    if (meta_data.current_edition == config.last_edition && config.last_edition_status == "call")
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "call")
       style.
         .schedule {
           display: none
         }
-      if (meta_data.url.indexOf("/artists/")==meta_data.url.length-9)
+      if (page_data.url.indexOf("/artists/")==page_data.url.length-9)
         .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The artists list include ONLY the submissions approved till today. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"../participate/\">PARTICIPATE</a>"
       else if (result.post_content.indexOf('<p class="type">Workshop</p>')==-1)
         .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"../participate/\">PARTICIPATE</a>"
-    if (meta_data.current_edition == config.last_edition && config.last_edition_status == "approving")
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "approving")
       !="approving"
     !=result.post_content

@@ -25,7 +25,7 @@ module.exports = function(app, exp) {
   app.use(session({ secret: 'wp-nodejs-theme', resave: false, saveUninitialized: true, cookie: { secure: true, maxAge: 3600000 } }));
   app.use(bodyParser.urlencoded({ extended: true }));
   //app.use(cookieParser());
-  //app.use(methodOverride());
+  app.use(methodOverride());
   app.use(i18n.init);
   console.log("env "+env);
   if (env == 'production') {

@@ -1,12 +1,16 @@
 var helpers = require('../../helpers');
 var jsonfile = require('jsonfile');
 var fs = require('fs');
+var fnz = require('../../functions');
 
 exports.get = function get(req, res) {
   var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
+    console.log("home");
+    console.log(req.session.sessions);
     if (req.query.createcache==1 || !fs.existsSync(file)){
-      helpers.getPage({"params":{"page":"profile"},"url":req.url}, function( profile ) {
+      req.params = {"page":"profile"};
+      helpers.getPage(req, function( profile ) {
         helpers.getContainerPage(req, "news", function( posttype_news ) {
           helpers.getContainerPage(req, "events", function( posttype_events ) {
             helpers.getContainerPage(req, "web-and-mobile", function( posttype_web ) {
@@ -21,18 +25,14 @@ exports.get = function get(req, res) {
                               helpers.getAll(req, config.sez["videos"], config.sez.home.videos.limit, 1, function (result_videos) {
                                 helpers.getAll(req, config.sez["lab"], config.sez.home.lab.limit, 1, function (result_lab) {
                                   helpers.getAll(req, config.sez["awards-and-grants"], config.sez.home.award.limit, 1, function (result_award) {
-                                    meta_data.title = config.project_name+(meta_data.current_lang == config.default_lang ? "" : " | "+meta_data.current_lang.toUpperCase())+" | "+meta_data.headline[meta_data.current_lang];
-                                    console.log("bingo");
+                                    var page_data = fnz.setPageData(req, {'ID':'100'});
                                     var obj = {
                                       results: {news:result_news,events:result_events,web:result_web,learning:result_learning,videos:result_videos,lab:result_lab,awards:result_award},
-                                      meta_data:meta_data,posttype_events:posttype_events,profile:profile,posttype_lab:posttype_lab,posttype_web:posttype_web,posttype_video:posttype_video,posttype_learning:posttype_learning,posttype_news:posttype_news,posttype_awards:posttype_awards
+                                      page_data:page_data, sessions:req.session.sessions,posttype_events:posttype_events,profile:profile,posttype_lab:posttype_lab,posttype_web:posttype_web,posttype_video:posttype_video,posttype_learning:posttype_learning,posttype_news:posttype_news,posttype_awards:posttype_awards
                                     };
-                                    console.log("bingo 1");
                                     jsonfile.writeFile(file, obj, function (err) {
-                                      console.log("bingo 2");
                                       if(err) console.log(err);
                                     });
-                                    console.log("bingo 3");
                                     res.render(config.prefix+'/'+'index',obj);
                                   });
                                 });
@@ -51,8 +51,8 @@ exports.get = function get(req, res) {
       });
     } else {
       var obj = jsonfile.readFileSync(file);
-      obj.meta_data = meta_data;
-      meta_data.title = config.project_name+" | "+meta_data.headline[meta_data.current_lang];
+      obj.page_data.url = obj.page_data.url.replace("?createcache=1","")
+      for(item in obj.page_data.langSwitcher) obj.page_data.langSwitcher[item] = obj.page_data.langSwitcher[item].replace("?createcache=1","");
       res.render(config.prefix+'/'+'index',obj);
     }
   });

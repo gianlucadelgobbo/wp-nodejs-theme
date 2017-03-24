@@ -1,10 +1,10 @@
-if meta_data.editions[meta_data.current_edition]['wpcf-location']
+if config.meta.editions[sessions.current_edition]['wpcf-location']
   .places
     //- //console.log("--------------------")
-    - //console.log(meta_data.editions[meta_data.current_edition]['wpcf-location'])
-    each val, country in meta_data.editions[meta_data.current_edition]['wpcf-location']
-        each valcity, city in meta_data.editions[meta_data.current_edition]['wpcf-location'][country]
-          each val, venue in meta_data.editions[meta_data.current_edition]['wpcf-location'][country][city]
+    - //console.log(config.meta.editions[sessions.current_edition]['wpcf-location'])
+    each val, country in config.meta.editions[sessions.current_edition]['wpcf-location']
+        each valcity, city in config.meta.editions[sessions.current_edition]['wpcf-location'][country]
+          each val, venue in config.meta.editions[sessions.current_edition]['wpcf-location'][country][city]
             span.place(itemprop='location', itemscope, itemtype='http://schema.org/Place')
               if venue
                 span.placeName(itemprop='name')=venue

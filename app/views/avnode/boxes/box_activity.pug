@@ -13,6 +13,5 @@
         h3.list_title(itemprop='name')
           a(itemprop='url', href=lang_preurl+'/activities/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
         .text-muted.small.excerpt
-          - console.log(result)
           if result.excerpt && result.excerpt.rendered
             div(itemprop='description')!=result.excerpt.rendered

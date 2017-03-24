@@ -69,13 +69,12 @@ exports.get = function get(req, res) {
 };
 
 exports.getAll = function getAll(req, res) {
-  helpers.getMetaData(req, function( meta_data ) {
+  helpers.setSessions(req, function() {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAllAward(req, sez.limit, page, function( results ) {
-        meta_data.title = __("Awards and Grants") + " | " + config.project_name;
-		meta_data.description[meta_data.current_lang] = fnz.makeExcerpt(posttype.description, 160);
-        res.render(config.prefix+'/'+sez.puglist, {results: results, meta_data:meta_data, baseurl:sez.baseurl, posttype:posttype});
+        var page_data = fnz.setPageData(req, posttype);
+        res.render(config.prefix+'/'+sez.puglist, {results: results, page_data:page_data, sessions:req.session.sessions, baseurl:sez.baseurl, posttype:posttype});
       });
     });
   });

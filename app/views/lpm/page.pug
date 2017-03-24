@@ -11,7 +11,6 @@ block content
         .rientro
           div(itemprop='description')!=result.post_content
           include ../_common/inc_docs_large
-          - console.log(result)
           .dateModified(itemprop='dateModified', content=result.date)=result.dateModifiedHR
       .col-sm-3
         img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')

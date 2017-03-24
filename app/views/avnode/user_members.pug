@@ -18,7 +18,6 @@ block content
           section(itemscope, itemtype="https://schema.org/ItemList")
             h3(itemprop="name")=res.labels.name
             each result, position in res.posts
-              - console.log(result)
               .row
                 .col-lg-4.col-md-12.col-sm-12
                   img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='contentUrl')

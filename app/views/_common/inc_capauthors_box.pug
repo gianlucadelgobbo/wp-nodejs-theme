@@ -3,7 +3,6 @@ if result.capauthors
   - var publishers_slugs = []
   - var authors = []
   each capauthor in result.capauthors
-    - console.log(capauthor)
     if config.posttypes_authors[result.post_type].publisher.roles.indexOf(capauthor.user_role_value)!=-1
       - publishers.push(capauthor)
       - publishers_slugs.push(capauthor.user_login)

@@ -9,18 +9,44 @@ exports.sortByStartDate = function sortByStartDate(a,b) {
   return 0;
 };
 
-exports.getCurrentLang = function getCurrentLang(req) {
+exports.setPageData = function setPageData(req, result) {
+  console.log(result);
+  var dett=result.post_type && result.post_type!="page";
+  var page_data = {
+    url:req.url,
+    langSwitcher: {
+      "it": (req.url.indexOf('/it/') === 0 ? req.url : '/it' + req.url),
+      "en": (req.url.indexOf('/it/') === 0 ? req.url.substring(3) : req.url)
+    }
+  };
+  if(result && result['ID']) {
+    var title = (result.post_title ? result.post_title+(req.params.tag ? " #"+req.params.tag : "")+" | " : "");
+    if (title && dett && req.session.sessions.current_lang != config.default_lang) title+=req.session.sessions.current_lang.toUpperCase()+" | ";
+    title+=config.project_name;
+    if (title==config.project_name && config.meta.headline) title+=(config.meta.headline ? " | "+config.meta.headline[req.session.sessions.current_lang] : "");
+    page_data.title = title;
+    page_data.image_src = result.featured && result.featured.full ? result.featured.full : result.featured ? result.featured : config.domain + config.meta.image_src;
+    page_data.description = result.meta_description ? this.makeExcerpt(result.meta_description, 160) : config.meta.description[req.session.sessions.current_lang];
+  } else {
+    page_data.title = "404 "+__("Content NOT found")+" | " + config.project_name;
+    page_data.image_src = config.meta.image_src;
+    page_data.description = this.makeExcerpt(__("The content you requested was not found on our server, please try to search for it"), 160);
+  }
+  return page_data;
+};
+
+/*exports.getCurrentLang = function getCurrentLang(req) {
   console.log("getCurrentLang");
   var urlA = req.url.split("/");
   console.log(urlA);
   var lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.default_lang;
-  if(req.session.meta.current_lang != lang) {
-    req.session.meta.current_lang = lang;
+  if(req.session.sessions.current_lang != lang) {
+    req.session.sessions.current_lang = lang;
     require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
     global.setLocale(lang);
   }
 };
-
+*/
 exports.formatLocation = function formatLocation(l) {
   //console.log(l);
   var loc = {};

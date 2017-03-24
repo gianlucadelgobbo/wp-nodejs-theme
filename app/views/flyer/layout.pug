@@ -1,30 +1,30 @@
 doctype html
-html(lang=meta_data.current_lang)
-  - var lang_preurl = (meta_data.current_lang == config.default_lang ? '' :'/'+meta_data.current_lang)
+html(lang=sessions.current_lang)
+  - var lang_preurl = (sessions.current_lang == config.default_lang ? '' :'/'+sessions.current_lang)
   head
-    title=meta_data.title
+    title=page_data.title
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    //- //console.log(meta_data)
-    meta(property='fb:admins', content=meta_data.fb_admin)
-    meta(property='fb:app_id', content=meta_data.fb_appId)
-    meta(property='og:image', content=meta_data.image_src)
-    meta(property='og:title', content=meta_data.title)
-    meta(property='og:description', content=meta_data.description[meta_data.current_lang])
+    //- //console.log(config.meta)
+    meta(property='fb:admins', content=config.meta.fb_admin)
+    meta(property='fb:app_id', content=config.meta.fb_appId)
+    meta(property='og:image', content=page_data.image_src)
+    meta(property='og:title', content=page_data.title)
+    meta(property='og:description', content=page_data.description)
     meta(property='og:site_name', content=config.project_name)
-    meta(property='og:url', content=config.domain+meta_data.url)
-    link(rel='canonical', href=config.domain+meta_data.url)
+    meta(property='og:url', content=config.domain+page_data.url)
+    link(rel='canonical', href=config.domain+page_data.url)
     meta(property='og:type', content='website')
-    meta(name='description', content=meta_data.description[meta_data.current_lang])
-    meta(name='keywords', content=meta_data.keywords)
-    meta(name='google-site-verification', content=meta_data.google_webmasterstools)
-    link(rel='shortcut icon', href=meta_data['favicon'])
-    link(rel='apple-touch-icon', sizes='57x57', href=meta_data['icon57'])
-    link(rel='apple-touch-icon', sizes='72x72', href=meta_data['icon72'])
-    link(rel='apple-touch-icon', sizes='114x114', href=meta_data['icon114'])
-    link(rel='apple-touch-icon', sizes='120x120', href=meta_data['icon120'])
-    link(rel='apple-touch-icon', sizes='144x144', href=meta_data['icon144'])
-    link(rel='apple-touch-icon', sizes='152x152', href=meta_data['icon152'])
+    meta(name='description', content=page_data.description)
+    meta(name='keywords', content=config.meta.keywords)
+    meta(name='google-site-verification', content=config.meta.google_webmasterstools)
+    link(rel='shortcut icon', href=config.meta['favicon'])
+    link(rel='apple-touch-icon', sizes='57x57', href=config.meta['icon57'])
+    link(rel='apple-touch-icon', sizes='72x72', href=config.meta['icon72'])
+    link(rel='apple-touch-icon', sizes='114x114', href=config.meta['icon114'])
+    link(rel='apple-touch-icon', sizes='120x120', href=config.meta['icon120'])
+    link(rel='apple-touch-icon', sizes='144x144', href=config.meta['icon144'])
+    link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
     // CSS
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700")
     link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css', media='all')
@@ -39,7 +39,7 @@ html(lang=meta_data.current_lang)
       link(rel='stylesheet', href='/_common/css/style.css', type='text/css', media='all')
       link(rel='stylesheet', href='/css/style.' + config.prefix + '.css', type='text/css', media='all')
 
-  body(class=meta_data.url == '/' || meta_data.url == '/it/' || meta_data.url == '/it' ? "flyer-header-expanding expanding" : undefined)
+  body(class=page_data.url == '/' || page_data.url == '/it/' || page_data.url == '/it' ? "flyer-header-expanding expanding" : undefined)
     include includes/menu
     .cnt(itemscope, itemtype='http://schema.org/Organization')
       #result
@@ -64,7 +64,7 @@ html(lang=meta_data.current_lang)
           if (d.getElementById(id)) return;
           js = d.createElement(s);
           js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=#{meta_data.fb_appId}";
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=#{config.meta.fb_appId}";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
       script(type="text/javascript").
@@ -72,7 +72,7 @@ html(lang=meta_data.current_lang)
           "sgp_selT": "2",
           "sgp_sel": ".thumbnail",
           "sgp_bT": "#{config.project_name}",
-          "sgp_bL": "#{meta_data.headline[meta_data.current_lang]}",
+          "sgp_bL": "#{config.meta.headline[sessions.current_lang]}",
           "sgp_bU": "#{global.config.domain}",
           "sgp_bg": "000000",
           "sgp_bgo": "0.8",

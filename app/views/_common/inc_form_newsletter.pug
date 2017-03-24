@@ -1,4 +1,4 @@
-form#newsletter-form(method='post', action=meta_data.url, role='form')
+form#newsletter-form(method='post', action=page_data.url, role='form')
   h2
     b=__("Subscription")
     !=" form"
@@ -33,7 +33,6 @@ form#newsletter-form(method='post', action=meta_data.url, role='form')
       .col-md-6
         .form-group
           label=__("Main topic") + " *"
-          - console.log(config.accounts.newsletter.interests)
           each item, index in config.accounts.newsletter.interests
             .radio
               label(for='maintopics' + index)
@@ -43,7 +42,6 @@ form#newsletter-form(method='post', action=meta_data.url, role='form')
       .col-md-6
         .form-group
           label=__("Other topics")
-          - console.log(config.accounts.newsletter.interests)
           each item, index in config.accounts.newsletter.interests
             .checkbox
               label(for='topics' + index)
