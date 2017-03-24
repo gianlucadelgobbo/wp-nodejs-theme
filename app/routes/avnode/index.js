@@ -13,8 +13,8 @@ exports.get = function get(req, res) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAll(req, config.sez.activities, config.sez.home.activities.limit, 1, function (result_activities) {
             var page_data = fnz.setPageData(req, {'ID':'100'});
-            //var redirect_uri = config.domain+"/"/*+req.url*/;
-            var redirect_uri = "http://localhost:3007/";
+            var redirect_uri = config.domain+"/"/*+req.url*/;
+            //var redirect_uri = "http://localhost:3007/";
             var obj = {
               results: {news:result_news,events:result_events,activities:result_activities/**/},
               page_data:page_data, sessions:req.session.sessions
