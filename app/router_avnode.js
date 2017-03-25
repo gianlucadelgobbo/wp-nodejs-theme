@@ -10,7 +10,19 @@ var robotsRoutes = require('./routes/_common/robots');
 
 module.exports = function(app) {
   app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))});
-
+  app.get('/sess', function(req, res, next) {
+    var sess = req.session;
+    if (sess.views) {
+      sess.views++;
+      res.setHeader('Content-Type', 'text/html');
+      res.write('<p>views: ' + sess.views + '</p>');
+      res.write('<p>expires in: ' + (sess.cookie.maxAge / 1000) + 's</p>');
+      res.end()
+    } else {
+      req.session.views = 1;
+      res.end('welcome to the session demo. refresh!'+(sess.cookie.maxAge / 1000));
+    }
+  });
   app.get('/*.php', pagesRoutes.get404);
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
