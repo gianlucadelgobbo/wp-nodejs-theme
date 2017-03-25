@@ -10,6 +10,7 @@ var robotsRoutes = require('./routes/_common/robots');
 
 module.exports = function(app) {
   app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))});
+  /*
   app.get('/sess', function(req, res, next) {
     var sess = req.session;
     if (sess.views) {
@@ -23,6 +24,7 @@ module.exports = function(app) {
       res.end('welcome to the session demo. refresh!'+(sess.cookie.maxAge / 1000));
     }
   });
+  */
   app.get('/*.php', pagesRoutes.get404);
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
