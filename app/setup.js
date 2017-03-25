@@ -22,7 +22,7 @@ module.exports = function(app, exp) {
   app.set('views', [app.root + '/app/views']);
   app.set('view engine', 'pug');
   //app.set('view options', { layout: false });
-  app.use(session({ secret: 'wp-nodejs-theme', resave: false, saveUninitialized: true, cookie: { secure: true, maxAge: 3600000 } }));
+  app.use(session({ secret: 'wp-nodejs-theme', resave: false, saveUninitialized: true, cookie: { secure: false, maxAge: 3600000 } }));
   app.use(bodyParser.urlencoded({ extended: true }));
   //app.use(cookieParser());
   app.use(methodOverride());
