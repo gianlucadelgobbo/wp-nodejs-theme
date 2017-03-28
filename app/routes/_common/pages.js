@@ -341,6 +341,7 @@ exports.getGallery = function getGallery(req, res) {
 exports.get404 = function get404(req, res) {
   console.log("get404 "+req.url);
   helpers.setSessions(req, function() {
+    var page_data = fnz.setPageData(req, {});
     res.render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
   });
 };
