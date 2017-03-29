@@ -10,7 +10,7 @@ exports.sortByStartDate = function sortByStartDate(a,b) {
 };
 
 exports.setPageData = function setPageData(req, result) {
-  console.log(result);
+  //console.log(result);
   var dett=result.post_type && result.post_type!="page";
   var page_data = {
     url:req.url,

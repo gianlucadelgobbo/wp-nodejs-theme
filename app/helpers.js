@@ -441,7 +441,7 @@ exports.getExhibitionArtist = function getExhibitionArtist(req,callback) {
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibition_artists/(?P<exhibition>)/(?P<subexhibition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
     wp.myCustomResource().exhibition(req.params.exhibition).subexhibition("artists").artist(req.params.artist).performances("performances").performance(req.params.performance).get(function( err, data ) {
       console.log("//// Artist Performance");
-      //console.log(data);
+      //console.log(data || err);
       callback(data);
     });
   } else if (req.params.artist) {
