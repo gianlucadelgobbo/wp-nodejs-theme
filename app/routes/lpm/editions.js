@@ -1,5 +1,7 @@
 var helpers = require('../../helpers');
-var fnz = require('../../functions')
+var fnz = require('../../functions');
+
+var sez = config.sez.editions;
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
@@ -47,10 +49,11 @@ exports.getGallery = function getGallery(req, res) {
 
 exports.getAll = function getAll(req, res) {
   helpers.setSessions(req, function() {
-    helpers.getAll(req, config.sez.editions, config.sez.editions.limit, 1, function( results ) {
-      console.log(results);
-      meta_data.title = "Editions | " + config.project_name+ " "+ meta_data.editions[meta_data.current_edition].title;
-      res.render(config.prefix+'/'+'editions', {results: results, page_data:page_data, sessions:req.session.sessions});
+    helpers.getContainerPage(req, sez.post_type, function( posttype ) {
+      helpers.getAll(req, config.sez.editions, config.sez.editions.limit, 1, function( results ) {
+        var page_data = fnz.setPageData(req, posttype);
+        res.render(config.prefix+'/'+'editions', {results: results, page_data:page_data, sessions:req.session.sessions, posttype:posttype});
+      });
     });
   });
 };

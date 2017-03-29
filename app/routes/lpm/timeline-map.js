@@ -1,4 +1,5 @@
 var helpers = require('../../helpers');
+var fnz = require('../../functions');
 
 exports.getTimeline = function getTimeline(req, res) {
   helpers.setSessions(req, function() {
