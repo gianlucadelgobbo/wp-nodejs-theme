@@ -1,8 +1,9 @@
 var bodyParser = require('body-parser');
 //var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var methodOverride = require('method-override');
-var errorhandler = require('errorhandler')
+var MongoStore = require('connect-mongo')(session);
+//var methodOverride = require('method-override');
+var helmet = require('helmet');
 
 var i18n = require('i18n');
 i18n.configure({
@@ -19,10 +20,17 @@ i18n.configure({
 module.exports = function(app, exp) {
 
   var env = process.env.NODE_ENV || 'development';
+  app.use(helmet());
   app.set('views', [app.root + '/app/views']);
   app.set('view engine', 'pug');
   //app.set('view options', { layout: false });
-  app.use(session({ secret: 'wp-nodejs-theme', resave: false, saveUninitialized: true, cookie: { secure: false, maxAge: 3600000 } }));
+  app.use(session({
+    secret: 'wp-nodejs-theme',
+    store: new MongoStore({ url: 'mongodb://localhost/SessionStore' }),
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, maxAge: 3600000 }
+  }));
   app.use(bodyParser.urlencoded({ extended: true }));
   //app.use(cookieParser());
   //app.use(methodOverride());
@@ -33,6 +41,7 @@ module.exports = function(app, exp) {
     app.set('view cache', true);
     //app.set('view options', { doctype : 'html', pretty : true });
   } else {
+    var errorhandler = require('errorhandler');
     app.locals.pretty = true;
     var stylus = require('stylus');
     var nib = require('nib');
