@@ -665,13 +665,13 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callbac
   var trgt = this;
   var data = [];
   trgt.getAllEventsByYear(req, years, function (data_events) {
-    for (var item in data_events) //console.log(data_events[item]['wpcf-startdate']);
+    //for (var item in data_events) console.log(data_events[item]['wpcf-startdate']);
     for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
     trgt.getAllEditionsByYear(req, years, 100, 1, function (data_editions) {
       for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
-      for (var item in data_editions) //console.log(data_editions[item]['wpcf-startdate']);
+      //for (var item in data_editions) console.log(data_editions[item]['wpcf-startdate']);
       data.sort(fnz.sortByStartDate);
-      for (var item in data) //console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
+      //for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
       callback(data);
     });
   });
