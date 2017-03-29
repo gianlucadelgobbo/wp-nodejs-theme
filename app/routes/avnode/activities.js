@@ -32,7 +32,7 @@ exports.getAll = function getAll(req, res) {
 exports.getArtist = function getArtist(req, res) {
   helpers.setSessions(req, function() {
     helpers.getActivityArtist(req, function( result ) {
-      console.log(result._post_template);
+      //console.log(result._post_template);
       meta_data.title = (result.title ? result.title+ " | " : "") + config.project_name;
       res.render(config.prefix+'/'+'activity_artists', {result: result, page_data:page_data, sessions:req.session.sessions});
     });
@@ -42,7 +42,7 @@ exports.getArtist = function getArtist(req, res) {
 exports.getGallery = function getGallery(req, res) {
   helpers.setSessions(req, function() {
     helpers.getActivityArtistGallery(req, function( result ) {
-      console.log(result._post_template);
+      //console.log(result._post_template);
       meta_data.title = (result.title ? result.title+ " | " : "") + config.project_name;
       res.render(config.prefix+'/'+'activity_artists', {result: result, page_data:page_data, sessions:req.session.sessions});
     });

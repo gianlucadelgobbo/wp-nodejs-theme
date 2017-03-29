@@ -6,8 +6,8 @@ var fnz = require('../../functions');
 exports.get = function get(req, res) {
   var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
   helpers.setSessions(req, function() {
-    console.log("home");
-    console.log(req.session.sessions);
+    //console.log("home");
+    //console.log(req.session.sessions);
     if (req.query.createcache==1 || !fs.existsSync(file)){
       req.params = {"page":"profile"};
       helpers.getPage(req, function( profile ) {
@@ -31,7 +31,7 @@ exports.get = function get(req, res) {
                                       page_data:page_data, sessions:req.session.sessions,posttype_events:posttype_events,profile:profile,posttype_lab:posttype_lab,posttype_web:posttype_web,posttype_video:posttype_video,posttype_learning:posttype_learning,posttype_news:posttype_news,posttype_awards:posttype_awards
                                     };
                                     jsonfile.writeFile(file, obj, function (err) {
-                                      if(err) console.log(err);
+                                      if(err) //console.log(err);
                                     });
                                     res.render(config.prefix+'/'+'index',obj);
                                   });

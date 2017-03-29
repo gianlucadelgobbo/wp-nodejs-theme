@@ -10,13 +10,13 @@ exports.get = function get(req, res) {
         helpers.getAllEvents(req, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAllEditions(req, config.sez.home.editions.limit, 1, function (result_editions) {
             meta_data.title = config.project_name+ " "+ (meta_data.edition && meta_data.editions[req.session.sessions.current_edition].title ? meta_data.editions[req.session.sessions.current_edition].title : "");
-            console.log("bingo");
+            //console.log("bingo");
             var obj = {
               results: {news:result_news,events:result_events,editions:result_editions},
               page_data:page_data, sessions:req.session.sessions
             };
             jsonfile.writeFile(file, obj, function (err) {
-              console.log(err);
+              //console.log(err);
             });
             res.render(config.prefix+'/'+'index',obj);
             //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,editions:result_editions}, page_data:page_data, sessions:req.session.sessions});

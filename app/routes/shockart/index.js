@@ -16,7 +16,7 @@ exports.get = function get(req, res) {
               page_data:page_data, sessions:req.session.sessions
             };
             jsonfile.writeFile(file, obj, function (err) {
-              console.log(err);
+              //console.log(err);
             });
             res.render(config.prefix+'/'+'index',obj);
             //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,exhibitions:result_exhibitions}, page_data:page_data, sessions:req.session.sessions});

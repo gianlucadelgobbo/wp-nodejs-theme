@@ -22,17 +22,17 @@ exports.get = function get(req, res) {
             if (req.query.code) {
               ig.authorize_user(req.query.code, redirect_uri, function(err, result) {
                 if (err) {
-                  console.log(err);
-                  console.log("Didn't work"+req.query.code);
-                  console.log(redirect_uri);
+                  //console.log(err);
+                  //console.log("Didn't work"+req.query.code);
+                  //console.log(redirect_uri);
                 } else {
-                  console.log('Yay! Access token is ' + result.access_token);
+                  //console.log('Yay! Access token is ' + result.access_token);
                   ig.use({ access_token: result.access_token });
 
                   ig.user_self_media_recent({count:6},function(err, medias, pagination, remaining, limit) {
                     //ig.use({ access_token: '818216a3ba354059b19c8464d87ca865' });
                     obj.insta = [];
-                    console.log("instagram-node");
+                    //console.log("instagram-node");
                     for(var item in medias) {
                       obj.insta.push({
                         img:medias[item].images.low_resolution,
@@ -40,12 +40,12 @@ exports.get = function get(req, res) {
                         comments:medias[item].comments.count,
                         link:medias[item].link
                       });
-                      console.log(medias[item].images.thumbnail);
-                      console.log(medias[item].images.standard_resolution);
-                      console.log(medias[item].images.low_resolution);
-                      console.log(medias[item].likes.count);
-                      console.log(medias[item].comments.count);
-                      console.log(medias[item].link);
+                      //console.log(medias[item].images.thumbnail);
+                      //console.log(medias[item].images.standard_resolution);
+                      //console.log(medias[item].images.low_resolution);
+                      //console.log(medias[item].likes.count);
+                      //console.log(medias[item].comments.count);
+                      //console.log(medias[item].link);
                     }
                     //console.log(err);
                     //console.log(medias);
@@ -53,7 +53,7 @@ exports.get = function get(req, res) {
                     //console.log(remaining);
                     //console.log(limit);
                     jsonfile.writeFile(file, obj, function (err) {
-                      console.log(err);
+                      //console.log(err);
                     });
                     res.render(config.prefix+'/'+'index',obj);
                   });

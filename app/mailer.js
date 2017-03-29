@@ -20,13 +20,13 @@ var email = require('emailjs');
 
  */
 exports.send = function send(server, message, callback) {
-  console.log("SEND");
+  //console.log("SEND");
   var e = [];
   var c = [];
   var myserver = email.server.connect(server);
   myserver.send(message, function (err, message) {
-    console.log(err);
-    console.log(message);
+    //console.log(err);
+    //console.log(message);
     if (err) {
       e.push({m:__("Messagge sent failed")});
     } else {

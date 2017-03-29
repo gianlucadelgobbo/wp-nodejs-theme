@@ -36,9 +36,9 @@ exports.setPageData = function setPageData(req, result) {
 };
 
 /*exports.getCurrentLang = function getCurrentLang(req) {
-  console.log("getCurrentLang");
+  //console.log("getCurrentLang");
   var urlA = req.url.split("/");
-  console.log(urlA);
+  //console.log(urlA);
   var lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.default_lang;
   if(req.session.sessions.current_lang != lang) {
     req.session.sessions.current_lang = lang;
@@ -101,19 +101,19 @@ exports.getGrid = function getGrid(data) {
 exports.get_video = function get_video( url ) {
   var v = {};
   var yts;
-  console.log(url);
+  //console.log(url);
   if (url.indexOf("vimeo.com/")>0) {
-    console.log("stocazzo 1");
+    //console.log("stocazzo 1");
     yts = url.substring(url.indexOf("video/")+6);
-    console.log(yts);
+    //console.log(yts);
     //v.embed = "//player.vimeo.com/video/"+url.substring(url.indexOf("vimeo.com/")+10);
     v.embed = "//player.vimeo.com/video/"+yts;
     v.thumb = "http://vimeo.com/api/v2/video/"+yts+".json";
   } else if (url.indexOf("youtube.com/")>0) {
     //var yts = url.substring(url.indexOf("watch?v=")+8);
-    console.log("stocazzo 2");
+    //console.log("stocazzo 2");
     yts = url.substring(url.indexOf("embed/")+6);
-    console.log(yts);
+    //console.log(yts);
     v.embed = "//www.youtube.com/embed/"+yts;
     v.thumb = "//img.youtube.com/vi/"+yts+"/maxresdefault.jpg";
   }

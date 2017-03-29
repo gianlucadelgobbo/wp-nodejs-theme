@@ -3,10 +3,10 @@ var fnz = require('../../functions');
 
 exports.get = function get(req, res) {
   var user_sez = req.url.indexOf('/it/')===0 ? req.url.split("/")[2] : req.url.split("/")[1];
-  console.log("user_sez "+user_sez);
+  //console.log("user_sez "+user_sez);
   helpers.setSessions(req, function() {
       helpers.getUser(req, user_sez, function( result ) {
-        console.log(result);
+        //console.log(result);
         result.post_title = result.data.display_name;
         if (result.data.img) result.featured = {full:result.data.img};
         result.meta_description = result.data.description ? result.data.description : __("Here you can find all the projects made with")+" "+ result.data.display_name;
@@ -22,7 +22,7 @@ exports.get = function get(req, res) {
 };
 exports.getUsers = function getUsers(req, res) {
   var user_sez = req.url.indexOf('/it/')===0 ? req.url.split("/")[2] : req.url.split("/")[1];
-  console.log("user_sez "+user_sez);
+  //console.log("user_sez "+user_sez);
   helpers.setSessions(req, function() {
     helpers.getContainerPage(req, user_sez, function( posttype ) {
       helpers.getAllUsers(req, user_sez, function( results ) {
@@ -50,7 +50,7 @@ exports.getUsers = function getUsers(req, res) {
             }
           }
         }
-        console.log("bingo");
+        //console.log("bingo");
         //console.log(posttype);
         var page_data = fnz.setPageData(req, posttype);
         //meta_data.title = __(config.sez.users[user_sez].title) + " | " + (req.session.sessions.current_lang == config.default_lang ? "" : req.session.sessions.current_lang.toUpperCase()+" | ")+ config.project_name;

@@ -100,7 +100,7 @@ exports.post = function post(req, res) {
       if (req.body.country) merge_fields.MMERGE6 = req.body.country;
       if (req.body.organization_name) merge_fields.MMERGE4 = req.body.organization_name;
       if (req.body.ajax) {
-        console.log("ajaxajaxajaxajaxajaxajax");
+        //console.log("ajaxajaxajaxajaxajaxajax");
         if (e.length) {
           var estr = "<ul>";
           for(var item in e)  estr+= "<li>"+e[item].m+"</li>";
@@ -170,10 +170,10 @@ exports.post = function post(req, res) {
                     }
                   },
                   function(error, response, body){
-                    console.log("ECCHICE");
-                    console.log(error);
-                    console.log(response);
-                    console.log(body);
+                    //console.log("ECCHICE");
+                    //console.log(error);
+                    //console.log(response);
+                    //console.log(body);
                     if(error) {
                       res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                     } else {
@@ -266,10 +266,10 @@ exports.getSubpage = function getSubpage(req, res) {
         if (result.post_excerpt) result.meta_description = result.post_excerpt;
         var page_data = fnz.setPageData(req, result);
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].pugpage ? config.sez.pages.conf[req.params.subpage].pugpage : config.sez.pages.conf.default.subpage);
-        console.log("getSubpage");
-        console.log(result);
+        //console.log("getSubpage");
+        //console.log(result);
         var itemtype = config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].itemtype ? config.sez.pages.conf[req.params.subpage].itemtype : config.sez.pages.conf.default.itemtype;
-        console.log(itemtype);
+        //console.log(itemtype);
         res.render(pug, {result: result, page_data:page_data, sessions:req.session.sessions, itemtype:itemtype,q:req.query.q,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
@@ -278,7 +278,7 @@ exports.getSubpage = function getSubpage(req, res) {
   });
 };
 exports.getGallery = function getGallery(req, res) {
-  console.log("getGallery");
+  //console.log("getGallery");
   helpers.setSessions(req, function() {
     req.params.page = "gallery";
     helpers.getPage(req, function( result ) {
@@ -286,7 +286,7 @@ exports.getGallery = function getGallery(req, res) {
       if (result.post_content.indexOf(">ERROR<")===-1) {
         if (req.params.artist && req.params.gallery) {
           var url = "https://flxer.net/api/"+req.params.artist+"/gallery/"+req.params.gallery+(req.params.galleryitem ? "/"+req.params.galleryitem :"")+"/";
-          console.log(url);
+          //console.log(url);
           request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
               result.post_gallery = JSON.parse(body);
@@ -298,14 +298,14 @@ exports.getGallery = function getGallery(req, res) {
         } else {
           var shortcode = require('shortcode-parser');
           result.post_content = result.post_content.replace("source=https","source='https").replace("/ view=","/' view='").replace("]","']");
-          console.log(result.post_content);
+          //console.log(result.post_content);
           //var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
           shortcode.add('avnode', function(buf, opts) {
             if (opts.source) {
-              console.log("/stoqui2");
+              //console.log("/stoqui2");
               request(opts.source, function (error, response, body) {
-                console.log("/stoqui3");
-                console.log(error);
+                //console.log("/stoqui3");
+                //console.log(error);
                 if (!error && response.statusCode == 200) {
                   result.post_gallery = JSON.parse(body).gallery;
                   var page_data = fnz.setPageData(req, result);
@@ -314,7 +314,7 @@ exports.getGallery = function getGallery(req, res) {
               });
             }
           });
-          console.log("/stoqui1");
+          //console.log("/stoqui1");
           shortcode.parse(result.post_content);
         }
         /*
@@ -339,7 +339,7 @@ exports.getGallery = function getGallery(req, res) {
 };
 
 exports.get404 = function get404(req, res) {
-  console.log("get404 "+req.url);
+  //console.log("get404 "+req.url);
   helpers.setSessions(req, function() {
     var page_data = fnz.setPageData(req, {});
     res.render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});

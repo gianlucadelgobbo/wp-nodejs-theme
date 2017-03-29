@@ -27,9 +27,9 @@ module.exports = function(app, exp) {
   //app.use(cookieParser());
   //app.use(methodOverride());
   app.use(i18n.init);
-  console.log("env "+env);
+  //console.log("env "+env);
   if (env == 'production') {
-    console.log("env "+env);
+    //console.log("env "+env);
     app.set('view cache', true);
     //app.set('view options', { doctype : 'html', pretty : true });
   } else {

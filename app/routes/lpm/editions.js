@@ -5,10 +5,10 @@ var sez = config.sez.editions;
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
-    console.log("result._post_template");
+    //console.log("result._post_template");
     helpers.getEdition(req, function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
-      console.log("rientro");
+      //console.log("rientro");
       //console.log(result);
       var page_data = fnz.setPageData(req, result);
       if (result.post_title) {
