@@ -2,8 +2,14 @@ var express = require('express');
 var app = express();
 
 global.config = require('config')[process.argv[3]];
-
 config.root = app.root = __dirname;
+
+if (process.argv[3]=="lpm") {
+  require('jsonfile').readFile(config.root+'/config/editions.json', function(err, obj) {
+    config.meta.editions = obj;
+  });
+}
+
 
 require('./app/setup')(app, express);
 require('./app/'+global.config.router)(app);

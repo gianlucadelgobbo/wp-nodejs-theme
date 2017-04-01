@@ -2,8 +2,6 @@ var WPAPI = require( 'wpapi' );
 var request = require( 'request' );
 var moment = require( 'moment' );
 var fnz = require('./functions');
-var jsonfile = require('jsonfile');
-var fs = require('fs');
 var Validators = require('./validators').Validators;
 
 exports.validateFormEmail = function validateFormEmail(o,callback) {
@@ -527,6 +525,7 @@ exports.getEdition = function getEdition(req,callback) {
       //console.log("//// SubSubEdition");
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      console.log("rientroaa");
       callback(data);
     });
   } else if (req.params.subedition) {
