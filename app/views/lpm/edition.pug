@@ -17,7 +17,7 @@ block content
     else
       header
         h1.entry-title(itemprop='name')=result.post_title
-    if (sessions.current_edition == config.last_edition && config.last_edition_status == "call")
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "call" && page_data.url.indexOf("/program/")!==-1)
       style.
         .schedule {
           display: none
