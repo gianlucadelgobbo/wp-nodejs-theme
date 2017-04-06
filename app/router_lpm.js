@@ -48,7 +48,7 @@ module.exports = function(app) {
   app.get('/events/2013-mex/*', function(req, res) {res.redirect(301, req.url.replace('/events/2013-mex/','/editions/2013-mex/'))});
   app.get('/events/2014-eindhoven/*', function(req, res) {res.redirect(301, req.url.replace('/events/2014-eindhoven/','/editions/2014-eindhoven/'))});
   app.get('/events/2015-rome/*', function(req, res) {res.redirect(301, req.url.replace('/events/2015-rome/','/editions/2015-rome/'))});
-  app.get('/events/2016-amsterdam/*', function(req, res) {res.redirect(301, req.url.replace('/events/2015-rome/','/editions/2016-amsterdam/'))});
+  app.get('/events/2016-amsterdam/*', function(req, res) {res.redirect(301, req.url.replace('/events/2016-amsterdam/','/editions/2016-amsterdam/'))});
 
   app.get('/edition/*', function(req, res) {res.redirect(301, req.url.replace('/edition/','/editions/'))});
 
