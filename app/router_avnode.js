@@ -9,23 +9,9 @@ var pagesRoutes = require('./routes/_common/pages');
 var robotsRoutes = require('./routes/_common/robots');
 
 module.exports = function(app) {
-  app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))});
-  /*
-  app.get('/sess', function(req, res, next) {
-    var sess = req.session;
-    if (sess.views) {
-      sess.views++;
-      res.setHeader('Content-Type', 'text/html');
-      res.write('<p>views: ' + sess.views + '</p>');
-      res.write('<p>expires in: ' + (sess.cookie.maxAge / 1000) + 's</p>');
-      res.end()
-    } else {
-      req.session.views = 1;
-      res.end('welcome to the session demo. refresh!'+(sess.cookie.maxAge / 1000));
-    }
-  });
-  */
   app.get('/*.php', pagesRoutes.get404);
+  app.get('/member/*', function(req, res) {res.redirect(301, req.url.replace('/member/','/members/'))});
+  app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))});
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
@@ -34,19 +20,6 @@ module.exports = function(app) {
   app.get("/sitemap-activities-(:activity).xml", sitemapRoutes.get);
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
-  /*app.get('/it/', indexRoutes.get);
-  app.get('/it/members', usersRoutes.getUsers);
-  app.get('/it/members/(:user)', usersRoutes.get);
-  app.get('/it/partners', usersRoutes.getUsers);
-  app.get('/it/partners/(:user)', usersRoutes.get);
-  app.get('/it/events/', eventsRoutes.getAll);
-  app.get('/it/events/(:event)', eventsRoutes.get);
-  app.get('/it/news/', newsRoutes.getAll);
-  app.get('/it/news/(:news)', newsRoutes.get);
-  app.get('/it/activities/', activitiesRoutes.getAll);
-  app.get('/it/activities/(:activity)', activitiesRoutes.get);
-  app.get('/it/(:page)/', pagesRoutes.get);
-*/
   app.get('/', indexRoutes.get);
   app.get('/members', usersRoutes.getUsers);
   app.get('/members/(:user)', usersRoutes.get);
