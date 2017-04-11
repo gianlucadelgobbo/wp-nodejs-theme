@@ -40,9 +40,9 @@ exports.getUsers = function getUsers(req, res) {
                 lat:latlang[0],
                 lng:latlang[1],
                 type:results[item].roles[0],
-                slug:'/'+config.sez.users[user_sez].baseurl+'/'+results[item].data.user_nicename+'/',
+                slug:'/'+config.sez.users.baseurls[results[item].roles[0]]+'/'+results[item].data.user_nicename+'/',
                 display_name:results[item].data.display_name,
-                date:results[item].data_evento,
+                date:results[item].roles[0],
                 destination:results[item].data.city+", "+results[item].data.country
               };
               //console.log(marker);
