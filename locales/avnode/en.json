@@ -79,5 +79,10 @@
 	"Load More": "Load More",
 	"Main topic is required": "Main topic is required",
 	"Member": "Member",
-	"Partners": "Partners"
+	"Partners": "Partners",
+	"New Join submission from: {{name}} <{{email}}>\n\nOrganization name: {{organization_name}}\n\nOrganization country: {{organization_country}}\n\nOrganization activity description\n{{activity_description}}\n\nActivities name list\n{{activity_list}}\n\nMessagge sent from {{website}}": "New Join submission from: {{name}} <{{email}}>\n\nOrganization name: {{organization_name}}\n\nOrganization country: {{organization_country}}\n\nOrganization activity description\n{{activity_description}}\n\nActivities name list\n{{activity_list}}\n\nMessagge sent from {{website}}",
+	"[{{project_name}} Mailer] New Join from {{organization_name}}": "[{{project_name}} Mailer] New Join from {{organization_name}}",
+	"Messagge sent with success": "Messagge sent with success",
+	"Please select your Organization country": "Please select your Organization country",
+	"Email is not an email": "Email is not an email"
 }

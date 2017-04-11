@@ -9,8 +9,8 @@ exports.get = function get(req, res) {
     helpers.getEdition(req, function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
       //console.log("rientro");
-      //console.log(result);
       var page_data = fnz.setPageData(req, result);
+      console.log(result);
       if (result.post_title) {
         res.render(config.prefix+'/'+'edition'+(req.url.indexOf("/gallery/")>0 ? "_artists" : ""), {result: result, page_data:page_data, sessions:req.session.sessions,rientro:rientro});
       } else {
