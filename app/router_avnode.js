@@ -21,6 +21,7 @@ module.exports = function(app) {
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
   app.get('/', indexRoutes.get);
+  app.get('/insta/', indexRoutes.getInsta);
   app.get('/members', usersRoutes.getUsers);
   app.get('/members/(:user)', usersRoutes.get);
   app.get('/partners', usersRoutes.getUsers);
