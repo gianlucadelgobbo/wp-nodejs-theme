@@ -23,9 +23,9 @@ block content
           display: none
         }
       if (page_data.url.indexOf("/artists/")==page_data.url.length-9)
-        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The artists list include ONLY the submissions approved till today. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"../participate/\">PARTICIPATE</a>"
+        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The artists list include ONLY the submissions approved till today. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/"+sessions.current_edition+"/participate/\">PARTICIPATE</a>"
       else if (result.post_content.indexOf('<p class="type">Workshop</p>')==-1)
-        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"../participate/\">PARTICIPATE</a>"
+        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/"+sessions.current_edition+"/participate/\">PARTICIPATE</a>"
     if (sessions.current_edition == config.last_edition && config.last_edition_status == "approving")
       !="approving"
     !=result.post_content
