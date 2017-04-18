@@ -51,7 +51,7 @@ exports.get = function get(req, res) {
       });
     } else {
       var obj = jsonfile.readFileSync(file);
-      obj.page_data.url = obj.page_data.url.replace("?createcache=1","")
+      obj.page_data.url = obj.page_data.url.replace("?createcache=1","");
       for(item in obj.page_data.langSwitcher) obj.page_data.langSwitcher[item] = obj.page_data.langSwitcher[item].replace("?createcache=1","");
       res.render(config.prefix+'/'+'index',obj);
     }
