@@ -63,7 +63,7 @@ exports.getInsta = function getInsta(req, res) {
 exports.get = function get(req, res) {
   var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
   helpers.setSessions(req, function() {
-    if (req.query.createcache==1 || !fs.existsSync(file) || req.query.code){
+    if (req.query.createcache==1 || !fs.existsSync(file)){
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAll(req, config.sez.activities, config.sez.home.activities.limit, 1, function (result_activities) {
@@ -73,6 +73,9 @@ exports.get = function get(req, res) {
               page_data:page_data, sessions:req.session.sessions
             };
             obj.insta = jsonfile.readFileSync(config.root+'/tmp/'+config.prefix+'/insta.json');
+            jsonfile.writeFile(file, obj, function (err) {
+              //console.log(err);
+            });
             res.render(config.prefix+'/'+'index',obj);
           });
         });
@@ -80,9 +83,9 @@ exports.get = function get(req, res) {
     } else {
       var obj = jsonfile.readFileSync(file);
       //obj.insta = jsonfile.readFileSync(config.root+'/tmp/'+config.prefix+'/insta.json');
-      jsonfile.writeFile(config.root+'/tmp/'+config.prefix+'/insta.json', obj.insta, function (err) {
+      //jsonfile.writeFile(config.root+'/tmp/'+config.prefix+'/insta.json', obj.insta, function (err) {
         //console.log(err);
-      });
+      //});
       obj.page_data.url = obj.page_data.url.replace("?createcache=1","")
       for(item in obj.page_data.langSwitcher) obj.page_data.langSwitcher[item] = obj.page_data.langSwitcher[item].replace("?createcache=1","");
       res.render(config.prefix+'/'+'index',obj);
