@@ -519,10 +519,11 @@ exports.getEdition = function getEdition(req,callback) {
   //console.log(req.params.subsubedition);
   var wp = new WPAPI({ endpoint: config.data_domain+'/wp-json' });
   if (req.params.subsubedition) {
-    //console.log("req.params.subsubedition");
+    console.log("req.params.subsubedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
-      //console.log("//// SubSubEdition");
+      console.log("//// SubSubEdition");
+      console.log(err || data);
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       console.log("rientroaa");
