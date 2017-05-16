@@ -165,8 +165,8 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   var mylimit =  limit>0 ? limit : 50;
 
   if (sez.site_tax) {
-    wp.myCustomResource().param('site', config.site_tax_id ).param( 'parent', 0 ).perPage(mylimit).page(page).get(function( err, data ) {
-      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+config.site_tax_id);
+    wp.myCustomResource().param('site', config.site_tax_id ).param( 'parent', 0 ).param( 'filter[order]', 'meta_value_num' ).param( 'filter[meta_key]', 'wpcf-startdate' ).perPage(mylimit).page(page).get(function( err, data ) {
+      console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+config.site_tax_id);
       //console.log("//// AllFilterTax "+sez.post_type+" "+config.site_tax_id);
       //console.log(err || data);
       data = fnz.fixResults(data);
