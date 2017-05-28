@@ -171,12 +171,13 @@ exports.fixResult = function fixResult(data) {
     data.datetimeModifiedHR = moment(dateModified).utc().format("MMMM, Do YYYY, h:mm a");
     data.dateModifiedHR = moment(dateModified).utc().format("MMMM, Do YYYY");
   }
+  console.log(data['wpcf-startdate']);
   if (!data['wpcf-startdate'] || !data['wpcf-startdate'].length){
     var dd = new Date(dateModified);
     data['wpcf-startdate'] = [dd.getTime()/1000];
   }
   if (data['wpcf-startdate']){
-    data['wpcf-startdate'] = parseInt(data['wpcf-startdate'][0]);
+    data['wpcf-startdate'] = parseInt(Array.isArray(data['wpcf-startdate']) ? data['wpcf-startdate'][0] : data['wpcf-startdate']);
     data.startdateISO = this.ISODateString(new Date(data['wpcf-startdate']*1000));
     data.startdateHR = moment(data['wpcf-startdate']*1000).utc().format("MMMM, Do YYYY, h:mm a");
   }

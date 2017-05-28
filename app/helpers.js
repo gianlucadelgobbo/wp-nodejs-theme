@@ -161,7 +161,8 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   //console.log("getAll "+sez.post_type);
   //console.log("page "+page);
   var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/'+sez.post_type );
+  console.log(sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type);
+  wp.myCustomResource = wp.registerRoute('wp/v2', sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;
 
   if (sez.site_tax) {
@@ -492,18 +493,18 @@ exports.getAllEditionsByYear = function getAllEditionsByYear(req, years, limit, 
   //console.log("getAllEditionsByYear");
   var wp = new WPAPI({ endpoint: config.data_domain+'/wp-json' });
   if (years){
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/all-editions/(?P<yearsss>)' );
-    wp.myCustomResource().yearsss(years).get(function( err, data ) {
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/all-editions/(?P<site>)/(?P<yearsss>)' );
+    wp.myCustomResource().site(config.prefix).yearsss(years).get(function( err, data ) {
       //console.log("//// All EditionsByYear "+years);
       //console.log(err || data);
       data = fnz.fixResults(data);
       callback(data);
     });
   } else {
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/all-editions' );
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/all-editions/(?P<site>)' );
     //console.log(wp.myCustomResource);
     //console.log(wp.new());
-    wp.myCustomResource().get(function( err, data ) {
+    wp.myCustomResource().site(config.prefix).get(function( err, data ) {
       //console.log("//// All EditionsByYear");
       //console.log(err || data);
       data = fnz.fixResults(data);
@@ -668,8 +669,9 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callbac
     //for (var item in data_events) console.log(data_events[item]['wpcf-startdate']);
     for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
     trgt.getAllEditionsByYear(req, years, 100, 1, function (data_editions) {
+      console.log(data_editions);
       for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
-      //for (var item in data_editions) console.log(data_editions[item]['wpcf-startdate']);
+      for (var item in data_editions) console.log("data: "+data_editions[item]['wpcf-startdate']);
       data.sort(fnz.sortByStartDate);
       //for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
       callback(data);
