@@ -1,0 +1,32 @@
+extends layout
+block content
+  article#container(itemscope, itemtype='http://schema.org/' + itemtype)
+    //.row
+      .col-sm-9
+    header
+      h1.entry-title
+        span.pull-left(itemprop="name")=result.post_title
+        span.pull-right
+          include ../_common/inc_share_span
+    .rientro
+      div(itemprop='description')!=result.post_content
+      .dateModified.hidden(itemprop='dateModified', content=result.date)=result.dateModifiedHR
+      //.col-sm-3
+        if result.featured
+          img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
+    .timeline.results
+      each result, position in results
+        include boxes/box_timeline
+    .text-center.read-more.inverse
+      if (next)
+        a(href='/timeline/' + next, title=global.__("Load More"))
+          !=global.__("Load More")
+          !=" "
+          i.icon-right
+        span.loading.hide
+          i.icon-spin3.animate-spin
+          span.sr-only=" Loading..."
+      else
+        .end=global.__("You reached the end")
+
+

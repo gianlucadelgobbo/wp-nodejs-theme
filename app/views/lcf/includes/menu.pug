@@ -1,0 +1,69 @@
+nav#top-menu.navbar.navbar-inverse
+  // Brand and toggle get grouped for better mobile display
+  .navbar-header
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-MainMenu')
+      span.sr-only Toggle navigation
+      i.icon-bar
+      i.icon-bar
+      i.icon-bar
+    a.navbar-brand(href='/', title=config.project_name)
+      i.icon-lcf-fill
+      .sr-only=config.project_name
+      //img.img-responsive(src=config.meta.logo_bar, alt=config.project_name)
+  // Collect the nav links, forms, and other content for toggling
+  #menu-MainMenu.collapse.navbar-collapse
+    ul.nav.navbar-nav
+      li
+        a(href=lang_preurl+'/concept/') Concept
+      li
+        a(href=lang_preurl+'/news/') News
+      li
+        a(href=lang_preurl+'/events/')=global.__("Events")
+      //li
+        a(href=lang_preurl+'/gallery/') Gallery
+      li
+        a.dropdown-toggle(href='#', data-toggle='dropdown')!=global.__("Editions")+"&nbsp;"
+          span.caret
+        ul.dropdown-menu(role='menu')
+          li
+            a(href=lang_preurl+'/editions/2017-rome/') 2017 Rome
+          li
+            a(href=lang_preurl+'/editions/2016-rome/') 2016 Rome
+          li
+            a(href=lang_preurl+'/editions/2015-rome/') 2015 Rome
+          li
+            a(href=lang_preurl+'/editions/2014-rome/') 2014 Rome
+      li
+        a(href=lang_preurl+'/the-app/') The App
+      li
+        a(href=lang_preurl+'/press/') Press
+      li
+        a(href=lang_preurl+'/contacts/')=global.__("Contacts")
+      li
+        a(href=lang_preurl+'/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+      li
+        a#searchModalButton(href="/search/")
+          i.glyphicon.glyphicon-search
+          .sr-only=global.__("Search")
+    ul.nav.navbar-nav.navbar-right
+      li.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+        a(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
+      li.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
+        a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
+
+
+
+    //form#subscribe.navbar-form.navbar-right(method='post', action='/signup')
+      .pull-right
+        .input-group.input-group-sm
+          input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
+          label.sr-only(for='email') Email
+          span.input-group-btn
+            button.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
+        .loading.hide
+          i.icon-spin3.animate-spin
+          span.sr-only=" Loading..."
+        .alert.hide
+          button(type="button",class="close",onclick="jQuery('#subscribe').show();jQuery('#subscribe_res').hide();")!="×"
+          span.msg
+

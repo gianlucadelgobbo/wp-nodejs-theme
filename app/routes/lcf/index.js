@@ -1,16 +1,16 @@
 var helpers = require('../../helpers');
 var jsonfile = require('jsonfile');
 var fs = require('fs');
+var fnz = require('../../functions');
 
 exports.get = function get(req, res) {
   var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
   helpers.setSessions(req, function() {
     if (req.query.createcache==1 || !fs.existsSync(file)){
-      helpers.getAllNews(req, config.sez.home.news.limit, 1, function (result_news) {
-        helpers.getAllEvents(req, config.sez.home.events.limit, 1, function (result_events) {
-          helpers.getAllEditions(req, config.sez.home.editions.limit, 1, function (result_editions) {
-            meta_data.title = config.project_name+ " "+ (meta_data.edition && meta_data.editions[req.session.sessions.current_edition].title ? meta_data.editions[req.session.sessions.current_edition].title : "");
-            //console.log("bingo");
+      helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
+        helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
+          helpers.getAll(req, config.sez.editions, config.sez.home.editions.limit, 1, function (result_editions) {
+            var page_data = fnz.setPageData(req, {'ID':'100'});
             var obj = {
               results: {news:result_news,events:result_events,editions:result_editions},
               page_data:page_data, sessions:req.session.sessions
@@ -25,8 +25,8 @@ exports.get = function get(req, res) {
       });
     } else {
       var obj = jsonfile.readFileSync(file);
-      obj.meta_data = meta_data;
-      meta_data.title = config.project_name;
+      obj.page_data.url = obj.page_data.url.replace("?createcache=1","")
+      for(item in obj.page_data.langSwitcher) obj.page_data.langSwitcher[item] = obj.page_data.langSwitcher[item].replace("?createcache=1","");
       res.render(config.prefix+'/'+'index',obj);
     }
   });

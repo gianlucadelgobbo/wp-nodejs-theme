@@ -515,15 +515,15 @@ exports.getAllEditionsByYear = function getAllEditionsByYear(req, years, limit, 
 
 exports.getEdition = function getEdition(req,callback) {
   console.log("stocazzo");
-  //console.log(req.params.subedition);
+  console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json');
   //console.log(req.params.subsubedition);
-  var wp = new WPAPI({ endpoint: config.data_domain+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
   if (req.params.subsubedition) {
     console.log("req.params.subsubedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
-      console.log("//// SubSubEdition");
-      console.log(err || data);
+      //console.log("//// SubSubEdition");
+      //console.log(err || data);
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       console.log("rientroaa");
@@ -554,7 +554,7 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
   //console.log(config.prefix+'/'+req.params.edition);
   //console.log(req.params.subedition);
   //console.log(req.params.subsubedition);
-  var wp = new WPAPI({ endpoint: config.data_domain+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
   if (req.params.artist && req.params.performance) {
     //console.log("req.params.artist");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
@@ -586,7 +586,7 @@ exports.getEditionArtistGallery = function getEditionArtistGallery(req,callback)
   //console.log(config.prefix+'/'+req.params.edition);
   //console.log(req.params.subedition);
   //console.log(req.params.subsubedition);
-  var wp = new WPAPI({ endpoint: config.data_domain+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
   if (req.params.artist && req.params.gallery && req.params.galleryitem) {
     //console.log("req.params.artist");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/gallery/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)/(?P<galleryitem>)' );
@@ -626,7 +626,7 @@ exports.getArtistGallery = function getArtistGallery(req,callback) {
   //console.log(config.prefix+'/'+req.params.edition);
   //console.log(req.params.subedition);
   //console.log(req.params.subsubedition);
-  var wp = new WPAPI({ endpoint: config.data_domain+'/wp-json' });
+  var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
   if (req.params.artist && req.params.gallery && req.params.galleryitem) {
     //console.log("req.params.artist");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/gallerypage/(?P<sluggg>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)/(?P<galleryitem>)' );

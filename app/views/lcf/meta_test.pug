@@ -1,0 +1,10 @@
+table
+  conta
+  - for (var a=0;a<20;a++)
+    tr
+      each edition in meta
+        td(style="white-space:nowrap;")
+          if edition.menu[a]
+            b=edition.menu[a].post_title
+            br
+            small=edition.menu[a].permalink

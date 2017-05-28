@@ -5,7 +5,19 @@ global.config = require('config')[process.argv[3]];
 config.root = app.root = __dirname;
 
 if (process.argv[3]=="lpm") {
-  require('jsonfile').readFile(config.root+'/config/editions.json', function(err, obj) {
+  require('jsonfile').readFile(config.root+'/config/editions_lpm.json', function(err, obj) {
+    config.meta.editions = obj;
+  });
+}
+
+if (process.argv[3]=="lcf") {
+  require('jsonfile').readFile(config.root+'/config/editions_lcf.json', function(err, obj) {
+    config.meta.editions = obj;
+  });
+}
+
+if (process.argv[3]=="chromosphere") {
+  require('jsonfile').readFile(config.root+'/config/editions_chromosphere.json', function(err, obj) {
     config.meta.editions = obj;
   });
 }

@@ -1,0 +1,22 @@
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  div(itemprop="item", itemscope, itemtype='http://schema.org/Person')
+    .row
+      .col-sm-4(itemprop="image", itemscope, itemtype='https://schema.org/ImageObject')
+        a(href=lang_preurl+'/'+sez.baseurls[result.roles[0]]+'/'+result.data.user_nicename+'/', rel='bookmark', title=result.data.display_name)
+          img.img-responsive.svg-image(alt='Logo: '+result.data.display_name, itemprop="url", src=result.data.img)
+          meta(itemprop="width" content="480")
+          meta(itemprop="height" content="270")
+      .col-sm-8
+        h5.media-heading
+          a(itemprop='url', href=lang_preurl+'/'+sez.baseurls[result.roles[0]]+'/'+result.data.user_nicename+'/', title=result.data.display_name)
+            span(itemprop='name')=result.data.display_name
+        p(itemprop='jobTitle')
+          i=result.data.role
+        if result.data.auth_contents
+          p
+            each auth_content in result.data.auth_contents
+              if auth_content.posts
+                !=auth_content["labels"]["name"]+": "+auth_content.posts
+                br
+    hr
