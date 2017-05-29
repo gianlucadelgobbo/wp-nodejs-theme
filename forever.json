@@ -43,5 +43,16 @@
     "outFile": "/var/log/nginx/node_avnode_out.log",
     "errFile": "/var/log/nginx/node_avnode_err.log",
     "args": ["-site", "avnode"]
+  },
+  {
+    "uid": "lcf",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_lcf_forever.log",
+    "outFile": "/var/log/nginx/node_lcf_out.log",
+    "errFile": "/var/log/nginx/node_lcf_err.log",
+    "args": ["-site", "lcf"]
   }
 ]
