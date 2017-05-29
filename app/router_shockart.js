@@ -36,6 +36,7 @@ module.exports = function(app) {
   app.get('/it/exhibitions/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);
   app.get('/it/exhibitions/(:exhibition)/artists/(:artist)', exhibitionsRoutes.getArtist);
   app.get('/it/(:page)/', pagesRoutes.get);
+  app.post('/it/(:page)', pagesRoutes.post);
 
   app.get('/', indexRoutes.get);
   app.get('/backstage', usersRoutes.getUsers);
@@ -56,6 +57,7 @@ module.exports = function(app) {
   app.get('/exhibitions/(:exhibition)/artists/(:artist)', exhibitionsRoutes.getArtist);
 
   app.get('/(:page)/', pagesRoutes.get);
+  app.post('/(:page)', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 

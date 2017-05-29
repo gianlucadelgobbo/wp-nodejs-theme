@@ -62,6 +62,7 @@ module.exports = function(app) {
   app.get('/it/gallery/(:artist)/(:gallery)/(:galleryitem)', pagesRoutes.getGallery);
   app.get('/it/signup', signupRoutes.get);
   app.get('/it/(:page)', pagesRoutes.get);
+  app.post('/it/(:page)', pagesRoutes.post);
   app.post('/it/signup', signupRoutes.post);
 
   app.get('/user/(:user)', usersRoutes.get);
@@ -89,6 +90,7 @@ module.exports = function(app) {
   app.get('/gallery/(:artist)/(:gallery)/(:galleryitem)', pagesRoutes.getGallery);
   app.get('/signup', signupRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
+  app.post('/(:page)', pagesRoutes.post);
   app.post('/signup', signupRoutes.post);
 
   app.get('*', pagesRoutes.get404);
