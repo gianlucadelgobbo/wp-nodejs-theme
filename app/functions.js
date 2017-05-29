@@ -171,7 +171,6 @@ exports.fixResult = function fixResult(data) {
     data.datetimeModifiedHR = moment(dateModified).utc().format("MMMM, Do YYYY, h:mm a");
     data.dateModifiedHR = moment(dateModified).utc().format("MMMM, Do YYYY");
   }
-  console.log(data['wpcf-startdate']);
   if (!data['wpcf-startdate'] || !data['wpcf-startdate'].length){
     var dd = new Date(dateModified);
     data['wpcf-startdate'] = [dd.getTime()/1000];
