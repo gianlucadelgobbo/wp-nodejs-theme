@@ -9,7 +9,7 @@ exports.get = function get(req, res) {
     if (req.query.createcache==1 || !fs.existsSync(file)){
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
-          helpers.getAll(req, config.sez.editions, config.sez.home.editions.limit, 1, function (result_editions) {
+          helpers.getAllEditionsByYear(req, null, config.sez.home.editions.limit, 1, function (result_editions) {
             var page_data = fnz.setPageData(req, {'ID':'100'});
             var obj = {
               results: {news:result_news,events:result_events,editions:result_editions},
