@@ -54,5 +54,49 @@
     "outFile": "/var/log/nginx/node_lcf_out.log",
     "errFile": "/var/log/nginx/node_lcf_err.log",
     "args": ["-site", "lcf"]
+  },
+  {
+    "uid": "linuxclub",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_linuxclub_forever.log",
+    "outFile": "/var/log/nginx/node_linuxclub_out.log",
+    "errFile": "/var/log/nginx/node_linuxclub_err.log",
+    "args": ["-site", "linuxclub"]
+  },
+  {
+    "uid": "chromosphere",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_chromosphere_forever.log",
+    "outFile": "/var/log/nginx/node_chromosphere_out.log",
+    "errFile": "/var/log/nginx/node_chromosphere_err.log",
+    "args": ["-site", "chromosphere"]
+  },
+  {
+    "uid": "vjtelevision",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_vjtelevision_forever.log",
+    "outFile": "/var/log/nginx/node_vjtelevision_out.log",
+    "errFile": "/var/log/nginx/node_vjtelevision_err.log",
+    "args": ["-site", "vjtelevision"]
+  },
+  {
+    "uid": "wam",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_wam_forever.log",
+    "outFile": "/var/log/nginx/node_wam_out.log",
+    "errFile": "/var/log/nginx/node_wam_err.log",
+    "args": ["-site", "wam"]
   }
 ]
