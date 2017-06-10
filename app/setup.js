@@ -36,6 +36,11 @@ module.exports = function(app, exp) {
   //app.use(methodOverride());
   app.use(i18n.init);
   //console.log("env "+env);
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
   if (env == 'production') {
     //console.log("env "+env);
     app.set('view cache', true);
