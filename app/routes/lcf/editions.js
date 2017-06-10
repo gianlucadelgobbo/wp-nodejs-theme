@@ -51,7 +51,6 @@ exports.getAll = function getAll(req, res) {
   helpers.setSessions(req, function() {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       helpers.getAllEditionsByYear(req, null, config.sez.editions.limit, 1, function( results ) {
-        console.log("bella");
         var page_data = fnz.setPageData(req, posttype);
         res.render(config.prefix+'/'+'editions', {results: results, page_data:page_data, sessions:req.session.sessions, posttype:posttype});
       });
@@ -64,28 +63,29 @@ exports.getMeta = function getMeta(req, res) {
   meta = {};
   conta = [];
   if (!req.query.generate){
-    res.render("lcf/meta_test", {meta:config.meta.editions});
+    res.render(config.prefix+"/meta_test", {meta:config.meta.editions});
   } else {
     getMetaSingle(config.editions[conta.length],req);
     function getMetaSingle(val,req) {
       //console.log("getMetaSingle 1 "+val);
+      console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
       var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
-      wp.myCustomResource = wp.registerRoute( 'wp/v2', '/meta_data/(?P<sez>)/(?P<basepath>)/(?P<edition>)' );
-      wp.myCustomResource().edition(val).sez("editions").basepath(config.prefix).get(function( err, data ) {
+      wp.myCustomResource = wp.registerRoute( 'wp/v2', '/meta_data/(?P<sez>)/(?P<edition>)' );
+      wp.myCustomResource().edition(config.prefix+'/'+val).sez("editions").get(function( err, data ) {
         //console.log("getMetaSingle 2");
         //console.log(data);
         meta[val] = data.meta.edition;
         conta.push(val);
-        //console.log('wp/v2/meta_data/editions/'+val);
+        console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
         //console.log(conta.length +" - "+editions.length);
         //console.log(req.query.check);
         if (conta.length==config.editions.length) {
           if (req.query.check){
-            res.render("lcf/meta_test", {meta:meta});
+            res.render(config.prefix+"/meta_test", {meta:meta});
           } else {
-            require('jsonfile').writeFile(config.root+'/config/editions_lcf.json', meta, function(err) {
+            require('jsonfile').writeFile(config.root+'/config/editions_'+config.prefix+'.json', meta, function(err) {
               config.meta.editions = meta;
-              res.render("lcf/meta_test", {meta:config.meta.editions});
+              res.render(config.prefix+"/meta_test", {meta:config.meta.editions});
             });
           }
         } else {
