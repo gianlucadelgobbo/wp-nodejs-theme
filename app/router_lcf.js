@@ -35,6 +35,7 @@ module.exports = function(app) {
   app.get("/sitemap-editions-(:edition).xml", sitemapRoutes.get);
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
+  app.get('/it/', indexRoutes.get);
   app.get('/it/user/(:user)', usersRoutes.get);
   app.get('/it/events/', eventsRoutes.getAll);
   app.get('/it/events/page/(:page)', eventsRoutes.getAll);
