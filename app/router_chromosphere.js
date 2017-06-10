@@ -19,8 +19,6 @@ module.exports = function(app) {
 
   app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))});
 
-  app.get('/', indexRoutes.get);
-
   app.get('/meta/', editionsRoutes.getMeta);
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
@@ -31,6 +29,7 @@ module.exports = function(app) {
   app.get("/sitemap-editions-(:edition).xml", sitemapRoutes.get);
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
+  app.get('/it/', indexRoutes.get);
   app.get('/it/user/(:user)', usersRoutes.get);
   app.get('/it/events/', eventsRoutes.getAll);
   app.get('/it/events/page/(:page)', eventsRoutes.getAll);
@@ -59,6 +58,7 @@ module.exports = function(app) {
   app.post('/it/(:page)', pagesRoutes.post);
   app.post('/it/signup', signupRoutes.post);
 
+  app.get('/', indexRoutes.get);
   app.get('/user/(:user)', usersRoutes.get);
   app.get('/events/', eventsRoutes.getAll);
   app.get('/events/page/(:page)', eventsRoutes.getAll);
