@@ -4,13 +4,13 @@
       // Brand and toggle get grouped for better mobile display
       .navbar-header
         // .navbar-toggle is used as the toggle for collapsed navbar content
-        button.navbar-toggle.visible-xs(type='button', data-toggle='collapse', data-target='#main-navbar')
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-navbar')
           span.sr-only Toggle navigation
           i.icon-bar
           i.icon-bar
           i.icon-bar
         // Be sure to leave the brand out there if you want it shown
-        a.navbar-brand(href='/', title=config.project_name)
+        a.navbar-brand.visible-xs(href='/', title=config.project_name)
           i.icon-vjtelevision
           .sr-only=config.project_name
       // Place everything within .navbar-collapse to hide it until above 768px
