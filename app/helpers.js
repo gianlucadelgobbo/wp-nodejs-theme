@@ -162,7 +162,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   //console.log("getAll "+sez.post_type);
   //console.log("page "+page);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  console.log(sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type);
+//console.log(sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type);
   wp.myCustomResource = wp.registerRoute('wp/v2', sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;
 
@@ -211,7 +211,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
 //////// NETWORK
 
 exports.getNetwork = function getNetwork(req,callback) {
-  console.log("//// Eventoooo");
+//console.log("//// Eventoooo");
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/posts/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.network).get(function( err, data ) {
@@ -531,19 +531,19 @@ exports.getAllEditionsByYear = function getAllEditionsByYear(req, years, limit, 
 };
 
 exports.getEdition = function getEdition(req,callback) {
-  console.log("stocazzo");
-  console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json');
+//console.log("stocazzo");
+//console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json');
   //console.log(req.params.subsubedition);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   if (req.params.subsubedition) {
-    console.log("req.params.subsubedition");
+  //console.log("req.params.subsubedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
       //console.log("//// SubSubEdition");
       //console.log(err || data);
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-      console.log("rientroaa");
+    //console.log("rientroaa");
       callback(data);
     });
   } else if (req.params.subedition) {
@@ -685,7 +685,7 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callbac
     //for (var item in data_events) console.log(data_events[item]['wpcf-startdate']);
     for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
     trgt.getAllEditionsByYear(req, years, 100, 1, function (data_editions) {
-      console.log(data_editions);
+    //console.log(data_editions);
       for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
       for (var item in data_editions) console.log("data: "+data_editions[item]['wpcf-startdate']);
       data.sort(fnz.sortByStartDate);
@@ -709,7 +709,7 @@ exports.setSessions = function setSessions(req,callback) {
   }
   if (config.last_edition) {
     req.session.sessions.current_edition = req.params.edition ? req.params.edition : config.last_edition;
-    console.log(config.meta.editions);
+  //console.log(config.meta.editions);
     //console.log(config);
     if (!config.meta.editions[req.session.sessions.current_edition].startdateISO) config.meta.editions[req.session.sessions.current_edition] = fnz.fixResult(config.meta.editions[req.session.sessions.current_edition]);
   }
