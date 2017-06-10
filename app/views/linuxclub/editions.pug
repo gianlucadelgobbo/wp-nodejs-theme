@@ -1,9 +1,0 @@
-extends layout
-block content
-	article#container(itemscope, itemtype='http://schema.org/Event')
-		.row
-			each box in data
-				.col-lg-3.col-md-4.col-sm-6.col
-					//pre=JSON.stringify(box)
-					if box.title
-						include boxes/box_event

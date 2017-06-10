@@ -10,8 +10,9 @@
           i.icon-bar
           i.icon-bar
         // Be sure to leave the brand out there if you want it shown
-        a.navbar-brand.visible-xs(href='/', title=config.project_name)
-          img.img-responsive(src='/shockart/images/shockart_logo_full.svg', alt=config.project_name)
+        a.navbar-brand(href='/', title=config.project_name)
+          i.icon-shockart
+          .sr-only=config.project_name
       // Place everything within .navbar-collapse to hide it until above 768px
       #main-navbar.collapse.navbar-collapse
         ul#menu-main-menu.nav.navbar-nav

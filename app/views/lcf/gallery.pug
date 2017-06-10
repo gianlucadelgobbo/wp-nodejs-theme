@@ -1,10 +1,11 @@
 extends layout
 block content
   article#container(itemscope='', itemtype='http://schema.org/Event')
-    header
-      h1.entry-title
-        span.pull-left(itemprop="name")=result.post_title
-        span.pull-right
+    header.row
+      .col-xs-9
+        h1.entry-title(itemprop="name")=result.post_title
+      .col-xs-3
+        .pull-right
           include ../_common/inc_share_span
     ul#listItems.row
       each gall in result.post_gallery

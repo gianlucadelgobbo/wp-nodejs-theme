@@ -1,0 +1,41 @@
+extends layout
+block content
+  - var itemtype
+  - //console.log("indexOf")
+  - //console.log(page_data.url.indexOf("/artists/"))
+  - //console.log(page_data.url.length-9)
+  - if (page_data.url.indexOf("/performances/")>0) {
+  -    itemtype = 'http://schema.org/CreativeWork'
+  - } else if (page_data.url.indexOf("/artists/")<page_data.url.length-9) {
+  -    itemtype = 'http://schema.org/Person'
+  - } else if (page_data.url.indexOf("/artists/")==page_data.url.length-9) {
+  -    itemtype = 'http://schema.org/ItemList'
+  - }
+  article#container(itemprop='performer', itemscope, itemtype=itemtype)
+    header.row
+      .col-xs-9
+        h1.entry-title(itemprop="name")=result.post_title
+      .col-xs-3
+        .pull-right
+          include ../_common/inc_share_span
+
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "call")
+      style.
+        .schedule {
+          display: none
+        }
+      if (page_data.url.indexOf("/artists/")==page_data.url.length-9)
+        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The artists list include the submissions submitted, confirmed and not confirmed. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/"+sessions.current_edition+"/participate/\">PARTICIPATE</a>"
+      else if (result.post_content.indexOf('<p class="type">Workshop</p>')==-1)
+        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The schedule of the acts will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/"+sessions.current_edition+"/participate/\">PARTICIPATE</a>"
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "approving")
+      style.
+        .schedule {
+          display: none
+        }
+      if (page_data.url.indexOf("/artists/") == page_data.url.length - 9)
+        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The artists list include the submissions submitted, confirmed and not confirmed. The schedule of the acts will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/participate/as-visitor/\">BUY A TICKET</a>"
+      else if (result.post_content.indexOf('<p class="type">Workshop</p>') == -1)
+        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/participate/as-visitor/\">BUY A TICKET</a>"
+
+    !=result.post_content

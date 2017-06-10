@@ -8,9 +8,7 @@ var eventsRoutes = require('./routes/_common/events');
 var newsRoutes = require('./routes/_common/news');
 var pagesRoutes = require('./routes/_common/pages');
 var robotsRoutes = require('./routes/_common/robots');
-/*
- var searchRoutes = require('./routes/search');
- */
+
 module.exports = function(app) {
   app.get('/*.php', pagesRoutes.get404);
   app.get('/event/2014-rome/*', function(req, res) {res.redirect(301, req.url.replace('/event/2014-rome/','/editions/2014-rome/'))});

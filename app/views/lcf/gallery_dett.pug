@@ -1,12 +1,14 @@
 extends layout
 block content
   article#container(itemscope='', itemtype='http://schema.org/Event')
-    header
-      h1.entry-title
-        span.pull-left(itemprop='name')=result.post_title+": "+result.post_gallery.titolo+(result.post_gallery.dettMedia && result.post_gallery.dettMedia.titolo ? " | "+result.post_gallery.dettMedia.titolo : "")
+    header.row
+      .col-xs-9
+        h1.entry-title
+          span.pull-left(itemprop='name')=result.post_title + ": " + result.post_gallery.titolo + (result.post_gallery.dettMedia && result.post_gallery.dettMedia.titolo ? " | " + result.post_gallery.dettMedia.titolo : "")
           !=" "
           small=result.post_gallery.performers[0].nomearte
-        span.pull-right
+      .col-xs-3
+        .pull-right
           include ../_common/inc_share_span
     if result.post_gallery.dettMedia
       img.img-responsive(itemprop='image', src='https://flxer.net/' + result.post_gallery.dettMedia.folder+'/' + result.post_gallery.dettMedia.name, alt=result.post_gallery.dettMedia.titolo)

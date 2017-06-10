@@ -8,14 +8,14 @@ exports.get = function get(req, res) {
       if(result && result['ID']) {
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
         var check = pug.split("/")[1];
-        console.log(check);
+        //console.log(check);
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
           result.countries = require('../../country-list');
           result.body = {};
           var form = pug.split("_")[1];
           pug = config.prefix+"/page";
         }
-        console.log(form);
+        //console.log(form);
         res.render(pug, {result: result, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});

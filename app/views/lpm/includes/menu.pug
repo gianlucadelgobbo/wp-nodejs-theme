@@ -13,15 +13,15 @@ nav#top-menu.navbar.navbar-inverse
   // Collect the nav links, forms, and other content for toggling
   #menu-MainMenu.collapse.navbar-collapse
     ul.nav.navbar-nav
-      li
+      li(class=page_data.url.indexOf('/idea') >= 0 ? "active" : undefined)
         a(href='/idea/') Idea
-      li
+      li(class=page_data.url.indexOf('/timeline') >= 0 ? "active" : undefined)
         a(href='/timeline/') Timeline
-      li
+      li(class=page_data.url.indexOf('/map') >= 0 ? "active" : undefined)
         a(href='/map/') Map
-      li
+      li(class=page_data.url.indexOf('/gallery') >= 0 ? "active" : undefined)
         a(href='/gallery/') Gallery
-      li
+      li(class=page_data.url.indexOf('/editions') >= 0 ? "active" : undefined)
         a.dropdown-toggle(href='#', data-toggle='dropdown')
           | Editions 
           span.caret
@@ -62,15 +62,15 @@ nav#top-menu.navbar.navbar-inverse
             a(href='/editions/2005-rome/') 2005 Rome
           li
             a(href='/editions/2004-rome/') 2004 Rome
-      li
+      li(class=page_data.url.indexOf('/the-app') >= 0 ? "active" : undefined)
         a(href='/the-app/') The App
-      li
+      li(class=page_data.url.indexOf('/press') >= 0 ? "active" : undefined)
         a(href='/press/') Press
-      li
+      li(class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)
         a(href='/contacts/') Contacts
-      li
+      li(class=page_data.url.indexOf('/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
         a(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
-      li
+      li(class=page_data.url.indexOf('/search') >= 0 ? "active" : undefined)
         a#searchModalButton(href="/search/")
           i.glyphicon.glyphicon-search
           .sr-only=global.__("Search")
