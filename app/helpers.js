@@ -12,7 +12,7 @@ exports.validateFormEmail = function validateFormEmail(o,callback) {
   if(!Validators.validateEmail(o.email)){
     e.push({name:"email",m:__("Email is not an email")});
   }
-  if (!Validators.validateStringLength(o.message, 3, 100)){
+  if (!Validators.validateStringLength(o.message, 3, 100000)){
     e.push({name:"name",m:__("Please enter a valid Message")});
   }
   callback(e, o);
@@ -52,10 +52,10 @@ exports.validateFormJoin = function validateFormJoin(o,callback) {
   if(!Validators.validateEmail(o.email)){
     e.push({name:"email",m:__("Email is not an email")});
   }
-  if (!Validators.validateStringLength(o.activity_description, 3, 100)){
+  if (!Validators.validateStringLength(o.activity_description, 3, 100000)){
     e.push({name:"activity_description",m:__("Organization activity description is required")});
   }
-  if (!Validators.validateStringLength(o.activity_list, 3, 100)){
+  if (!Validators.validateStringLength(o.activity_list, 3, 100000)){
     e.push({name:"activity_list",m:__("Activities name list is required")});
   }
   callback(e, o);
