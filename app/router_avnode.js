@@ -10,6 +10,8 @@ var robotsRoutes = require('./routes/_common/robots');
 
 module.exports = function(app) {
   app.get('/*.php', pagesRoutes.get404);
+  app.post('/*.php', pagesRoutes.get404);
+
   app.get('/member/*', function(req, res) {res.redirect(301, req.url.replace('/member/','/members/'))});
   app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))});
   app.get('/robots.txt', robotsRoutes.get);

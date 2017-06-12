@@ -16,6 +16,8 @@ var pagesRoutes = require('./routes/_common/pages');
 
 module.exports = function(app) {
   app.get('/*.php', pagesRoutes.get404);
+  app.post('/*.php', pagesRoutes.get404);
+
   app.get('/en/*', function(req, res) {res.redirect(301, req.url.replace('/en/','/'))});
   app.get('/web-and-mobile/*', function(req, res) {res.redirect(301, req.url.replace('/web-and-mobile/','/portfolio/web-and-mobile/'))});
   app.get('/web-portfolio/*', function(req, res) {res.redirect(301, req.url.replace('/web-portfolio/','/portfolio/web-and-mobile/'))});

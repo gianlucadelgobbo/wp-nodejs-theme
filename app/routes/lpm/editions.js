@@ -76,7 +76,7 @@ exports.getMeta = function getMeta(req, res) {
         //console.log(data);
         meta[val] = data.meta.edition;
         conta.push(val);
-      //console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
+        //console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
         //console.log(conta.length +" - "+editions.length);
         //console.log(req.query.check);
         if (conta.length==config.editions.length) {

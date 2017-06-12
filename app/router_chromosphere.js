@@ -11,6 +11,8 @@ var robotsRoutes = require('./routes/_common/robots');
 
 module.exports = function(app) {
   app.get('/*.php', pagesRoutes.get404);
+  app.post('/*.php', pagesRoutes.get404);
+
   app.get('/event/2016-rome/*', function(req, res) {res.redirect(301, req.url.replace('/event/2016-rome/','/editions/2016-rome/'))});
 
   app.get('/events/2016-rome/*', function(req, res) {res.redirect(301, req.url.replace('/events/2016-rome/','/editions/2016-rome/'))});
