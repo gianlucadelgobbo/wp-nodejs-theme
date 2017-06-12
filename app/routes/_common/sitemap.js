@@ -60,7 +60,9 @@ exports.get = function get(req, res) {
       console.log(req.params.users);
       helpers.getAllUsers(req, req.params.users, function( results ) {
         console.log("eccomi");
-        //console.log("eccomi");
+        console.log(results);
+        console.log(config.sitemap.users);
+        console.log(config.sitemap.users[req.params.users].baseurl);
         res.render('_common/sitemap-users', {results: results, baseurl:config.sitemap.users[req.params.users].baseurl});
       });
     }
