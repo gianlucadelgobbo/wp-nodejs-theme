@@ -23,7 +23,7 @@ exports.get = function get(req, res) {
                           helpers.getAll(req, config.sez["web-and-mobile"], config.sez.home.web.limit, 1, function (result_web) {
                             console.log(config.sez.home.web.limit);
                             console.log(result_web.length);
-                            if (result_web.length<config.sez.home.web.limit) this.get(req, res);
+                            if (!result_web.length || result_webresult_web.length<config.sez.home.web.limit) this.get(req, res);
                               //res.redirect((req.session.sessions.current_lang=='it' ? '/it' : '')+'/?createcache=1');
                             helpers.getAll(req, config.sez["learning"], config.sez.home.learning.limit, 1, function (result_learning) {
                               helpers.getAll(req, config.sez["videos"], config.sez.home.videos.limit, 1, function (result_videos) {
