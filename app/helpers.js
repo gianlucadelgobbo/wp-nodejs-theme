@@ -162,7 +162,6 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   //console.log("getAll "+sez.post_type);
   //console.log("page "+page);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  console.log(sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type);
   wp.myCustomResource = wp.registerRoute('wp/v2', sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;
 
