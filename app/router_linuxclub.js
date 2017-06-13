@@ -44,6 +44,8 @@ module.exports = function(app) {
   app.get('/gallery/(:artist)/(:gallery)', pagesRoutes.getGallery);
   app.get('/gallery/(:artist)/(:gallery)/(:galleryitem)', pagesRoutes.getGallery);
   app.get('/signup', signupRoutes.get);
+  app.get('/(:page)/(:subpage)', pagesRoutes.get);
+  app.post('/(:page)/(:subpage)', pagesRoutes.post);
   app.get('/(:page)', pagesRoutes.get);
   app.post('/(:page)', pagesRoutes.post);
   app.post('/signup', signupRoutes.post);
