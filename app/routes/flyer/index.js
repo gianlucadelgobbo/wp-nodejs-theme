@@ -33,7 +33,7 @@ exports.get = function get(req, res) {
                                     jsonfile.writeFile(file, obj, function (err) {
                                       //if(err) console.log(err);
                                     });
-                                    console.log(obj);
+                                    console.log(obj.results.web);
                                     res.render(config.prefix+'/'+'index',obj);
                                   });
                                 });
