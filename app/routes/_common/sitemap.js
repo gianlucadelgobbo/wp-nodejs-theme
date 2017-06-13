@@ -45,15 +45,19 @@ exports.get = function get(req, res) {
     } else if (req.params.posttype) {
       //console.log("eccomi");
       console.log(config.sez[req.params.posttype]);
-      helpers.getAllEditionsByYear(req, null, config.sez[req.params.posttype], 1, function( results ) {
         if (req.params.posttype == "exhibitions") {
-          res.render('_common/sitemap-exhibitions', {results:results, isodate:isodate});
+          helpers.getAll(req, config.sez[req.params.posttype], -1, 1, function( results ) {
+            res.render('_common/sitemap-exhibitions', {results:results, isodate:isodate});
+          });
         } else if (req.params.posttype == "editions") {
-          res.render('_common/sitemap-editions', {results:results, isodate:isodate});
+          helpers.getAllEditionsByYear(req, null, config.sez[req.params.posttype], 1, function( results ) {
+            res.render('_common/sitemap-editions', {results:results, isodate:isodate});
+          });
         } else {
-          res.render('_common/sitemap-posttype', {results:results, isodate:isodate});
+            helpers.getAll(req, config.sez[req.params.posttype], -1, 1, function( results ) {
+              res.render('_common/sitemap-posttype', {results:results, isodate:isodate});
+            });
         }
-      });
 
     } else if (req.params.users) {
       console.log(req.params.users);
