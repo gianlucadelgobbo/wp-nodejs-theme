@@ -4,9 +4,9 @@ var fs = require('fs');
 var fnz = require('../../functions');
 
 exports.get = function get(req, res) {
-  var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
   helpers.setSessions(req, function() {
-    //console.log("home");
+    var file = config.root+'/tmp/'+config.prefix+'/home_'+req.session.sessions.current_lang+'.json';
+    console.log(file);
     //console.log(req.session.sessions);
     if (req.query.createcache==1 || !fs.existsSync(file)){
       req.params = {"page":"profile"};
@@ -33,6 +33,7 @@ exports.get = function get(req, res) {
                                     jsonfile.writeFile(file, obj, function (err) {
                                       //if(err) console.log(err);
                                     });
+                                    console.log(obj);
                                     res.render(config.prefix+'/'+'index',obj);
                                   });
                                 });
