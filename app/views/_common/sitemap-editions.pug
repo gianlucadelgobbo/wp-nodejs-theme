@@ -1,6 +1,7 @@
 doctype xml
 sitemapindex(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
+  - console.log(results)
   each result in results
     sitemap
-      loc=config.domain+"/sitemap-"+result.type +"-"+result.slug+".xml"
+      loc=config.domain+"/sitemap-"+result.post_type +"-"+result.slug+".xml"
       lastmod=result.startdateISO

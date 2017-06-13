@@ -9,7 +9,6 @@ exports.get = function get(req, res) {
     var now = new Date();
     now.setHours(now.getHours() - 4);
     var isodate = fnz.ISODateString(now);
-
     if (req.url == "/sitemap.xml") {
       //console.log(req.url);
       res.render(config.prefix+'/sitemap', {isodate:isodate});
@@ -45,8 +44,8 @@ exports.get = function get(req, res) {
 
     } else if (req.params.posttype) {
       //console.log("eccomi");
-      //console.log(config.sez[req.params.posttype]);
-      helpers.getAll(req, config.sez[req.params.posttype], -1, 1, function( results ) {
+      console.log(config.sez[req.params.posttype]);
+      helpers.getAllEditionsByYear(req, null, config.sez.editions.limit, 1, function( results ) {
         if (req.params.posttype == "exhibitions") {
           res.render('_common/sitemap-exhibitions', {results:results, isodate:isodate});
         } else if (req.params.posttype == "editions") {
@@ -59,10 +58,6 @@ exports.get = function get(req, res) {
     } else if (req.params.users) {
       console.log(req.params.users);
       helpers.getAllUsers(req, req.params.users, function( results ) {
-        console.log("eccomi");
-        console.log(results);
-        console.log(config.sitemap.users);
-        console.log(config.sitemap.users[req.params.users].baseurl);
         res.render('_common/sitemap-users', {results: results, baseurl:config.sitemap.users[req.params.users].baseurl});
       });
     }
