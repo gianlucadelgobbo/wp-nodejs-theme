@@ -92,19 +92,19 @@ exports.getUser = function getUser(req, user_sez, callback) {
   //console.log("getUser"+config.data_domain);
   var wpflyer = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
   wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/author/(?P<siteee>)/(?P<sluggg>)' );
-  wpflyer.myCustomResource().sluggg(req.params.user).siteee(config.site_tax).get(function( err, data ) {
-    //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/author/'+config.site_tax+'/'+req.params.user+'/');
+  wpflyer.myCustomResource().sluggg(req.params.user).siteee(config.prefix).get(function( err, data ) {
+    console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/author/'+config.prefix+'/'+req.params.user+'/');
     //
     if (err) {
       callback({});
     } else {
       //console.log("//// User "+req.params.user+" "+config.site_tax);
-      for(auth_content in data.data.auth_contents) {
-        data.data.auth_contents[auth_content].posts = fnz.fixResults(data.data.auth_contents[auth_content].posts);
+      for(auth_content in data.auth_contents) {
+        data.auth_contents[auth_content].posts = fnz.fixResults(data.auth_contents[auth_content].posts);
       }
       //console.log(err || data);
       //data = fnz.fixResults(data);
-      if (!data.data.img || data.data.img=="") data.data.img = config.domain + config.sez.users[user_sez].default_img;
+      if (!data.img || data.img=="") data.img = config.domain + config.sez.users[user_sez].default_img;
       callback(data);
     }
   });

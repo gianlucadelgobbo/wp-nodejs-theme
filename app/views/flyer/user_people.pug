@@ -12,21 +12,21 @@ block content
             h1.entry-title(itemprop='name')=result.display_name
           .rientro
             p(itemprop='jobTitle')
-              i=result.role
+              i=result.role_label
               if result.auth_contents
                 p
-                  each auth_content in result.auth_contents
-                    if auth_content.posts.length
-                      !=(auth_content["labels"]["name"] == "Events" ? "Live Visuals" : auth_content["labels"]["name"]) + ": " + auth_content.posts.length
+                  each auth_content,key in result.auth_contents
+                    if auth_content
+                      !=config.posttypes_labels[key] + ": " + auth_content.length
                       br
             include ../_common/inc_share
       if result.auth_contents
-        each auth_content in result.auth_contents
-          if auth_content.posts.length
+        each auth_content,key in result.auth_contents
+          if auth_content.length
             section(itemscope, itemtype="https://schema.org/ItemList")
-              h3(itemprop="name")=auth_content.labels.name == "Events" ? "Live Visuals" : auth_content["labels"]["name"]
+              h3(itemprop="name")=config.posttypes_labels[key]
               .row.isotope.results
-                each result, position in auth_content.posts
+                each result, position in auth_content
                   if result.post_type == 'events'
                     .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
                       include boxes/box_event

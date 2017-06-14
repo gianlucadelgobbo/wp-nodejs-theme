@@ -14,16 +14,16 @@ block content
               include ../_common/inc_share_span
         .rientro
           p(itemprop='jobTitle')
-            i=result.role
+            i=result.role_label
             p
               if result.auth_contents.editions && result.auth_contents.editions.posts.length
                 !=result.auth_contents.editions.labels.name + ": " + result.auth_contents.editions.posts.length
                 br
               if result.auth_contents.events && result.auth_contents.events.posts.length
-                !=result.auth_contents.events.labels.name + ": " + result.auth_contents.events.posts.length
+                !=config.posttypes_labels.events + ": " + result.auth_contents.events.posts.length
                 br
               if result.auth_contents.news && result.auth_contents.news.posts.length
-                !=result.auth_contents.news.labels.name + ": " + result.auth_contents.news.posts.length
+                !=config.posttypes_labels.news + ": " + result.auth_contents.news.posts.length
     if result.auth_contents.editions && result.auth_contents.editions.posts.length
       - var res = result.auth_contents.editions
         section(itemscope, itemtype="https://schema.org/ItemList")

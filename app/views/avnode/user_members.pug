@@ -9,7 +9,7 @@ block content
           p
             i=result.organisationtype
           p(itemprop='jobTitle')
-            i=result.role
+            i=result.role_label
 
         div(itemprop='description')!=result.description
 
@@ -38,16 +38,16 @@ block content
         .rientro
           p
             if result.auth_contents && result.auth_contents["member-activities"] && result.auth_contents["member-activities"].posts.length
-              !=result.auth_contents["member-activities"].labels.name + ": " + result.auth_contents["member-activities"].posts.length
+              !=config.posttypes_labels["member-activities"] + ": " + result.auth_contents["member-activities"].posts.length
               br
             if result.auth_contents && result.auth_contents.activities && result.auth_contents.activities.posts.length
-              !=result.auth_contents.activities.labels.name + ": " + result.auth_contents.activities.posts.length
+              !=config.posttypes_labels.activities + ": " + result.auth_contents.activities.posts.length
               br
             if result.auth_contents && result.auth_contents.events && result.auth_contents.events.posts.length
-              !=result.auth_contents.events.labels.name + ": " + result.auth_contents.events.posts.length
+              !=config.posttypes_labels.events + ": " + result.auth_contents.events.posts.length
               br
             if result.auth_contents && result.auth_contents.news && result.auth_contents.news.posts.length
-              !=result.auth_contents.news.labels.name + ": " + result.auth_contents.news.posts.length
+              !=config.posttypes_labels.news + ": " + result.auth_contents.news.posts.length
           if result.organisationurl
             p
               a(href=result.organisationurl, target="_blank")
@@ -66,6 +66,14 @@ block content
           include ../_common/inc_share
 
     if result.auth_contents && result.auth_contents.activities && result.auth_contents.activities.posts.length
+      - var res = result.auth_contents.activities
+      section(itemscope, itemtype="https://schema.org/ItemList")
+        h3(itemprop="name")=res.labels.name
+        .row.isotope.results
+          each result, position in res.posts
+            .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+              include boxes/box_activity
+    if result.auth_contents && result.auth_contents["member-activities"] && result.auth_contents["member-activities"].posts.length
       - var res = result.auth_contents.activities
       section(itemscope, itemtype="https://schema.org/ItemList")
         h3(itemprop="name")=res.labels.name

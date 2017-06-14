@@ -12,11 +12,11 @@
           a(itemprop='url', href=lang_preurl+'/'+sez.baseurls[result.role]+'/'+result.user_login+'/')
             span(itemprop='name')=result.display_name
         p(itemprop='jobTitle')
-          i=result.role
+          i=result.role_label
         if result.auth_contents
           p
-            each auth_content in result.auth_contents
-              if auth_content.posts
-                !=auth_content["labels"]["name"]+": "+auth_content.posts
+            each auth_content,key in result.auth_contents
+              if auth_content
+                !=config.posttypes_labels[key]+": "+auth_content
                 br
     hr

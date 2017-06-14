@@ -11,16 +11,16 @@ block content
           h1.entry-title(itemprop='name')=result.display_name
         .rientro
           p(itemprop='jobTitle')
-            i=result.role
+            i=result.role_label
             p
               if result.auth_contents.exhibitions && result.auth_contents.exhibitions.posts.length
                 !=result.auth_contents.exhibitions.labels.name + ": " + result.auth_contents.exhibitions.posts.length
                 br
               if result.auth_contents.events && result.auth_contents.events.posts.length
-                !=result.auth_contents.events.labels.name + ": " + result.auth_contents.events.posts.length
+                !=config.posttypes_labels.events + ": " + result.auth_contents.events.posts.length
                 br
               if result.auth_contents.news && result.auth_contents.news.posts.length
-                !=result.auth_contents.news.labels.name + ": " + result.auth_contents.news.posts.length
+                !=config.posttypes_labels.news + ": " + result.auth_contents.news.posts.length
                 br
           include ../_common/inc_share
     if result.auth_contents.exhibitions && result.auth_contents.exhibitions.posts.length
