@@ -1,5 +1,7 @@
 [
   {
+    "ID": 270,
+    "user_login": "albertobordonaro",
     "display_name": "Alberto Bordonaro",
     "role": "art",
     "avnode-role": "art",
@@ -22,6 +24,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 60,
+    "user_login": "alessiaturriziani",
     "display_name": "Alessia Turriziani",
     "role": "art",
     "avnode-role": "art",
@@ -44,6 +48,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 172,
+    "user_login": "antoniorollo",
     "display_name": "Antonio Rollo",
     "role": "art",
     "avnode-role": "art",
@@ -66,6 +72,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 94,
+    "user_login": "fabiolattanziantinori",
     "display_name": "Conte Serbelloni Mazzanti Viendalmare",
     "role": "art",
     "avnode-role": "art",
@@ -88,6 +96,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 148,
+    "user_login": "danieletabellini",
     "display_name": "Daniele Tabellini",
     "role": "art",
     "avnode-role": "art",
@@ -110,6 +120,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 291,
+    "user_login": "elisaantonacci",
     "display_name": "Elisa Antonacci",
     "role": "art",
     "avnode-role": "art",
@@ -132,6 +144,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 372,
+    "user_login": "fabiosestili",
     "display_name": "Fabio Sestili",
     "role": "art",
     "avnode-role": "art",
@@ -154,6 +168,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 108,
+    "user_login": "flxerteam",
     "display_name": "FLxER Team",
     "role": "art",
     "avnode-role": "art",
@@ -176,6 +192,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 219,
+    "user_login": "francescafini",
     "display_name": "Francesca Fini",
     "role": "art",
     "avnode-role": "art",
@@ -198,6 +216,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 128,
+    "user_login": "pintaycolorea",
     "display_name": "Ines Iglesias Heras",
     "role": "art",
     "avnode-role": "art",
@@ -220,6 +240,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 177,
+    "user_login": "kevinpistone",
     "display_name": "Kevin Pistone",
     "role": "art",
     "avnode-role": "art",
@@ -242,6 +264,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 170,
+    "user_login": "lab9",
     "display_name": "Lab9",
     "role": "art",
     "avnode-role": "art",
@@ -264,6 +288,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 221,
+    "user_login": "lorenzotaiuti",
     "display_name": "Lorenzo Taiuti",
     "role": "art",
     "avnode-role": "art",
@@ -286,6 +312,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 231,
+    "user_login": "lpm-team",
     "display_name": "LPM Team",
     "role": "art",
     "avnode-role": "art",
@@ -308,6 +336,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 373,
+    "user_login": "martinmayer",
     "display_name": "Martin Mayer",
     "role": "art",
     "avnode-role": "art",
@@ -330,6 +360,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 117,
+    "user_login": "milviavincenzini",
     "display_name": "Milvia Vincenzini",
     "role": "art",
     "avnode-role": "art",
@@ -352,6 +384,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 156,
+    "user_login": "okapi",
     "display_name": "Økapi",
     "role": "art",
     "avnode-role": "art",
@@ -374,6 +408,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 103,
+    "user_login": "ornellafabretti",
     "display_name": "Ornella Fabretti",
     "role": "art",
     "avnode-role": "art",
@@ -396,6 +432,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 371,
+    "user_login": "hexler",
     "display_name": "Robert Fisher",
     "role": "art",
     "avnode-role": "art",
@@ -418,6 +456,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 175,
+    "user_login": "rudebob",
     "display_name": "Rudebob",
     "role": "art",
     "avnode-role": "art",
@@ -440,6 +480,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 50,
+    "user_login": "sarahgrimaldi",
     "display_name": "Sarah Grimaldi",
     "role": "art",
     "avnode-role": "art",
@@ -462,6 +504,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 374,
+    "user_login": "silianacrocchianti",
     "display_name": "Siliana Crocchianti",
     "role": "art",
     "avnode-role": "art",
@@ -484,6 +528,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 41,
+    "user_login": "simoneachille",
     "display_name": "Simone Achille",
     "role": "art",
     "avnode-role": "art",
@@ -506,6 +552,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 46,
+    "user_login": "simonesinesi",
     "display_name": "Simone Sinesi",
     "role": "art",
     "avnode-role": "art",
@@ -528,6 +576,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 290,
+    "user_login": "stefanobruni",
     "display_name": "Stefano Bruni",
     "role": "art",
     "avnode-role": "art",
@@ -550,6 +600,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 141,
+    "user_login": "stv",
     "display_name": "STV",
     "role": "art",
     "avnode-role": "art",
@@ -572,6 +624,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 16,
+    "user_login": "circle",
     "display_name": "Videosolid",
     "role": "art",
     "avnode-role": "art",
@@ -594,6 +648,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 54,
+    "user_login": "wladimirvinciguerra",
     "display_name": "Wladimir Vinciguerra",
     "role": "art",
     "avnode-role": "art",
@@ -616,6 +672,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 130,
+    "user_login": "yvonnerukavina",
     "display_name": "Yvonne Rukavina",
     "role": "art",
     "avnode-role": "art",
@@ -638,6 +696,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 49,
+    "user_login": "flaviodistefano",
     "display_name": "Flavio Distefano",
     "role": "code",
     "avnode-role": "code",
@@ -660,6 +720,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 58,
+    "user_login": "omaracone",
     "display_name": "Omar Acone",
     "role": "code",
     "avnode-role": "code",
@@ -682,6 +744,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 337,
+    "user_login": "claudiasilvi",
     "display_name": "Claudia Silvi",
     "role": "content",
     "avnode-role": "content",
@@ -704,6 +768,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 73,
+    "user_login": "b_muvis",
     "display_name": "Alberto Bordonaro",
     "role": "curator",
     "avnode-role": "curator",
@@ -726,6 +792,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 84,
+    "user_login": "antoniorosciano",
     "display_name": "Antonio Rosciano",
     "role": "curator",
     "avnode-role": "curator",
@@ -748,6 +816,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 206,
+    "user_login": "ceciliamarotta",
     "display_name": "Cecilia Marotta",
     "role": "curator",
     "avnode-role": "curator",
@@ -770,6 +840,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 367,
+    "user_login": "claudioguerrieri",
     "display_name": "Claudio Guerrieri",
     "role": "curator",
     "avnode-role": "curator",
@@ -792,6 +864,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 167,
+    "user_login": "donatellalembo",
     "display_name": "Donatella Lembo",
     "role": "curator",
     "avnode-role": "curator",
@@ -814,6 +888,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 51,
+    "user_login": "emanuelanobilemino",
     "display_name": "Emanuela Nobile Mino",
     "role": "curator",
     "avnode-role": "curator",
@@ -836,6 +912,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 131,
+    "user_login": "marcodonnarumma",
     "display_name": "Marco Donnarumma",
     "role": "curator",
     "avnode-role": "curator",
@@ -858,6 +936,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 112,
+    "user_login": "valeriaguarcini",
     "display_name": "Valeria Guarcini",
     "role": "curator",
     "avnode-role": "curator",
@@ -880,6 +960,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 153,
+    "user_login": "2step",
     "display_name": "2STEP",
     "role": "customer",
     "avnode-role": "partner",
@@ -902,6 +984,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 119,
+    "user_login": "47thfloor",
     "display_name": "47th Floor",
     "role": "customer",
     "avnode-role": "partner",
@@ -924,6 +1008,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 289,
+    "user_login": "79things",
     "display_name": "79things",
     "role": "customer",
     "avnode-role": "partner",
@@ -946,6 +1032,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 81,
+    "user_login": "achillebonitooliva",
     "display_name": "Achille Bonito Oliva",
     "role": "customer",
     "avnode-role": "partner",
@@ -968,6 +1056,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 215,
+    "user_login": "addfestival",
     "display_name": "ADD Festival",
     "role": "customer",
     "avnode-role": "partner",
@@ -990,6 +1080,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 207,
+    "user_login": "ahatourteam",
     "display_name": "AHA tour team",
     "role": "customer",
     "avnode-role": "partner",
@@ -1012,6 +1104,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 212,
+    "user_login": "alexpalanca",
     "display_name": "Alex Palanca",
     "role": "customer",
     "avnode-role": "partner",
@@ -1034,6 +1128,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 47,
+    "user_login": "alinari",
     "display_name": "Alinari",
     "role": "customer",
     "avnode-role": "partner",
@@ -1056,6 +1152,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 364,
+    "user_login": "amorefestival",
     "display_name": "Amore Festival",
     "role": "customer",
     "avnode-role": "partner",
@@ -1078,6 +1176,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 65,
+    "user_login": "antiquariatomino",
     "display_name": "Antiquariato Mino",
     "role": "customer",
     "avnode-role": "partner",
@@ -1100,6 +1200,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 104,
+    "user_login": "antonellanarcisi",
     "display_name": "Antonella Narcisi",
     "role": "customer",
     "avnode-role": "partner",
@@ -1122,6 +1224,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 89,
+    "user_login": "aperionspa",
     "display_name": "Aperion spa",
     "role": "customer",
     "avnode-role": "partner",
@@ -1144,6 +1248,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 197,
+    "user_login": "arcadi",
     "display_name": "Arcadi",
     "role": "customer",
     "avnode-role": "partner",
@@ -1166,6 +1272,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 45,
+    "user_login": "armosia",
     "display_name": "Armosia",
     "role": "customer",
     "avnode-role": "partner",
@@ -1188,6 +1296,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 196,
+    "user_login": "artisopensource",
     "display_name": "Art is Open Source",
     "role": "customer",
     "avnode-role": "partner",
@@ -1210,6 +1320,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 118,
+    "user_login": "artificialia",
     "display_name": "Artificialia",
     "role": "customer",
     "avnode-role": "partner",
@@ -1232,6 +1344,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 159,
+    "user_login": "mknassociazioneculturale",
     "display_name": "Ass. Cult. MKN",
     "role": "customer",
     "avnode-role": "partner",
@@ -1254,6 +1368,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 165,
+    "user_login": "associazioneculturalevenetojazz",
     "display_name": "Ass. Cult. Veneto Jazz",
     "role": "customer",
     "avnode-role": "partner",
@@ -1276,6 +1392,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 200,
+    "user_login": "assculturalemagnitudo",
     "display_name": "Ass. Culturale Magnitudo",
     "role": "customer",
     "avnode-role": "partner",
@@ -1298,6 +1416,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 102,
+    "user_login": "associazionelaziodemocratica",
     "display_name": "Ass. Lazio Democratica",
     "role": "customer",
     "avnode-role": "partner",
@@ -1320,6 +1440,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 346,
+    "user_login": "avnode",
     "display_name": "AVnode",
     "role": "customer",
     "avnode-role": "partner",
@@ -1342,6 +1464,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 133,
+    "user_login": "baldierisrl",
     "display_name": "Baldieri",
     "role": "customer",
     "avnode-role": "partner",
@@ -1364,6 +1488,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 192,
+    "user_login": "barbaramaussier",
     "display_name": "Barbara Maussier",
     "role": "customer",
     "avnode-role": "partner",
@@ -1386,6 +1512,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 202,
+    "user_login": "bebop_1",
     "display_name": "Bebop",
     "role": "customer",
     "avnode-role": "partner",
@@ -1408,6 +1536,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 115,
+    "user_login": "associationinternationalpourlabjcem",
     "display_name": "BJCEM",
     "role": "customer",
     "avnode-role": "partner",
@@ -1430,6 +1560,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 72,
+    "user_login": "bluecheese",
     "display_name": "Bluecheese",
     "role": "customer",
     "avnode-role": "partner",
@@ -1452,6 +1584,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 78,
+    "user_login": "bnl",
     "display_name": "Bnl",
     "role": "customer",
     "avnode-role": "partner",
@@ -1474,6 +1608,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 201,
+    "user_login": "boxikus",
     "display_name": "Boxikus",
     "role": "customer",
     "avnode-role": "partner",
@@ -1496,6 +1632,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 245,
+    "user_login": "bulgari",
     "display_name": "Bulgari",
     "role": "customer",
     "avnode-role": "partner",
@@ -1518,6 +1656,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 122,
+    "user_login": "csoaforteprenestino",
     "display_name": "C.S.O.A.Forte Prenestino",
     "role": "customer",
     "avnode-role": "partner",
@@ -1540,6 +1680,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 224,
+    "user_login": "capitalelavoro",
     "display_name": "Capitale Lavoro",
     "role": "customer",
     "avnode-role": "partner",
@@ -1562,6 +1704,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 75,
+    "user_login": "capuano",
     "display_name": "Capuano",
     "role": "customer",
     "avnode-role": "partner",
@@ -1584,6 +1728,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 71,
+    "user_login": "cartesio",
     "display_name": "Cartesio",
     "role": "customer",
     "avnode-role": "partner",
@@ -1606,6 +1752,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 66,
+    "user_login": "castelvecchi",
     "display_name": "Castelvecchi",
     "role": "customer",
     "avnode-role": "partner",
@@ -1628,6 +1776,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 375,
+    "user_login": "cineama",
     "display_name": "Cineama",
     "role": "customer",
     "avnode-role": "partner",
@@ -1650,6 +1800,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 188,
+    "user_login": "cineticlab",
     "display_name": "CineticLab",
     "role": "customer",
     "avnode-role": "partner",
@@ -1672,6 +1824,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 138,
+    "user_login": "cinetrip",
     "display_name": "Cinetrip",
     "role": "customer",
     "avnode-role": "partner",
@@ -1694,6 +1848,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 107,
+    "user_login": "circoloculturaleamantes",
     "display_name": "Circolo Culturale Amantes",
     "role": "customer",
     "avnode-role": "partner",
@@ -1716,6 +1872,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 83,
+    "user_login": "cogedi",
     "display_name": "Cogedi",
     "role": "customer",
     "avnode-role": "partner",
@@ -1738,6 +1896,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 181,
+    "user_login": "comunediroma",
     "display_name": "Comune di Roma",
     "role": "customer",
     "avnode-role": "partner",
@@ -1760,6 +1920,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 244,
+    "user_login": "coni",
     "display_name": "CONI",
     "role": "customer",
     "avnode-role": "partner",
@@ -1782,6 +1944,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 116,
+    "user_login": "conplanitaliasrl",
     "display_name": "Conplan Italia",
     "role": "customer",
     "avnode-role": "partner",
@@ -1804,6 +1968,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 137,
+    "user_login": "consap",
     "display_name": "CONSAP",
     "role": "customer",
     "avnode-role": "partner",
@@ -1826,6 +1992,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 43,
+    "user_login": "contestarockhair",
     "display_name": "Contesta Rock Hair",
     "role": "customer",
     "avnode-role": "partner",
@@ -1848,6 +2016,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 208,
+    "user_login": "cooperativabinarioetico",
     "display_name": "Cooperativa Binario Etico",
     "role": "customer",
     "avnode-role": "partner",
@@ -1870,6 +2040,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 135,
+    "user_login": "cuebccentrouniversitarioeuropeoperibeniculturali",
     "display_name": "CUEBC - Centro Universitario Europeo per i Beni Culturali",
     "role": "customer",
     "avnode-role": "partner",
@@ -1892,6 +2064,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 370,
+    "user_login": "dailystyle",
     "display_name": "Dailystyle production",
     "role": "customer",
     "avnode-role": "partner",
@@ -1914,6 +2088,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 114,
+    "user_login": "deliriouniversalecom",
     "display_name": "Deliriouniversale.com",
     "role": "customer",
     "avnode-role": "partner",
@@ -1936,6 +2112,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 74,
+    "user_login": "divingone",
     "display_name": "Diving One",
     "role": "customer",
     "avnode-role": "partner",
@@ -1958,6 +2136,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 152,
+    "user_login": "dromemagazine",
     "display_name": "Drome Magazine",
     "role": "customer",
     "avnode-role": "partner",
@@ -1980,6 +2160,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 203,
+    "user_login": "eventlab",
     "display_name": "EventLab",
     "role": "customer",
     "avnode-role": "partner",
@@ -2002,6 +2184,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 57,
+    "user_login": "fao",
     "display_name": "FAO",
     "role": "customer",
     "avnode-role": "partner",
@@ -2024,6 +2208,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 113,
+    "user_login": "figeasrl",
     "display_name": "Figea srl",
     "role": "customer",
     "avnode-role": "partner",
@@ -2046,6 +2232,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 166,
+    "user_login": "filippogiardina",
     "display_name": "Filippo Giardina",
     "role": "customer",
     "avnode-role": "partner",
@@ -2068,6 +2256,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 160,
+    "user_login": "flaresrl",
     "display_name": "Flare Srl",
     "role": "customer",
     "avnode-role": "partner",
@@ -2090,6 +2280,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 76,
+    "user_login": "flatlife",
     "display_name": "Flatlife",
     "role": "customer",
     "avnode-role": "partner",
@@ -2112,6 +2304,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 169,
+    "user_login": "fluxus",
     "display_name": "Fluxus",
     "role": "customer",
     "avnode-role": "partner",
@@ -2134,6 +2328,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 360,
+    "user_login": "fondazioneconilsud",
     "display_name": "Fondazione CON IL SUD",
     "role": "customer",
     "avnode-role": "partner",
@@ -2156,6 +2352,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 368,
+    "user_login": "fitzcarraldo",
     "display_name": "Fondazione FItzcarraldo",
     "role": "customer",
     "avnode-role": "partner",
@@ -2178,6 +2376,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 191,
+    "user_login": "fondazioneravello",
     "display_name": "Fondazione Ravello",
     "role": "customer",
     "avnode-role": "partner",
@@ -2200,6 +2400,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 142,
+    "user_login": "foxinternationalchannelsitalysrl",
     "display_name": "Fox International Channels",
     "role": "customer",
     "avnode-role": "partner",
@@ -2222,6 +2424,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 182,
+    "user_login": "francescaalderisi",
     "display_name": "Francesca Alderisi",
     "role": "customer",
     "avnode-role": "partner",
@@ -2244,6 +2448,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 158,
+    "user_login": "francescogiardina",
     "display_name": "Francesco Giardina",
     "role": "customer",
     "avnode-role": "partner",
@@ -2266,6 +2472,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 227,
+    "user_login": "fromclassicson",
     "display_name": "From Classics On",
     "role": "customer",
     "avnode-role": "partner",
@@ -2288,6 +2496,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 90,
+    "user_login": "fujiko",
     "display_name": "Fujiko",
     "role": "customer",
     "avnode-role": "partner",
@@ -2310,6 +2520,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 59,
+    "user_login": "futuro",
     "display_name": "Futuro",
     "role": "customer",
     "avnode-role": "partner",
@@ -2332,6 +2544,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 157,
+    "user_login": "galactus",
     "display_name": "Galactus",
     "role": "customer",
     "avnode-role": "partner",
@@ -2354,6 +2568,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 64,
+    "user_login": "ghemos",
     "display_name": "Ghemos",
     "role": "customer",
     "avnode-role": "partner",
@@ -2376,6 +2592,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 204,
+    "user_login": "gherardogossi",
     "display_name": "Gherardo Gossi",
     "role": "customer",
     "avnode-role": "partner",
@@ -2398,6 +2616,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 56,
+    "user_login": "giovanninicoladevito",
     "display_name": "Giovanni Nicola De Vito",
     "role": "customer",
     "avnode-role": "partner",
@@ -2420,6 +2640,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 155,
+    "user_login": "glamnight",
     "display_name": "Glam Night",
     "role": "customer",
     "avnode-role": "partner",
@@ -2442,6 +2664,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 273,
+    "user_login": "gruppoperonieventi2",
     "display_name": "Gruppo Peroni Eventi",
     "role": "customer",
     "avnode-role": "partner",
@@ -2464,6 +2688,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 124,
+    "user_login": "homework",
     "display_name": "Homework",
     "role": "customer",
     "avnode-role": "partner",
@@ -2486,6 +2712,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 214,
+    "user_login": "humangest",
     "display_name": "Human Gest",
     "role": "customer",
     "avnode-role": "partner",
@@ -2508,6 +2736,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 195,
+    "user_login": "ifad",
     "display_name": "IFAD",
     "role": "customer",
     "avnode-role": "partner",
@@ -2530,6 +2760,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 149,
+    "user_login": "imperiale97srl",
     "display_name": "Imperiale 97 Srl",
     "role": "customer",
     "avnode-role": "partner",
@@ -2552,6 +2784,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 174,
+    "user_login": "iperbole",
     "display_name": "Iperbole",
     "role": "customer",
     "avnode-role": "partner",
@@ -2574,6 +2808,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 70,
+    "user_login": "ippolitaavalli",
     "display_name": "Ippolita Avalli",
     "role": "customer",
     "avnode-role": "partner",
@@ -2596,6 +2832,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 105,
+    "user_login": "istitutoforum",
     "display_name": "Istituto Forum",
     "role": "customer",
     "avnode-role": "partner",
@@ -2618,6 +2856,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 361,
+    "user_login": "italiasgottalent",
     "display_name": "Italia's Got Talent",
     "role": "customer",
     "avnode-role": "partner",
@@ -2640,6 +2880,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 85,
+    "user_login": "italiatour",
     "display_name": "Italiatour",
     "role": "customer",
     "avnode-role": "partner",
@@ -2662,6 +2904,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 120,
+    "user_login": "javierrodriguez",
     "display_name": "Javier Rodriguez",
     "role": "customer",
     "avnode-role": "partner",
@@ -2684,6 +2928,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 80,
+    "user_login": "kataweb",
     "display_name": "Kataweb",
     "role": "customer",
     "avnode-role": "partner",
@@ -2706,6 +2952,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 223,
+    "user_login": "kernel_festival",
     "display_name": "Kernel_Festival",
     "role": "customer",
     "avnode-role": "partner",
@@ -2728,6 +2976,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 93,
+    "user_login": "kitonbsrl",
     "display_name": "Kitonb srl",
     "role": "customer",
     "avnode-role": "partner",
@@ -2750,6 +3000,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 26,
+    "user_login": "kook",
     "display_name": "Kook",
     "role": "customer",
     "avnode-role": "partner",
@@ -2772,6 +3024,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 193,
+    "user_login": "kprkey",
     "display_name": "Kpr & Key",
     "role": "customer",
     "avnode-role": "partner",
@@ -2794,6 +3048,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 180,
+    "user_login": "lanalaboratorionapoletano",
     "display_name": "L.A.N.A.",
     "role": "customer",
     "avnode-role": "partner",
@@ -2816,6 +3072,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 176,
+    "user_login": "lorealsaipospa",
     "display_name": "L'Oreal Saipo SpA",
     "role": "customer",
     "avnode-role": "partner",
@@ -2838,6 +3096,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 377,
+    "user_login": "lanificio25",
     "display_name": "Lanificio 25",
     "role": "customer",
     "avnode-role": "partner",
@@ -2860,6 +3120,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 109,
+    "user_login": "link",
     "display_name": "Link",
     "role": "customer",
     "avnode-role": "partner",
@@ -2882,6 +3144,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 239,
+    "user_login": "lookaround",
     "display_name": "Lookaround",
     "role": "customer",
     "avnode-role": "partner",
@@ -2904,6 +3168,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 62,
+    "user_login": "loriscecchini",
     "display_name": "Loris Cecchini",
     "role": "customer",
     "avnode-role": "partner",
@@ -2926,6 +3192,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 209,
+    "user_login": "lucaneri",
     "display_name": "Luca Neri",
     "role": "customer",
     "avnode-role": "partner",
@@ -2948,6 +3216,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 48,
+    "user_login": "luigicianconi",
     "display_name": "Luigi Cianconi",
     "role": "customer",
     "avnode-role": "partner",
@@ -2970,6 +3240,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 96,
+    "user_login": "lyndacom",
     "display_name": "Lynda.com",
     "role": "customer",
     "avnode-role": "partner",
@@ -2992,6 +3264,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 213,
+    "user_login": "mappingfestival",
     "display_name": "Mapping festival",
     "role": "customer",
     "avnode-role": "partner",
@@ -3014,6 +3288,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 147,
+    "user_login": "margineoperativo",
     "display_name": "Margine Operativo",
     "role": "customer",
     "avnode-role": "partner",
@@ -3036,6 +3312,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 362,
+    "user_login": "mecar",
     "display_name": "Mecar",
     "role": "customer",
     "avnode-role": "partner",
@@ -3058,6 +3336,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 82,
+    "user_login": "mediafilminternazionalesrl",
     "display_name": "Media Film Internazionale Srl",
     "role": "customer",
     "avnode-role": "partner",
@@ -3080,6 +3360,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 185,
+    "user_login": "misael",
     "display_name": "Misael",
     "role": "customer",
     "avnode-role": "partner",
@@ -3102,6 +3384,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 198,
+    "user_login": "musicpriority",
     "display_name": "Music Priority",
     "role": "customer",
     "avnode-role": "partner",
@@ -3124,6 +3408,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 144,
+    "user_login": "muvfestival",
     "display_name": "Muv festival",
     "role": "customer",
     "avnode-role": "partner",
@@ -3146,6 +3432,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 99,
+    "user_login": "napolifestival",
     "display_name": "Napolifestival",
     "role": "customer",
     "avnode-role": "partner",
@@ -3168,6 +3456,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 136,
+    "user_login": "nextexit",
     "display_name": "Next Exit",
     "role": "customer",
     "avnode-role": "partner",
@@ -3190,6 +3480,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 88,
+    "user_login": "nextpromoincentive",
     "display_name": "Next Promoincentive",
     "role": "customer",
     "avnode-role": "partner",
@@ -3212,6 +3504,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 77,
+    "user_login": "nicolagirolami",
     "display_name": "Nicola Girolami",
     "role": "customer",
     "avnode-role": "partner",
@@ -3234,6 +3528,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 205,
+    "user_login": "nuovocinemaaquila",
     "display_name": "Nuovo Cinema Aquila",
     "role": "customer",
     "avnode-role": "partner",
@@ -3256,6 +3552,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 87,
+    "user_login": "nuyorica",
     "display_name": "Nuyorica",
     "role": "customer",
     "avnode-role": "partner",
@@ -3278,6 +3576,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 218,
+    "user_login": "opificioinmovimento",
     "display_name": "Opificio in movimento",
     "role": "customer",
     "avnode-role": "partner",
@@ -3300,6 +3600,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 67,
+    "user_login": "orved2000",
     "display_name": "Orved 2000",
     "role": "customer",
     "avnode-role": "partner",
@@ -3322,6 +3624,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 123,
+    "user_login": "pacificunionsrl",
     "display_name": "Pacific Union",
     "role": "customer",
     "avnode-role": "partner",
@@ -3344,6 +3648,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 69,
+    "user_login": "pafpubblicitsrl",
     "display_name": "Paf pubblicità",
     "role": "customer",
     "avnode-role": "partner",
@@ -3366,6 +3672,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 178,
+    "user_login": "palmdreamssrl",
     "display_name": "Palm Dreams",
     "role": "customer",
     "avnode-role": "partner",
@@ -3388,6 +3696,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 132,
+    "user_login": "paoladonofriosrl",
     "display_name": "Paola D'Onofrio",
     "role": "customer",
     "avnode-role": "partner",
@@ -3410,6 +3720,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 63,
+    "user_login": "paolalosciuto",
     "display_name": "Paola Lo Sciuto",
     "role": "customer",
     "avnode-role": "partner",
@@ -3432,6 +3744,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 126,
+    "user_login": "peam",
     "display_name": "Peam",
     "role": "customer",
     "avnode-role": "partner",
@@ -3454,6 +3768,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 151,
+    "user_login": "phagoff",
     "display_name": "Phag Off",
     "role": "customer",
     "avnode-role": "partner",
@@ -3476,6 +3792,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 164,
+    "user_login": "pinksweater",
     "display_name": "Pink Sweater",
     "role": "customer",
     "avnode-role": "partner",
@@ -3498,6 +3816,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 121,
+    "user_login": "piblusrl",
     "display_name": "Più Blu",
     "role": "customer",
     "avnode-role": "partner",
@@ -3520,6 +3840,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 110,
+    "user_login": "playpresspublishing",
     "display_name": "PlayPress publishing",
     "role": "customer",
     "avnode-role": "partner",
@@ -3542,6 +3864,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 53,
+    "user_login": "polytecknesrl",
     "display_name": "Polyteckne",
     "role": "customer",
     "avnode-role": "partner",
@@ -3564,6 +3888,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 243,
+    "user_login": "primo",
     "display_name": "Primo al Pigneto",
     "role": "customer",
     "avnode-role": "partner",
@@ -3586,6 +3912,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 143,
+    "user_login": "primomaggiotuttolannosrl",
     "display_name": "Primo Maggio",
     "role": "customer",
     "avnode-role": "partner",
@@ -3608,6 +3936,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 226,
+    "user_login": "provinciadiromaassessoratoallepoliticheculturali",
     "display_name": "Provincia di Roma",
     "role": "customer",
     "avnode-role": "partner",
@@ -3630,6 +3960,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 190,
+    "user_login": "societcooperativaranaelettrica",
     "display_name": "Rana Elettrica",
     "role": "customer",
     "avnode-role": "partner",
@@ -3652,6 +3984,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 92,
+    "user_login": "rebreathers",
     "display_name": "Rebreathers",
     "role": "customer",
     "avnode-role": "partner",
@@ -3674,6 +4008,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 363,
+    "user_login": "roma2024",
     "display_name": "Roma 2024",
     "role": "customer",
     "avnode-role": "partner",
@@ -3696,6 +4032,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 225,
+    "user_login": "romaprovinciacreativa",
     "display_name": "Roma Provincia Creativa",
     "role": "customer",
     "avnode-role": "partner",
@@ -3718,6 +4056,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 376,
+    "user_login": "romap",
     "display_name": "RoMap",
     "role": "customer",
     "avnode-role": "partner",
@@ -3740,6 +4080,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 242,
+    "user_login": "rostialpigneto",
     "display_name": "Rosti al Pigneto",
     "role": "customer",
     "avnode-role": "partner",
@@ -3762,6 +4104,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 146,
+    "user_login": "rso",
     "display_name": "RSO",
     "role": "customer",
     "avnode-role": "partner",
@@ -3784,6 +4128,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 134,
+    "user_login": "sdmanagmentecomunicazionisrl",
     "display_name": "S.D. Managment e Comunicazioni S.r.l.",
     "role": "customer",
     "avnode-role": "partner",
@@ -3806,6 +4152,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 55,
+    "user_login": "sangiulianoveraldi",
     "display_name": "Sangiuliano Veraldi",
     "role": "customer",
     "avnode-role": "partner",
@@ -3828,6 +4176,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 101,
+    "user_login": "scuolamediavalfieri",
     "display_name": "Scuola Media V. Alfieri",
     "role": "customer",
     "avnode-role": "partner",
@@ -3850,6 +4200,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 163,
+    "user_login": "sharefestival",
     "display_name": "Share Festival",
     "role": "customer",
     "avnode-role": "partner",
@@ -3872,6 +4224,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 179,
+    "user_login": "simonealbensi",
     "display_name": "Simone Albensi",
     "role": "customer",
     "avnode-role": "partner",
@@ -3894,6 +4248,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 125,
+    "user_login": "sixtyspa",
     "display_name": "Sixty Spa",
     "role": "customer",
     "avnode-role": "partner",
@@ -3916,6 +4272,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 98,
+    "user_login": "smau",
     "display_name": "Smau",
     "role": "customer",
     "avnode-role": "partner",
@@ -3938,6 +4296,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 140,
+    "user_login": "sogeisocietgeneraledinformaticaspa",
     "display_name": "Sogei",
     "role": "customer",
     "avnode-role": "partner",
@@ -3960,6 +4320,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 150,
+    "user_login": "sonar",
     "display_name": "Sonar",
     "role": "customer",
     "avnode-role": "partner",
@@ -3982,6 +4344,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 189,
+    "user_login": "stark",
     "display_name": "STARK",
     "role": "customer",
     "avnode-role": "partner",
@@ -4004,6 +4368,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 379,
+    "user_login": "studiomacchinette",
     "display_name": "Studio Macchinette",
     "role": "customer",
     "avnode-role": "partner",
@@ -4026,6 +4392,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 271,
+    "user_login": "studiouniversal",
     "display_name": "Studio Universal",
     "role": "customer",
     "avnode-role": "partner",
@@ -4048,6 +4416,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 238,
+    "user_login": "sup3rstudio",
     "display_name": "Sup3r studio",
     "role": "customer",
     "avnode-role": "partner",
@@ -4070,6 +4440,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 61,
+    "user_login": "svima",
     "display_name": "Svima",
     "role": "customer",
     "avnode-role": "partner",
@@ -4092,6 +4464,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 187,
+    "user_login": "tasia",
     "display_name": "Tasia",
     "role": "customer",
     "avnode-role": "partner",
@@ -4114,6 +4488,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 145,
+    "user_login": "tekfestival",
     "display_name": "Tekfestival",
     "role": "customer",
     "avnode-role": "partner",
@@ -4136,6 +4512,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 211,
+    "user_login": "theblogtv",
     "display_name": "The Blog TV",
     "role": "customer",
     "avnode-role": "partner",
@@ -4158,6 +4536,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 184,
+    "user_login": "thegatecomunicazione",
     "display_name": "The Gate Comunicazione",
     "role": "customer",
     "avnode-role": "partner",
@@ -4180,6 +4560,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 139,
+    "user_login": "theglocalforum",
     "display_name": "The Glocal Forum",
     "role": "customer",
     "avnode-role": "partner",
@@ -4202,6 +4584,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 100,
+    "user_login": "uniteddigitalartists",
     "display_name": "UNITED DIGITAL ARTISTS",
     "role": "customer",
     "avnode-role": "partner",
@@ -4224,6 +4608,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 97,
+    "user_login": "valentinatanni",
     "display_name": "Valentina Tanni",
     "role": "customer",
     "avnode-role": "partner",
@@ -4246,6 +4632,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 129,
+    "user_login": "vedisehospitalsrl",
     "display_name": "Vedise Hospital srl",
     "role": "customer",
     "avnode-role": "partner",
@@ -4268,6 +4656,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 237,
+    "user_login": "vegalab",
     "display_name": "Vegalab",
     "role": "customer",
     "avnode-role": "partner",
@@ -4290,6 +4680,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 199,
+    "user_login": "viaggiinavventura",
     "display_name": "Viaggi in avventura",
     "role": "customer",
     "avnode-role": "partner",
@@ -4312,6 +4704,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 241,
+    "user_login": "videosolid",
     "display_name": "Videosolid",
     "role": "customer",
     "avnode-role": "partner",
@@ -4334,6 +4728,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 186,
+    "user_login": "villaborgheseinstitute",
     "display_name": "Villa Borghese Institute",
     "role": "customer",
     "avnode-role": "partner",
@@ -4356,6 +4752,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 127,
+    "user_login": "vincenzolibonati",
     "display_name": "Vincenzo Libonati",
     "role": "customer",
     "avnode-role": "partner",
@@ -4378,6 +4776,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 161,
+    "user_login": "visionr",
     "display_name": "Vision'r",
     "role": "customer",
     "avnode-role": "partner",
@@ -4400,6 +4800,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 183,
+    "user_login": "vivofilm",
     "display_name": "Vivo Film",
     "role": "customer",
     "avnode-role": "partner",
@@ -4422,6 +4824,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 217,
+    "user_login": "vj",
     "display_name": "vj",
     "role": "customer",
     "avnode-role": "partner",
@@ -4444,6 +4848,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 378,
+    "user_login": "vjlab",
     "display_name": "VJ Lab",
     "role": "customer",
     "avnode-role": "partner",
@@ -4466,6 +4872,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 171,
+    "user_login": "vjklat",
     "display_name": "vjklat",
     "role": "customer",
     "avnode-role": "partner",
@@ -4488,6 +4896,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 194,
+    "user_login": "voyage",
     "display_name": "Voyage",
     "role": "customer",
     "avnode-role": "partner",
@@ -4510,6 +4920,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 13,
+    "user_login": "warbear",
     "display_name": "Warbear",
     "role": "customer",
     "avnode-role": "partner",
@@ -4532,6 +4944,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 210,
+    "user_login": "yr",
     "display_name": "y&r",
     "role": "customer",
     "avnode-role": "partner",
@@ -4554,6 +4968,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 95,
+    "user_login": "zoneattive",
     "display_name": "Zone Attive",
     "role": "customer",
     "avnode-role": "partner",
@@ -4576,6 +4992,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 154,
+    "user_login": "zuccon",
     "display_name": "Zuccon",
     "role": "customer",
     "avnode-role": "partner",
@@ -4598,6 +5016,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 44,
+    "user_login": "gianlucadelgobbo",
     "display_name": "Gianluca Del Gobbo",
     "role": "headmaster",
     "avnode-role": "headmaster",
@@ -4620,6 +5040,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 357,
+    "user_login": "reactionav",
     "display_name": "[re+act(ion)]AV",
     "role": "member",
     "avnode-role": "member",
@@ -4642,6 +5064,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 294,
+    "user_login": "4youreye",
     "display_name": "4youreye Bischof-Herlbauer OG",
     "role": "member",
     "avnode-role": "member",
@@ -4664,6 +5088,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 295,
+    "user_login": "areaodeon",
     "display_name": "AreaOdeon",
     "role": "member",
     "avnode-role": "member",
@@ -4686,6 +5112,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 317,
+    "user_login": "asociatia-simultan",
     "display_name": "Asociatia Simultan",
     "role": "member",
     "avnode-role": "member",
@@ -4708,6 +5136,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 296,
+    "user_login": "associacio-cultural-mira",
     "display_name": "Associació cultural MIRA",
     "role": "member",
     "avnode-role": "member",
@@ -4730,6 +5160,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 297,
+    "user_login": "association-le-cicale-dellarconte",
     "display_name": "Association Le Cicale dell’Arconte",
     "role": "member",
     "avnode-role": "member",
@@ -4752,6 +5184,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 298,
+    "user_login": "association-the-sharing",
     "display_name": "Association The Sharing",
     "role": "member",
     "avnode-role": "member",
@@ -4774,6 +5208,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 299,
+    "user_login": "associazione-culturale-dancity",
     "display_name": "Associazione Culturale Dancity",
     "role": "member",
     "avnode-role": "member",
@@ -4796,6 +5232,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 300,
+    "user_login": "associazione-culturale-shape",
     "display_name": "Associazione Culturale Shape",
     "role": "member",
     "avnode-role": "member",
@@ -4818,6 +5256,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 301,
+    "user_login": "associazione-culturale-toolkit",
     "display_name": "Associazione Culturale Toolkit",
     "role": "member",
     "avnode-role": "member",
@@ -4840,6 +5280,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 302,
+    "user_login": "bodydataspace",
     "display_name": "body>data>space",
     "role": "member",
     "avnode-role": "member",
@@ -4862,6 +5304,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 303,
+    "user_login": "born-digital",
     "display_name": "Born Digital",
     "role": "member",
     "avnode-role": "member",
@@ -4884,6 +5328,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 304,
+    "user_login": "bursa-metropolitan-municipality",
     "display_name": "Bursa Metropolitan Municipality",
     "role": "member",
     "avnode-role": "member",
@@ -4906,6 +5352,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 306,
+    "user_login": "cimatics-vow",
     "display_name": "Cimatics vow",
     "role": "member",
     "avnode-role": "member",
@@ -4928,6 +5376,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 307,
+    "user_login": "culture-action-europe",
     "display_name": "Culture Action Europe",
     "role": "member",
     "avnode-role": "member",
@@ -4950,6 +5400,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 349,
+    "user_login": "elasticeye",
     "display_name": "Elastic Eye",
     "role": "member",
     "avnode-role": "member",
@@ -4972,6 +5424,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 329,
+    "user_login": "elita-company",
     "display_name": "Elita company",
     "role": "member",
     "avnode-role": "member",
@@ -4994,6 +5448,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 308,
+    "user_login": "fiber",
     "display_name": "FIBER",
     "role": "member",
     "avnode-role": "member",
@@ -5016,6 +5472,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 323,
+    "user_login": "flyer-communication",
     "display_name": "Flyer Communication",
     "role": "member",
     "avnode-role": "member",
@@ -5038,6 +5496,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 310,
+    "user_login": "fundacja-kultural-kolektiv",
     "display_name": "Fundacja Kultural Kolektiv",
     "role": "member",
     "avnode-role": "member",
@@ -5060,6 +5520,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 309,
+    "user_login": "institut-francais-ditalie",
     "display_name": "Institut Français d’Italie",
     "role": "member",
     "avnode-role": "member",
@@ -5082,6 +5544,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 311,
+    "user_login": "les-reseaux-de-la-creation",
     "display_name": "Les Réseaux de la Création",
     "role": "member",
     "avnode-role": "member",
@@ -5104,6 +5568,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 162,
+    "user_login": "linuxclub",
     "display_name": "Linux Club",
     "role": "member",
     "avnode-role": "member",
@@ -5126,6 +5592,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 312,
+    "user_login": "lunchmeat",
     "display_name": "Lunchmeat",
     "role": "member",
     "avnode-role": "member",
@@ -5148,6 +5616,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 313,
+    "user_login": "mad-moviment-dalliberament-digital",
     "display_name": "Mad [Moviment d'Alliberament Digital]",
     "role": "member",
     "avnode-role": "member",
@@ -5170,6 +5640,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 314,
+    "user_login": "magnetic-field-b",
     "display_name": "Magnetic Field B",
     "role": "member",
     "avnode-role": "member",
@@ -5192,6 +5664,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 315,
+    "user_login": "metasphere",
     "display_name": "Metasphere",
     "role": "member",
     "avnode-role": "member",
@@ -5214,6 +5688,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 316,
+    "user_login": "multitrab-productions",
     "display_name": "Multitrab Productions",
     "role": "member",
     "avnode-role": "member",
@@ -5236,6 +5712,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 348,
+    "user_login": "muvelodesiszintkft",
     "display_name": "Művelődési Szint Kft.",
     "role": "member",
     "avnode-role": "member",
@@ -5258,6 +5736,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 336,
+    "user_login": "rencontres-audiovisuelles",
     "display_name": "Rencontres Audio Visuelles",
     "role": "member",
     "avnode-role": "member",
@@ -5280,6 +5760,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 305,
+    "user_login": "self-fish",
     "display_name": "Self-fish",
     "role": "member",
     "avnode-role": "member",
@@ -5302,6 +5784,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 333,
+    "user_login": "shinytoys",
     "display_name": "Shinytoys",
     "role": "member",
     "avnode-role": "member",
@@ -5324,6 +5808,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 335,
+    "user_login": "sound-frame",
     "display_name": "sound:frame",
     "role": "member",
     "avnode-role": "member",
@@ -5346,6 +5832,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 327,
+    "user_login": "slv",
     "display_name": "Sports Loisirs Voyages",
     "role": "member",
     "avnode-role": "member",
@@ -5368,6 +5856,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 330,
+    "user_login": "springattitude",
     "display_name": "Spring Attitude",
     "role": "member",
     "avnode-role": "member",
@@ -5390,6 +5880,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 318,
+    "user_login": "stichting-oddstream",
     "display_name": "Stichting Oddstream",
     "role": "member",
     "avnode-role": "member",
@@ -5412,6 +5904,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 319,
+    "user_login": "transfera-media-arts-sl",
     "display_name": "Transfera Media Arts sl",
     "role": "member",
     "avnode-role": "member",
@@ -5434,6 +5928,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 320,
+    "user_login": "verein-fur-visuelle-kunst-und-jetztkultur-e-v",
     "display_name": "Verein für visuelle Kunst und Jetztkultur e.V.",
     "role": "member",
     "avnode-role": "member",
@@ -5456,6 +5952,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 321,
+    "user_login": "video-hack-space",
     "display_name": "Video Hack Space",
     "role": "member",
     "avnode-role": "member",
@@ -5478,6 +5976,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 322,
+    "user_login": "vj-torna-international",
     "display_name": "VJ Torna International",
     "role": "member",
     "avnode-role": "member",
@@ -5500,6 +6000,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 326,
+    "user_login": "young-talents",
     "display_name": "Young Talents",
     "role": "member",
     "avnode-role": "member",
@@ -5522,6 +6024,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 369,
+    "user_login": "enricodepaulis",
     "display_name": "Enrico De Paulis",
     "role": "motiongraphics",
     "avnode-role": "motiongraphics",
@@ -5544,6 +6048,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 222,
+    "user_login": "studioaira",
     "display_name": "Filippo M. \"Aira\" Rotondi",
     "role": "motiongraphics",
     "avnode-role": "motiongraphics",
@@ -5566,6 +6072,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 359,
+    "user_login": "kanaka-project",
     "display_name": "Gianluca \"Kanaka\" Cillo",
     "role": "motiongraphics",
     "avnode-role": "motiongraphics",
@@ -5588,6 +6096,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 91,
+    "user_login": "mitjaverbobombardieri",
     "display_name": "Mitja \"Verbo\" Bombardieri",
     "role": "motiongraphics",
     "avnode-role": "motiongraphics",
@@ -5610,6 +6120,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 365,
+    "user_login": "neocortexproject",
     "display_name": "Neocortex project",
     "role": "motiongraphics",
     "avnode-role": "motiongraphics",
@@ -5632,6 +6144,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 331,
+    "user_login": "amsterdamlightsfestival",
     "display_name": "Amsterdam Lights Festival",
     "role": "partner",
     "avnode-role": "partner",
@@ -5654,6 +6168,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 332,
+    "user_login": "cynetart",
     "display_name": "Cynetart Festival",
     "role": "partner",
     "avnode-role": "partner",
@@ -5676,6 +6192,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 23,
+    "user_login": "kiritanflux",
     "display_name": "Kiritan Flux",
     "role": "partner",
     "avnode-role": "partner",
@@ -5698,6 +6216,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 325,
+    "user_login": "nodeforum",
     "display_name": "NODE Forum for Digital Arts",
     "role": "partner",
     "avnode-role": "partner",
@@ -5720,6 +6240,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 347,
+    "user_login": "scope",
     "display_name": "Scope Sessions",
     "role": "partner",
     "avnode-role": "partner",
@@ -5742,6 +6264,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 334,
+    "user_login": "skanumezs",
     "display_name": "Skaņu Mežs",
     "role": "partner",
     "avnode-role": "partner",
@@ -5764,6 +6288,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 220,
+    "user_login": "zetema",
     "display_name": "Zètema Progetto Cultura",
     "role": "partner",
     "avnode-role": "partner",
@@ -5786,6 +6312,8 @@
     "wam-sez": "partners"
   },
   {
+    "ID": 275,
+    "user_login": "chiaragianniniguazzugli",
     "display_name": "Chiara Giannini Guazzugli",
     "role": "project",
     "avnode-role": "project",
@@ -5808,6 +6336,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 52,
+    "user_login": "michaelkrane",
     "display_name": "Michael Krane",
     "role": "project",
     "avnode-role": "project",
@@ -5830,6 +6360,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 111,
+    "user_login": "nancyrusso",
     "display_name": "Nancy Russo",
     "role": "project",
     "avnode-role": "project",
@@ -5852,6 +6384,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 42,
+    "user_login": "orianacollepardo",
     "display_name": "Oriana Collepardo",
     "role": "project",
     "avnode-role": "project",
@@ -5874,6 +6408,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 380,
+    "user_login": "maurofacondo",
     "display_name": "maurofacondo",
     "role": "socialmedia",
     "avnode-role": "socialmedia",
@@ -5896,6 +6432,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 229,
+    "user_login": "lucadeepsheetpulvirenti",
     "display_name": "Luca Pulvirenti",
     "role": "teacher",
     "avnode-role": "teacher",
@@ -5918,6 +6456,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 259,
+    "user_login": "mauroferrario",
     "display_name": "Mauro Ferrario",
     "role": "teacher",
     "avnode-role": "teacher",
@@ -5940,6 +6480,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 240,
+    "user_login": "sapolab",
     "display_name": "Nicola Saponaro",
     "role": "teacher",
     "avnode-role": "teacher",
@@ -5962,6 +6504,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 230,
+    "user_login": "danielegaliotto",
     "display_name": "Daniele Galiotto",
     "role": "teachermediaartist",
     "avnode-role": "teachermediaartist",
@@ -5984,6 +6528,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 272,
+    "user_login": "sladzanabogeska",
     "display_name": "Sladzana Bogeska",
     "role": "teachermediaartist",
     "avnode-role": "teachermediaartist",
@@ -6006,6 +6552,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 228,
+    "user_login": "vjluper",
     "display_name": "VJ Luper",
     "role": "teachermediaartist",
     "avnode-role": "teachermediaartist",
@@ -6028,6 +6576,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 173,
+    "user_login": "alessandrocanonico",
     "display_name": "Alessandro Canonico",
     "role": "webdesigner",
     "avnode-role": "webdesigner",
@@ -6050,6 +6600,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 79,
+    "user_login": "q",
     "display_name": "Lorenzo Griffi",
     "role": "webdesigner",
     "avnode-role": "webdesigner",
@@ -6072,6 +6624,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 68,
+    "user_login": "alessandroterlizzi",
     "display_name": "Alessandro Terlizzi",
     "role": "webdeveloper",
     "avnode-role": "webdeveloper",
@@ -6094,6 +6648,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 18,
+    "user_login": "andreacampo",
     "display_name": "Andrea Campo",
     "role": "webdeveloper",
     "avnode-role": "webdeveloper",
@@ -6116,6 +6672,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 86,
+    "user_login": "andreamione",
     "display_name": "Andrea Mione",
     "role": "webdeveloper",
     "avnode-role": "webdeveloper",
@@ -6138,6 +6696,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 168,
+    "user_login": "danielaanzuini",
     "display_name": "Daniela Anzuini",
     "role": "webdeveloper",
     "avnode-role": "webdeveloper",
@@ -6160,6 +6720,8 @@
     "wam-sez": "team"
   },
   {
+    "ID": 249,
+    "user_login": "gianlucabernardo",
     "display_name": "Gianluca Bernardo",
     "role": "webdeveloper",
     "avnode-role": "webdeveloper",
