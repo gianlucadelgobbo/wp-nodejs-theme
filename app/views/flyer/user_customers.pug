@@ -5,24 +5,24 @@ block content
       .row
         .col-sm-9
           header
-            h1.entry-title(itemprop='name')=result.data.display_name
+            h1.entry-title(itemprop='name')=result.display_name
           .rientro
             p(itemprop='jobTitle')
-              i=result.data.role
-              if result.data.auth_contents
+              i=result.role
+              if result.auth_contents
                 p
-                  each auth_content in result.data.auth_contents
+                  each auth_content in result.auth_contents
                     if auth_content.posts.length
                       !=(auth_content["labels"]["name"] == "Events" ? "Live Visuals" : auth_content["labels"]["name"])+": "+auth_content.posts.length
                       br
-            if (result.data.description)
+            if (result.description)
               hr
-              div(itemprop='description')!=result.data.description
+              div(itemprop='description')!=result.description
             include ../_common/inc_share
         .col-sm-3
-          img.img-responsive.main-image(src=result.data.img, alt=result.data.display_name, itemprop='image')
-      if result.data.auth_contents
-        each auth_content in result.data.auth_contents
+          img.img-responsive.main-image(src=result.img, alt=result.display_name, itemprop='image')
+      if result.auth_contents
+        each auth_content in result.auth_contents
           if auth_content.posts.length
             section(itemscope, itemtype="https://schema.org/ItemList")
               h3(itemprop="name")=auth_content.labels.name == "Events" ? "Live Visuals" : auth_content["labels"]["name"]

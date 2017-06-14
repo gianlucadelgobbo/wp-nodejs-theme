@@ -112,7 +112,7 @@ exports.getUser = function getUser(req, user_sez, callback) {
 
 exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
   //console.log("getAllUsers "+user_sez);
-  //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/authors/'+config.prefix+'/'+config.site_tax+'/'+user_sez+'/');
+  console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/authors/'+config.prefix+'/'+config.site_tax+'/'+user_sez+'/');
   var wpflyer = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
   wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/authors/(?P<site>)/(?P<sitetax>)/(?P<usersez>)' );
   //console.log("stoqui "+user_sez);
@@ -123,7 +123,7 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
     //console.log("//// Users "+user_sez);
     //console.log("//// Mode ONLY ");
      */
-    for (var user in data) if (!data[user].data.img || data[user].data.img=="") data[user].data.img = config.domain + config.sez.users[user_sez].default_img;
+    for (var user in data) if (!data[user].img || data[user].img=="") data[user].img = config.domain + config.sez.users[user_sez].default_img;
     //console.log(err || data);
     //data = fnz.fixResults(data);
     callback(data);

@@ -7,11 +7,11 @@ exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
       helpers.getUser(req, user_sez, function( result ) {
         //console.log(result);
-        result.post_title = result.data.display_name;
-        if (result.data.img) result.featured = {full:result.data.img};
-        result.meta_description = result.data.description ? result.data.description : __("Here you can find all the projects made with")+" "+ result.data.display_name;
+        result.post_title = result.display_name;
+        if (result.img) result.featured = {full:result.img};
+        result.meta_description = result.description ? result.description : __("Here you can find all the projects made with")+" "+ result.display_name;
         var page_data = fnz.setPageData(req, result);
-        if (result && result.data  && result.data.display_name) {
+        if (result && result.data  && result.display_name) {
           var pugPage = config.prefix+'/'+'user_'+user_sez;
           res.render(pugPage, {result: result, page_data:page_data, sessions:req.session.sessions, itemprop:config.sez.users[user_sez].itemprop});
         } else {
@@ -27,28 +27,28 @@ exports.getUsers = function getUsers(req, res) {
     helpers.getContainerPage(req, user_sez, function( posttype ) {
       helpers.getAllUsers(req, user_sez, function( results ) {
         var markers = [];
-        if (results[0].data && results[0].data.geolocation) {
           for (var item=0;item<results.length;item++) {
             //console.log("bella");
             //console.log(results[item]);
             var latlang = [];
-            if (results[item].data.geolocation) latlang = results[item].data.geolocation.split(";");
+            if (results[item].geolocation) latlang = results[item].geolocation.split(";");
             //console.log(results[item]);
             //console.log(latlang);
             if (latlang.length) {
               var marker = {
                 lat:latlang[0],
                 lng:latlang[1],
-                type:results[item].roles[0],
-                slug:'/'+config.sez.users.baseurls[results[item].roles[0]]+'/'+results[item].data.user_nicename+'/',
-                display_name:results[item].data.display_name,
-                date:results[item].roles[0],
-                destination:results[item].data.city+", "+results[item].data.country
+                type:results[item].role,
+                slug:'/'+config.sez.users.baseurls[results[item].role]+'/'+results[item].user_login+'/',
+                display_name:results[item].display_name,
+                date:results[item].role,
+                destination:results[item].city+", "+results[item].country
               };
               //console.log(marker);
               markers.push(marker);
             }
           }
+        if (results[0].data && results[0].data.geolocation) {
         }
         //console.log("bingo");
         //console.log(posttype);

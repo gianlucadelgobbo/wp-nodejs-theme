@@ -4,24 +4,24 @@ block content
     article.pagepaddingtop#container(itemprop=itemprop, itemscope, itemtype='http://schema.org/Person')
       .row
         .col-sm-9
-          img.img-responsive.main-image(src=result.data.img, alt=result.data.display_name, itemprop='image')
+          img.img-responsive.main-image(src=result.img, alt=result.display_name, itemprop='image')
 
-          div(itemprop='description')!=result.data.description
+          div(itemprop='description')!=result.description
         .col-sm-3
           header
-            h1.entry-title(itemprop='name')=result.data.display_name
+            h1.entry-title(itemprop='name')=result.display_name
           .rientro
             p(itemprop='jobTitle')
-              i=result.data.role
-              if result.data.auth_contents
+              i=result.role
+              if result.auth_contents
                 p
-                  each auth_content in result.data.auth_contents
+                  each auth_content in result.auth_contents
                     if auth_content.posts.length
                       !=(auth_content["labels"]["name"] == "Events" ? "Live Visuals" : auth_content["labels"]["name"]) + ": " + auth_content.posts.length
                       br
             include ../_common/inc_share
-      if result.data.auth_contents
-        each auth_content in result.data.auth_contents
+      if result.auth_contents
+        each auth_content in result.auth_contents
           if auth_content.posts.length
             section(itemscope, itemtype="https://schema.org/ItemList")
               h3(itemprop="name")=auth_content.labels.name == "Events" ? "Live Visuals" : auth_content["labels"]["name"]

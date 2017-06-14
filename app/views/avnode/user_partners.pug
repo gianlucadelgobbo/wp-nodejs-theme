@@ -3,44 +3,44 @@ block content
   article.pagepaddingtop#container(itemprop=itemprop, itemscope, itemtype='http://schema.org/Person')
     .row
       .col-sm-9
-        img.img-responsive.main-image(src=result.data.img, alt=result.data.display_name, itemprop='image')
+        img.img-responsive.main-image(src=result.img, alt=result.display_name, itemprop='image')
 
-        div(itemprop='description')!=result.data.description
+        div(itemprop='description')!=result.description
       .col-sm-3
         header
-          h1.entry-title(itemprop='name')=result.data.display_name
+          h1.entry-title(itemprop='name')=result.display_name
         .rientro
           p(itemprop='jobTitle')
-            i=result.data.role
+            i=result.role
             p
-              if result.data.auth_contents.activities && result.data.auth_contents.activities.posts.length
-                !=result.data.auth_contents.activities.labels.name + ": " + result.data.auth_contents.activities.posts.length
+              if result.auth_contents.activities && result.auth_contents.activities.posts.length
+                !=result.auth_contents.activities.labels.name + ": " + result.auth_contents.activities.posts.length
                 br
-              if result.data.auth_contents.events && result.data.auth_contents.events.posts.length
-                !=result.data.auth_contents.events.labels.name + ": " + result.data.auth_contents.events.posts.length
+              if result.auth_contents.events && result.auth_contents.events.posts.length
+                !=result.auth_contents.events.labels.name + ": " + result.auth_contents.events.posts.length
                 br
-              if result.data.auth_contents.news && result.data.auth_contents.news.posts.length
-                !=result.data.auth_contents.news.labels.name + ": " + result.data.auth_contents.news.posts.length
+              if result.auth_contents.news && result.auth_contents.news.posts.length
+                !=result.auth_contents.news.labels.name + ": " + result.auth_contents.news.posts.length
                 br
           include ../_common/inc_share
-    if result.data.auth_contents.activities && result.data.auth_contents.activities.posts.length
-      - var res = result.data.auth_contents.activities
+    if result.auth_contents.activities && result.auth_contents.activities.posts.length
+      - var res = result.auth_contents.activities
         section(itemscope, itemtype="https://schema.org/ItemList")
           h3(itemprop="name")=res.labels.name
           .row.isotope.results
             each result, position in res.posts
               .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
                 include boxes/box_activity
-    if result.data.auth_contents.events && result.data.auth_contents.events.posts.length
-      - var res = result.data.auth_contents.events
+    if result.auth_contents.events && result.auth_contents.events.posts.length
+      - var res = result.auth_contents.events
         section(itemscope, itemtype="https://schema.org/ItemList")
           h3(itemprop="name")=res.labels.name
           .row.isotope.results
             each result, position in res.posts
               .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
                 include boxes/box_event
-    if result.data.auth_contents.news && result.data.auth_contents.news.posts.length
-      - var res = result.data.auth_contents.news
+    if result.auth_contents.news && result.auth_contents.news.posts.length
+      - var res = result.auth_contents.news
       section(itemscope, itemtype="https://schema.org/ItemList")
         h3(itemprop="name")=res.labels.name
         .row.isotope.results
