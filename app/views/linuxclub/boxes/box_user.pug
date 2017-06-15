@@ -3,13 +3,13 @@
   div(itemprop="item", itemscope, itemtype='http://schema.org/Person')
     .row
       .col-sm-4(itemprop="image", itemscope, itemtype='https://schema.org/ImageObject')
-        a(href=lang_preurl+'/'+sez.baseurls[result.role]+'/'+result.user_login+'/', rel='bookmark', title='Logo: '+result.display_name)
+        a(href=lang_preurl+'/'+config.users_by_id[result.ID][config.prefix+"-sez"]+'/'+result.user_login+'/', rel='bookmark', title='Logo: '+result.display_name)
           img.img-responsive(alt='Logo: '+result.display_name, itemprop="url", src=result.img)
           meta(itemprop="width" content="480")
           meta(itemprop="height" content="270")
       .col-sm-8
         h5.media-heading
-          a(itemprop='url', href=lang_preurl+'/'+sez.baseurls[result.role]+'/'+result.user_login+'/')
+          a(itemprop='url', href=lang_preurl+'/'+config.users_by_id[result.ID][config.prefix+"-sez"]+'/'+result.user_login+'/')
             span(itemprop='name')=result.display_name
         p(itemprop='jobTitle')
           i=result.role_label

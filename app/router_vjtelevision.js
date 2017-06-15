@@ -20,8 +20,8 @@ module.exports = function(app) {
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
   app.get('/it/', indexRoutes.get);
-  app.get('/it/backstage', usersRoutes.getUsers);
-  app.get('/it/backstage/(:user)', usersRoutes.get);
+  app.get('/it/team', usersRoutes.getUsers);
+  app.get('/it/team/(:user)', usersRoutes.get);
   app.get('/it/partners', usersRoutes.getUsers);
   app.get('/it/partners/(:user)', usersRoutes.get);
   app.get('/it/events/', eventsRoutes.getAll);
@@ -34,8 +34,8 @@ module.exports = function(app) {
   app.post('/it/(:page)', pagesRoutes.post);
 
   app.get('/', indexRoutes.get);
-  app.get('/backstage', usersRoutes.getUsers);
-  app.get('/backstage/(:user)', usersRoutes.get);
+  app.get('/team', usersRoutes.getUsers);
+  app.get('/team/(:user)', usersRoutes.get);
   app.get('/partners', usersRoutes.getUsers);
   app.get('/partners/(:user)', usersRoutes.get);
   app.get('/events/', eventsRoutes.getAll);

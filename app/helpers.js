@@ -100,7 +100,7 @@ exports.getUser = function getUser(req, user_sez, callback) {
     } else {
       //console.log("//// User "+req.params.user+" "+config.site_tax);
       for(auth_content in data.auth_contents) {
-        data.auth_contents[auth_content].posts = fnz.fixResults(data.auth_contents[auth_content].posts);
+        data.auth_contents[auth_content] = fnz.fixResults(data.auth_contents[auth_content]);
       }
       //console.log(err || data);
       //data = fnz.fixResults(data);
@@ -386,8 +386,9 @@ exports.getLab = function getLab(req,callback) {
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/lab/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.lab).get(function( err, data ) {
-    //console.log("//// Lab");
-    data.auth_contents["events"].posts = fnz.fixResults(data.auth_contents["events"].posts);
+    console.log("//// Lab");
+    console.log(data);
+    if (data && data.auth_contents) data.auth_contents["events"].posts = fnz.fixResults(data.auth_contents["events"].posts);
     if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });

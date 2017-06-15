@@ -16,10 +16,10 @@ if result.capauthors
     - authors.push(config.posttypes_authors.news.authors.default)
 
   if publishers.length
-    ul.authors.hide
+    ul.authors
       each capauthor in publishers
         li(itemprop=config.posttypes_authors[result.post_type].publisher.itemprop, itemscope, itemtype='http://schema.org/Organization')
-          - var baseurl = config.sez.users.baseurls[capauthor.user_role_value]
+          - var baseurl = config.users_by_id[capauthor.ID][config.prefix+"-sez"]
           if baseurl
             a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author', title=capauthor.display_name, itemprop='url')
               b(itemprop='name')=capauthor.display_name
@@ -33,10 +33,10 @@ if result.capauthors
               else
                 img(itemprop='contentUrl', src=capauthor.img, alt=global.__("Logo of") + " " + capauthor.display_name)
   if authors.length
-    ul.authors.hide(class=authors.length == 1 && config.posttypes_authors[result.post_type].authors.default && authors[0].ID == config.posttypes_authors[result.post_type].authors.default.ID ? "sr-only" : undefined)
+    ul.authors(class=authors.length == 1 && config.posttypes_authors[result.post_type].authors.default && authors[0].ID == config.posttypes_authors[result.post_type].authors.default.ID ? "sr-only" : undefined)
       each capauthor in authors
         li(itemprop=itemprop=config.posttypes_authors[result.post_type].authors.itemprop, itemscope, itemtype='http://schema.org/Person')
-          - var baseurl = config.sez.users.baseurls[capauthor.user_role_value]
+          - var baseurl = config.users_by_id[capauthor.ID][config.prefix+"-sez"]
           if baseurl
             a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author', title=capauthor.display_name, itemprop='url')
               b(itemprop='name')=capauthor.display_name

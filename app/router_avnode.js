@@ -24,6 +24,8 @@ module.exports = function(app) {
 
   app.get('/', indexRoutes.get);
   app.get('/insta/', indexRoutes.getInsta);
+  app.get('/team', usersRoutes.getUsers);
+  app.get('/team/(:user)', usersRoutes.get);
   app.get('/members', usersRoutes.getUsers);
   app.get('/members/(:user)', usersRoutes.get);
   app.get('/partners', usersRoutes.getUsers);

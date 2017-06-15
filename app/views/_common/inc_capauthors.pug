@@ -22,7 +22,7 @@ if result.capauthors
         !=" "+config.posttypes_authors[result.post_type].publisher.label_multi
       each capauthor in publishers
         li(itemprop=config.posttypes_authors[result.post_type].publisher.itemprop, itemscope, itemtype='http://schema.org/Organization')
-          - var baseurl = config.sez.users.baseurls[capauthor.user_role_value]
+          - var baseurl = config.users_by_id[capauthor.ID][config.prefix+"-sez"]
           if baseurl
             a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author', title=capauthor.display_name, itemprop='url')
               b(itemprop='name')=capauthor.display_name
@@ -42,7 +42,7 @@ if result.capauthors
         !=" "+config.posttypes_authors[result.post_type].authors.label_multi
       each capauthor in authors
         li(itemprop=itemprop=config.posttypes_authors[result.post_type].authors.itemprop, itemscope, itemtype='http://schema.org/Person')
-          - var baseurl = config.sez.users.baseurls[capauthor.user_role_value]
+          - var baseurl = config.users_by_id[capauthor.ID][config.prefix+"-sez"]
           if baseurl
             a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author', title=capauthor.display_name, itemprop='url')
               b(itemprop='name')=capauthor.display_name

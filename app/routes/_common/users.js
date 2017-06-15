@@ -39,7 +39,7 @@ exports.getUsers = function getUsers(req, res) {
                 lat:latlang[0],
                 lng:latlang[1],
                 type:results[item].role,
-                slug:'/'+config.sez.users.baseurls[results[item].role]+'/'+results[item].user_login+'/',
+                slug:'/'+config.users_by_id[results[item].ID][config.prefix+"-sez"]+'/'+results[item].user_login+'/',
                 display_name:results[item].display_name,
                 date:results[item].role,
                 destination:results[item].city+", "+results[item].country
