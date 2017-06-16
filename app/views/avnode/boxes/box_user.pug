@@ -10,7 +10,7 @@
       .col-sm-8
         h5.media-heading
           a(itemprop='url', href=lang_preurl+'/'+config.users_by_id[result.ID][config.prefix+"-sez"]+'/'+result.user_login+'/')
-            span(itemprop='name')=result.display_name
+            span(itemprop='name')!=result.display_name
         p(itemprop='jobTitle')
           i=result.role_label
         if result.auth_contents

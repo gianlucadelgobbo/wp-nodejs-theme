@@ -25,8 +25,10 @@ exports.getUsers = function getUsers(req, res) {
   //console.log("user_sez "+user_sez);
   helpers.setSessions(req, function() {
     helpers.getContainerPage(req, user_sez, function( posttype ) {
-      helpers.getAllUsers(req, user_sez, function( results ) {
-        var markers = [];
+      console.log(posttype);
+      if (posttype.ID) {
+        helpers.getAllUsers(req, user_sez, function( results ) {
+          var markers = [];
           for (var item=0;item<results.length;item++) {
             //console.log("bella");
             //console.log(results[item]);
@@ -48,15 +50,20 @@ exports.getUsers = function getUsers(req, res) {
               markers.push(marker);
             }
           }
-        if (results[0].data && results[0].data.geolocation) {
-        }
-        //console.log("bingo");
-        //console.log(posttype);
-        var page_data = fnz.setPageData(req, posttype);
-        //meta_data.title = __(config.sez.users[user_sez].title) + " | " + (req.session.sessions.current_lang == config.default_lang ? "" : req.session.sessions.current_lang.toUpperCase()+" | ")+ config.project_name;
-        //if (posttype.post_content) meta_data.description[req.session.sessions.current_lang] = fnz.makeExcerpt(posttype.post_content, 160);
-        res.render(config.prefix+'/'+'users_'+user_sez, {results: results, markers:markers, page_data:page_data, sessions:req.session.sessions, posttype:posttype, sez:config.sez.users, title: __(config.sez.users[user_sez].title)/*, itemprop:"sponsor"*/});
-      });
+          if (results[0].data && results[0].data.geolocation) {
+          }
+          //console.log("bingo");
+          //console.log(posttype);
+          var page_data = fnz.setPageData(req, posttype);
+          //meta_data.title = __(config.sez.users[user_sez].title) + " | " + (req.session.sessions.current_lang == config.default_lang ? "" : req.session.sessions.current_lang.toUpperCase()+" | ")+ config.project_name;
+          //if (posttype.post_content) meta_data.description[req.session.sessions.current_lang] = fnz.makeExcerpt(posttype.post_content, 160);
+          res.render(config.prefix+'/'+'users_'+user_sez, {results: results, markers:markers, page_data:page_data, sessions:req.session.sessions, posttype:posttype, sez:config.sez.users, title: __(config.sez.users[user_sez].title)/*, itemprop:"sponsor"*/});
+        });
+      } else {
+        var page_data = fnz.setPageData(req, {});
+        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+      }
+
     });
   });
 };

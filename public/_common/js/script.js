@@ -140,7 +140,7 @@ $(function() {
   $(function() {
 
   if (typeof(cx) !== "undefined") {
-    console.log("append gcse:searchresults-only")
+    //console.log("append gcse:searchresults-only")
     jQuery(".rientro.searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
     var gcse = document.createElement('script');
     gcse.type = 'text/javascript';
