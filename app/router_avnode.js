@@ -1,5 +1,6 @@
 var indexRoutes = require('./routes/avnode/index');
 var activitiesRoutes = require('./routes/avnode/activities');
+var memberactivitiesRoutes = require('./routes/avnode/memberactivities');
 
 var sitemapRoutes = require('./routes/_common/sitemap');
 var usersRoutes = require('./routes/_common/users');
@@ -36,6 +37,9 @@ module.exports = function(app) {
   app.get('/news/', newsRoutes.getAll);
   app.get('/news/(:new)', newsRoutes.get);
   app.get('/events/page/(:page)', newsRoutes.getAll);
+  app.get('/member-activities/', memberactivitiesRoutes.getAll);
+  app.get('/member-activities/(:activity)', memberactivitiesRoutes.get);
+  app.get('/member-activities/page/(:page)', memberactivitiesRoutes.getAll);
   app.get('/activities/', activitiesRoutes.getAll);
   app.get('/activities/(:activity)', activitiesRoutes.get);
   app.get('/activities/page/(:page)', activitiesRoutes.getAll);

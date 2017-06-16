@@ -159,7 +159,7 @@ exports.getAll = function getAll(req, sez, limit, page, callback) {
 exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback) {
   var trgt = this;
   var previousdata = p;
-  //console.log("getAll "+sez.post_type);
+  console.log("getAll "+sez.post_type);
   //console.log("page "+page);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type );
@@ -402,6 +402,21 @@ exports.getActivity = function getActivity(req,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/activities/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.activity).get(function( err, data ) {
     //console.log("//// Activities");
+    //data.auth_contents["events"].posts = fnz.fixResults(data.auth_contents["events"].posts);
+    if (data && data.ID) data = fnz.fixResult(data);
+    callback(data);
+  });
+};
+
+//////// MEMBER ACTIVITY
+
+exports.getMemberActivity = function getMemberActivity(req,callback) {
+  //console.log("//// getMemberActivity");
+  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/member-activities/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.activity).get(function( err, data ) {
+    //console.log("//// Activities");
+    //console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/member-activities/'+req.params.activity);
     //data.auth_contents["events"].posts = fnz.fixResults(data.auth_contents["events"].posts);
     if (data && data.ID) data = fnz.fixResult(data);
     callback(data);

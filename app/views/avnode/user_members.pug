@@ -95,7 +95,7 @@ block content
         .row.isotope.results
           each result, position in res
             .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
-              include boxes/box_activity
+              include boxes/box_member_activity
     if result.auth_contents && result.auth_contents.events && result.auth_contents.events.length
       - var res = result.auth_contents.events
       section(itemscope, itemtype="https://schema.org/ItemList")
