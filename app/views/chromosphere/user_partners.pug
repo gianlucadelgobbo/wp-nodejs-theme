@@ -16,35 +16,35 @@ block content
           p(itemprop='jobTitle')
             i=result.role_label
             p
-              if result.auth_contents.editions && result.auth_contents.editions.posts.length
-                !=result.auth_contents.editions.labels.name + ": " + result.auth_contents.editions.posts.length
+              if result.auth_contents.editions && result.auth_contents.editions.length
+                !=result.auth_contents.editions.labels.name + ": " + result.auth_contents.editions.length
                 br
-              if result.auth_contents.events && result.auth_contents.events.posts.length
-                !=config.posttypes_labels.events + ": " + result.auth_contents.events.posts.length
+              if result.auth_contents.events && result.auth_contents.events.length
+                !=config.posttypes_labels.events + ": " + result.auth_contents.events.length
                 br
-              if result.auth_contents.news && result.auth_contents.news.posts.length
-                !=config.posttypes_labels.news + ": " + result.auth_contents.news.posts.length
-    if result.auth_contents.editions && result.auth_contents.editions.posts.length
+              if result.auth_contents.news && result.auth_contents.news.length
+                !=config.posttypes_labels.news + ": " + result.auth_contents.news.length
+    if result.auth_contents.editions && result.auth_contents.editions.length
       - var res = result.auth_contents.editions
         section(itemscope, itemtype="https://schema.org/ItemList")
-          h3(itemprop="name")=res.labels.name
+          h3(itemprop="name")=config.posttypes_labels.editions
           .row.isotope.results
-            each result, position in res.posts
+            each result, position in res
               .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
                 include boxes/box_edition
-    if result.auth_contents.events && result.auth_contents.events.posts.length
+    if result.auth_contents.events && result.auth_contents.events.length
       - var res = result.auth_contents.events
         section(itemscope, itemtype="https://schema.org/ItemList")
-          h3(itemprop="name")=res.labels.name
+          h3(itemprop="name")=config.posttypes_labels.events
           .row.isotope.results
-            each result, position in res.posts
+            each result, position in res
               .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
                 include boxes/box_event
-    if result.auth_contents.news && result.auth_contents.news.posts.length
+    if result.auth_contents.news && result.auth_contents.news.length
       - var res = result.auth_contents.news
       section(itemscope, itemtype="https://schema.org/ItemList")
-        h3(itemprop="name")=res.labels.name
+        h3(itemprop="name")=config.posttypes_labels.news
         .row.isotope.results
-          each result, position in res.posts
+          each result, position in res
             .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
               include boxes/box_news
