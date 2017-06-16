@@ -29,7 +29,8 @@
         br
         - var auth = []
         each capauthor in result.capauthors
-          - auth.push(capauthor.display_name)
+          if (config.users_by_id[capauthor.ID] && config.users_by_id[capauthor.ID][config.prefix + "-sez"])
+            - auth.push(capauthor.display_name)
         if auth.length
           if auth.length == 1
             !=global.__("Teacher") + ": "

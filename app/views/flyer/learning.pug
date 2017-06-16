@@ -25,7 +25,8 @@ block content
               br
               - var auth = []
               each capauthor in result.capauthors
-                - auth.push("<span itemprop='performer' itemscope itemtype='http://schema.org/Person'><span itemprop='name'>"+capauthor.display_name+"</span></span>")
+                if (config.users_by_id[capauthor.ID] && config.users_by_id[capauthor.ID][config.prefix + "-sez"])
+                  - auth.push("<span itemprop='performer' itemscope itemtype='http://schema.org/Person'><span itemprop='name'>"+capauthor.display_name+"</span></span>")
               if auth.length
                 if auth.length == 1
                   !=global.__("Teacher") + ": "
