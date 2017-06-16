@@ -4,51 +4,15 @@ block content
     .row
       .col-sm-9
         header
-          h1.entry-title(itemprop='name')=result.display_name
+          h1.entry-title(itemprop='name')!=result.display_name
         if result.organisationtype
           p
             i=result.organisationtype
-          p(itemprop='jobTitle')
-            i=result.role_label
-        p
-          if result.auth_contents["member-activities"] && result.auth_contents["member-activities"].length
-            !=config.posttypes_labels["member-activities"] + ": " + result.auth_contents["member-activities"].length
-            br
-          if result.auth_contents.activities && result.auth_contents.activities.length
-            !=config.posttypes_labels.activities + ": " + result.auth_contents.activities.length
-            br
-          if result.auth_contents.events && result.auth_contents.events.length
-            !=config.posttypes_labels.events + ": " + result.auth_contents.events.length
-            br
-          if result.auth_contents.news && result.auth_contents.news.length
-            !=config.posttypes_labels.news + ": " + result.auth_contents.news.length
-            br
-        include ../_common/inc_share
-
+        p(itemprop='jobTitle')
+          i=result.role_label
         div(itemprop='description')!=result.description
-
-        if result.auth_contents["member-activities"] && result.auth_contents["member-activities"] && result.auth_contents["member-activities"].length
-          - var res = result.auth_contents["member-activities"]
-          section(itemscope, itemtype="https://schema.org/ItemList")
-            h3(itemprop="name")=config.posttypes_labels['activities']
-            each result, position in res
-              .row
-                .col-lg-4.col-md-12.col-sm-12
-                  img.img-responsive(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='contentUrl')
-                  meta(itemprop="width" content="480")
-                  meta(itemprop="height" content="270")
-                .col-lg-8.col-md-12.col-sm-12
-                  .text-muted=result.data_month
-                  h3.list_title(itemprop='name')=result.post_title
-                  .places
-                    include ../_common/inc_place
-                  .text-muted.small.excerpt
-                    if result.post_content
-                      div(itemprop='description')!=result.post_content
-              hr
       .col-sm-3
         img.img-responsive.main-image.svg-image(src=result.img, alt=result.display_name, itemprop='image')
-
         .rientro
           if result.auth_contents
             p
