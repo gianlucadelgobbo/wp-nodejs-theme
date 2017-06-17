@@ -10,12 +10,14 @@ require('jsonfile').readFile(config.root+'/config/users.json', function(err, obj
   config.users_by_sez = {};
   config.users_by_id = {};
   for(var a=0;a<config.users.length;a++) {
-    if (!config.users_by_sez[config.users[a][process.argv[3]+"-sez"]]) config.users_by_sez[config.users[a][process.argv[3]+"-sez"]] = [];
-    config.users_sez[config.users[a][process.argv[3]+"-sez"]] = true;
-    config.users_by_sez[config.users[a][process.argv[3]+"-sez"]].push(config.users[a]["ID"]);
-    config.users_by_id[config.users[a]["ID"]] = config.users[a];
+    if (config.users[a][process.argv[3]+"-sez"]) {
+      if (!config.users_by_sez[config.users[a][process.argv[3]+"-sez"]]) config.users_by_sez[config.users[a][process.argv[3]+"-sez"]] = [];
+      config.users_sez[config.users[a][process.argv[3]+"-sez"]] = true;
+      config.users_by_sez[config.users[a][process.argv[3]+"-sez"]].push(config.users[a]["ID"]);
+      config.users_by_id[config.users[a]["ID"]] = config.users[a];
+    }
   }
-  console.log(config.users_sez);
+  //console.log(config.users_sez);
 });
 
 if (process.argv[3]=="lpm") {

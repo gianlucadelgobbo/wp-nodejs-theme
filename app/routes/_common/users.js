@@ -25,7 +25,7 @@ exports.getUsers = function getUsers(req, res) {
   //console.log("user_sez "+user_sez);
   helpers.setSessions(req, function() {
     helpers.getContainerPage(req, user_sez, function( posttype ) {
-      console.log(posttype);
+      //console.log(posttype);
       if (posttype.ID) {
         helpers.getAllUsers(req, user_sez, function( results ) {
           var markers = [];
