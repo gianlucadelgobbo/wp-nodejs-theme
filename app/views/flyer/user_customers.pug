@@ -27,7 +27,7 @@ block content
             section(itemscope, itemtype="https://schema.org/ItemList")
               h3(itemprop="name")=config.posttypes_labels[key]
               .row.isotope.results
-                each result, position in auth_content.posts
+                each result, position in auth_content
                   if result.post_type == 'events'
                     .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
                       include boxes/box_event
