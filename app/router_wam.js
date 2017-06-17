@@ -17,7 +17,6 @@ module.exports = function(app) {
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
   app.get("/sitemap-posttype-(:posttype).xml", sitemapRoutes.get);
-  app.get("/sitemap-exhibitions-(:exhibition).xml", sitemapRoutes.get);
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
   app.get('/it/', indexRoutes.get);

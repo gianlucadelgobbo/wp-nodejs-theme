@@ -41,20 +41,11 @@ exports.get = function get(req, res) {
         var lastmod = diffDays < 0 ? fnz.ISODateString(date) : fnz.ISODateString(now);
         var changefreq = diffDays < 0 ? "yearly" : "daily";
         res.header('Content-Type', 'text/xml').render('_common/sitemap-edition', {result:result, lastmod:lastmod, changefreq:changefreq});
-    } else if (req.params.exhibition) {
-      //console.log(req.params.exhibition);
-        var result = config.meta.editions[req.params.exhibition];
-        res.header('Content-Type', 'text/xml').render('_common/sitemap-exhibition', {result:result, isodate:isodate});
-      //});
 
     } else if (req.params.posttype) {
       //console.log("eccomi");
       if (config.sez[req.params.posttype]) {
-        if (req.params.posttype == "exhibitions") {
-          helpers.getAll(req, config.sez[req.params.posttype], -1, 1, function( results ) {
-            res.header('Content-Type', 'text/xml').render('_common/sitemap-exhibitions', {results:results, isodate:isodate});
-          });
-        } else if (req.params.posttype == "editions") {
+        if (req.params.posttype == "editions") {
           helpers.getAllEditionsByYear(req, null, config.sez[req.params.posttype], 1, function( results ) {
             res.header('Content-Type', 'text/xml').render('_common/sitemap-editions', {results:results, isodate:isodate});
           });
