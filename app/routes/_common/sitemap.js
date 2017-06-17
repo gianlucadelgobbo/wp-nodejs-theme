@@ -51,7 +51,7 @@ exports.get = function get(req, res) {
           });
         } else {
             helpers.getAll(req, config.sez[req.params.posttype], -1, 1, function( results ) {
-              res.header('Content-Type', 'text/xml').render('_common/sitemap-posttype', {results:results, isodate:isodate});
+              res.header('Content-Type', 'text/xml').render('_common/sitemap-posttype', {results:results, isodate:isodate, sez:req.params.posttype});
             });
         }
       } else {
