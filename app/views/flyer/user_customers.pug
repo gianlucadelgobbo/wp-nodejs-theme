@@ -13,7 +13,7 @@ block content
                 p
                   each auth_content,key in result.auth_contents
                     if auth_content
-                      !=config.posttypes_labels[key]+": "+auth_content
+                      !=config.posttypes_labels[key]+": "+auth_content.length
                       br
             if (result.description)
               hr
