@@ -5,11 +5,11 @@ var sez = config.sez.prenatal;
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
-    //console.log("result._post_template");
+    console.log("result._post_template");
     helpers.getExhibition(req, function( result ) {
       //console.log("result._post_template2");
       var page_data = fnz.setPageData(req, result);
-      res.render(config.prefix+'/'+'exhibition', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+      res.render(config.prefix+'/'+'exhibition', {sez:sez, result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
     });
   });
 };
