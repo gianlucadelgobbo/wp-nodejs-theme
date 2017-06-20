@@ -3,6 +3,9 @@ block content
   article.pagepaddingtop#container(itemprop=itemprop, itemscope, itemtype='http://schema.org/Person')
     .row
       .col-sm-9
+        img.img-responsive.main-image.svg-image(src=result.img, alt=result.display_name, itemprop='image')
+        .hidden-xs(itemprop='description')!=result.description
+      .col-sm-3
         header
           h1.entry-title(itemprop='name')!=result.display_name
         if result.organisationtype
@@ -10,9 +13,6 @@ block content
             i=result.organisationtype
         p(itemprop='jobTitle')
           i=result.role_label
-        div(itemprop='description')!=result.description
-      .col-sm-3
-        img.img-responsive.main-image.svg-image(src=result.img, alt=result.display_name, itemprop='image')
         .rientro
           if result.auth_contents
             p
@@ -42,6 +42,7 @@ block content
           if result.organisationgeolocation && result.organisationgeolocation.length
             p
               img.img-responsive(src="https://maps.googleapis.com/maps/api/staticmap?size=370x200&maptype=roadmap&markers=color:red%7Clabel:A%7C"+result.organisationgeolocation[0]+","+result.organisationgeolocation[1]+"&sensor=false&key=AIzaSyBJ_PEUV1D4Uw6TktDxQp-ErObMyRQuvm4")
+          .visible-xs!=result.description
           include ../_common/inc_share
 
     if result.auth_contents
