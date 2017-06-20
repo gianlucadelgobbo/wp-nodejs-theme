@@ -416,7 +416,7 @@ exports.getMemberActivity = function getMemberActivity(req,callback) {
   wp.myCustomResource = wp.registerRoute('wp/v2', '/member-activities/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.activity).get(function( err, data ) {
     //console.log("//// Activities");
-    //console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/member-activities/'+req.params.activity);
+    console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/member-activities/'+req.params.activity);
     //data.auth_contents["events"].posts = fnz.fixResults(data.auth_contents["events"].posts);
     if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
