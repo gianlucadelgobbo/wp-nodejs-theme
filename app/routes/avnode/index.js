@@ -4,14 +4,12 @@ var fs = require('fs');
 var fnz = require('../../functions');
 
 exports.getInsta = function getInsta(req, res) {
-  //var redirect_uri = config.domain+"/";
-  var redirect_uri = "http://localhost:3007/";
-  var client_id = '818216a3ba354059b19c8464d87ca865';
-  var client_secret = '6220780a13ad48f989c191865969c09f';
+  //var redirect_uri = config.domain+"/insta/";
+  var redirect_uri = "http://localhost:3007/insta/";
 
   if (req.query.code) {
     var ig = require('instagram-node').instagram();
-    ig.use({ client_id: client_id, client_secret: client_secret });
+    ig.use({ client_id: config.accounts.instagram.client_id, client_secret: config.accounts.instagram.client_secret });
     ig.authorize_user(req.query.code, redirect_uri, function(err, result) {
       if (err) {
         //console.log(err);
