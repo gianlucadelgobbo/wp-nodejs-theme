@@ -5,7 +5,7 @@ var sez = config.sez.prenatal;
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
-    console.log("result._post_template");
+    //console.log("result._post_template");
     helpers.getExhibition(req, function( result ) {
       //console.log("result._post_template2");
       var page_data = fnz.setPageData(req, result);

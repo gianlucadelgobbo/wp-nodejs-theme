@@ -6,7 +6,7 @@ exports.get = function get(req, res) {
   //console.log("user_sez "+user_sez);
   helpers.setSessions(req, function() {
       helpers.getUser(req, user_sez, function( result ) {
-        console.log(result);
+        //console.log(result);
         result.post_title = result.display_name;
         if (result.img) result.featured = {full:result.img};
         result.meta_description = result.description ? result.description : __("Here you can find all the projects made with")+" "+ result.display_name;
