@@ -110,6 +110,13 @@ exports.getUser = function getUser(req, user_sez, callback) {
   });
 };
 
+exports.getAllUsersStatic = function getAllUsersStatic(req, user_sez, callback) {
+  var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+  var jsonfile = require('jsonfile');
+  var data = jsonfile.readFileSync(file);
+  callback(data);
+};
+
 exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
   //console.log("getAllUsers "+user_sez);
   //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/authors/'+config.prefix+'/'+config.site_tax+'/'+user_sez+'/');

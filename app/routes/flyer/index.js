@@ -24,7 +24,7 @@ exports.get = function get(req, res) {
                             //console.log(config.sez.home.web.limit);
                             //console.log(result_web.length);
                             if (!result_web.length || result_web.length<config.sez.home.web.limit) this.get(req, res);
-                              //res.redirect((req.session.sessions.current_lang=='it' ? '/it' : '')+'/?createcache=1');
+                            //res.redirect((req.session.sessions.current_lang=='it' ? '/it' : '')+'/?createcache=1');
                             helpers.getAll(req, config.sez["learning"], config.sez.home.learning.limit, 1, function (result_learning) {
                               helpers.getAll(req, config.sez["videos"], config.sez.home.videos.limit, 1, function (result_videos) {
                                 helpers.getAll(req, config.sez["lab"], config.sez.home.lab.limit, 1, function (result_lab) {
@@ -36,9 +36,22 @@ exports.get = function get(req, res) {
                                     };
                                     jsonfile.writeFile(file, obj, function (err) {
                                       //if(err) console.log(err);
+                                      var user_sez = "people";
+                                      helpers.getAllUsers(req, user_sez, function( results ) {
+                                        var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+                                        jsonfile.writeFile(file, results, function (err) {
+                                          //if(err) console.log(err);
+                                          var user_sez = "customers";
+                                          helpers.getAllUsers(req, user_sez, function( results ) {
+                                            var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+                                            jsonfile.writeFile(file, results, function (err) {
+                                              //console.log(obj.results.web);
+                                              res.render(config.prefix+'/'+'index',obj);
+                                            });
+                                          });
+                                        });
+                                      });
                                     });
-                                    //console.log(obj.results.web);
-                                    res.render(config.prefix+'/'+'index',obj);
                                   });
                                 });
                               });

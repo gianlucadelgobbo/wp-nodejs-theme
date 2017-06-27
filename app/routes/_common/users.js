@@ -27,7 +27,8 @@ exports.getUsers = function getUsers(req, res) {
     helpers.getContainerPage(req, user_sez, function( posttype ) {
       //console.log(posttype);
       if (posttype.ID) {
-        helpers.getAllUsers(req, user_sez, function( results ) {
+        helpers.getAllUsersStatic(req, user_sez, function( results ) {
+          console.log(results);
           var markers = [];
           for (var item=0;item<results.length;item++) {
             //console.log("bella");

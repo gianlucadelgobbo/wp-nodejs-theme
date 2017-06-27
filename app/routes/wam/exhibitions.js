@@ -13,7 +13,6 @@ exports.get = function get(req, res) {
     });
   });
 };
-
 exports.getAll = function getAll(req, res) {
   helpers.setSessions(req, function() {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {

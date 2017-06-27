@@ -17,9 +17,22 @@ exports.get = function get(req, res) {
             };
             jsonfile.writeFile(file, obj, function (err) {
               //console.log(err);
+              var user_sez = "backstage";
+              helpers.getAllUsers(req, user_sez, function( results ) {
+                var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+                jsonfile.writeFile(file, results, function (err) {
+                  //if(err) console.log(err);
+                  var user_sez = "partners";
+                  helpers.getAllUsers(req, user_sez, function( results ) {
+                    var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+                    jsonfile.writeFile(file, results, function (err) {
+                      //console.log(obj.results.web);
+                      res.render(config.prefix+'/'+'index',obj);
+                    });
+                  });
+                });
+              });
             });
-            res.render(config.prefix+'/'+'index',obj);
-            //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,exhibitions:result_exhibitions}, page_data:page_data, sessions:req.session.sessions});
           });
         });
       });
