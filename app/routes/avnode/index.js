@@ -51,7 +51,7 @@ exports.getInsta = function getInsta(req, res) {
       }
     });
   } else {
-    var url = 'https://api.instagram.com/oauth/authorize/?client_id='+client_id+'&redirect_uri='+redirect_uri+'&response_type=code'
+    var url = 'https://api.instagram.com/oauth/authorize/?client_id='+config.accounts.instagram.client_id+'&redirect_uri='+redirect_uri+'&response_type=code'
     res.redirect(url);
     //res.redirect(ig.get_authorization_url(redirect_uri, { scope: ['likes']}));
   }
