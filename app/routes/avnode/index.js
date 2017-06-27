@@ -4,8 +4,8 @@ var fs = require('fs');
 var fnz = require('../../functions');
 
 exports.getInsta = function getInsta(req, res) {
-  //var redirect_uri = config.domain+"/insta/";
-  var redirect_uri = "http://localhost:3007/insta/";
+  var redirect_uri = config.domain+"/insta/";
+  //var redirect_uri = "http://localhost:3007/insta/";
 
   if (req.query.code) {
     var ig = require('instagram-node').instagram();
