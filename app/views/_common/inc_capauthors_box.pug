@@ -38,8 +38,6 @@ if result.capauthors
       each capauthor in authors
         if (config.users_by_id[capauthor.ID] && config.users_by_id[capauthor.ID][config.prefix+"-sez"])
           li(itemprop=itemprop=config.posttypes_authors[result.post_type].authors.itemprop, itemscope, itemtype='http://schema.org/Person')
-            - console.log(capauthor)
-            - console.log(config.users_by_id[capauthor.ID])
             - var baseurl = config.users_by_id[capauthor.ID][config.prefix+"-sez"]
             if baseurl
               a(href='/'+baseurl+'/' + capauthor.user_login+'/', rel='author', title=capauthor.display_name, itemprop='url')

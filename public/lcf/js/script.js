@@ -31,7 +31,6 @@ $(function() {
       $('#subscribe .loading').addClass("hide");
       $('#subscribe .alert').removeClass("hide");
 
-      console.log(data);
     });
     return false;
   });

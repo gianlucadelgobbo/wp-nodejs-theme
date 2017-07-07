@@ -34,7 +34,7 @@ function infiniteScroll(t) {
     method: "GET",
     url: url
   }).done(function (msg) {
-    console.log(url);
+    //console.log(url);
     $("#container > .read-more").html($(msg).find("#container > .read-more").html());
     $("#container .read-more a").click(function() {
       infiniteScroll(this);
@@ -59,7 +59,7 @@ $(function() {
         var url = $(this).action;
         var dat = $(this).serialize() + "&ajax=1";
         //dat.ajax = 1;
-        console.log(dat);
+        //console.log(dat);
         $.ajax({
           type: "POST",
           url: url,
@@ -87,7 +87,7 @@ $(function() {
         var url = $(this).action;
         var dat = $(this).serialize()+"&ajax=1";
         //dat.ajax = 1;
-        console.log(dat);
+        //console.log(dat);
         $.ajax({
           type: "POST",
           url: url,
@@ -116,7 +116,7 @@ $(function() {
         var url = $(this).action;
         var dat = $(this).serialize()+"&ajax=1";
         //dat.ajax = 1;
-        console.log(dat);
+        //console.log(dat);
         $.ajax({
           type: "POST",
           url: url,

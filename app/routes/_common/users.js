@@ -28,7 +28,7 @@ exports.getUsers = function getUsers(req, res) {
       //console.log(posttype);
       if (posttype.ID) {
         helpers.getAllUsersStatic(req, user_sez, function( results ) {
-          console.log(results);
+          //console.log(results);
           var markers = [];
           for (var item=0;item<results.length;item++) {
             //console.log("bella");

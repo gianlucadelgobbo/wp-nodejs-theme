@@ -283,60 +283,64 @@ exports.getGallery = function getGallery(req, res) {
   //console.log("getGallery");
   helpers.setSessions(req, function() {
     req.params.page = "gallery";
-    helpers.getPage(req, function( result ) {
-      var request = require('request');
-      if (result.post_content.indexOf(">ERROR<")===-1) {
-        if (req.params.artist && req.params.gallery) {
-          var url = "https://flxer.net/api/"+req.params.artist+"/gallery/"+req.params.gallery+(req.params.galleryitem ? "/"+req.params.galleryitem :"")+"/";
-          //console.log(url);
-          request(url, function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-              result.post_gallery = JSON.parse(body);
-              //console.log(result.post_gallery);
-              var page_data = fnz.setPageData(req, result);
-              res.render(config.prefix+'/'+'gallery_dett', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:true});
-            }
-          });
-        } else {
+    if(result && result['ID']) {
+      helpers.getPage(req, function( result ) {
+        var request = require('request');
+        if (result.post_content.indexOf(">ERROR<")===-1) {
+          if (req.params.artist && req.params.gallery) {
+            var url = "https://flxer.net/api/"+req.params.artist+"/gallery/"+req.params.gallery+(req.params.galleryitem ? "/"+req.params.galleryitem :"")+"/";
+            //console.log(url);
+            request(url, function (error, response, body) {
+              if (!error && response.statusCode == 200) {
+                result.post_gallery = JSON.parse(body);
+                //console.log(result.post_gallery);
+                var page_data = fnz.setPageData(req, result);
+                res.render(config.prefix+'/'+'gallery_dett', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:true});
+              }
+            });
+          } else {
+            var shortcode = require('shortcode-parser');
+            result.post_content = result.post_content.replace("source=https","source='https").replace("/ view=","/' view='").replace("]","']");
+            //console.log(result.post_content);
+            //var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
+            shortcode.add('avnode', function(buf, opts) {
+              if (opts.source) {
+                //console.log("/stoqui2");
+                request(opts.source, function (error, response, body) {
+                  //console.log("/stoqui3");
+                  //console.log(error);
+                  if (!error && response.statusCode == 200) {
+                    result.post_gallery = JSON.parse(body).gallery;
+                    var page_data = fnz.setPageData(req, result);
+                    res.render(config.prefix+'/'+'gallery', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:false});
+                  }
+                });
+              }
+            });
+            //console.log("/stoqui1");
+            shortcode.parse(result.post_content);
+          }
+          /*
           var shortcode = require('shortcode-parser');
           result.post_content = result.post_content.replace("source=https","source='https").replace("/ view=","/' view='").replace("]","']");
-          //console.log(result.post_content);
-          //var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
+          var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
           shortcode.add('avnode', function(buf, opts) {
             if (opts.source) {
-              //console.log("/stoqui2");
-              request(opts.source, function (error, response, body) {
-                //console.log("/stoqui3");
-                //console.log(error);
-                if (!error && response.statusCode == 200) {
-                  result.post_gallery = JSON.parse(body).gallery;
-                  var page_data = fnz.setPageData(req, result);
-                  res.render(config.prefix+'/'+'gallery', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:false});
-                }
-              });
+
             }
           });
-          //console.log("/stoqui1");
-          shortcode.parse(result.post_content);
+          */
+        } else {
+          res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
         }
-        /*
-        var shortcode = require('shortcode-parser');
-        result.post_content = result.post_content.replace("source=https","source='https").replace("/ view=","/' view='").replace("]","']");
-        var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
-        shortcode.add('avnode', function(buf, opts) {
-          if (opts.source) {
-
-          }
-        });
+        //shortcode.parse(result.post_content);
+        //console.log(shortcode.parse(str));
+        /*var url = "https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/";
         */
-      } else {
-        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
-      }
-      //shortcode.parse(result.post_content);
-      //console.log(shortcode.parse(str));
-      /*var url = "https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/";
-      */
-    });
+      });
+    } else {
+      res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+    }
   });
 };
 

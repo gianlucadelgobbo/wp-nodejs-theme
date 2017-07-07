@@ -394,8 +394,6 @@ function loadItem(){
 		if(a!=""){
 			callLoading();
 			var img = (typeof window.glink!=="undefined" && window.glink[window.sgCurrind] ? window.glink[window.sgCurrind] : a);
-          console.log("eccomi");
-          console.log(window.glink[window.sgCurrind].indexOf("https://flxer.net/_fp/?id=f"));
 			if (window.sgCurrind>=0 && window.glink && window.glink[window.sgCurrind] && window.glink[window.sgCurrind].indexOf("https://flxer.net/_fp/?id=f")===0) {
 				htmlstr = '<iframe id="sgpILoading" width="980" height="551" frameborder="0" src="'+img+'"></iframe>';	
 				jQuery("#sgCont").html(htmlstr);

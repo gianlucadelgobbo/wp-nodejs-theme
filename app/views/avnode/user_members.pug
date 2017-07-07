@@ -48,7 +48,6 @@ block content
     if result.auth_contents
       if result.auth_contents.activities && result.auth_contents.activities.length
         - var res = result.auth_contents.activities
-        - console.log(res);
         section(itemscope, itemtype="https://schema.org/ItemList")
           h3(itemprop="name")=config.posttypes_labels.activities
           .row.isotope.results
