@@ -144,8 +144,9 @@ exports.getPage = function getPage(req,callback) {
   //var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/mypages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(config.prefix+'/'+req.params.page).get(function( err, data ) {
-    //console.log("//// Page " + req.params.page);
-    if (!err && data) {
+    console.log("//// Page " + req.params.page);
+    if (!err && data && data.ID) {
+      console.log("stocazzo");
       if (data) data = fnz.fixResult(data);
       if (data.posts){
         data.posts = fnz.fixResults(data.posts);
@@ -154,7 +155,7 @@ exports.getPage = function getPage(req,callback) {
     } else {
       data = {};
     }
-    //console.log(data.posts);
+    console.log(data);
     callback(data);
   });
 };

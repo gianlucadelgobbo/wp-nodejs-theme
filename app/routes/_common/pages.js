@@ -141,8 +141,8 @@ exports.post = function post(req, res) {
       } else {
         helpers.setSessions(req, function() {
           helpers.getPage(req, function( result ) {
+            var page_data = fnz.setPageData(req, result);
             if(result && result['ID']) {
-              var page_data = fnz.setPageData(req, result);
               var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -229,8 +229,8 @@ exports.post = function post(req, res) {
       } else {
         helpers.setSessions(req, function() {
           helpers.getPage(req, function( result ) {
+            var page_data = fnz.setPageData(req, result);
             if(result && result['ID']) {
-              var page_data = fnz.setPageData(req, result);
               var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -264,9 +264,9 @@ exports.post = function post(req, res) {
 exports.getSubpage = function getSubpage(req, res) {
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
+      var page_data = fnz.setPageData(req, result);
       if(result && result['ID']) {
         if (result.post_excerpt) result.meta_description = result.post_excerpt;
-        var page_data = fnz.setPageData(req, result);
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].pugpage ? config.sez.pages.conf[req.params.subpage].pugpage : config.sez.pages.conf.default.subpage);
         //console.log("getSubpage");
         //console.log(result);
@@ -280,11 +280,11 @@ exports.getSubpage = function getSubpage(req, res) {
   });
 };
 exports.getGallery = function getGallery(req, res) {
-  //console.log("getGallery");
   helpers.setSessions(req, function() {
     req.params.page = "gallery";
-    if(result && result['ID']) {
-      helpers.getPage(req, function( result ) {
+    helpers.getPage(req, function( result ) {
+      var page_data = fnz.setPageData(req, result);
+      if(result && result['ID']) {
         var request = require('request');
         if (result.post_content.indexOf(">ERROR<")===-1) {
           if (req.params.artist && req.params.gallery) {
@@ -294,7 +294,6 @@ exports.getGallery = function getGallery(req, res) {
               if (!error && response.statusCode == 200) {
                 result.post_gallery = JSON.parse(body);
                 //console.log(result.post_gallery);
-                var page_data = fnz.setPageData(req, result);
                 res.render(config.prefix+'/'+'gallery_dett', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:true});
               }
             });
@@ -321,26 +320,27 @@ exports.getGallery = function getGallery(req, res) {
             shortcode.parse(result.post_content);
           }
           /*
-          var shortcode = require('shortcode-parser');
-          result.post_content = result.post_content.replace("source=https","source='https").replace("/ view=","/' view='").replace("]","']");
-          var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
-          shortcode.add('avnode', function(buf, opts) {
-            if (opts.source) {
+           var shortcode = require('shortcode-parser');
+           result.post_content = result.post_content.replace("source=https","source='https").replace("/ view=","/' view='").replace("]","']");
+           var str = "[avnode source='https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/' view='gallery']";
+           shortcode.add('avnode', function(buf, opts) {
+           if (opts.source) {
 
-            }
-          });
-          */
+           }
+           });
+           */
         } else {
           res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
         }
         //shortcode.parse(result.post_content);
         //console.log(shortcode.parse(str));
         /*var url = "https://flxer.net/api/lpm-team/events/lpm-live-performers-meeting/";
-        */
-      });
-    } else {
-      res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
-    }
+         */
+      } else {
+        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+      }
+
+    });
   });
 };
 
