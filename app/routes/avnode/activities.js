@@ -6,7 +6,10 @@ var sez = config.sez.activities;
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     helpers.getActivity(req, function( result ) {
+      console.log(result);
       var page_data = fnz.setPageData(req, result);
+      console.log(result);
+
       if(result && result['ID']) {
         res.render(config.prefix+'/'+sez.pugdett, {result: result, page_data:page_data, sessions:req.session.sessions, baseurl:sez.baseurl,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
