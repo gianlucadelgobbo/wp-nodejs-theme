@@ -51,6 +51,22 @@ function infiniteScroll(t) {
 
 
 $(function() {
+  var launchmyapp = {
+    "livecinemafestival.com" : "lcf",
+    "liveperformersmeeting.net" : "lpm"
+  };
+  var param = window.location.pathname.split("/");
+  if (window.location.hash=="#app" && param[3]=="artists") {
+    var loc = "";
+    if (param[5]=="performances") {
+      loc = "loadPerf#"+window.location.pathname;
+    } else if (param[4]) {
+      loc = "loadArtist#"+window.location.pathname;
+    } else {
+      loc = "loadArtistsList";
+    }
+    location.href = launchmyapp[window.location.host]+'://'+loc
+  }
   if ($('#contact-form').length) {
     $('#contact-form').validator();
 
