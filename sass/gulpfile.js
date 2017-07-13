@@ -306,13 +306,13 @@ gulp.task('compress_js_wam', function() {
 gulp.task('concat_common_scripts', function() {
   return gulp.src([
     config.publicDir + '/_common/js/jquery.min.js',
-    config.publicDir + '/_common/js/bootstrap.min.js',
     config.publicDir + '/_common/js/jquery.isotope.min.js',
     config.publicDir + '/_common/js/imagesloaded.pkgd.min.js',
     config.publicDir + '/_common/js/cookielawinfo.min.js',
+    config.publicDir + '/_common/js/bootstrap.min.js',
     config.publicDir + '/_common/js/script.min.js'
   ])
-      .pipe(concat('combo2.min.js'))
+      .pipe(concat('combo.min.js'))
       .pipe(gulp.dest(config.publicDir + '/_common/js/'));
 });
 
