@@ -113,7 +113,15 @@ exports.getUser = function getUser(req, user_sez, callback) {
 exports.getAllUsersStatic = function getAllUsersStatic(req, user_sez, callback) {
   var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
   var jsonfile = require('jsonfile');
-  var data = jsonfile.readFileSync(file);
+  var fileContents;
+  try {
+    var data = jsonfile.readFileSync(file);
+  } catch (err) {
+    console.log(err);
+    // Here you get the error when the file was not found,
+    // but you also get any other error
+  }
+
   callback(data);
 };
 
