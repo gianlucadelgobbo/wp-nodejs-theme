@@ -1,5 +1,5 @@
-var indexRoutes = require('./routes/lpm/index');
-var editionsRoutes = require('./routes/lpm/editions');
+var indexRoutes = require('./routes/lcf/index');
+var editionsRoutes = require('./routes/lcf/editions');
 
 var sitemapRoutes = require('./routes/_common/sitemap');
 var signupRoutes = require('./routes/_common/signup');

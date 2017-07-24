@@ -68,7 +68,7 @@ exports.getMeta = function getMeta(req, res) {
     getMetaSingle(config.editions[conta.length],req);
     function getMetaSingle(val,req) {
       //console.log("getMetaSingle 1 "+val);
-    //console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
+      //console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
       var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
       wp.myCustomResource = wp.registerRoute( 'wp/v2', '/meta_data/(?P<sez>)/(?P<edition>)' );
       wp.myCustomResource().edition(config.prefix+'/'+val).sez("editions").get(function( err, data ) {
@@ -76,7 +76,7 @@ exports.getMeta = function getMeta(req, res) {
         //console.log(data);
         meta[val] = data.meta.edition;
         conta.push(val);
-      //console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
+        //console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
         //console.log(conta.length +" - "+editions.length);
         //console.log(req.query.check);
         if (conta.length==config.editions.length) {
