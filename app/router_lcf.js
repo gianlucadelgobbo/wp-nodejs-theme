@@ -14,6 +14,7 @@ module.exports = function(app) {
   app.post('/*.php', pagesRoutes.get404);
 
   app.get('/editions/2017-rome/artists/AshKoosha/performances/live-vr-show/', function(req, res) {res.redirect(301, '/editions/2017-rome/artists/AshKoosha/performances/live-av-show/')});
+  app.get('/it/editions/2017-rome/artists/AshKoosha/performances/live-vr-show/', function(req, res) {res.redirect(301, '/it/editions/2017-rome/artists/AshKoosha/performances/live-av-show/')});
   app.get('/event/2014-rome/*', function(req, res) {res.redirect(301, req.url.replace('/event/2014-rome/','/editions/2014-rome/'))});
   app.get('/event/2015-rome/*', function(req, res) {res.redirect(301, req.url.replace('/event/2015-rome/','/editions/2015-rome/'))});
   app.get('/event/2016-rome/*', function(req, res) {res.redirect(301, req.url.replace('/event/2016-rome/','/editions/2016-rome/'))});
