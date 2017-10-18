@@ -1,5 +1,5 @@
-var indexRoutes = require('./routes/chromosphere/index');
-var editionsRoutes = require('./routes/chromosphere/editions');
+var indexRoutes = require('./routes/fotonica/index');
+var editionsRoutes = require('./routes/fotonica/editions');
 
 var sitemapRoutes = require('./routes/_common/sitemap');
 var signupRoutes = require('./routes/_common/signup');
