@@ -78,6 +78,17 @@
     "args": ["-site", "chromosphere"]
   },
   {
+    "uid": "fotonica",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_fotonica_forever.log",
+    "outFile": "/var/log/nginx/node_fotonica_out.log",
+    "errFile": "/var/log/nginx/node_fotonica_err.log",
+    "args": ["-site", "fotonica"]
+  },
+  {
     "uid": "vjtelevision",
     "append": true,
     "watch": true,

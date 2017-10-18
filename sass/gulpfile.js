@@ -11,6 +11,7 @@ var config = {
 var tasklist = [
   'css_avnode_bs',
   'css_chromosphere_bs',
+  'css_fotonica_bs',
   'css_flyer_bs',
   'css_lcf_bs',
   'css_linuxclub_bs',
@@ -24,6 +25,7 @@ var tasklist = [
   'compress_js_common',
   'compress_js_avnode',
   'compress_js_chromosphere',
+  'compress_js_fotonica',
   'compress_js_flyer',
   'compress_js_lcf',
   'compress_js_linuxclub',
@@ -34,6 +36,7 @@ var tasklist = [
   'concat_common_scripts',
   'concat_avnode_css',
   'concat_chromosphere_css',
+  'concat_fotonica_css',
   'concat_flyer_css',
   'concat_lcf_css',
   'concat_linuxclub_css',
@@ -85,6 +88,10 @@ var editions_chromosphere = [
   'nye-2016-rome'
 ];
 
+var editions_fotonica = [
+  '2017-rome'
+];
+
 
 gulp.task('css_avnode_bs', function() {
   return gulp.src('./avnode/*.scss')
@@ -97,11 +104,20 @@ gulp.task('css_avnode_bs', function() {
 
 gulp.task('css_chromosphere_bs', function() {
   return gulp.src('./chromosphere/*.scss')
-    .pipe(sass({
-      outputStyle: 'compressed',
-      includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
-    }))
-    .pipe(gulp.dest(config.publicDir + '/chromosphere/css'));
+      .pipe(sass({
+        outputStyle: 'compressed',
+        includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+      }))
+      .pipe(gulp.dest(config.publicDir + '/chromosphere/css'));
+});
+
+gulp.task('css_fotonica_bs', function() {
+  return gulp.src('./fotonica/*.scss')
+      .pipe(sass({
+        outputStyle: 'compressed',
+        includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+      }))
+      .pipe(gulp.dest(config.publicDir + '/fotonica/css'));
 });
 
 gulp.task('css_flyer_bs', function() {
@@ -209,14 +225,26 @@ gulp.task('compress_js_avnode', function() {
 
 gulp.task('compress_js_chromosphere', function() {
   gulp.src(['!'+config.publicDir + '/chromosphere/js/*.min.js',config.publicDir + '/chromosphere/js/*.js'])
-    .pipe(minify({
-      ext:{
-        min:'.min.js'
-      },
-      exclude: ['tasks'],
-      ignoreFiles: ['.combo.js', '-min.js']
-    }))
-    .pipe(gulp.dest(config.publicDir + '/chromosphere/js/'))
+      .pipe(minify({
+        ext:{
+          min:'.min.js'
+        },
+        exclude: ['tasks'],
+        ignoreFiles: ['.combo.js', '-min.js']
+      }))
+      .pipe(gulp.dest(config.publicDir + '/chromosphere/js/'))
+});
+
+gulp.task('compress_js_fotonica', function() {
+  gulp.src(['!'+config.publicDir + '/fotonica/js/*.min.js',config.publicDir + '/fotonica/js/*.js'])
+      .pipe(minify({
+        ext:{
+          min:'.min.js'
+        },
+        exclude: ['tasks'],
+        ignoreFiles: ['.combo.js', '-min.js']
+      }))
+      .pipe(gulp.dest(config.publicDir + '/fotonica/js/'))
 });
 
 gulp.task('compress_js_flyer', function() {
@@ -349,6 +377,24 @@ gulp.task('concat_chromosphere_css', function() {
   }
 });
 
+gulp.task('concat_fotonica_css', function() {
+  for (var item in editions_fotonica) {
+    var csslist = [
+      config.publicDir + '/_common/css/fontello.css',
+      config.publicDir + '/_common/css/fontello-animation.css',
+      config.publicDir + '/_common/css/socialGalleryPluginLite.css',
+      config.publicDir + '/_common/css/cookielawinfo.css',
+      config.publicDir + '/fotonica/css/bootstrap.min.fotonica.' + editions_fotonica[item] + '.css',
+      config.publicDir + '/_common/css/style.css',
+      config.publicDir + '/fotonica/css/style.fotonica.css',
+      config.publicDir + '/fotonica/css/style.fotonica.' + editions_fotonica[item] + '.css',
+    ];
+    csslist.push(config.publicDir + '/_common/css/bootstrapXL.css');
+    bella_fotonica(csslist,editions_fotonica,item);
+
+  }
+});
+
 gulp.task('concat_flyer_css', function() {
   return gulp.src([
     config.publicDir + '/_common/css/fontello.css',
@@ -472,7 +518,12 @@ function bella_lcf (csslist,editions_lcf,item){
 }
 function bella_chromosphere (csslist,editions_chromosphere,item){
   return gulp.src(csslist)
-    .pipe(concat('combo.chromosphere.' + editions_chromosphere[item] + '.min.css'), {newLine: '\r\n'})
-    .pipe(gulp.dest(config.publicDir + '/chromosphere/css/'));
+      .pipe(concat('combo.chromosphere.' + editions_chromosphere[item] + '.min.css'), {newLine: '\r\n'})
+      .pipe(gulp.dest(config.publicDir + '/chromosphere/css/'));
+}
+function bella_fotonica (csslist,editions_fotonica,item){
+  return gulp.src(csslist)
+      .pipe(concat('combo.fotonica.' + editions_fotonica[item] + '.min.css'), {newLine: '\r\n'})
+      .pipe(gulp.dest(config.publicDir + '/fotonica/css/'));
 }
 gulp.task('default', tasklist);

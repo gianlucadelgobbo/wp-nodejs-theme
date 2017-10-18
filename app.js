@@ -38,6 +38,12 @@ if (process.argv[3]=="chromosphere") {
   });
 }
 
+if (process.argv[3]=="fotonica") {
+  require('jsonfile').readFile(config.root+'/config/editions_fotonica.json', function(err, obj) {
+    config.meta.editions = obj;
+  });
+}
+
 
 require('./app/setup')(app, express);
 require('./app/'+global.config.router)(app);
