@@ -36,7 +36,7 @@ module.exports = function(app) {
   app.get('/events/page/(:page)', eventsRoutes.getAll);
   app.get('/news/', newsRoutes.getAll);
   app.get('/news/(:new)', newsRoutes.get);
-  app.get('/events/page/(:page)', newsRoutes.getAll);
+  app.get('/news/page/(:page)', newsRoutes.getAll);
   app.get('/member-activities/', memberactivitiesRoutes.getAll);
   app.get('/member-activities/(:activity)', memberactivitiesRoutes.get);
   app.get('/member-activities/page/(:page)', memberactivitiesRoutes.getAll);
