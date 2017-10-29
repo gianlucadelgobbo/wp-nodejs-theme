@@ -43,6 +43,9 @@ html(lang=sessions.current_lang)
         body {
           background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
         }
+    style(type='text/css').
+      @import url('https://fonts.googleapis.com/css?family=Oxygen:400,700');
+
   body
     .cnt(itemscope, itemtype='http://schema.org/Event')
       include includes/menu
@@ -66,9 +69,9 @@ html(lang=sessions.current_lang)
           ul.pulsa
             each menu in config.meta.editions[sessions.current_edition].menu
               li.btn-group
-                a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(title=menu.post_title, href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+                a.gradient-ghost-btn-lg.live.gradient-color-palette2(title=menu.post_title, href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
-                  button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
+                  button.gradient-ghost-btn-lg.live.gradient-color-palette2.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
                     span.caret
                     span.sr-only Toggle Dropdown
                   ul.dropdown-menu
