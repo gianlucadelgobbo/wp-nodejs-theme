@@ -51,7 +51,7 @@ html(lang=sessions.current_lang)
       include includes/menu
       //div(class=page_data.url == "/" ? "container-fluid" : "container")
       .container
-        header
+        header.clearfix
           .row
             .col-md-4
               #logo
@@ -64,14 +64,13 @@ html(lang=sessions.current_lang)
               .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
               .sr-only
                 include ../_common/inc_eventdateplace_meta
-        br
         nav.hidden-xs
           ul.pulsa
             each menu in config.meta.editions[sessions.current_edition].menu
-              li.btn-group
-                a.gradient-ghost-btn-lg.live.gradient-color-palette2(title=menu.post_title, href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+              li.btn-group.gradient-ghost-btn-lg.live.gradient-color-palette2
+                a.btn.btn-primary(title=menu.post_title, href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
-                  button.gradient-ghost-btn-lg.live.gradient-color-palette2.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
+                  button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
                     span.caret
                     span.sr-only Toggle Dropdown
                   ul.dropdown-menu
