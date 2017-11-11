@@ -11,11 +11,11 @@ block content
             - //console.log(result);
             each menu,index in result.menu_exhibition
               li.btn-group
-                a.btn.btn-default.btn-lg(href=menu.permalink,class=!index ? "disabled" : "")=menu.post_title
+                a.btn.btn-default.btn-lg(href=lang_preurl+menu.permalink,class=!index ? "disabled" : "")=menu.post_title
 
             if result['wpcf-exhibition-url'] && result['wpcf-exhibition-height'] && result['wpcf-exhibition-width']
               li.btn-group
-                a.btn.btn-primary.btn-lg(href=result['wpcf-exhibition-url'], onclick="openWindow('"+result.post_title+"','"+result['wpcf-exhibition-url']+"','"+result['wpcf-exhibition-width']+"','"+result['wpcf-exhibition-height']+"');return false;")=global.__("VIEW THE EXHIBITION NOW !!!")
+                a.btn.btn-primary.btn-lg(href=lang_preurl+result['wpcf-exhibition-url'], onclick="openWindow('"+result.post_title+"','"+result['wpcf-exhibition-url']+"','"+result['wpcf-exhibition-width']+"','"+result['wpcf-exhibition-height']+"');return false;")=global.__("VIEW THE EXHIBITION NOW !!!")
 
         .rientro
           include ../_common/inc_type_hidden

@@ -66,7 +66,7 @@ html(lang=sessions.current_lang)
           ul.pulsa
             each menu in config.meta.editions[sessions.current_edition].menu
               li.btn-group
-                a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(title=menu.post_title, href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+                a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
                   button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
                     span.caret
@@ -74,7 +74,7 @@ html(lang=sessions.current_lang)
                   ul.dropdown-menu
                     each child in menu.childs
                       li(class=child.post_status == 'publish' ? undefined : "disabled")
-                        a(href=child.post_status == 'publish' ? child.permalink : "#", title=child.post_title)=child.post_title
+                        a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
 
 
 
@@ -92,14 +92,14 @@ html(lang=sessions.current_lang)
             ul.nav.navbar-nav
               each menu in config.meta.editions[sessions.current_edition].menu
                 li
-                  a(href=menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
+                  a(href=lang_preurl+menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
                     - if (menu.childs.length>0)
                       span.caret
                   - if (menu.childs.length>0)
                     ul.dropdown-menu
                       each child in menu.childs
                         li
-                          a(href=child.permalink, title=child.post_title)=child.post_title
+                          a(href=lang_preurl+child.permalink, title=child.post_title)=child.post_title
         br
         #result
           block content
