@@ -1,0 +1,1639 @@
+{
+  "flyer" : {
+    "project_name"  : "Flyer communication",
+    "blog_id"       : 20,
+    "project_email" : "info@flyer.it",
+    "port"		    : 3000,
+    "host"		    : "localhost",
+    "domain"	    : "https://flyer.it",
+    "meta_domain"	: "https://flyer.dev.flyer.it",
+    "prefix"	    : "flyer",
+    "locales"       : ["en", "it"],
+    "default_lang"  : "en",
+    "current_lang"  : "en",
+    "router"        : "router_flyer",
+    "sitemap"       : {
+      "lastmod" : "2017-01-15T19:48:29+01:00",
+      "pages" : [
+        "profile",
+        "profile/web-and-mobile",
+        "profile/live-visuals",
+        "profile/learning",
+        "profile/lab",
+        "portfolio",
+        "portfolio/web-and-mobile",
+        "portfolio/learning",
+        "portfolio/lab",
+        "portfolio/live-visuals",
+        "portfolio/awards-and-grants",
+        "portfolio/videos",
+        "portfolio/live-visuals/tags",
+        "portfolio/web-and-mobile/tags",
+        "extra",
+        "customers",
+        "people",
+        "contacts"
+
+      ],
+      "users" : {
+        "customers" : {"baseurl":"customers"},
+        "people" : {"baseurl":"people"}
+      }
+    },
+    "accounts"      : {
+      "newsletter"    : {
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8",
+        "apikey"        : "b7ef93c564178a225881fce224bdce98-us7",
+        "interests"     : {},
+        "site_from"     : "c25f85cc21"
+      },
+      "emails"         : {
+        "gmail"         : {
+          "host" 	      : "smtp.gmail.com",
+          "user"          : "flyer@flyer.it",
+          "password"      : "070190gia",
+          "ssl"           : true
+        },
+        "defaults"         : {
+          "contacts"         : {
+            "to_name"         : "Flyer communication",
+            "to_email"        : "info@flyer.it",
+            "from_name"       : "Flyer communication",
+            "from_email"      : "info@flyer.it",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          },
+          "join"         : {
+            "to_name"         : "Flyer communication",
+            "to_email"        : "info@flyer.it",
+            "from_name"       : "Flyer communication",
+            "from_email"      : "info@flyer.it",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          }
+        }
+      }
+    },
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 8
+        },
+        "news" : {
+          "limit"		: 4
+        },
+        "web" : {
+          "limit"		: 4
+        },
+        "lab" : {
+          "limit"		: 8
+        },
+        "award" : {
+          "limit"		: 4
+        },
+        "videos" : {
+          "limit"		: 4
+        },
+        "learning" : {
+          "limit"		: 4
+        }
+      },
+      "users" : {
+        "site_tax"  : ["flyer-it"],
+        "site_tax_id"  : [455],
+        "customers" :{
+          "domain"	        : "https://flyer.dev.flyer.it",
+          "page_domain"     : "https://flyer.dev.flyer.it",
+          "posttypes"       : ["events","news","learning","web-and-mobile","lab","videos","awards-and-grants"],
+          "default_img"     : "/_common/images/avatar_multi_thumb.svg",
+          "title"           : "Customers",
+          "baseurl"         : "customers",
+          "roles"           : ["customer", "member", "partner"]
+        },
+        "people" :{
+          "domain"	        : "https://flyer.dev.flyer.it",
+          "page_domain"     : "https://flyer.dev.flyer.it",
+          "posttypes"       : ["events","news","learning","web-and-mobile","lab","videos","awards-and-grants"],
+          "default_img"     : "/_common/images/avatar_single_thumb.svg",
+          "title"           : "People",
+          "baseurl"         : "people",
+          "roles_exclude"   : ["customer", "member", "partner"]
+        },
+        "posttypes"  : {
+          "news"  : {
+            "publisher" :{
+              "roles"         : ["customer", "member", "partner"],
+              "baseurl"       : "customers",
+              "itemprop"      : "publisher",
+              "label_single"  : "Publisher",
+              "label_multi"   : "Publisher"
+            },
+            "authors"  : {
+              "baseurl"       : "people",
+              "itemprop"      : "author",
+              "label_single"  : "Author",
+              "label_multi"   : "Authors"
+            }
+          },
+          "events"  : {
+            "publisher" :{
+              "roles"         : ["customer", "member", "partner"],
+              "baseurl"       : "customers",
+              "itemprop"      : "organizer",
+              "label_single"  : "Customer",
+              "label_multi"   : "Customers"
+            },
+            "authors"  : {
+              "baseurl"       : "people",
+              "itemprop"      : "performer",
+              "label_single"  : "People",
+              "label_multi"   : "People"
+            }
+          },
+          "web-and-mobile"  : {
+            "publisher" :{
+              "roles"         : ["customer", "member", "partner"],
+              "itemprop"      : "sourceOrganization",
+              "baseurl"       : "customers",
+              "label_single"  : "Customer",
+              "label_multi"   : "Customers"
+            },
+            "authors"  : {
+              "baseurl"       : "people",
+              "itemprop"      : "author",
+              "label_single"  : "People",
+              "label_multi"   : "People"
+            }
+          },
+          "lab"  : {
+            "publisher" :{
+              "roles"  : ["customer", "member", "partner"],
+              "itemprop"  : "sourceOrganization",
+              "baseurl"   : "customers",
+              "label_single"  : "Customer",
+              "label_multi"  : "Customers"
+            },
+            "authors"  : {
+              "baseurl"   : "people",
+              "itemprop"  : "founder",
+              "label_single"  : "Founder",
+              "label_multi"  : "Founders"
+            }
+          },
+          "awards-and-grants"  : {
+            "publisher" :{
+              "roles"  : ["customer", "member", "partner"],
+              "itemprop"  : "sourceOrganization",
+              "baseurl"   : "customers",
+              "label_single"  : "Customer",
+              "label_multi"  : "Customers"
+            },
+            "authors"  : {
+              "baseurl"   : "people",
+              "itemprop"  : "author",
+              "label_single"  : "People",
+              "label_multi"  : "People"
+            }
+          },
+          "videos"  : {
+            "publisher" :{
+              "roles"  : ["customer", "member", "partner"],
+              "itemprop"  : "sourceOrganization",
+              "baseurl"   : "customers",
+              "label_single"  : "Customer",
+              "label_multi"  : "Customers"
+            },
+            "authors"  : {
+              "baseurl"   : "people",
+              "itemprop"  : "author",
+              "label_single"  : "People",
+              "label_multi"  : "People"
+            }
+          }
+        }
+      },
+      "web-and-mobile" : {
+        "title"     : "Portfolio: Web & Mobile",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "post_type" : "web-and-mobile",
+        "baseurl"   : "portfolio/web-and-mobile",
+        "limit"		: 20,
+        "puglist"   : "webs",
+        "pugdett"   : "web"
+      },
+      "events" : {
+        "title"     : "Portfolio: Live Visuals",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "site_tax"  : ["flyer-it"],
+        "site_tax_id"  : [455],
+        "post_type" : "events",
+        "baseurl"   : "portfolio/live-visuals",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
+      },
+      "videos" : {
+        "title"     : "Portfolio: Videos",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "post_type" : "videos",
+        "baseurl"   : "portfolio/videos",
+        "limit"		: 20,
+        "puglist"   : "videos",
+        "pugdett"   : "video"
+      },
+      "learning" : {
+        "title"     : "Portfolio: Learning",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "post_type" : "learning",
+        "baseurl"   : "portfolio/learning",
+        "limit"		: 20,
+        "puglist"   : "learnings",
+        "pugdett"   : "learning"
+      },
+      "lab" : {
+        "title"     : "LAB",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "post_type" : "lab",
+        "baseurl"   : "portfolio/lab",
+        "limit"		: 20,
+        "puglist"   : "labs",
+        "pugdett"   : "lab"
+      },
+      "awards-and-grants" : {
+        "title"     : "Awards and Grants",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "post_type" : "awards-and-grants",
+        "baseurl"   : "portfolio/awards-and-grants",
+        "limit"		: 20,
+        "puglist"   : "awards",
+        "pugdett"   : "award"
+      },
+      "news" : {
+        "title"     : "EXTRA",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "site_tax"  : ["flyer-it"],
+        "site_tax_id"  : [455],
+        "post_type" : "news",
+        "baseurl"   : "extra",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
+      },
+      "pages" : {
+        "domain"	: "https://flyer.dev.flyer.it",
+        "limit"		: 20,
+        "conf"		: {
+          "profile":{"itemtype":"AboutPage","pugpage":"page_profile"},
+          "contacts":{"itemtype":"ContactPage","pugpage":"page"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page_search"},
+          "profile/lab":{"itemtype":"AboutPage","pugpage":"subpage_lab"},
+          "default":{"itemtype":"ItemPage","pugpage":"page","subpage":"subpage"}
+        }
+      }
+    }
+  },
+  "lpm" : {
+    "project_name"  : "LPM Live Performers Meeting",
+    "blog_id"       : 40,
+    "project_email" : "info@liveperformersmeeting.net",
+    "port"		    : 3001,
+    "host"		    : "localhost",
+    "domain"		: "https://liveperformersmeeting.net",
+    "meta_domain"	: "https://lpm.dev.flyer.it",
+    "last_edition"  : "2017-amsterdam",
+    "prefix"		: "lpm",
+    "locales"       : ["en"],
+    "default_lang"  : "en",
+    "current_lang"  : "en",
+    "router"        : "router_lpm",
+    "sitemap"       : {
+      "lastmod" : "2017-01-15T19:48:29+01:00",
+      "pages" : [
+        "idea",
+        "timeline",
+        "map",
+        "gallery",
+        "the-app",
+        "press",
+        "events",
+        "news",
+        "editions",
+        "contacts"
+      ],
+      "users" : {
+        "customers" : {"baseurl":"partners"},
+        "people" : {"baseurl":"backstage"}
+      }
+    },
+    "accounts"      : {
+      "newsletter"    : {
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8",
+        "apikey"        : "b7ef93c564178a225881fce224bdce98-us7",
+        "interests"     : {
+          "c7850d049e" : "Live Visuals"
+        },
+        "site_from" : "62930ecf78"
+      },
+      "emails"         : {
+        "gmail"         : {
+          "host" 	      : "smtp.gmail.com",
+          "user"          : "social@avnode.org",
+          "password"      : "45153gia",
+          "ssl"           : true
+        },
+        "defaults"         : {
+          "contacts"         : {
+            "to_name"         : "LPM Live Performers Meeting",
+            "to_email"        : "info@liveperformersmeeting.net",
+            "from_name"       : "LPM Live Performers Meeting",
+            "from_email"      : "info@liveperformersmeeting.net",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          }
+        }
+      }
+    },
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 50
+        },
+        "news" : {
+          "limit"		: 16
+        },
+        "editions" : {
+          "limit"		: 20
+        }
+      },
+      "users" : {
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["liveperformersmeeting-net"],
+        "site_tax_id"  : [460],
+        
+        "team" :{
+          "domain"	        : "https://flyer.dev.flyer.it",
+          "page_domain"     : "https://flyer.dev.flyer.it",
+          "posttypes"       : ["events","news","editions"],
+          "default_img"     : "/_common/images/avatar_single_thumb.svg",
+          "itemprop"        : "employee",
+          "title"           : "Team",
+          "baseurl"         : "team",
+          "merge_exclude"   : ["production","customer"]
+        },
+        "partners" :{
+          "domain"	        : "https://flyer.dev.flyer.it",
+          "page_domain"     : "https://flyer.dev.flyer.it",
+          "posttypes"       : ["events","news","editions"],
+          "default_img"     : "/_common/images/avatar_multi_thumb.svg",
+          "itemprop"        : "employee",
+          "title"           : "Partners",
+          "baseurl"         : "partners",
+          "roles"           : ["production","customer"]
+        },
+        "externals" :{
+          "domain"	        : "https://flyer.dev.flyer.it"
+        },
+        "posttypes"  : {
+          "news"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "itemprop"  : "publisher",
+              "baseurl"   : "partners",
+              "label_single"  : "Publisher",
+              "label_multi"  : "Publisher"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "itemprop"  : "author",
+              "label_single"  : "Author",
+              "label_multi"  : "Authors"
+            }
+          },
+          "events"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "itemprop"  : "organizer",
+              "baseurl"   : "partners",
+              "label_single"  : "Production",
+              "label_multi"  : "Production"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "itemprop"  : "performer",
+              "label_single"  : "Team",
+              "label_multi"  : "Team"
+            }
+          }
+        }
+      },
+      "events" : {
+        "title"     : "Events",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "site_tax"  : ["liveperformersmeeting-net"],
+        "site_tax_id"  : [460],
+        
+        "post_type" : "events",
+        "baseurl"   : "events",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
+      },
+      "news" : {
+        "title"     : "News",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "site_tax"  : ["liveperformersmeeting-net"],
+        "site_tax_id"  : [460],
+        
+        "post_type" : "news",
+        "baseurl"   : "news",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
+      },
+      "pages" : {
+        "domain"	: "https://flyer.dev.flyer.it",
+        "limit"		: 20,
+        "conf"		: {
+          "idea":{"itemtype":"AboutPage","pugpage":"page"},
+          "timeline":{"itemtype":"CollectionPage","pugpage":"page_timeline"},
+          "map":{"itemtype":"Map","pugpage":"page_map"},
+          "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
+          "the-app":{"itemtype":"ItemPage","pugpage":"page"},
+          "press":{"itemtype":"CollectionPage","pugpage":"page"},
+          "contacts":{"itemtype":"ContactPage","pugpage":"page"},
+          "avnode-lpm-2015-2018":{"itemtype":"ItemPage","pugpage":"page_title_only"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page_search"},
+          "default":{"itemtype":"ItemPage","pugpage":"page"}
+        }
+      },
+      "editions" : {
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "post_type" : "editions",
+        "baseurl"   : "editions",
+        "limit"		: 20,
+        "puglist"   : "editions",
+        "pugdett"   : "edition"
+      }
+    }
+  },
+  "lcf" : {
+    "project_name"  : "Live Cinema Festival",
+    "blog_id"       : 44,
+    "project_email" : "info@livecinemafestival.com",
+    "port"		    : 3002,
+    "host"		    : "localhost",
+    "domain"		: "https://livecinemafestival.com",
+    "last_edition"  : "2016-rome",
+    "prefix"		: "lcf",
+    "locales"       : ["en","it"],
+    "default_lang"  : "en",
+    "current_lang"  : "en",
+    "router"        : "router_lcf",
+    "sitemap"       : {
+      "lastmod" : "2017-01-15T19:48:29+01:00",
+      "pages" : [
+        "project",
+        "exhibitions",
+        "events",
+        "news",
+        "backstage",
+        "newsletter",
+        "contacts"
+      ],
+      "users" : {
+        "customers" : {"baseurl":"partners"},
+        "people" : {"baseurl":"backstage"}
+      }
+    },
+    "accounts"      : {
+      "newsletter"    : {
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8",
+        "apikey"        : "b7ef93c564178a225881fce224bdce98-us7",
+        "interests"     : {
+          "c7850d049e" : "Live Visuals"
+        },
+        "site_from" : "995b8b8a6d"
+      },
+      "emails"         : {
+        "gmail"         : {
+          "host" 	      : "smtp.gmail.com",
+          "user"          : "social@avnode.org",
+          "password"      : "45153gia",
+          "ssl"           : true
+        },
+        "defaults"         : {
+          "contacts"         : {
+            "to_name"         : "Live Cinema Festival",
+            "to_email"        : "info@livecinemafestival.com",
+            "from_name"       : "Live Cinema Festival",
+            "from_email"      : "info@livecinemafestival.com",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          }
+        }
+      }
+    },
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 50
+        },
+        "news" : {
+          "limit"		: 16
+        },
+        "editions" : {
+          "limit"		: 20
+        }
+      },
+      "users" : {
+        "domain"	: "https://lcf.dev.flyer.it",
+        "site_tax"  : ["livecinemafestival-com"],
+        "site_tax_id"  : [459],
+        
+        "customers" :{
+          "title"     : "Partners",
+          "baseurl"   : "partners"
+        },
+        "people" :{
+          "title"     : "Team",
+          "baseurl"   : "team"
+        },
+        "posttypes"  : {
+          "news"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Publisher",
+              "label_multi"  : "Publisher"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Authors"
+            }
+          },
+          "events"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Production",
+              "label_multi"  : "Production"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Team"
+            }
+          }
+        }
+      },
+      "events" : {
+        "title"     : "Events",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "site_tax"  : ["livecinemafestival-com"],
+        "site_tax_id"  : [459],
+
+        "post_type" : "events",
+        "baseurl"   : "events",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
+      },
+      "news" : {
+        "title"     : "News",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "site_tax"  : ["livecinemafestival-com"],
+        "site_tax_id"  : [459],
+
+        "post_type" : "news",
+        "baseurl"   : "news",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
+      },
+      "pages" : {
+        "domain"	: "https://lcf.dev.flyer.it",
+        "limit"		: 20,
+        "conf"		: {
+          "idea":{"itemtype":"AboutPage","pugpage":"page"},
+          "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
+          "press":{"itemtype":"CollectionPage","pugpage":"page"},
+          "contacts":{"itemtype":"ContactPage","pugpage":"page"},
+          "avnode-lpm-2015-2018":{"itemtype":"ItemPage","pugpage":"page_title_only"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page"},
+          "default":{"itemtype":"ItemPage","pugpage":"page"}
+        }
+      },
+      "editions" : {
+        "domain"	: "https://lcf.dev.flyer.it",
+        "post_type" : "editions",
+        "baseurl"   : "editions",
+        "limit"		: 20,
+        "puglist"   : "editions",
+        "pugdett"   : "edition"
+      }
+    }
+  },
+  "chromosphere" : {
+    "project_name"  : "Chromosphere",
+    "blog_id"       : 46,
+    "project_email" : "info@chromosphere.eu",
+    "port"		    : 3003,
+    "host"		    : "localhost",
+    "domain"		: "https://chromosphere.eu",
+    "last_edition"  : "2016-rome",
+    "prefix"		: "chromosphere",
+    "locales"       : ["en","it"],
+    "default_lang"  : "en",
+    "current_lang"  : "en",
+    "router"        : "router_chromosphere",
+    "sitemap"       : {
+      "lastmod" : "2017-01-15T19:48:29+01:00",
+      "pages" : [
+        "project",
+        "exhibitions",
+        "events",
+        "news",
+        "backstage",
+        "newsletter",
+        "contacts"
+      ],
+      "users" : {
+        "customers" : {"baseurl":"partners"},
+        "people" : {"baseurl":"team"}
+      }
+    },
+    "accounts"      : {
+      "newsletter"    : {
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8",
+        "apikey"        : "b7ef93c564178a225881fce224bdce98-us7",
+        "interests"     : {
+          "c7850d049e" : "Live Visuals"
+        },
+        "site_from" : "c074e3ae47"
+      },
+      "emails"         : {
+        "gmail"         : {
+          "host" 	      : "smtp.gmail.com",
+          "user"          : "social@avnode.org",
+          "password"      : "45153gia",
+          "ssl"           : true
+        },
+        "defaults"         : {
+          "contacts"         : {
+            "to_name"         : "Chromosphere",
+            "to_email"        : "info@chromosphere.eu",
+            "from_name"       : "Chromosphere",
+            "from_email"      : "info@chromosphere.eu",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          }
+        }
+      }
+    },
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 50
+        },
+        "news" : {
+          "limit"		: 16
+        },
+        "editions" : {
+          "limit"		: 20
+        }
+      },
+      "users" : {
+        "domain"	: "https://chromosphere.dev.flyer.it",
+        "site_tax"  : ["chromosphere-eu"],
+        "site_tax_id"  : [452],
+
+        "posttypes"  : {
+          "news"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Publisher",
+              "label_multi"  : "Publisher"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Authors"
+            }
+          },
+          "events"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Production",
+              "label_multi"  : "Production"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Team"
+            }
+          }
+        }
+      },
+      "events" : {
+        "title"     : "Events",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["chromosphere-eu"],
+        "site_tax_id"  : [452],
+
+        "post_type" : "events",
+        "baseurl"   : "events",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
+      },
+      "news" : {
+        "title"     : "News",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["chromosphere-eu"],
+        "site_tax_id"  : [452],
+
+        "post_type" : "news",
+        "baseurl"   : "news",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
+      },
+      "pages" : {
+        "domain"	: "https://chromosphere.dev.flyer.it",
+        "limit"		: 20,
+        "conf"		: {
+          "idea":{"itemtype":"AboutPage","pugpage":"page"},
+          "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
+          "press":{"itemtype":"CollectionPage","pugpage":"page"},
+          "contacts":{"itemtype":"ContactPage","pugpage":"page"},
+          "avnode-lpm-2015-2018":{"itemtype":"ItemPage","pugpage":"page_title_only"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page"},
+          "default":{"itemtype":"ItemPage","pugpage":"page"}
+        }
+      },
+      "editions" : {
+        "domain"	: "https://chromosphere.dev.flyer.it",
+        "post_type" : "editions",
+        "baseurl"   : "editions",
+        "limit"		: 20,
+        "puglist"   : "editions",
+        "pugdett"   : "edition"
+      }
+    }
+  },
+  "vjtelevision" : {
+    "project_name"  : "VJ Television",
+    "blog_id"       : 35,
+    "project_email" : "info@vjtelevision.com",
+    "port"		    : 3004,
+    "host"		    : "localhost",
+    "domain"	    : "https://vjtelevision.com",
+    "prefix"	    : "vjtelevision",
+    "locales"       : ["en", "it"],
+    "default_lang"  : "en",
+    "current_lang"  : "en",
+    "router"        : "router_vjtelevision",
+    "sitemap"       : {
+      "lastmod" : "2017-01-15T19:48:29+01:00",
+      "pages" : [
+        "project",
+        "exhibitions",
+        "events",
+        "news",
+        "backstage",
+        "newsletter",
+        "contacts"
+      ],
+      "users" : {
+        "customers" : {"baseurl":"partners"},
+        "people" : {"baseurl":"team"}
+      }
+    },
+    "accounts"      : {
+      "newsletter"    : {
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8",
+        "apikey"        : "b7ef93c564178a225881fce224bdce98-us7",
+        "interests"     : {
+          "c7850d049e" : "Live Visuals"
+        },
+        "site_from" : "eae93b0c70"
+      },
+      "emails"         : {
+        "gmail"         : {
+          "host" 	      : "smtp.gmail.com",
+          "user"          : "social@avnode.org",
+          "password"      : "45153gia",
+          "ssl"           : true
+        },
+        "defaults"         : {
+          "contacts"         : {
+            "to_name"         : "VJ Television",
+            "to_email"        : "info@vjtelevision.com",
+            "from_name"       : "VJ Television",
+            "from_email"      : "info@vjtelevision.com",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          }
+        }
+      }
+    },
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 30
+        },
+        "news" : {
+          "limit"		: 16
+        },
+        "exhibitions" : {
+          "limit"		: 20
+        }
+      },
+      "users" : {
+        "domain"	: "https://vjtelevision.dev.flyer.it",
+        "site_tax"  : ["vjtelevision-com"],
+        "site_tax_id"  : [462],
+
+        "posttypes"  : {
+          "news"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Publisher",
+              "label_multi"  : "Publisher"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Authors"
+            }
+          },
+          "events"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Production",
+              "label_multi"  : "Production"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Team"
+            }
+          }
+        }
+      },
+      "events" : {
+        "title"     : "Events",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["vjtelevision-com"],
+        "site_tax_id"  : [462],
+
+        "post_type" : "events",
+        "baseurl"   : "events",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
+      },
+      "news" : {
+        "title"     : "News",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["vjtelevision-com"],
+        "site_tax_id"  : [462],
+
+        "post_type" : "news",
+        "baseurl"   : "news",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
+      },
+      "pages" : {
+        "domain"	: "https://vjtelevision.dev.flyer.it",
+        "limit"		: 20,
+        "conf"		: {
+          "profile":{"itemtype":"AboutPage","pugpage":"page_profile"},
+          "map":{"itemtype":"Map","pugpage":"page"},
+          "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
+          "press":{"itemtype":"CollectionPage","pugpage":"page"},
+          "contacts":{"itemtype":"ContactPage","pugpage":"page"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page_search"},
+          "lab":{"itemtype":"ItemPage","pugpage":"subpage_lab"},
+          "default":{"itemtype":"ItemPage","pugpage":"page","subpage":"subpage"}
+        }
+      }
+    }
+  },
+  "shockart" : {
+    "project_name"  : "Shockart.net",
+    "blog_id"       : 27,
+    "project_email" : "info@shockart.net",
+    "port"		    : 3002,
+    "host"		    : "localhost",
+    "domain"	    : "https://shockart.net",
+    "meta_domain"   : "https://flyer.dev.flyer.it",
+    "prefix"	    : "shockart",
+    "locales"       : ["en", "it"],
+    "default_lang"  : "en",
+    "current_lang"  : "en",
+    "router"        : "router_shockart",
+    "sitemap"       : {
+      "lastmod" : "2017-01-15T19:48:29+01:00",
+      "pages" : [
+        "project",
+        "exhibitions",
+        "news",
+        "events",
+        "backstage",
+        "contacts",
+        "newsletter"
+      ],
+      "users" : {
+        "partners" : {"baseurl":"partners"},
+        "backstage" : {"baseurl":"backstage"}
+      }
+    },
+    "accounts"      : {
+      "newsletter"    : {
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8",
+        "apikey"        : "b7ef93c564178a225881fce224bdce98-us7",
+        "interests"     : {
+          "c7850d049e" : "Live Visuals"
+        },
+        "site_from" : "5a697233af"
+      },
+      "emails"         : {
+        "gmail"         : {
+          "host" 	      : "smtp.gmail.com",
+          "user"          : "social@avnode.org",
+          "password"      : "45153gia",
+          "ssl"           : true
+        },
+        "defaults"         : {
+          "contacts"         : {
+            "to_name"         : "Shockart.net",
+            "to_email"        : "info@shockart.net",
+            "from_name"       : "Shockart.net",
+            "from_email"      : "info@shockart.net",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          }
+        }
+      }
+    },
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 10
+        },
+        "news" : {
+          "limit"		: 3
+        },
+        "exhibitions" : {
+          "limit"		: 5
+        }
+      },
+      "users" : {
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["shockart-net"],
+        "site_tax_id"  : [461],
+
+        "backstage" :{
+          "domain"	        : "https://flyer.dev.flyer.it",
+          "page_domain"     : "https://flyer.dev.flyer.it",
+          "posttypes"       : ["events","news","exhibitions"],
+          "default_img"     : "/_common/images/avatar_single_thumb.svg",
+          "itemprop"        : "employee",
+          "title"           : "Backstage",
+          "baseurl"         : "backstage",
+          "roles_exclude"   : ["production","customer"]
+        },
+        "partners" :{
+          "domain"	        : "https://flyer.dev.flyer.it",
+          "page_domain"     : "https://flyer.dev.flyer.it",
+          "posttypes"       : ["events","news","exhibitions"],
+          "default_img"     : "/_common/images/avatar_multi_thumb.svg",
+          "itemprop"        : "sponsor",
+          "title"           : "Partners",
+          "baseurl"         : "partners",
+          "roles"   		: ["production","customer"]
+        },
+        "externals" :{
+          "domain"	        : "https://flyer.dev.flyer.it"
+        },
+        "posttypes"  : {
+          "news"  : {
+            "publisher" :{
+              "roles"         : ["customer" , "production"],
+              "baseurl"       : "partners",
+              "itemprop"      : "publisher",
+              "label_single"  : "Publisher",
+              "label_multi"   : "Publisher"
+            },
+            "authors"  : {
+              "baseurl"       : "backstage",
+              "itemprop"      : "author",
+              "label_single"  : "Backstage",
+              "label_multi"   : "Backstage"
+            }
+          },
+          "events"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Production",
+              "label_multi"  : "Production"
+            },
+            "authors"  : {
+              "baseurl"   : "backstage",
+              "label_single"  : "Backstage",
+              "label_multi"  : "Backstage"
+            }
+          }
+        }
+      },
+      "events" : {
+        "title"     : "Events",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "site_tax"  : ["shockart-net"],
+        "site_tax_id"  : [461],
+
+        "post_type" : "events",
+        "baseurl"   : "events",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
+      },
+      "news" : {
+        "title"     : "News",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "site_tax"  : ["shockart-net"],
+        "site_tax_id"  : [461],
+        
+        "post_type" : "news",
+        "baseurl"   : "news",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
+      },
+      "pages" : {
+        "domain"	: "https://flyer.dev.flyer.it",
+        "limit"		: 20,
+        "conf"		: {
+          "project":{"itemtype":"AboutPage","pugpage":"page"},
+          "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
+          "press":{"itemtype":"CollectionPage","pugpage":"page"},
+          "contacts":{"itemtype":"ContactPage","pugpage":"page_contacts"},
+          "newsletter":{"itemtype":"ContactPage","pugpage":"page_newsletter"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page_search"},
+          "default":{"itemtype":"ItemPage","pugpage":"page","subpage":"subpage"}
+        }
+      },
+      "exhibitions" : {
+        "title"     : "Exhibitions",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "post_type" : "exhibitions",
+        "baseurl"   : "exhibitions",
+        "limit"		: 20,
+        "puglist"   : "exhibitions",
+        "pugdett"   : "exhibition"
+      }
+    }
+  },
+  "linuxclub" : {
+    "project_name"  : "Linux Club Italia",
+    "blog_id"       : 26,
+    "project_email" : "info@linuxclub.it",
+    "port"		    : 3005,
+    "host"		    : "localhost",
+    "domain"	    : "https://linux-club.org",
+    "prefix"	    : "shockart",
+    "locales"       : ["en", "it"],
+    "default_lang"  : "en",
+    "current_lang"  : "en",
+    "router"        : "router_linuxclub",
+    "sitemap"       : {
+      "lastmod" : "2017-01-15T19:48:29+01:00",
+      "pages" : [
+        "idea",
+        "press",
+        "news",
+        "events",
+        "editions",
+        "contacts",
+        "avnode-lpm-2015-2018"
+      ],
+      "users" : {
+        "customers" : {"baseurl":"partners"},
+        "people" : {"baseurl":"team"}
+      }
+    },
+    "accounts"      : {
+      "newsletter"    : {
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8",
+        "apikey"        : "b7ef93c564178a225881fce224bdce98-us7",
+        "interests"     : {},
+        "site_from" : "8790a75105"
+      },
+      "emails"         : {
+        "gmail"         : {
+          "host" 	      : "smtp.gmail.com",
+          "user"          : "social@avnode.org",
+          "password"      : "45153gia",
+          "ssl"           : true
+        },
+        "defaults"         : {
+          "contacts"         : {
+            "to_name"         : "Linux Club Italia",
+            "to_email"        : "info@linuxclub.it",
+            "from_name"       : "Linux Club Italia",
+            "from_email"      : "info@linuxclub.it",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          },
+          "join"         : {
+            "to_name"         : "Linux Club Italia",
+            "to_email"        : "info@linuxclub.it",
+            "from_name"       : "Linux Club Italia",
+            "from_email"      : "info@linuxclub.it",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          }
+        }
+      }
+    },
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 30
+        },
+        "news" : {
+          "limit"		: 16
+        },
+        "exhibitions" : {
+          "limit"		: 20
+        }
+      },
+      "users" : {
+        "domain"	: "https://linuxclub.dev.flyer.it",
+        "site_tax"  : ["linux-club-org"],
+        "site_tax_id"  : [458],
+
+        "customers" :{
+          "title"     : "Partners",
+          "baseurl"   : "partners"
+        },
+        "people" :{
+          "title"     : "Team",
+          "baseurl"   : "team"
+        },
+        "posttypes"  : {
+          "news"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Publisher",
+              "label_multi"  : "Publisher"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Authors"
+            }
+          },
+          "events"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Production",
+              "label_multi"  : "Production"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Team"
+            }
+          }
+        }
+      },
+      "events" : {
+        "title"     : "Events",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["linux-club-org"],
+        "site_tax_id"  : [458],
+
+        "post_type" : "events",
+        "baseurl"   : "events",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
+      },
+      "news" : {
+        "title"     : "News",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["linux-club-org"],
+        "site_tax_id"  : [458],
+
+        "post_type" : "news",
+        "baseurl"   : "news",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
+      },
+      "pages" : {
+        "domain"	: "https://linuxclub.dev.flyer.it",
+        "limit"		: 20,
+        "conf"		: {
+          "profile":{"itemtype":"AboutPage","pugpage":"page_profile"},
+          "map":{"itemtype":"Map","pugpage":"page"},
+          "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
+          "press":{"itemtype":"CollectionPage","pugpage":"page"},
+          "contacts":{"itemtype":"ContactPage","pugpage":"page"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page_search"},
+          "lab":{"itemtype":"ItemPage","pugpage":"subpage_lab"},
+          "default":{"itemtype":"ItemPage","pugpage":"page","subpage":"subpage"}
+        }
+      }
+    }
+  },
+  "wam" : {
+    "project_name"  : "WAM Web Art Mouseum",
+    "blog_id"       : 37,
+    "project_email" : "wam@flyer.it",
+    "port"		    : 3006,
+    "host"		    : "localhost",
+    "domain"	    : "https://wam.flyer.it",
+    "prefix"	    : "wam",
+    "locales"       : ["en", "it"],
+    "default_lang"  : "en",
+    "current_lang"  : "en",
+    "router"        : "router_wam",
+    "sitemap"       : {
+      "lastmod" : "2017-01-15T19:48:29+01:00",
+      "pages" : [
+        "idea",
+        "press",
+        "news",
+        "events",
+        "editions",
+        "contacts",
+        "avnode-lpm-2015-2018"
+      ],
+      "users" : {
+        "customers" : {"baseurl":"partners"},
+        "people" : {"baseurl":"team"}
+      }
+    },
+    "accounts"      : {
+      "newsletter"    : {
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8",
+        "apikey"        : "b7ef93c564178a225881fce224bdce98-us7",
+        "interests"     : {},
+        "site_from"     : "50b5b7dd0d"
+      },
+      "emails"         : {
+        "gmail"         : {
+          "host" 	      : "smtp.gmail.com",
+          "user"          : "social@avnode.org",
+          "password"      : "45153gia",
+          "ssl"           : true
+        },
+        "defaults"         : {
+          "contacts"         : {
+            "to_name"         : "WAM Web Art Mouseum",
+            "to_email"        : "wam@flyer.it",
+            "from_name"       : "WAM Web Art Mouseum",
+            "from_email"      : "wam@flyer.it",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          }
+        }
+      }
+    },
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 30
+        },
+        "news" : {
+          "limit"		: 16
+        },
+        "exhibitions" : {
+          "limit"		: 20
+        }
+      },
+      "users" : {
+        "domain"	: "https://wam.dev.flyer.it",
+        "site_tax"  : ["wam-flyer-it"],
+        "site_tax_id"  : [463],
+        "customers" :{
+          "title"     : "Partners",
+          "baseurl"   : "partners"
+        },
+        "people" :{
+          "title"     : "Team",
+          "baseurl"   : "team"
+        },
+        "posttypes"  : {
+          "news"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Publisher",
+              "label_multi"  : "Publisher"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Authors"
+            }
+          },
+          "events"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "partners",
+              "label_single"  : "Production",
+              "label_multi"  : "Production"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Team"
+            }
+          }
+        }
+      },
+      "events" : {
+        "title"     : "Events",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["wam-flyer-it"],
+        "site_tax_id"  : [463],
+        "post_type" : "events",
+        "baseurl"   : "events",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
+      },
+      "news" : {
+        "title"     : "News",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["wam-flyer-it"],
+        "site_tax_id"  : [463],
+        "post_type" : "news",
+        "baseurl"   : "news",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
+      },
+      "pages" : {
+        "domain"	: "https://wam.dev.flyer.it",
+        "limit"		: 20,
+        "conf"		: {
+          "profile":{"itemtype":"AboutPage","pugpage":"page_profile"},
+          "map":{"itemtype":"Map","pugpage":"page"},
+          "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
+          "press":{"itemtype":"CollectionPage","pugpage":"page"},
+          "contacts":{"itemtype":"ContactPage","pugpage":"page"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page_search"},
+          "lab":{"itemtype":"ItemPage","pugpage":"subpage_lab"},
+          "default":{"itemtype":"ItemPage","pugpage":"page","subpage":"subpage"}
+        }
+      }
+    }
+  },
+  "avnode" : {
+    "project_name"  : "AVnode",
+    "blog_id"       : 17,
+    "project_email" : "info@avnode.org",
+    "port"		    : 3007,
+    "host"		    : "localhost",
+    "domain"	    : "https://avnode.org",
+    "meta_domain"   : "https://flyer.dev.flyer.it",
+    "prefix"	    : "avnode",
+    "locales"       : ["en"],
+    "default_lang"  : "en",
+    "current_lang"  : "en",
+    "router"        : "router_avnode",
+    "sitemap"       : {
+      "lastmod" : "2017-01-15T19:48:29+01:00",
+      "pages" : [
+        "manifesto",
+        "members",
+        "news",
+        "events",
+        "activities",
+        "contact",
+        "join",
+        "newsletter"
+      ],
+      "users" : {
+        "customers" : {"baseurl":"partners"},
+        "people" : {"baseurl":"team"}
+      }
+    },
+    "accounts"      : {
+      "newsletter"    : {
+        "url"           : "https://us7.api.mailchimp.com/3.0/lists/6be13adfd8",
+        "apikey"        : "b7ef93c564178a225881fce224bdce98-us7",
+        "interests"     : {
+          "910cb33c38": "Opportunities for organizations",
+          "4dfd2b1242": "Opportunities for artists",
+          "e3a81480e2": "Opportunities for learning"
+        },
+        "site_from" : "4742751cda"
+      },
+      "emails"         : {
+        "gmail"         : {
+          "host" 	      : "smtp.gmail.com",
+          "user"          : "social@avnode.org",
+          "password"      : "45153gia",
+          "ssl"           : true
+        },
+        "defaults"         : {
+          "contact"         : {
+            "to_name"         : "AVnode.org",
+            "to_email"        : "info@avnode.org",
+            "from_name"       : "AVnode.org",
+            "from_email"      : "info@avnode.org",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          },
+          "join"         : {
+            "to_name"         : "AVnode.org",
+            "to_email"        : "info@avnode.org",
+            "from_name"       : "AVnode.org",
+            "from_email"      : "info@avnode.org",
+            "subject"         : "xxx",
+            "message"         : "xxx"
+          }
+        }
+      }
+    },
+    "sez":{
+      "home" : {
+        "events" : {
+          "limit"		: 12
+        },
+        "news" : {
+          "limit"		: 4
+        },
+        "activities" : {
+          "limit"		: 5
+        }
+      },
+      "users" : {
+        "domain"	: "https://flyer.dev.flyer.it",
+        "site_tax"  : ["avnode-org"],
+        "site_tax_id"  : [451],
+        "members" :{
+          "domain"	        : "https://flyer.dev.flyer.it",
+          "page_domain"     : "https://flyer.dev.flyer.it",
+          "posttypes"       : ["events","news","activities","member-activities"],
+          "default_img"     : "/_common/images/avatar_multi_thumb.svg",
+          "itemprop"        : "sponsor",
+          "title"           : "Members",
+          "baseurl"         : "members",
+          "roles"           : ["member"]
+        },
+        "partners" :{
+          "domain"	        : "https://flyer.dev.flyer.it",
+          "page_domain"     : "https://flyer.dev.flyer.it",
+          "posttypes"       : ["events","news","activities","member-activities"],
+          "default_img"     : "/_common/images/avatar_multi_thumb.svg",
+          "itemprop"        : "sponsor",
+          "title"           : "Partners",
+          "baseurl"         : "partners",
+          "merge_exclude"   : ["member"],
+          "roles"   		: ["partner"]
+        },
+        "externals" :{
+          "domain"	        : "https://flyer.dev.flyer.it"
+        },
+        "posttypes"  : {
+          "news"  : {
+            "publisher" :{
+              "roles"         : ["customer" , "production"],
+              "baseurl"       : "members",
+              "itemprop"      : "publisher",
+              "label_single"  : "Publisher",
+              "label_multi"   : "Publisher"
+            },
+            "authors"  : {
+              "baseurl"       : "team",
+              "itemprop"      : "author",
+              "label_single"  : "Team",
+              "label_multi"   : "Authors"
+            }
+          },
+          "events"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "members",
+              "label_single"  : "Production",
+              "label_multi"  : "Production"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Team"
+            }
+          },
+          "activities"  : {
+            "publisher" :{
+              "roles"  : ["customer" , "production"],
+              "baseurl"   : "members",
+              "label_single"  : "Production",
+              "label_multi"  : "Production"
+            },
+            "authors"  : {
+              "baseurl"   : "team",
+              "label_single"  : "Team",
+              "label_multi"  : "Team"
+            }
+          }
+
+        }
+      },
+      "events" : {
+        "title"     : "Events",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "site_tax"  : ["avnode-org"],
+        "site_tax_id"  : [451],
+        "post_type" : "events",
+        "baseurl"   : "events",
+        "limit"		: 20,
+        "puglist"   : "events",
+        "pugdett"   : "event"
+      },
+      "news" : {
+        "title"     : "News",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "site_tax"  : ["avnode-org"],
+        "site_tax_id"  : [451],
+        "post_type" : "news",
+        "baseurl"   : "news",
+        "limit"		: 20,
+        "puglist"   : "news",
+        "pugdett"   : "new"
+      },
+      "pages" : {
+        "domain"	: "https://flyer.dev.flyer.it",
+        "limit"		: 20,
+        "conf"		: {
+          "manifesto":{"itemtype":"AboutPage","pugpage":"page"},
+          "map":{"itemtype":"Map","pugpage":"page"},
+          "gallery":{"itemtype":"ImageGallery","pugpage":"page"},
+          "press":{"itemtype":"CollectionPage","pugpage":"page"},
+          "newsletter":{"itemtype":"ContactPage","pugpage":"page_newsletter"},
+          "contact":{"itemtype":"ContactPage","pugpage":"page_contacts"},
+          "search":{"itemtype":"SearchResultsPage","pugpage":"page_search"},
+          "join":{"itemtype":"ContactPage","pugpage":"page_join"},
+          "default":{"itemtype":"ItemPage","pugpage":"page","subpage":"subpage"}
+        }
+      },
+      "activities" : {
+        "title"     : "Activities",
+        "domain"	: "https://flyer.dev.flyer.it",
+        "page_domain": "https://flyer.dev.flyer.it",
+        "post_type" : "activities",
+        "baseurl"   : "activities",
+        "limit"		: 20,
+        "puglist"   : "activities",
+        "pugdett"   : "activity"
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -77,5 +77,22 @@
 	"See all Network news": "See all Network news",
 	"Team": "Team",
 	"Partners": "Partners",
-	"Here you can find all the projects made with": "Here you can find all the projects made with"
+	"Here you can find all the projects made with": "Here you can find all the projects made with",
+	"Videos": "Videos",
+	"New Messagge from: {{name}} <{{email}}>\n\n{{message}}\n\nMessagge sent from {{website}}": "New Messagge from: {{name}} <{{email}}>\n\n{{message}}\n\nMessagge sent from {{website}}",
+	"[{{project_name}} Mailer] New Messagge from {{name}}": "[{{project_name}} Mailer] New Messagge from {{name}}",
+	"Messagge sent with success": "Messagge sent with success",
+	"Manifesto": "Manifesto",
+	"Members": "Members",
+	"Activities": "Activities",
+	"Login": "Login",
+	"There are some messages": "There are some messages",
+	"New Join submission from: {{name}} <{{email}}>\n\nOrganization name: {{organization_name}}\n\nOrganization country: {{organization_country}}\n\nOrganization activity description\n{{activity_description}}\n\nActivities name list\n{{activity_list}}\n\nMessagge sent from {{website}}": "New Join submission from: {{name}} <{{email}}>\n\nOrganization name: {{organization_name}}\n\nOrganization country: {{organization_country}}\n\nOrganization activity description\n{{activity_description}}\n\nActivities name list\n{{activity_list}}\n\nMessagge sent from {{website}}",
+	"[{{project_name}} Mailer] New Join from {{organization_name}}": "[{{project_name}} Mailer] New Join from {{organization_name}}",
+	"Congratulations! Your subscription was successful": "Congratulations! Your subscription was successful",
+	"Please enter a valid Name": "Please enter a valid Name",
+	"Email is not an email": "Email is not an email",
+	"Please enter a valid Message": "Please enter a valid Message",
+	"There are some errors": "There are some errors",
+	"Please select your Organization country": "Please select your Organization country"
 }

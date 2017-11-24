@@ -72,5 +72,15 @@
 	"Message": "Message",
 	"Message for me": "Message for me",
 	"Please,leave us a message": "Please,leave us a message",
-	"Send message": "Send message"
+	"Send message": "Send message",
+	"Here you can find all the projects made with": "Here you can find all the projects made with",
+	"New Messagge from: {{name}} <{{email}}>\n\n{{message}}\n\nMessagge sent from {{website}}": "New Messagge from: {{name}} <{{email}}>\n\n{{message}}\n\nMessagge sent from {{website}}",
+	"[{{project_name}} Mailer] New Messagge from {{name}}": "[{{project_name}} Mailer] New Messagge from {{name}}",
+	"Messagge sent with success": "Messagge sent with success",
+	"Manifesto": "Manifesto",
+	"Members": "Members",
+	"Activities": "Activities",
+	"Join": "Join",
+	"Login": "Login",
+	"There are some messages": "There are some messages"
 }

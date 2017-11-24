@@ -87,5 +87,15 @@
 	"Email is not an email": "Email is not an email",
 	"Team": "Team",
 	"Foundation year": "Foundation year",
-	"Locations": "Locations"
+	"Locations": "Locations",
+	"Warning!": "Warning!",
+	"Here you can find all the projects made with": "Here you can find all the projects made with",
+	"Videos": "Videos",
+	"New Messagge from: {{name}} <{{email}}>\n\n{{message}}\n\nMessagge sent from {{website}}": "New Messagge from: {{name}} <{{email}}>\n\n{{message}}\n\nMessagge sent from {{website}}",
+	"[{{project_name}} Mailer] New Messagge from {{name}}": "[{{project_name}} Mailer] New Messagge from {{name}}",
+	"There are some messages": "There are some messages",
+	"Congratulations! Your subscription was successful": "Congratulations! Your subscription was successful",
+	"Downloads": "Downloads",
+	"Please enter a valid surname": "Please enter a valid surname",
+	"There are some errors": "There are some errors"
 }

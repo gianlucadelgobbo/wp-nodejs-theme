@@ -42,5 +42,18 @@
 	"[{{project_name}} Mailer] New Messagge from {{name}}": "[{{project_name}} Mailer] New Messagge from {{name}}",
 	"Messagge sent with success": "Messagge sent with success",
 	"Team": "Team",
-	"Partners": "Partners"
+	"Partners": "Partners",
+	"Downloads": "Downloads",
+	"Here you can find all the projects made with": "Here you can find all the projects made with",
+	"You reached the end": "You reached the end",
+	"Videos": "Videos",
+	"Home": "Home",
+	"Manifesto": "Manifesto",
+	"Members": "Members",
+	"Activities": "Activities",
+	"News": "News",
+	"Join": "Join",
+	"Newsletter": "Newsletter",
+	"Login": "Login",
+	"There are some messages": "There are some messages"
 }

@@ -43,5 +43,22 @@
 	"Newsletter": "Newsletter",
 	"Partners": "Partners",
 	"Team": "Team",
-	"Here you can find all the projects made with": "Here you can find all the projects made with"
+	"Here you can find all the projects made with": "Here you can find all the projects made with",
+	"You reached the end": "You reached the end",
+	"Videos": "Videos",
+	"New Messagge from: {{name}} <{{email}}>\n\n{{message}}\n\nMessagge sent from {{website}}": "New Messagge from: {{name}} <{{email}}>\n\n{{message}}\n\nMessagge sent from {{website}}",
+	"[{{project_name}} Mailer] New Messagge from {{name}}": "[{{project_name}} Mailer] New Messagge from {{name}}",
+	"Please enter a valid Name": "Please enter a valid Name",
+	"Email is not an email": "Email is not an email",
+	"Please enter a valid Message": "Please enter a valid Message",
+	"Home": "Home",
+	"Manifesto": "Manifesto",
+	"Members": "Members",
+	"Activities": "Activities",
+	"Join": "Join",
+	"Login": "Login",
+	"There are some errors": "There are some errors",
+	"Downloads": "Downloads",
+	"Messagge sent with success": "Messagge sent with success",
+	"There are some messages": "There are some messages"
 }
