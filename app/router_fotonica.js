@@ -10,6 +10,10 @@ var pagesRoutes = require('./routes/_common/pages');
 var robotsRoutes = require('./routes/_common/robots');
 
 module.exports = function(app) {
+  app.get('/it*', function(req, res) {
+    res.redirect(301, req.url.replace('/it',''))
+  });
+
   app.get('/*.php', pagesRoutes.get404);
   app.post('/*.php', pagesRoutes.get404);
 

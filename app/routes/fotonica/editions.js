@@ -10,7 +10,13 @@ exports.get = function get(req, res) {
       var rientro = req.url.indexOf("/program/")>0;
       //console.log("rientro");
       var page_data = fnz.setPageData(req, result);
-      //console.log(result);
+      for (var item in result.grid) {
+        for (var item2 in result.grid[item]) {
+          result.grid[item][item2].box = result.grid[item][item2].box.replace(new RegExp('"/editions', 'g'), '"/en/editions');
+          result.grid[item][item2].box = result.grid[item][item2].box.replace(new RegExp('"/it/editions', 'g'), '"/editions');
+          console.log(result.grid[item][item2].box);
+        }
+      }
       if (result.post_title) {
         res.render(config.prefix+'/'+'edition'+(req.url.indexOf("/gallery/")>0 ? "_artists" : ""), {result: result, page_data:page_data, sessions:req.session.sessions,rientro:rientro});
       } else {
