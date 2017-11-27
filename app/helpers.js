@@ -603,6 +603,7 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   if (req.params.artist && req.params.performance) {
     //console.log("req.params.artist");
+    //console.log(config.data_domain+'/wp-json/wp/v2/artists/'+config.prefix+'/'+req.params.edition+"/artists/"+req.params.artist+"/performances/"+req.params.performance);
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<edition>)/(?P<subedition>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition("artists").artist(req.params.artist).performances("performances").performance(req.params.performance).get(function( err, data ) {
       //console.log("//// Artist Performance");
@@ -611,7 +612,7 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
     });
   } else if (req.params.artist) {
     //console.log("req.params.artist");
-    //console.log(config.data_domain+'/wp-json/wp/v2/artists/?edition='+req.params.edition+"&subedition=artists&artist="+req.params.artist);
+    //console.log(config.data_domain+'/wp-json/wp/v2/artists/'+config.prefix+'/'+req.params.edition+"/artists/"+req.params.artist);
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition("artists").artist(req.params.artist).get(function( err, data ) {
       //console.log("//// Artist");
@@ -729,6 +730,7 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callbac
 exports.setSessions = function setSessions(req,callback) {
   //if (!req.session.meta) req.session.meta = require('util')._extend({}, config.meta);
   if (!req.session.sessions) req.session.sessions = {};
+  req.session.sessions = {};
   var urlA = req.url.split("/");
   var lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.default_lang;
   if(req.session.sessions.current_lang != lang) {
@@ -736,11 +738,12 @@ exports.setSessions = function setSessions(req,callback) {
     require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
     global.setLocale(lang);
   }
+  //console.log("sessions.current_lang: "+req.session.sessions.current_lang);
   if (config.last_edition) {
     req.session.sessions.current_edition = req.params.edition ? req.params.edition : config.last_edition;
     //console.log(config.meta.editions);
     //console.log(config);
-    if (!config.meta.editions[req.session.sessions.current_edition].startdateISO) config.meta.editions[req.session.sessions.current_edition] = fnz.fixResult(config.meta.editions[req.session.sessions.current_edition]);
+    if (config.meta.editions && !config.meta.editions[req.session.sessions.current_edition].startdateISO) config.meta.editions[req.session.sessions.current_edition] = fnz.fixResult(config.meta.editions[req.session.sessions.current_edition]);
   }
   callback();
 };

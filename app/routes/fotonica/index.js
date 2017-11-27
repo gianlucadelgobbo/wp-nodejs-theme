@@ -4,8 +4,8 @@ var fs = require('fs');
 var fnz = require('../../functions');
 
 exports.get = function get(req, res) {
-  var file = config.root+'/tmp/'+config.prefix+'/home_'+(req.url.indexOf('/it/')===0 ? 'it' : 'en')+'.json';
   helpers.setSessions(req, function() {
+    var file = config.root+'/tmp/'+config.prefix+'/home_'+req.session.sessions.current_lang+'.json';
     if (req.query.createcache==1 || !fs.existsSync(file)){
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
@@ -13,7 +13,8 @@ exports.get = function get(req, res) {
             var page_data = fnz.setPageData(req, {'ID':'100'});
             var obj = {
               results: {news:result_news,events:result_events,editions:result_editions},
-              page_data:page_data, sessions:req.session.sessions
+              page_data:page_data,
+              sessions:req.session.sessions
             };
             jsonfile.writeFile(file, obj, function (err) {
               //console.log(err);
@@ -33,7 +34,6 @@ exports.get = function get(req, res) {
                 });
               });
             });
-            //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,editions:result_editions}, page_data:page_data, sessions:req.session.sessions});
           });
         });
       });

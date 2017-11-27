@@ -64,7 +64,7 @@ html(lang=sessions.current_lang)
         br
         nav.hidden-xs
           ul.pulsa
-            each menu in config.meta.editions[sessions.current_edition].menu
+            each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
               li.btn-group
                 a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
@@ -90,7 +90,7 @@ html(lang=sessions.current_lang)
           #menu-edition-menu.collapse.navbar-collapse
             // Collect the nav links, forms, and other content for toggling
             ul.nav.navbar-nav
-              each menu in config.meta.editions[sessions.current_edition].menu
+              each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
                 li
                   a(href=lang_preurl+menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
                     - if (menu.childs.length>0)
