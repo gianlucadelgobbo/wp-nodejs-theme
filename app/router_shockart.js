@@ -41,6 +41,7 @@ module.exports = function(app) {
 
   app.get('/', indexRoutes.get);
   app.get('/backstage', usersRoutes.getUsers);
+  app.get('/exhibitions/fotonica', exhibitionsRoutes.getFotonica);
   app.get('/backstage/(:user)', usersRoutes.get);
   app.get('/partners', usersRoutes.getUsers);
   app.get('/partners/(:user)', usersRoutes.get);

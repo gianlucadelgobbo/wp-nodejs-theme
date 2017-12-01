@@ -3,6 +3,10 @@ var fnz = require('../../functions');
 
 var sez = config.sez.exhibitions;
 
+exports.getFotonica = function getFotonica(req, res) {
+  res.render(config.prefix+'/'+'exihibition_local', {result: {}, page_data:{}, sessions:req.session.sessions, include_gallery:false});
+};
+
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     //console.log("result._post_template");
