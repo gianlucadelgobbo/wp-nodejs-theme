@@ -1,7 +1,7 @@
 &opera1=[[[ aleart ]]&
 &autore1=Alessandro Orlandi&
 &Work1=Aleart&
-&descrizione1=Light images, contexts and peaceful soundtracks represent the ideal state of mind to achieve the goal of Ïcommunicating through sensationsÓ.&
+&descrizione1=Light images, contexts and peaceful soundtracks represent the ideal state of mind to achieve the goal of ï¿½communicating through sensationsï¿½.&
 &live1=La Spezia, Italy&
 &nato1=15-Nov-72&
 &lancia1=aleart/base.swf&
@@ -112,7 +112,7 @@
 &w9=778&
 &h9=638&
 &AIon9=1&
-&descrizione9=The work represents a Ïrevolt projectÓ based on the attempt to overthrow the authority of the Modern State thanks to the use of computer programs and technology systems as revolutionary weapons&
+&descrizione9=The work represents a ï¿½revolt projectï¿½ based on the attempt to overthrow the authority of the Modern State thanks to the use of computer programs and technology systems as revolutionary weapons&
 &sito9=http://www.simian.nu&
 
 &opera10=Altzero&
@@ -121,7 +121,7 @@ Work10=Squid Soup&
 &descrizione10=Place specially composed sound loops within the altzero environment, creating interactive soundscapes. The music you hear depends on where you are, the route you take and how you and others select and affect the sounds.&
 &live10=London, England&
 &nato10=&
-&lancia10=../bienaldevalencia/artists/altzero/home2.htm&
+&lancia10=altzero/home.htm&
 &AIon10=0&
 &sito10=http://www.squidsoup.com&
 
@@ -144,7 +144,7 @@ Work10=Squid Soup&
 &descrizione12=The power of deciding which direction the private oniric trip of a human must take, united to the chance to share that dream and get involved in it&
 &live12=San Francisco CA, USA&
 &nato12=08-Aug-72&
-&lancia12=../bienaldevalencia/artists/dreams/home2.htm&
+&lancia12=dreams/home.htm&
 &AIon12=0&
 &sito12=http://www.ioresearch.com&
 
@@ -157,7 +157,7 @@ Work10=Squid Soup&
 &w13=320&
 &h13=240&
 &AIon13=0&
-&descrizione13=An artwork in quicktime format without any user-interaction where the viewer receives the impression of being the only witness on a crime scene in which a stronger sense of cynism is genereted by the fact that the ÏactorsÓ are plastic puppets usulally associated with happier feelings&
+&descrizione13=An artwork in quicktime format without any user-interaction where the viewer receives the impression of being the only witness on a crime scene in which a stronger sense of cynism is genereted by the fact that the ï¿½actorsï¿½ are plastic puppets usulally associated with happier feelings&
 &sito13=http://www.abnormalbehaviorchild.com&
 
 &opera14=Pablo&
@@ -165,7 +165,7 @@ Work10=Squid Soup&
 &Work14=Therevolution.com.au&
 &nato14=&
 &live14=, Australia
-&lancia14=../bienaldevalencia/artists/pablo/home2.htm&
+&lancia14=pablo/home.htm&
 &AIon14=0&
 &descrizione14=Interactive timeline experiment, dealing with inspiration and the way it effects the decision making process&
 &sito14=http://www.therevolution.com.au&
@@ -175,7 +175,7 @@ Work10=Squid Soup&
 &Work15=RMX EXTENDED PLAY&
 &nato15=&
 &live15=Brisbane, Australia&
-&lancia15=../bienaldevalencia/artists/rmx/home2.htm&
+&lancia15=rmx/home.htm&
 &AIon15=0&
 &descrizione15=Part of a series of collaborative experiments, RMX Dancetastic remixes animations to the sounds of RMX.&
 &sito15=http://www.rinzen.com - http://www.rmxxx.com
