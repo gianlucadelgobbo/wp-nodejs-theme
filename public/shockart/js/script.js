@@ -26,4 +26,7 @@ function openWindow(title,url,w,h){
   //jQuery('#resizeModal .modal-body').css({"padding":"0"});
   return false;
 }
-
+jQuery('#resizeModal').on('hidden.bs.modal', function (e) {
+  jQuery('#resizeModal .modal-title').html("");
+  jQuery('#resizeModal .modal-body').html("");
+});
