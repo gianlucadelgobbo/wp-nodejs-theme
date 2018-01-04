@@ -63,7 +63,8 @@ var editions_lpm = [
   '2014-eindhoven',
   '2015-rome',
   '2016-amsterdam',
-  '2017-amsterdam'
+  '2017-amsterdam',
+  '2018-rome'
 ];
 var excludeXL = [
   '2011-minsk',
