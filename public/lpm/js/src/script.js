@@ -4,7 +4,7 @@ $(function() {
   if ($( ".carousel" )) {
     var swiper = new Swiper('.swiper-container', {
 	  slidesPerView: 'auto',
-	  direction: 'horizontal',
+	  direction: 'vertical',
 	  grabCursor: true,
 	  
     //   spaceBetween: 30,

@@ -285,13 +285,13 @@ gulp.task('compress_js_linuxclub', function() {
 });
 
 gulp.task('compress_js_lpm', function() {
-  gulp.src(['!'+config.publicDir + '/lpm/js/*.min.js',config.publicDir + '/lpm/js/*.js'])
+  gulp.src([config.publicDir + '/lpm/js/src/*.js',config.bowerDir + '/swiper/dist/js/swiper.js'])
     .pipe(minify({
       ext:{
         min:'.min.js'
-      },
+      }/*,
       exclude: ['tasks'],
-      ignoreFiles: ['.combo.js', '-min.js']
+      ignoreFiles: ['.combo.js', '-min.js']*/
     }))
     .pipe(gulp.dest(config.publicDir + '/lpm/js/'))
 });
@@ -455,6 +455,7 @@ gulp.task('concat_lpm_css', function() {
       config.publicDir + '/_common/css/style.css',
       config.publicDir + '/lpm/css/style.lpm.css',
       config.publicDir + '/lpm/css/style.lpm.' + editions_lpm[item] + '.css',
+      config.bowerDir  + '/swiper/dist/css/swiper.min.css',
     ];
     if (excludeXL.indexOf(editions_lpm[item]) == -1) csslist.push(config.publicDir + '/_common/css/bootstrapXL.css');
     bella_lpm(csslist,editions_lpm,item);
