@@ -12,9 +12,6 @@
     "errorhandler": "^1.5.0",
     "express": "^4.14.0",
     "express-session": "^1.15.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-minify": "0.0.15",
-    "gulp-sass": "^3.1.0",
     "helmet": "^3.5.0",
     "i18n": "^0.8.3",
     "instagram-node": "^0.5.8",
@@ -33,11 +30,23 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-minify": "0.0.15",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
     "main-bower-files": "^2.13.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "flyer": "node app -site flyer",
+    "lpm": "node app -site lpm",
+    "lcf": "node app -site lcf",
+    "chromosphere": "node app -site chromosphere",
+    "vjtelevision": "node app -site vjtelevision",
+    "shockart": "node app -site shockart",
+    "linuxclub": "node app -site linuxclub",
+    "avnode": "node app -site avnode",
+    "wam": "node app -site wam",
+    "fotonica": "node app -site fotonica"
+ },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gianlucadelgobbo/wp-nodejs-theme.git"

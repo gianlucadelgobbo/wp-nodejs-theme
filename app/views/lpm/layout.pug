@@ -26,18 +26,12 @@ html(lang='en')
     link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
     // CSS
     link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + sessions.current_edition + '.min.css', type='text/css')
-
-    //link(rel='stylesheet', href='/_common/css/fontello.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/_common/css/fontello-animation.css', type='text/css', media='all')
+    // BUTTARE
+    link(rel='stylesheet', href='/lpm/css/style.lpm.css', type='text/css', media='all')
+    link(rel='stylesheet', href='/lpm/css/style.lpm.2017-amsterdam.css', type='text/css', media='all')
+    
     if include_gallery
       link(rel='stylesheet', href='/_common/css/socialGalleryPluginLite.css', type='text/css', media='all')
-    //link(rel='stylesheet', href='/_common/css/cookielawinfo.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/css/bootstrap.min.' + config.prefix + '.' + config.meta.edition['post_name'] + '.css', type='text/css')
-      link(rel='stylesheet', href='/_common/css/style.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/css/style.' + config.prefix + '.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/css/style.' + config.prefix + '.' + config.meta.edition['post_name'] + '.css', type='text/css', media='all')
-      if (['2011-minsk','2011-rome','2010-rome','2009-rome','2008-rome','2008-mex','2007-rome','2006-rome','2005-rome','2004-rome'].indexOf(config.meta.edition['post_name'])==-1)
-        link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
     if config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]
       style(type='text/css').
         body {
@@ -46,17 +40,45 @@ html(lang='en')
   body
     .cnt(itemscope, itemtype='http://schema.org/Event')
       include includes/menu
-      div(class=page_data.url == "/" ? "container-fluid" : "container")
-        header
-          .row
-            .col-md-6
-              #logo
-                a(href='/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
-                  img.img-responsive(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
-                  .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
-            .col-md-6
-              .row
-                .col-md-12
+      nav.navbar.navbar-inverse.navbar-fixed-top
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')
+            span.sr-only Toggle navigation
+            i.icon-bar
+            i.icon-bar
+            i.icon-bar
+          a.navbar-brand(href='/', title=config.meta.editions[sessions.current_edition].title)
+            img.img-responsive(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
+            .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+        #menu-edition-menu.collapse.navbar-collapse
+          // Collect the nav links, forms, and other content for toggling
+          ul.nav.navbar-nav
+            each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
+              li
+                a(href=menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
+                  - if (menu.childs.length>0)
+                    span.caret
+                - if (menu.childs.length>0)
+                  ul.dropdown-menu
+                    each child in menu.childs
+                      li
+                        a(href=child.permalink, title=child.post_title)=child.post_title
+          ul.nav.navbar-nav.navbar-right
+            li
+              a.open-aside(href="#" onclick="$('aside').addClass('opened')")
+                span.open-aside-circle
+                  i.glyphicon.glyphicon-th
+      .header-bar
+        div(class=page_data.url == "/" ? "container-fluid" : "container")
+          header
+            .row
+              .col-md-6
+                h1.entry-title(itemprop="name")
+                  !=result.post_title
+                  include ../_common/inc_share_span
+              .col-md-6
+                .text-right
                   div(itemprop='disambiguatingDescription')
                     #next-edition-cnt
                       #next-edition!=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
@@ -64,45 +86,7 @@ html(lang='en')
                       #site-description=config.meta.headline[sessions.current_lang]
                   .sr-only
                     include ../_common/inc_eventdateplace_meta
-        nav.hidden-xs
-          ul.pulsa
-            each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
-              li.btn-group
-                a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(title=menu.post_title, href=menu.post_status == 'publish' ? menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
-                if menu.childs.length
-                  button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
-                    span.caret
-                    span.sr-only Toggle Dropdown
-                  ul.dropdown-menu
-                    each child in menu.childs
-                      li(class=child.post_status == 'publish' ? undefined : "disabled")
-                        a(href=child.post_status == 'publish' ? child.permalink : "#", title=child.post_title)=child.post_title
-
-
-
-        nav.visible-xs.navbar.navbar-default
-          // Brand and toggle get grouped for better mobile display
-          .navbar-header
-            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')
-              span.sr-only Toggle navigation
-              i.icon-bar
-              i.icon-bar
-              i.icon-bar
-            a.navbar-brand(href='/', title="Home")
-          #menu-edition-menu.collapse.navbar-collapse
-            // Collect the nav links, forms, and other content for toggling
-            ul.nav.navbar-nav
-              each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
-                li
-                  a(href=menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
-                    - if (menu.childs.length>0)
-                      span.caret
-                  - if (menu.childs.length>0)
-                    ul.dropdown-menu
-                      each child in menu.childs
-                        li
-                          a(href=child.permalink, title=child.post_title)=child.post_title
-        br
+      div(class=page_data.url == "/" ? "container-fluid" : "container")
         #result
           block content
         include includes/footer

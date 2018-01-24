@@ -2,10 +2,6 @@ extends layout
 block content
   article#container(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
     header
-      h1.entry-title
-        span.pull-left(itemprop="name")=posttype.post_title
-        span.pull-right
-          include ../_common/inc_share_span
       p(itemprop="description")!=posttype.post_content
     .row.isotope.results
       each result, position in results

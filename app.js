@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 global.config = require('config')[process.argv[3]];
+
 config.root = app.root = __dirname;
 
 require('jsonfile').readFile(config.root+'/config/users.json', function(err, obj) {

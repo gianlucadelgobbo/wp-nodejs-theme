@@ -13,10 +13,7 @@ block content
   - }
   article#container(itemprop='performer', itemscope, itemtype=itemtype)
     header
-      h1.entry-title
-        span.pull-left(itemprop="name")=result.post_title
-        span.pull-right
-          include ../_common/inc_share_span
+      h1.entry-title.hidden
     if (sessions.current_edition == config.last_edition && config.last_edition_status == "call")
       style.
         .schedule {
