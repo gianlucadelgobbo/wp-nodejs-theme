@@ -2,9 +2,9 @@ var $container;
 var mySvgPanZoom;
 $(function() {
 	if ($( ".carousel" )) {
-		$( ".carousel" ).height(( window ).height());
+		$( ".carousel" ).height($(window).height());
 		$( ".carousel" ).animate({
-			height: ($( window ).height()-125)
+			height: ($(window).height()-125)
 		}, 2000);
 	
 		$(window).scroll(function() {
