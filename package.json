@@ -46,7 +46,7 @@
     "avnode": "node app -site avnode",
     "wam": "node app -site wam",
     "fotonica": "node app -site fotonica"
- },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gianlucadelgobbo/wp-nodejs-theme.git"

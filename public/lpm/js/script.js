@@ -1,7 +1,26 @@
 var $container;
 var mySvgPanZoom;
 $(function() {
-  $(".availablesoon").click(function(event) {
+	if ($( ".carousel" )) {
+		$( ".carousel" ).height(( window ).height());
+		$( ".carousel" ).animate({
+			height: ($( window ).height()-125)
+		}, 2000);
+	
+		$(window).scroll(function() {
+			if ($(window).scrollTop()+90>=$( ".header-bar" ).offset().top) {
+				if (!$( ".navbar-edition" ).hasClass("navbar-fixed-top")) $( ".navbar-edition" ).addClass("navbar-fixed-top");
+				if ($( "body" ).hasClass("body-home")) $( "body" ).removeClass("body-home");
+				if (!$( "body" ).hasClass("body-common")) $( "body" ).addClass("body-common");
+			} else {
+				if ($( ".navbar-edition" ).hasClass("navbar-fixed-top")) $( ".navbar-edition" ).removeClass("navbar-fixed-top");
+				if (!$( "body" ).hasClass("body-home")) $( "body" ).addClass("body-home");
+				if ($( "body" ).hasClass("body-common")) $( "body" ).removeClass("body-common");
+			}
+		});
+	}
+	
+	$(".availablesoon").click(function(event) {
     alert("Available soon!!!");
     return false;
   });

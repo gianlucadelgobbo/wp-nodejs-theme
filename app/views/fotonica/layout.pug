@@ -72,7 +72,7 @@ html(lang=sessions.current_lang)
               li.btn-group.gradient-ghost-btn-lg.live.gradient-color-palette2
                 a.btn.btn-primary(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
-                  button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
+                  button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', style=menu.post_status == 'publish' ? undefined : "opacity:.65")
                     span.caret
                     span.sr-only Toggle Dropdown
                   ul.dropdown-menu
@@ -95,15 +95,15 @@ html(lang=sessions.current_lang)
             // Collect the nav links, forms, and other content for toggling
             ul.nav.navbar-nav
               each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
-                li
-                  a(href=lang_preurl+menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
+                li(class=menu.post_status == 'publish' ? undefined : "disabled")
+                  a(href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, style=menu.post_status == 'publish' ? undefined : "opacity:.65", title=menu.post_title)=menu.post_title
                     - if (menu.childs.length>0)
                       span.caret
                   - if (menu.childs.length>0)
                     ul.dropdown-menu
                       each child in menu.childs
-                        li
-                          a(href=lang_preurl+child.permalink, title=child.post_title)=child.post_title
+                        li(class=child.post_status == 'publish' ? undefined : "disabled")
+                          a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
         br
         #result
           block content

@@ -37,59 +37,76 @@ html(lang='en')
         body {
           background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
         }
-  body
-    .cnt(itemscope, itemtype='http://schema.org/Event')
-      include includes/menu
-      nav.navbar.navbar-inverse.navbar-fixed-top
-        // Brand and toggle get grouped for better mobile display
-        .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')
-            span.sr-only Toggle navigation
-            i.icon-bar
-            i.icon-bar
-            i.icon-bar
-          a.navbar-brand(href='/', title=config.meta.editions[sessions.current_edition].title)
-            img.img-responsive(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
-            .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
-        #menu-edition-menu.collapse.navbar-collapse
-          // Collect the nav links, forms, and other content for toggling
-          ul.nav.navbar-nav
-            each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
-              li
-                a(href=menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
-                  - if (menu.childs.length>0)
+  body(class=page_data.url == "/" ? "body-home" : "body-common")
+    include includes/menu
+    block home
+    nav.navbar.navbar-inverse.navbar-edition(class=page_data.url == "/" ? "" : "navbar-fixed-top")
+      // Brand and toggle get grouped for better mobile display
+      .navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')
+          span.sr-only Toggle navigation
+          i.icon-bar
+          i.icon-bar
+          i.icon-bar
+        a.navbar-brand(href='/', title=config.meta.editions[sessions.current_edition].title)
+          img.img-responsive(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
+          .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+      #menu-edition-menu.collapse.navbar-collapse
+        // Collect the nav links, forms, and other content for toggling
+        ul.nav.navbar-nav
+          each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
+            if menu.childs.length>0
+              li.btn-group(class=menu.post_status == 'publish' ? undefined : "disabled")
+
+                a.btn-dropdown(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+                if menu.childs.length
+                  a.btn-dropdown.dropdown-toggle(type='button', data-toggle='dropdown', style=menu.post_status == 'publish' ? undefined : "opacity:.65")
                     span.caret
-                - if (menu.childs.length>0)
+                    span.sr-only Toggle Dropdown
                   ul.dropdown-menu
                     each child in menu.childs
-                      li
-                        a(href=child.permalink, title=child.post_title)=child.post_title
-          ul.nav.navbar-nav.navbar-right
-            li
-              a.open-aside(href="#" onclick="$('aside').addClass('opened')")
-                span.open-aside-circle
-                  i.glyphicon.glyphicon-th
-      .header-bar
-        div(class=page_data.url == "/" ? "container-fluid" : "container")
-          header
-            .row
-              .col-md-6
-                h1.entry-title(itemprop="name")
-                  !=result.post_title
-                  include ../_common/inc_share_span
-              .col-md-6
-                .text-right
-                  div(itemprop='disambiguatingDescription')
-                    #next-edition-cnt
-                      #next-edition!=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
-                    #site-description-cnt
-                      #site-description=config.meta.headline[sessions.current_lang]
-                  .sr-only
-                    include ../_common/inc_eventdateplace_meta
+                      li(class=child.post_status == 'publish' ? undefined : "disabled")
+                        a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
+            else
+              li(class=menu.post_status == 'publish' ? undefined : "disabled")
+                a(href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", style=menu.post_status == 'publish' ? undefined : "opacity:.65", title=menu.post_title)=menu.post_title
+
+              //  a(href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", data-toggle="dropdown", style=menu.post_status == 'publish' ? undefined : "opacity:.65", title=menu.post_title)
+                  !=" "
+                  span.caret
+                ul.dropdown-menu
+                  each child in menu.childs
+                    li(class=child.post_status == 'publish' ? undefined : "disabled")
+                      a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
+        ul.nav.navbar-nav.navbar-right
+          li
+            span.open-aside-cnt
+              span.open-aside-cell
+                a.open-aside-circle(href="#" onclick="$('aside').addClass('opened')")
+                  span.open-aside-icon
+                    i.glyphicon.glyphicon-th
+    .header-bar
       div(class=page_data.url == "/" ? "container-fluid" : "container")
-        #result
-          block content
-        include includes/footer
+        header
+          .row
+            .col-md-6
+              .h1
+                !=result && result.post_title ? result.post_title : config.project_name
+                include ../_common/inc_share_span
+            .col-md-6(itemscope, itemtype='http://schema.org/Event')
+              .text-right
+                .hidden(itemprop='name')!=config.project_name+" "+config.meta.editions[sessions.current_edition]['title']
+                div(itemprop='disambiguatingDescription')
+                  #next-edition-cnt
+                    #next-edition!=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
+                  #site-description-cnt
+                    #site-description=config.meta.headline[sessions.current_lang]
+                .sr-only
+                  include ../_common/inc_eventdateplace_meta
+    .cnt(class=page_data.url == "/" ? "container-fluid" : "container")
+      #result
+        block content
+      include includes/footer
     #twCnt
       #tw
     include ../_common/modal-full

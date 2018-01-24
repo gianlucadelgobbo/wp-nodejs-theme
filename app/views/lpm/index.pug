@@ -1,4 +1,43 @@
 extends layout
+block home
+  #carousel.carousel.slide(data-ride='carousel')
+    // Indicators
+    ol.carousel-indicators
+      li.active(data-target='#carousel', data-slide-to='0')
+      li(data-target='#carousel', data-slide-to='1')
+      li(data-target='#carousel', data-slide-to='2')
+      li(data-target='#carousel', data-slide-to='3')
+    // Wrapper for slides
+    .carousel-inner(role='listbox')
+      .item.active
+        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
+          img(src='/lpm/images/slider/AV-Performances_09.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+      .item
+        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
+          img(src='/lpm/images/slider/AV-Performances_14.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+      .item
+        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
+          img(src='/lpm/images/slider/Installations_03.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+      .item
+        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
+          img(src='/lpm/images/slider/Mapping_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+      .item
+        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
+          img(src='/lpm/images/slider/Talks_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+      .item
+        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
+          img(src='/lpm/images/slider/Talks_04.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+
+
+
+    // Controls
+    a.left.carousel-control(href='#carousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+      span.sr-only Previous
+    a.right.carousel-control(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+      span.sr-only Next
+
 block content
   section#container
     .row

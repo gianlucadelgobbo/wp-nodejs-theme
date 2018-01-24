@@ -9,10 +9,11 @@ block content
             div(itemprop='description')!=result.post_content
         .col-sm-3
           img.img-responsive.wp-post-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
-    else
+    //else
       header
         h1.entry-title(itemprop='name')=result.post_title
     if (sessions.current_edition == config.last_edition && page_data.url.indexOf("/program/")!==-1)
+      - console.log(config.last_edition_status)
       if(config.last_edition_status == "call")
         style.
           .schedule {
