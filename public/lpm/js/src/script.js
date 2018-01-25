@@ -21,7 +21,7 @@ $(function() {
     }
   });
 
-  if ($( ".carousel" )) {
+  if ($( ".swiper-container" ).length) {
     var swiper = new Swiper('.swiper-container', {
       slidesPerView: 'auto',
       direction: 'horizontal',
@@ -34,24 +34,26 @@ $(function() {
     });
   }
 
-  if ($( ".carousel" )) {
-    console.log($("#tw").height());
-    console.log($( ".carousel .active img" ));
-    //$( ".carousel" ).height(0);
+  if ($( ".carousel" ).length) {
+    $( ".carousel" ).height(0);
     //$('.carousel .item').addClass('full-screen');
-    $( ".carousel .active img" ).on("load", function() {
-      console.log("IMMAGINE CARICATA");
+    $('.carousel img').each(function() {
+      var $src = $(this).attr('src');
+      //var $color = $(this).attr('data-color');
+      $(this).parent().css({
+        'background-image' : 'url(' + $src + ')',
+        'height' : $(window).height()-($(".navbar-edition").height()+33)
+        /*,'background-color' : $color*/
+      });
+      //$(this).hide();
+    });
+
+    $( ".carousel .active img" ).imagesLoaded( function(){
       $('.carousel img').each(function() {
-        var $src = $(this).attr('src');
-        var $color = $(this).attr('data-color');
-        $(this).parent().css({
-          'background-image' : 'url(' + $src + ')',
-          'background-color' : $color
-        });
         $(this).remove();
       });
-      $( ".carousel, .carousel .item" ).animate({
-        height: ($(window).height()-($(".navbar-edition").height()+33))
+      $( ".carousel" ).animate({
+        height: $(window).height()-($(".navbar-edition").height()+33)
       }, {
         duration: 2000,
         specialEasing: {
@@ -64,7 +66,7 @@ $(function() {
           $item.height($wHeight); 
           console.log($("#tw").height());
   */
-          $(window).on('resize', function (){
+        $(window).on('resize', function (){
             $wHeight = $(window).height();
             $item.height($wHeight);
             //swiper.update();
