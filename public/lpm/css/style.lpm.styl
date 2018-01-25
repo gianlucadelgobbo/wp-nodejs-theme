@@ -1,5 +1,44 @@
-.swiper-slide {
-  width:250px
+.swiper-container, .swiper-container a {
+  cursor:url("/_common/images/slider-cursor.svg") 30 30,default;
+}
+
+.swiper-container {
+  margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+  .swiper-slide {
+    width:250px
+  }
+}
+@media (max-width: 767px) {
+  .swiper-slide {
+    width:80%
+  }
+}
+@media (min-width: 768px) {
+  .swiper-slide {
+    width:250px
+  }
+}
+@media (min-width: 992px) {
+  .swiper-slide {
+    width:300px
+  }
+}
+@media (min-width: 1200px) {
+  .swiper-slide {
+    width:400px
+  }
+}
+@media (min-width: 1400px) {
+  .swiper-slide {
+    width:480px
+  }
+}
+.navbar-edition{
+  border-radius: 0;
+  margin-bottom: 0;
 }
 .btn-dropdown {
     position: relative;
@@ -12,8 +51,11 @@
     padding-left: 0;
 }
 .navbar-brand {
-  padding: 25px 25px;
-  height: 90px;
+  padding: 10px;
+  height: 50px;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
 }
 .navbar-brand>img {
   height: 100%;
@@ -35,6 +77,10 @@ span.share, .dates i, .places i, .share i {
 .thumbnails{
   margin-top:30px;
 }
+.navbar-toggle {
+  float: left;
+  margin-left: 10px;
+}
 
 /* ASIDE MENU */
 .aside-fixed {
@@ -48,6 +94,9 @@ span.share, .dates i, .places i, .share i {
   z-index:9998;
   transition: right .5s ease-in-out;
 }
+.aside-fixed-fullwidth{
+  width: 100%;
+}
 .aside-fixed.opened {
   right: 0;
 }
@@ -60,24 +109,23 @@ span.share, .dates i, .places i, .share i {
 .open-aside-cnt {
   display:table;
 }
-.body-home .open-aside-cnt {
-  margin: 20px 20px 0 0;
-}
-.body-common .open-aside-cnt {
-  margin: 20px 35px 0 0;
+.open-aside-cnt {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 a.open-aside-circle {
-    position: relative;
-    display: inherit;
-    vertical-align: middle;
-    text-align: center;
-    height: 50px;
-    width: 50px;
-    background-color: #fff;
-    color: #000;
-    border-radius: 50%;
-    font-size: 20px;
-    padding: 2px 0 0 2px;
+  position: relative;
+  display: inherit;
+  vertical-align: middle;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 50%;
+  font-size: 15px;
+  padding: 2px 0 0 2px;
 }
 a.open-aside-circle:hover i{
   opacity: .6;
@@ -85,13 +133,6 @@ a.open-aside-circle:hover i{
 .open-aside-cell {
     position: relative;
     display: table-cell;
-}
-.open-aside-circle {
-  border-radius: 50%;
-  background-color: #fff;
-    width: 100%;
-    height: 100%;
-    display:inline-block;
 }
 /* ASIDE MENU END */
 
@@ -273,19 +314,13 @@ a:hover img {
   .body-common {
     padding-top: 90px;
   }
-  .body-home {
-  }
-  .body-home .navbar-edition{
-    border-radius: 0;
-    margin-bottom: 0;
-  }
   .navbar-edition .navbar-nav>li>a {
     padding-top: 35px;
     padding-bottom: 35px;
   }
 }
 
-/* CAROUSEL HACK FIT DESKTOP*/
+/* CAROUSEL HACK FIT DESKTOP
   .carousel {
     max-height: 100vh;
     width: 100%;
@@ -305,8 +340,12 @@ a:hover img {
   .carousel-caption {
     bottom: 120px;
   }
-
-
+*/
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 
 /* TWITTER */
@@ -330,5 +369,55 @@ a:hover img {
     top: 1px;
 
   }
+  .navbar-brand {
+    padding: 25px 25px;
+    height: 90px;
+    transform: none;
+    left: auto;
+    position: relative;
+  }
+  .open-aside-cnt {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  a.open-aside-circle {
+    height: 50px;
+    width: 50px;
+    font-size: 20px;
+  }
+
+}
+@media only screen and (max-width:480px){
+    .dropdown-menu{
+        display: block;
+        position: static;
+        background-color:transparent;
+        border:0 none;
+        box-shadow:none;
+        margin-top:0;
+        position:static;
+        width:100%;
+    }
+    .navbar-nav > li {
+      clear: both;
+    }
+    .navbar-nav .dropdown-menu > li > a, 
+    .navbar-nav .dropdown-menu .dropdown-header {
+        padding:5px 15px 5px 25px;
+    }
+    .navbar-nav .dropdown-menu > li > a{
+        line-height:20px;
+    }
+    .navbar-default .navbar-nav .dropdown-menu > li > a{
+        
+        color:#777;
+    }
+ a.dropdown-toggle .caret {
+    display: none;
+ }   
+    .dropdown a.dropdown-toggle{
+        display:none;
+    }
 }
 /* END TWITTER */

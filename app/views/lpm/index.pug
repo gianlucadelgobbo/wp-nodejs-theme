@@ -10,23 +10,29 @@ block home
     // Wrapper for slides
     .carousel-inner(role='listbox')
       .item.active
-        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
-          img(src='/lpm/images/slider/AV-Performances_09.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        img(src='/lpm/images/slider/AV-Performances_09.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        .carousel-caption
+          a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS") Bella
       .item
-        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
-          img(src='/lpm/images/slider/AV-Performances_14.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        img(src='/lpm/images/slider/AV-Performances_14.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        .carousel-caption
+          a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS") Bella
       .item
-        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
-          img(src='/lpm/images/slider/Installations_03.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        img(src='/lpm/images/slider/Installations_03.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        .carousel-caption
+          a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS") Bella
       .item
-        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
-          img(src='/lpm/images/slider/Mapping_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        img(src='/lpm/images/slider/Mapping_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        .carousel-caption
+          a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS") Bella
       .item
-        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
-          img(src='/lpm/images/slider/Talks_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        img(src='/lpm/images/slider/Talks_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        .carousel-caption
+          a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS") Bella
       .item
-        a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS")
-          img(src='/lpm/images/slider/Talks_04.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        img(src='/lpm/images/slider/Talks_04.jpg', alt=global.__('Image for') + ': ' + 'LPM 2018 Rome | CALL FOR PROPOSALS')
+        .carousel-caption
+          a(href=lang_preurl+"/editions/2018-rome/call-for-proposals/", title="LPM 2018 Rome | CALL FOR PROPOSALS") Bella
 
 
 
@@ -40,35 +46,41 @@ block home
 
 block content
   section(itemscope, itemtype='http://schema.org/ItemList')
-    h1.entry-title(itemprop="name") News
+    .container-fluid
+      h1.entry-title(itemprop="name") News
     .swiper-container
       .swiper-wrapper
         each result, position in results.news
           include boxes/box_news
-    .text-right.boxItem
-      a.btn.btn-primary(href="/news/", title="See all News") See all News
+    .container-fluid
+      .text-right.boxItem
+        a.btn.btn-primary(href="/news/", title="See all News") See all News
   section(itemscope, itemtype='http://schema.org/ItemList')
-    h1.entry-title(itemprop="name") Satellite Events
+    .container-fluid
+      h1.entry-title(itemprop="name") Satellite Events
     .swiper-container
       .swiper-wrapper
         each result, position in results.events
           include boxes/box_event
-    .text-right.boxItem
-      a.btn.btn-primary(href="/events/", title="See all Events") See all Events
-      !="&nbsp;&nbsp;"
-      a.btn.btn-primary(href="/timeline/", title="See all in a Timeline") See all in a Timeline
-      !="&nbsp;&nbsp;"
-      a.btn.btn-primary(href="/map/", title="See all in a Map") See all in a Map
+    .container-fluid
+      .text-right.boxItem
+        a.btn.btn-primary(href="/events/", title="See all Events") See all Events
+        !="&nbsp;&nbsp;"
+        a.btn.btn-primary(href="/timeline/", title="See all in a Timeline") See all in a Timeline
+        !="&nbsp;&nbsp;"
+        a.btn.btn-primary(href="/map/", title="See all in a Map") See all in a Map
 
   section(itemscope, itemtype='http://schema.org/ItemList')
-    h1.entry-title(itemprop="name") Editions
+    .container-fluid
+      h1.entry-title(itemprop="name") Editions
     .swiper-container
       .swiper-wrapper
         each result, position in results.editions
           include boxes/box_edition
-    .text-right.boxItem
-      a.btn.btn-primary(href="/editions/", title="See all Editions") See all Editions
-      !="&nbsp;&nbsp;"
-      a.btn.btn-primary(href="/timeline/", title="See all in a Timeline") See all in a Timeline
-      !="&nbsp;&nbsp;"
-      a.btn.btn-primary(href="/map/", title="See all in a Map") See all in a Map
+    .container-fluid
+      .text-right.boxItem
+        a.btn.btn-primary(href="/editions/", title="See all Editions") See all Editions
+        !="&nbsp;&nbsp;"
+        a.btn.btn-primary(href="/timeline/", title="See all in a Timeline") See all in a Timeline
+        !="&nbsp;&nbsp;"
+        a.btn.btn-primary(href="/map/", title="See all in a Map") See all in a Map

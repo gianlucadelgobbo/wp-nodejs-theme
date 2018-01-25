@@ -1,23 +1,77 @@
 var $container;
 var mySvgPanZoom;
 $(function() {
+  $(".open-aside-circle").click(function(event) {
+    event.preventDefault();
+    $('aside').addClass('opened');
+  });
+
+  $(".close-aside").click(function(event) {
+    event.preventDefault();
+    $('aside').removeClass('opened');
+  });
+
+  $(window).on('resize', function (){
+    var w = $(window).width();
+    if (w < 500) {
+      if (!$( ".aside" ).hasClass("aside-fixed-fullwidth")) $('aside').addClass('aside-fixed-fullwidth');
+    } else {
+      if ($( ".aside" ).hasClass("aside-fixed-fullwidth")) $('aside').removeClass('aside-fixed-fullwidth');
+    }
+  });
+
   if ($( ".carousel" )) {
     var swiper = new Swiper('.swiper-container', {
-	  slidesPerView: 'auto',
-	  direction: 'horizontal',
-	  grabCursor: true,
-	  
-    //   spaceBetween: 30,
-    //   pagination: {
-    //     el: '.swiper-pagination',
-    //     clickable: true,
-    //   }
+      slidesPerView: 'auto',
+      direction: 'horizontal',
+      grabCursor: false,
+      spaceBetween: 30
+      //   pagination: {
+      //     el: '.swiper-pagination',
+      //     clickable: true,
+      //   }
     });
+
+
+    $( ".carousel" ).height(0);
+    $('.carousel .item').addClass('full-screen');
+    $('.carousel img').each(function() {
+      var $src = $(this).attr('src');
+      var $color = $(this).attr('data-color');
+      $(this).parent().css({
+        'background-image' : 'url(' + $src + ')',
+        'background-color' : $color
+      });
+      $(this).remove();
+    });
+    console.log($("#tw").height());
     
-    $( ".carousel" ).height($(window).height());
     $( ".carousel" ).animate({
-      height: ($(window).height()-125)
-    }, 2000);
+      height: ($(window).height()-($(".navbar-edition").height()+33))
+    }, {
+			duration: 2000,
+			specialEasing: {
+				height: "swing"
+			},
+			complete: function() {
+				var $item = $('.carousel .item'); 
+				var $wHeight = $(window).height()-($(".navbar-edition").height()+33);
+				$item.eq(0).addClass('active');
+				$item.height($wHeight); 
+        console.log($("#tw").height());
+
+				$(window).on('resize', function (){
+					$wHeight = $(window).height();
+          $item.height($wHeight);
+          //swiper.update();
+				});
+				
+				$('.carousel').carousel({
+					interval: 6000,
+					pause: "false"
+				});
+			}
+		});
   
     $(window).scroll(function() {
       if ($(window).scrollTop()+90>=$( ".header-bar" ).offset().top) {

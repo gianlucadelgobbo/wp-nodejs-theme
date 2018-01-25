@@ -51,6 +51,11 @@ html(lang='en')
         a.navbar-brand(href='/', title=config.meta.editions[sessions.current_edition].title)
           img.img-responsive(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
           .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+        span.open-aside-cnt
+          span.open-aside-cell
+            a.open-aside-circle(href="#")
+              span.open-aside-icon
+                i.glyphicon.glyphicon-th
       #menu-edition-menu.collapse.navbar-collapse
         // Collect the nav links, forms, and other content for toggling
         ul.nav.navbar-nav
@@ -78,13 +83,7 @@ html(lang='en')
                   each child in menu.childs
                     li(class=child.post_status == 'publish' ? undefined : "disabled")
                       a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
-        ul.nav.navbar-nav.navbar-right
-          li
-            span.open-aside-cnt
-              span.open-aside-cell
-                a.open-aside-circle(href="#" onclick="$('aside').addClass('opened')")
-                  span.open-aside-icon
-                    i.glyphicon.glyphicon-th
+        
     .header-bar
       div(class=page_data.url == "/" ? "container-fluid" : "container")
         header
@@ -103,7 +102,7 @@ html(lang='en')
                     #site-description=config.meta.headline[sessions.current_lang]
                 .sr-only
                   include ../_common/inc_eventdateplace_meta
-    .cnt(class=page_data.url == "/" ? "container-fluid" : "container")
+    .cnt(class=page_data.url == "/" ? "" : "container")
       #result
         block content
       include includes/footer

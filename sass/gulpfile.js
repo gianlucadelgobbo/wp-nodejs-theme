@@ -289,9 +289,9 @@ gulp.task('compress_js_lpm', function() {
     .pipe(minify({
       ext:{
         min:'.min.js'
-      }/*,
+      },
       exclude: ['tasks'],
-      ignoreFiles: ['.combo.js', '-min.js']*/
+      ignoreFiles: ['.combo.js', '-min.js']
     }))
     .pipe(gulp.dest(config.publicDir + '/lpm/js/'))
 });
