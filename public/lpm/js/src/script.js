@@ -3,20 +3,21 @@ var mySvgPanZoom;
 $(function() {
   $(".open-aside-circle").click(function(event) {
     event.preventDefault();
-    $('aside').addClass('opened');
+    $('.aside-fixed').addClass('opened');
   });
 
   $(".close-aside").click(function(event) {
     event.preventDefault();
-    $('aside').removeClass('opened');
+    $('.aside-fixed').removeClass('opened');
   });
 
   $(window).on('resize', function (){
     var w = $(window).width();
+    console.log(w);
     if (w < 500) {
-      if (!$( ".aside" ).hasClass("aside-fixed-fullwidth")) $('aside').addClass('aside-fixed-fullwidth');
+      if (!$( ".aside-fixed" ).hasClass("aside-fixed-fullwidth")) $('.aside-fixed').addClass('aside-fixed-fullwidth');
     } else {
-      if ($( ".aside" ).hasClass("aside-fixed-fullwidth")) $('aside').removeClass('aside-fixed-fullwidth');
+      if ($( ".aside-fixed" ).hasClass("aside-fixed-fullwidth")) $('.aside-fixed').removeClass('aside-fixed-fullwidth');
     }
   });
 
