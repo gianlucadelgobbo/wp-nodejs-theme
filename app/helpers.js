@@ -555,13 +555,12 @@ exports.getAllEditionsByYear = function getAllEditionsByYear(req, years, limit, 
       data = fnz.fixResults(data);
       callback(data);
     });
-
   }
 };
 
 exports.getEdition = function getEdition(req,callback) {
   //console.log("stocazzo");
-  console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json');
+  //console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json');
   //console.log(req.params.subsubedition);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   if (req.params.subsubedition) {
