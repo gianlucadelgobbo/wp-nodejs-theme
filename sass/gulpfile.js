@@ -40,7 +40,7 @@ var tasklist = [
   'concat_flyer_css',
   'concat_lcf_css',
   'concat_linuxclub_css',
-  'concat_lpm_css',
+  //'concat_lpm_css',
   'concat_shockart_css',
   'concat_vjtelevision_css',
   'concat_wam_css'
@@ -443,7 +443,7 @@ gulp.task('concat_linuxclub_css', function() {
     .pipe(concat('combo.min.css'), {newLine: '\r\n'})
     .pipe(gulp.dest(config.publicDir + '/linuxclub/css/'));
 });
-
+/*
 gulp.task('concat_lpm_css', function() {
   for (var item in editions_lpm) {
     var csslist = [
@@ -462,6 +462,7 @@ gulp.task('concat_lpm_css', function() {
 
   }
 });
+*/
 
 gulp.task('concat_shockart_css', function() {
   return gulp.src([
