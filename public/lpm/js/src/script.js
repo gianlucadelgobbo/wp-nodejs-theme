@@ -55,21 +55,14 @@ $(function() {
           height: "swing"
         },
         complete: function() {
-          /*
-          var $item = $('.carousel .item'); 
-          var $wHeight = $(window).height()-($(".navbar-edition").height()+33);
-          $item.eq(0).addClass('active');
-          $item.height($wHeight); 
-          console.log($("#tw").height());
-          */
           $(window).on('resize', function (){
             var $item = $('.carousel .item'); 
             var $wHeight = $(window).height()-($(".navbar-edition").height()+33);
-            $wHeight = $(window).height();
             $item.height($wHeight);
+            $( ".carousel" ).height($wHeight);
             //swiper.update();
           });
-          
+        
           $('.carousel').carousel({
             interval: 6000,
             pause: "false"
@@ -79,7 +72,7 @@ $(function() {
     });
    
     $(window).scroll(function() {
-      if ($(window).scrollTop()+90>=$( ".header-bar" ).offset().top) {
+      if ($(window).scrollTop()>=$('.carousel').height()) {
         if (!$( ".navbar-edition" ).hasClass("navbar-fixed-top")) $( ".navbar-edition" ).addClass("navbar-fixed-top");
         if ($( "body" ).hasClass("body-home")) $( "body" ).removeClass("body-home");
         if (!$( "body" ).hasClass("body-common")) $( "body" ).addClass("body-common");
@@ -184,7 +177,6 @@ function resetAffix(){
 */
 function resetAside() {
   var w = $(window).width();
-  console.log(w);
   if (w < 500) {
     if (!$( ".aside-fixed" ).hasClass("aside-fixed-fullwidth")) $('.aside-fixed').addClass('aside-fixed-fullwidth');
   } else {

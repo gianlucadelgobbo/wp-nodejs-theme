@@ -1,6 +1,9 @@
 .swiper-container, .swiper-container a {
   cursor:url("/_common/images/slider-cursor.svg") 30 30,default;
 }
+.navbar-inverse {
+  background-color: #000;
+}
 
 .swiper-container {
   margin-bottom: 30px;
@@ -61,10 +64,10 @@ article .wp-post-image{margin-bottom:30px;}
 
 .header-bar{
   padding: 30px;
-  background-color: #666;
+  background-color: #f2f2f2;
 }
 .entry-title,.grid-title{color:#FFF;}
-.header-bar .h1{color:#FFF;padding:8px 0 0 0; margin:0;}
+.header-bar .h1{color:#000;padding:8px 0 0 0; margin:0;}
 
 span.share, .dates i, .places i, .share i {
   font-size: 26px;
@@ -162,9 +165,9 @@ a.open-aside-circle:hover i{
 
 /* FOOTER */
 footer.navbar-inverse {
-    margin: 20px 0 20px 0;
-    padding: 15px;
-    color: #fff;
+  margin: 20px 0 20px 0;
+  padding: 15px;
+  color: #fff;
 }
 .logofooter {
   margin: -60px 0 -65px -28px;
@@ -336,15 +339,42 @@ a:hover img {
 .body-common {
   padding-top: 67px;
 }
+.caret {
+  border-top: 6px dashed;
+  border-top: 6px solid \9;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+}
+.aside-scroll {
+  overflow-y: scroll;
+  height: 100%;
+}
+.timelineDate{color:#FFFFFF;text-align: right;}
+.timelineTitle{font-size: 24px;}
+.rowTimeline-event{background: rgba(33, 33, 33, 0.75);}
+.rowTimeline-edition{background: rgba(255, 255, 255, 0.75);}
+.rowTimeline{margin-bottom:5px;padding:10px 0;}
+.rowTimeline.page{background: rgba(0, 0, 0, 0.85);}
+.rowTimeline h2{margin-top:0;}
 
 @media (min-width: 768px) {
   .body-common {
     padding-top: 90px;
   }
   .navbar-edition .navbar-nav>li>a {
-    padding-top: 35px;
-    padding-bottom: 35px;
+    padding: 35px 10px;    
   }
+  footer .socials{
+    margin-top: 15px;
+  }
+  footer .socials li{
+    margin-bottom: 10px;
+  }
+ 
+  footer .projects{
+    margin-top: -20px;
+  }
+
 }
 
 /* CAROUSEL HACK FIT DESKTOP

@@ -4,10 +4,7 @@ block content
     .row
       .col-sm-9
         header
-          h1.entry-title
-            span.pull-left(itemprop="name")=result.post_title
-            span.pull-right
-              include ../_common/inc_share_span
+          h1.hidden(itemprop="name")=result.post_title
         .rientro
           div(itemprop='description')!=result.post_content
           include ../_common/inc_docs_large
