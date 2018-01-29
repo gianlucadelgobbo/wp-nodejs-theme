@@ -26,11 +26,7 @@ html(lang='en')
     link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
     // CSS
     link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + sessions.current_edition + '.min.css', type='text/css')
-    // BUTTARE
-      link(rel='stylesheet', href='/lpm/css/style.lpm.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/lpm/css/style.lpm.2017-amsterdam.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/lpm/css/style.lpm.2018-rome.css', type='text/css', media='all')
-    
+
     if include_gallery
       link(rel='stylesheet', href='/_common/css/socialGalleryPluginLite.css', type='text/css', media='all')
     if config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]
@@ -62,7 +58,7 @@ html(lang='en')
         ul.nav.navbar-nav
           each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
             if menu.childs.length>0
-              li.btn-group(class=menu.post_status == 'publish' ? undefined : "disabled")
+              li.btn-group(class=menu.post_status == 'publish' ? (page_data.url.indexOf(lang_preurl+menu.permalink) >= 0 ? "active" : undefined) : "disabled")
 
                 a.btn-dropdown(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
@@ -71,10 +67,10 @@ html(lang='en')
                     span.sr-only Toggle Dropdown
                   ul.dropdown-menu
                     each child in menu.childs
-                      li(class=child.post_status == 'publish' ? undefined : "disabled")
+                      li(class=child.post_status == 'publish' ? (page_data.url.indexOf(lang_preurl+menu.permalink) >= 0 ? "active" : undefined) : "disabled")
                         a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
             else
-              li(class=menu.post_status == 'publish' ? undefined : "disabled")
+              li(class=menu.post_status == 'publish' ? (page_data.url == menu.permalink ? "active" : undefined) : "disabled")
                 a(href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", style=menu.post_status == 'publish' ? undefined : "opacity:.65", title=menu.post_title)=menu.post_title
 
               //  a(href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", data-toggle="dropdown", style=menu.post_status == 'publish' ? undefined : "opacity:.65", title=menu.post_title)
@@ -94,7 +90,7 @@ html(lang='en')
                 !=result && result.post_title ? result.post_title : config.project_name
                 include ../_common/inc_share_span
             .col-md-6(itemscope, itemtype='http://schema.org/Event')
-              .text-right
+              .event-card
                 .hidden(itemprop='name')!=config.project_name+" "+config.meta.editions[sessions.current_edition]['title']
                 div(itemprop='disambiguatingDescription')
                   #next-edition-cnt

@@ -738,9 +738,11 @@ exports.setSessions = function setSessions(req,callback) {
     global.setLocale(lang);
   }
   //console.log("sessions.current_lang: "+req.session.sessions.current_lang);
+  //console.log(config);
   if (config.last_edition) {
     req.session.sessions.current_edition = req.params.edition ? req.params.edition : config.last_edition;
-    //console.log(config.meta.editions);
+    console.log("req.session.sessions.current_edition");
+    console.log(req.session.sessions.current_edition);
     //console.log(config);
     if (config.meta.editions && !config.meta.editions[req.session.sessions.current_edition].startdateISO) config.meta.editions[req.session.sessions.current_edition] = fnz.fixResult(config.meta.editions[req.session.sessions.current_edition]);
   }

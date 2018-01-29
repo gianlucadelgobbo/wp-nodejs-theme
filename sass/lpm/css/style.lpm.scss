@@ -1,8 +1,14 @@
 /*!
 LPM ALL
 */
+.navbar-inverse .navbar-nav>li>a {
+  color: #FFF;
+}
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>.active>a{
+  text-decoration: underline;
+}
 .swiper-container, .swiper-container a {
-  cursor: url("/_common/images/slider-cursora.svg") 30 30,default;
+  cursor: url("/_common/images/slider-cursor.svg") 30 30,default;
 }
 .navbar-inverse {
   background-color: #000;
@@ -18,6 +24,7 @@ LPM ALL
   }
 }
 @media (min-width: 768px) {
+  .event-card{text-align: right;}
   .swiper-slide {
     width:250px
   }

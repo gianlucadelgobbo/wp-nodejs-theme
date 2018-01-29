@@ -52,7 +52,7 @@ block home
       span.sr-only Next
 
 block content
-  section(itemscope, itemtype='http://schema.org/ItemList')
+  section.home(itemscope, itemtype='http://schema.org/ItemList')
     .container-fluid
       h1.entry-title(itemprop="name") News
     .swiper-container
@@ -62,7 +62,7 @@ block content
     .container-fluid
       .text-right.boxItem
         a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
-  section(itemscope, itemtype='http://schema.org/ItemList')
+  section.home(itemscope, itemtype='http://schema.org/ItemList')
     .container-fluid
       h1.entry-title(itemprop="name") Satellite Events
     .swiper-container
@@ -77,7 +77,7 @@ block content
         !="&nbsp;&nbsp;"
         a.btn.btn-primary.btn-sm(href="/map/", title="See all in a Map") See all in a Map
 
-  section(itemscope, itemtype='http://schema.org/ItemList')
+  section.home(itemscope, itemtype='http://schema.org/ItemList')
     .container-fluid
       h1.entry-title(itemprop="name") Editions
     .swiper-container
