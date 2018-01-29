@@ -10,7 +10,10 @@ LPM ALL
 .swiper-container, .swiper-container a {
   cursor: url("/_common/images/slider-cursor.svg") 30 30,default;
 }
-.navbar-inverse {
+.dropdown-menu>li>a {
+  color: #FFF;
+}
+.navbar-inverse, .dropdown-menu {
   background-color: #000;
 }
 

@@ -67,7 +67,7 @@ html(lang='en')
                     span.sr-only Toggle Dropdown
                   ul.dropdown-menu
                     each child in menu.childs
-                      li(class=child.post_status == 'publish' ? (page_data.url.indexOf(lang_preurl+menu.permalink) >= 0 ? "active" : undefined) : "disabled")
+                      li(class=child.post_status == 'publish' ? (page_data.url == lang_preurl+child.permalink ? "active" : undefined) : "disabled")
                         a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
             else
               li(class=menu.post_status == 'publish' ? (page_data.url == menu.permalink ? "active" : undefined) : "disabled")
