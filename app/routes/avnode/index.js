@@ -61,7 +61,9 @@ exports.getInsta = function getInsta(req, res) {
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     var file = config.root+'/tmp/'+config.prefix+'/home_'+req.session.sessions.current_lang+'.json';
-    if (req.query.createcache==1 || !fs.existsSync(file)){
+    var user_sez = "team";
+    var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+   if (req.query.createcache==1 || !fs.existsSync(file)){
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
           helpers.getAll(req, config.sez.activities, config.sez.home.activities.limit, 1, function (result_activities) {
@@ -73,33 +75,34 @@ exports.get = function get(req, res) {
             obj.insta = jsonfile.readFileSync(config.root+'/tmp/'+config.prefix+'/insta.json');
             jsonfile.writeFile(file, obj, function (err) {
               //console.log(err);
-              var user_sez = "team";
+              res.render(config.prefix+'/'+'index',obj);
+            });
+          });
+        });
+      });
+    } else if (req.query.createusers==1 || !fs.existsSync(userfile)){
+     helpers.getAllUsers(req, user_sez, function( results ) {
+        jsonfile.writeFile(userfile, results, function (err) {
+          //if(err) console.log(err);
+          var user_sez = "partners";
+          helpers.getAllUsers(req, user_sez, function( results ) {
+            var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+            jsonfile.writeFile(userfile, results, function (err) {
+              //console.log(obj.results.web);
+              var user_sez = "members";
               helpers.getAllUsers(req, user_sez, function( results ) {
-                var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
-                jsonfile.writeFile(file, results, function (err) {
-                  //if(err) console.log(err);
-                  var user_sez = "partners";
-                  helpers.getAllUsers(req, user_sez, function( results ) {
-                    var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
-                    jsonfile.writeFile(file, results, function (err) {
-                      //console.log(obj.results.web);
-                      var user_sez = "members";
-                      helpers.getAllUsers(req, user_sez, function( results ) {
-                        var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
-                        jsonfile.writeFile(file, results, function (err) {
-                          //console.log(obj.results.web);
-                          res.render(config.prefix+'/'+'index',obj);
-                        });
-                      });
-                    });
-                  });
+                var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+                jsonfile.writeFile(userfile, results, function (err) {
+                  var obj = jsonfile.readFileSync(file);
+                  //console.log(obj.results.web);
+                  res.render(config.prefix+'/'+'index',obj);
                 });
               });
             });
           });
         });
       });
-    } else {
+} else {
       var obj = jsonfile.readFileSync(file);
       //obj.insta = jsonfile.readFileSync(config.root+'/tmp/'+config.prefix+'/insta.json');
       //jsonfile.writeFile(config.root+'/tmp/'+config.prefix+'/insta.json', obj.insta, function (err) {

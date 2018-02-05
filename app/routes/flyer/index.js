@@ -6,6 +6,8 @@ var fnz = require('../../functions');
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     var file = config.root+'/tmp/'+config.prefix+'/home_'+req.session.sessions.current_lang+'.json';
+    var user_sez = "people";
+    var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
     //console.log(file);
     //console.log(req.session.sessions);
     if (req.query.createcache==1 || !fs.existsSync(file)){
@@ -36,21 +38,7 @@ exports.get = function get(req, res) {
                                     };
                                     jsonfile.writeFile(file, obj, function (err) {
                                       //if(err) console.log(err);
-                                      var user_sez = "people";
-                                      helpers.getAllUsers(req, user_sez, function( results ) {
-                                        var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
-                                        jsonfile.writeFile(file, results, function (err) {
-                                          //if(err) console.log(err);
-                                          var user_sez = "customers";
-                                          helpers.getAllUsers(req, user_sez, function( results ) {
-                                            var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
-                                            jsonfile.writeFile(file, results, function (err) {
-                                              //console.log(obj.results.web);
-                                              res.render(config.prefix+'/'+'index',obj);
-                                            });
-                                          });
-                                        });
-                                      });
+                                      res.render(config.prefix+'/'+'index',obj);
                                     });
                                   });
                                 });
@@ -63,6 +51,21 @@ exports.get = function get(req, res) {
                   });
                 });
               });
+            });
+          });
+        });
+      });
+    } else if (req.query.createusers==1 || !fs.existsSync(userfile)){
+      helpers.getAllUsers(req, user_sez, function( results ) {
+        jsonfile.writeFile(userfile, results, function (err) {
+          //if(err) console.log(err);
+          var user_sez = "customers";
+          helpers.getAllUsers(req, user_sez, function( results ) {
+            var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+            jsonfile.writeFile(userfile, results, function (err) {
+              var obj = jsonfile.readFileSync(file);
+              //console.log(obj.results.web);
+              res.render(config.prefix+'/'+'index',obj);
             });
           });
         });

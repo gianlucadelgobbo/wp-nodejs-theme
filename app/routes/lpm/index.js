@@ -6,8 +6,8 @@ var fnz = require('../../functions');
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     var file = config.root+'/tmp/'+config.prefix+'/home_'+req.session.sessions.current_lang+'.json';
-    console.log("filefilefilefilefilefilefilefile");
-    console.log(file);
+    var user_sez = "team";
+    var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
     if (req.query.createcache==1 || !fs.existsSync(file)){
       console.log("getAll news");
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
@@ -18,30 +18,32 @@ exports.get = function get(req, res) {
             var page_data = fnz.setPageData(req, {'ID':'100'});
             var obj = {
               results: {news:result_news,events:result_events,editions:result_editions},
-              page_data:page_data, sessions:req.session.sessions
+              page_data:page_data,
+              sessions:req.session.sessions
             };
             jsonfile.writeFile(file, obj, function (err) {
               console.log("writeFile");
               if(err) console.log(err);
-              var user_sez = "team";
-              console.log("getAllUsers team");
-              helpers.getAllUsers(req, user_sez, function( results ) {
-                var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
-                console.log("writeFile "+file);
-                jsonfile.writeFile(file, results, function (err) {
-                  if(err) console.log(err);
-                  var user_sez = "partners";
-                  console.log("getAllUsers partners");
-                  helpers.getAllUsers(req, user_sez, function( results ) {
-                    var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
-                    console.log("writeFile "+file);
-                    jsonfile.writeFile(file, results, function (err) {
-                      //console.log(obj.results.web);
-                      res.render(config.prefix+'/'+'index',obj);
-                    });
-                  });
-                });
-              });
+              res.render(config.prefix+'/'+'index',obj);
+            });
+          });
+        });
+      });
+    } else if (req.query.createusers==1 || !fs.existsSync(userfile)){
+      console.log("getAllUsers team");
+      helpers.getAllUsers(req, user_sez, function( results ) {
+        console.log("writeFile "+userfile);
+        jsonfile.writeFile(userfile, results, function (err) {
+          if(err) console.log(err);
+          var user_sez = "partners";
+          console.log("getAllUsers partners");
+          helpers.getAllUsers(req, user_sez, function( results ) {
+            var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+            console.log("writeFile "+userfile);
+            jsonfile.writeFile(userfile, results, function (err) {
+              //console.log(obj.results.web);
+              var obj = jsonfile.readFileSync(file);
+              res.render(config.prefix+'/'+'index',obj);
             });
           });
         });

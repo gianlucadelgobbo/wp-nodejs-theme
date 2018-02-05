@@ -6,6 +6,8 @@ var fnz = require('../../functions');
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     var file = config.root+'/tmp/'+config.prefix+'/home_'+req.session.sessions.current_lang+'.json';
+    var user_sez = "team";
+    var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
     if (req.query.createcache==1 || !fs.existsSync(file)){
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
@@ -17,24 +19,23 @@ exports.get = function get(req, res) {
           };
           jsonfile.writeFile(file, obj, function (err) {
             //console.log(err);
-            var user_sez = "team";
-            helpers.getAllUsers(req, user_sez, function( results ) {
-              var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
-              jsonfile.writeFile(file, results, function (err) {
-                //if(err) console.log(err);
-                var user_sez = "partners";
-                helpers.getAllUsers(req, user_sez, function( results ) {
-                  var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
-                  jsonfile.writeFile(file, results, function (err) {
-                    //console.log(obj.results.web);
-                    res.render(config.prefix+'/'+'index',obj);
-                  });
-                });
-              });
+            res.render(config.prefix+'/'+'index',obj);
+          });
+        });
+      });
+    } else if (req.query.createusers==1 || !fs.existsSync(userfile)){
+      helpers.getAllUsers(req, user_sez, function( results ) {
+        jsonfile.writeFile(userfile, results, function (err) {
+          //if(err) console.log(err);
+          var user_sez = "partners";
+          helpers.getAllUsers(req, user_sez, function( results ) {
+            var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+            jsonfile.writeFile(userfile, results, function (err) {
+              //console.log(obj.results.web);
+              var obj = jsonfile.readFileSync(file);
+              res.render(config.prefix+'/'+'index',obj);
             });
           });
-          //res.render(config.prefix+'/'+'index', {data: {news:result_news,events:result_events,exhibitions:result_exhibitions}, page_data:page_data, sessions:req.session.sessions});
-          //});
         });
       });
     } else {
