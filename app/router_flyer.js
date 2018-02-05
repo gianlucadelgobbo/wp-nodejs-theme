@@ -19,6 +19,7 @@ module.exports = function(app) {
   app.post('/*.php', pagesRoutes.get404);
 
   app.get('/en/*', function(req, res) {res.redirect(301, req.url.replace('/en/','/'))});
+  app.get('/extra/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/extra/lpm-2018-rome-call-to-partecipate/','/extra/lpm-2018-rome-call-to-participate/'))});
   app.get('/web-and-mobile/*', function(req, res) {res.redirect(301, req.url.replace('/web-and-mobile/','/portfolio/web-and-mobile/'))});
   app.get('/web-portfolio/*', function(req, res) {res.redirect(301, req.url.replace('/web-portfolio/','/portfolio/web-and-mobile/'))});
   app.get('/live-visuals-portfolio/*', function(req, res) {res.redirect(301, req.url.replace('/live-visuals-portfolio/','/portfolio/live-visuals/'))});

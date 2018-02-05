@@ -17,6 +17,7 @@ module.exports = function(app) {
 
   app.get('/', indexRoutes.get);
 
+  app.get('/news/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/news/lpm-2018-rome-call-to-partecipate/','/news/lpm-2018-rome-call-to-participate/'))});
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get('/sitemap-editions.xml', sitemapRoutes.get);
