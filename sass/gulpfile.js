@@ -462,6 +462,11 @@ gulp.task('concat_lpm_css', function() {
 
   }
 });
+function bella_lpm (csslist,editions_lpm,item){
+  return gulp.src(csslist)
+    .pipe(concat('combo.lpm.' + editions_lpm[item] + '.min.css'), {newLine: '\r\n'})
+    .pipe(gulp.dest(config.publicDir + '/lpm/css/'));
+}
 */
 
 gulp.task('concat_shockart_css', function() {
@@ -509,11 +514,6 @@ gulp.task('concat_wam_css', function() {
     .pipe(gulp.dest(config.publicDir + '/wam/css/'));
 });
 
-function bella_lpm (csslist,editions_lpm,item){
-  return gulp.src(csslist)
-    .pipe(concat('combo.lpm.' + editions_lpm[item] + '.min.css'), {newLine: '\r\n'})
-    .pipe(gulp.dest(config.publicDir + '/lpm/css/'));
-}
 function bella_lcf (csslist,editions_lcf,item){
   return gulp.src(csslist)
     .pipe(concat('combo.lcf.' + editions_lcf[item] + '.min.css'), {newLine: '\r\n'})
