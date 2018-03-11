@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var minify = require('gulp-minify');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 
@@ -131,10 +130,10 @@ gulp.task('css_wam_bs', function() {
 gulp.task('compress_js_avnode', function() {
   return gulp.src([
       config.bowerDir + '/jquery/dist/jquery.min.js',
+      config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
       './gulp/js/_common/jquery.isotope.min.js',
       './gulp/js/_common/imagesloaded.pkgd.min.js',
       './gulp/js/_common/cookielawinfo.min.js',
-      config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
       './gulp/js/_common/script.js',
       './gulp/js/avnode/script.js',
     ])
@@ -146,10 +145,10 @@ gulp.task('compress_js_avnode', function() {
 gulp.task('compress_js_chromosphere', function() {
   return gulp.src([
     config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
-    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/script.js',
     './gulp/js/chromosphere/script.js',
   ])
@@ -161,10 +160,10 @@ gulp.task('compress_js_chromosphere', function() {
 gulp.task('compress_js_fotonica', function() {
   return gulp.src([
     config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
-    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/script.js',
     './gulp/js/fotonica/script.js',
   ])
@@ -176,10 +175,10 @@ gulp.task('compress_js_fotonica', function() {
 gulp.task('compress_js_flyer', function() {
   return gulp.src([
     config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
-    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/script.js',
     './gulp/js/flyer/script.js',
   ])
@@ -191,10 +190,10 @@ gulp.task('compress_js_flyer', function() {
 gulp.task('compress_js_lcf', function() {
   return gulp.src([
     config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
-    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/script.js',
     './gulp/js/lcf/script.js',
   ])
@@ -206,10 +205,10 @@ gulp.task('compress_js_lcf', function() {
 gulp.task('compress_js_linuxclub', function() {
   return gulp.src([
     config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
-    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/script.js',
     './gulp/js/linuxclub/script.js',
   ])
@@ -221,12 +220,13 @@ gulp.task('compress_js_linuxclub', function() {
 gulp.task('compress_js_lpm', function() {
   return gulp.src([
     config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
-    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/swiper.js',
-    //'./gulp/js/_common/script.js',
+    './gulp/js/_common/script.js',
+    './gulp/js/lpm/map.js',
     './gulp/js/lpm/script.js',
   ])
   .pipe(concat('combo.min.js'))
@@ -237,10 +237,10 @@ gulp.task('compress_js_lpm', function() {
 gulp.task('compress_js_shockart', function() {
   return gulp.src([
     config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
-    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/script.js',
     './gulp/js/shockart/script.js',
   ])
@@ -252,10 +252,10 @@ gulp.task('compress_js_shockart', function() {
 gulp.task('compress_js_vjtelevision', function() {
   return gulp.src([
     config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
-    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/script.js',
     './gulp/js/vjtelevision/script.js',
   ])
@@ -267,10 +267,10 @@ gulp.task('compress_js_vjtelevision', function() {
 gulp.task('compress_js_wam', function() {
   return gulp.src([
     config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
-    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './gulp/js/_common/script.js',
     './gulp/js/wam/script.js',
   ])

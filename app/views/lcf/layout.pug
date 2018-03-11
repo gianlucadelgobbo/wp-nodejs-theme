@@ -98,19 +98,11 @@ html(lang=sessions.current_lang)
     include ../_common/modal-full
     include ../_common/modal-search
 
-    //script(type='text/javascript', src='/_common/js/combo.min.js')
-    //script(type='text/javascript', src='/_common/js/jquery.min.js')
-      script(type='text/javascript', src='/_common/js/bootstrap.min.js')
-      script(type='text/javascript', src='/_common/js/jquery.isotope.min.js')
-      script(type='text/javascript', src='/_common/js/imagesloaded.pkgd.min.js')
-      script(type='text/javascript', src='/_common/js/cookielawinfo.min.js')
+    script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
+    if form
+      script(type='text/javascript', src='/_common/js/validator.min.js')
     include ../_common/inc_cookielawinfo
 
-    // Custom Facebook Feed JS
-    //script(type='text/javascript').
-      var cfflinkhashtags = "true";
-      script(type='text/javascript', src='http://platform.twitter.com/widgets.js')
-      script(type='text/javascript', src='//assets.pinterest.com/js/pinit.js')
     if include_gallery
       #fb-root
       script.
@@ -154,7 +146,4 @@ html(lang=sessions.current_lang)
       script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
       script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.min.js')
 
-    script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
-    if form
-      script(type='text/javascript', src='/_common/js/validator.min.js')
     include ../_common/inc_analytics

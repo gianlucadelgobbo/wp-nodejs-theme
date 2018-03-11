@@ -101,44 +101,16 @@ html(lang='en')
       #result
         block content
       include includes/footer
-    #twCnt
-      #tw
     include ../_common/modal-full
     include ../_common/modal-search
-
-    script(type="text/javascript").
-      var sgp_config = {
-        "sgp_selT": "2",
-        "sgp_sel": ".thumbnail",
-        "sgp_bT": "#{config.project_name}",
-        "sgp_bL": "#{config.meta.headline[sessions.current_lang]}",
-        "sgp_bU": "#{global.config.domain}",
-        "sgp_bg": "000000",
-        "sgp_bgo": "0.8",
-        "sgp_bb": "1",
-        "sgp_hb": "1",
-        "sgp_hbt": "1",
-        "sgp_ch": "",
-        "sgp_hbi": '/#{config.prefix}/images/social-gallery-icon-50x50.png',
-        "sgp_desc": "1",
-        "sgp_fb": "1",
-        "sgp_fbf": "1",
-        "sgp_fbc": "1",
-        "sgp_nav": "1",
-        "sgp_hon": "",
-        "sgp_usf": "1.2",
-        "sgp_mb": "10",
-        "sgp_theme": "images",
-        "sgp_theme_root": "/_common/",
-        "sgp_iLoadR": 'social-gallery-loading.gif',
-        "sgp_iR": 'social-gallery-r.png',
-        "sgp_iL": 'social-gallery-l.png'
-      };
-      var sgp_ie = false;var sgp_ie7 = false;
-    script(type='text/javascript', src='/lpm/js/combo.min.js')
+    script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
+    if form
+      script(type='text/javascript', src='/_common/js/validator.min.js')
     include ../_common/inc_cookielawinfo
 
     // TICKER
+    #twCnt
+      #tw
     script(type='text/javascript').
       (function () {
         var ticker = document.createElement('script');
@@ -147,11 +119,6 @@ html(lang='en')
         ticker.src = '//twitcker.com/ticker/liveperformers.js?background=000000&tweet=000000&open=true&appearance=typewriter&container=own-container&own-container=tw';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ticker);
       })();
-    // Custom Facebook Feed JS
-    //script(type='text/javascript').
-      var cfflinkhashtags = "true";
-      script(type='text/javascript', src='http://platform.twitter.com/widgets.js')
-      script(type='text/javascript', src='//assets.pinterest.com/js/pinit.js')
     if include_gallery
       #fb-root
       script.
@@ -163,11 +130,36 @@ html(lang='en')
           js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=#{config.meta.fb_appId}";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+      script(type="text/javascript").
+        var sgp_config = {
+          "sgp_selT": "2",
+          "sgp_sel": ".thumbnail",
+          "sgp_bT": "#{config.project_name}",
+          "sgp_bL": "#{config.meta.headline[sessions.current_lang]}",
+          "sgp_bU": "#{global.config.domain}",
+          "sgp_bg": "000000",
+          "sgp_bgo": "0.8",
+          "sgp_bb": "1",
+          "sgp_hb": "1",
+          "sgp_hbt": "1",
+          "sgp_ch": "",
+          "sgp_hbi": '/#{config.prefix}/images/social-gallery-icon-50x50.png',
+          "sgp_desc": "1",
+          "sgp_fb": "1",
+          "sgp_fbf": "1",
+          "sgp_fbc": "1",
+          "sgp_nav": "1",
+          "sgp_hon": "",
+          "sgp_usf": "1.2",
+          "sgp_mb": "10",
+          "sgp_theme": "images",
+          "sgp_theme_root": "/_common/",
+          "sgp_iLoadR": 'social-gallery-loading.gif',
+          "sgp_iR": 'social-gallery-r.png',
+          "sgp_iL": 'social-gallery-l.png'
+        };
+        var sgp_ie = false;var sgp_ie7 = false;
+      script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
+      script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.min.js')
 
-      //script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
-        script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.min.js')
-
-    //script(type='text/javascript', src='/_common/js/script.min.js')
-    //script(type='text/javascript', src='/' + config.prefix + '/js/swiper.min.js')
-    //script(type='text/javascript', src='/' + config.prefix + '/js/script.min.js')
     include ../_common/inc_analytics

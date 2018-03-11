@@ -1,4 +1,5 @@
 var infowindow = null;
+var latlngbounds;
 
 function AutoCenter() {
   //  Create a new viewpoint bound
@@ -57,87 +58,97 @@ function initialize() {
     maxHeight: 300,
   });
 
-  var latlngbounds = new google.maps.LatLngBounds();
+  latlngbounds = new google.maps.LatLngBounds();
   for (i = 0; i < markers.length; i++) {
     if (markers[i].type == "events") {
-      var data = markers[i];
-      var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-      latlngbounds.extend(myLatlng);
-      var pinColor = "006DD9";
-      var pinImage = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-        new google.maps.Size(21, 34),
-        new google.maps.Point(0,0),
-        new google.maps.Point(10, 34)
-      );
-      var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        icon: pinImage,
-        animation: google.maps.Animation.DROP,
-        title: data.display_name,
-      });
-
-      (function (marker, data) {
-        google.maps.event.addListener(marker, "click", function (e) {
-          //infoWindow.close();
-          var contentString =
-            '<div class="popup">'+
-            '<h4><a href="'+data.slug+'">'+data.display_name+'</a></h4>'+
-            '<small><b>'+
-            data.date+'</b><br />'+
-            data.destination+
-            '</small>'+
-            '</div>';
-          infoWindow.setContent(contentString);
-          infoWindow.open(map, marker);
+      if (parseFloat(markers[i].lat) > -180 && parseFloat(markers[i].lat)<180 && parseFloat(markers[i].lat).toString() == markers[i].lat.toString() && parseFloat(markers[i].lng).toString() == markers[i].lng.toString()) {
+        var data = markers[i];
+        var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+        latlngbounds.extend(myLatlng);
+        var pinColor = "006DD9";
+        var pinImage = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+          new google.maps.Size(21, 34),
+          new google.maps.Point(0,0),
+          new google.maps.Point(10, 34)
+        );
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          icon: pinImage,
+          animation: google.maps.Animation.DROP,
+          title: data.display_name,
         });
 
-      })(marker, data);
+        (function (marker, data) {
+          google.maps.event.addListener(marker, "click", function (e) {
+            //infoWindow.close();
+            var contentString =
+              '<div class="popup">'+
+              '<h4><a href="'+data.slug+'">'+data.display_name+'</a></h4>'+
+              '<small><b>'+
+              data.date+'</b><br />'+
+              data.destination+
+              '</small>'+
+              '</div>';
+            infoWindow.setContent(contentString);
+            infoWindow.open(map, marker);
+          });
+
+        })(marker, data);
+      } else {
+        console.log('Marker ERROR');
+        console.log(markers[i]);
+      }
     }
   }
   for (i = 0; i < markers.length; i++) {
     if (markers[i].type == "editions") {
-      var data = markers[i];
-      var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-      latlngbounds.extend(myLatlng);
-      var pinColor = "FE7569";
-      var pinImage = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-        new google.maps.Size(21, 34),
-        new google.maps.Point(0,0),
-        new google.maps.Point(10, 34));
-      var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        icon: pinImage,
-        animation: google.maps.Animation.DROP,
-        title: data.display_name
-        /*
-         icon: "/wordpress/wp-content/themes/Glider/css/img/marker.png",
-         draggable: true,
-         raiseOnDrag: true,
-         labelContent: i, // your number
-         labelAnchor: new google.maps.Point(3, 30),
-         labelClass: "labels", // the CSS class for the label
-         labelInBackground: false
-         */
-      });
-      marker.setZIndex(1000);
-      (function (marker, data) {
-        google.maps.event.addListener(marker, "click", function (e) {
-          //infoWindow.close();
-          var contentString =
-            '<div class="popup">'+
-            '<h4><a href="'+data.slug+'">'+data.display_name+'</a></h4>'+
-            '<small><b>'+
-            data.date+'</b><br />'+
-            data.destination+
-            '</small>'+
-            '</div>';
-          infoWindow.setContent(contentString);
-          infoWindow.open(map, marker);
+      if (parseFloat(markers[i].lat) > -180 && parseFloat(markers[i].lat)<180 && parseFloat(markers[i].lat).toString() == markers[i].lat.toString() && parseFloat(markers[i].lng).toString() == markers[i].lng.toString()) {
+        var data = markers[i];
+        var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+        //latlngbounds.extend(myLatlng);
+        var pinColor = "FE7569";
+        var pinImage = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+          new google.maps.Size(21, 34),
+          new google.maps.Point(0,0),
+          new google.maps.Point(10, 34));
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          icon: pinImage,
+          animation: google.maps.Animation.DROP,
+          title: data.display_name
+          /*
+          icon: "/wordpress/wp-content/themes/Glider/css/img/marker.png",
+          draggable: true,
+          raiseOnDrag: true,
+          labelContent: i, // your number
+          labelAnchor: new google.maps.Point(3, 30),
+          labelClass: "labels", // the CSS class for the label
+          labelInBackground: false
+          */
         });
+        marker.setZIndex(1000);
+        (function (marker, data) {
+          google.maps.event.addListener(marker, "click", function (e) {
+            //infoWindow.close();
+            var contentString =
+              '<div class="popup">'+
+              '<h4><a href="'+data.slug+'">'+data.display_name+'</a></h4>'+
+              '<small><b>'+
+              data.date+'</b><br />'+
+              data.destination+
+              '</small>'+
+              '</div>';
+            infoWindow.setContent(contentString);
+            infoWindow.open(map, marker);
+          });
 
-      })(marker, data);
+        })(marker, data);
+      } else {
+        console.log('Marker ERROR');
+        console.log(markers[i]);
+      }
     }
   }
   map.fitBounds(latlngbounds);
@@ -150,4 +161,4 @@ function loadScript() {
   document.body.appendChild(script);
 }
 
-window.onload = loadScript();
+if (typeof markers !== 'undefined' && markers.length) window.onload = loadScript();

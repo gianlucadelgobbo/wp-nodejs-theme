@@ -28,14 +28,6 @@ html(lang=sessions.current_lang)
     // CSS
 
     link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css', media='all')
-    //link(rel='stylesheet', href='/_common/css/fontello.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/_common/css/fontello-animation.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/_common/css/socialGalleryPluginLite.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/_common/css/cookielawinfo.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/css/bootstrap.min.css', type='text/css')
-      link(rel='stylesheet', href='/_common/css/bootstrapXL.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/_common/css/style.css', type='text/css', media='all')
-      link(rel='stylesheet', href='/css/style.css', type='text/css', media='all')
   body
     include includes/menu
     .container
@@ -46,14 +38,9 @@ html(lang=sessions.current_lang)
     include ../_common/modal-search
     include includes/modal-resize
 
-    script(type='text/javascript', src='/_common/js/combo.min.js')
+    script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
     if form
       script(type='text/javascript', src='/_common/js/validator.min.js')
-    //script(type='text/javascript', src='/_common/js/jquery.min.js')
-      script(type='text/javascript', src='/_common/js/bootstrap.min.js')
-      script(type='text/javascript', src='/_common/js/jquery.isotope.min.js')
-      script(type='text/javascript', src='/_common/js/imagesloaded.pkgd.min.js')
-      script(type='text/javascript', src='/_common/js/cookielawinfo.min.js')
     include ../_common/inc_cookielawinfo
 
     if include_gallery
@@ -99,6 +86,4 @@ html(lang=sessions.current_lang)
       script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
       script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.min.js')
 
-    //script(type='text/javascript', src='/' + config.prefix + '/js/script.min.js')
-    //script(type='text/javascript', src='/' + config.prefix + '/js/script.min.js')
     include ../_common/inc_analytics
