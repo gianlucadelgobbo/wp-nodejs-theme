@@ -58,7 +58,8 @@ block content
     .swiper-container
       .swiper-wrapper
         each result, position in results.news
-          include boxes/box_news
+          .swiper-slide
+            include boxes/box_news
     .container-fluid
       .text-right.boxItem
         a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
@@ -68,7 +69,8 @@ block content
     .swiper-container
       .swiper-wrapper
         each result, position in results.events
-          include boxes/box_event
+          .swiper-slide
+            include boxes/box_event
     .container-fluid
       .text-right.boxItem
         a.btn.btn-primary.btn-sm(href="/events/", title="See all Events") See all Events
@@ -83,7 +85,8 @@ block content
     .swiper-container
       .swiper-wrapper
         each result, position in results.editions
-          include boxes/box_edition
+          .swiper-slide
+            include boxes/box_edition
     .container-fluid
       .text-right.boxItem
         a.btn.btn-primary.btn-sm(href="/editions/", title="See all Editions") See all Editions
