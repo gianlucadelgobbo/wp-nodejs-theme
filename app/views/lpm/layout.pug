@@ -58,7 +58,7 @@ html(lang='en')
             if menu.childs.length>0
               li.btn-group(class=menu.post_status == 'publish' ? (page_data.url.indexOf(lang_preurl+menu.permalink) >= 0 ? "active" : undefined) : "disabled")
 
-                a.btn-dropdown(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")!=menu.post_title
+                a.btn-dropdown(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
                   a.btn-dropdown.dropdown-toggle(type='button', data-toggle='dropdown', style=menu.post_status == 'publish' ? undefined : "opacity:.65")
                     span.caret
@@ -69,7 +69,7 @@ html(lang='en')
                         a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)!=child.post_title
             else
               li(class=menu.post_status == 'publish' ? (page_data.url == menu.permalink ? "active" : undefined) : "disabled")
-                a(href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", style=menu.post_status == 'publish' ? undefined : "opacity:.65", title=menu.post_title)=!menu.post_title
+                a(href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", style=menu.post_status == 'publish' ? undefined : "opacity:.65", title=menu.post_title)=menu.post_title
 
               //  a(href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", data-toggle="dropdown", style=menu.post_status == 'publish' ? undefined : "opacity:.65", title=menu.post_title)
                   !=" "
