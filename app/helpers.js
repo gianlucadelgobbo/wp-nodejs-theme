@@ -520,6 +520,171 @@ exports.getAllExhibitions = function getAllExhibitions(req, limit, page, callbac
 };
 */
 
+//////// DEVS
+/*
+exports.getAllDevs = function getAllDevs(req, limit, page, callback) {
+  //console.log("getAllDevs");
+  var wp = new WPAPI({ endpoint: config.data_domain+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute( 'wp/v2', '/devs' );
+  wp.myCustomResource().param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+    //console.log("//// All Devs");
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    callback(data);
+  });
+};
+*/
+exports.getAllDevsByYear = function getAllDevsByYear(req, years, limit, page, callback) {
+  //console.log("getAllDevsByYear");
+  var wp = new WPAPI({ endpoint: config.data_domain+'/wp-json' });
+  if (years){
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/all-devs/(?P<site>)/(?P<yearsss>)' );
+    wp.myCustomResource().site(config.prefix).yearsss(years).get(function( err, data ) {
+      //console.log("//// All DevsByYear "+years);
+      //console.log(err || data);
+      data = fnz.fixResults(data);
+      callback(data);
+    });
+  } else {
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/all-devs/(?P<site>)' );
+    //console.log(wp.myCustomResource);
+    //console.log(wp.new());
+    wp.myCustomResource().site(config.prefix).get(function( err, data ) {
+      //console.log("//// All DevsByYear");
+      //console.log(err || data);
+      data = fnz.fixResults(data);
+      callback(data);
+    });
+  }
+};
+
+exports.getDev = function getDev(req,callback) {
+  //console.log("stocazzo");
+  //console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json');
+  //console.log(req.params.subsubdev);
+  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
+  if (req.params.subsubdev) {
+    //console.log("req.params.subsubdev");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/devs/(?P<dev>)/(?P<subdev>)/(?P<subsubdev>)' );
+    wp.myCustomResource().dev(config.prefix+'/'+req.params.dev).subdev(req.params.subdev).subsubdev(req.params.subsubdev).get(function( err, data ) {
+      //console.log("//// SubSubDev");
+      //console.log(err || data);
+      //if (data && data.ID) data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      //console.log("rientroaa");
+      callback(data);
+    });
+  } else if (req.params.subdev) {
+    //console.log("req.params.subdev");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/devs/(?P<dev>)/(?P<subdev>)' );
+    wp.myCustomResource().dev(config.prefix+'/'+req.params.dev).subdev(req.params.subdev).get(function( err, data ) {
+      //console.log("//// SubDev");
+      //if (data && data.ID) data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      callback(data);
+    });
+  } else {
+    //console.log("req.params.dev");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/devs/(?P<dev>)' );
+    wp.myCustomResource().dev(config.prefix+'/'+req.params.dev).get(function( err, data ) {
+      //console.log("//// Dev");
+      if (data && data.ID) data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      callback(data);
+    });
+  }
+};
+
+exports.getDevArtist = function getDevArtist(req,callback) {
+  //console.log(config.prefix+'/'+req.params.dev);
+  //console.log(req.params.subdev);
+  //console.log(req.params.subsubdev);
+  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
+  if (req.params.artist && req.params.performance) {
+    //console.log("req.params.artist");
+    //console.log(config.data_domain+'/wp-json/wp/v2/artists/'+config.prefix+'/'+req.params.dev+"/artists/"+req.params.artist+"/performances/"+req.params.performance);
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<dev>)/(?P<subdev>)/(?P<artist>)/(?P<performances>)/(?P<performance>)' );
+    wp.myCustomResource().dev(config.prefix+'/'+req.params.dev).subdev("artists").artist(req.params.artist).performances("performances").performance(req.params.performance).get(function( err, data ) {
+      //console.log("//// Artist Performance");
+      //console.log(data);
+      callback(data);
+    });
+  } else if (req.params.artist) {
+    //console.log("req.params.artist");
+    //console.log(config.data_domain+'/wp-json/wp/v2/artists/'+config.prefix+'/'+req.params.dev+"/artists/"+req.params.artist);
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<dev>)/(?P<subdev>)/(?P<artist>)' );
+    wp.myCustomResource().dev(config.prefix+'/'+req.params.dev).subdev("artists").artist(req.params.artist).get(function( err, data ) {
+      //console.log("//// Artist");
+      //console.log(wp.myCustomResource);
+      callback(data);
+    });
+  } else {
+    //console.log("req.params.subdev");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/devs/(?P<dev>)/(?P<subdev>)' );
+    wp.myCustomResource().dev(config.prefix+'/'+req.params.dev).subdev("artists").get(function( err, data ) {
+      //console.log("//// SubDev Artists");
+      callback(data);
+    });
+  }
+};
+
+exports.getDevArtistGallery = function getDevArtistGallery(req,callback) {
+  //console.log(config.prefix+'/'+req.params.dev);
+  //console.log(req.params.subdev);
+  //console.log(req.params.subsubdev);
+  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
+  if (req.params.artist && req.params.gallery && req.params.galleryitem) {
+    //console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/gallery/(?P<dev>)/(?P<subdev>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)/(?P<galleryitem>)' );
+    wp.myCustomResource().dev(config.prefix+'/'+req.params.dev).subdev("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).galleryitem(req.params.galleryitem).get(function( err, data ) {
+      //console.log("//// Artist gallery item");
+      //console.log(data);
+      callback(data);
+    });
+  } else if (req.params.artist && req.params.gallery) {
+    //console.log("req.params.artist");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/gallery/(?P<dev>)/(?P<subdev>)/(?P<artist>)/(?P<galleries>)/(?P<gallery>)' );
+    wp.myCustomResource().dev(config.prefix+'/'+req.params.dev).subdev("gallery").artist(req.params.artist).galleries("gallery").gallery(req.params.gallery).get(function( err, data ) {
+      //console.log("//// Artist gallery");
+      //console.log(data);
+      callback(data);
+    });
+    /*} else if (req.params.artist) {
+     //console.log("req.params.artist");
+     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/devs/(?P<dev>)/(?P<subdev>)/(?P<artist>)' );
+     wp.myCustomResource().dev(config.prefix+'/'+req.params.dev).subdev("gallery").artist(req.params.artist).get(function( err, data ) {
+     //console.log("//// Artist");
+     //console.log(data);
+     callback(data);
+     });*/
+  } else {
+    //console.log("req.params.subdev");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/devs/(?P<dev>)/(?P<subdev>)' );
+    wp.myCustomResource().dev(config.prefix+'/'+req.params.dev).subdev("gallery").get(function( err, data ) {
+      //console.log("//// SubDev gallery");
+      callback(data);
+    });
+  }
+};
+
+
+exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callback) {
+  var trgt = this;
+  var data = [];
+  trgt.getAllEventsByYear(req, years, function (data_events) {
+    //for (var item in data_events) console.log(data_events[item]['wpcf-startdate']);
+    for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
+    trgt.getAllEditionsByYear(req, years, 100, 1, function (data_editions) {
+      //console.log(data_editions);
+      for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
+      //for (var item in data_editions) console.log("data: "+data_editions[item]['wpcf-startdate']);
+      data.sort(fnz.sortByStartDate);
+      //for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
+      callback(data);
+    });
+  });
+};
+
 //////// EDITIONS
 /*
 exports.getAllEditions = function getAllEditions(req, limit, page, callback) {
@@ -668,6 +833,23 @@ exports.getEditionArtistGallery = function getEditionArtistGallery(req,callback)
 };
 
 
+exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callback) {
+  var trgt = this;
+  var data = [];
+  trgt.getAllEventsByYear(req, years, function (data_events) {
+    //for (var item in data_events) console.log(data_events[item]['wpcf-startdate']);
+    for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
+    trgt.getAllEditionsByYear(req, years, 100, 1, function (data_editions) {
+      //console.log(data_editions);
+      for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
+      //for (var item in data_editions) console.log("data: "+data_editions[item]['wpcf-startdate']);
+      data.sort(fnz.sortByStartDate);
+      //for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
+      callback(data);
+    });
+  });
+};
+
 exports.getArtistGallery = function getArtistGallery(req,callback) {
   //console.log(config.prefix+'/'+req.params.edition);
   //console.log(req.params.subedition);
@@ -707,22 +889,6 @@ exports.getArtistGallery = function getArtistGallery(req,callback) {
   }
 };
 
-exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callback) {
-  var trgt = this;
-  var data = [];
-  trgt.getAllEventsByYear(req, years, function (data_events) {
-    //for (var item in data_events) console.log(data_events[item]['wpcf-startdate']);
-    for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
-    trgt.getAllEditionsByYear(req, years, 100, 1, function (data_editions) {
-      //console.log(data_editions);
-      for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
-      //for (var item in data_editions) console.log("data: "+data_editions[item]['wpcf-startdate']);
-      data.sort(fnz.sortByStartDate);
-      //for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
-      callback(data);
-    });
-  });
-};
 
 //////// GLOBAL
 
@@ -737,11 +903,12 @@ exports.setSessions = function setSessions(req,callback) {
     require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
     global.setLocale(lang);
   }
-  //console.log("sessions.current_lang: "+req.session.sessions.current_lang);
-  //console.log(config);
+  console.log("sessions.current_lang: "+req.session.sessions.current_lang);
+  console.log(req.params.edition);
   if (config.last_edition) {
-    req.session.sessions.current_edition = req.params.edition && config.meta.editions[req.session.sessions.current_edition] ? req.params.edition : config.last_edition;
-    //console.log(config);
+    req.session.sessions.current_edition = req.params.edition && config.meta.editions[req.params.edition] ? req.params.edition : config.last_edition;
+    console.log(req.session.sessions.current_edition);
+    //console.log(config.meta.editions[req.session.sessions.current_edition]);
     if (config.meta.editions && !config.meta.editions[req.session.sessions.current_edition].startdateISO) config.meta.editions[req.session.sessions.current_edition] = fnz.fixResult(config.meta.editions[req.session.sessions.current_edition]);
   }
   callback();

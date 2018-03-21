@@ -1,5 +1,6 @@
 var indexRoutes = require('./routes/lpm/index');
 var editionsRoutes = require('./routes/lpm/editions');
+var devsRoutes = require('./routes/lpm/devs');
 var timelinemapRoutes = require('./routes/lpm/timeline-map');
 
 var sitemapRoutes = require('./routes/_common/sitemap');
@@ -63,10 +64,12 @@ module.exports = function(app) {
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get('/sitemap-editions.xml', sitemapRoutes.get);
+  app.get('/sitemap-dev.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
   app.get("/sitemap-posttype-(:posttype).xml", sitemapRoutes.get);
   app.get("/sitemap-editions-(:edition).xml", sitemapRoutes.get);
+  app.get("/sitemap-dev-(:dev).xml", sitemapRoutes.get);
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
   app.get('/events/', eventsRoutes.getAll);
@@ -88,6 +91,15 @@ module.exports = function(app) {
   app.get('/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', editionsRoutes.getGallery);
   app.get('/editions/(:edition)/(:subedition)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
+  app.get('/dev/', devsRoutes.getAll);
+  app.get('/dev/(:dev)', devsRoutes.get);
+  app.get('/dev/(:dev)/artists', devsRoutes.getArtist);
+  app.get('/dev/(:dev)/artists/(:artist)', devsRoutes.getArtist);
+  app.get('/dev/(:dev)/artists/(:artist)/performances/(:performance)', devsRoutes.getArtist);
+  app.get('/dev/(:dev)/gallery/(:artist)/gallery/(:gallery)', devsRoutes.getGallery);
+  app.get('/dev/(:dev)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', devsRoutes.getGallery);
+  app.get('/dev/(:dev)/(:subdev)', devsRoutes.get);
+  app.get('/dev/(:dev)/(:subdev)/(:subsubdev)', devsRoutes.get);
   app.get('/gallery', pagesRoutes.getGallery);
   app.get('/gallery/(:artist)/(:gallery)', pagesRoutes.getGallery);
   app.get('/gallery/(:artist)/(:gallery)/(:galleryitem)', pagesRoutes.getGallery);

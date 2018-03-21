@@ -2,7 +2,7 @@
   meta(itemprop="position", content=position+1)
   .Edition(itemprop="item", itemscope, itemtype='http://schema.org/Event')
     .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
-      a(href='/editions/'+result.slug+"/", rel='bookmark', title!=result.post_title, itemprop='url')
+      a(href='/dev/'+result.slug+"/", rel='bookmark', title!=result.post_title, itemprop='url')
         img.img-responsive(src=result.featured.thumbnail, alt!='Image for: '+result.post_title, itemprop='contentUrl')
         meta(itemprop="width" content="480")
         meta(itemprop="height" content="270")
@@ -11,7 +11,7 @@
         .text-muted
           include ../../_common/inc_eventdate
         h3.list_title(itemprop='name')
-          a(itemprop='url', href='/editions/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
+          a(itemprop='url', href='/dev/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
         .places
           include ../../_common/inc_place
         .text-muted.small.excerpt
