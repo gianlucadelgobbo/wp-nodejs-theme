@@ -1,12 +1,4 @@
-body {background-color:#000000; color:#333333; background-repeat:no-repeat;background-size: contain;}
-h1,.h1like{color:#FFF; background-color:#E5239E;padding: 0 5px 5px 10px; font-size: 2.3em; line-height: 1.5em;}
-h1 a{color:#FFF;}
-header{color: #FFF;text-shadow: 2px 2px 4px #000000}
-#logo{margin:5px 0 0 5px;}
-h3{background-color: #E5239E; color: #FFFFFF;}
+body {background-color:#000000; color:#333333; background-repeat:no-repeat;background-size: contain;background-position: center 206px;}
+.entry-title, .grid-title{color:#FFF; background-color:#000;padding:5px 10px;}
 .rientro{background: rgba(255,255,255,.8);margin-bottom:20px;}
-@media (min-width: 992px) {
-	body {background-size:initial;}
-}
-
 
