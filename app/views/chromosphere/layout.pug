@@ -97,11 +97,12 @@ html(lang=sessions.current_lang)
       #tw
     include ../_common/modal-full
     include ../_common/modal-search
-    include ../_common/inc_cookielawinfo
 
-    script(type='text/javascript', src='/_common/js/combo.min.js')
+    script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
     if form
       script(type='text/javascript', src='/_common/js/validator.min.js')
+    include ../_common/inc_cookielawinfo
+
     if include_gallery
       #fb-root
       script.
