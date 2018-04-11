@@ -135,7 +135,8 @@ gulp.task('compress_js_avnode', function() {
       './gulp/js/_common/imagesloaded.pkgd.min.js',
       './gulp/js/_common/cookielawinfo.min.js',
       './gulp/js/_common/script.js',
-      './gulp/js/avnode/script.js',
+      './gulp/js/avnode/map.js',
+      './gulp/js/avnode/script.js'
     ])
     .pipe(concat('combo.min.js'))
     .pipe(uglify())
