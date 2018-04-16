@@ -96,8 +96,8 @@ function initialize() {
 
         })(marker, data);
       } else {
-        console.log('Marker ERROR');
-        console.log(markers[i]);
+        //console.log('Marker ERROR');
+        //console.log(markers[i]);
       }
     }
   }
@@ -146,8 +146,8 @@ function initialize() {
 
         })(marker, data);
       } else {
-        console.log('Marker ERROR');
-        console.log(markers[i]);
+        //console.log('Marker ERROR');
+        //console.log(markers[i]);
       }
     }
   }

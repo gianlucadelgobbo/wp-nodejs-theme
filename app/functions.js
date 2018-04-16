@@ -10,18 +10,18 @@ exports.sortByStartDate = function sortByStartDate(a,b) {
 };
 
 exports.setPageData = function setPageData(req, result) {
-  console.log("config.default_lang");
-  console.log(config.default_lang);
+  //console.log("config.default_lang");
+  //console.log(config.default_lang);
   if (!result) result = {};
   var dett=result.post_type && result.post_type!="page";
   var baseurl = req.url;
-  console.log(baseurl);
+  //console.log(baseurl);
   for (var lang in config.locales) {
     //console.log("/"+config.locales[lang]+"/");
     baseurl = baseurl.replace("/"+config.locales[lang]+"/", "/");
   }
-  console.log(baseurl);
-  console.log(req.url);
+  //console.log(baseurl);
+  //console.log(req.url);
   var page_data = {
     url:req.url,
     langSwitcher: {
@@ -42,7 +42,7 @@ exports.setPageData = function setPageData(req, result) {
     page_data.image_src = config.meta.image_src;
     page_data.description = this.makeExcerpt(__("The content you requested was not found on our server, please try to search for it"), 160);
   }
-  console.log(page_data.url);
+  //console.log(page_data.url);
   return page_data;
 };
 

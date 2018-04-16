@@ -142,11 +142,11 @@ $(function() {
   if ($('.svg')) loadMap ();
   if ($('#myAffix .navbar-brand.donttouch').length==0) {
     $('#myAffix').on('affix.bs.affix', function () {
-      console.log('Fired!');
+      //console.log('Fired!');
       $(".navbar-brand").removeClass( 'visible-xs' );
     } );
     $('#myAffix').on( 'affixed-top.bs.affix', function () {
-      console.log('unaff');
+      //console.log('unaff');
       $(".navbar-brand").addClass( 'visible-xs' );
     } );
   }

@@ -9,11 +9,11 @@ exports.get = function get(req, res) {
     var user_sez = "team";
     var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
     if (req.query.createcache==1 || !fs.existsSync(file)){
-      console.log("getAll news");
+      //console.log("getAll news");
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
-        console.log("getAll events");
+        //console.log("getAll events");
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
-          console.log("getAll editions");
+          //console.log("getAll editions");
           helpers.getAllEditionsByYear(req, null, config.sez.home.editions.limit, 1, function (result_editions) {
             var page_data = fnz.setPageData(req, {'ID':'100'});
             var obj = {
@@ -22,24 +22,24 @@ exports.get = function get(req, res) {
               sessions:req.session.sessions
             };
             jsonfile.writeFile(file, obj, function (err) {
-              console.log("writeFile");
-              if(err) console.log(err);
+              //console.log("writeFile");
+              if(err) //console.log(err);
               res.render(config.prefix+'/'+'index',obj);
             });
           });
         });
       });
     } else if (req.query.createusers==1 || !fs.existsSync(userfile)){
-      console.log("getAllUsers team");
+      //console.log("getAllUsers team");
       helpers.getAllUsers(req, user_sez, function( results ) {
-        console.log("writeFile "+userfile);
+        //console.log("writeFile "+userfile);
         jsonfile.writeFile(userfile, results, function (err) {
-          if(err) console.log(err);
+          if(err) //console.log(err);
           var user_sez = "partners";
-          console.log("getAllUsers partners");
+          //console.log("getAllUsers partners");
           helpers.getAllUsers(req, user_sez, function( results ) {
             var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
-            console.log("writeFile "+userfile);
+            //console.log("writeFile "+userfile);
             jsonfile.writeFile(userfile, results, function (err) {
               //console.log(obj.results.web);
               var obj = jsonfile.readFileSync(file);

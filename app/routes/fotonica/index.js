@@ -28,7 +28,7 @@ exports.get = function get(req, res) {
     } else if (req.query.createusers==1 || !fs.existsSync(userfile)){
       helpers.getAllUsers(req, user_sez, function( results ) {
         jsonfile.writeFile(userfile, results, function (err) {
-          //if(err) console.log(err);
+          //if(err) //console.log(err);
           var user_sez = "partners";
           helpers.getAllUsers(req, user_sez, function( results ) {
             var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';

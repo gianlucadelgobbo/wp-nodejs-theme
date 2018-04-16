@@ -37,7 +37,7 @@ exports.get = function get(req, res) {
                                       page_data:page_data, sessions:req.session.sessions,posttype_events:posttype_events,profile:profile,posttype_lab:posttype_lab,posttype_web:posttype_web,posttype_video:posttype_video,posttype_learning:posttype_learning,posttype_news:posttype_news,posttype_awards:posttype_awards
                                     };
                                     jsonfile.writeFile(file, obj, function (err) {
-                                      //if(err) console.log(err);
+                                      //if(err) //console.log(err);
                                       res.render(config.prefix+'/'+'index',obj);
                                     });
                                   });
@@ -58,7 +58,7 @@ exports.get = function get(req, res) {
     } else if (req.query.createusers==1 || !fs.existsSync(userfile)){
       helpers.getAllUsers(req, user_sez, function( results ) {
         jsonfile.writeFile(userfile, results, function (err) {
-          //if(err) console.log(err);
+          //if(err) //console.log(err);
           var user_sez = "customers";
           helpers.getAllUsers(req, user_sez, function( results ) {
             var userfile = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';

@@ -117,7 +117,7 @@ exports.getAllUsersStatic = function getAllUsersStatic(req, user_sez, callback) 
   try {
     var data = jsonfile.readFileSync(file);
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     // Here you get the error when the file was not found,
     // but you also get any other error
   }
@@ -672,14 +672,14 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callbac
   var trgt = this;
   var data = [];
   trgt.getAllEventsByYear(req, years, function (data_events) {
-    //for (var item in data_events) console.log(data_events[item]['wpcf-startdate']);
+    //for (var item in data_events) //console.log(data_events[item]['wpcf-startdate']);
     for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
     trgt.getAllEditionsByYear(req, years, 100, 1, function (data_editions) {
       //console.log(data_editions);
       for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
-      //for (var item in data_editions) console.log("data: "+data_editions[item]['wpcf-startdate']);
+      //for (var item in data_editions) //console.log("data: "+data_editions[item]['wpcf-startdate']);
       data.sort(fnz.sortByStartDate);
-      //for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
+      //for (var item in data) //console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
       callback(data);
     });
   });
@@ -837,14 +837,14 @@ exports.getAllEditionsEvents = function getAllEditionsEvents(req, years, callbac
   var trgt = this;
   var data = [];
   trgt.getAllEventsByYear(req, years, function (data_events) {
-    //for (var item in data_events) console.log(data_events[item]['wpcf-startdate']);
+    //for (var item in data_events) //console.log(data_events[item]['wpcf-startdate']);
     for (var item in data_events) if (data_events[item]['wpcf-startdate']) data.push(data_events[item]);
     trgt.getAllEditionsByYear(req, years, 100, 1, function (data_editions) {
       //console.log(data_editions);
       for (var item in data_editions) if (data_editions[item]['wpcf-startdate']) data.push(data_editions[item]);
-      //for (var item in data_editions) console.log("data: "+data_editions[item]['wpcf-startdate']);
+      //for (var item in data_editions) //console.log("data: "+data_editions[item]['wpcf-startdate']);
       data.sort(fnz.sortByStartDate);
-      //for (var item in data) console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
+      //for (var item in data) //console.log(moment(data[item]['wpcf-startdate']*1000).utc().format("YYYY-MM-DD, h:mm a"));
       callback(data);
     });
   });
@@ -903,11 +903,11 @@ exports.setSessions = function setSessions(req,callback) {
     require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
     global.setLocale(lang);
   }
-  console.log("sessions.current_lang: "+req.session.sessions.current_lang);
-  console.log(req.params.edition);
+  //console.log("sessions.current_lang: "+req.session.sessions.current_lang);
+  //console.log(req.params.edition);
   if (config.last_edition) {
     req.session.sessions.current_edition = req.params.edition && config.meta.editions[req.params.edition] ? req.params.edition : config.last_edition;
-    console.log(req.session.sessions.current_edition);
+    //console.log(req.session.sessions.current_edition);
     //console.log(config.meta.editions[req.session.sessions.current_edition]);
     if (config.meta.editions && !config.meta.editions[req.session.sessions.current_edition].startdateISO) config.meta.editions[req.session.sessions.current_edition] = fnz.fixResult(config.meta.editions[req.session.sessions.current_edition]);
   }

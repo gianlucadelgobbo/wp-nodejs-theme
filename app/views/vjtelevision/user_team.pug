@@ -13,7 +13,7 @@ block content
           p(itemprop='jobTitle')
             i=result.role_label
           p
-            -console.log(result.auth_contents)
+            -//console.log(result.auth_contents)
             if result.auth_contents.events && result.auth_contents.events.length
               !=config.posttypes_labels.events + ": " + result.auth_contents.events.length
               br

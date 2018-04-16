@@ -14,7 +14,7 @@ exports.get = function get(req, res) {
         for (var item2 in result.grid[item]) {
           result.grid[item][item2].box = result.grid[item][item2].box.replace(new RegExp('"/editions', 'g'), '"/en/editions');
           result.grid[item][item2].box = result.grid[item][item2].box.replace(new RegExp('"/it/editions', 'g'), '"/editions');
-          console.log(result.grid[item][item2].box);
+          //console.log(result.grid[item][item2].box);
         }
       }
       if (result.post_title) {

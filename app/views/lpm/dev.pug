@@ -13,7 +13,7 @@ block content
       header
         h1.entry-title(itemprop='name')=result.post_title
     if (sessions.current_edition == config.last_edition && page_data.url.indexOf("/program/")!==-1)
-      - console.log(config.last_edition_status)
+      - //console.log(config.last_edition_status)
       if(config.last_edition_status == "call")
         style.
           .schedule {
