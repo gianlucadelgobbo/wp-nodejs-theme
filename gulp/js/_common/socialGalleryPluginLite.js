@@ -70,7 +70,7 @@ function sgShow(){
 jQuery(function(b){
 	/*
 	jQuery("#sgSide").bind('hide', function(){
-	    //console.log('asdasda')
+	    console.log('asdasda')
 	});
 	*/
 	jQuery("body").append('<div id="sgPluginBg"></div><div id="sgPluginBox"><div id="sgCont"></div><div id="sgSide" class="hidden-xs hidden-sm"><div id="sgSideWrap"></div></div><div id="sgPluginBoxClose">x</div></div><div id="sgPluginLoader"></div><div id="sgDisqusHold" style="display:none"><div id="disqus_thread"></div></div>');
@@ -263,8 +263,8 @@ function initNavVideo(){
 		h+='<div id="sgRightVideo"'+j+"></div></div>";
 		jQuery("#sgControls").remove();
 		jQuery("#sgCont").append(h);
-		//console.log(jQuery("#sgLeftVideo").height());
-		//console.log(jQuery("#sgPluginBox").height());
+		console.log(jQuery("#sgLeftVideo").height());
+		console.log(jQuery("#sgPluginBox").height());
 		var posY = (jQuery("#sgPluginBox").height()-jQuery("#sgLeftVideo").height())/2;
 		jQuery("#sgLeftVideo").css("top",posY+"px");
 		jQuery("#sgRightVideo").css("top",posY+"px");
@@ -446,7 +446,7 @@ function loadItem(){
 }
 
 function sgRightAct(){
-	//console.log(window.sgCurrind);
+	console.log(window.sgCurrind);
 	window.sgCurrind++;
 	var items = sgGetElements();
 	if (window.sgCurrind>=items.length) window.sgCurrind = 0;
@@ -641,7 +641,7 @@ function sgResizer(b){
 	var window_width=jQuery(window).width();
 	var window_height=jQuery(window).height();
 	var sgSideW = window_width>990 ? 350 : 0;
-	//console.log();
+	console.log();
 	if (jQuery("#sgCont iframe").length) {
 		var cnt_width=jQuery("#sgCont iframe").width();
 		var cnt_height=jQuery("#sgCont iframe").height();
@@ -761,11 +761,11 @@ function sgResizer(b){
 		*/
 		final_w=final_w_cnt+sgSideW;
 		final_h=final_h_cnt;
-		//console.log(available_w);
-		//console.log(a);
-		//console.log(final_w_cnt);
-		//console.log(final_w);
-		//console.log(sgSideW);
+		console.log(available_w);
+		console.log(a);
+		console.log(final_w_cnt);
+		console.log(final_w);
+		console.log(sgSideW);
 		/*
 		if(O>(o*1.1)){
 			O=o*1.1
@@ -778,7 +778,7 @@ function sgResizer(b){
 		var leftPos=(window_width*0.5)-(final_w*0.5);
 		var topPos=(window_height-available_h)/2;
 		var cntTopPos=(available_h-final_h)/2;
-		//console.log();
+		console.log();
 		//var I=(window_height*0)-(O*0);
 		//var N=(window_width*0)-(d*0);
 		jQuery("#sgPluginBox").css("top",topPos+"px").css("left",leftPos+"px").css("width",final_w+"px").css("height",available_h+"px");
