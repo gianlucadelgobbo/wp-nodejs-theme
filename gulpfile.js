@@ -20,7 +20,16 @@ var tasklist = [
   'css_shockart_bs',
   'css_vjtelevision_bs',
   'css_wam_bs',
-  'compress_js_avnode'
+  'compress_js_avnode',
+  'compress_js_chromosphere',
+  'compress_js_fotonica',
+  'compress_js_flyer',
+  'compress_js_lcf',
+  'compress_js_linuxclub',
+  'compress_js_lpm',
+  'compress_js_shockart',
+  'compress_js_vjtelevision',
+  'compress_js_wam'
 ];
 
 gulp.task('fonts_bs', function() {
