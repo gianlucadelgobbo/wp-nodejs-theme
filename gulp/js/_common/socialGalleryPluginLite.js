@@ -381,6 +381,8 @@ function initKeyboard(){
 function loadItem(){
 	//window.sgCurrind=parseInt(sgGetElements().index(this));
 	var a=jQuery(sgGetElements().get(window.sgCurrind)).attr("href");
+	var b=jQuery(sgGetElements().get(window.sgCurrind)).attr("title");
+	history.pushState({ foo: "bar" }, b, a);
 	//var h=jQuery(sgGetElements().get(window.sgCurrind)).target.parentNode;
 	if(typeof a!="undefined"&&a!=""){
 
