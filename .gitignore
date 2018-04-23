@@ -3,7 +3,8 @@
 node_modules
 bower_components
 files
-config/*
+config/editions*
+config/default*
 tmp/*
 err.log
 out.log
