@@ -111,7 +111,7 @@ exports.getUser = function getUser(req, user_sez, callback) {
 };
 
 exports.getAllUsersStatic = function getAllUsersStatic(req, user_sez, callback) {
-  var file = config.root+'/tmp/'+config.prefix+'/users_'+user_sez+'_'+req.session.sessions.current_lang+'.json';
+  var file = config.root+'/config/'+config.prefix+'_users_'+user_sez+'.json';
   var jsonfile = require('jsonfile');
   var fileContents;
   try {
@@ -126,12 +126,13 @@ exports.getAllUsersStatic = function getAllUsersStatic(req, user_sez, callback) 
 };
 
 exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
-  //console.log("getAllUsers "+user_sez);
-  //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/authors/'+config.prefix+'/'+config.site_tax+'/'+user_sez+'/');
+  console.log("getAllUsers "+user_sez);
+  console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/authors/'+config.prefix+'/'+config.site_tax+'/'+user_sez+'/');
   var wpflyer = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
   wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/authors/(?P<site>)/(?P<sitetax>)/(?P<usersez>)' );
   //console.log("stoqui "+user_sez);
   wpflyer.myCustomResource().site(config.prefix).sitetax(config.site_tax).usersez(user_sez).get(function( err, data ) {
+    console.log(err || data);
     /*
     //console.log(err || data);
     //console.log("stoqui"+user_sez);
@@ -909,7 +910,7 @@ exports.setSessions = function setSessions(req,callback) {
     req.session.sessions.current_edition = req.params.edition && config.meta.editions[req.params.edition] ? req.params.edition : config.last_edition;
     //console.log(req.session.sessions.current_edition);
     //console.log(config.meta.editions[req.session.sessions.current_edition]);
-    if (config.meta.editions && !config.meta.editions[req.session.sessions.current_edition].startdateISO) config.meta.editions[req.session.sessions.current_edition] = fnz.fixResult(config.meta.editions[req.session.sessions.current_edition]);
+    if (config.meta.editions && config.meta.editions[req.session.sessions.current_edition] && !config.meta.editions[req.session.sessions.current_edition].startdateISO) config.meta.editions[req.session.sessions.current_edition] = fnz.fixResult(config.meta.editions[req.session.sessions.current_edition]);
   }
   callback();
 };

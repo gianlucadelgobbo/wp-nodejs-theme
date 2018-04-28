@@ -38,16 +38,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startall": "NODE_ENV=production forever start -l /sites/wp-nodejs-theme/forever.log -o /sites/wp-nodejs-theme/out.log -e /sites/wp-nodejs-theme/err.log /sites/wp-nodejs-theme/forever.json",
-    "flyer": "node app -site flyer",
-    "lpm": "node app -site lpm",
-    "lcf": "node app -site lcf",
-    "chromosphere": "node app -site chromosphere",
-    "vjtelevision": "node app -site vjtelevision",
-    "shockart": "node app -site shockart",
-    "linuxclub": "node app -site linuxclub",
-    "avnode": "node app -site avnode",
-    "wam": "node app -site wam",
-    "fotonica": "node app -site fotonica"
+    "startallloc": "NODE_ENV=dev forever start -l /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/forever.log -o /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/out.log -e /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/err.log /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/foreverLocal.json",
+    "flyer": "NODE_ENV=dev node app.js -site flyer",
+    "lpm": "NODE_ENV=dev node app -site lpm",
+    "lcf": "NODE_ENV=dev node app -site lcf",
+    "chromosphere": "NODE_ENV=dev node app -site chromosphere",
+    "vjtelevision": "NODE_ENV=dev node app -site vjtelevision",
+    "shockart": "NODE_ENV=dev node app -site shockart",
+    "linuxclub": "NODE_ENV=dev node app -site linuxclub",
+    "avnode": "NODE_ENV=dev node app -site avnode",
+    "wam": "NODE_ENV=dev node app -site wam",
+    "fotonica": "NODE_ENV=dev node app -site fotonica"
   },
   "repository": {
     "type": "git",

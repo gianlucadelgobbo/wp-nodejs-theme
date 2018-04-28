@@ -3,9 +3,10 @@
 node_modules
 bower_components
 files
-config/editions*
+localLogs
 config/default*
 tmp/*
 err.log
 out.log
 forever.log
+package-lock.json

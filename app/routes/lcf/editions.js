@@ -84,7 +84,7 @@ exports.getMeta = function getMeta(req, res) {
             if (req.query.check){
               res.render(config.prefix+"/meta_test", {meta:meta});
             } else {
-              require('jsonfile').writeFile(config.root+'/config/editions_'+config.prefix+'.json', meta, function(err) {
+              require('jsonfile').writeFile(config.root+'/config/'+config.prefix+'_editions.json', meta, function(err) {
                 config.meta.editions = meta;
                 res.render(config.prefix+"/meta_test", {meta:config.meta.editions});
               });

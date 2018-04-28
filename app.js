@@ -1,11 +1,13 @@
 var express = require('express');
 var app = express();
+var jsonfile = require('jsonfile');
+var fs = require('fs');
 
 global.config = require('config')[process.argv[3]];
 
 config.root = app.root = __dirname;
 
-require('jsonfile').readFile(config.root+'/config/users.json', function(err, obj) {
+jsonfile.readFile(config.root+'/config/users.json', function(err, obj) {
   config.users = obj;
   config.users_sez = {};
   config.users_by_sez = {};
@@ -21,28 +23,13 @@ require('jsonfile').readFile(config.root+'/config/users.json', function(err, obj
   //console.log(config.users_sez);
 });
 
-if (process.argv[3]=="lpm") {
-  require('jsonfile').readFile(config.root+'/config/editions_lpm.json', function(err, obj) {
-    config.meta.editions = obj;
-  });
-}
-
-if (process.argv[3]=="lcf") {
-  require('jsonfile').readFile(config.root+'/config/editions_lcf.json', function(err, obj) {
-    config.meta.editions = obj;
-  });
-}
-
-if (process.argv[3]=="chromosphere") {
-  require('jsonfile').readFile(config.root+'/config/editions_chromosphere.json', function(err, obj) {
-    config.meta.editions = obj;
-  });
-}
-
-if (process.argv[3]=="fotonica") {
-  require('jsonfile').readFile(config.root+'/config/editions_fotonica.json', function(err, obj) {
-    config.meta.editions = obj;
-  });
+if (process.argv[3]=="lpm" || process.argv[3]=="lcf" || process.argv[3]=="chromosphere" || process.argv[3]=="fotonica") {
+  var file = config.root+'/config/'+process.argv[3]+'_editions.json';
+  if (fs.existsSync(file)) {
+    jsonfile.readFile(file, function(err, obj) {
+      config.meta.editions = obj;
+    });
+  }
 }
 
 
@@ -54,3 +41,4 @@ var server = null;
 server = app.listen(config.port, function(){
   console.log('Express server listening on (' + config.prefix + ') http://' + config.host + ':' + config.port);
 });
+if(process.env.NODE_ENV=='dev') server.timeout = 480000;  
