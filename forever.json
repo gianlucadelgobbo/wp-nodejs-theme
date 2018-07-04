@@ -6,9 +6,9 @@
     "watch": true,
     "script": "app.js",
     "sourceDir": "/sites/wp-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_flyer_forever.log",
-    "outFile": "/var/log/nginx/node_flyer_out.log",
-    "errFile": "/var/log/nginx/node_flyer_err.log",
+    "logFile": "/sites/wp-nodejs-theme/logs/node_flyer_forever.log",
+    "outFile": "/sites/wp-nodejs-theme/logs/node_flyer_out.log",
+    "errFile": "/sites/wp-nodejs-theme/logs/node_flyer_err.log",
     "args": ["-site", "flyer"]
   },
   {
@@ -17,9 +17,9 @@
     "watch": true,
     "script": "app.js",
     "sourceDir": "/sites/wp-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_lpm_forever.log",
-    "outFile": "/var/log/nginx/node_lpm_out.log",
-    "errFile": "/var/log/nginx/node_lpm_err.log",
+    "logFile": "/sites/wp-nodejs-theme/logs/node_lpm_forever.log",
+    "outFile": "/sites/wp-nodejs-theme/logs/node_lpm_out.log",
+    "errFile": "/sites/wp-nodejs-theme/logs/node_lpm_err.log",
     "args": ["-site", "lpm"]
   },
   {
@@ -28,9 +28,9 @@
     "watch": true,
     "script": "app.js",
     "sourceDir": "/sites/wp-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_shockart_forever.log",
-    "outFile": "/var/log/nginx/node_shockart_out.log",
-    "errFile": "/var/log/nginx/node_shockart_err.log",
+    "logFile": "/sites/wp-nodejs-theme/logs/node_shockart_forever.log",
+    "outFile": "/sites/wp-nodejs-theme/logs/node_shockart_out.log",
+    "errFile": "/sites/wp-nodejs-theme/logs/node_shockart_err.log",
     "args": ["-site", "shockart"]
   },
   {
@@ -39,9 +39,9 @@
     "watch": true,
     "script": "app.js",
     "sourceDir": "/sites/wp-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_avnode_forever.log",
-    "outFile": "/var/log/nginx/node_avnode_out.log",
-    "errFile": "/var/log/nginx/node_avnode_err.log",
+    "logFile": "/sites/wp-nodejs-theme/logs/node_avnode_forever.log",
+    "outFile": "/sites/wp-nodejs-theme/logs/node_avnode_out.log",
+    "errFile": "/sites/wp-nodejs-theme/logs/node_avnode_err.log",
     "args": ["-site", "avnode"]
   },
   {
@@ -50,9 +50,9 @@
     "watch": true,
     "script": "app.js",
     "sourceDir": "/sites/wp-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_lcf_forever.log",
-    "outFile": "/var/log/nginx/node_lcf_out.log",
-    "errFile": "/var/log/nginx/node_lcf_err.log",
+    "logFile": "/sites/wp-nodejs-theme/logs/node_lcf_forever.log",
+    "outFile": "/sites/wp-nodejs-theme/logs/node_lcf_out.log",
+    "errFile": "/sites/wp-nodejs-theme/logs/node_lcf_err.log",
     "args": ["-site", "lcf"]
   },
   {
@@ -61,9 +61,9 @@
     "watch": true,
     "script": "app.js",
     "sourceDir": "/sites/wp-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_linuxclub_forever.log",
-    "outFile": "/var/log/nginx/node_linuxclub_out.log",
-    "errFile": "/var/log/nginx/node_linuxclub_err.log",
+    "logFile": "/sites/wp-nodejs-theme/logs/node_linuxclub_forever.log",
+    "outFile": "/sites/wp-nodejs-theme/logs/node_linuxclub_out.log",
+    "errFile": "/sites/wp-nodejs-theme/logs/node_linuxclub_err.log",
     "args": ["-site", "linuxclub"]
   },
   {
@@ -72,9 +72,9 @@
     "watch": true,
     "script": "app.js",
     "sourceDir": "/sites/wp-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_chromosphere_forever.log",
-    "outFile": "/var/log/nginx/node_chromosphere_out.log",
-    "errFile": "/var/log/nginx/node_chromosphere_err.log",
+    "logFile": "/sites/wp-nodejs-theme/logs/node_chromosphere_forever.log",
+    "outFile": "/sites/wp-nodejs-theme/logs/node_chromosphere_out.log",
+    "errFile": "/sites/wp-nodejs-theme/logs/node_chromosphere_err.log",
     "args": ["-site", "chromosphere"]
   },
   {
@@ -83,9 +83,9 @@
     "watch": true,
     "script": "app.js",
     "sourceDir": "/sites/wp-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_fotonica_forever.log",
-    "outFile": "/var/log/nginx/node_fotonica_out.log",
-    "errFile": "/var/log/nginx/node_fotonica_err.log",
+    "logFile": "/sites/wp-nodejs-theme/logs/node_fotonica_forever.log",
+    "outFile": "/sites/wp-nodejs-theme/logs/node_fotonica_out.log",
+    "errFile": "/sites/wp-nodejs-theme/logs/node_fotonica_err.log",
     "args": ["-site", "fotonica"]
   },
   {
@@ -94,9 +94,9 @@
     "watch": true,
     "script": "app.js",
     "sourceDir": "/sites/wp-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_vjtelevision_forever.log",
-    "outFile": "/var/log/nginx/node_vjtelevision_out.log",
-    "errFile": "/var/log/nginx/node_vjtelevision_err.log",
+    "logFile": "/sites/wp-nodejs-theme/logs/node_vjtelevision_forever.log",
+    "outFile": "/sites/wp-nodejs-theme/logs/node_vjtelevision_out.log",
+    "errFile": "/sites/wp-nodejs-theme/logs/node_vjtelevision_err.log",
     "args": ["-site", "vjtelevision"]
   },
   {
@@ -105,9 +105,9 @@
     "watch": true,
     "script": "app.js",
     "sourceDir": "/sites/wp-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_wam_forever.log",
-    "outFile": "/var/log/nginx/node_wam_out.log",
-    "errFile": "/var/log/nginx/node_wam_err.log",
+    "logFile": "/sites/wp-nodejs-theme/logs/node_wam_forever.log",
+    "outFile": "/sites/wp-nodejs-theme/logs/node_wam_out.log",
+    "errFile": "/sites/wp-nodejs-theme/logs/node_wam_err.log",
     "args": ["-site", "wam"]
   }
 ]

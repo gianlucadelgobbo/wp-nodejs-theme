@@ -10,3 +10,4 @@ err.log
 out.log
 forever.log
 package-lock.json
+logs/*
