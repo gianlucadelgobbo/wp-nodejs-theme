@@ -35,6 +35,7 @@ module.exports = function(app) {
   app.get('/events/', eventsRoutes.getAll);
   app.get('/events/(:event)', eventsRoutes.get);
   app.get('/events/page/(:page)', eventsRoutes.getAll);
+  app.get('/events/tags/(:tag)', eventsRoutes.getTag);
   app.get('/news/', newsRoutes.getAll);
   app.get('/news/(:new)', newsRoutes.get);
   app.get('/news/page/(:page)', newsRoutes.getAll);
