@@ -8,7 +8,7 @@ block content
         include ../_common/inc_videos
       .col-sm-4
         header
-          h1.entry-title(itemprop='name')!=result.post_title
+          h1.entry-title(itemprop='name')!=result.post_title+(tag ? ": #"+tag : "")
         //include ../_common/inc_tags_post
         include ../_common/inc_type_hidden
         include ../_common/inc_eventdateplace
