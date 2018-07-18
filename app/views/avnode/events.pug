@@ -3,7 +3,7 @@ block content
   article#container(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
     .row
       .col-xs-10
-        h1.entry-title(itemprop="name")=posttype.post_title
+        h1.entry-title(itemprop="name")=posttype.post_title+(tag ? ": #"+tag : "")
         p(itemprop="description")!=posttype.post_content
       .col-xs-2
         .pull-right

@@ -28,7 +28,7 @@ exports.getAll = function getAll(req, res) {
   });
 };
 
-exports.getTag = function getAll(req, res) {
+exports.getTag = function getTag(req, res) {
   helpers.setSessions(req, function() {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
