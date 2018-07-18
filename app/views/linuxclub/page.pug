@@ -35,6 +35,8 @@ block content
             .dates
               .date=result.data_evento
               meta(itemprop="dateModified", content=result.dateModified)
+          if result.captcha
+            div=result.captcha
       .col-sm-3
         img.img-responsive.main-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
         include ../_common/inc_docs_small
