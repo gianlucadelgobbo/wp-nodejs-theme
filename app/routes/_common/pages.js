@@ -2,7 +2,7 @@ var helpers = require('../../helpers');
 var fnz = require('../../functions');
 var Recaptcha = require('express-recaptcha').Recaptcha;
  
-var recaptcha = new Recaptcha('SITE_KEY', 'SECRET_KEY');
+var recaptcha = new Recaptcha('6Lex1mQUAAAAAF6YSwUiw_mRGBiW2JSVlS3jYApT', '6Lex1mQUAAAAAOauaj1rxyENLvrnvHEMt7_RTnJq');
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
@@ -93,9 +93,7 @@ exports.post = function post(req, res) {
             });
           }
         } else {
-          var estr = "<ul>";
-          for(var item in error)  estr+= "<li>"+error[item].m+"</li>";
-          estr+= "</ul>";
+          var estr = "<ul><li>Captcha error ("+error+")</li></ul>";
           res.status(200).send({type:"danger", message: estr});
         }
       });
@@ -274,9 +272,7 @@ exports.post = function post(req, res) {
           }
         });
       } else {
-        var estr = "<ul>";
-        for(var item in error)  estr+= "<li>"+error[item].m+"</li>";
-        estr+= "</ul>";
+        var estr = "<ul><li>Captcha error ("+error+")</li></ul>";
         res.status(200).send({type:"danger", message: estr});
       }
     });
