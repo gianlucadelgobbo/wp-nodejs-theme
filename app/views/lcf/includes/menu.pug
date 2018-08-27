@@ -18,7 +18,7 @@ nav#top-menu.navbar.navbar-inverse
         a(href=lang_preurl+'/news/') News
       li(class=page_data.url.indexOf('/events') >= 0 ? "active" : undefined)
         a(href=lang_preurl+'/events/')=global.__("Events")
-      //li
+      li
         a(href=lang_preurl+'/gallery/') Gallery
       li(class=page_data.url.indexOf('/editions') >= 0 ? "active" : undefined)
         a.dropdown-toggle(href='#', data-toggle='dropdown')!=global.__("Editions")+"&nbsp;"
@@ -34,18 +34,27 @@ nav#top-menu.navbar.navbar-inverse
             a(href=lang_preurl+'/editions/2015-rome/') 2015 Rome
           li
             a(href=lang_preurl+'/editions/2014-rome/') 2014 Rome
-      li
+      //li
         a(href=lang_preurl+'/the-app/') The App
       li(class=page_data.url.indexOf('/press') >= 0 ? "active" : undefined)
         a(href=lang_preurl+'/press/') Press
       li(class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)
         a(href=lang_preurl+'/contacts/')=global.__("Contacts")
-      li(class=page_data.url.indexOf('/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
+      //li(class=page_data.url.indexOf('/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
         a(href=lang_preurl+'/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
       li(class=page_data.url.indexOf('/search') >= 0 ? "active" : undefined)
         a#searchModalButton(href="/search/")
           i.glyphicon.glyphicon-search
           .sr-only=global.__("Search")
+      li
+        a(target='_blank', href='https://www.facebook.com/livecinemafestival/', style='font-size: 20px;')
+          i.icon-facebook-squared
+          .sr-only Facebook
+      li
+        a.tooltips(target='_blank', href='https://www.instagram.com/livecinemafestival/', style='font-size: 20px;')
+          i.icon-instagram
+          .sr-only Instagram
+
     ul.nav.navbar-nav.navbar-right
       li.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
         a(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN

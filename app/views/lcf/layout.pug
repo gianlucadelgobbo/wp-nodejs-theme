@@ -54,7 +54,7 @@ html(lang=sessions.current_lang)
         nav.hidden-xs
           ul.pulsa
             each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
-              li.btn-group
+              li.btn-group(class=page_data.url === lang_preurl+menu.permalink ? "active" : undefined)
                 a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
                 if menu.childs.length
                   button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
