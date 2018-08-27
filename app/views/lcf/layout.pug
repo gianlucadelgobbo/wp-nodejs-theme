@@ -40,7 +40,7 @@ html(lang=sessions.current_lang)
         header
           .row
             .col-md-4
-              #logo.mb-4
+              #logo
                 a(href='/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
                   img.img-responsive(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
                   .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
