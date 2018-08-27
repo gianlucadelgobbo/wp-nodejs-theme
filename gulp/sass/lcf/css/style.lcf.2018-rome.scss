@@ -12,3 +12,13 @@ footer.navbar-inverse {
 .pulsa .active a, .pulsa a:hover {
 	color: #fff200
 }
+#logo {
+	margin-bottom: 20px;
+}
+
+@media (min-width: 768px){
+
+	#logo {
+		margin-bottom: 0;
+	}
+}
