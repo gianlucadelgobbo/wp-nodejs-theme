@@ -326,6 +326,7 @@ exports.getAllEventsByYear = function getAllEventsByYear(req, year, limit, page,
 exports.getNew = function getNew(req,callback) {
   //console.log("getNew"+req.params.new);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
+  //console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/news/'+req.params.new);
   wp.myCustomResource = wp.registerRoute('wp/v2', '/news/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.new).get(function( err, data ) {
     //console.log("//// New");

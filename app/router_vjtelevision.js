@@ -28,7 +28,7 @@ module.exports = function(app) {
   app.get('/it/events/(:event)', eventsRoutes.get);
   app.get('/it/events/page/(:page)', eventsRoutes.getAll);
   app.get('/it/news/', newsRoutes.getAll);
-  app.get('/it/news/(:news)', newsRoutes.get);
+  app.get('/it/news/(:new)', newsRoutes.get);
   app.get('/it/news/page/(:page)', newsRoutes.getAll);
   app.get('/it/(:page)/', pagesRoutes.get);
   app.post('/it/(:page)', pagesRoutes.post);
