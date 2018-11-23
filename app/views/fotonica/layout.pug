@@ -50,7 +50,7 @@ html(lang=sessions.current_lang)
                   img.img-responsive(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
                   .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
             .col-md-4
-            .col-md-4(itemprop='disambiguatingDescription')
+            .col-md-4.date-cnt(itemprop='disambiguatingDescription')
               img.img-responsive.pull-right(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-sub-title-image'], alt=config.meta.editions[sessions.current_edition]['wpcf-sub-title'])
               .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
               .sr-only
