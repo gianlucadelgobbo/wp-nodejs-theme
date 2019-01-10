@@ -42,7 +42,7 @@ exports.setPageData = function setPageData(req, result) {
     page_data.image_src = config.meta.image_src;
     page_data.description = this.makeExcerpt(__("The content you requested was not found on our server, please try to search for it"), 160);
   }
-  //console.log(page_data.url);
+  //console.log(page_data);
   return page_data;
 };
 

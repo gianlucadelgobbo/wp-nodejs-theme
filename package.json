@@ -50,7 +50,9 @@
     "linuxclub": "NODE_ENV=dev node app -site linuxclub",
     "avnode": "NODE_ENV=dev node app -site avnode",
     "wam": "NODE_ENV=dev node app -site wam",
-    "fotonica": "NODE_ENV=dev node app -site fotonica"
+    "fotonica": "NODE_ENV=dev node app -site fotonica",
+    "flxer": "NODE_ENV=dev node app -site flxer",
+    "gianlucadelgobbo": "NODE_ENV=dev node app -site gianlucadelgobbo"
   },
   "repository": {
     "type": "git",

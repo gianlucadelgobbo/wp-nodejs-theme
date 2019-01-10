@@ -109,5 +109,27 @@
     "outFile": "/var/log/nginx/node_wam_out.log",
     "errFile": "/var/log/nginx/node_wam_err.log",
     "args": ["-site", "wam"]
+  },
+  {
+    "uid": "flxer",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_flxer_forever.log",
+    "outFile": "/var/log/nginx/node_flxer_out.log",
+    "errFile": "/var/log/nginx/node_flxer_err.log",
+    "args": ["-site", "flxer"]
+  },
+  {
+    "uid": "gianlucadelgobbo",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_gianlucadelgobbo_forever.log",
+    "outFile": "/var/log/nginx/node_gianlucadelgobbo_out.log",
+    "errFile": "/var/log/nginx/node_gianlucadelgobbo_err.log",
+    "args": ["-site", "gianlucadelgobbo"]
   }
 ]

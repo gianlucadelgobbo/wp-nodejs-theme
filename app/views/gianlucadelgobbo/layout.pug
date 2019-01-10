@@ -46,9 +46,6 @@ html(lang=sessions.current_lang)
     include includes/modal-resize
 
     script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
-    script(type="text/javascript").
-      shaderback.setDebug(true);
-      window.onload = shaderback.loadURL('/flxer/shaders/lt23Dt.txt');
     if form
       script(type='text/javascript', src='/_common/js/validator.min.js')
     include ../_common/inc_cookielawinfo

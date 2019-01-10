@@ -20,6 +20,8 @@ var tasklist = [
   'css_shockart_bs',
   'css_vjtelevision_bs',
   'css_wam_bs',
+  'css_flxer_bs',
+  'css_gianlucadelgobbo_bs',
   'compress_js_avnode',
   'compress_js_chromosphere',
   'compress_js_fotonica',
@@ -29,7 +31,9 @@ var tasklist = [
   'compress_js_lpm',
   'compress_js_shockart',
   'compress_js_vjtelevision',
-  'compress_js_wam'
+  'compress_js_wam',
+  'compress_js_flxer',
+  'compress_js_gianlucadelgobbo'
 ];
 
 gulp.task('fonts_bs', function() {
@@ -125,6 +129,24 @@ gulp.task('css_wam_bs', function() {
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/wam/css'));
+});
+
+gulp.task('css_flxer_bs', function() {
+  return gulp.src('./gulp/sass/flxer/*.scss')
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+    }))
+    .pipe(gulp.dest(config.publicDir + '/flxer/css'));
+});
+
+gulp.task('css_gianlucadelgobbo_bs', function() {
+  return gulp.src('./gulp/sass/gianlucadelgobbo/*.scss')
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+    }))
+    .pipe(gulp.dest(config.publicDir + '/gianlucadelgobbo/css'));
 });
 
 gulp.task('compress_js_avnode', function() {
@@ -278,6 +300,37 @@ gulp.task('compress_js_wam', function() {
   .pipe(concat('combo.min.js'))
   .pipe(uglify())
   .pipe(gulp.dest(config.publicDir + '/wam/js/'));
+});
+
+gulp.task('compress_js_flxer', function() {
+  return gulp.src([
+    config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+    './gulp/js/_common/jquery.isotope.min.js',
+    './gulp/js/_common/imagesloaded.pkgd.min.js',
+    './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/script.js',
+    './gulp/js/flxer/script.js',
+    './gulp/js/flxer/shaderback.js'
+  ])
+  .pipe(concat('combo.min.js'))
+  .pipe(uglify())
+  .pipe(gulp.dest(config.publicDir + '/flxer/js/'));
+});
+
+gulp.task('compress_js_gianlucadelgobbo', function() {
+  return gulp.src([
+    config.bowerDir + '/jquery/dist/jquery.min.js',
+    config.bowerDir + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+    './gulp/js/_common/jquery.isotope.min.js',
+    './gulp/js/_common/imagesloaded.pkgd.min.js',
+    './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/script.js',
+    './gulp/js/gianlucadelgobbo/script.js',
+  ])
+  .pipe(concat('combo.min.js'))
+  .pipe(uglify())
+  .pipe(gulp.dest(config.publicDir + '/gianlucadelgobbo/js/'));
 });
 
 
