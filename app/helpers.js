@@ -126,13 +126,13 @@ exports.getAllUsersStatic = function getAllUsersStatic(req, user_sez, callback) 
 };
 
 exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
-  console.log("getAllUsers "+user_sez);
-  console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/authors/'+config.prefix+'/'+config.site_tax+'/'+user_sez+'/');
+  //console.log("getAllUsers "+user_sez);
+  //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/authors/'+config.prefix+'/'+config.site_tax+'/'+user_sez+'/');
   var wpflyer = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
   wpflyer.myCustomResource = wpflyer.registerRoute('wp/v2', '/authors/(?P<site>)/(?P<sitetax>)/(?P<usersez>)' );
   //console.log("stoqui "+user_sez);
   wpflyer.myCustomResource().site(config.prefix).sitetax(config.site_tax).usersez(user_sez).get(function( err, data ) {
-    console.log(err || data);
+    //console.log(err || data);
     /*
     //console.log(err || data);
     //console.log("stoqui"+user_sez);
@@ -726,23 +726,23 @@ exports.getAllEditionsByYear = function getAllEditionsByYear(req, years, limit, 
 };
 
 exports.getEdition = function getEdition(req,callback) {
-  console.log("stocazzo");
-  console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+"/"+req.params.subedition+"/"+req.params.subsubedition);
-  console.log("https://api.avnode.net/events/"+config.prefix+'-'+req.params.edition+"/"+req.params.subedition+"/type/"+req.params.subsubedition);
+  //console.log("stocazzo");
+  //console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+"/"+req.params.subedition+"/"+req.params.subsubedition);
+  //console.log("https://api.avnode.net/events/"+config.prefix+'-'+req.params.edition+"/"+req.params.subedition+"/type/"+req.params.subsubedition);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   if (req.params.image) {
     //console.log("req.params.subsubedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
-      console.log("//// Image");
-      console.log("https://api.avnode.net/galleries/"+req.params.subsubedition+"/img/"+req.params.image);
+      //console.log("//// Image");
+      //console.log("https://api.avnode.net/galleries/"+req.params.subsubedition+"/img/"+req.params.image);
       data['sources'] = ["https://api.avnode.net/galleries/"+req.params.subsubedition+"/img/"+req.params.image];
-      console.log(data['sources'][0]);
+      //console.log(data['sources'][0]);
       //console.log(err || data);
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       if (data['sources']) {
-        console.log(data['sources'][0]);
+        //console.log(data['sources'][0]);
         request({
           url: data['sources'][0],
           json: true
@@ -759,15 +759,15 @@ exports.getEdition = function getEdition(req,callback) {
     //console.log("req.params.subsubedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
-      console.log("//// SubSubEdition");
+      //console.log("//// SubSubEdition");
       if (req.params.subedition == "gallery") data['sources'] = ["https://api.avnode.net/galleries/"+req.params.subsubedition];
-      console.log(data['sources']);
+      //console.log(data['sources']);
       //console.log(err || data);
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-      console.log("stocazzo");
+      //console.log("stocazzo");
       if (data['sources']) {
-        console.log(data['sources'][0]);
+        //console.log(data['sources'][0]);
         request({
           url: data['sources'][0],
           json: true
@@ -777,7 +777,7 @@ exports.getEdition = function getEdition(req,callback) {
           });
         });
       } else {
-        console.log("stocazzo");
+        //console.log("stocazzo");
         callback(data);
       }
     });
@@ -785,11 +785,11 @@ exports.getEdition = function getEdition(req,callback) {
     //console.log("req.params.subedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
-      console.log("//// SubEditionnnnnn");
+      //console.log("//// SubEditionnnnnn");
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       if (data['sources']) {
-        console.log(data['sources'][0]);
+        //console.log(data['sources'][0]);
         request({
           url: data['sources'][0],
           json: true
@@ -809,7 +809,7 @@ exports.getEdition = function getEdition(req,callback) {
       //console.log("//// SubEdition");
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-      console.log('https://api.avnode.net/events/'+req.params.edition+'/program/'+req.params.performance+'/');
+      //console.log('https://api.avnode.net/events/'+req.params.edition+'/program/'+req.params.performance+'/');
       request({
         url: 'https://api.avnode.net/events/'+config.prefix+'-'+req.params.edition+'/program/'+req.params.performance+'/',
         json: true
@@ -845,13 +845,13 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
       callback(data);
     });
   } else if (req.params.artist) {
-    console.log("req.params.artist");
-    console.log(config.data_domain+'/wp-json/wp/v2/artists/'+config.prefix+'/'+req.params.edition+"/artists/"+req.params.artist);
+    //console.log("req.params.artist");
+    //console.log(config.data_domain+'/wp-json/wp/v2/artists/'+config.prefix+'/'+req.params.edition+"/artists/"+req.params.artist);
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition("artists").artist(req.params.artist).get(function( err, data ) {
       //console.log("//// Artist");
       //console.log(wp.myCustomResource);
-      console.log('https://api.avnode.net/events/'+req.params.edition+'/performers/'+req.params.artist+'/');
+      //console.log('https://api.avnode.net/events/'+req.params.edition+'/performers/'+req.params.artist+'/');
       request({
         url: 'https://api.avnode.net/events/'+config.prefix+'-'+req.params.edition+'/performers/'+req.params.artist+'/',
         json: true
@@ -861,17 +861,17 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
       });
     });
   } else {
-    console.log("req.params.subeditionAAAA");
-    console.log('https://flyer.dev.flyer.it/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+'/artists');
+    //console.log("req.params.subeditionAAAA");
+    //console.log('https://flyer.dev.flyer.it/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+'/artists');
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition("artists").get(function( err, data ) {
       if (data['sources']) {
-        console.log(data['sources'][0]);
+        //console.log(data['sources'][0]);
         request({
           url: data['sources'][0],
           json: true
         }, function(error, response, body) {
-          console.log(body);
+          //console.log(body);
           fnz.shortcodify(data, body, req.params, data =>{
             callback(data);
           });

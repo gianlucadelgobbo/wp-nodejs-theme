@@ -5,13 +5,13 @@ var sez = config.sez.editions;
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
-    //console.log("result._post_template");
+    //console.logconsole.log("result._post_template");
     helpers.getEdition(req, function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
-      //console.log("rientro");
+      //console.logconsole.log("rientro");
       var page_data = fnz.setPageData(req, result);
-      console.log("result");
-      console.log(req.params.subedition);
+      //console.log("result");
+      //console.log(req.params.subedition);
       if (result.post_title) {
         let template;
         if (req.params.performance) {
@@ -36,7 +36,7 @@ exports.getArtist = function getArtist(req, res) {
     helpers.getEditionArtist(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
       if (result.post_content.indexOf(">ERROR<")===-1) {
-        console.log(result);
+        //console.log(result);
         res.render(config.prefix+'/'+'edition_artists', {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
@@ -73,7 +73,7 @@ exports.getAll = function getAll(req, res) {
 exports.getMeta = function getMeta(req, res) {
   helpers.setSessions(req, function() {
     var WPAPI = require( 'wpapi' );
-    //console.log("getMeta");
+    //console.logconsole.log("getMeta");
     meta = {};
     conta = [];
     if (!req.query.generate){
@@ -81,18 +81,18 @@ exports.getMeta = function getMeta(req, res) {
     } else {
       getMetaSingle(config.editions[conta.length],req);
       function getMetaSingle(val,req) {
-        //console.log("getMetaSingle 1 "+val);
-      //console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
+        //console.logconsole.log("getMetaSingle 1 "+val);
+      //console.logconsole.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
         var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
         wp.myCustomResource = wp.registerRoute( 'wp/v2', '/meta_data/(?P<sez>)/(?P<edition>)' );
         wp.myCustomResource().edition(config.prefix+'/'+val).sez("editions").get(function( err, data ) {
-          //console.log("getMetaSingle 2");
-          //console.log(data);
+          //console.logconsole.log("getMetaSingle 2");
+          //console.logconsole.log(data);
           meta[val] = data.meta.edition;
           conta.push(val);
-          //console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
-          //console.log(conta.length +" - "+editions.length);
-          //console.log(req.query.check);
+          //console.logconsole.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
+          //console.logconsole.log(conta.length +" - "+editions.length);
+          //console.logconsole.log(req.query.check);
           if (conta.length==config.editions.length) {
             if (req.query.check){
               res.render(config.prefix+"/meta_test", {meta:meta});
@@ -103,7 +103,7 @@ exports.getMeta = function getMeta(req, res) {
               });
             }
           } else {
-            //console.log("getMetaSingle 3 "+editions[conta.length]);
+            //console.logconsole.log("getMetaSingle 3 "+editions[conta.length]);
             getMetaSingle(config.editions[conta.length],req);
           }
         });

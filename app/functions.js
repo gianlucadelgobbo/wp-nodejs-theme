@@ -1,7 +1,6 @@
 var moment = require( 'moment' );
 
 exports.sortByStartDate = function sortByStartDate(a,b) {
-  //console.log("sortByStartDate");
   if (a['wpcf-startdate'] < b['wpcf-startdate'])
     return 1;
   if (a['wpcf-startdate'] > b['wpcf-startdate'])
@@ -10,18 +9,12 @@ exports.sortByStartDate = function sortByStartDate(a,b) {
 };
 
 exports.setPageData = function setPageData(req, result) {
-  //console.log("config.default_lang");
-  //console.log(config.default_lang);
   if (!result) result = {};
   var dett=result.post_type && result.post_type!="page";
   var baseurl = req.url;
-  //console.log(baseurl);
   for (var lang in config.locales) {
-    //console.log("/"+config.locales[lang]+"/");
     baseurl = baseurl.replace("/"+config.locales[lang]+"/", "/");
   }
-  //console.log(baseurl);
-  //console.log(req.url);
   var page_data = {
     edition: req.params.edition,
     url:req.url,
@@ -43,14 +36,11 @@ exports.setPageData = function setPageData(req, result) {
     page_data.image_src = config.meta.image_src;
     page_data.description = this.makeExcerpt(__("The content you requested was not found on our server, please try to search for it"), 160);
   }
-  //console.log(page_data);
   return page_data;
 };
 
 /*exports.getCurrentLang = function getCurrentLang(req) {
-  //console.log("getCurrentLang");
   var urlA = req.url.split("/");
-  //console.log(urlA);
   var lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.default_lang;
   if(req.session.sessions.current_lang != lang) {
     req.session.sessions.current_lang = lang;
@@ -60,7 +50,6 @@ exports.setPageData = function setPageData(req, result) {
 };
 */
 exports.formatLocation = function formatLocation(l) {
-  //console.log(l);
   var loc = {};
   for (var item in l){
     var locA = l[item].split(";");
@@ -68,7 +57,6 @@ exports.formatLocation = function formatLocation(l) {
     if (!loc[locA[2]][locA[1]]) loc[locA[2]][locA[1]] = {};
     if (!loc[locA[2]][locA[1]][locA[0]]) loc[locA[2]][locA[1]][locA[0]] = {lng:locA[3],lat:locA[4]};
   }
-  //console.log(loc);
   return loc;
 };
 
@@ -96,7 +84,6 @@ exports.shortcodify = function shortcodify(data, body, req_params, cb) {
         opts.days = opts.day.split(",");
         opts.day = undefined;
       }
-      console.log(__dirname);
       var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body.advanced.programmebydayvenue});      
     }
     if (opts.view === "performers") {
@@ -106,9 +93,6 @@ exports.shortcodify = function shortcodify(data, body, req_params, cb) {
       var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body});      
     }
     if (opts.view === "gallery") {
-      console.log(opts);
-      console.log(req_params);
-      console.log(body);
       var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body});      
     }
     return html;
@@ -118,9 +102,11 @@ exports.shortcodify = function shortcodify(data, body, req_params, cb) {
   console.log(out); */
   if (data.post_content_original) data.post_content = shortcode.parse(data.post_content_original.replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view="));
   for (item in data.grid) {
-    //console.log(data.grid[item].boxoriginal);
     for (item2 in data.grid[item]) {
-      if (data.grid[item][item2].boxoriginal) data.grid[item][item2].box = shortcode.parse(data.grid[item][item2].boxoriginal.replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view="));
+      if (data.grid[item][item2].boxoriginal) {
+        let str = data.grid[item][item2].boxoriginal.replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view=").replace("avnode", "avnode cols='"+data.grid[item].length+"'");
+        data.grid[item][item2].box = shortcode.parse(str);
+      }
     }  
   }
 
@@ -139,11 +125,15 @@ exports.getGrid = function getGrid(data) {
     while (row<rowsN) {
       grid[row] = [];
       while (col<columnsN) {
-        grid[row][col] = {};
-        grid[row][col].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
-        grid[row][col].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
-        grid[row][col].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
-        grid[row][col].boxoriginal = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box-original'];
+        //console.log("stocazzo"+data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title']+"stocazzo");
+        //console.log("stocazzo "+row + "-"+col+" stocazzo");
+        if (data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title']) {
+          grid[row][col] = {};
+          grid[row][col].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
+          grid[row][col].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
+          grid[row][col].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
+          grid[row][col].boxoriginal = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box-original'];
+        }
         col++;
       }
       col=0;
@@ -153,36 +143,33 @@ exports.getGrid = function getGrid(data) {
     while (col<columnsN) {
       grid[col] = [];
       while (row<rowsN) {
-        grid[col][row] = {};
-        grid[col][row].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
-        grid[col][row].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
-        grid[col][row].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
-        grid[col][row].boxoriginal = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box-original'];
-       row++;
+        if (data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title']) {
+
+          grid[col][row] = {};
+          grid[col][row].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
+          grid[col][row].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
+          grid[col][row].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
+          grid[col][row].boxoriginal = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box-original'];
+        }
+        row++;
       }
       row=0;
       col++;
     }
   }
-  //console.log(grid);
+  console.log(grid);
   return grid;
 };
 exports.get_video = function get_video( url ) {
   var v = {};
   var yts;
-  //console.log(url);
   if (url.indexOf("vimeo.com/")>0) {
-    //console.log("stocazzo 1");
     yts = url.substring(url.indexOf("video/")+6);
-    //console.log(yts);
-    //v.embed = "//player.vimeo.com/video/"+url.substring(url.indexOf("vimeo.com/")+10);
     v.embed = "//player.vimeo.com/video/"+yts;
     v.thumb = "http://vimeo.com/api/v2/video/"+yts+".json";
   } else if (url.indexOf("youtube.com/")>0) {
     //var yts = url.substring(url.indexOf("watch?v=")+8);
-    //console.log("stocazzo 2");
     yts = url.substring(url.indexOf("embed/")+6);
-    //console.log(yts);
     v.embed = "//www.youtube.com/embed/"+yts;
     v.thumb = "//img.youtube.com/vi/"+yts+"/maxresdefault.jpg";
   }
