@@ -93,15 +93,7 @@ module.exports = function(app) {
   app.get('/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
-  app.get('/dev/', devsRoutes.getAll);
-  app.get('/dev/(:dev)', devsRoutes.get);
-  app.get('/dev/(:dev)/artists', devsRoutes.getArtist);
-  app.get('/dev/(:dev)/artists/(:artist)', devsRoutes.getArtist);
-  app.get('/dev/(:dev)/artists/(:artist)/performances/(:performance)', devsRoutes.getArtist);
-  app.get('/dev/(:dev)/gallery/(:artist)/gallery/(:gallery)', devsRoutes.getGallery);
-  app.get('/dev/(:dev)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', devsRoutes.getGallery);
-  app.get('/dev/(:dev)/(:subdev)', devsRoutes.get);
-  app.get('/dev/(:dev)/(:subdev)/(:subsubdev)', devsRoutes.get);
+
   app.get('/gallery', pagesRoutes.getGallery);
   app.get('/gallery/(:artist)/(:gallery)', pagesRoutes.getGallery);
   app.get('/gallery/(:artist)/(:gallery)/(:galleryitem)', pagesRoutes.getGallery);
