@@ -10,8 +10,7 @@ exports.get = function get(req, res) {
       var rientro = req.url.indexOf("/program/")>0;
       //console.logconsole.log("rientro");
       var page_data = fnz.setPageData(req, result);
-      console.log("result");
-      console.log(req.params.subedition);
+      //console.log("result");
       if (result.post_title) {
         let template;
         if (req.params.performance) {
@@ -34,7 +33,6 @@ exports.getArtist = function getArtist(req, res) {
     helpers.getEditionArtist(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
       if (result.post_content.indexOf(">ERROR<")===-1) {
-        console.log(result);
         res.render(config.prefix+'/'+'edition_artists', {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});

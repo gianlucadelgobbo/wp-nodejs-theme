@@ -1,9 +1,6 @@
 extends layout
 block content
   - var itemtype
-  - //console.log("indexOf")
-  - //console.log(page_data.url.indexOf("/artists/"))
-  - //console.log(page_data.url.length-9)
   - if (page_data.url.indexOf("/performances/")>0) {
   -    itemtype = 'http://schema.org/CreativeWork'
   - } else if (page_data.url.indexOf("/artists/")<page_data.url.length-9) {
@@ -88,15 +85,3 @@ block content
 
     if result.post_content
       !=result.post_content
-      //section.row.performers_event_wrapper
-        .col-lg-12
-          h3.performers_infos
-            b=result.data.advanced.performers.performersN
-            !=" "+global.__('performers')+" ("+result.data.advanced.performers.performersCount + " " + global.__('performers') +") "
-            !=global.__('from') + " " + result.data.advanced.performers.countries.join(', ')+ " " + global.__('playing')+ " "
-            b=result.data.advanced.performers.actsN
-            !=" " + result.data.advanced.performers.acts.join(', ') + "."      
-          .row
-            each item, i in result.data.advanced.performers.performers
-              .col-sm-4
-                include ../partials/boxPerformerEvent

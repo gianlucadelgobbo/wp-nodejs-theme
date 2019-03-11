@@ -3,20 +3,44 @@ var fnz = require('../../functions');
 
 var sez = config.sez.exhibitions;
 
-exports.getFotonica = function getFotonica(req, res) {
-  res.render(config.prefix+'/'+'exihibition_local', {result: {}, page_data:{}, sessions:req.session.sessions, include_gallery:false});
-};
-
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     //console.log("result._post_template");
     helpers.getExhibition(req, function( result ) {
-      //console.log("result._post_template2");
+      var rientro = req.url.indexOf("/program/")>0;
+      //console.log("rientro");
       var page_data = fnz.setPageData(req, result);
-      res.render(config.prefix+'/'+'exhibition', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+      //console.log(result);
+      if (result.post_title) {
+        let template;
+        if (req.params.performance) {
+          template = config.prefix+'/'+'exhibition_detail';
+        } else if (req.params.subedition == "gallery") {
+          template = config.prefix+'/'+'exhibition_free';
+        } else {
+          template = config.prefix+'/'+'exhibition';
+        }
+        res.render(template, {result: result, page_data:page_data, sessions:req.session.sessions,rientro:rientro});
+      } else {
+        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+      }
     });
   });
 };
+
+exports.getArtist = function getArtist(req, res) {
+  helpers.setSessions(req, function() {
+    helpers.getExhibitionArtist(req, function( result ) {
+      var page_data = fnz.setPageData(req, result);
+      if (result.post_content.indexOf(">ERROR<")===-1) {
+        res.render(config.prefix+'/'+'exhibition_artists', {result: result, page_data:page_data, sessions:req.session.sessions});
+      } else {
+        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+      }
+    });
+  });
+};
+
 
 exports.getAll = function getAll(req, res) {
   helpers.setSessions(req, function() {
@@ -30,14 +54,10 @@ exports.getAll = function getAll(req, res) {
   });
 };
 
-exports.getArtist = function getArtist(req, res) {
-  helpers.setSessions(req, function() {
-    helpers.getExhibitionArtist(req, function( result ) {
-      var page_data = fnz.setPageData(req, result);
-      res.render(config.prefix+'/'+'exhibition_artists', {result: result, page_data:page_data, sessions:req.session.sessions});
-    });
-  });
+exports.getFotonica = function getFotonica(req, res) {
+  res.render(config.prefix+'/'+'exihibition_local', {result: {}, page_data:{}, sessions:req.session.sessions, include_gallery:false});
 };
+
 /*
 
 exports.getGallery = function getGallery(req, res) {

@@ -10,15 +10,17 @@ exports.get = function get(req, res) {
       var rientro = req.url.indexOf("/program/")>0;
       //console.log("rientro");
       var page_data = fnz.setPageData(req, result);
-      for (var item in result.grid) {
-        for (var item2 in result.grid[item]) {
-          result.grid[item][item2].box = result.grid[item][item2].box.replace(new RegExp('"/editions', 'g'), '"/en/editions');
-          result.grid[item][item2].box = result.grid[item][item2].box.replace(new RegExp('"/it/editions', 'g'), '"/editions');
-          //console.log(result.grid[item][item2].box);
-        }
-      }
+      //console.log(result);
       if (result.post_title) {
-        res.render(config.prefix+'/'+'edition'+(req.url.indexOf("/gallery/")>0 ? "_artists" : ""), {result: result, page_data:page_data, sessions:req.session.sessions,rientro:rientro});
+        let template;
+        if (req.params.performance) {
+          template = config.prefix+'/'+'edition_detail';
+        } else if (req.params.subedition == "gallery") {
+          template = config.prefix+'/'+'edition_free';
+        } else {
+          template = config.prefix+'/'+'edition';
+        }
+        res.render(template, {result: result, page_data:page_data, sessions:req.session.sessions,rientro:rientro});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }
@@ -45,7 +47,8 @@ exports.getGallery = function getGallery(req, res) {
       var page_data = fnz.setPageData(req, result);
       if (result.post_content.indexOf(">ERROR<")===-1) {
         result.post_content = result.post_content.replace(new RegExp('itemprop="url" href="/', 'g'), 'itemprop="url" href="'+config.domain+"/");
-        res.render(config.prefix+'/'+'edition_artists', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+        result.grid = [[{tit: 'Gallery', stit: null, box: result.post_content.replace(new RegExp('itemprop="url" href="/', 'g'), 'itemprop="url" href="'+config.domain+"/")}]];
+        res.render(config.prefix+'/'+'edition', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }
@@ -103,7 +106,6 @@ exports.getMeta = function getMeta(req, res) {
       }
     }
   });
-
 };
 //select * from flyer_wp_20_terms,flyer_wp_20_term_relationships,flyer_wp_20_term_taxonomy where flyer_wp_20_term_taxonomy.term_taxonomy_id=flyer_wp_20_term_relationships.term_taxonomy_id and flyer_wp_20_term_taxonomy.term_id=flyer_wp_20_terms.term_id and  flyer_wp_20_term_relationships.object_id =49197;
 //wp.taxonomies().taxonomy( 'author' ).terms().get(function( err2, data2 ) {
