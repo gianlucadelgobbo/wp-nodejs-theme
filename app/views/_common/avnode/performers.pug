@@ -1,0 +1,34 @@
+//pre=JSON.stringify(opts, null, 2)
+//pre=JSON.stringify(body, null, 2)
+//pre=JSON.stringify(data, null, 2)
+.container
+  section.row.performers_event_wrapper
+    .col-lg-12
+      h2.main_title.indented_title.color1!=global.__('Performers')+" <small>("+body.performersN+")</small>"
+      h3.performers_infos
+        b=body.performersN
+        !=" "+global.__('performers')+" ("+body.performersCount + " " + global.__('performers') +") "
+        !=global.__('from') + " " + body.countries.join(', ')+ " " + global.__('playing')+ " "
+        b=body.actsN
+        !=" " + body.acts.join(', ') + "."      
+      .row.lists
+        each item, i in body.performers
+          .col-sm-3
+            .itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+              meta(itemprop='position', content=i)
+              div(itemprop='item', itemscope='', itemtype='http://schema.org/Person')
+                div
+                  a(itemprop='url', href='/editions/'+req_params.edition+"/artists/"+item.slug+"/", title=item.stagename)
+                    img.img-responsive(itemprop='image', src=item.imageFormats.small, alt=item.stagename)
+                .caption
+                  .caption-body
+                    h2.caption-title(itemprop='name')=item.stagename
+                    .caption-location-artists
+                      each address in item.addresses
+                        span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                          span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                            b(itemprop='addressCountry')=address.country
+                            | , 
+                            span(itemprop='addressLocality')=address.locality
+
+                          //include ../partials/boxPerformerEvent

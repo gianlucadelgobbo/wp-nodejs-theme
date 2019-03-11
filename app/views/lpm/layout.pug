@@ -84,9 +84,10 @@ html(lang='en')
         header
           .row
             .col-md-6
-              .h1
-                !=result && result.post_title ? result.post_title : config.project_name
-                include ../_common/inc_share_span
+              if result
+                .h1
+                  !=result.avnode && result.avnode.performance && result.avnode.performance.title ? result.avnode.performance.type.name+" | "+result.avnode.performance.title : result.avnode && result.avnode.performer && result.avnode.performer.stagename ? global.__("Artists")+" | "+result.avnode.performer.stagename : result.post_title ? result.post_title : config.project_name
+                  include ../_common/inc_share_span
             .col-md-6(itemscope, itemtype='http://schema.org/Event')
               .event-card
                 .hidden(itemprop='name')!=config.project_name+" "+config.meta.editions[sessions.current_edition]['title']

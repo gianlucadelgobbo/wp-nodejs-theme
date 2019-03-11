@@ -50,3 +50,26 @@ block content
 
 
     include ../_common/inc_grid
+
+
+  //if result.data.advanced.programmebydayvenue
+    .program_event_wrapper_bkg
+      section.row.program_event_wrapper
+          .col-lg-12
+            .container
+              h2.main_title.indented_title.color1!=global.__('Program')
+              - addtit = false;
+              each day, index in result.data.advanced.programmebydayvenue
+                if result.data.advanced.programmebydayvenue[index+1] && JSON.stringify(result.data.advanced.programmebydayvenue[index].rooms) == JSON.stringify(result.data.advanced.programmebydayvenue[index+1].rooms)
+                  - if (!addtit) titstart = day.date
+                  - addtit = true;
+                else
+                  h3.date_schedule_title=addtit ? titstart+" // "+day.date : day.date
+                  - addtit = false;
+                  .data_program_divider
+                  each venueroom in day.rooms              
+                    h4.program_category_title=venueroom.venue+" // "+venueroom.room                      
+                    .owl-carousel.loop.owl-theme
+                      if venueroom.performances
+                        each item in venueroom.performances
+                          include ../partials/boxPerformanceScheduled

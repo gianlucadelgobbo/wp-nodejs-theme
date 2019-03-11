@@ -1,0 +1,36 @@
+//pre=JSON.stringify(opts, null, 2)
+//pre=JSON.stringify(body, null, 2)
+//pre=JSON.stringify(data, null, 2)
+if opts.params
+  each day in body
+    if opts.days.indexOf(day.day)!=-1
+      ul.lists
+        each room in day.rooms
+          if opts.rooms.indexOf(room.room)!=-1
+            each performance in room.performances
+              if opts.params.indexOf(performance.performance.type.name)!=-1
+                //pre=JSON.stringify(performance, null, 2)
+                li.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+                  div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+                    a(itemprop='url', href='/editions/'+req_params.edition+'/program/detail/'+performance.performance.slug+'/', title=performance.performance.title)
+                      img.img-responsive(itemprop='image', src=performance.performance.imageFormats.small, alt=performance.performance.title)
+                    .caption
+                      .caption-time.schedule
+                        span.hide(itemprop='datePublished')=""
+                        span.stit=performance.schedule.starttimeTime+" > "+performance.schedule.endtimeTime
+                      .caption-body
+                        h2.caption-title(itemprop='name')=performance.performance.title
+                        each user in performance.performance.users
+                          .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+                            b(itemprop='name')=user.stagename
+                            span.caption-location.caption-location-block
+                              span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                                span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                                  b(itemprop='addressCountry')=user.addresses[0].country
+                                  !=", " 
+                                  span(itemprop='addressLocality')=user.addresses[0].locality
+                      .caption-type
+                        .caption-type-cnt
+                          span.glyphicon.glyphicon-eye-open
+                          !=" "+performance.performance.stats.visits+" | "+performance.performance.type.name
+

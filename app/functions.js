@@ -23,6 +23,7 @@ exports.setPageData = function setPageData(req, result) {
   //console.log(baseurl);
   //console.log(req.url);
   var page_data = {
+    edition: req.params.edition,
     url:req.url,
     langSwitcher: {
       "it": (config.default_lang!="it" ? '/it' + baseurl : baseurl),
@@ -30,7 +31,7 @@ exports.setPageData = function setPageData(req, result) {
     }
   };
   if(result && result['ID']) {
-    var title = (result.post_title ? result.post_title+(req.params.tag ? " #"+req.params.tag : "")+" | " : "");
+    var title = (result.post_title ? result.post_title+(result.avnode && result.avnode.performance && result.avnode.performance.title ? ": "+result.avnode.performance.title : "")+(req.params.tag ? " #"+req.params.tag : "")+" | " : "");
     if (title && dett && req.session.sessions.current_lang != config.default_lang) title+=req.session.sessions.current_lang.toUpperCase()+" | ";
     title+=config.project_name;
     if (title==config.project_name && config.meta.headline) title+=(config.meta.headline ? " | "+config.meta.headline[req.session.sessions.current_lang] : "");
@@ -71,6 +72,61 @@ exports.formatLocation = function formatLocation(l) {
   return loc;
 };
 
+exports.shortcodify = function shortcodify(data, body, req_params, cb) {
+  var shortcode = require('shortcode-parser');
+  var jade = require("pug");
+  shortcode.add('avnode', function(buf, opts) {
+    if (opts.view === "performances") {
+      /* if (strpos($shortcode_atts['source'], "flxer.net")>0) {
+        $sourceA = explode("/",str_replace(array("flxer.net/api"), array("api.avnode.net"), $shortcode_atts['source']));
+        $shortcode_atts['source'] = "https://".$sourceA[2]."/".$sourceA[4]."/".$sourceA[5]."/";
+        if (!in_array($shortcode_atts['source'], $sources)) $sources[] = $shortcode_atts['source'];
+      } */
+      if (opts.days) {
+        opts.days = opts.days.split(",");
+      }
+      if (opts.params) {
+        opts.params = opts.params.split(",");
+      }
+      if (opts.room) {
+        opts.rooms = opts.room.split(",");
+        opts.room = undefined;
+      }
+      if (opts.day) {
+        opts.days = opts.day.split(",");
+        opts.day = undefined;
+      }
+      console.log(__dirname);
+      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body.advanced.programmebydayvenue});      
+    }
+    if (opts.view === "performers") {
+      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body.advanced.performers});      
+    }
+    if (opts.view === "partners") {
+      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body});      
+    }
+    if (opts.view === "gallery") {
+      console.log(opts);
+      console.log(req_params);
+      console.log(body);
+      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body});      
+    }
+    return html;
+  });
+  /* var str = "aaa [avnode source='https://flxer.net/api/lpm-team/events/lpm-2018-rome/' view=performances filter=keyword params='Workshop' room='Classroom 1' days=2018-06-08] aaa [avnode source='https://flxer.net/api/lpm-team/events/lpm-2018-rome/' view=performances filter=keyword params='Workshop' room='Classroom 2' days=2018-06-08] bbb";
+  var out = shortcode.parse(str);
+  console.log(out); */
+  if (data.post_content_original) data.post_content = shortcode.parse(data.post_content_original.replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view="));
+  for (item in data.grid) {
+    //console.log(data.grid[item].boxoriginal);
+    for (item2 in data.grid[item]) {
+      if (data.grid[item][item2].boxoriginal) data.grid[item][item2].box = shortcode.parse(data.grid[item][item2].boxoriginal.replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view="));
+    }  
+  }
+
+  cb(data);
+};
+
 exports.getGrid = function getGrid(data) {
   var row=0;
   var col=0;
@@ -87,6 +143,7 @@ exports.getGrid = function getGrid(data) {
         grid[row][col].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
         grid[row][col].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
         grid[row][col].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
+        grid[row][col].boxoriginal = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box-original'];
         col++;
       }
       col=0;
@@ -100,7 +157,8 @@ exports.getGrid = function getGrid(data) {
         grid[col][row].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
         grid[col][row].stit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-subtitle'];
         grid[col][row].box = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box'];
-        row++;
+        grid[col][row].boxoriginal = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-html-box-original'];
+       row++;
       }
       row=0;
       col++;
