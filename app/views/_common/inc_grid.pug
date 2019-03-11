@@ -11,10 +11,10 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
         .row
           - var conta = 0
           each col in row
-            - if (col.tit) conta++
+            - if (col && col.tit) conta++
           - var span = 12/conta
           each col in row
-            if col.tit && col.tit!="."
+            if col && col.tit && col.tit!="."
               div(class="col-sm-"+span, itemprop=col.box && col.box.indexOf("itemListElement")>0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement")>0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement")>0 ? "http://schema.org/ItemList" : undefined)
                 h3.grid-title(itemprop="name")!=col.tit+(col.stit ? "<br /><small>"+col.stit+"</small>" : "")
                 if col.box.indexOf("itemListElement")>0
