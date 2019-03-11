@@ -33,8 +33,6 @@ block content
       else if (result.post_content.indexOf('<p class="type">Workshop</p>') == -1)
         .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/participate/as-visitor/\">BUY A TICKET</a>"
 
-    if result.avnode && result.avnode.galleries
-      !="aaaa"
     if result.avnode && result.avnode.performer
       .row.artist-dett
         .col-sm-9
@@ -88,8 +86,9 @@ block content
                           !=" | "
                           !=schedule.boxDate+" > "+schedule.endtimeTime
 
-    if result.data && result.data.advanced && result.data.advanced.performers
-      section.row.performers_event_wrapper
+    if result.post_content
+      !=result.post_content
+      //section.row.performers_event_wrapper
         .col-lg-12
           h3.performers_infos
             b=result.data.advanced.performers.performersN

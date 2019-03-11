@@ -100,11 +100,11 @@ exports.shortcodify = function shortcodify(data, body, req_params, cb) {
   /* var str = "aaa [avnode source='https://flxer.net/api/lpm-team/events/lpm-2018-rome/' view=performances filter=keyword params='Workshop' room='Classroom 1' days=2018-06-08] aaa [avnode source='https://flxer.net/api/lpm-team/events/lpm-2018-rome/' view=performances filter=keyword params='Workshop' room='Classroom 2' days=2018-06-08] bbb";
   var out = shortcode.parse(str);
   console.log(out); */
-  if (data.post_content_original) data.post_content = shortcode.parse(data.post_content_original.replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view="));
+  if (data.post_content_original) data.post_content = shortcode.parse(data.post_content_original.replace("<p>[","[").replace("]</p>","]").replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view="));
   for (item in data.grid) {
     for (item2 in data.grid[item]) {
       if (data.grid[item][item2].boxoriginal) {
-        let str = data.grid[item][item2].boxoriginal.replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view=").replace("avnode", "avnode cols='"+data.grid[item].length+"'");
+        let str = data.grid[item][item2].boxoriginal.replace("<p>[","[").replace("]</p>","]").replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view=").replace("avnode", "avnode cols='"+data.grid[item].length+"'");
         data.grid[item][item2].box = shortcode.parse(str);
       }
     }  
