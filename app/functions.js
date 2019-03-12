@@ -160,7 +160,6 @@ exports.getGrid = function getGrid(data) {
       col++;
     }
   }
-  console.log(grid);
   return grid;
 };
 exports.get_video = function get_video( url ) {

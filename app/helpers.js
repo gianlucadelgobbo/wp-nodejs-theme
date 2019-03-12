@@ -726,8 +726,8 @@ exports.getAllEditionsByYear = function getAllEditionsByYear(req, years, limit, 
 };
 
 exports.getEdition = function getEdition(req,callback) {
-  console.log("stocazzo");
-  console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+"/"+req.params.subedition+"/"+req.params.subsubedition);
+  //console.log("stocazzo");
+  //console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+"/"+req.params.subedition+"/"+req.params.subsubedition);
   //console.log("https://api.avnode.net/events/"+config.prefix+'-'+req.params.edition+"/"+req.params.subedition+"/type/"+req.params.subsubedition);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   if (req.params.image) {
@@ -759,7 +759,7 @@ exports.getEdition = function getEdition(req,callback) {
     //console.log("req.params.subsubedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
-      console.log("//// SubSubEdition");
+      //console.log("//// SubSubEdition");
       if (req.params.subedition == "gallery") data['sources'] = ["https://api.avnode.net/galleries/"+req.params.subsubedition];
       if (req.params.subedition == "videos") data['sources'] = ["https://api.avnode.net/videos/"+req.params.subsubedition];
       //console.log(data['sources']);
@@ -768,7 +768,7 @@ exports.getEdition = function getEdition(req,callback) {
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       //console.log("stocazzo");
       if (data['sources']) {
-        console.log(data['sources'][0]);
+        //console.log(data['sources'][0]);
         request({
           url: data['sources'][0],
           json: true
@@ -786,11 +786,11 @@ exports.getEdition = function getEdition(req,callback) {
     //console.log("req.params.subedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
-      console.log("//// SubEditionnnnnn");
+      //console.log("//// SubEditionnnnnn");
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       if (data['sources']) {
-        console.log(data['sources'][0]);
+        //console.log(data['sources'][0]);
         request({
           url: data['sources'][0],
           json: true
@@ -811,8 +811,9 @@ exports.getEdition = function getEdition(req,callback) {
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       //console.log('https://api.avnode.net/events/'+req.params.edition+'/program/'+req.params.performance+'/');
+      //console.log(data['sources'][0]);
       request({
-        url: 'https://api.avnode.net/events/'+config.prefix+'-'+req.params.edition+'/program/'+req.params.performance+'/',
+        url: data['sources'][0]+req.params.performance+'/',
         json: true
       }, function(error, response, body) {
         data.avnode = body;
@@ -847,14 +848,14 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
     });
   } else if (req.params.artist) {
     //console.log("req.params.artist");
-    //console.log(config.data_domain+'/wp-json/wp/v2/artists/'+config.prefix+'/'+req.params.edition+"/artists/"+req.params.artist);
-    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/artists/(?P<edition>)/(?P<subedition>)/(?P<artist>)' );
-    wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition("artists").artist(req.params.artist).get(function( err, data ) {
+    //console.log(config.data_domain+'/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+"/artists/");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
+    wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition("artists").get(function( err, data ) {
       //console.log("//// Artist");
-      //console.log(wp.myCustomResource);
+      //console.log(data['sources'][0]);
       //console.log('https://api.avnode.net/events/'+req.params.edition+'/performers/'+req.params.artist+'/');
       request({
-        url: 'https://api.avnode.net/events/'+config.prefix+'-'+req.params.edition+'/performers/'+req.params.artist+'/',
+        url: data['sources'][0]+req.params.artist+'/',
         json: true
       }, function(error, response, body) {
         data.avnode = body;
