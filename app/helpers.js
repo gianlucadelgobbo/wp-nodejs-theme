@@ -726,8 +726,8 @@ exports.getAllEditionsByYear = function getAllEditionsByYear(req, years, limit, 
 };
 
 exports.getEdition = function getEdition(req,callback) {
-  //console.log("stocazzo");
-  //console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+"/"+req.params.subedition+"/"+req.params.subsubedition);
+  console.log("stocazzo");
+  console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+"/"+req.params.subedition+"/"+req.params.subsubedition);
   //console.log("https://api.avnode.net/events/"+config.prefix+'-'+req.params.edition+"/"+req.params.subedition+"/type/"+req.params.subsubedition);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   if (req.params.image) {
@@ -759,15 +759,16 @@ exports.getEdition = function getEdition(req,callback) {
     //console.log("req.params.subsubedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)/(?P<subsubedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition(req.params.subedition).subsubedition(req.params.subsubedition).get(function( err, data ) {
-      //console.log("//// SubSubEdition");
+      console.log("//// SubSubEdition");
       if (req.params.subedition == "gallery") data['sources'] = ["https://api.avnode.net/galleries/"+req.params.subsubedition];
+      if (req.params.subedition == "videos") data['sources'] = ["https://api.avnode.net/videos/"+req.params.subsubedition];
       //console.log(data['sources']);
       //console.log(err || data);
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       //console.log("stocazzo");
       if (data['sources']) {
-        //console.log(data['sources'][0]);
+        console.log(data['sources'][0]);
         request({
           url: data['sources'][0],
           json: true
@@ -785,11 +786,11 @@ exports.getEdition = function getEdition(req,callback) {
     //console.log("req.params.subedition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition(req.params.subedition).get(function( err, data ) {
-      //console.log("//// SubEditionnnnnn");
+      console.log("//// SubEditionnnnnn");
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       if (data['sources']) {
-        //console.log(data['sources'][0]);
+        console.log(data['sources'][0]);
         request({
           url: data['sources'][0],
           json: true

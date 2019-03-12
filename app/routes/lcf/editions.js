@@ -5,17 +5,20 @@ var sez = config.sez.editions;
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
-    //console.log("result._post_template");
+    console.log("result._post_template");
     helpers.getEdition(req, function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
       //console.log("rientro");
       var page_data = fnz.setPageData(req, result);
-      //console.log(result);
+      console.log("result");
+      console.log(result);
       if (result.post_title) {
         let template;
         if (req.params.performance) {
           template = config.prefix+'/'+'edition_detail';
         } else if (req.params.subedition == "gallery") {
+          template = config.prefix+'/'+'edition_free';
+        } else if (req.params.subedition == "videos") {
           template = config.prefix+'/'+'edition_free';
         } else {
           template = config.prefix+'/'+'edition';

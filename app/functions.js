@@ -95,6 +95,9 @@ exports.shortcodify = function shortcodify(data, body, req_params, cb) {
     if (opts.view === "gallery") {
       var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body});      
     }
+    if (opts.view === "videos") {
+      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body});      
+    }
     return html;
   });
   /* var str = "aaa [avnode source='https://flxer.net/api/lpm-team/events/lpm-2018-rome/' view=performances filter=keyword params='Workshop' room='Classroom 1' days=2018-06-08] aaa [avnode source='https://flxer.net/api/lpm-team/events/lpm-2018-rome/' view=performances filter=keyword params='Workshop' room='Classroom 2' days=2018-06-08] bbb";

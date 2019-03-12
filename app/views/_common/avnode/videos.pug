@@ -1,0 +1,42 @@
+if body.videos && body.videos.length
+  ul#listItems.row
+    each item, i in body.videos
+      li.col-xl-2.col-sm-3(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+        meta(itemprop='position', content=i)
+        div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+          a(itemprop='url', href="/editions/"+req_params.edition+"/gallery/"+item.slug+"/", title=item.title)
+            img.img-responsive(itemprop='image', src=item.imageFormats.small, alt=item.title)
+          p
+          .caption(style='padding-right:15px;padding-left:15px;')
+            .caption-body
+              h2.caption-title(itemprop='name')=item.title
+              each user in item.users
+                .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+                  b(itemprop='name')=user.stagename
+                  br
+              !="img: "+item.stats.img
+
+if body.media && body.media.file
+  .container
+    .row
+      .col-md-8
+        .embed-responsive.embed-responsive-16by9
+          video.embed-responsive-item#my-video.video-js(controls='', preload='auto', width='640', height='264', poster=body.imageFormats.large, data-setup='{aspectRatio:"16:9", fluid: true}')
+            source(src="https://avnode.net"+body.media.file, type='video/mp4')
+            p.vjs-no-js
+              !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
+              a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
+if body.medias && body.medias.length
+  ul#listItems.row
+    each media, i in body.medias
+      li.col-xs-12.col-md-4.col-lg-3.col-xl-2.nggthumbnail(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+        meta(itemprop='position', content=i)
+        div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+          a.thumbnail(title=media.title, style='position:relative;', itemprop='url', href="/editions/"+req_params.edition+"/gallery/"+body.slug+"/"+media.slug+"/")
+            span.cntGallImgOver
+              img.cntGallImgImg(itemprop='image', src=media.imageFormats.small, alt=media.title)
+              img.gallType(src='/_images/over_img.png', alt=media.title)
+            span.cntDida(itemprop='name')=media.title
+          script.
+            if (typeof glink==='undefined') var glink = [];
+            glink.push(media.imageFormats.small);
