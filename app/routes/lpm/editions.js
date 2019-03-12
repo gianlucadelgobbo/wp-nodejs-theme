@@ -5,7 +5,7 @@ var sez = config.sez.editions;
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
-    //console.log//console.log("result._post_template");
+    //console.log("result._post_template");
     helpers.getEdition(req, function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
       //console.log("rientro");
@@ -72,7 +72,7 @@ exports.getAll = function getAll(req, res) {
 exports.getMeta = function getMeta(req, res) {
   helpers.setSessions(req, function() {
     var WPAPI = require( 'wpapi' );
-    //console.log//console.log("getMeta");
+    //console.log("getMeta");
     meta = {};
     conta = [];
     if (!req.query.generate){
@@ -80,18 +80,18 @@ exports.getMeta = function getMeta(req, res) {
     } else {
       getMetaSingle(config.editions[conta.length],req);
       function getMetaSingle(val,req) {
-        //console.log//console.log("getMetaSingle 1 "+val);
-      //console.log//console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
+        //console.log("getMetaSingle 1 "+val);
+      //console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
         var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
         wp.myCustomResource = wp.registerRoute( 'wp/v2', '/meta_data/(?P<sez>)/(?P<edition>)' );
         wp.myCustomResource().edition(config.prefix+'/'+val).sez("editions").get(function( err, data ) {
-          //console.log//console.log("getMetaSingle 2");
-          //console.log//console.log(data);
+          //console.log("getMetaSingle 2");
+          //console.log(data);
           meta[val] = data.meta.edition;
           conta.push(val);
-          //console.log//console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
-          //console.log//console.log(conta.length +" - "+editions.length);
-          //console.log//console.log(req.query.check);
+          //console.log('wp/v2/meta_data/editions/'+config.prefix+'/'+val);
+          //console.log(conta.length +" - "+editions.length);
+          //console.log(req.query.check);
           if (conta.length==config.editions.length) {
             if (req.query.check){
               res.render(config.prefix+"/meta_test", {meta:meta});
@@ -102,7 +102,7 @@ exports.getMeta = function getMeta(req, res) {
               });
             }
           } else {
-            //console.log//console.log("getMetaSingle 3 "+editions[conta.length]);
+            //console.log("getMetaSingle 3 "+editions[conta.length]);
             getMetaSingle(config.editions[conta.length],req);
           }
         });

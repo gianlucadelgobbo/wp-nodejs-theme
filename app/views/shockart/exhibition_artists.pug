@@ -52,11 +52,11 @@ block content
                 li.rientro(style='margin-bottom: 10px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
                   meta(itemprop='position', content=i)
                   div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-                    a(itemprop='url', href='/editions/'+req_params.edition+'/program/detail/'+performance.slug+"/", title=performance.title)
+                    a(itemprop='url', href='/exhibitions/'+req_params.exhibition+'/program/detail/'+performance.slug+"/", title=performance.title)
                       img.img-responsive(itemprop='image', src=performance.imageFormats.small, alt=performance.title)
                     p
                     h3(itemprop='name')
-                      a(href='/editions/'+req_params.edition+'/program/detail/'+performance.slug+"/", title=performance.title)!=performance.title
+                      a(href='/exhibitions/'+req_params.exhibition+'/program/detail/'+performance.slug+"/", title=performance.title)!=performance.title
                     //p.type=performance.type.name
                     each booking in performance.bookings
                       each schedule in booking.schedule
@@ -65,5 +65,5 @@ block content
                           !=" | "
                           !=schedule.boxDate+" > "+schedule.endtimeTime
 
-    if result.post_content
+    else if result.post_content
       !=result.post_content

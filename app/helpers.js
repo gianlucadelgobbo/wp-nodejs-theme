@@ -463,13 +463,20 @@ exports.getExhibition = function getExhibition(req,callback) {
       //console.log("//// SubExhibition ");
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-      callback(data);
+      request({
+        url: data['sources'][0]+req.params.performance+'/',
+        json: true
+      }, function(error, response, body) {
+        data.avnode = body;
+        callback(data);
+      });
     });
   } else {
     //console.log("req.params.exhibition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibitions/(?P<exhibition>)' );
     wp.myCustomResource().exhibition(req.params.exhibition).get(function( err, data ) {
-      //console.log("//// Exhibition ");
+      console.log("//// Exhibition ");
+      console.log(data);
       if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       callback(data);
@@ -496,14 +503,34 @@ exports.getExhibitionArtist = function getExhibitionArtist(req,callback) {
     wp.myCustomResource().exhibition(req.params.exhibition).subexhibition("artists").artist(req.params.artist).get(function( err, data ) {
       //console.log("//// Artist");
       //console.log(data);
-      callback(data);
+      request({
+        url: data['sources'][0]+req.params.artist+'/',
+        json: true
+      }, function(error, response, body) {
+        data.avnode = body;
+        callback(data);
+      });
     });
   } else {
     //console.log("req.params.subexhibition");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibitions/(?P<exhibition>)/(?P<subexhibition>)' );
     wp.myCustomResource().exhibition(req.params.exhibition).subexhibition("artists").get(function( err, data ) {
-      //console.log("//// SubExhibition Artists");
-      callback(data);
+      console.log("//// SubExhibition Artists");
+      console.log(data['sources']);
+      if (data['sources']) {
+        //console.log(data['sources'][0]);
+        request({
+          url: data['sources'][0],
+          json: true
+        }, function(error, response, body) {
+          //console.log(body);
+          fnz.shortcodify(data, body, req.params, data =>{
+            callback(data);
+          });
+        });
+      } else {
+        callback(data);
+      }
     });
   }
 };
