@@ -8,10 +8,7 @@ exports.get = function get(req, res) {
     //console.logconsole.log("result._post_template");
     helpers.getEdition(req, function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
-      console.log("rientro");
       var page_data = fnz.setPageData(req, result);
-      console.log("result");
-      console.log(result);
       if (result.post_title) {
         let template;
         if (req.params.performance) {

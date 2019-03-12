@@ -48,7 +48,7 @@ block content
                         meta(itemprop='position', content=index)
                         div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
                           a(itemprop='url', href='/editions/'+page_data.edition+'/videos/'+video.slug+'/', title=video.title)
-                            img.img-responsive(itemprop='image', src=video.imageFormats.small, alt=video.title)
+                            img.img-responsive(itemprop='image', src="http://avnode.net"+video.imageFormats.small, alt=video.title)
                           p
                           .caption(style='padding-right:15px;padding-left:15px;')
                             .caption-body
