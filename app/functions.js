@@ -74,14 +74,28 @@ exports.shortcodify = function shortcodify(data, body, req_params, cb) {
         opts.days = opts.days.split(",");
       }
       if (opts.params) {
-        opts.params = opts.params.split(",");
+        let paramsA = opts.params.split(",").map(function(item) {
+          return item.trim();
+        });
+        let paramsAA = [];
+        for (var item in paramsA) {
+          if (paramsA[item]=="VJ SET") paramsAA.push("VJ Set")
+          else if (paramsA[item]=="DJ SET") paramsAA.push("DJ Set")
+          else if (paramsA[item]=="Video Installation") paramsAA.push("AV Installation")
+          else paramsAA.push(paramsA[item]);
+        }
+        opts.params = paramsAA;
       }
       if (opts.room) {
-        opts.rooms = opts.room.split(",");
+        opts.rooms = opts.room.split(",").map(function(item) {
+          return item.trim();
+        });
         opts.room = undefined;
       }
       if (opts.day) {
-        opts.days = opts.day.split(",");
+        opts.days = opts.day.split(",").map(function(item) {
+          return item.trim();
+        });
         opts.day = undefined;
       }
       var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body.advanced.programmebydayvenue});      

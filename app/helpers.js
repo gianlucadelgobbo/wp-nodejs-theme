@@ -755,7 +755,6 @@ exports.getAllEditionsByYear = function getAllEditionsByYear(req, years, limit, 
 exports.getEdition = function getEdition(req,callback) {
   //console.log("stocazzo");
   //console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+"/"+req.params.subedition+"/"+req.params.subsubedition);
-  //console.log("https://api.avnode.net/events/"+config.prefix+'-'+req.params.edition+"/"+req.params.subedition+"/type/"+req.params.subsubedition);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   if (req.params.image) {
     //console.log("req.params.subsubedition");
@@ -789,7 +788,7 @@ exports.getEdition = function getEdition(req,callback) {
       //console.log("//// SubSubEdition");
       if (req.params.subedition == "gallery") data['sources'] = ["https://api.avnode.net/galleries/"+req.params.subsubedition];
       if (req.params.subedition == "videos") data['sources'] = ["https://api.avnode.net/videos/"+req.params.subsubedition];
-      //console.log(data['sources']);
+      console.log(data['sources']);
       //console.log(err || data);
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
