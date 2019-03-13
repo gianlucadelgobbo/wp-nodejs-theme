@@ -830,21 +830,29 @@ exports.getEdition = function getEdition(req,callback) {
       }
     });
   } else if (req.params.performance) {
-    //console.log("req.params.subedition");
+    //console.log("req.params.performance");
     wp.myCustomResource = wp.registerRoute( 'wp/v2', '/editions/(?P<edition>)/(?P<subedition>)' );
     wp.myCustomResource().edition(config.prefix+'/'+req.params.edition).subedition("program").get(function( err, data ) {
       //console.log("//// SubEdition");
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       //console.log('https://api.avnode.net/events/'+req.params.edition+'/program/'+req.params.performance+'/');
-      //console.log(data['sources'][0]);
-      request({
-        url: data['sources'][0]+req.params.performance+'/',
-        json: true
-      }, function(error, response, body) {
-        data.avnode = body;
-        callback(data);
-      });
+      if (data['sources']) {
+        //console.log(data['sources'][0]);
+        request({
+          url: data['sources'][0]+req.params.performance+'/',
+          json: true
+        }, function(error, response, body) {
+          if (body.performance) {
+            data.avnode = body;
+            callback(data);
+          } else {
+            callback({});
+          }
+        });
+      } else {
+        callback({});
+      }
     });
   } else {
     //console.log("req.params.edition");
