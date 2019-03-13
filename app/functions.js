@@ -60,7 +60,7 @@ exports.formatLocation = function formatLocation(l) {
   return loc;
 };
 
-exports.shortcodify = function shortcodify(data, body, req_params, cb) {
+exports.shortcodify = function shortcodify(prefix, data, body, req_params, cb) {
   var shortcode = require('shortcode-parser');
   var jade = require("pug");
   shortcode.add('avnode', function(buf, opts) {
@@ -98,19 +98,19 @@ exports.shortcodify = function shortcodify(data, body, req_params, cb) {
         });
         opts.day = undefined;
       }
-      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body.advanced.programmebydayvenue});      
+      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body.advanced.programmebydayvenue});      
     }
     if (opts.view === "performers") {
-      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body.advanced.performers});      
+      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body.advanced.performers});      
     }
     if (opts.view === "partners") {
-      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
     }
     if (opts.view === "gallery") {
-      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
     }
     if (opts.view === "videos") {
-      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/views/_common/avnode/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
     }
     return html;
   });

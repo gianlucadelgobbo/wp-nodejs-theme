@@ -9,8 +9,6 @@ var pagesRoutes = require('./routes/_common/pages');
 var robotsRoutes = require('./routes/_common/robots');
 
 module.exports = function(app) {
-  //app.get('/exhibitions/fotonica', exhibitionsRoutes.getFotonica);
-  //app.get('/', function(req, res) {res.redirect(301, '/exhibitions/fotonica')});
   app.get('/*.php', pagesRoutes.get404);
   app.post('/*.php', pagesRoutes.get404);
 
@@ -38,7 +36,7 @@ module.exports = function(app) {
   app.get('/it/exhibitions/(:exhibition)', exhibitionsRoutes.get);
   app.get('/it/exhibitions/(:exhibition)/program/detail/(:performance)', exhibitionsRoutes.get);
   app.get('/it/exhibitions/(:exhibition)/artists', exhibitionsRoutes.getArtist);
-  app.get('/it/exhibitions/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);
+  //app.get('/it/exhibitions/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);
   app.get('/it/exhibitions/(:exhibition)/artists/(:artist)', exhibitionsRoutes.getArtist);
   app.get('/it/(:page)/', pagesRoutes.get);
   app.post('/it/(:page)', pagesRoutes.post);

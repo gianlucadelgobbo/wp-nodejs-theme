@@ -480,12 +480,12 @@ exports.getExhibition = function getExhibition(req,callback) {
       //if (data && data.ID) data = fnz.fixResult(data);
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       if (data['sources']) {
-        //console.log(data['sources'][0]);
+        console.log(data['sources'][0]);
         request({
           url: data['sources'][0]+req.params.performance+'/',
           json: true
         }, function(error, response, body) {
-          if (body.performance) {
+          if (body && body.performance) {
             data.avnode = body;
             callback(data);
           } else {
@@ -549,7 +549,7 @@ exports.getExhibitionArtist = function getExhibitionArtist(req,callback) {
           json: true
         }, function(error, response, body) {
           //console.log(body);
-          fnz.shortcodify(data, body, req.params, data =>{
+          fnz.shortcodify(config.prefix, data, body, req.params, data =>{
             callback(data);
           });
         });
@@ -798,7 +798,7 @@ exports.getEdition = function getEdition(req,callback) {
           url: data['sources'][0],
           json: true
         }, function(error, response, body) {
-          fnz.shortcodify(data, body, req.params, data =>{
+          fnz.shortcodify(config.prefix, data, body, req.params, data =>{
             callback(data);
           });
         });
@@ -824,7 +824,7 @@ exports.getEdition = function getEdition(req,callback) {
           url: data['sources'][0],
           json: true
         }, function(error, response, body) {
-          fnz.shortcodify(data, body, req.params, data =>{
+          fnz.shortcodify(config.prefix, data, body, req.params, data =>{
             callback(data);
           });
         });
@@ -846,7 +846,7 @@ exports.getEdition = function getEdition(req,callback) {
           url: data['sources'][0],
           json: true
         }, function(error, response, body) {
-          fnz.shortcodify(data, body, req.params, data =>{
+          fnz.shortcodify(config.prefix, data, body, req.params, data =>{
             callback(data);
           });
         });
@@ -933,7 +933,7 @@ exports.getEditionArtist = function getEditionArtist(req,callback) {
           json: true
         }, function(error, response, body) {
           //console.log(body);
-          fnz.shortcodify(data, body, req.params, data =>{
+          fnz.shortcodify(config.prefix, data, body, req.params, data =>{
             callback(data);
           });
         });

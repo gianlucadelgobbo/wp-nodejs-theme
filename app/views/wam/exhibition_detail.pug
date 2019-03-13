@@ -4,6 +4,7 @@ block content
     header
       h1.entry-title.hidden
     .row.performance-dett
+      - console.log(page_data)
       .col-sm-9
         .row
           .col-sm-3
@@ -31,7 +32,7 @@ block content
                       li.col-xl-2.col-sm-3(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
                         meta(itemprop='position', content=index)
                         div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-                          a(itemprop='url', href='/exhibitions/'+page_data.exhibition+'/gallery/'+gallery.slug+'/', title=gallery.title)
+                          a(itemprop='url', href='/prenatal/'+page_data.exhibition+'/gallery/'+gallery.slug+'/', title=gallery.title)
                             img.img-responsive(itemprop='image', src=gallery.imageFormats.small, alt=gallery.title)
                           p
                           .caption(style='padding-right:15px;padding-left:15px;')
@@ -47,7 +48,7 @@ block content
                       li.col-xl-2.col-sm-3(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
                         meta(itemprop='position', content=index)
                         div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-                          a(itemprop='url', href='/exhibitions/'+page_data.exhibition+'/videos/'+video.slug+'/', title=video.title)
+                          a(itemprop='url', href='/prenatal/'+page_data.exhibition+'/videos/'+video.slug+'/', title=video.title)
                             img.img-responsive(itemprop='image', src=video.imageFormats.small, alt=video.title)
                           p
                           .caption(style='padding-right:15px;padding-left:15px;')
@@ -63,11 +64,11 @@ block content
                 div(itemprop='item', itemscope='', itemtype='http://schema.org/Person')
                   .media
                     .media-left
-                      a.pull-left(itemprop='url', href='/exhibitions/'+page_data.exhibition+"/artists/"+user.slug, title=user.stagename)
+                      a.pull-left(itemprop='url', href='/prenatal/'+page_data.exhibition+"/artists/"+user.slug, title=user.stagename)
                         img.media-object(itemprop='image', src=user.imageFormats.small, alt=user.stagename)
                     .media-body
                       h2.media-heading(itemprop='name')
-                        a(href='/exhibitions/'+page_data.exhibition+"/artists/"+user.slug, title=user.stagename)=user.stagename
+                        a(href='/prenatal/'+page_data.exhibition+"/artists/"+user.slug, title=user.stagename)=user.stagename
                       p.stit
                         span.stit!=user.addressesFormatted
                         .hide

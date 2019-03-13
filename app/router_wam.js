@@ -34,8 +34,9 @@ module.exports = function(app) {
   app.get('/it/prenatal/', exhibitionsRoutes.getAll);
   app.get('/it/prenatal/page/(:page)', exhibitionsRoutes.getAll);
   app.get('/it/prenatal/(:exhibition)', exhibitionsRoutes.get);
+  app.get('/it/prenatal/(:exhibition)/program/detail/(:performance)', exhibitionsRoutes.get);
   app.get('/it/prenatal/(:exhibition)/artists', exhibitionsRoutes.getArtist);
-  app.get('/it/prenatal/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);
+  //app.get('/it/prenatal/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);
   app.get('/it/prenatal/(:exhibition)/artists/(:artist)', exhibitionsRoutes.getArtist);
   app.get('/it/(:page)/', pagesRoutes.get);
   app.post('/it/(:page)', pagesRoutes.post);
@@ -54,8 +55,9 @@ module.exports = function(app) {
   app.get('/prenatal/', exhibitionsRoutes.getAll);
   app.get('/prenatal/page/(:page)', exhibitionsRoutes.getAll);
   app.get('/prenatal/(:exhibition)', exhibitionsRoutes.get);
+  app.get('/prenatal/(:exhibition)/program/detail/(:performance)', exhibitionsRoutes.get);
   app.get('/prenatal/(:exhibition)/artists', exhibitionsRoutes.getArtist);
-  app.get('/prenatal/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);
+  //app.get('/prenatal/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);
   app.get('/prenatal/(:exhibition)/artists/(:artist)', exhibitionsRoutes.getArtist);
 
   app.get('/(:page)/', pagesRoutes.get);
