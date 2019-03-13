@@ -25,7 +25,7 @@ exports.getArtist = function getArtist(req, res) {
     helpers.getDevArtist(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
       if (result.post_content.indexOf(">ERROR<")===-1) {
-        res.render(config.prefix+'/'+'dev_artists', {result: result, page_data:page_data, sessions:req.session.sessions});
+        res.render(config.prefix+'/'+'dev_artists', {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }
@@ -39,7 +39,7 @@ exports.getGallery = function getGallery(req, res) {
       var page_data = fnz.setPageData(req, result);
       if (result.post_content.indexOf(">ERROR<")===-1) {
         result.post_content = result.post_content.replace(new RegExp('itemprop="url" href="/', 'g'), 'itemprop="url" href="'+config.domain+"/");
-        res.render(config.prefix+'/'+'dev_artists', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+        res.render(config.prefix+'/'+'dev_artists', {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }

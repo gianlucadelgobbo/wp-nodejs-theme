@@ -29,7 +29,7 @@ exports.getArtist = function getArtist(req, res) {
   helpers.setSessions(req, function() {
     helpers.getExhibitionArtist(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
-      res.render(config.prefix+'/'+'exhibition_artists', {result: result, page_data:page_data, sessions:req.session.sessions});
+      res.render(config.prefix+'/'+'exhibition_artists', {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions});
     });
   });
 };
@@ -40,7 +40,7 @@ exports.getGallery = function getGallery(req, res) {
     helpers.getExhibitionArtistGallery(req, function( result ) {
       //console.log(result._post_template);
       meta_data.title = (result.title ? result.title+ " | " : "") + config.project_name;
-      res.render(config.prefix+'/'+'exhibition_artists', {result: result, page_data:page_data, sessions:req.session.sessions});
+      res.render(config.prefix+'/'+'exhibition_artists', {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions});
     });
   });
 };
