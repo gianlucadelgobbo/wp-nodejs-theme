@@ -443,7 +443,8 @@ exports.getMemberActivity = function getMemberActivity(req,callback) {
 //////// EXHIBITIONS
 
 exports.getExhibition = function getExhibition(req,callback) {
-  //console.log(req.params.exhibition);
+  console.log(req.params);
+  console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/exhibitions/'+req.params.exhibition+"/"+req.params.subexhibition+"/"+req.params.subsubexhibition);
   //console.log(req.params.subexhibition);
   //console.log(req.params.subsubexhibition);
   var wp = new WPAPI({ endpoint: config.data_domain+'/wp-json' });
@@ -470,6 +471,30 @@ exports.getExhibition = function getExhibition(req,callback) {
         data.avnode = body;
         callback(data);
       });
+    });
+  } else if (req.params.performance) {
+    console.log("req.params.performance");
+    wp.myCustomResource = wp.registerRoute( 'wp/v2', '/exhibitions/(?P<exhibition>)/(?P<subexhibition>)' );
+    wp.myCustomResource().exhibition(req.params.exhibition).subexhibition("program").get(function( err, data ) {
+      console.log("//// Performance ");
+      //if (data && data.ID) data = fnz.fixResult(data);
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      if (data['sources']) {
+        //console.log(data['sources'][0]);
+        request({
+          url: data['sources'][0]+req.params.performance+'/',
+          json: true
+        }, function(error, response, body) {
+          if (body.performance) {
+            data.avnode = body;
+            callback(data);
+          } else {
+            callback({});
+          }
+        });
+      } else {
+        callback({});
+      }
     });
   } else {
     //console.log("req.params.exhibition");
