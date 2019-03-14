@@ -16,13 +16,15 @@ exports.setPageData = function setPageData(req, result) {
     baseurl = baseurl.replace("/"+config.locales[lang]+"/", "/");
   }
   var page_data = {
-    edition: req.params.edition,
     url:req.url,
     langSwitcher: {
       "it": (config.default_lang!="it" ? '/it' + baseurl : baseurl),
       "en": (config.default_lang!="en" ? '/en' + baseurl : baseurl)//,"en": (req.url.indexOf('/it/') === 0 ? req.url.substring(3) : req.url)
     }
   };
+  if (req.params.edition) page_data.edition = req.params.edition;
+  if (req.params.exhibition) page_data.exhibition = req.params.exhibition;
+
   if(result && result['ID']) {
     var title = (result.post_title ? result.post_title+(result.avnode && result.avnode.performance && result.avnode.performance.title ? ": "+result.avnode.performance.title : "")+(req.params.tag ? " #"+req.params.tag : "")+" | " : "");
     if (title && dett && req.session.sessions.current_lang != config.default_lang) title+=req.session.sessions.current_lang.toUpperCase()+" | ";

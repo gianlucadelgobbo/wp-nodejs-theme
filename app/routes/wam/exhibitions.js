@@ -35,6 +35,7 @@ exports.get = function get(req, res) {
 exports.getArtist = function getArtist(req, res) {
   helpers.setSessions(req, function() {
     helpers.getExhibitionArtist(req, function( result ) {
+      //console.log(result);
       var page_data = fnz.setPageData(req, result);
       if (result.post_content.indexOf(">ERROR<")===-1) {
         res.render(config.prefix+'/'+'exhibition_artists', {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions});

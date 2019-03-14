@@ -67,6 +67,8 @@ block content
                         img.media-object(itemprop='image', src=user.imageFormats.small, alt=user.stagename)
                     .media-body
                       h2.media-heading(itemprop='name')
+                        - console.log("req_params")
+                        - console.log(page_data)
                         a(href='/prenatal/'+page_data.exhibition+"/artists/"+user.slug, title=user.stagename)=user.stagename
                       p.stit
                         span.stit!=user.addressesFormatted

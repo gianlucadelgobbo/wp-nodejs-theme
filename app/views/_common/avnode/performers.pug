@@ -14,8 +14,6 @@
             meta(itemprop='position', content=i)
             div(itemprop='item', itemscope='', itemtype='http://schema.org/Person')
               div
-                - console.log("prefix")
-                - console.log(prefix)
                 - var url = req_params.edition ? '/editions/'+req_params.edition+"/artists/"+item.slug+"/" : prefix=="wam" ? '/prenatal/'+req_params.exhibition+"/artists/"+item.slug+"/" : '/exhibitions/'+req_params.exhibition+"/artists/"+item.slug+"/"
                 a(itemprop='url', href=url, title=item.stagename)
                   img.img-responsive(itemprop='image', src=item.imageFormats.large, alt=item.stagename, class=item.imageFormats.large.substring(item.imageFormats.large.lastIndexOf(".")+1))
