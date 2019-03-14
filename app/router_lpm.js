@@ -86,24 +86,19 @@ module.exports = function(app) {
   app.get('/editions/(:edition)', editionsRoutes.get);
   app.get('/editions/(:edition)/artists', editionsRoutes.getArtist);
   app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.getArtist);
-//  app.get('/editions/(:edition)/artists/(:artist)/performances/(:performance)', editionsRoutes.getArtist);
-//  app.get('/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)', editionsRoutes.getGallery);
-//  app.get('/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', editionsRoutes.getGallery);
   app.get('/editions/(:edition)/(:subedition)', editionsRoutes.get);
   app.get('/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
 
-  app.get('/gallery', pagesRoutes.getGallery);
-  app.get('/gallery/(:artist)/(:gallery)', pagesRoutes.getGallery);
-  app.get('/gallery/(:artist)/(:gallery)/(:galleryitem)', pagesRoutes.getGallery);
   app.get('/timeline', timelinemapRoutes.getTimeline);
   app.get('/timeline/(:year)/', timelinemapRoutes.getTimeline);
   app.get('/map', timelinemapRoutes.getMap);
-  //app.get('/map/(:year)/', timelinemapRoutes.getTimeline);
-  //app.post('/timeline/(:year)/', pagesRoutes.postTimeline);
   app.get('/signup', signupRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
+
   app.post('/signup', signupRoutes.post);
 
   app.get('*', pagesRoutes.get404);

@@ -55,8 +55,8 @@ module.exports = function(app) {
   app.get('/en/gallery/(:artist)/(:gallery)/(:galleryitem)', pagesRoutes.getGallery);
   app.get('/en/signup', signupRoutes.get);
   app.get('/en/(:page)', pagesRoutes.get);
-  app.post('/en/(:page)', pagesRoutes.post);
   app.post('/en/signup', signupRoutes.post);
+  app.post('/en/(:page)', pagesRoutes.post);
 
   app.get('/', indexRoutes.get);
   app.get('/events/', eventsRoutes.getAll);
@@ -80,13 +80,12 @@ module.exports = function(app) {
   app.get('/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
-  app.get('/gallery', pagesRoutes.getGallery);
-  app.get('/gallery/(:artist)/(:gallery)', pagesRoutes.getGallery);
-  app.get('/gallery/(:artist)/(:gallery)/(:galleryitem)', pagesRoutes.getGallery);
+  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/signup', signupRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
-  app.post('/(:page)', pagesRoutes.post);
   app.post('/signup', signupRoutes.post);
+  app.post('/(:page)', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 };

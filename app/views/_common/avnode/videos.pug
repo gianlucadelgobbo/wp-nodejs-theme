@@ -1,10 +1,11 @@
+- var basepath = req_params.page ? "" : basepath
 if body.videos && body.videos.length
   ul#listItems.row
     each item, i in body.videos
       li.col-xl-2.col-sm-3(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
         meta(itemprop='position', content=i)
         div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-          a(itemprop='url', href="/editions/"+req_params.edition+"/gallery/"+item.slug+"/", title=item.title)
+          a(itemprop='url', href=basepath+"/videos/"+item.slug+"/", title=item.title)
             img.img-responsive(itemprop='image', src=item.imageFormats.small, alt=item.title)
           p
           .caption(style='padding-right:15px;padding-left:15px;')
@@ -32,11 +33,8 @@ if body.medias && body.medias.length
       li.col-xs-12.col-md-4.col-lg-3.col-xl-2.nggthumbnail(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
         meta(itemprop='position', content=i)
         div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-          a.thumbnail(title=media.title, style='position:relative;', itemprop='url', href="/editions/"+req_params.edition+"/gallery/"+body.slug+"/"+media.slug+"/")
+          a.thumbnail(title=media.title, style='position:relative;', itemprop='url', href=basepath+"/videos/"+body.slug+"/"+media.slug+"/")
             span.cntGallImgOver
               img.cntGallImgImg(itemprop='image', src=media.imageFormats.small, alt=media.title)
               img.gallType(src='/_images/over_img.png', alt=media.title)
             span.cntDida(itemprop='name')=media.title
-          script.
-            if (typeof glink==='undefined') var glink = [];
-            glink.push(media.imageFormats.small);

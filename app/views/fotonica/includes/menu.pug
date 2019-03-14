@@ -21,6 +21,8 @@ nav#top-menu.navbar.navbar-inverse
         a(href=lang_preurl+'/events/')=global.__("Events")
       li(class=page_data.url.indexOf('/gallery') >= 0 ? "active" : undefined)
         a(href=lang_preurl+'/gallery/') Gallery
+      li(class=page_data.url.indexOf('/videos') >= 0 ? "active" : undefined)
+        a(href=lang_preurl+'/videos/') Videos
       li(class=page_data.url.indexOf('/editions') >= 0 ? "active" : undefined)
         a.dropdown-toggle(href='#', data-toggle='dropdown')!=global.__("Editions")+"&nbsp;"
           span.caret

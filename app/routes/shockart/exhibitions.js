@@ -5,17 +5,21 @@ var sez = config.sez.exhibitions;
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
-    console.log("result._post_template");
+    //console.log("result._post_template");
     helpers.getExhibition(req, function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
-      console.log("rientro");
+      //console.log("rientro");
       var page_data = fnz.setPageData(req, result);
-      console.log(result);
+      //console.log("result");
+      //console.log(req.params);
+      //console.log(result);
       if (result.post_title) {
         let template;
         if (req.params.performance) {
           template = config.prefix+'/'+'exhibition_detail';
-        } else if (req.params.subedition == "gallery") {
+        } else if (req.params.subexhibition == "gallery") {
+          template = config.prefix+'/'+'exhibition_free';
+        } else if (req.params.subexhibition == "videos") {
           template = config.prefix+'/'+'exhibition_free';
         } else {
           template = config.prefix+'/'+'exhibition';
@@ -31,9 +35,9 @@ exports.get = function get(req, res) {
 exports.getArtist = function getArtist(req, res) {
   helpers.setSessions(req, function() {
     helpers.getExhibitionArtist(req, function( result ) {
+      //console.log(result);
       var page_data = fnz.setPageData(req, result);
       if (result.post_content.indexOf(">ERROR<")===-1) {
-        console.log(result);
         res.render(config.prefix+'/'+'exhibition_artists', {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});

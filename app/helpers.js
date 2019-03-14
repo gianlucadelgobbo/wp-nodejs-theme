@@ -148,22 +148,38 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
 //////// PAGES
 
 exports.getPage = function getPage(req,callback) {
-  if (req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
+  if (req.params.page != "gallery" && req.params.page != "videos" && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
+  console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page);
   //var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/mypages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(config.prefix+'/'+req.params.page).get(function( err, data ) {
     //console.log("//// Page " + req.params.page);
     if (!err && data && data.ID) {
+      if (req.params.page == "gallery" && req.params.subpage) data['sources'] = ["https://api.avnode.net/galleries/"+req.params.subpage+(req.params.subsubpage ? "/img/"+req.params.subsubpage : "")];
+      if (req.params.page == "videos" && req.params.subpage) data['sources'] = ["https://api.avnode.net/videos/"+req.params.subpage];
       if (data) data = fnz.fixResult(data);
       if (data.posts){
         data.posts = fnz.fixResults(data.posts);
       }
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      if (data['sources']) {
+        console.log(data['sources'][0]);
+        request({
+          url: data['sources'][0],
+          json: true
+        }, function(error, response, body) {
+          fnz.shortcodify(config.prefix, data, body, req.params, data =>{
+            callback(data);
+          });
+        });
+      } else {
+        //console.log("stocazzo");
+        callback(data);
+      }
     } else {
-      data = {};
+      callback({});
     }
-    callback(data);
   });
 };
 
