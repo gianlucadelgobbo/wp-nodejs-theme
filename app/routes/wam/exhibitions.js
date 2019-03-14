@@ -10,12 +10,16 @@ exports.get = function get(req, res) {
       var rientro = req.url.indexOf("/program/")>0;
       //console.log("rientro");
       var page_data = fnz.setPageData(req, result);
+      //console.log("result");
+      //console.log(req.params);
       //console.log(result);
       if (result.post_title) {
         let template;
         if (req.params.performance) {
           template = config.prefix+'/'+'exhibition_detail';
-        } else if (req.params.subedition == "gallery") {
+        } else if (req.params.subexhibition == "gallery") {
+          template = config.prefix+'/'+'exhibition_free';
+        } else if (req.params.subexhibition == "videos") {
           template = config.prefix+'/'+'exhibition_free';
         } else {
           template = config.prefix+'/'+'exhibition';

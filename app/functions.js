@@ -116,7 +116,7 @@ exports.shortcodify = function shortcodify(prefix, data, body, req_params, cb) {
   });
   /* var str = "aaa [avnode source='https://flxer.net/api/lpm-team/events/lpm-2018-rome/' view=performances filter=keyword params='Workshop' room='Classroom 1' days=2018-06-08] aaa [avnode source='https://flxer.net/api/lpm-team/events/lpm-2018-rome/' view=performances filter=keyword params='Workshop' room='Classroom 2' days=2018-06-08] bbb";
   var out = shortcode.parse(str);
-  console.log(out); */
+  //console.log(out); */
   if (data.post_content_original) data.post_content = shortcode.parse(data.post_content_original.replace("<p>[","[").replace("]</p>","]").replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view="));
   for (item in data.grid) {
     for (item2 in data.grid[item]) {

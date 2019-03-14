@@ -35,6 +35,8 @@ module.exports = function(app) {
   app.get('/it/exhibitions/page/(:page)', exhibitionsRoutes.getAll);
   app.get('/it/exhibitions/(:exhibition)', exhibitionsRoutes.get);
   app.get('/it/exhibitions/(:exhibition)/program/detail/(:performance)', exhibitionsRoutes.get);
+  app.get('/it/exhibitions/(:exhibition)/(:subexhibition)/(:subsubexhibition)', exhibitionsRoutes.get);
+  app.get('/it/exhibitions/(:exhibition)/(:subexhibition)/(:subsubexhibition)/(:image)', exhibitionsRoutes.get);
   app.get('/it/exhibitions/(:exhibition)/artists', exhibitionsRoutes.getArtist);
   //app.get('/it/exhibitions/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);
   app.get('/it/exhibitions/(:exhibition)/artists/(:artist)', exhibitionsRoutes.getArtist);
@@ -56,6 +58,8 @@ module.exports = function(app) {
   app.get('/exhibitions/page/(:page)', exhibitionsRoutes.getAll);
   app.get('/exhibitions/(:exhibition)', exhibitionsRoutes.get);
   app.get('/exhibitions/(:exhibition)/program/detail/(:performance)', exhibitionsRoutes.get);
+  app.get('/exhibitions/(:exhibition)/(:subexhibition)/(:subsubexhibition)', exhibitionsRoutes.get);
+  app.get('/exhibitions/(:exhibition)/(:subexhibition)/(:subsubexhibition)/(:image)', exhibitionsRoutes.get);
   app.get('/exhibitions/(:exhibition)/artists', exhibitionsRoutes.getArtist);
   //app.get('/exhibitions/(:exhibition)/artists/(:artist)/performances/(:performance)', exhibitionsRoutes.getArtist);
   app.get('/exhibitions/(:exhibition)/artists/(:artist)', exhibitionsRoutes.getArtist);
