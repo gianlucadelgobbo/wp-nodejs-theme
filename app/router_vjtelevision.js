@@ -49,11 +49,4 @@ module.exports = function(app) {
   app.post('/(:page)', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
-
-  /*
-   app.get('/exhibitions/(:exhibition)/gallery/(:artist)/gallery/(:gallery)', exhibitionsRoutes.getGallery);
-   app.get('/exhibitions/(:exhibition)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', exhibitionsRoutes.getGallery);
-   app.get('/exhibitions/(:exhibition)/(:subexhibition)', exhibitionsRoutes.get);
-   app.get('/exhibitions/(:exhibition)/(:subexhibition)/(:subsubexhibition)', exhibitionsRoutes.get);
-   */
 };

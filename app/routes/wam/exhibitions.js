@@ -13,18 +13,21 @@ exports.get = function get(req, res) {
       //console.log("result");
       //console.log(req.params);
       //console.log(result);
+      let include_gallery = false;
       if (result.post_title) {
         let template;
         if (req.params.performance) {
           template = config.prefix+'/'+'exhibition_detail';
         } else if (req.params.subexhibition == "gallery") {
+          include_gallery = true;
           template = config.prefix+'/'+'exhibition_free';
         } else if (req.params.subexhibition == "videos") {
+          include_gallery = true;
           template = config.prefix+'/'+'exhibition_free';
         } else {
           template = config.prefix+'/'+'exhibition';
         }
-        res.render(template, {result: result, page_data:page_data, sessions:req.session.sessions,rientro:rientro});
+        res.render(template, {result: result, page_data:page_data, sessions:req.session.sessions,rientro:rientro, include_gallery: include_gallery});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }
@@ -58,22 +61,3 @@ exports.getAll = function getAll(req, res) {
     });
   });
 };
-
-exports.getFotonica = function getFotonica(req, res) {
-  res.render(config.prefix+'/'+'exihibition_local', {result: {}, page_data:{}, sessions:req.session.sessions, include_gallery:false});
-};
-
-/*
-
-exports.getGallery = function getGallery(req, res) {
-  helpers.setSessions(req, function() {
-    helpers.getExhibitionArtistGallery(req, function( result ) {
-      //console.log(result._post_template);
-      meta_data.title = (result.title ? result.title+ " | " : "") + config.project_name;
-      res.render(config.prefix+'/'+'exhibition_artists', {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions});
-    });
-  });
-};
-*/
-//select * from flyer_wp_20_terms,flyer_wp_20_term_relationships,flyer_wp_20_term_taxonomy where flyer_wp_20_term_taxonomy.term_taxonomy_id=flyer_wp_20_term_relationships.term_taxonomy_id and flyer_wp_20_term_taxonomy.term_id=flyer_wp_20_terms.term_id and  flyer_wp_20_term_relationships.object_id =49197;
-//wp.taxonomies().taxonomy( 'author' ).terms().get(function( err2, data2 ) {

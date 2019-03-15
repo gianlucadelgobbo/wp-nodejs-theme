@@ -50,14 +50,4 @@ module.exports = function(app) {
   app.post('/(:page)', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
-
-  /*
-  app.get('/activities/(:activity)/artists', activitiesRoutes.getArtist);
-  app.get('/activities/(:activity)/artists/(:artist)/performances/(:performance)', activitiesRoutes.getArtist);
-  app.get('/activities/(:activity)/artists/(:artist)', activitiesRoutes.getArtist);
-   app.get('/activities/(:activity)/gallery/(:artist)/gallery/(:gallery)', activitiesRoutes.getGallery);
-   app.get('/activities/(:activity)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', activitiesRoutes.getGallery);
-   app.get('/activities/(:activity)/(:subactivity)', activitiesRoutes.get);
-   app.get('/activities/(:activity)/(:subactivity)/(:subsubactivity)', activitiesRoutes.get);
-   */
 };

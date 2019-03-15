@@ -63,10 +63,4 @@ module.exports = function(app) {
 
   app.get('*', pagesRoutes.get404);
 
-  /*
-   app.get('/prenatal/(:exhibition)/gallery/(:artist)/gallery/(:gallery)', exhibitionsRoutes.getGallery);
-   app.get('/prenatal/(:exhibition)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', exhibitionsRoutes.getGallery);
-   app.get('/prenatal/(:exhibition)/(:subexhibition)', exhibitionsRoutes.get);
-   app.get('/prenatal/(:exhibition)/(:subexhibition)/(:subsubexhibition)', exhibitionsRoutes.get);
-   */
 };

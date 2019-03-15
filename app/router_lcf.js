@@ -55,16 +55,10 @@ module.exports = function(app) {
   app.get('/it/editions/(:edition)', editionsRoutes.get);
   app.get('/it/editions/(:edition)/artists', editionsRoutes.getArtist);
   app.get('/it/editions/(:edition)/artists/(:artist)', editionsRoutes.getArtist);
-  //app.get('/it/editions/(:edition)/artists/(:artist)/performances/(:performance)', editionsRoutes.getArtist);
-  //app.get('/it/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)', editionsRoutes.getGallery);
-  //app.get('/it/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', editionsRoutes.getGallery);
   app.get('/it/editions/(:edition)/(:subedition)', editionsRoutes.get);
   app.get('/it/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
   app.get('/it/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
   app.get('/it/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
-  /* app.get('/it/gallery', pagesRoutes.getGallery);
-  app.get('/it/gallery/(:artist)/(:gallery)', pagesRoutes.getGallery);
-  app.get('/it/gallery/(:artist)/(:gallery)/(:galleryitem)', pagesRoutes.getGallery); */
   app.get('/it/signup', signupRoutes.get);
   app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
   app.get('/it/(:page)/(:subpage)', pagesRoutes.get);

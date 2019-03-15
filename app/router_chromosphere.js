@@ -47,9 +47,6 @@ module.exports = function(app) {
   app.get('/it/editions/(:edition)', editionsRoutes.get);
   app.get('/it/editions/(:edition)/artists', editionsRoutes.getArtist);
   app.get('/it/editions/(:edition)/artists/(:artist)', editionsRoutes.getArtist);
-  //app.get('/it/editions/(:edition)/artists/(:artist)/performances/(:performance)', editionsRoutes.getArtist);
-  //app.get('/it/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)', editionsRoutes.getGallery);
-  //app.get('/it/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', editionsRoutes.getGallery);
   app.get('/it/editions/(:edition)/(:subedition)', editionsRoutes.get);
   app.get('/it/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
   app.get('/it/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
@@ -76,9 +73,6 @@ module.exports = function(app) {
   app.get('/editions/(:edition)', editionsRoutes.get);
   app.get('/editions/(:edition)/artists', editionsRoutes.getArtist);
   app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.getArtist);
-  //  app.get('/editions/(:edition)/artists/(:artist)/performances/(:performance)', editionsRoutes.getArtist);
-  //  app.get('/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)', editionsRoutes.getGallery);
-  //  app.get('/editions/(:edition)/gallery/(:artist)/gallery/(:gallery)/(:galleryitem)', editionsRoutes.getGallery);
   app.get('/editions/(:edition)/(:subedition)', editionsRoutes.get);
   app.get('/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);

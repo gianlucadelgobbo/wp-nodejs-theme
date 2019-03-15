@@ -44,21 +44,6 @@ exports.getArtist = function getArtist(req, res) {
   });
 };
 
-exports.getGallery = function getGallery(req, res) {
-  helpers.setSessions(req, function() {
-    helpers.getEditionArtistGallery(req, function( result ) {
-      var page_data = fnz.setPageData(req, result);
-      if (result.post_content.indexOf(">ERROR<")===-1) {
-        result.post_content = result.post_content.replace(new RegExp('itemprop="url" href="/', 'g'), 'itemprop="url" href="'+config.domain+"/");
-        result.grid = [[{tit: 'Gallery', stit: null, box: result.post_content.replace(new RegExp('itemprop="url" href="/', 'g'), 'itemprop="url" href="'+config.domain+"/")}]];
-        res.render(config.prefix+'/'+'edition', {result: result, page_data:page_data, sessions:req.session.sessions, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
-      } else {
-        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
-      }
-    });
-  });
-};
-
 exports.getAll = function getAll(req, res) {
   helpers.setSessions(req, function() {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
