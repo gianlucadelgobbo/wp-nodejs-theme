@@ -1,7 +1,7 @@
 //pre=JSON.stringify(opts, null, 2)
 //pre=JSON.stringify(body, null, 2)
 //pre=JSON.stringify(data, null, 2)
-if opts.params
+if opts.params && body
   each day in body
     if opts.days.indexOf(day.day)!=-1
       ul.lists
