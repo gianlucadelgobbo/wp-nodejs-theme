@@ -80,8 +80,8 @@ block content
                       each schedule in booking.schedule
                         p.stit.schedule
                           span(itemprop='contentLocation')=schedule.venue.room
-                          !=" | "
-                          !=schedule.boxDate+" > "+schedule.endtimeTime
+                        p.stit.schedule
+                          !=schedule.boxDate
 
     else if result.post_content
       !=result.post_content
