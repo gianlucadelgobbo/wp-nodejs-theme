@@ -26,13 +26,26 @@ exports.setPageData = function setPageData(req, result) {
   if (req.params.exhibition) page_data.exhibition = req.params.exhibition;
 
   if(result && result['ID']) {
-    var title = (result.post_title ? result.post_title+(result.avnode && result.avnode.performance && result.avnode.performance.title ? ": "+result.avnode.performance.title : "")+(req.params.tag ? " #"+req.params.tag : "")+" | " : "");
-    if (title && dett && req.session.sessions.current_lang != config.default_lang) title+=req.session.sessions.current_lang.toUpperCase()+" | ";
-    title+=config.project_name;
-    if (title==config.project_name && config.meta.headline) title+=(config.meta.headline ? " | "+config.meta.headline[req.session.sessions.current_lang] : "");
-    page_data.title = title;
+    console.log(result.meta_description);
+    page_data.title = (result.post_title ? result.post_title : "");
     page_data.image_src = result.featured && result.featured.full ? result.featured.full : result.featured ? result.featured : config.domain + config.meta.image_src;
-    page_data.description = result.meta_description ? this.makeExcerpt(result.meta_description, 160) : config.meta.description[req.session.sessions.current_lang];
+    page_data.description = result.post_content ? this.makeExcerpt(result.post_content, 160) : config.meta.description[req.session.sessions.current_lang];
+
+    if (result.avnode && result.avnode.performance && result.avnode.performance.title) {
+      page_data.title+= ": "+result.avnode.performance.title;
+      page_data.image_src = result.avnode.performance.imageFormats.large;
+      page_data.description = result.avnode.performance.description;
+    } else if (result.avnode && result.avnode.performer && result.avnode.performer.stagename) {
+      page_data.title+= ": "+result.avnode.performer.stagename;
+      page_data.image_src = result.avnode.performer.imageFormats.large;
+      page_data.description = result.avnode.performer.description;
+    }
+    if (page_data.title && req.session.sessions.current_lang != config.default_lang) page_data.title+=" | "+req.session.sessions.current_lang.toUpperCase();
+    if (result.avnode && result.avnode.title) {
+      page_data.title+= " | "+result.avnode.title;
+    }
+    page_data.title+=" | "+config.project_name;
+    if (page_data.title==config.project_name && config.meta.headline) page_data.title+=(config.meta.headline ? " | "+config.meta.headline[req.session.sessions.current_lang] : "");
   } else {
     page_data.title = "404 "+__("Content NOT found")+" | " + config.project_name;
     page_data.image_src = config.meta.image_src;
