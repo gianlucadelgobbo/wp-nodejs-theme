@@ -5,7 +5,6 @@ var Recaptcha = require('express-recaptcha').Recaptcha;
 var recaptcha = new Recaptcha('6Lex1mQUAAAAAF6YSwUiw_mRGBiW2JSVlS3jYApT', '6Lex1mQUAAAAAOauaj1rxyENLvrnvHEMt7_RTnJq');
 
 exports.get = function get(req, res) {
-  console.log("stocazzo");
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);

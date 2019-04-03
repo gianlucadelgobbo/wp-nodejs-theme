@@ -5,13 +5,11 @@ var sez = config.sez.editions;
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
-    console.log("result._post_template");
     helpers.getEdition(req, function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
       //console.log("rientro");
       let page_data = fnz.setPageData(req, result);
       //console.log("result");
-      console.log(result);
       let include_gallery = false;
       if (result.post_title) {
         let template;

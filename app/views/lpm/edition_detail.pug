@@ -12,15 +12,16 @@ block content
             h1.entry-title(itemprop='name')=result.avnode.performance.title
             .rientro
               p.type=result.avnode.performance.type.name
+              each booking in result.avnode.performance.bookings
+                each schedule in booking.schedule
+                  p.stit
+                    span(itemprop='contentLocation')=schedule.venue.room
+                  p.stit
+                    !=schedule.boxDate+" > "+schedule.endtimeTime
+                    br
+                    span.hide(itemprop='datePublished')=schedule.starttime
               p.stit
-                each booking in result.avnode.performance.bookings
-                  each schedule in booking.schedule
-                    span.schedule
-                      span(itemprop='contentLocation')=schedule.venue.room
-                      !=" | "
-                      !=schedule.boxDate+" > "+schedule.endtimeTime
-                      br
-                      span.hide(itemprop='datePublished')=schedule.starttime
+                !="Duration: "+result.avnode.performance.humanDuration
               if result.avnode.performance.price && result.avnode.performance.paypal
                 p.price="Price: "
                   a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+result.avnode.performance.paypal, target='_blank')

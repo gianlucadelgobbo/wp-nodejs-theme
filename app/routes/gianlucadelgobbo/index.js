@@ -12,15 +12,12 @@ exports.get = function get(req, res) {
       helpers.getAll(req, config.sez.news, config.sez.home.news.limit, 1, function (result_news) {
         helpers.getAll(req, config.sez.events, config.sez.home.events.limit, 1, function (result_events) {
           //helpers.getAll(req, config.sez.prenatal, config.sez.home.prenatal.limit, 1, function (result_exhibitions) {
-            console.log("stocazzo");
             var page_data = fnz.setPageData(req, {'ID':'100'});
             var obj = {
               results: {news:result_news,events:result_events/* ,exhibitions:result_exhibitions */},
               page_data:page_data, sessions:req.session.sessions
             };
-            console.log("stocazzo");
             jsonfile.writeFile(file, obj, function (err) {
-              console.log("stocazzo");
               //console.log(err);
               res.render(config.prefix+'/'+'index',obj);
             });

@@ -6,12 +6,8 @@ if opts.params && body
     if opts.days.indexOf(day.day)!=-1
       ul.lists
         each room in day.rooms
-          - console.log(opts.rooms)
-          - console.log(room.room)
           if opts.rooms.indexOf(room.room)!=-1
             each performance in room.performances
-              - console.log(opts.params)
-              - console.log(performance.performance.type.name)
               if opts.params.indexOf(performance.performance.type.name)!=-1
                 //pre=JSON.stringify(performance, null, 2)
                 li.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
