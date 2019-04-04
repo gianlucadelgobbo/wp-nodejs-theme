@@ -86,7 +86,14 @@ html(lang='en')
             .col-md-6
               if result
                 .h1
-                  !=result.avnode && result.avnode.performance && result.avnode.performance.title ? result.avnode.performance.type.name+" | "+result.avnode.performance.title : result.avnode && result.avnode.performer && result.avnode.performer.stagename ? global.__("Artists")+" | "+result.avnode.performer.stagename : result.post_title ? result.post_title : config.project_name
+                  if result.avnode && result.avnode.performance && result.avnode.performance.title
+                    !=result.avnode.performance.type.name+" | "+result.avnode.performance.title
+                  else if result.avnode && result.avnode.performer && result.avnode.performer.stagename
+                    !=global.__("Artists")+" | "+result.avnode.performer.stagename
+                  else if result.post_title
+                    !=result.post_title
+                  else
+                    !=config.project_name
                   include ../_common/inc_share_span
             .col-md-6(itemscope, itemtype='http://schema.org/Event')
               .event-card

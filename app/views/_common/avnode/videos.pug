@@ -14,8 +14,6 @@ if body.videos && body.videos.length
               each user in item.users
                 .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
                   b(itemprop='name')=user.stagename
-                  br
-              !="img: "+item.stats.img
 
 if body.media && body.media.file
   .container

@@ -2,8 +2,8 @@ extends layout
 block content
   article(itemscope, itemtype='http://schema.org/'+itemtype)
     header
-      h1.entry-title
+      h1.entry-title.clearfix
         span.pull-left(itemprop="name")=result.post_title
         span.pull-right
           include ../_common/inc_share_span
-    !=result.post_content
+    .container!=result.post_content

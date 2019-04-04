@@ -1,0 +1,6 @@
+extends layout
+block content
+  article(itemscope, itemtype='http://schema.org/'+itemtype)
+    header
+      h1.hidden(itemprop="name")=result.post_title
+    .container!=result.post_content
