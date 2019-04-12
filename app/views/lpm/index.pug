@@ -3,12 +3,12 @@ block home
   #carousel.carousel.slide(data-ride='carousel', data-interval="false")
     // Wrapper for slides
     .carousel-inner(role='listbox')
-      //.item.active.full-screen
+      .item.active.full-screen
         .embed-responsive.embed-responsive-16by9
-          iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?allowfullscreen=true&autoplay=true&href=https%3A%2F%2Fwww.facebook.com%2FLPM.LivePerformersMeeting%2Fvideos%2F2195839133776327%2F&show_text=0&width=1920" webkitallowfullscreen mozallowfullscreen allowfullscreen)
+          iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?allowfullscreen=true&autoplay=true&href=https%3A%2F%2Fwww.facebook.com%2FLPM.LivePerformersMeeting%2Fvideos%2F837085809979657&show_text=0&width=1920" webkitallowfullscreen mozallowfullscreen allowfullscreen)
           script.
             document.onload = function(){$("#myCarousel").pause()}
-      .item.active.full-screen
+      //.item.active.full-screen
         img(src='/lpm/images/slider/LPM2019-call-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
       .item.full-screen
         img(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
