@@ -83,13 +83,15 @@ block content
                         a(href='/editions/'+page_data.edition+"/artists/"+user.slug, title=user.stagename)=user.stagename
                       p.stit
                         span.stit!=user.addressesFormatted
-                        .hide
-                          each address in user.addresses
-                            span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
-                              span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
-                                b(itemprop='addressCountry')=address.country
-                                !=", "
-                                span(itemprop='addressLocality')=address.locality
+                        if user.addresses
+                          .hide
+                            each address in user.addresses
+                              if address && address.country
+                                span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                                  span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                                    b(itemprop='addressCountry')=address.country
+                                    !=", "
+                                    span(itemprop='addressLocality')=address.locality
                 div(itemprop='description')!=user.about
                 if user.web && user.web.length
                   p
