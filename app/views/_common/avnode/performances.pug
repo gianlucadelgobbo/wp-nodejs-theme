@@ -23,12 +23,14 @@ if opts.params && body
                         each user in performance.performance.users
                           .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
                             b(itemprop='name')=user.stagename
-                            span.caption-location.caption-location-block
-                              span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
-                                span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
-                                  b(itemprop='addressCountry')=user.addresses[0].country
-                                  !=", " 
-                                  span(itemprop='addressLocality')=user.addresses[0].locality
+                            if user.addresses && user.addresses.length && user.addresses[0] && user.addresses[0].country
+                              span.caption-location.caption-location-block
+                                span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                                  span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                                    b(itemprop='addressCountry')=user.addresses[0].country
+                                    if user.addresses[0].locality
+                                      !=", " 
+                                      span(itemprop='addressLocality')=user.addresses[0].locality
                       .caption-type
                         .caption-type-cnt
                           span.glyphicon.glyphicon-eye-open
