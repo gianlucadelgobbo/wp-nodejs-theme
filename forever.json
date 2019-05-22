@@ -11,7 +11,7 @@
     "errFile": "/var/log/nginx/node_flyer_err.log",
     "args": ["-site", "flyer"]
   },
-  {
+  /* {
     "uid": "lpm",
     "append": true,
     "watch": true,
@@ -21,7 +21,7 @@
     "outFile": "/var/log/nginx/node_lpm_out.log",
     "errFile": "/var/log/nginx/node_lpm_err.log",
     "args": ["-site", "lpm"]
-  },
+  }, */
   {
     "uid": "shockart",
     "append": true,
@@ -44,7 +44,7 @@
     "errFile": "/var/log/nginx/node_avnode_err.log",
     "args": ["-site", "avnode"]
   },
-  {
+  /* {
     "uid": "lcf",
     "append": true,
     "watch": true,
@@ -54,7 +54,7 @@
     "outFile": "/var/log/nginx/node_lcf_out.log",
     "errFile": "/var/log/nginx/node_lcf_err.log",
     "args": ["-site", "lcf"]
-  },
+  }, */
   {
     "uid": "linuxclub",
     "append": true,
