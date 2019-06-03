@@ -40,6 +40,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startall": "NODE_ENV=production forever start -l /sites/wp-nodejs-theme/forever.log -o /sites/wp-nodejs-theme/out.log -e /sites/wp-nodejs-theme/err.log /sites/wp-nodejs-theme/forever.json",
+    "stopall": "forever stop flyer;",
     "startallloc": "NODE_ENV=dev forever start -l /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/forever.log -o /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/out.log -e /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/err.log /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/foreverLocal.json",
     "flyer": "NODE_ENV=dev node app.js -site flyer",
     "lpm": "NODE_ENV=dev node app -site lpm",
